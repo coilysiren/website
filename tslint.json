@@ -5,6 +5,7 @@
     "exclude": "node_modules/*"
   },
   "rules": {
+    "trailing-comma": true,
     "variable-name": [
       true,
       "ban-keywords",

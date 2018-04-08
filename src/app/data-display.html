@@ -1,4 +1,19 @@
 <article class="container">
-  <h2>data display</h2>
-  <p>content here soon!</p>
+  <h2>What am I up to???</h2>
+  <hr class="my-4">
+  <h3>most recent personal commits:</h3>
+  <div class="dual-code-display">
+    <code class="output">
+      <a href="{{ url }}" class="project-url">{{ name }}</a>
+      <ul>
+        <li *ngFor="let commit of commits">          
+          <a href="{{ commit.url }}"><i class="font-awesome-icon fas fa-link"></i></a>
+          <span class="commit-message">{{ commit.message }}</span>
+        </li>
+      </ul>
+    </code>
+    <code class="query">
+      <pre>{{ queryBody }}</pre>
+    </code>
+  </div>
 </article>

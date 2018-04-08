@@ -12,3 +12,44 @@ p {
     width: 40%;
   }
 }
+
+.dual-code-display {
+  display: flex;
+  width: 70%;
+  align-items: stretch;
+  justify-content: space-between;
+  margin: 20px auto;
+
+  > * {
+    padding: 5px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 10px;
+  }
+
+  a {
+    color: #0d6797;
+  }
+
+  .project-url {
+    font-weight: bolder;
+  }
+
+  .font-awesome-icon {
+    color: #0d6797;
+    margin-right: 2px;
+  }
+
+  .output {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .query {
+    pre {
+      color: white;
+    }
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
