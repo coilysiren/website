@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./base.scss", "./app.component.scss"]
 })
 export class AppComponent {
   socialLinks: Array<Array<string>> = [

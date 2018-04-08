@@ -1,9 +1,4 @@
-$breakpoint-md: 750px;
-
-h1,
-h2 {
-  font-family: "Bubblegum Sans", cursive;
-}
+@import "_variables.scss";
 
 header {
   background-color: rgba(100, 100, 100, 0.1);
@@ -25,20 +20,8 @@ header {
 
   @media (max-width: $breakpoint-md) {
     padding: 10px;
-
     .favicon {
       display: none;
     }
-  }
-}
-
-.font-awesome-icon {
-  color: black;
-  @media (min-width: $breakpoint-md) {
-    margin: 2px;
-  }
-  @media (max-width: $breakpoint-md) {
-    font-size: 1.5em;
-    margin: 4px;
   }
 }
