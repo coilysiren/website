@@ -1,23 +1,44 @@
 $breakpoint-md: 750px;
-$breakpoint-lg: 1000px;
 
 h1,
 h2 {
   font-family: "Bubblegum Sans", cursive;
 }
 
-.jumbotron {
+header {
+  background-color: rgba(100, 100, 100, 0.1);
+
+  > * {
+    margin: 20px;
+  }
+
   @media (min-width: $breakpoint-md) {
     margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .social-link-list {
+      max-width: 100px;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 10px;
+
+    .favicon {
+      display: none;
+    }
   }
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    padding: 20px;
+.font-awesome-icon {
+  color: black;
+  @media (min-width: $breakpoint-md) {
+    margin: 2px;
+  }
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.5em;
+    margin: 4px;
   }
 }
