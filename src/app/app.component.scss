@@ -1,0 +1,23 @@
+$breakpoint-md: 750px;
+$breakpoint-lg: 1000px;
+
+h1,
+h2 {
+  font-family: "Bubblegum Sans", cursive;
+}
+
+.jumbotron {
+  @media (min-width: $breakpoint-md) {
+    margin-top: 5%;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    padding: 20px;
+  }
+}
