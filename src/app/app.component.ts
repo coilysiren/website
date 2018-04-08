@@ -12,7 +12,7 @@ export class AppComponent {
     ["https://gitlab.com/cyrin", "fab fa-gitlab"],
     ["https://paypal.me/cyrin", "fab fa-paypal"],
     ["https://steamcommunity.com/id/naxili", "fab fa-steam-square"],
-    ["https://github.com/LynnCo/lynnco.github.io", "fas fa-code"],
+    ["https://github.com/lynncyrin/lynncyrin.github.io", "fas fa-code"],
     ["https://cash.me/$cyrin", "fas fa-dollar-sign"],
     ["mailto:lynncyrin@gmail.com", "fas fa-envelope"]
   ];
