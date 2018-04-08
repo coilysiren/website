@@ -12,6 +12,7 @@ export class DataDisplayComponent {
   public name: string;
   public url: string;
   public commits: any[];
+  public commitCount: number = 10;
   public queryBody: string = `query {
   user(login: "lynncyrin") {
     repositories(last: 1, orderBy: {field: UPDATED_AT, direction: ASC}) {
@@ -22,7 +23,7 @@ export class DataDisplayComponent {
           nodes {
             target {
               ... on Commit {
-                history(first: 10) {
+                history(first: ${this.commitCount}) {
                   nodes {
                     message
                     url

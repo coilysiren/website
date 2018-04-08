@@ -1,18 +1,27 @@
 <article class="container">
-  <h2>What am I up to???</h2>
+  <h2>Recent Work</h2>
   <hr class="my-4">
-  <h3>most recent personal commits:</h3>
+  <h3>Personal Commits</h3>
+  <p>I try to put some commits into my personal projects at least every few weeks, even when I'm running back-to-back sprints at my dayjob.
+    <span class="hide-on-smaller">To the left</span>
+    <span class="hide-on-larger">The first code block</span> is my last {{ commitCount }} commits in the last personal project I worked on.
+    <span class="hide-on-smaller">To the right</span>
+    <span class="hide-on-larger">The second code block</span> is the
+    <a href="http://graphql.org/">graphql</a> query running against
+    <a href="https://developer.github.com/v4/">github's api</a> to generate that data.</p>
   <div class="dual-code-display">
     <code class="output">
+      <h4 class="code-header">DATA</h4>
       <a href="{{ url }}" class="project-url">{{ name }}</a>
-      <ul>
-        <li *ngFor="let commit of commits">          
-          <a href="{{ commit.url }}"><i class="font-awesome-icon fas fa-link"></i></a>
+      <ul class="commit-list">
+        <li *ngFor="let commit of commits">
+          <a href="{{ commit.url }}" target="_blank"><i class="font-awesome-icon fas fa-link"></i></a>
           <span class="commit-message">{{ commit.message }}</span>
         </li>
       </ul>
     </code>
     <code class="query">
+      <h4 class="code-header">QUERY</h4>
       <pre>{{ queryBody }}</pre>
     </code>
   </div>

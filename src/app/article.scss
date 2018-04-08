@@ -1,45 +1,78 @@
 @import "_variables.scss";
 
+@mixin content-width {
+  @media (min-width: $breakpoint-md) {
+    width: 70%;
+  }
+}
+
 article {
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
 }
 
 p {
   margin: 10px auto;
-
-  @media (min-width: $breakpoint-md) {
-    width: 40%;
-  }
+  @include content-width();
 }
 
 .dual-code-display {
   display: flex;
-  width: 70%;
   align-items: stretch;
   justify-content: space-between;
   margin: 20px auto;
+  @include content-width();
 
-  > * {
-    padding: 5px;
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
   }
 
-  ul {
+  ul.commit-list {
     list-style: none;
     padding-left: 10px;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
   }
 
   a {
     color: #0d6797;
   }
 
+  .code-header {
+    font-family: "Inconsolata", monospace;
+    letter-spacing: 3px;
+    color: white;
+    background-color: rgba(100, 100, 100, 0.1);
+  }
+
   .project-url {
     font-weight: bolder;
+    font-size: 1.2em;
   }
 
   .font-awesome-icon {
     color: #0d6797;
-    margin-right: 2px;
+    font-size: 1em;
+  }
+
+  .commit-message {
+    color: #a722da;
+    padding-left: 4px;
+    font-size: 1.1em;
+  }
+
+  $dual-code-child-padding: 10px;
+
+  > * {
+    padding: $dual-code-child-padding;
+    flex: 1 1 0;
+    @media (min-width: $breakpoint-md) {
+      flex-direction: column;
+      width: 0;
+    }
   }
 
   .output {
