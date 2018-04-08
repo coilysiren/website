@@ -7,6 +7,10 @@ header {
     margin: 20px;
   }
 
+  .center-header > * {
+    text-align: left;
+  }
+
   @media (min-width: $breakpoint-md) {
     margin-top: 5%;
     display: flex;
@@ -20,6 +24,7 @@ header {
 
   @media (max-width: $breakpoint-md) {
     padding: 10px;
+
     .favicon {
       display: none;
     }
