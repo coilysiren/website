@@ -11,7 +11,7 @@
     flex-direction: column;
   }
 
-  ul.commit-list {
+  ul {
     list-style: none;
     padding-left: 10px;
 
@@ -22,10 +22,6 @@
     }
   }
 
-  a {
-    color: #0d6797;
-  }
-
   .code-header {
     font-family: "Inconsolata", monospace;
     letter-spacing: 3px;
@@ -33,7 +29,8 @@
     background-color: rgba(100, 100, 100, 0.1);
   }
 
-  .project-url {
+  .code-subheader {
+    color: #0d6797;
     font-weight: bolder;
     font-size: 1.2em;
   }
@@ -43,7 +40,7 @@
     font-size: 1em;
   }
 
-  .commit-message {
+  .data-primary-text {
     color: #a722da;
     padding-left: 4px;
     font-size: 1.1em;

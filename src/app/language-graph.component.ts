@@ -1,6 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 
+interface ILanguageData {
+  name: string;
+  color: string;
+  size: number;
+}
+
 @Component({
   selector: "language-graph",
   templateUrl: "language-graph.html",
@@ -11,8 +17,7 @@ import { Component } from "@angular/core";
   ],
 })
 export class LanguageGraphComponent {
-  public languageValues: any;
-  public languageColors: any;
+  public languageList: ILanguageData[];
   public repoCount: number = 5;
   public queryBody: string = `user(login: "lynncyrin") {
     repositories(last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
@@ -32,11 +37,49 @@ export class LanguageGraphComponent {
 
   constructor(http: HttpClient) {
     http.post("/api/github", {queryBody: this.queryBody})
-      .subscribe((responseData: any) => {
-        const repos: any = responseData.data.user.repositories.nodes;
-        for (const key in repos) {
-          const repo: any = repos[key];
-        }
+      .subscribe((data: any) => {
+        this.languageList = this.processResponseData(data);
       });
   }
+
+  private processResponseData(responseData: any): ILanguageData[] {
+
+    const languageData: Map<string, ILanguageData> = new Map();
+    const repos: any = responseData.data.user.repositories.nodes;
+    for (const repoKey in repos) {
+      const languages: any = repos[repoKey].languages.edges;
+      for (const languageKey in languages) {
+        updateDataMap(languageData, languages[languageKey]);
+      }
+    }
+    return languageDataToSortedArray(languageData);
+
+    function updateDataMap(dataMap: Map<string, ILanguageData>, data: any): void {
+      const name: string = data.node.name;
+      const color: string = data.node.color;
+      const size: number = data.size;
+      const datum: ILanguageData = dataMap.get(name);
+      if (datum) {
+        dataMap.set(name, {name, color, size: datum.size + size});
+      } else {
+        dataMap.set(name, {name, color, size});
+      }
+    }
+
+    function languageDataToSortedArray(map: Map<string, ILanguageData>): ILanguageData[] {
+      return Array.from(map.values()).sort(
+        (datumA: ILanguageData, datumB: ILanguageData): number => {
+          if (datumA.size < datumB.size) {
+            return 1;
+          } else if (datumA.size > datumB.size) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }
+      );
+    }
+
+  }
+
 }

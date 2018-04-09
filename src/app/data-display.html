@@ -11,11 +11,11 @@
 <div class="dual-code-display">
   <code class="output">
     <h4 class="code-header">DATA</h4>
-    <a href="{{ url }}" class="project-url">{{ name }}</a>
-    <ul class="commit-list">
+    <a href="{{ url }}" class="code-subheader">{{ name }}</a>
+    <ul>
       <li *ngFor="let commit of commits">
         <a href="{{ commit.url }}" target="_blank"><i class="font-awesome-icon fas fa-link"></i></a>
-        <span class="commit-message">{{ commit.message }}</span>
+        <span class="data-primary-text">{{ commit.message }}</span>
       </li>
     </ul>
   </code>

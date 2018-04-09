@@ -5,10 +5,10 @@
 <div class="dual-code-display">
   <code class="output">
     <h4 class="code-header">DATA</h4>
-    <ul class="language-list">
-      <li *ngFor="let languageDatam of languageDataList">
-        <a href="{{ commit.url }}" target="_blank"><i class="font-awesome-icon fas fa-link"></i></a>
-        <span class="commit-message">{{ commit.message }}</span>
+    <span class="code-subheader">language.name: language.size (in bytes)</span>
+    <ul>
+      <li *ngFor="let language of languageList">
+        <span class="data-primary-text">{{ language.name }}:</span> <span>{{ language.size }}</span>
       </li>
     </ul>
   </code>
