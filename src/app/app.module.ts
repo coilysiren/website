@@ -5,9 +5,14 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 import { DataDisplayComponent } from "./data-display.component";
+import { RecentWorkComponent } from "./recent-work.component";
 
 @NgModule({
-  declarations: [AppComponent, DataDisplayComponent],
+  declarations: [
+    AppComponent,
+    DataDisplayComponent,
+    RecentWorkComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

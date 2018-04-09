@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./base.scss", "./app.component.scss"]
 })
 export class AppComponent {
-  socialLinks: Array<Array<string>> = [
+  public socialLinks: string[][] = [
     ["https://twitter.com/lynncyrin", "fab fa-twitter"],
     ["https://github.com/lynncyrin", "fab fa-github"],
     ["https://gitlab.com/cyrin", "fab fa-gitlab"],
