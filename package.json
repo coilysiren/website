@@ -4,11 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "test": "ng test",
-    "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "storybook": "cp src/index.html storybook/preview-head.html && start-storybook -c storybook -p 9001"
   },
   "private": true,
   "dependencies": {
@@ -21,13 +18,17 @@
     "@angular/platform-browser-dynamic": "^5",
     "@angular/router": "^5",
     "ts-helpers": "^1",
-    "zone.js": "0.x"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/cli": "^1",
     "@angular/compiler-cli": "^5",
+    "@storybook/addon-actions": "^3.4",
+    "@storybook/addons": "^3.4",
+    "@storybook/angular": "^3.4",
     "@types/jasmine": "^2",
     "@types/node": "^9",
+    "babel-core": "^6.26.0",
     "jasmine-core": "^3",
     "jasmine-spec-reporter": "^4",
     "karma": "^2",
