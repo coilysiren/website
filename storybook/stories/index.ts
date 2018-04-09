@@ -1,5 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { storiesOf } from "@storybook/angular";
+import { LanguageGraphComponent } from "../../src/app/language-graph.component";
 import { DataDisplayComponent } from "./../../src/app/data-display.component";
 import { HeaderComponent } from "./../../src/app/header.component";
 
@@ -16,4 +17,13 @@ storiesOf("Personal Site", module)
     moduleMetadata: {
       imports: [HttpClientModule]
     }
-  }));
+  }))
+
+  .add("language graph", () => ({
+    component: LanguageGraphComponent,
+    moduleMetadata: {
+      imports: [HttpClientModule]
+    }
+  }))
+
+  ;

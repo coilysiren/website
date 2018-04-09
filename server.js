@@ -24,13 +24,13 @@ function commitDataRequest(queryBody) {
     .then((res) => res.json())
 }
 
-app.post("/api/github", (req, res) => {
-  commitDataRequest(req.body.queryBody).then((data) => res.json(data));
+app.get("/api/github", (req, res) => {
+  console.log('request successful!');
+  res.json({data: 'request successful!'});
 });
 
-app.use("/.storybook", express.static(path.join(__dirname, "/storybook-dist/")));
-app.get("/.storybook", (req, res) => {
-  res.sendFile(path.join(__dirname, "/storybook-dist/index.html"));
+app.post("/api/github", (req, res) => {
+  commitDataRequest(req.body.queryBody).then((data) => res.json(data));
 });
 
 app.use(express.static(path.join(__dirname, "/dist")));
