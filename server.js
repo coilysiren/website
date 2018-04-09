@@ -8,10 +8,12 @@ var server = app.listen(PORT, () => {
   console.log("Listening on port %d", server.address().port);
 });
 
-app.use(
-  "/.storybook",
-  express.static(path.join(__dirname, "/storybook-dist/"))
-);
+app.get("/api", (req, res) => {
+  console.log('hit test api endpoint');
+  res.json({ message: 'hooray! welcome to our api!' });
+});
+
+app.use("/.storybook", express.static(path.join(__dirname, "/storybook-dist/")));
 app.get("/.storybook", (req, res) => {
   res.sendFile(path.join(__dirname, "/storybook-dist/index.html"));
 });

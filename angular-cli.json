@@ -16,6 +16,9 @@
     }
   ],
   "defaults": {
+    "serve": {
+      "proxyConfig": "src/proxy.config.json"
+    },
     "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {

@@ -43,18 +43,20 @@ export class DataDisplayComponent {
 }`;
 
   constructor(http: HttpClient) {
-    const headers: HttpHeaders = new HttpHeaders({Authorization: `bearer ${GITHUB_API_TOKEN}`});
-    http
-      .post(
-        "https://api.github.com/graphql",
-        { query: this.queryBody },
-        { headers }
-      )
+    http.get("/api")
       .subscribe((responseData: any) => {
-        const repo: any = responseData.data.user.repositories.nodes[0];
-        this.name = repo.nameWithOwner;
-        this.url = repo.url;
-        this.commits = repo.refs.nodes[0].target.history.nodes;
+        console.log(responseData);
+        // const repo: any = responseData.data.user.repositories.nodes[0];
+        // this.name = repo.nameWithOwner;
+        // this.url = repo.url;
+        // this.commits = repo.refs.nodes[0].target.history.nodes;
       });
+    // const headers: HttpHeaders = new HttpHeaders({Authorization: `bearer ${GITHUB_API_TOKEN}`});
+    // http
+    //   .post(
+    //     "https://api.github.com/graphql",
+    //     { query: this.queryBody },
+    //     { headers }
+    //   )
   }
 }
