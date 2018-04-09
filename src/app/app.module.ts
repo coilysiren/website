@@ -6,6 +6,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { DataDisplayComponent } from "./data-display.component";
 import { HeaderComponent } from "./header.component";
+import { LanguageGraphComponent } from "./language-graph.component";
 import { RecentWorkComponent } from "./recent-work.component";
 
 @NgModule({
@@ -14,6 +15,7 @@ import { RecentWorkComponent } from "./recent-work.component";
     DataDisplayComponent,
     RecentWorkComponent,
     HeaderComponent,
+    LanguageGraphComponent,
   ],
   imports: [
     BrowserModule,

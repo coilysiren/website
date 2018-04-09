@@ -7,6 +7,7 @@ import { Component } from "@angular/core";
     <h2>Recent Personal Work</h2>
     <hr class="my-4">
     <data-display></data-display>
+    <language-graph></language-graph>
   </article>
   `,
   styleUrls: [
