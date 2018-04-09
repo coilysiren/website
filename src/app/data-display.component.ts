@@ -6,7 +6,11 @@ import { GITHUB_API_TOKEN } from "./.env";
 @Component({
   selector: "data-display",
   templateUrl: "data-display.html",
-  styleUrls: ["./base.scss", "./article.scss", "./code.scss"]
+  styleUrls: [
+    "./base.scss",
+    "./article.scss",
+    "./code.scss",
+  ]
 })
 export class DataDisplayComponent {
   public name: string;
