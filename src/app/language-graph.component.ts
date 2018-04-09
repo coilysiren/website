@@ -14,17 +14,15 @@ export class LanguageGraphComponent {
   public languageValues: any;
   public languageColors: any;
   public repoCount: number = 5;
-  public queryBody: string = `query{
-    user(login: "lynncyrin") {
-      repositories(last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
-        nodes {
-          languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
-            edges {
-              size
-              node {
-                name
-                color
-              }
+  public queryBody: string = `user(login: "lynncyrin") {
+    repositories(last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
+      nodes {
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+          edges {
+            size
+            node {
+              name
+              color
             }
           }
         }
