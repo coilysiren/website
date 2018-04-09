@@ -5,10 +5,15 @@
 }
 
 h1,
+h1 *,
 h2,
+h2 *,
 h3,
+h3 *,
 h4,
-h5 {
+h4 *,
+h5,
+h5 * {
   font-family: "Bubblegum Sans", cursive;
   text-align: center;
 }
@@ -19,7 +24,10 @@ h5 {
   background-color: rgba(100, 100, 100, 0.1);
 }
 
-code {
+code,
+code *,
+pre,
+pre * {
   font-family: "Inconsolata", monospace;
 }
 
