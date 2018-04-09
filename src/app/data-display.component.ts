@@ -15,21 +15,19 @@ export class DataDisplayComponent {
   public url: string;
   public commits: any[];
   public commitCount: number = 10;
-  public queryBody: string = `query {
-    user(login: "lynncyrin") {
-      repositories(last: 1, orderBy: {field: UPDATED_AT, direction: ASC}) {
-        nodes {
-          nameWithOwner
-          url
-          refs(refPrefix: "refs/heads/", last: 1) {
-            nodes {
-              target {
-                ... on Commit {
-                  history(first: ${this.commitCount}) {
-                    nodes {
-                      message
-                      url
-                    }
+  public queryBody: string = `user(login: "lynncyrin") {
+    repositories(last: 1, orderBy: {field: UPDATED_AT, direction: ASC}) {
+      nodes {
+        nameWithOwner
+        url
+        refs(refPrefix: "refs/heads/", last: 1) {
+          nodes {
+            target {
+              ... on Commit {
+                history(first: ${this.commitCount}) {
+                  nodes {
+                    message
+                    url
                   }
                 }
               }

@@ -18,16 +18,11 @@ var server = app.listen(PORT, () =>
 function commitDataRequest(queryBody) {
   return fetch("https://api.github.com/graphql", {
     method: "POST",
-    body: JSON.stringify({ query: queryBody }),
+    body: JSON.stringify({ query: `query { ${queryBody} }` }),
     headers: { Authorization: `bearer ${process.env.GITHUB_API_TOKEN}` }
   })
     .then((res) => res.json())
 }
-
-app.get("/api/github", (req, res) => {
-  console.log('request successful!');
-  res.json({data: 'request successful!'});
-});
 
 app.post("/api/github", (req, res) => {
   commitDataRequest(req.body.queryBody).then((data) => res.json(data));
