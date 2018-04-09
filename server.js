@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var server = app.listen(PORT, () =>
-  console.log("Listening on port %d", server.address().port)
+  console.log(`Listening on port ${PORT}`)
 );
 
 function commitDataRequest(queryBody) {
@@ -25,7 +25,8 @@ function commitDataRequest(queryBody) {
 }
 
 app.post("/api/github", (req, res) => {
-  commitDataRequest(req.body.queryBody).then((data) => res.json(data));
+  commitDataRequest(req.body.queryBody)
+    .then((data) => res.json(data));
 });
 
 app.use(express.static(path.join(__dirname, "/dist")));
