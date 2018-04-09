@@ -18,11 +18,11 @@ interface ILanguageData {
 })
 export class LanguageGraphComponent {
   public languageList: ILanguageData[];
-  public repoCount: number = 5;
+  public repoCount: number = 100;
   public queryBody: string = `user(login: "lynncyrin") {
-    repositories(last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
+    repositories(isFork: false, last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
       nodes {
-        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+        languages(first: 100, orderBy: {field: SIZE, direction: DESC}) {
           edges {
             size
             node {
