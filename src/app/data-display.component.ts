@@ -15,23 +15,38 @@ export class DataDisplayComponent {
   public url: string;
   public commits: any[];
   public commitCount: number = 10;
-  public queryBody: string;
+  public queryBody: string = `query {
+    user(login: "lynncyrin") {
+      repositories(last: 1, orderBy: {field: UPDATED_AT, direction: ASC}) {
+        nodes {
+          nameWithOwner
+          url
+          refs(refPrefix: "refs/heads/", last: 1) {
+            nodes {
+              target {
+                ... on Commit {
+                  history(first: ${this.commitCount}) {
+                    nodes {
+                      message
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }`;
 
   constructor(http: HttpClient) {
-    http.get("/api")
+    http.post("/api/github", {queryBody: this.queryBody})
       .subscribe((responseData: any) => {
-        console.log(responseData);
-        // const repo: any = responseData.data.user.repositories.nodes[0];
-        // this.name = repo.nameWithOwner;
-        // this.url = repo.url;
-        // this.commits = repo.refs.nodes[0].target.history.nodes;
+        const repo: any = responseData.data.user.repositories.nodes[0];
+        this.name = repo.nameWithOwner;
+        this.url = repo.url;
+        this.commits = repo.refs.nodes[0].target.history.nodes;
       });
-    // const headers: HttpHeaders = new HttpHeaders({Authorization: `bearer ${GITHUB_API_TOKEN}`});
-    // http
-    //   .post(
-    //     "https://api.github.com/graphql",
-    //     { query: this.queryBody },
-    //     { headers }
-    //   )
   }
 }
