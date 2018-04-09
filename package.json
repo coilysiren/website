@@ -5,7 +5,10 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
-    "storybook": "cp src/index.html storybook/preview-head.html && start-storybook -c storybook -p 9001"
+    "start:prod": "node server.js",
+    "start:dev:angular": "ng serve",
+    "start:dev:storybook": "cp src/index.html storybook/preview-head.html && start-storybook -c storybook -p 9001",
+    "start:dev:express": "nodemon server.js"
   },
   "private": true,
   "dependencies": {
