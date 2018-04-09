@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 import { DataDisplayComponent } from "./data-display.component";
+import { HeaderComponent } from "./header.component";
 import { RecentWorkComponent } from "./recent-work.component";
 
 @NgModule({
@@ -12,6 +13,7 @@ import { RecentWorkComponent } from "./recent-work.component";
     AppComponent,
     DataDisplayComponent,
     RecentWorkComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
