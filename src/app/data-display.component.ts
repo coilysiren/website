@@ -1,5 +1,5 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { Headers, Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import { GITHUB_API_TOKEN } from "./.env";
 
@@ -10,7 +10,7 @@ import { GITHUB_API_TOKEN } from "./.env";
     "./base.scss",
     "./article.scss",
     "./code.scss",
-  ]
+  ],
 })
 export class DataDisplayComponent {
   public name: string;
@@ -42,16 +42,14 @@ export class DataDisplayComponent {
   }
 }`;
 
-  constructor(http: Http) {
-    const headers: Headers = new Headers();
-    headers.append("Authorization", `bearer ${GITHUB_API_TOKEN}`);
+  constructor(http: HttpClient) {
+    const headers: HttpHeaders = new HttpHeaders({Authorization: `bearer ${GITHUB_API_TOKEN}`});
     http
       .post(
         "https://api.github.com/graphql",
         { query: this.queryBody },
         { headers }
       )
-      .map((res: any) => res.json())
       .subscribe((responseData: any) => {
         const repo: any = responseData.data.user.repositories.nodes[0];
         this.name = repo.nameWithOwner;

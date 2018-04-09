@@ -1,3 +1,4 @@
+import { HttpClientModule } from "@angular/common/http";
 import { storiesOf } from "@storybook/angular";
 import { DataDisplayComponent } from "./../../src/app/data-display.component";
 
@@ -5,8 +6,13 @@ import { DataDisplayComponent } from "./../../src/app/data-display.component";
 
 storiesOf("Personal Site", module)
 
-  .add("first step", () => ({
-    component: DataDisplayComponent
+  .add("data display", () => ({
+    component: DataDisplayComponent,
+    moduleMetadata: {
+      imports: [
+        HttpClientModule,
+      ]
+    },
   }))
   
   ;
