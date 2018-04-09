@@ -1,11 +1,5 @@
 @import "_variables.scss";
 
-@mixin content-width {
-  @media (min-width: $breakpoint-md) {
-    width: 70%;
-  }
-}
-
 article {
   padding: 20px;
 }
@@ -13,76 +7,4 @@ article {
 p {
   margin: 10px auto;
   @include content-width();
-}
-
-.dual-code-display {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  margin: 20px auto;
-  @include content-width();
-
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
-  }
-
-  ul.commit-list {
-    list-style: none;
-    padding-left: 10px;
-
-    li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 5px;
-    }
-  }
-
-  a {
-    color: #0d6797;
-  }
-
-  .code-header {
-    font-family: "Inconsolata", monospace;
-    letter-spacing: 3px;
-    color: white;
-    background-color: rgba(100, 100, 100, 0.1);
-  }
-
-  .project-url {
-    font-weight: bolder;
-    font-size: 1.2em;
-  }
-
-  .font-awesome-icon {
-    color: #0d6797;
-    font-size: 1em;
-  }
-
-  .commit-message {
-    color: #a722da;
-    padding-left: 4px;
-    font-size: 1.1em;
-  }
-
-  $dual-code-child-padding: 10px;
-
-  > * {
-    padding: $dual-code-child-padding;
-    flex: 1 1 0;
-    @media (min-width: $breakpoint-md) {
-      flex-direction: column;
-      width: 0;
-    }
-  }
-
-  .output {
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-
-  .query {
-    pre {
-      color: white;
-    }
-    background-color: rgba(0, 0, 0, 0.9);
-  }
 }

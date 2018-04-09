@@ -1,1 +1,7 @@
 $breakpoint-md: 750px;
+
+@mixin content-width {
+  @media (min-width: $breakpoint-md) {
+    width: 70%;
+  }
+}
