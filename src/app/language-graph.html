@@ -2,8 +2,15 @@
 <p>
   in the last {{ repoCount }} repos.
 </p>
-<div class="dual-code-display">
-  <code class="output">
+<div class="top-bottom-spacer">
+  <div class="code-display">
+    <code>
+      <h4 class="code-header">GRAPH</h4>
+      <div class="language-graph"></div>
+    </code>
+  </div>
+  <div class="code-display dual-code-display">
+    <code class="output">
     <h4 class="code-header">DATA</h4>
     <span class="code-subheader">language.name: language.size (in bytes)</span>
     <ul>
@@ -11,9 +18,10 @@
         <span class="data-primary-text">{{ language.name }}:</span> <span>{{ language.size }}</span>
       </li>
     </ul>
-  </code>
-  <code class="query">
-    <h4 class="code-header">QUERY</h4>
-    <pre>{{ queryBody }}</pre>
-  </code>
+    </code>
+    <code class="query">
+      <h4 class="code-header">QUERY</h4>
+      <pre>{{ queryBody }}</pre>
+    </code>
+  </div>
 </div>
