@@ -3,13 +3,13 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 
-import { RecentWorkComponent } from "../../storybook-dist/app/recent-work.component";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header.component";
 import { IndexComponent } from "./index.component";
 import { PageNotFoundComponent } from "./page-not-found.component";
 import { DataDisplayComponent } from "./recent-work/data-display.component";
 import { LanguageGraphComponent } from "./recent-work/language-graph.component";
+import { RecentWorkComponent } from "./recent-work/recent-work.component";
 import { PostComponent } from "./writing-and-posts/post.component";
 import { WritingComponent } from "./writing-and-posts/writing-component";
 
