@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { IPostData, pathKeyedPosts } from "./post.data";
 
@@ -13,14 +13,15 @@ import { IPostData, pathKeyedPosts } from "./post.data";
 })
 export class PostComponent {
   public title: string;
-  public content: string;
+  public content: SafeHtml;
 
   constructor(
     private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const post: IPostData = pathKeyedPosts.get(params.get("path"));
-      this.content = post.content;
+      this.content = sanitizer.bypassSecurityTrustHtml(post.content);
       this.title = post.title;
     });
   }
