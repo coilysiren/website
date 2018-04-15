@@ -34,10 +34,6 @@ app.post("/api/github", (req: express.Request, res: express.Response) => {
     .then((data: JSON) => res.json(data));
 });
 
-app.get("*", (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  next();
-});
-
 app.use("/.storybook", express.static(path.join(__dirname, "/storybook-dist/")));
 app.get("/.storybook", (req: express.Request, res: express.Response) => {
   res.sendFile(path.join(__dirname, "/storybook-dist/index.html"));
