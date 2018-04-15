@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { IPostMeta, pathKeyedPosts } from "./post.data";
@@ -14,9 +15,11 @@ export class PostComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private http: HttpClient,
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.content = params.get("path");
+      const path: string = params.get("path");
+      this.content = path;
     });
   }
 
