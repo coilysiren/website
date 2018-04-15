@@ -2,28 +2,25 @@
 
 article {
   @include main-background;
+  @include content-width();
   border-radius: 5px;
   padding: 0;
-  $_padding: 20px;
+  margin-bottom: 80px;
   & > * {
     display: block;
-    padding-left: $_padding;
-    padding-right: $_padding;
+    padding-left: $article-padding;
+    padding-right: $article-padding;
   }
   & > *:first-child {
-    padding-top: $_padding;
+    padding-top: $article-padding;
   }
   & > *:last-child {
-    padding-bottom: $_padding;
-  }
-
-  @media (min-width: $breakpoint-md) {
-    width: 65%;
+    padding-bottom: $article-padding;
   }
 }
 
 h2 {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: $color-white-80opacity;
   padding-bottom: 10px;
   margin-bottom: 15px;
 }

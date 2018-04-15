@@ -5,6 +5,7 @@ import { RecentWorkComponent } from "../../src/app/recent-work.component";
 import { AppComponent } from "../../storybook-dist/app/app.component";
 import { DataDisplayComponent } from "./../../src/app/data-display.component";
 import { HeaderComponent } from "./../../src/app/header.component";
+import { WritingComponent } from "../../src/app/writing-component";
 
 /* tslint:disable */
 
@@ -48,6 +49,10 @@ storiesOf("Personal Site", module)
     moduleMetadata: {
       imports: [HttpClientModule]
     }
+  }))
+
+  .add("writing", () => ({
+    component: WritingComponent
   }))
 
   ;

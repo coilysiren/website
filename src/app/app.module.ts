@@ -7,6 +7,7 @@ import { DataDisplayComponent } from "./data-display.component";
 import { HeaderComponent } from "./header.component";
 import { LanguageGraphComponent } from "./language-graph.component";
 import { RecentWorkComponent } from "./recent-work.component";
+import { WritingComponent } from "./writing-component";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RecentWorkComponent } from "./recent-work.component";
     RecentWorkComponent,
     HeaderComponent,
     LanguageGraphComponent,
+    WritingComponent,
   ],
   imports: [
     BrowserModule,

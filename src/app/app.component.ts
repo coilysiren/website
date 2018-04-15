@@ -5,6 +5,7 @@ import { Component } from "@angular/core";
   template: `
     <header-component></header-component>
     <recent-work></recent-work>
+    <writing-component></writing-component>
   `,
 })
 export class AppComponent {

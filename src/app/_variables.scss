@@ -1,7 +1,20 @@
 $breakpoint-md: 750px;
+$breakpoint-lg: 1000px;
+
+$color-white-80opacity: rgba(255, 255, 255, 0.8);
+
+$article-padding: 20px;
+
+$font-body: "Open Sans", sans-serif;
+$font-headers: "Bubblegum Sans", sans-serif;
+$font-code: "Inconsolata", monospace;
 
 @mixin content-width {
+  width: 100%;
   @media (min-width: $breakpoint-md) {
+    width: 85%;
+  }
+  @media (min-width: $breakpoint-lg) {
     width: 70%;
   }
 }

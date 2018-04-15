@@ -1,0 +1,27 @@
+@import "_variables.scss";
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+li {
+  margin: 30px 0 30px (-$article-padding);
+  padding-left: $article-padding * 1.5;
+  border-left: 5px solid $color-white-80opacity;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
+}
+
+h3 {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+a {
+  color: black;
+  text-align: left;
+}
