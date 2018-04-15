@@ -1,5 +1,9 @@
 @import "_variables.scss";
 
+h1 a {
+  color: black;
+}
+
 header {
   @include main-background;
   margin-bottom: 60px;

@@ -3,7 +3,7 @@
   <ul>
     <li *ngFor="let post of postMetadata">
       <h3>
-        <a href="/posts/{{ post.path }}">{{ post.title }}</a>
+        <a routerLink="/post/{{ post.path }}">{{ post.title }}</a>
       </h3>
       <span>{{ post.description }}</span>
     </li>
