@@ -11,8 +11,8 @@ interface ILanguageData {
   selector: "language-graph",
   templateUrl: "language-graph.html",
   styleUrls: [
-    "./base.scss",
-    "./article.scss",
+    "./../base.scss",
+    "./../article.scss",
     "./code.scss",
   ],
 })

@@ -5,8 +5,8 @@ import { Component } from "@angular/core";
   selector: "data-display",
   templateUrl: "data-display.html",
   styleUrls: [
-    "./base.scss",
-    "./article.scss",
+    "./../base.scss",
+    "./../article.scss",
     "./code.scss",
   ],
 })

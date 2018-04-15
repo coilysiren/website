@@ -9,8 +9,8 @@ import { Component } from "@angular/core";
   </article>
   `,
   styleUrls: [
-    "./base.scss",
-    "./article.scss",
+    "./../base.scss",
+    "./../article.scss",
   ],
 })
 export class RecentWorkComponent {

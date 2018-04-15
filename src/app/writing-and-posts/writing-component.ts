@@ -5,8 +5,8 @@ import { IPostMeta, postMetaData } from "./post.data";
   selector: "writing-component",
   templateUrl: "writing.html",
   styleUrls: [
-    "./base.scss",
-    "./article.scss",
+    "./../base.scss",
+    "./../article.scss",
     "./writing.scss"
   ]
 })

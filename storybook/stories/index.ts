@@ -1,10 +1,10 @@
 import { HttpClientModule } from "@angular/common/http";
 import { storiesOf } from "@storybook/angular";
-import { LanguageGraphComponent } from "../../src/app/language-graph.component";
-import { RecentWorkComponent } from "../../src/app/recent-work.component";
 import { WritingComponent } from "../../src/app/writing-and-posts/writing-component";
 import { AppComponent } from "../../storybook-dist/app/app.component";
-import { DataDisplayComponent } from "./../../src/app/data-display.component";
+import { DataDisplayComponent } from "../../storybook-dist/app/data-display.component";
+import { LanguageGraphComponent } from "../../storybook-dist/app/language-graph.component";
+import { RecentWorkComponent } from "../../storybook-dist/app/recent-work.component";
 import { HeaderComponent } from "./../../src/app/header.component";
 
 /* tslint:disable */
