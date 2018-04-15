@@ -1,10 +1,13 @@
-export interface IPostMeta {
+/* tslint:disable */
+
+export interface IPostData {
   title: string;
   description: string;
   path: string;
+  content?: string;
 }
 
-export const postMetaData: IPostMeta[] = [
+export let postData: IPostData[] = [
   {
     title: "Heroku + Django Pipeline + Ruby Sass",
     description: "Getting django pipeline to use the ruby sass compiler on heroku",
@@ -32,6 +35,13 @@ export const postMetaData: IPostMeta[] = [
   }
 ];
 
-export const pathKeyedPosts: Map<string, IPostMeta> = new Map(postMetaData.map(
-  (data: IPostMeta): [string, IPostMeta] => [data.path, data]
+postData = postData.map(
+  (data: IPostData): IPostData => {
+    data.content = require(`html-loader!markdown-loader!./posts/${data.path}.md`)
+    return data
+  }
+)
+
+export const pathKeyedPosts: Map<string, IPostData> = new Map(postData.map(
+  (data: IPostData): [string, IPostData] => [data.path, data]
 ));

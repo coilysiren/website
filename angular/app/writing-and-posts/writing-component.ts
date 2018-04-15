@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { IPostMeta, postMetaData } from "./post.data";
+import { IPostData, postData } from "./post.data";
 
 @Component({
   selector: "writing-component",
@@ -11,5 +11,5 @@ import { IPostMeta, postMetaData } from "./post.data";
   ]
 })
 export class WritingComponent {
-  public postMetadata: IPostMeta[] = postMetaData;
+  public postData: IPostData[] = postData;
 }

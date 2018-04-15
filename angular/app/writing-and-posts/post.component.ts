@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, ParamMap } from "@angular/router";
-import { IPostMeta, pathKeyedPosts } from "./post.data";
+import { IPostData, pathKeyedPosts } from "./post.data";
 
 @Component({
   templateUrl: "post.html",
@@ -11,15 +12,16 @@ import { IPostMeta, pathKeyedPosts } from "./post.data";
   ]
 })
 export class PostComponent {
+  public title: string;
   public content: string;
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const path: string = params.get("path");
-      this.content = path;
+      const post: IPostData = pathKeyedPosts.get(params.get("path"));
+      this.content = post.content;
+      this.title = post.title;
     });
   }
 

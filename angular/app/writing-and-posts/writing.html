@@ -1,7 +1,7 @@
 <article class="container">
   <h2>Writing</h2>
   <ul>
-    <li *ngFor="let post of postMetadata">
+    <li *ngFor="let post of postData">
       <h3>
         <a routerLink="/post/{{ post.path }}">{{ post.title }}</a>
       </h3>
