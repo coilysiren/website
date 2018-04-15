@@ -9,9 +9,9 @@ import { HeaderComponent } from "./header.component";
 import { IndexComponent } from "./index.component";
 import { LanguageGraphComponent } from "./language-graph.component";
 import { PageNotFoundComponent } from "./page-not-found.component";
-import { PostComponent } from "./post.component";
 import { RecentWorkComponent } from "./recent-work.component";
-import { WritingComponent } from "./writing-component";
+import { PostComponent } from "./writing-and-posts/post.component";
+import { WritingComponent } from "./writing-and-posts/writing-component";
 
 const appRoutes: Routes = [
   { path: "post/:path", component: PostComponent },

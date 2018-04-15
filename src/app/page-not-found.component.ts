@@ -3,7 +3,6 @@ import { Component, OnInit } from "@angular/core";
 /* tslint:disable */
 
 @Component({
-  selector: "page-not-found",
   template: `
   <article class="container">
     <h2>( 404 ) Page Not Found</h2>
