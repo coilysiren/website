@@ -15,6 +15,10 @@ import { WritingComponent } from "./writing-component";
 
 const appRoutes: Routes = [
   { path: "post/:path", component: PostComponent },
+  // (legacy route) lynncyrin.me/post/1234/heroku-django-pipeline-sass/
+  { path: "post/:id/:path", component: PostComponent },
+  // (legacy route) lynncyrin.me/2017/05/30/heroku-django-pipeline-sass/
+  { path: ":year/:month/:day/:path", component: PostComponent },
   { path: "", component: IndexComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
