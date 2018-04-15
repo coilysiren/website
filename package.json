@@ -4,13 +4,13 @@
   "scripts": {
     "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
     "start:angular": "ng serve --port 8080",
-    "start:storybook": "start-storybook -c storybook --port 9001",
+    "start:storybook": "start-storybook -s ./src -c storybook --port 9001",
     "start:express": "nodemon --exec ts-node --typeCheck server.ts",
     "heroku-start": "node server.js",
     "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
     "build:angular": "ng build --aot -prod --progress --sourcemaps",
     "build:express": "tsc server.ts",
-    "build:storybook": "build-storybook -c storybook -o storybook-dist"
+    "build:storybook": "build-storybook -s ./src -c storybook -o storybook-dist"
   },
   "dependencies": {
     "@angular/common": "^5",
