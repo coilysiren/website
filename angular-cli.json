@@ -12,7 +12,7 @@
       "polyfills": "polyfills.ts",
       "tsconfig": "../tsconfig.json",
       "prefix": "app",
-      "styles": ["styles.scss"]
+      "styles": ["styles.css"]
     }
   ],
   "defaults": {
