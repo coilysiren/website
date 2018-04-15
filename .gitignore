@@ -3,7 +3,7 @@
 .env*
 
 # compiled output
-/dist
+/*dist
 /tmp
 
 # dependencies
