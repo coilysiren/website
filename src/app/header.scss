@@ -1,8 +1,11 @@
 @import "_variables.scss";
 
 header {
+  @include main-background;
+  margin-bottom: 60px;
+
   > * {
-    margin: 20px;
+    margin: 10px;
   }
 
   .center-header > * {
@@ -10,11 +13,14 @@ header {
   }
 
   @media (min-width: $breakpoint-md) {
-    margin-top: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
 
+    > * {
+      margin: 20px;
+    }
+    
     .social-link-list {
       max-width: 100px;
     }
@@ -25,6 +31,12 @@ header {
 
     .favicon {
       display: none;
+    }
+
+    .social-link-list {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
     }
   }
 }

@@ -5,3 +5,7 @@ $breakpoint-md: 750px;
     width: 70%;
   }
 }
+
+@mixin main-background {
+  background-color: rgba(100, 100, 100, 0.1);
+}
