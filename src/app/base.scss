@@ -16,17 +16,19 @@ h5 {
   }
 }
 
+code,
+pre {
+  &,
+  & * {
+    font-family: "Inconsolata", monospace;
+  }
+
+}
+
 .container {
   border-radius: 5px;
   margin-bottom: 60px;
   background-color: rgba(100, 100, 100, 0.1);
-}
-
-code,
-code *,
-pre,
-pre * {
-  font-family: "Inconsolata", monospace;
 }
 
 @media (min-width: $breakpoint-md) {
