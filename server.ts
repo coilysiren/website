@@ -1,10 +1,14 @@
-import { config } from "dotenv"; config();
+import { config as configDotenv } from "dotenv";
 import * as nodeFetch from "node-fetch";
 
 import bodyParser = require("body-parser");
 import express = require("express");
 import fetch = require("make-fetch-happen");
 import path = require("path");
+
+if (process.env.NODE_ENV !== "production") {
+  configDotenv();
+}
 
 const app: express.Express = express();
 const PORT: number | string = process.env.PORT || 3000;
@@ -16,18 +20,22 @@ app.listen(PORT, () =>
   console.log(`Listening on port ${PORT}`)
 );
 
-function commitDataRequest(queryBody: string): Promise<JSON> {
+function githubApiRequest(queryBody: string): Promise<JSON> {
   return fetch("https://api.github.com/graphql", {
     method: "POST",
-    body: JSON.stringify({ query: `query { ${queryBody} }` }),
+    body: JSON.stringify({ query: `query { ${queryBody} }` }), // very secure, do not hack
     headers: { Authorization: `bearer ${process.env.GITHUB_API_TOKEN}` }
   })
     .then((res: nodeFetch.Response) => res.json());
 }
 
 app.post("/api/github", (req: express.Request, res: express.Response) => {
-  commitDataRequest(req.body.queryBody)
+  githubApiRequest(req.body.queryBody)
     .then((data: JSON) => res.json(data));
+});
+
+app.get("*", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  next();
 });
 
 app.use("/.storybook", express.static(path.join(__dirname, "/storybook-dist/")));

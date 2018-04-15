@@ -5,14 +5,14 @@
   "angular-cli": {},
   "scripts": {
     "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
-    "start:postbuilt": "node server.js",
     "start:angular": "ng serve",
     "start:storybook": "cp src/index.html storybook/preview-head.html && start-storybook -c storybook -p 9001",
     "start:express": "nodemon --exec ts-node --typeCheck server.ts",
+    "heroku-start": "node server.js",
+    "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
     "build:angular": "ng build --aot -prod --progress --sourcemaps",
     "build:express": "tsc server.ts",
-    "build:storybook": "build-storybook -c storybook -o storybook-dist",
-    "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook"
+    "build:storybook": "build-storybook -c storybook -o storybook-dist"
   },
   "private": true,
   "dependencies": {
@@ -24,16 +24,11 @@
     "@angular/platform-browser": "^5",
     "@angular/platform-browser-dynamic": "^5",
     "@angular/router": "^5",
-    "@types/express": "^4.11.1",
-    "@types/jasmine": "^2",
-    "@types/node": "^9",
-    "@types/node-fetch": "^1.6.8",
     "body-parser": "^1.18.2",
     "d3": "^5.0.0",
-    "dotenv": "^5.0.1",
     "make-fetch-happen": "^4.0.0",
-    "ts-helpers": "^1",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "express": "^4"
   },
   "devDependencies": {
     "@angular/cli": "^1",
@@ -41,6 +36,11 @@
     "@storybook/addon-actions": "^3.4",
     "@storybook/addons": "^3.4",
     "@storybook/angular": "^3.4",
+    "@types/express": "^4.11.1",
+    "@types/jasmine": "^2",
+    "@types/node": "^9",
+    "@types/node-fetch": "^1.6.8",
+    "dotenv": "^5.0.1",
     "babel-core": "^6.26.0",
     "jasmine-core": "^3",
     "jasmine-spec-reporter": "^4",

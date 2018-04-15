@@ -3,6 +3,7 @@
 .env*
 
 # compiled output
+server.js
 /*dist
 /tmp
 
