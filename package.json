@@ -1,12 +1,10 @@
 {
   "name": "whatslynncoding",
   "version": "0.0.0",
-  "license": "MIT",
-  "angular-cli": {},
   "scripts": {
     "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
     "start:angular": "ng serve",
-    "start:storybook": "cp src/index.html storybook/preview-head.html && start-storybook -c storybook -p 9001",
+    "start:storybook": "start-storybook -c storybook -p 9001",
     "start:express": "nodemon --exec ts-node --typeCheck server.ts",
     "heroku-start": "node server.js",
     "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
@@ -14,7 +12,6 @@
     "build:express": "tsc server.ts",
     "build:storybook": "build-storybook -c storybook -o storybook-dist"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^5",
     "@angular/compiler": "^5",
