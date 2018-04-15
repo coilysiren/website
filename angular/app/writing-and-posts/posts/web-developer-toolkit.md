@@ -1,6 +1,6 @@
 Ever wonder what a web developer needs for work? Well wonder not more!!! I'm going to list absolutely everything that I use for work, however infrequent. Also some things that I know I will be getting in the future. List made for new poeple who want to make sure they aren't forgetting something, or experienced people who just want some light reading.
 
-## Physical Items ($$)
+### Physical Items ($$)
 
 Things you have to buy that will take up physical space around you. This is a list for building a complete setup with everything you would ever need, and several redundancies. The **complete setup** is ~$3000. A **basic setup** (with less redundancy, but enough that you should never be out of work) is $1600, 90% of that being Workhouse Desktop + Just Fine Monitor. A **minimal setup** is $200, and is just the Ubuntu netbook.
 
@@ -22,7 +22,7 @@ Things you have to buy that will take up physical space around you. This is a li
 * **Pencil and Paper** - $10 - Draw your box models on paper before you start cooking the div soup
 * **A Smartphone** - $100 ~ $300 - A small screen to test with, and provide a web browser in a much smaller space than the one on the netbook.
 
-## Terminal Tools
+### Terminal Tools
 
 Tools you utilize from a terminal window (Control + Alt + T on Ubuntu). The pinnacle of these tools is the web framework (that is: Flask, Rails, ...), everything else is supporting infrastructure thereof.
 
@@ -42,7 +42,7 @@ Tools you utilize from a terminal window (Control + Alt + T on Ubuntu). The pinn
   * Javascript / NodeJS
 * SSH - like the remote control (plus video feed) for a remote control car, except for terminal based servers
 
-## Servers
+### Servers
 
 Servers are where you store your web applications. You either host your service with a service (recommended) or on your local computer (not recommended)
 
@@ -51,7 +51,7 @@ Servers are where you store your web applications. You either host your service 
 * AWS (Amazon Web Services)
 * Sandstorm.io
 
-## Language (free)
+### Language (free)
 
 So the average website is some combination of HTML, CSS, and Javascript. Does that mean every web developer is writing HTML / CSS / JS? Well...
 
@@ -72,7 +72,7 @@ So the average website is some combination of HTML, CSS, and Javascript. Does th
   * JQuery
   * AngularJS
 
-## Application Tools (free)
+### Application Tools (free)
 
 Tools you utilize from an application window (opened via .exe style files)
 
@@ -85,7 +85,7 @@ Tools you utilize from an application window (opened via .exe style files)
 * Notepad++ - free - for when Sublime Text and Atom aren't your style
 * Firefox / Chrome / Internet Explorer / ETC
 
-## Social / Collaboration
+### Social / Collaboration
 
 * Stackoverflow
 * Twitter
@@ -96,7 +96,7 @@ Tools you utilize from an application window (opened via .exe style files)
 * Github
 * Trello
 
-## Databases (free)
+### Databases (free)
 
 Databases are used to store things. My recommendation is not to think about databases at all until someone tells you that you need one.
 
@@ -106,7 +106,7 @@ Databases are used to store things. My recommendation is not to think about data
 * MongoDB - A document store, think of it as a filing cabinet
 * Neo4j - A graph database, think of it as a network of social links
 
-## Assets (free)
+### Assets (free)
 
 Used to create / obtain / edit electronic assets of various sorts. Fonts, Icons, Colors, ...
 
@@ -117,7 +117,7 @@ Used to create / obtain / edit electronic assets of various sorts. Fonts, Icons,
 * **[Font Awesome](https://fortawesome.github.io/Font-Awesome/)** - like The Noun Project but with a CDN CSS based loading.
 * **[Color Scheme Generator](https://coolors.co/app)** - primarily for pastels
 
-## Web Services
+### Web Services
 
 * [Dynadot](https://www.dynadot.com/) - standard domain name provider. Not particularly exceptional in any way, but better than GoDaddy. Most providers will be better than GoDaddy, and on par with Dynadot. Domains are $5 to $15 per year.
 * [DNSimple](https://dnsimple.com/) - advanced domain name provider. Use with you need to setup complex cache / forwarding schemes. $5 per month for 5 domains.
@@ -126,7 +126,7 @@ Used to create / obtain / edit electronic assets of various sorts. Fonts, Icons,
 * [Mailchimp](Mailchimp) - for sending newsletters
 * [Google Fonts](https://www.google.com/fonts) - free font service
 
-## Online Editors / Notepads
+### Online Editors / Notepads
 
 * **[Etherpad](https://etherpad.net/)** - collaborative text editor, quickly setup a collaborative text editing space
 * **[StackEdit](https://stackedit.io)** - markdown editor, useful when drafting new posts for its side by side preview
@@ -134,18 +134,18 @@ Used to create / obtain / edit electronic assets of various sorts. Fonts, Icons,
 * **[JSFiddle](https://jsfiddle.net/)** - HTML editor with a javascript focus
 * **[Repl.it](https://repl.it/languages)** - run Python, Ruby, JS, Java, and a bunch of other languages online
 
-## Converters (free)
+### Converters (free)
 
 * [CSS to SASS](http://css2sass.herokuapp.com/)
 * [HEX to RGB](http://hex2rgba.devoth.com/)
 * [Clean up the formatting of HTML / CSS / JS](http://www.dirtymarkup.com/)
 * [Image compression](https://tinypng.com/)
 
-## Testing
+### Testing
 
 * [Performance](https://developers.google.com/speed/pagespeed/insights)
 * [Access](http://www.tenon.io)
 
-## References, Cheat Sheets
+### References, Cheat Sheets
 
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/CSS)

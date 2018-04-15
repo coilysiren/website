@@ -1,15 +1,15 @@
 *(valid as of March 30th 2017)*
 
-## What you have
+### What you have
 
 - A currently existing django project, hosted on heroku, with a bunch of css
 
-## What you want
+### What you want
 
 - to have your css compiled from sass
 - for that compilation to be done with ruby, during the heroku build
 
-## How you get it
+### How you get it
 
 heroku setup
 
@@ -45,7 +45,7 @@ gem "sass"
 gem "susy"
 ```
 
-### Ok but that didn't work
+#### Ok but that didn't work
 
 or at least it didn't for me, I got this (formatted for readability) error
 
@@ -59,7 +59,7 @@ b"/tmp/DIR/vendor/ruby-2.3.3/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:
 
 From that message, it occurred to me that maybe python wasn't calling the right `sass`. Which inspired the following "fix"
 
-### How you get it, but for real this time
+#### How you get it, but for real this time
 
 Install your gems to whatever `ruby` / `sass` the python buildpack is calling
 
@@ -73,7 +73,7 @@ bundle install
 
 Does this mean `heroku buildpacks:add heroku/ruby --index 1` is unused? Someone investigate this and [let me know](https://twitter.com/lynncyrin).
 
-## Get this fixed for good!
+### Get this fixed for good!
 
 One of the devs of the projects below will know what's up
 

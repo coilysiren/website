@@ -1,0 +1,21 @@
+@import "./../_variables.scss";
+
+article {
+  padding: 0 $article-padding;
+}
+
+article h3 {
+  margin: 25px;
+}
+
+article p,
+article ul,
+article ol,
+article pre {
+  margin: 10px auto;
+  @include content-width();
+}
+
+article hr {
+  margin: 20px 40px;
+}

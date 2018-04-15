@@ -1,9 +1,9 @@
 @import "_variables.scss";
 
-article {
+article,
+article.container {
   @include main-background;
   @include content-width();
-  border-radius: 5px;
   padding: 0;
   margin-bottom: 80px;
   & > * {
@@ -19,13 +19,8 @@ article {
   }
 }
 
-h2 {
+article h2 {
   background-color: $color-white-80opacity;
   padding-bottom: 10px;
   margin-bottom: 15px;
-}
-
-p {
-  margin: 10px auto;
-  @include content-width();
 }

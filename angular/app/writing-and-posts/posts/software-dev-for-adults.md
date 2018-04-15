@@ -1,4 +1,4 @@
-## A Standard Release
+### A Standard Release
 
 * Run all the automated tests
 * Run the tests again
@@ -26,7 +26,7 @@
 
 \* If at any point you encounter angry tweets, either rollback the release or proceed to section: "A Hotfix Release"
 
-## A Hotfix Release
+### A Hotfix Release
 
 * Panic
 * Run all the automated tests

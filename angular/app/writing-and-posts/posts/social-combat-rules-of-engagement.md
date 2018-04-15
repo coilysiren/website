@@ -1,4 +1,4 @@
-## Intro
+### Intro
 
 In working towards a more "just" world, there are a lot of things that we should be willing to do as a means of fixing the issues in our communities. When things become too horribly broken, you have to be willing to take action to fix the issues. Except, everything has been out of balance lately, and everyone has been out of tune. People being threatened with doxxing for [suspicion of a behavior ](https://medium.com/@CeltThulu/a-battlefield-4-achievement-and-autism-made-me-a-nazi-9ee863639621#.wgk95viem). This is not how things should work. We don't bring out the nuclear weapons when we *think* someone may be guilty of subscribing to a certain point of view. There has to be a *balance* to how we act, that takes into account:
 
@@ -15,7 +15,7 @@ I do not need to tell you all to call the police on people who want to bring dea
 
 Unfortunately this sort of issue has spread beyond racism and doxxing, so I'm going to flesh out some rough guidelines for, in general, when the reasonable balance of knowledge, problem behavior, and retribution. Please read these with the knowledge that I am not all knowing, and so there will definitely be issues. I **really want as much feedback** on this as possible, so we, as a (currently broken) community can have some reasonable guidelines governing how we act.
 
-## The Rules
+### The Rules
 
 **Preface:** These rules are intended primarily for intra-community conflict (ex: Liberal Democrats vs Democratic Socialists), secondarily for inter-community conflict (ex: Feminists vs MRAs), and not at all for times where the person you are in conflict with has already committed some gross violation of human decency (ex: trying to kidnap your children). They also apply poorly when dealing with politicians, but apply just fine when dealing with celebrities. They assume everyone can verify each other's identities, and accounts poorly for anonymity. They are intended for "low intensity conflicts", which in this case means a level of conflict below "drive this person and all their associates off the internet permanently". They work best when a conflict is not acting across a massive power gradient, so millionaire vs millionaire *not* millionaire vs minimum wage worker.
 

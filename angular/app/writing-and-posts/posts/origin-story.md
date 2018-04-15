@@ -1,4 +1,4 @@
-## CRISIS STRIKES!
+### CRISIS STRIKES!
 
 I've mentioned having been homeless often enough that I think most people have heard about it. That's where I'm going to start this off.
 
@@ -12,7 +12,7 @@ I was couch surfing, and in a shelter (two of them actually). Couch surfing I th
 
 The 1.5 meals part of the second shelter is actually a pretty important point. Because, if you're homeless and 18, how are you going to eat? Well you need money - and for money you probably need a job. It's very likely going to be retail. While working on said job, you aren't allowed to show any obvious signs of homelessness. In fact, the majority of the homeless people I know are by no means visibly identifiable as such. If you frequent low end retail (Walgreens, CVS) you have had a homeless cashier.
 
-## Training Montage
+### Training Montage
 
 That was a short advocacy aside, because I was not actually employed during the time I was homeless. I was instead working on training my coding skills. In my opinion, learning to code while homeless is a ton easier than working retail while homeless. But objectively, here's an example day of mine (in the 2nd shelter):
 
@@ -43,7 +43,7 @@ And at the time that I was doing all this I had an intricate life plan. It went 
 
 I was doing all this work with the idea that it would make me look good enough, to get maybe one of those things to happen. Then I was going to work that particular thing into a long time life plan. 4 months into it I was still doing a ton of work, and wasn't sure what was going to happen. And then...
 
-## A String of Wise Women Bring Lynn to the SWORD OF DESTINY
+### A String of Wise Women Bring Lynn to the SWORD OF DESTINY
 
 I think a lot about the long, impactful single chain of people [i.e. the Wise Women] that led me to this point. That said, the SWORD OF DESTINY was clearly feminist hackers. I was already the intersectional feminist of your worst nightmares. But it never occurred to me that I could connect my feminism with my professional aspect, as a means of breaking into a community.
 
@@ -53,7 +53,7 @@ So the feminist hackers contributed to me, and I contributed to them. I started 
 
 I knew I was doing cool things and meeting cool people. But things happened so fast, that it never registered that I was making so many accomplishments. To this day, me brain oftentimes slips back into "I'm homeless, black, trans... I can't buy food, what do I do???". But despite that, I was stilling making the accomplishments. And then all at once, the experience started cashing in.
 
-## Lynn Slays ALL of the Big Bads. ALL OF THEM. AT THE SAME TIME.
+### Lynn Slays ALL of the Big Bads. ALL OF THEM. AT THE SAME TIME.
 
 So my life plan was set up such that if one amazing thing happened, I would then be empowered enough to stitch together a better life. Except what happened was **much** better than that, so much better that I'm not even sure how to handle it. Also, it all happened in March, but really it happened over the course of two weeks. It being? Well, I:
 
@@ -66,7 +66,7 @@ So my life plan was set up such that if one amazing thing happened, I would then
 
 And likely a few other things that I'm forgetting. If any single one of those had happened to me, I could have weaved it into a successful life. But THEY ALL HAPPENED. **AND PRETTY MUCH AT THE SAME TIME!** The bulk of this occurred 2 to 3 weeks ago and honestly I still haven't taken stock of it all.
 
-## Happily Ever After
+### Happily Ever After
 
 So at this point I'm set. By which I mean that I know at the very least I won't be homeless again, ever. But it means so much more than that! There are so many things I can do with my life now! Like, umm...
 
