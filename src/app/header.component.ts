@@ -12,7 +12,6 @@ export class HeaderComponent {
   public socialLinks: string[][] = [
     ["https://twitter.com/lynncyrin", "fab fa-twitter"],
     ["https://github.com/lynncyrin", "fab fa-github"],
-    ["https://gitlab.com/cyrin", "fab fa-gitlab"],
     ["https://paypal.me/cyrin", "fab fa-paypal"],
     ["https://steamcommunity.com/id/naxili", "fab fa-steam-square"],
     ["https://github.com/lynncyrin/lynncyrin.github.io", "fas fa-code"],
