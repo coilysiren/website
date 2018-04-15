@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
-    "start:angular": "ng serve",
-    "start:storybook": "start-storybook -c storybook -p 9001",
+    "start:angular": "ng serve --port 8080",
+    "start:storybook": "start-storybook -c storybook --port 9001",
     "start:express": "nodemon --exec ts-node --typeCheck server.ts",
     "heroku-start": "node server.js",
     "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
