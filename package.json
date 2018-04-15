@@ -40,7 +40,6 @@
     "dotenv": "^5.0.1",
     "babel-core": "^6.26.0",
     "nodemon": "^1.17.3",
-    "protractor": "^5",
     "ts-node": "^5.0.1",
     "tslint": "^5",
     "typescript": "<2.7"
