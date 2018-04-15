@@ -7,7 +7,8 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.background-image {
+body::after {
+  content: "";
   background-image: url("assets/background.png");
   opacity: 0.5;
   position: fixed;
