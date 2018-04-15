@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "root": "src",
+      "root": "angular",
       "outDir": "dist",
       "assets": [
         "assets",
@@ -17,7 +17,7 @@
   ],
   "defaults": {
     "serve": {
-      "proxyConfig": "src/proxy.config.json"
+      "proxyConfig": "angular/proxy.config.json"
     },
     "styleExt": "scss",
     "prefixInterfaces": false,
