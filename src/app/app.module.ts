@@ -8,6 +8,7 @@ import { DataDisplayComponent } from "./data-display.component";
 import { HeaderComponent } from "./header.component";
 import { IndexComponent } from "./index.component";
 import { LanguageGraphComponent } from "./language-graph.component";
+import { PageNotFoundComponent } from "./page-not-found.component";
 import { PostComponent } from "./post.component";
 import { RecentWorkComponent } from "./recent-work.component";
 import { WritingComponent } from "./writing-component";
@@ -15,6 +16,7 @@ import { WritingComponent } from "./writing-component";
 const appRoutes: Routes = [
   { path: "post/:path", component: PostComponent },
   { path: "", component: IndexComponent },
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
     WritingComponent,
     IndexComponent,
     PostComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
