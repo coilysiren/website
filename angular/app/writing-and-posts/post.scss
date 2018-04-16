@@ -1,17 +1,25 @@
 @import "./../_variables.scss";
 
-article.post h3 {
-  margin: 25px;
-}
+article.post {
+  padding-bottom: 30px;
 
-article.post p,
-article.post ul,
-article.post ol,
-article.post pre {
-  margin: 10px auto;
-  @include content-width();
-}
-
-article.post hr {
-  margin: 20px 40px;
+  h3 {
+    margin: 25px;
+  }
+  
+  h4 {
+    margin: 20px;
+  }
+  
+  p,
+  ul,
+  ol,
+  pre {
+    margin: 10px auto;
+    @include content-width();
+  }
+  
+  hr {
+    margin: 20px 40px;
+  }  
 }

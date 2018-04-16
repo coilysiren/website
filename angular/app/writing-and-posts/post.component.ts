@@ -9,6 +9,7 @@ import { IPostData, pathKeyedPosts } from "./post.data";
   styleUrls: [
     "./../base.scss",
     "./../article.scss",
+    "./../code.scss",
     "./post.scss",
   ],
   encapsulation: ViewEncapsulation.None, // because of the injected post html

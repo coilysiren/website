@@ -7,7 +7,8 @@ import { Component } from "@angular/core";
   styleUrls: [
     "./../base.scss",
     "./../article.scss",
-    "./code.scss",
+    "./../code.scss",
+    "./recent-work.scss",
   ],
 })
 export class DataDisplayComponent {
