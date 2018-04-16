@@ -9,7 +9,7 @@ ul {
 li {
   margin: 30px 0 30px (-$article-padding);
   padding-left: $article-padding * 1.5;
-  border-left: 5px solid $color-white-80opacity;
+  border-left: $border-thin-white;
 
   &:last-child {
     margin-bottom: 10px;

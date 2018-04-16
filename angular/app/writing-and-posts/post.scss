@@ -6,17 +6,18 @@ article.post {
   h3 {
     margin: 25px;
   }
-  
+
   h4 {
     margin: 20px;
   }
 
-  h3, h4 {
+  h3,
+  h4 {
     margin-left: (-$article-padding);
     margin-right: (-$article-padding);
     padding-left: $article-padding * 1.5;
     padding-right: $article-padding * 1.5;
-    border-left: 5px solid $color-white-80opacity;      
+    border-left: $border-thin-white;
   }
 
   p,
@@ -26,12 +27,12 @@ article.post {
     margin: 10px auto;
     @include content-width();
   }
-    
+
   ol li {
     margin: 10px 10px 10px 0;
   }
 
   hr {
     margin: 20px 40px;
-  }  
+  }
 }

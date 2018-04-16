@@ -14,6 +14,8 @@ $font-code: "Inconsolata", monospace;
 
 $shadow-main-background: 4px 4px 1px darken($color-main-background, 80%);
 
+$border-thin-white: 8px solid $color-white-80opacity;
+
 @mixin content-width {
   width: 100%;
   @media (min-width: $breakpoint-md) {
