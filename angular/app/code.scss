@@ -1,1 +1,15 @@
 @import "./_variables.scss";
+
+code {
+  color: $color-purple;
+  background-color: $color-white-80opacity;
+  padding: 2px 5px;
+}
+
+pre code {
+  display: block;
+  color: white;
+  background-color: $color-black-code-bg;  
+  padding: 10px;
+  overflow: scroll;
+}

@@ -2,12 +2,17 @@ $breakpoint-md: 750px;
 $breakpoint-lg: 1000px;
 
 $color-white-80opacity: rgba(255, 255, 255, 0.8);
+$color-black-code-bg: rgba(0, 0, 0, 0.9);
+$color-purple: #a722da;
+$color-main-background: rgba(100, 100, 100, 0.1);
 
 $article-padding: 20px;
 
 $font-body: "Open Sans", sans-serif;
 $font-headers: "Bubblegum Sans", sans-serif;
 $font-code: "Inconsolata", monospace;
+
+$shadow-main-background: 4px 4px 1px darken($color-main-background, 80%);
 
 @mixin content-width {
   width: 100%;
@@ -17,8 +22,4 @@ $font-code: "Inconsolata", monospace;
   @media (min-width: $breakpoint-lg) {
     width: 70%;
   }
-}
-
-@mixin main-background {
-  background-color: rgba(100, 100, 100, 0.1);
 }

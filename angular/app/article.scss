@@ -2,10 +2,12 @@
 
 article,
 article.container {
-  @include main-background;
   @include content-width();
   padding: 0;
   margin-bottom: 80px;
+  box-shadow: $shadow-main-background;
+  background-color: $color-main-background;
+
   & > * {
     display: block;
     padding-left: $article-padding;
@@ -17,10 +19,15 @@ article.container {
   & > *:last-child {
     padding-bottom: $article-padding;
   }
-}
 
-article h2 {
-  background-color: $color-white-80opacity;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
+  h2 {
+    background-color: $color-white-80opacity;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }  
+  
+  :not(h2):not(h3):not(h4):not(h5) > a {
+    color: $color-purple;
+  }
+
 }

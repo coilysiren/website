@@ -1,4 +1,4 @@
-*(valid as of March 30th 2017)*
+##### ( valid as of March 30th 2017 )
 
 ### What you have
 

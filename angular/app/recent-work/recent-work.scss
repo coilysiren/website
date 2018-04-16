@@ -23,7 +23,7 @@
 }
 
 .data-primary-text {
-  color: #a722da;
+  color: $color-purple;
   padding-left: 4px;
   font-size: 1.1em;
 }
@@ -37,7 +37,7 @@
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: $color-black-code-bg;
   @include content-width();
 
   ul {

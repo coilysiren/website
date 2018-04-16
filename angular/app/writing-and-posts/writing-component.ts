@@ -19,13 +19,15 @@ export class WritingComponent {
     private route: ActivatedRoute,
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.postData.forEach(
+      const splicedPostData: IPostData[] = postData;
+      splicedPostData.forEach(
         (item: IPostData, index: number, object: IPostData[]) => {
           if (item.path === params.get("path")) {
             object.splice(index, 1);
           }
         }
       );
+      this.postData = splicedPostData;
     });
   }
 

@@ -1,6 +1,6 @@
 <article class="container post">
   <h2>{{ title }}</h2>
-  <div [outerHTML]="content"></div>
+  <div [innerHTML]="content"></div>
 </article>
 
 <writing-component [title]="'Other Posts'"></writing-component>

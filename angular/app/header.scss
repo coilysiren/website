@@ -5,8 +5,9 @@ h1 a {
 }
 
 header {
-  @include main-background;
   margin-bottom: 60px;
+  box-shadow: $shadow-main-background;
+  background-color: $color-main-background;
 
   > * {
     margin: 10px;

@@ -6,9 +6,8 @@ What do I mean by "homeless" though? Well, there are 4 main types of modern urba
 
 I was couch surfing, and in a shelter (two of them actually). Couch surfing I think most people can imagine. But sleeping in a shelter... can be a surreal experience. Especially when you juxtapose the two shelters I was in.
 
-1. **1st**<br> women's domestic violence shelter. Pretty calm place. 3 meals a day. Your own bedroom, bathroom shared with 3 people. Average age 35. Lots of children running around. Curfew was 10pm.
-
-2. **2nd**<br> young adult (18 - 24) shelter. And erratic and dangerous environment. 1.5 meals a day. 30 ~ 40 people in the 'room', with high concrete partitions. The partitions didn't touch the ceiling, so they weren't walls. These separated the rooms into [door-less] single gender sleeping areas of 4 ~ 7. Bathroom shared with 15 ~ 20 people. Curfew was 7pm.
+1. women's domestic violence shelter. Pretty calm place. 3 meals a day. Your own bedroom, bathroom shared with 3 people. Average age 35. Lots of children running around. Curfew was 10pm.
+2. young adult (18 - 24) shelter. And erratic and dangerous environment. 1.5 meals a day. 30 ~ 40 people in the 'room', with high concrete partitions. The partitions didn't touch the ceiling, so they weren't walls. These separated the rooms into [door-less] single gender sleeping areas of 4 ~ 7. Bathroom shared with 15 ~ 20 people. Curfew was 7pm.
 
 The 1.5 meals part of the second shelter is actually a pretty important point. Because, if you're homeless and 18, how are you going to eat? Well you need money - and for money you probably need a job. It's very likely going to be retail. While working on said job, you aren't allowed to show any obvious signs of homelessness. In fact, the majority of the homeless people I know are by no means visibly identifiable as such. If you frequent low end retail (Walgreens, CVS) you have had a homeless cashier.
 
