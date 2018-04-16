@@ -8,7 +8,7 @@
     "start:express": "nodemon --exec ts-node --typeCheck server.ts",
     "heroku-start": "node server.js",
     "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
-    "build:angular": "ng build --aot -prod --progress --sourcemaps",
+    "build:angular": "ng build --prod",
     "build:express": "tsc server.ts",
     "build:storybook": "build-storybook -s ./angular -c storybook -o storybook-dist"
   },
