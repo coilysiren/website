@@ -19,8 +19,8 @@ article.post {
   }
 
   p,
-  ul,
-  ol,
+  :not(li) > ul,
+  :not(li) > ol,
   pre {
     margin: 10px auto;
     @include content-width();
