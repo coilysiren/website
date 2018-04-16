@@ -20,14 +20,17 @@ article.container {
     padding-bottom: $article-padding;
   }
 
+  $floaty-size: -3px;
+
   h2 {
     background-color: $color-white-80opacity;
     box-shadow: $shadow-main-background;
     padding-bottom: 10px;
+    padding-left: $article-padding + $floaty-size;
     margin-bottom: 15px;
     position: relative;
-    top: -3px;
-    left: -3px;
+    top: $floaty-size;
+    left: $floaty-size;
   }
 
   :not(h2):not(h3):not(h4):not(h5) > a {

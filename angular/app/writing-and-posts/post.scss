@@ -15,7 +15,7 @@ article.post {
   h4 {
     margin-left: (-$article-padding);
     margin-right: (-$article-padding);
-    padding-left: $article-padding * 1.5;
+    padding-left: $article-padding * 1.5 - $border-thin-white-size;
     padding-right: $article-padding * 1.5;
     border-left: $border-thin-white;
   }
