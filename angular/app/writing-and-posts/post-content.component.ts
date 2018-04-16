@@ -42,12 +42,12 @@ const MarkdownComponent: IMarkdownComponentDecorator = makeDecorator(
   ],
 })
 export class PostContentComponent {
-  constructor(
-    private route: ActivatedRoute,
-  ) {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      const post: IPostData = pathKeyedPosts.get(params.get("path"));
-    });
-  }
+  // constructor(
+  //   private route: ActivatedRoute,
+  // ) {
+  //   this.route.paramMap.subscribe((params: ParamMap) => {
+  //     const post: IPostData = pathKeyedPosts.get(params.get("path"));
+  //   });
+  // }
 
 }
