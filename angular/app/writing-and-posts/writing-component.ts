@@ -19,7 +19,7 @@ export class WritingComponent {
     private route: ActivatedRoute,
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const splicedPostData: IPostData[] = postData;
+      const splicedPostData: IPostData[] = postData.slice(0);
       splicedPostData.forEach(
         (item: IPostData, index: number, object: IPostData[]) => {
           if (item.path === params.get("path")) {
