@@ -12,6 +12,9 @@
     "build:express": "tsc server.ts",
     "build:storybook": "build-storybook -s ./angular -c storybook -o storybook-dist"
   },
+  "peerDependencies": {
+    "@angular/core": "^5"
+  },
   "dependencies": {
     "@angular/common": "^5",
     "@angular/compiler": "^5",
@@ -26,10 +29,10 @@
     "express": "^4",
     "make-fetch-happen": "^4.0.0",
     "markdown-loader": "^2.0.2",
+    "marked": "^0.3.19",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1",
     "@angular/cli": "^1",
     "@angular/compiler-cli": "^5",
     "@storybook/addon-actions": "^3.4",
@@ -38,8 +41,9 @@
     "@types/express": "^4.11.1",
     "@types/node": "^9",
     "@types/node-fetch": "^1.6.8",
-    "dotenv": "^5.0.1",
     "babel-core": "^6.26.0",
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
     "nodemon": "^1.17.3",
     "ts-node": "^5.0.1",
     "tslint": "^5",
