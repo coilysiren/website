@@ -27,6 +27,7 @@ export class PostComponent {
       // dear reader, feel free to audit the security of this next line
       this.content = sanitizer.bypassSecurityTrustHtml(post.content);
       this.title = post.title;
+      window.scrollTo(0, 0);
     });
   }
 
