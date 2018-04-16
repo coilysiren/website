@@ -12,6 +12,8 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import * as marked from "marked";
 import { IPostData, pathKeyedPosts } from "./post.data";
 
+// tslint:disable:max-line-length
+
 interface IMarkdownComponent extends Component {
   templateMarkdown?: string;
 }
@@ -21,6 +23,8 @@ interface IMarkdownComponentDecorator extends ComponentDecorator {
   new (obj: IMarkdownComponent): IMarkdownComponent;
 }
 
+// [ NOTICE ] this code doesn't work with aot builds because of
+// https://github.com/angular/angular-cli/blob/4dcbf389897c30a858a9138e60cbefd2036ba35f/tests/e2e/tests/build/build-errors.ts#L73
 // tslint:disable-next-line:variable-name
 const MarkdownComponent: IMarkdownComponentDecorator = makeDecorator(
   "Component",
