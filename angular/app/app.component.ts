@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import "./../assets/curled/fontawesome.js";
+import "assets/curled/fontawesome.js";
 
 @Component({
   selector: "app-root",
