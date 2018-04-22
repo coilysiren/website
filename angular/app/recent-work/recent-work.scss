@@ -1,5 +1,10 @@
 @import "./../_variables.scss";
 
+p {
+  margin: 10px auto;
+  @include content-width();
+}
+
 .query pre {
   color: white;
 }
@@ -74,4 +79,3 @@
     padding: $dual-code-child-padding;
   }
 }
-

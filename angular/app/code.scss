@@ -6,10 +6,14 @@ code {
   padding: 2px 5px;
 }
 
+pre code,
+.code-display code {
+  background-color: $color-black-code-bg;
+}
+
 pre code {
   display: block;
   color: white;
-  background-color: $color-black-code-bg;  
   padding: 10px;
   overflow: scroll;
 }
