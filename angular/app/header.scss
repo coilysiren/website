@@ -21,6 +21,8 @@ $icon-buffer-size: 2px;
   position: absolute;
   background-size: 200%;
   animation: faviconFader 5s linear infinite;
+  // background-position doesn't work when you give linear-gradient elements their own positions
+  // which is why we have "transparent" here 6 times, instead of "transparent 49%, black 50%, transparent 51%"
   background-image: linear-gradient(
     to right,
     transparent,
