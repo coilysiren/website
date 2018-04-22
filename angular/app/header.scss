@@ -4,98 +4,6 @@ h1 a {
   color: black;
 }
 
-$icon-size: 60px;
-
-.favicon img {
-  height: $icon-size;
-  width: $icon-size;
-}
-
-$icon-buffer-size: 2px;
-
-.favicon-fade {
-  height: $icon-size - $icon-buffer-size * 2;
-  width: $icon-size - $icon-buffer-size * 2;
-  margin: $icon-buffer-size;
-  border-radius: 50%;
-  position: absolute;
-  background-size: 200%;
-  animation: faviconFader 5s linear infinite;
-  // background-position doesn't work when you give linear-gradient elements their own positions
-  // which is why we have "transparent" here 6 times, instead of "transparent 49%, black 50%, transparent 51%"
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    transparent,
-    transparent,
-    black,
-    transparent,
-    transparent,
-    transparent
-  );
-
-  @mixin pos-start {
-    background-position-x: -50%;
-  }
-
-  @mixin pos-end {
-    background-position-x: 150%;
-  }
-
-  @keyframes faviconFader {
-    // [ SETUP ] zero state
-    0% {
-      @include pos-start;
-      opacity: 1;
-    }
-    // [ SETUP ] delay till 45%
-    45% {
-      @include pos-start;
-      opacity: 1;
-    }
-    // [ FLASH 1 ] show position change for (5 * 5%)s
-    50% {
-      @include pos-end;
-      opacity: 1;
-    }
-    // [ FLASH 1 ] hide
-    51% {
-      @include pos-end;
-      opacity: 0;
-    }
-    // [ FLASH 1 ] back to zero position
-    52% {
-      @include pos-start;
-      opacity: 0;
-    }
-    // [ FLASH 1 ] back to zero state
-    53% {
-      @include pos-start;
-      opacity: 1;
-    }
-    // [ FLASH 2 ] show position change for (5 * 5%)s
-    58% {
-      @include pos-end;
-      opacity: 1;
-    }
-    // [ FLASH 2 ] hide
-    59% {
-      @include pos-end;
-      opacity: 0;
-    }
-    // [ FLASH 2 ] back to zero position
-    60% {
-      @include pos-start;
-      opacity: 0;
-    }
-    // [ FLASH 2 ] back to zero state
-    100% {
-      @include pos-start;
-      opacity: 1;
-    }
-  }
-}
-
 header {
   margin-bottom: 60px;
   box-shadow: $shadow-main-background;
@@ -126,7 +34,7 @@ header {
   @media (max-width: $breakpoint-md) {
     padding: 10px;
 
-    .favicon {
+    .favicon-component {
       display: none;
     }
 

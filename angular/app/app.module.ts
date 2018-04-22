@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
+import { FaviconComponent } from "./favicon-component";
 import { HeaderComponent } from "./header.component";
 import { IndexComponent } from "./index.component";
 import { PageNotFoundComponent } from "./page-not-found.component";
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     PrecompiledPostComponent,
     PageNotFoundComponent,
     PostContentComponent,
+    FaviconComponent,
   ],
   imports: [
     BrowserModule,
