@@ -16,6 +16,7 @@ import { WritingComponent } from "./writing-and-posts/writing-component";
 
 const appRoutes: Routes = [
   { path: "post/:path", component: PostComponent },
+  // TODO: ignore the url parts we dont need (:id, :year, etc)
   // (legacy route) lynncyrin.me/post/1234/heroku-django-pipeline-sass/
   { path: "post/:id/:path", component: PostComponent },
   // (legacy route) lynncyrin.me/2017/05/30/heroku-django-pipeline-sass/
