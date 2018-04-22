@@ -17,9 +17,6 @@
     "build:express": "tsc server.ts",
     "build:storybook": "build-storybook -s ./angular -c storybook -o storybook-dist"
   },
-  "peerDependencies": {
-    "@angular/core": "^5"
-  },
   "dependencies": {
     "@angular/common": "^5.2.10",
     "@angular/compiler": "^5.2.10",

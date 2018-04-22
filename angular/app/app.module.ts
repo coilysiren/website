@@ -11,13 +11,10 @@ import { PageNotFoundComponent } from "./page-not-found.component";
 import { DataDisplayComponent } from "./recent-work/data-display.component";
 import { LanguageGraphComponent } from "./recent-work/language-graph.component";
 import { RecentWorkComponent } from "./recent-work/recent-work.component";
-import { PostContentComponent } from "./writing-and-posts/post-content.component";
 import { PostComponent } from "./writing-and-posts/post.component";
-import { PrecompiledPostComponent } from "./writing-and-posts/precompiled-post.component";
 import { WritingComponent } from "./writing-and-posts/writing-component";
 
 const appRoutes: Routes = [
-  { path: "precompiled-post/:path", component: PrecompiledPostComponent },
   { path: "post/:path", component: PostComponent },
   // (legacy route) lynncyrin.me/post/1234/heroku-django-pipeline-sass/
   { path: "post/:id/:path", component: PostComponent },
@@ -38,9 +35,7 @@ const appRoutes: Routes = [
     WritingComponent,
     IndexComponent,
     PostComponent,
-    PrecompiledPostComponent,
     PageNotFoundComponent,
-    PostContentComponent,
     FaviconComponent,
   ],
   imports: [
