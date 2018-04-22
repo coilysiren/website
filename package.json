@@ -1,6 +1,10 @@
 {
   "name": "whatslynncoding",
   "version": "0.0.0",
+  "engines": {
+    "node": "9.5.0",
+    "npm": "5.8.0"
+  },
   "scripts": {
     "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
     "start:angular": "ng serve --port 8080 --open",
