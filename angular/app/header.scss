@@ -4,6 +4,12 @@ h1 a {
   color: black;
 }
 
+.link-details {
+  position: absolute;
+  pointer-events: none;
+  right: 9999px;
+}
+
 header {
   margin-bottom: 60px;
   box-shadow: $shadow-main-background;
