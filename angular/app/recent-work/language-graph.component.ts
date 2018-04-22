@@ -108,6 +108,7 @@ export class LanguageGraphComponent {
       svg.selectAll(".bar")
         .data(data)
         .enter().append("rect")
+          .attr("fill", (datum: ILanguageData) => datum.color)
           .attr("class", "bar")
           .attr("x", (datum: ILanguageData) => xScale(datum.name))
           .attr("width", xScale.bandwidth())
