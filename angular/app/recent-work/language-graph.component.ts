@@ -19,16 +19,18 @@ interface ILanguageData {
     "./../article.scss",
     "./../code.scss",
     "./recent-work.scss",
+    "./language-graph.scss",
   ],
 })
 export class LanguageGraphComponent {
   public languageList: ILanguageData[];
   public graphElementClass: string = graphElementClass;
-  public repoCount: number = 100;
+  public repoCount: number = 100; // <= 100 is the max per query
+  public languageCount: number = 100;
   public queryBody: string = `user(login: "lynncyrin") {
     repositories(isFork: false, last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
       nodes {
-        languages(first: 100, orderBy: {field: SIZE, direction: DESC}) {
+        languages(first: ${this.languageCount}, orderBy: {field: SIZE, direction: DESC}) {
           edges {
             size
             node {
@@ -50,15 +52,16 @@ export class LanguageGraphComponent {
 
   private processResponseData(responseData: any): ILanguageData[] {
 
-    const languageData: Map<string, ILanguageData> = new Map();
+    let languageDataMap: Map<string, ILanguageData> = new Map();
     const repos: any = responseData.data.user.repositories.nodes;
     for (const repoKey in repos) {
       const languages: any = repos[repoKey].languages.edges;
       for (const languageKey in languages) {
-        createOrUpdateLanguageDatum(languageData, languages[languageKey]);
+        createOrUpdateLanguageDatum(languageDataMap, languages[languageKey]);
       }
     }
-    const languageDataArray: ILanguageData[] = languageDataToSortedArray(languageData);
+    languageDataMap = languageDataWithoutOutliers(languageDataMap);
+    const languageDataArray: ILanguageData[] = languageDataToSortedArray(languageDataMap);
     generateGraph(languageDataArray);
     return languageDataArray;
 
@@ -88,6 +91,10 @@ export class LanguageGraphComponent {
       );
     }
 
+    function languageDataWithoutOutliers(map: Map<string, ILanguageData>): Map<string, ILanguageData> {
+      return map;
+    }
+
     function generateGraph(data: ILanguageData[]): void {
       const width: number = 600;
       const height: number = 400;
@@ -104,6 +111,9 @@ export class LanguageGraphComponent {
           .attr("width", width)
           .attr("height", height)
         .append("g");
+
+      // TODO:
+      // https://github.com/search?utf8=%E2%9C%93&q=user%3Alynncyrin+language%3Ajavascript+author%3Alynncyrin&type=Repositories
 
       svg.selectAll(".bar")
         .data(data)
