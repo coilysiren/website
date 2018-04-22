@@ -15,6 +15,7 @@
     <span class="code-subheader">language.name: language.size (in bytes)</span>
     <ul>
       <li *ngFor="let language of languageList">
+        <a href="https://github.com/search?q=user%3Alynncyrin+language%3A{{ language.name }}+author%3Alynncyrin&type=Code" target="_blank"><i class="font-awesome-icon fas fa-link"></i></a>
         <span class="data-primary-text">{{ language.name }}:</span>&nbsp;<span>{{ language.size }}</span>
       </li>
     </ul>

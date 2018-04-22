@@ -112,9 +112,6 @@ export class LanguageGraphComponent {
           .attr("height", height)
         .append("g");
 
-      // TODO:
-      // https://github.com/search?utf8=%E2%9C%93&q=user%3Alynncyrin+language%3Ajavascript+author%3Alynncyrin&type=Repositories
-
       svg.selectAll(".bar")
         .data(data)
         .enter().append("rect")
