@@ -6,6 +6,7 @@
     "start:angular": "ng serve --port 8080 --open",
     "start:storybook": "start-storybook -s ./angular -c storybook --port 9001",
     "start:express": "nodemon --exec ts-node server.ts",
+    "postinstall": "make download-resources",
     "heroku-start": "node server.js",
     "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
     "build:angular": "ng build --prod",
