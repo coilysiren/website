@@ -22,6 +22,7 @@ const appRoutes: Routes = [
   { path: "post/:id/:path", component: PostComponent },
   // (legacy route) lynncyrin.me/2017/05/30/heroku-django-pipeline-sass/
   { path: ":year/:month/:day/:path", component: PostComponent },
+  { path: "writing", component: WritingComponent },
   { path: "", component: IndexComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
