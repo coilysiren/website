@@ -41,12 +41,12 @@ pre {
 }
 
 .font-awesome-icon {
+  font-size: 1.5em;
   color: black;
   @media (min-width: $breakpoint-md) {
     margin: 2px;
   }
   @media (max-width: $breakpoint-md) {
-    font-size: 1.5em;
     margin: 5px;
   }
 }

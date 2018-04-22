@@ -28,13 +28,16 @@ header {
 
     .social-link-list {
       max-width: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
     }
   }
 
   @media (max-width: $breakpoint-md) {
     padding: 10px;
 
-    .favicon-component {
+    favicon-component {
       display: none;
     }
 
