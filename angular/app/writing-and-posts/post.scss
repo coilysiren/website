@@ -3,6 +3,10 @@
 article.post {
   padding-bottom: 30px;
 
+  * {
+    line-height: 2rem;
+  }
+
   h3 {
     margin: 25px;
   }
@@ -24,7 +28,7 @@ article.post {
   :not(li) > ul,
   :not(li) > ol,
   pre {
-    margin: 10px auto;
+    margin: 20px auto;
     @include content-width();
   }
 
