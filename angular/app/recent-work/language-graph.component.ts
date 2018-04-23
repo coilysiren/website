@@ -2,6 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { scaleLinear } from "d3-scale";
 
+const graphHeight: number = 400;
+
 interface ILanguageData {
   name: string;
   color: string;
@@ -28,6 +30,7 @@ interface ILanguageGraphData extends ILanguageData {
 })
 export class LanguageGraphComponent {
   public languageList: ILanguageGraphData[];
+  public graphHeight: number = graphHeight;
   public repoCount: number = 100; // <= 100 is the max per query
   public languageCount: number = 100;
   public queryBody: string = `user(login: "lynncyrin") {
@@ -57,11 +60,13 @@ export class LanguageGraphComponent {
   }
 
   private processResponseData(responseData: any): ILanguageGraphData[] {
-    const languageDataMap: Map<string, ILanguageData> = createLanguageDataMap(responseData.data);
-    const languageDataArray: ILanguageData[] = languageDataToSortedArray(languageDataMap);
-    return addGraphDataToLanguageArray(languageDataArray);
+    return addGraphDataToLanguageArray(
+      languageMapToSortedArray(
+        languageMapFromResponseData(responseData.data)
+      )
+    );
 
-    function createLanguageDataMap(data: any): Map<string, ILanguageData> {
+    function languageMapFromResponseData(data: any): Map<string, ILanguageData> {
       const repos: any = data.user.repositories.nodes;
       const primaryLanguages: Set<string> = new Set(
         repos.map((repoNode: any) => {
@@ -100,7 +105,7 @@ export class LanguageGraphComponent {
       }
     }
 
-    function languageDataToSortedArray(map: Map<string, ILanguageData>): ILanguageData[] {
+    function languageMapToSortedArray(map: Map<string, ILanguageData>): ILanguageData[] {
       return Array.from(map.values()).sort(
         (datumA: ILanguageData, datumB: ILanguageData): number => {
           if (datumA.size < datumB.size) {
@@ -115,10 +120,8 @@ export class LanguageGraphComponent {
     }
 
     function addGraphDataToLanguageArray(data: ILanguageData[]): ILanguageGraphData[] {
-      const height: number = 400;
-
       const yScale: any = scaleLinear()
-        .range([height, 0])
+        .range([graphHeight, 0])
         .domain([0, data[0].size]);
 
       return data.map(
@@ -127,7 +130,7 @@ export class LanguageGraphComponent {
           xPos: `${100 / data.length * index}%`,
           yPos: yScale(datum.size),
           width: `${100 / data.length}%`,
-          height: height - yScale(datum.size),
+          height: graphHeight - yScale(datum.size),
         }; }
       );
 
