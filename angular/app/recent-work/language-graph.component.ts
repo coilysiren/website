@@ -30,6 +30,9 @@ export class LanguageGraphComponent {
   public queryBody: string = `user(login: "lynncyrin") {
     repositories(isFork: false, last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
       nodes {
+        primaryLanguage {
+          name
+        }
         languages(first: ${this.languageCount}, orderBy: {field: SIZE, direction: DESC}) {
           edges {
             size
@@ -51,27 +54,45 @@ export class LanguageGraphComponent {
   }
 
   private processResponseData(responseData: any): ILanguageData[] {
-
-    let languageDataMap: Map<string, ILanguageData> = new Map();
-    const repos: any = responseData.data.user.repositories.nodes;
-    for (const repoKey in repos) {
-      const languages: any = repos[repoKey].languages.edges;
-      for (const languageKey in languages) {
-        createOrUpdateLanguageDatum(languageDataMap, languages[languageKey]);
-      }
-    }
-    languageDataMap = languageDataWithoutOutliers(languageDataMap);
+    const languageDataMap: Map<string, ILanguageData> = createLanguageDataMap(responseData.data);
     const languageDataArray: ILanguageData[] = languageDataToSortedArray(languageDataMap);
     generateGraph(languageDataArray);
     return languageDataArray;
 
-    function createOrUpdateLanguageDatum(dataMap: Map<string, ILanguageData>, data: any): void {
-      const name: string = data.node.name;
-      const color: string = data.node.color;
-      const size: number = data.size;
-      const datum: ILanguageData = dataMap.get(name);
-      if (datum) {
-        dataMap.set(name, {name, color, size: datum.size + size});
+    function createLanguageDataMap(data: any): Map<string, ILanguageData> {
+      const repos: any = data.user.repositories.nodes;
+      const primaryLanguages: Set<string> = new Set(
+        repos.map((repoNode: any) => {
+          if (repoNode.primaryLanguage) {
+            return repoNode.primaryLanguage.name;
+          }
+        })
+      );
+
+      const map: Map<string, ILanguageData> = new Map();
+      for (const repoKey in repos) {
+        const languages: any = repos[repoKey].languages.edges;
+        for (const languageKey in languages) {
+          createOrUpdateLanguageDatum(map, languages[languageKey], primaryLanguages);
+        }
+      }
+
+      return map;
+    }
+
+    function createOrUpdateLanguageDatum(
+        dataMap: Map<string, ILanguageData>,
+        datam: any,
+        primaryLanguages: Set<string>,
+    ): void {
+      const name: string = datam.node.name;
+      const color: string = datam.node.color;
+      const size: number = datam.size;
+      const existingDatum: ILanguageData = dataMap.get(name);
+      if (! primaryLanguages.has(name)) {
+        return;
+      } else if (existingDatum) {
+        dataMap.set(name, {name, color, size: existingDatum.size + size});
       } else {
         dataMap.set(name, {name, color, size});
       }
@@ -89,10 +110,6 @@ export class LanguageGraphComponent {
           }
         }
       );
-    }
-
-    function languageDataWithoutOutliers(map: Map<string, ILanguageData>): Map<string, ILanguageData> {
-      return map;
     }
 
     function generateGraph(data: ILanguageData[]): void {
