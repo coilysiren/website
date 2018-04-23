@@ -1,14 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { scaleBand, scaleLinear } from "d3-scale";
-import { select } from "d3-selection";
-
-const graphElementClass: string = "language-graph";
+import { scaleLinear } from "d3-scale";
 
 interface ILanguageData {
   name: string;
   color: string;
   size: number;
+}
+
+interface ILanguageGraphData extends ILanguageData {
+  xPos: string;
+  yPos: number;
+  width: string;
+  height: number;
 }
 
 @Component({
@@ -23,8 +27,7 @@ interface ILanguageData {
   ],
 })
 export class LanguageGraphComponent {
-  public languageList: ILanguageData[];
-  public graphElementClass: string = graphElementClass;
+  public languageList: ILanguageGraphData[];
   public repoCount: number = 100; // <= 100 is the max per query
   public languageCount: number = 100;
   public queryBody: string = `user(login: "lynncyrin") {
@@ -53,11 +56,10 @@ export class LanguageGraphComponent {
       });
   }
 
-  private processResponseData(responseData: any): ILanguageData[] {
+  private processResponseData(responseData: any): ILanguageGraphData[] {
     const languageDataMap: Map<string, ILanguageData> = createLanguageDataMap(responseData.data);
     const languageDataArray: ILanguageData[] = languageDataToSortedArray(languageDataMap);
-    generateGraph(languageDataArray);
-    return languageDataArray;
+    return addGraphDataToLanguageArray(languageDataArray);
 
     function createLanguageDataMap(data: any): Map<string, ILanguageData> {
       const repos: any = data.user.repositories.nodes;
@@ -112,32 +114,22 @@ export class LanguageGraphComponent {
       );
     }
 
-    function generateGraph(data: ILanguageData[]): void {
-      const width: number = 600;
+    function addGraphDataToLanguageArray(data: ILanguageData[]): ILanguageGraphData[] {
       const height: number = 400;
 
-      const xScale: any = scaleBand()
-        .range([0, width])
-        .domain(data.map((datum: ILanguageData) => datum.name));
       const yScale: any = scaleLinear()
         .range([height, 0])
         .domain([0, data[0].size]);
 
-      const svg: any = select(`.${graphElementClass}`)
-        .append("svg")
-          .attr("width", width)
-          .attr("height", height)
-        .append("g");
-
-      svg.selectAll(".bar")
-        .data(data)
-        .enter().append("rect")
-          .attr("fill", (datum: ILanguageData) => datum.color)
-          .attr("class", "bar")
-          .attr("x", (datum: ILanguageData) => xScale(datum.name))
-          .attr("width", xScale.bandwidth())
-          .attr("y", (datum: ILanguageData) => yScale(datum.size))
-          .attr("height", (datum: ILanguageData) => height - yScale(datum.size));
+      return data.map(
+        (datum: ILanguageData, index: number): ILanguageGraphData => { return {
+          ...datum,
+          xPos: `${100 / data.length * index}%`,
+          yPos: yScale(datum.size),
+          width: `${100 / data.length}%`,
+          height: height - yScale(datum.size),
+        }; }
+      );
 
     }
 

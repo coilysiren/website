@@ -6,7 +6,20 @@
   <div class="code-display">
     <code>
       <h4 class="code-header">GRAPH</h4>
-      <div class="{{ graphElementClass }}"></div>
+      <div class="text-center">
+        <svg width="100%" height="400">
+          <g>
+            <rect
+              *ngFor="let language of languageList"
+              [attr.fill]="language.color"
+              [attr.x]="language.xPos"
+              [attr.y]="language.yPos"
+              [attr.width]="language.width"
+              [attr.height]="language.height"
+            ></rect>
+          </g>
+        </svg>
+      </div>
     </code>
   </div>
   <div class="code-display dual-code-display">
