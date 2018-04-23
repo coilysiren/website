@@ -73,14 +73,14 @@ export class LanguageGraphComponent {
       for (const repoKey in repos) {
         const languages: any = repos[repoKey].languages.edges;
         for (const languageKey in languages) {
-          createOrUpdateLanguageDatum(map, languages[languageKey], primaryLanguages);
+          createOrUpdatePrimaryLanguageDatum(map, languages[languageKey], primaryLanguages);
         }
       }
 
       return map;
     }
 
-    function createOrUpdateLanguageDatum(
+    function createOrUpdatePrimaryLanguageDatum(
         dataMap: Map<string, ILanguageData>,
         datam: any,
         primaryLanguages: Set<string>,
