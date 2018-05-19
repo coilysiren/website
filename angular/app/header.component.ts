@@ -10,6 +10,7 @@ import { Component } from "@angular/core";
 })
 export class HeaderComponent {
   public socialLinks: string[][] = [
+    ["https://linkedin.com/in/lynn-cyrin/", "fab fa-linkedin", "linkedin"],
     ["https://github.com/lynncyrin", "fab fa-github", "github"],
     ["https://github.com/lynncyrin/lynncyrin-dot-me", "fas fa-code", "source code"],
     ["https://twitter.com/lynncyrin", "fab fa-twitter", "twitter"],
