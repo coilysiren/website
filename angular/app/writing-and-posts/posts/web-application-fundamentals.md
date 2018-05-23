@@ -50,4 +50,4 @@ For any given complex web application, you are likely going to have parts that l
 
 ------
 
-I hope makes sense!
+I hope that makes sense!
