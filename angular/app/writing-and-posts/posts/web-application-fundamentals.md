@@ -41,7 +41,7 @@ For any given complex web application, you are likely going to have parts that l
 
 ### SERVER SIDE CONTROLLER {{ LANGUAGE="Ruby" }}
 
-- Controllers handle if this particular report is allowed to proceed, based on some auxiliary data (passwords, sessions keys, etc)
+- Controllers handle if this particular report is allowed to proceed, based on some auxiliary data (passwords, session keys, etc)
 - When the controller conditions are met, it saves to a model
 - The controller itself is scoped not storing state, but rather to making decisions about whether or not to do so
 - The controller is JS
