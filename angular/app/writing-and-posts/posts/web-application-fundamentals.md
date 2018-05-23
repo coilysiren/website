@@ -4,6 +4,7 @@ For any given complex web application, you are likely going to have parts that l
 
 - When a user enters a report into a `form`, the first place it is stored is the HTML DOM.
 - The DOM is stateful, it holds on to the information that a user inputs.
+- [HTML reference documentation](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
 ### CLIENT SIDE JS
 
@@ -11,6 +12,7 @@ For any given complex web application, you are likely going to have parts that l
 - We denormalize the state into JS so we can manipulate our data in a more complex manner, but a simpler app may omit this step.
 - Since the data is input into HTML, not JS, we need hooks to tell JS to "react" to new data being input into HTML (_[example library](http://reactivex.io/rxjs)_)
 - We keep the data in JS memory for displaying it to the user locally, and also send it into a AJAX HTTP POST (_[example library](https://angular.io/guide/http)_) for storage
+- [JS reference documentation](https://developer.mozilla.org/en-US/docs/Web/Javascript)
 
 ### HTTP
 
@@ -19,6 +21,7 @@ For any given complex web application, you are likely going to have parts that l
 - TLS utilizes a network of keys, the derivates of which are stored in browsers, and are used to encrypt the report
 - This encrypted report then travels from the users browser, to our server
 - _( analogy ): HTTP is akin to a street_
+- [HTTP reference documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
 
 ### SERVER
 
