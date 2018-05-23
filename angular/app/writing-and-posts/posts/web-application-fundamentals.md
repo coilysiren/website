@@ -7,12 +7,11 @@ For any given complex web application, you are likely going to have parts that l
 - [HTML reference documentation](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
 ### CLIENT SIDE JS
-
 - We then copy the `form`'s state (the report) to JS's memory (_[example library](https://api.jquery.com/serializeArray/)_).
-- We denormalize the state into JS so we can manipulate our data in a more complex manner, but a simpler app may omit this step.
 - Since the data is input into HTML, not JS, we need hooks to tell JS to "react" to new data being input into HTML (_[example library](http://reactivex.io/rxjs)_)
 - We keep the data in JS memory for displaying it to the user locally, and also send it into a AJAX HTTP POST (_[example library](https://angular.io/guide/http)_) for storage
 - [JS reference documentation](https://developer.mozilla.org/en-US/docs/Web/Javascript)
+- _We denormalize the state into JS so we can manipulate our data in a more intricate manner, but a less complex app may omit this step._
 
 ### HTTP
 
