@@ -9,6 +9,11 @@ export interface IPostData {
 
 export let postData: IPostData[] = [
   {
+    title: "Web Application Fundamentals",
+    description: "A quick rundown of the essential parts of a web application",
+    path: "web-application-fundamentals"
+  },
+  {
     title: "Heroku + Django Pipeline + Ruby Sass",
     description: "Getting django pipeline to use the ruby sass compiler on heroku",
     path: "heroku-django-pipeline-sass"
