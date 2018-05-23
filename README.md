@@ -1,3 +1,3 @@
 # personal site!
 
-http://lynncyrin.me/
+https://lynncyrin.me/
