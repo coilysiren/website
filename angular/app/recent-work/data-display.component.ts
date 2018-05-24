@@ -17,7 +17,7 @@ export class DataDisplayComponent {
   public commits: any[];
   public commitCount: number = 10;
   public queryBody: string = `user(login: "lynncyrin") {
-    repositories(isFork: false, last: 1, orderBy: {field: UPDATED_AT, direction: ASC}) {
+    repositories(privacy: PUBLIC, isFork: false, last: 1, orderBy: {field: UPDATED_AT, direction: ASC}) {
       nodes {
         nameWithOwner
         url
