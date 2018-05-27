@@ -10,7 +10,7 @@ export interface IPostData {
 export let postData: IPostData[] = [
   {
     title: "How I like to Work",
-    description: "With respect to teams, technical work, and products",
+    description: "With respect to product, people, and engineering",
     path: "how-I-like-to-work"
   },
   {
