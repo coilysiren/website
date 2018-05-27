@@ -9,6 +9,11 @@ export interface IPostData {
 
 export let postData: IPostData[] = [
   {
+    title: "How I like to Work",
+    description: "With respect to teams, technical work, and products",
+    path: "how-I-like-to-work"
+  },
+  {
     title: "Web Application Fundamentals",
     description: "A quick rundown of the essential parts of a web application",
     path: "web-application-fundamentals"
