@@ -9,6 +9,11 @@ export interface IPostData {
 
 export let postData: IPostData[] = [
   {
+    title: "Password Reset Tokens in Django, Devise, NodeJS",
+    description: "But really in Django and Devise, to inform a NodeJS implementation",
+    path: "password-resets"
+  },
+  {
     title: "How I like to Work",
     description: "With respect to product, people, and engineering",
     path: "how-I-like-to-work"
