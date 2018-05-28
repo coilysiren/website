@@ -33,6 +33,11 @@ article.container {
     left: $floaty-size;
   }
 
+  h2 .font-awesome-icon {
+    font-size: 1rem;
+    color: $color-black-50opacity;
+  }
+
   :not(h2):not(h3):not(h4):not(h5) > a {
     color: $color-purple;
   }
