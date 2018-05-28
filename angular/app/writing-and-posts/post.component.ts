@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, ViewEncapsulation } from "@angular/core";
-import { DomSanitizer, SafeHtml, Title } from "@angular/platform-browser";
+import { DomSanitizer, Meta, SafeHtml, Title } from "@angular/platform-browser";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { IPostData, pathKeyedPosts } from "./post.data";
 
@@ -21,7 +21,8 @@ export class PostComponent {
   constructor(
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private titleService: Title
+    private titleService: Title,
+    private metaService: Meta
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const post: IPostData = pathKeyedPosts.get(params.get("path"));
@@ -29,6 +30,14 @@ export class PostComponent {
       this.content = sanitizer.bypassSecurityTrustHtml(post.content);
       this.title = post.title;
       this.titleService.setTitle(post.title);
+      this.metaService.updateTag(
+        { content: post.description },
+        'name="description"'
+      );
+      this.metaService.updateTag(
+        { content: post.description },
+        'name="twitter:description"'
+      );
       window.scrollTo(0, 0);
     });
   }
