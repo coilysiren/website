@@ -16,6 +16,7 @@ import { IPostData, pathKeyedPosts } from "./post.data";
 })
 export class PostComponent {
   public title: string;
+  public description: string;
   public postPath: string;
   public content: SafeHtml;
 
@@ -31,6 +32,7 @@ export class PostComponent {
       this.content = sanitizer.bypassSecurityTrustHtml(post.content);
       this.title = post.title;
       this.postPath = post.path;
+      this.description = post.description;
       this.titleService.setTitle(post.title);
       this.metaService.updateTag(
         { content: post.description },

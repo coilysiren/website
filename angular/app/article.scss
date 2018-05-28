@@ -27,7 +27,7 @@ article.container {
     box-shadow: $shadow-main-background;
     padding-bottom: 10px;
     padding-left: $article-padding + $floaty-size;
-    margin-bottom: 15px;
+    margin-bottom: 0;
     position: relative;
     top: $floaty-size;
     left: $floaty-size;
@@ -36,6 +36,14 @@ article.container {
   h2 .font-awesome-icon {
     font-size: 1rem;
     color: $color-black-50opacity;
+  }
+
+  .description {
+    text-align: center;
+    padding: 10px;
+    background-color: $color-main-background;
+    margin-bottom: 15px;
+    font-style: italic;
   }
 
   :not(h2):not(h3):not(h4):not(h5) > a {
