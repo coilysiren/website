@@ -76,6 +76,8 @@ The primary difference between these two methodologies stems from **what the tok
 
 ### And the winner is...
 
-**...nobody**, honestly. With Django, I'm uncomfortable with giving an attacker such an easy route to try and crack the token for an individual user (having the primary key in the url is what enables this). With Devise, I'm uncomfortable with the fact that the password reset tokens are stored.
+**...nobody**, honestly.
+
+With Django, I'm uncomfortable with giving an attacker such an easy route to try and crack the token for an individual user (having the primary key in the url is what enables this). With Devise, I'm uncomfortable with the fact that the password reset tokens are stored.
 
 If I had to pick, **I would pick Django**. I'm leaning towards the solution that **stores less sensitive information**. Whether or not the Django implementation is more objectively secure, is a question I'm going to leave to a security researcher.
