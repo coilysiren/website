@@ -7,6 +7,10 @@ article.post {
     line-height: 2rem;
   }
 
+  h2 {
+    margin-bottom: 0;
+  }
+
   h3 {
     margin: 25px;
   }
@@ -17,11 +21,28 @@ article.post {
 
   h3,
   h4 {
-    margin-left: (-$article-padding);
-    margin-right: (-$article-padding);
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: $article-padding * 1.5 - $border-thin-white-size;
     padding-right: $article-padding * 1.5;
     border-left: $border-thin-white;
+    background-color: $color-white-30opacity;
+  }
+
+  h3,
+  h4,
+  h5 {
+    text-align: left;
+    margin: 0 auto;
+    @include content-width();
+  }
+
+  .description {
+    text-align: center;
+    padding: 10px;
+    background-color: $color-main-background;
+    margin-bottom: 15px;
+    font-style: italic;
   }
 
   p,
