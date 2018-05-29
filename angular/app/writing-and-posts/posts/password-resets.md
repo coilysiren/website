@@ -64,15 +64,15 @@ And then token validation:
 Django
 
 - generates the token from user state
-- looks up the user by the primary key in the url **(dangerous!)**
+- looks up the user by the primary key in the url **(risky!)**
 
 Devise
 
 - generates the token randomly
-- stores the token **(dangerous!)**
+- stores the token **(risky!)**
 - looks up the user by the token in the url
 
-The primary difference between these two methodologies stems from **what the token is**. In Django, its user state. In Devise, its a random string. Since Django's token is user state, the password reset email has to include an indentifier for which user's state we are checking. Since Devise's token is a random string, we have to store that random string to be checked against in the future.
+The primary difference between these two methodologies stems from **what the token is**. In Django, its user state. In Devise, its random content. Since Django's token is user state, the password reset email has to include an indentifier for which user's state we are checking. Since Devise's token is randomly generated, we have to store the (encrypted) randomly generated value to check against it in the future.
 
 ### And the winner is...
 
