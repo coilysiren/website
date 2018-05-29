@@ -23,10 +23,27 @@ article.post {
   h4 {
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: $article-padding * 1.5 - $border-thin-white-size;
+    padding-left: $article-padding * 1.5 - $border-thin-size;
     padding-right: $article-padding * 1.5;
     border-left: $border-thin-white;
     background-color: $color-white-30opacity;
+  }
+
+  blockquote {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: $article-padding * 1.5 - $border-thin-size;
+    padding-right: $article-padding * 1.5;
+    border-left: $border-thin-black;
+    background-color: $color-black-5opacity;
+    margin: 0 auto;
+    font-style: italic;
+    @include content-width();
+
+    p {
+      margin: 0 auto;
+      width: 95%;
+    }
   }
 
   h3,
