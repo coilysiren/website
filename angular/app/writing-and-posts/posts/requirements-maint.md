@@ -1,5 +1,3 @@
-## requirements maintainence guide
-
 At dayjob we run a requirements bot from a website called [requires.io/](http://requires.io/). This bot checks pypi for the latest versions of all our dependencies, and automatically creates a pull request with the dependency updates.
 
 So for example, assume `django` is at `version 1.20.3`. The django team finds a bug, and creates bugfix release `version 1.20.4`. Requires.io will create a pull request for us, updating the django version in our source code like so
