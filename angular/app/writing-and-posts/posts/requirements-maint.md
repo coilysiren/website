@@ -31,7 +31,7 @@ Requirements bot differ slightly in their implementations, but most of them will
 
 ### some example requirements bots
 
-These are some requirements bots I've seen in action, that said requires.io is the only one I've used personally (at time of writing)
+These are some requirements bots I've seen in action:
 
 - https://dependabot.com/ (nodejs)
 - https://requires.io/ (python)
