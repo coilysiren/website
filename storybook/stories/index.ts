@@ -6,8 +6,6 @@ import { DataDisplayComponent } from "../../angular/app/recent-work/data-display
 import { LanguageGraphComponent } from "../../angular/app/recent-work/language-graph.component";
 import { HeaderComponent } from "./../../angular/app/general/header.component";
 
-/* tslint:disable */
-
 storiesOf("Personal Site", module)
   .add("flashy header icon", () => ({
     component: FaviconComponent
