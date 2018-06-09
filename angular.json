@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "angular",
   "projects": {
     "app": {
       "root": "",
@@ -16,16 +16,23 @@
             "main": "angular/main.ts",
             "tsConfig": "angular/../tsconfig.json",
             "polyfills": "angular/polyfills.ts",
-            "assets": [
-              "angular/assets",
-              "angular/favicon.ico"
-            ],
-            "styles": [
-              "angular/styles.css"
-            ],
+            "assets": ["angular/assets", "angular/favicon.ico"],
+            "styles": ["angular/styles.css"],
             "scripts": []
           },
-          "configurations": {}
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -34,36 +41,9 @@
             "proxyConfig": "angular/proxy.config.json"
           },
           "configurations": {}
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "app:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [],
-            "exclude": []
-          }
         }
       }
-    },
-    "app-e2e": {
-      "root": "",
-      "sourceRoot": "e2e",
-      "projectType": "application"
     }
   },
-  "defaultProject": "app",
-  "schematics": {
-    "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "app"
-    }
-  }
+  "defaultProject": "app"
 }
