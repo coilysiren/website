@@ -41,6 +41,14 @@
             "proxyConfig": "angular/proxy.config.json"
           },
           "configurations": {}
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/app-server",
+            "main": "angular/main.server.ts",
+            "tsConfig": "angular/tsconfig.server.json"
+          }
         }
       }
     }
