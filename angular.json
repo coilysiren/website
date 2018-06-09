@@ -19,19 +19,6 @@
             "assets": ["angular/assets", "angular/favicon.ico"],
             "styles": ["angular/styles.css"],
             "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
-            }
           }
         },
         "serve": {
@@ -45,7 +32,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/app-server",
+            "outputPath": "dist/server",
             "main": "angular/main.server.ts",
             "tsConfig": "angular/tsconfig.server.json"
           }

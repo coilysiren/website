@@ -13,37 +13,36 @@ import { join } from "path";
 import "reflect-metadata";
 import "zone.js/dist/zone-node";
 
-if (process.env.NODE_ENV !== "production") {
-  configDotenv();
-} else {
-  enableProdMode();
-}
-
 const app: express.Express = express();
 const PORT: number | string = process.env.PORT || 3000;
 const DIST_FOLDER: string = join(process.cwd(), "dist");
 
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-// tslint:disable:no-var-requires
-const {
-  AppServerModuleNgFactory,
-  LAZY_MODULE_MAP
-}: any = require("./dist/server/main");
+if (process.env.NODE_ENV !== "production") {
+  configDotenv();
+} else {
+  enableProdMode();
+  // * NOTE :: leave this as require() since this file is built Dynamically from webpack
+  // tslint:disable:no-var-requires
+  const {
+    AppServerModuleNgFactory,
+    LAZY_MODULE_MAP
+  }: any = require("./dist/server/main");
 
-// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-app.engine(
-  "html",
-  ngExpressEngine({
-    bootstrap: AppServerModuleNgFactory,
-    providers: [provideModuleMap(LAZY_MODULE_MAP)]
-  })
-);
+  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+  app.engine(
+    "html",
+    ngExpressEngine({
+      bootstrap: AppServerModuleNgFactory,
+      providers: [provideModuleMap(LAZY_MODULE_MAP)]
+    })
+  );
+
+  app.set("view engine", "html");
+  app.set("views", join(DIST_FOLDER, "browser"));
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.set("view engine", "html");
-app.set("views", join(DIST_FOLDER, "browser"));
 
 function githubApiRequest(queryBody: string): Promise<JSON> {
   return fetch("https://api.github.com/graphql", {

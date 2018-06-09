@@ -6,14 +6,14 @@
     "npm": "6.1.0"
   },
   "scripts": {
-    "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
+    "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\"",
     "start:angular": "ng serve --port 8080 --open",
     "start:storybook": "start-storybook -s ./angular -c storybook --port 9001",
     "start:express": "nodemon --exec ts-node server.ts",
     "postinstall": "make download-resources",
     "heroku-start": "node server.js",
-    "heroku-postbuild": "npm run build:angular && npm run build:express && npm run build:storybook",
-    "build:angular": "ng build --prod",
+    "heroku-postbuild": "npm run build:angular && npm run build:express",
+    "build:angular": "ng run app:server",
     "build:express": "tsc server.ts",
     "build:storybook": "build-storybook -s ./angular -c storybook -o storybook-dist"
   },
