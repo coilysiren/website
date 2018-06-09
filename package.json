@@ -2,8 +2,8 @@
   "name": "whatslynncoding",
   "version": "0.0.0",
   "engines": {
-    "node": "9.5.0",
-    "npm": "5.8.0"
+    "node": "10.4.0",
+    "npm": "6.1.0"
   },
   "scripts": {
     "start": "concurrently -k -n angular,express,storybook -c red,green,yellow \"npm run start:angular\" \"npm run start:express\" \"npm run start:storybook\"",
@@ -43,8 +43,8 @@
     "@storybook/addons": "^3.4.6",
     "@storybook/angular": "^3.4.6",
     "@types/express": "^4.16.0",
-    "@types/node": "^9.6.21",
-    "@types/node-fetch": "^1.6.9",
+    "@types/node": "^10",
+    "@types/node-fetch": "^2",
     "babel-core": "^6.26.3",
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.5",
