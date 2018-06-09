@@ -4,6 +4,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   template: `
+  <page-component></page-component>
   <article class="container">
     <h2>( 404 ) Page Not Found</h2>
     <p>The page you were looking for? We couldn't find it</p>

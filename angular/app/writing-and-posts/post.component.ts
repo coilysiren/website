@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { IPostData, pathKeyedPosts } from "./post.data";
 
 @Component({
+  selector: "post-component",
   templateUrl: "post.html",
   styleUrls: [
     "./../base.scss",
