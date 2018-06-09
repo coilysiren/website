@@ -38,7 +38,11 @@ import { WritingComponent } from "./writing-and-posts/writing-component";
     BackgroundComponent,
     PageComponent
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule.withServerTransition({ appId: "lynncyrin-dot-me" }),
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

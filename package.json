@@ -18,6 +18,7 @@
     "build:storybook": "build-storybook -s ./angular -c storybook -o storybook-dist"
   },
   "dependencies": {
+    "@angular/animations": "^6.0.4",
     "@angular/common": "^6",
     "@angular/compiler": "^6",
     "@angular/core": "^6",
@@ -25,15 +26,19 @@
     "@angular/http": "^6",
     "@angular/platform-browser": "^6",
     "@angular/platform-browser-dynamic": "^6",
+    "@angular/platform-server": "^6.0.4",
     "@angular/router": "^6",
+    "@nguniversal/express-engine": "^6.0.0",
+    "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
     "body-parser": "^1.18.3",
     "d3": "^5.4.0",
     "dotenv": "^5.0.1",
-    "express": "^4",
+    "express": "^4.16.3",
     "make-fetch-happen": "^4.0.1",
     "markdown-loader": "^2.0.2",
     "marked": "^0.3.19",
     "node-gyp": "^3.7.0",
+    "preboot": "^6.0.0-beta.4",
     "rxjs": "^6.2.0",
     "webpack": "^4.12.0",
     "zone.js": "^0.8.26"
