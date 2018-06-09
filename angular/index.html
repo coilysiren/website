@@ -33,7 +33,7 @@
 <body>
   <app-root>
     <style type="text/css">
-      @keyframes faviconFader {
+      @keyframes loaderFader {
         0% {
           opacity: 1;
         }
@@ -45,6 +45,7 @@
         }
       }
       .loader {
+        text-align: center;
         position: fixed;
         height: 100%;
         width: 100%;
@@ -57,7 +58,7 @@
         width: 150px;
         height: 150px;
         margin: 0 auto;
-        animation: faviconFader 1s linear infinite;
+        animation: loaderFader 1s linear infinite;
       }
       p {
         font-family: arial;
@@ -65,7 +66,7 @@
         font-size: 20px;
       }
     </style>
-    <div class="loader" style="text-align: center">
+    <div class="loader">
       <p>loading...</p>
       <img src="assets/icon.png">
     </div>
