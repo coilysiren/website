@@ -31,7 +31,7 @@ build-angular:
 	npx ng run app:server
 
 build-express:
-	npx tsc -p tsconfig.server.json
+	npx tsc -p tsconfig.express.json
 
 build-storybook:
 	npx build-storybook -s ./angular -c storybook -o storybook-dist

@@ -14,7 +14,7 @@
             "outputPath": "dist",
             "index": "angular/index.html",
             "main": "angular/main.ts",
-            "tsConfig": "angular/../tsconfig.json",
+            "tsConfig": "angular/tsconfig.app.json",
             "polyfills": "angular/polyfills.ts",
             "assets": ["angular/assets", "angular/favicon.ico"],
             "styles": ["angular/styles.css"],
