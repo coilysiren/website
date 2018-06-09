@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 
+import { AboutComponent } from "./about-component";
 import { AppComponent } from "./app.component";
 import { FaviconComponent } from "./favicon-component";
 import { HeaderComponent } from "./header.component";
@@ -38,12 +39,9 @@ const appRoutes: Routes = [
     PostComponent,
     PageNotFoundComponent,
     FaviconComponent,
+    AboutComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-  ],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent]
 })

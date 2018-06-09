@@ -19,11 +19,6 @@ export let postData: IPostData[] = [
     path: "password-resets"
   },
   {
-    title: "How I like to Work",
-    description: "With respect to product, people, and engineering",
-    path: "how-I-like-to-work"
-  },
-  {
     title: "Web Application Fundamentals",
     description: "A quick rundown of the essential parts of a web application",
     path: "web-application-fundamentals"
