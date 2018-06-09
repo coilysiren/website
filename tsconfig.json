@@ -10,16 +10,17 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
-    "typeRoots": [
-      "node_modules/@types",
-    ],
+    "target": "es5",
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
     "lib": [
-      "es2017",
+      "es5",
+      "es6",
+      "es2015.collection",
+      "es2015.promise",
+      "esnext",
       "dom"
     ]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "dist"]
 }
