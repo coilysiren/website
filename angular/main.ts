@@ -5,4 +5,7 @@ import { AppModule } from "./app/app.module";
 if (process.env.NODE_ENV === "production") {
   enableProdMode();
 }
-platformBrowserDynamic().bootstrapModule(AppModule);
+
+document.addEventListener("DOMContentLoaded", () => {
+  platformBrowserDynamic().bootstrapModule(AppModule);
+});

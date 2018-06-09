@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "files": ["./angular/main.ts", "./angular/polyfills.ts", "./server.ts"]
+}

@@ -17,29 +17,27 @@ const app: express.Express = express();
 const PORT: number | string = process.env.PORT || 3000;
 const DIST_FOLDER: string = join(process.cwd(), "dist");
 
-if (process.env.NODE_ENV !== "production") {
-  configDotenv();
-} else {
-  enableProdMode();
-  // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-  // tslint:disable:no-var-requires
-  const {
-    AppServerModuleNgFactory,
-    LAZY_MODULE_MAP
-  }: any = require("./dist/server/main");
+configDotenv();
 
-  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-  app.engine(
-    "html",
-    ngExpressEngine({
-      bootstrap: AppServerModuleNgFactory,
-      providers: [provideModuleMap(LAZY_MODULE_MAP)]
-    })
-  );
+enableProdMode();
+// * NOTE :: leave this as require() since this file is built Dynamically from webpack
+// tslint:disable:no-var-requires
+const {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP
+}: any = require("./dist/server/main");
 
-  app.set("view engine", "html");
-  app.set("views", join(DIST_FOLDER, "browser"));
-}
+// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+app.engine(
+  "html",
+  ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory,
+    providers: [provideModuleMap(LAZY_MODULE_MAP)]
+  })
+);
+
+app.set("view engine", "html");
+app.set("views", join(DIST_FOLDER, "browser"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -56,23 +54,8 @@ app.post("/api/github", (req: express.Request, res: express.Response) => {
   githubApiRequest(req.body.queryBody).then((data: JSON) => res.json(data));
 });
 
-app.all("/ping", (req: express.Request, res: express.Response) => {
-  res.json("pong");
-});
-
-app.use("/.storybook", express.static(join(__dirname, "/storybook-dist/")));
-app.get("/.storybook", (req: express.Request, res: express.Response) => {
-  res.sendFile(join(__dirname, "/storybook-dist/index.html"));
-});
-
 // Server static files from /browser
 app.use(express.static(join(DIST_FOLDER, "browser")));
-// app.get(
-//   "*.*",
-//   express.static(join(DIST_FOLDER, "browser"), {
-//     maxAge: "1y"
-//   })
-// );
 // All regular routes use the Universal engine
 app.get("*", (req: express.Request, res: express.Response) => {
   res.render("index", { req });
