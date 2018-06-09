@@ -5,11 +5,11 @@ import { Component } from "@angular/core";
   selector: "data-display",
   templateUrl: "data-display.html",
   styleUrls: [
-    "./../base.scss",
-    "./../article.scss",
-    "./../code.scss",
-    "./recent-work.scss",
-  ],
+    "./../general/base.scss",
+    "./../general/article.scss",
+    "./../general/code.scss",
+    "./recent-work.scss"
+  ]
 })
 export class DataDisplayComponent {
   public name: string;
@@ -40,7 +40,8 @@ export class DataDisplayComponent {
   }`;
 
   constructor(http: HttpClient) {
-    http.post("/api/github", {queryBody: this.queryBody})
+    http
+      .post("/api/github", { queryBody: this.queryBody })
       .subscribe((responseData: any) => {
         const repo: any = responseData.data.user.repositories.nodes[0];
         this.name = repo.nameWithOwner;

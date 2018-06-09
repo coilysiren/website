@@ -6,8 +6,8 @@ import { IPostData, postData } from "./post.data";
   selector: "writing-component",
   templateUrl: "writing.html",
   styleUrls: [
-    "./../base.scss",
-    "./../article.scss",
+    "./../general/base.scss",
+    "./../general/article.scss",
     "./writing.scss"
   ]
 })
@@ -15,9 +15,7 @@ export class WritingComponent {
   @Input() public title: string = "Writing";
   public postData: IPostData[] = postData;
 
-  constructor(
-    private route: ActivatedRoute,
-  ) {
+  constructor(private route: ActivatedRoute) {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const splicedPostData: IPostData[] = postData.slice(0);
       splicedPostData.forEach(
@@ -30,5 +28,4 @@ export class WritingComponent {
       this.postData = splicedPostData;
     });
   }
-
 }

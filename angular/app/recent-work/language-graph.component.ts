@@ -21,12 +21,12 @@ interface ILanguageGraphData extends ILanguageData {
   selector: "language-graph",
   templateUrl: "language-graph.html",
   styleUrls: [
-    "./../base.scss",
-    "./../article.scss",
-    "./../code.scss",
+    "./../general/base.scss",
+    "./../general/article.scss",
+    "./../general/code.scss",
     "./recent-work.scss",
-    "./language-graph.scss",
-  ],
+    "./language-graph.scss"
+  ]
 })
 export class LanguageGraphComponent {
   public languageList: ILanguageGraphData[];
@@ -34,12 +34,16 @@ export class LanguageGraphComponent {
   public repoCount: number = 100; // <= 100 is the max per query
   public languageCount: number = 100;
   public queryBody: string = `user(login: "lynncyrin") {
-    repositories(isFork: false, last: ${this.repoCount}, orderBy: {field: UPDATED_AT, direction: ASC}) {
+    repositories(isFork: false, last: ${
+      this.repoCount
+    }, orderBy: {field: UPDATED_AT, direction: ASC}) {
       nodes {
         primaryLanguage {
           name
         }
-        languages(first: ${this.languageCount}, orderBy: {field: SIZE, direction: DESC}) {
+        languages(first: ${
+          this.languageCount
+        }, orderBy: {field: SIZE, direction: DESC}) {
           edges {
             size
             node {
@@ -53,7 +57,8 @@ export class LanguageGraphComponent {
   }`;
 
   constructor(http: HttpClient) {
-    http.post("/api/github", {queryBody: this.queryBody})
+    http
+      .post("/api/github", { queryBody: this.queryBody })
       .subscribe((data: any) => {
         this.languageList = this.processResponseData(data);
       });
@@ -61,12 +66,12 @@ export class LanguageGraphComponent {
 
   private processResponseData(responseData: any): ILanguageGraphData[] {
     return addGraphDataToLanguageArray(
-      languageMapToSortedArray(
-        languageMapFromResponseData(responseData.data)
-      )
+      languageMapToSortedArray(languageMapFromResponseData(responseData.data))
     );
 
-    function languageMapFromResponseData(data: any): Map<string, ILanguageData> {
+    function languageMapFromResponseData(
+      data: any
+    ): Map<string, ILanguageData> {
       const repos: any = data.user.repositories.nodes;
       const primaryLanguages: Set<string> = new Set(
         repos.map((repoNode: any) => {
@@ -80,7 +85,11 @@ export class LanguageGraphComponent {
       for (const repoKey in repos) {
         const languages: any = repos[repoKey].languages.edges;
         for (const languageKey in languages) {
-          createOrUpdatePrimaryLanguageDatum(map, languages[languageKey], primaryLanguages);
+          createOrUpdatePrimaryLanguageDatum(
+            map,
+            languages[languageKey],
+            primaryLanguages
+          );
         }
       }
 
@@ -88,24 +97,26 @@ export class LanguageGraphComponent {
     }
 
     function createOrUpdatePrimaryLanguageDatum(
-        dataMap: Map<string, ILanguageData>,
-        datam: any,
-        primaryLanguages: Set<string>,
+      dataMap: Map<string, ILanguageData>,
+      datam: any,
+      primaryLanguages: Set<string>
     ): void {
       const name: string = datam.node.name;
       const color: string = datam.node.color;
       const size: number = datam.size;
       const existingDatum: ILanguageData = dataMap.get(name);
-      if (! primaryLanguages.has(name)) {
+      if (!primaryLanguages.has(name)) {
         return;
       } else if (existingDatum) {
-        dataMap.set(name, {name, color, size: existingDatum.size + size});
+        dataMap.set(name, { name, color, size: existingDatum.size + size });
       } else {
-        dataMap.set(name, {name, color, size});
+        dataMap.set(name, { name, color, size });
       }
     }
 
-    function languageMapToSortedArray(map: Map<string, ILanguageData>): ILanguageData[] {
+    function languageMapToSortedArray(
+      map: Map<string, ILanguageData>
+    ): ILanguageData[] {
       return Array.from(map.values()).sort(
         (datumA: ILanguageData, datumB: ILanguageData): number => {
           if (datumA.size < datumB.size) {
@@ -119,23 +130,24 @@ export class LanguageGraphComponent {
       );
     }
 
-    function addGraphDataToLanguageArray(data: ILanguageData[]): ILanguageGraphData[] {
+    function addGraphDataToLanguageArray(
+      data: ILanguageData[]
+    ): ILanguageGraphData[] {
       const yScale: any = scaleLinear()
         .range([graphHeight, 0])
         .domain([0, data[0].size]);
 
       return data.map(
-        (datum: ILanguageData, index: number): ILanguageGraphData => { return {
-          ...datum,
-          xPos: `${100 / data.length * index}%`,
-          yPos: yScale(datum.size),
-          width: `${100 / data.length}%`,
-          height: graphHeight - yScale(datum.size),
-        }; }
+        (datum: ILanguageData, index: number): ILanguageGraphData => {
+          return {
+            ...datum,
+            xPos: `${(100 / data.length) * index}%`,
+            yPos: yScale(datum.size),
+            width: `${100 / data.length}%`,
+            height: graphHeight - yScale(datum.size)
+          };
+        }
       );
-
     }
-
   }
-
 }

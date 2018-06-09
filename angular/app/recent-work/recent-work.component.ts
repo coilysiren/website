@@ -8,10 +8,6 @@ import { Component } from "@angular/core";
     <data-display></data-display>
   </article>
   `,
-  styleUrls: [
-    "./../base.scss",
-    "./../article.scss",
-  ],
+  styleUrls: ["./../general/base.scss", "./../general/article.scss"]
 })
-export class RecentWorkComponent {
-}
+export class RecentWorkComponent {}

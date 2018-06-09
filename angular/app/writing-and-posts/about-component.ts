@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 // tslint:disable-next-line:no-var-requires
-const articleContent: string = require("html-loader!markdown-loader!./writing-and-posts/posts/how-I-like-to-work.md");
+const articleContent: string = require("html-loader!markdown-loader!./posts/how-I-like-to-work.md");
 
 @Component({
   selector: "about-component",
@@ -11,6 +11,10 @@ const articleContent: string = require("html-loader!markdown-loader!./writing-an
     <div>${articleContent}</div>
   </article>
   `,
-  styleUrls: ["./base.scss", "./article.scss", "./writing-and-posts/post.scss"]
+  styleUrls: [
+    "./../general/base.scss",
+    "./../general/article.scss",
+    "./post.scss"
+  ]
 })
 export class AboutComponent {}
