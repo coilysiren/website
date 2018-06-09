@@ -27,13 +27,47 @@
   <meta name="twitter:image" content="assets/icon.png" />
   <link rel="canonical" href="lynncyrin.me">
   <link rel="icon" type="image/x-icon" href="assets/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
 </head>
 
 <body>
   <app-root>
-    <div style="text-align: center">
-      <img src="assets/icon.png">
+    <style type="text/css">
+      @keyframes faviconFader {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.75;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .loader {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: rgb(222,	248,	255);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        animation: faviconFader 1s linear infinite;
+      }
+      p {
+        font-family: arial;
+        text-transform: uppercase;
+        font-size: 20px;
+      }
+    </style>
+    <div class="loader" style="text-align: center">
       <p>loading...</p>
+      <img src="assets/icon.png">
     </div>
   </app-root>
 </body>

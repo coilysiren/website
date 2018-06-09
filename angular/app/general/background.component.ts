@@ -5,6 +5,9 @@ import { Component, ViewEncapsulation } from "@angular/core";
   selector: "background-component",
   styles: [
     `
+      body {
+        background-color: rgb(222, 248, 255);
+      }
       body::after {
         content: "";
         background-image: url("./../assets/background.png");
