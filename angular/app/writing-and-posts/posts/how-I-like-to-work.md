@@ -1,3 +1,7 @@
+I'm Lynn Cyrin-Conway :: a mid level software engineer with experience in python / ruby / nodejs.
+
+I'm looking for my next full-time position, and would love to work with you! Here's some information about how I generally like to work.
+
 ### Product
 
 Products I'm inspired to work on, prioritize:

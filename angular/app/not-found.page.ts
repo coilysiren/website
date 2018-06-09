@@ -11,10 +11,6 @@ import { Component, OnInit } from "@angular/core";
     <p>Alternatively! Feel free to tweet <a href="https://twitter.com/lynncyrin">@ me</a> about how I need to fix my dead links</p>
   </article>
   `,
-  styleUrls: [
-    "./base.scss",
-    "./article.scss",
-  ]
+  styleUrls: ["./base.scss", "./article.scss"]
 })
-export class PageNotFoundComponent {
-}
+export class NotFoundPage {}

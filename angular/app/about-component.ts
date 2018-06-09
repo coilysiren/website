@@ -8,7 +8,6 @@ const articleContent: string = require("html-loader!markdown-loader!./writing-an
   template: `
   <article class="container post">
     <h2>About</h2>
-    <div class="description">How I like to do my work</div>
     <div>${articleContent}</div>
   </article>
   `,

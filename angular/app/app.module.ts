@@ -7,8 +7,8 @@ import { AboutComponent } from "./about-component";
 import { AppComponent } from "./app.component";
 import { FaviconComponent } from "./favicon-component";
 import { HeaderComponent } from "./header.component";
-import { IndexComponent } from "./index.component";
-import { PageNotFoundComponent } from "./page-not-found.component";
+import { IndexPage } from "./index.page";
+import { NotFoundPage } from "./not-found.page";
 import { DataDisplayComponent } from "./recent-work/data-display.component";
 import { LanguageGraphComponent } from "./recent-work/language-graph.component";
 import { RecentWorkComponent } from "./recent-work/recent-work.component";
@@ -22,9 +22,10 @@ const appRoutes: Routes = [
   { path: "post/:id/:path", component: PostComponent },
   // (legacy route) lynncyrin.me/2017/05/30/heroku-django-pipeline-sass/
   { path: ":year/:month/:day/:path", component: PostComponent },
+  { path: "about", component: AboutComponent },
   { path: "writing", component: WritingComponent },
-  { path: "", component: IndexComponent },
-  { path: "**", component: PageNotFoundComponent }
+  { path: "", component: IndexPage },
+  { path: "**", component: NotFoundPage }
 ];
 
 @NgModule({
@@ -35,9 +36,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     LanguageGraphComponent,
     WritingComponent,
-    IndexComponent,
+    IndexPage,
     PostComponent,
-    PageNotFoundComponent,
+    NotFoundPage,
     FaviconComponent,
     AboutComponent
   ],
