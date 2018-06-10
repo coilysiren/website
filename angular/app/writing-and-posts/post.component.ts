@@ -31,10 +31,25 @@ export class PostComponent {
       const post: IPostData = pathKeyedPosts.get(params.get("path"));
       // dear reader, feel free to audit the security of this next line
       this.content = sanitizer.bypassSecurityTrustHtml(post.content);
+
       this.title = post.title;
-      this.postPath = post.path;
-      this.description = post.description;
       this.titleService.setTitle(post.title);
+      this.metaService.updateTag(
+        { content: post.title },
+        'name="twitter:title"'
+      );
+      this.metaService.updateTag(
+        { content: post.title },
+        'property="og:title"'
+      );
+
+      this.postPath = post.path;
+      this.metaService.updateTag(
+        { content: `https://lynncyrin.me/posts/${post.path}` },
+        'property="og:url"'
+      );
+
+      this.description = post.description;
       this.metaService.updateTag(
         { content: post.description },
         'name="description"'
@@ -43,6 +58,13 @@ export class PostComponent {
         { content: post.description },
         'name="twitter:description"'
       );
+      this.metaService.updateTag(
+        { content: post.description },
+        'property="og:description"'
+      );
+
+      this.metaService.updateTag({ content: "article" }, 'property="og:type"');
+
       window.scrollTo(0, 0);
     });
   }
