@@ -42,7 +42,7 @@ heroku-postbuild:
 	make build-angular-universal
 
 heroku-start:
-	node dist/server.js
+	node dist/server
 
 build-angular:
 	npx ng build --prod

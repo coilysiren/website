@@ -7,5 +7,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  platformBrowserDynamic().bootstrapModule(AppModule);
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch((err: Error) => console.log(err));
 });

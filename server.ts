@@ -1,33 +1,28 @@
+import "reflect-metadata";
+import "zone.js/dist/zone-node";
+
 import { enableProdMode } from "@angular/core";
-// Express Engine
 import { ngExpressEngine } from "@nguniversal/express-engine";
-// Import module map for lazy loading
 import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
-import assert = require("assert");
 import bodyParser = require("body-parser");
 import { config as configDotenv } from "dotenv";
 import express = require("express");
 import fetch = require("make-fetch-happen");
 import * as nodeFetch from "node-fetch";
 import { join } from "path";
-import "reflect-metadata";
-import "zone.js/dist/zone-node";
+
+import {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP
+} from "./dist/server/main.js";
 
 const app: express.Express = express();
 const PORT: number | string = process.env.PORT || 3000;
 const DIST_FOLDER: string = join(process.cwd(), "dist");
 
 configDotenv();
-
 enableProdMode();
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-// tslint:disable:no-var-requires
-const {
-  AppServerModuleNgFactory,
-  LAZY_MODULE_MAP
-}: any = require("./dist/server/main");
 
-// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine(
   "html",
   ngExpressEngine({
@@ -54,11 +49,9 @@ app.post("/api/github", (req: express.Request, res: express.Response) => {
   githubApiRequest(req.body.queryBody).then((data: JSON) => res.json(data));
 });
 
-// Server static files from /browser
 app.use(express.static(join(DIST_FOLDER, "browser")));
-// All regular routes use the Universal engine
 app.get("*", (req: express.Request, res: express.Response) => {
-  res.render("index", { req });
+  res.render(join(DIST_FOLDER, "browser", "index.html"), { req });
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

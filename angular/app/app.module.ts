@@ -2,6 +2,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
+import { TransferHttpCacheModule } from "@nguniversal/common";
 
 import { AppComponent } from "./app.component";
 import { BackgroundComponent } from "./general/background.component";
@@ -40,10 +41,10 @@ import { WritingComponent } from "./writing-and-posts/writing-component";
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "lynncyrin-dot-me" }),
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    TransferHttpCacheModule,
+    HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
