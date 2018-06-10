@@ -7,6 +7,7 @@ import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
 import bodyParser = require("body-parser");
 import { config as configDotenv } from "dotenv";
 import express = require("express");
+import enforce = require("express-sslify");
 import fetch = require("make-fetch-happen");
 import * as nodeFetch from "node-fetch";
 import { join } from "path";
@@ -36,6 +37,7 @@ app.set("views", join(DIST_FOLDER, "browser"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 function githubApiRequest(queryBody: string): Promise<JSON> {
   return fetch("https://api.github.com/graphql", {

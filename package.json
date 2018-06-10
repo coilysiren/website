@@ -28,6 +28,7 @@
     "d3": "^5.4.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-sslify": "^1.2.0",
     "html-loader": "^0.5.5",
     "make-fetch-happen": "^4.0.1",
     "markdown-loader": "^2.0.2",
