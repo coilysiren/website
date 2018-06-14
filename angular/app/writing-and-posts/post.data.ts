@@ -9,6 +9,11 @@ export interface IPostData {
 
 export let postData: IPostData[] = [
   {
+    title: "The Maintainer :: Aspect of Code Janitor",
+    description: "Part (1 / 2)! Of a series of posts about the work I do as an engineer, maintaining existing projects.",
+    path: "code-janitor"
+  },
+  {
     title: "A Guide to Requirements Bots",
     description: "Keeping your code clean, shiny, and up to date. Its like brushing your teeth!",
     path: "requirements-maint"
