@@ -16,16 +16,16 @@ TODO
 
 ### misc tooling thats no longer present
 
-- Typescript => ( nothing, optionally mypy )
-- live reloads => ( nothing )
-- storybook => ( nothing )
+- Typescript => ( _nothing_, optionally [mypy](http://mypy-lang.org/) )
+- live reloads => ( _nothing_ )
+- storybook => ( _nothing_ )
 
 TODO
 
 ### misc tooling thats not so great
 
 - REST api => Server side rendering
-- RxJS, Redux, etc => ( nothing )
+- RxJS, Redux, etc => ( _nothing_ )
 - webpack => django pipeline
 
 TODO
