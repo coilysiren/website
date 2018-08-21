@@ -31,7 +31,7 @@
     "express-sslify": "^1.2.0",
     "html-loader": "^0.5.5",
     "make-fetch-happen": "^4.0.1",
-    "markdown-loader": "^2.0.2",
+    "markdown-loader": "^4.0.0",
     "marked": "^0.3.19",
     "node-gyp": "^3.7.0",
     "preboot": "^6.0.0-beta.4",
