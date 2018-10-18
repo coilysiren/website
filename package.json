@@ -22,7 +22,7 @@
     "@angular/platform-server": "^6.0.4",
     "@angular/router": "^6",
     "@nguniversal/common": "^6.0.0",
-    "@nguniversal/express-engine": "^6.0.0",
+    "@nguniversal/express-engine": "^7.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
     "body-parser": "^1.18.3",
     "d3": "^5.4.0",
