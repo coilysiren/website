@@ -3,6 +3,10 @@
   "description": "Example Gatsby, and Netlify CMS project",
   "version": "1.1.3",
   "author": "Austin Green",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lynncyrin/lynncyrin-dot-me"
+  },
   "dependencies": {
     "bulma": "^0.7.0",
     "gatsby": "^2.1.34",
@@ -19,6 +23,8 @@
     "gatsby-source-filesystem": "^2.0.26",
     "gatsby-transformer-remark": "^2.3.4",
     "gatsby-transformer-sharp": "^2.1.9",
+    "graphql": "^0.13.2",
+    "immutable": "^3.8.2",
     "lodash": "^4.17.5",
     "lodash-webpack-plugin": "^0.11.4",
     "netlify-cms-app": "^2.9.1",
@@ -30,6 +36,9 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "redux": "^3.7.2",
+    "slate": "^0.33.8",
+    "typescript": "^3.4.5",
     "uuid": "^3.2.1"
   },
   "keywords": [
