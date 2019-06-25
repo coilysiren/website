@@ -6,3 +6,4 @@ jobs:
       - image: lynncyrin/base-image
     steps:
       - run: npm ci
+      - run: npm run build
