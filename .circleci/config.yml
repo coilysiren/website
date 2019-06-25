@@ -1,0 +1,8 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: lynncyrin/base-image
+    steps:
+      - run: npm ci
