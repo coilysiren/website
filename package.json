@@ -35,6 +35,7 @@
     "marked": "^0.7.0",
     "node-gyp": "^3.7.0",
     "preboot": "^6.0.0-beta.4",
+    "rxjs": "6.0.0",
     "ts-loader": "^4.4.1",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.3",
