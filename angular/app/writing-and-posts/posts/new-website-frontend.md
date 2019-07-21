@@ -26,7 +26,7 @@ The goal behind the requirements is to produce a website that I'll be comfortabl
 
 The idea behind the operational requirements is that the end product will be easier for me to maintain if I see how it's built.
 
-Who I'm looking for someone
+I'm looking for someone
 
 - between the PT and ET time zones, people living in Seattle preferred
 - who could use work like this as a portfolio item
