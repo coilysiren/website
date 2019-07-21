@@ -1,4 +1,35 @@
-@import "./_variables.scss";
+$breakpoint-md: 750px;
+$breakpoint-lg: 1000px;
+
+$color-white-80opacity: rgba(255, 255, 255, 0.8);
+$color-white-30opacity: rgba(255, 255, 255, 0.3);
+$color-black-50opacity: rgba(0, 0, 0, 0.5);
+$color-black-5opacity: rgba(0, 0, 0, 0.05);
+$color-black-code-bg: rgba(0, 0, 0, 0.9);
+$color-purple: #a722da;
+$color-main-background: rgba(100, 100, 100, 0.1);
+
+$article-padding: 20px;
+
+$font-body: "Open Sans", sans-serif;
+$font-headers: "Bubblegum Sans", sans-serif;
+$font-code: "Inconsolata", monospace;
+
+$shadow-main-background: 4px 4px 1px darken($color-main-background, 80%);
+
+$border-thin-size: 8px;
+$border-thin-white: $border-thin-size solid $color-white-80opacity;
+$border-thin-black: $border-thin-size solid $color-black-50opacity;
+
+@mixin content-width {
+  width: 100%;
+  @media (min-width: $breakpoint-md) {
+    width: 85%;
+  }
+  @media (min-width: $breakpoint-lg) {
+    width: 70%;
+  }
+}
 
 * {
   font-family: $font-body;
