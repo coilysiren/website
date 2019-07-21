@@ -8,7 +8,7 @@
   "scripts": {
     "start": "make dev",
     "postinstall": "make download-resources",
-    "heroku-postbuild": "make heroku-postbuild"
+    "build": "ng build --prod"
   },
   "dependencies": {
     "@angular/animations": "^6.0.4",

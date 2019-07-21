@@ -34,25 +34,8 @@ start-storybook:
 # production commands
 
 heroku-run: ## build + start entrypoint for production
-	make heroku-postbuild
+	npm run build
 	make heroku-start
-
-heroku-postbuild:
-	make build-angular
-	make build-angular-universal
 
 heroku-start:
 	node dist/server
-
-build-angular:
-	npx ng build --prod
-	npx ng run app:server
-
-build-express:
-	npx tsc -p tsconfig.express.json
-
-build-angular-universal:
-	npx webpack-cli --config webpack.server.config.js --progress --colors
-
-build-storybook:
-	npx build-storybook -s ./angular -c storybook -o storybook-dist
