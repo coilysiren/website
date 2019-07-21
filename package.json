@@ -8,7 +8,7 @@
   "scripts": {
     "start": "make dev",
     "postinstall": "make download-resources",
-    "build": "ng build --prod"
+    "build": "make download-resources && ng build --prod"
   },
   "dependencies": {
     "@angular/animations": "^6.0.4",
