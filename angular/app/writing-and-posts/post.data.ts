@@ -9,6 +9,11 @@ export interface IPostData {
 
 export let postData: IPostData[] = [
   {
+    title: "New Website",
+    description: "$2k / reactjs / netlify / typescript",
+    path: "new-website-frontend"
+  },
+  {
     title: "The Maintainer :: Aspect of Code Janitor",
     description: "Part (1 / 2)! Of a series of posts about the work I do as an engineer, maintaining existing projects.",
     path: "code-janitor"
