@@ -6,4 +6,5 @@ jobs:
       - image: circleci/node:12
     steps:
       - checkout
-      - run: ls
+      - run: npm ci
+      - run: npm run build
