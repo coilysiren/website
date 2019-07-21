@@ -6,7 +6,7 @@
     "npm": "6.1.0"
   },
   "scripts": {
-    "start": "make dev",
+    "start": "ng serve --port 8080 --open",
     "postinstall": "make download-resources",
     "build": "make download-resources && ng build --prod"
   },
