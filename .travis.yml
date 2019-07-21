@@ -3,6 +3,6 @@ node_js:
   - "node"
 install: npm install
 script:
-  - npm run heroku-postbuild
+  - npm run build
 notifications:
   email: false
