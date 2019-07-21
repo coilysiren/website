@@ -10,9 +10,11 @@ const IndexPage = () => (
     <h1>🚧 Under Construction 🚧</h1>
     <p>this website is currently getting re-done</p>
     <p>
-      <a href="https://web.archive.org/web/20190531001448/https://lynncyrin.me/" target="_blank">the old website</a>
+      <Link to="/page-2/">New Website Frontend (post)</Link>
     </p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <p>
+      <a href="https://web.archive.org/web/20190531001448/https://lynncyrin.me/" target="_blank" rel="noopener noreferrer">the old website</a>
+    </p>
   </Layout>
 )
 
