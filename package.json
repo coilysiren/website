@@ -19,13 +19,17 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "cypress": "^3.4.1",
+    "prettier": "^1.18.2",
+    "start-server-and-test": "^1.10.0"
   },
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test start http://localhost:8000 cy:open"
   },
   "repository": {
     "type": "git",
