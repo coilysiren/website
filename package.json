@@ -1,37 +1,30 @@
 {
-  "name": "lynncyrin-dot-me",
-  "description": "a website",
-  "version": "1.0.0",
-  "author": "Lynn Cyrin <lynncyrin@gmail.com>",
+  "name": "lynns-blog",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "gatsby": "^2.13.31",
-    "gatsby-cli": "^2.7.40",
-    "gatsby-image": "^2.2.8",
-    "gatsby-plugin-manifest": "^2.2.9",
-    "gatsby-plugin-offline": "^2.2.10",
-    "gatsby-plugin-react-helmet": "^3.1.5",
-    "gatsby-plugin-sharp": "^2.2.9",
-    "gatsby-source-filesystem": "^2.1.17",
-    "gatsby-transformer-sharp": "^2.2.12",
-    "prop-types": "^15.7.2",
+    "axios": "^0.19.0",
     "react": "^16.9.0",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.1.1"
   },
-  "devDependencies": {
-    "prettier": "^1.18.2"
-  },
-  "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop",
-    "serve": "gatsby serve"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lynncyrin/lynncyrin-dot-me"
-  },
-  "bugs": {
-    "url": "https://github.com/lynncyrin/lynncyrin-dot-me/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

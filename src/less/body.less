@@ -1,0 +1,31 @@
+.blogposts-container {
+  //   background: black;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   display: none;
+
+  .posts {
+    height: auto;
+    width: 70%;
+    z-index: 5;
+    margin-top: 25em;
+
+    .blog-post {
+      background: @white;
+      height: 40em;
+      width: auto;
+      margin-bottom: 5em;
+    }
+
+    @media @tablet {
+      width: 90%;
+    }
+
+    @media @mobile {
+      width: 95%;
+    }
+  }
+}
