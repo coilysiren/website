@@ -5,23 +5,27 @@
   "author": "Lynn Cyrin <lynncyrin@gmail.com>",
   "dependencies": {
     "gatsby": "^2.13.31",
-    "gatsby-cli": "^2.7.17",
-    "gatsby-image": "^2.2.6",
-    "gatsby-plugin-react-helmet": "^3.1.2",
-    "gatsby-source-filesystem": "^2.1.5",
+    "gatsby-cli": "^2.7.40",
+    "gatsby-image": "^2.2.8",
+    "gatsby-plugin-react-helmet": "^3.1.5",
+    "gatsby-source-filesystem": "^2.1.17",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "cypress": "^3.4.1",
+    "prettier": "^1.18.2",
+    "start-server-and-test": "^1.10.0"
   },
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test start http://localhost:8000 cy:open"
   },
   "repository": {
     "type": "git",
