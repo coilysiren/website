@@ -8,7 +8,7 @@ const IndexPage = () => (
   <>
     <Navigation />
     {/* <Layout> */}
-    {/* <SEO title="Home" /> */}
+    <SEO title="Home" />
     <h1>🚧 Under Constructionm, hi lynn!!! 🚧</h1>
     <p>this website is currently getting re-done</p>
     <p>
