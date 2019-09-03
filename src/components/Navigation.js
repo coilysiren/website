@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import "../sass/Navigation.scss"
+import "../sass/navigation.scss"
 
 function Navigation(props) {
   return (
