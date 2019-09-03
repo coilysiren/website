@@ -1,12 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import Navigation from "../components/Navigation"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
+  <>
+    <Navigation />
+    {/* <Layout> */}
+    {/* <SEO title="Home" /> */}
     <h1>🚧 Under Constructionm, hi lynn!!! 🚧</h1>
     <p>this website is currently getting re-done</p>
     <p>
@@ -18,7 +20,8 @@ const IndexPage = () => (
         the old website
       </a>
     </p>
-  </Layout>
+    {/* </Layout> */}
+  </>
 )
 
 export default IndexPage

@@ -1,0 +1,90 @@
+@import "Variables.scss";
+
+nav {
+  top: 0;
+  width: 100%;
+  height: 4em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 10;
+  background-color: $mid-purple;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+.logoName {
+  width: 15em;
+  height: 100%;
+  display: flex;
+  text-decoration: none;
+  // background: rebeccapurple;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 60%;
+    width: auto;
+  }
+
+  h2 {
+    color: white;
+    font-size: 1.7em;
+    text-decoration: none;
+    text-align: center;
+    padding-left: 0.5em;
+    text-decoration: none;
+    font-family: "Darker Grotesque", sans-serif;
+    @include tablet {
+      padding: 0;
+      padding-right: 0.8em;
+      font-size: 2em;
+    }
+  }
+
+  @include tablet {
+    height: 50%;
+  }
+
+  @include tablet {
+    // background: @mid-blue;
+    display: flex;
+    box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    height: 6em;
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 35%;
+  list-style: none;
+  flex-wrap: wrap;
+
+  li a {
+    text-decoration: none;
+    color: $white;
+    font-size: 1em;
+    text-transform: lowercase;
+    font-family: "Open Sans Condensed", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+
+    @include tablet {
+      font-size: 1.2em;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @include tablet {
+    width: 100%;
+    padding-bottom: 1em;
+  }
+}
