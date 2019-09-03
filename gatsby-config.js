@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Lynn Cyrin`,
-    description: `QTPoC \\ software engineer \\ organizer`,
+    description: `programming zealot \\ productivity demon \\ software artisan`,
     author: `@lynncyrin`,
   },
   plugins: [
@@ -11,7 +11,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/public/images`,
+        path: `${__dirname}/src/images`,
       },
     },
     // disabled due to sharp compatibility issues
