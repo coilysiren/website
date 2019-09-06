@@ -1,13 +1,14 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import "../sass/nav.scss"
+// import "../images/" --> this is what autocompleted told me
 
 function Navigation(props) {
   return (
     <nav>
       <Link to="/" activeClassName="activeNavButton" className="logoName">
         <img
-          src="images/cool-logo.svg"
+          src="src/images/cool-logo.svg"
           alt="An abstract shape with lines and circles Tech by Wenjie Jiang from the Noun Project"
         />
         <h2>Lynn's Blog</h2>
