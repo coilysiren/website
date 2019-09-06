@@ -36,7 +36,7 @@ nav {
     text-align: center;
     padding-left: 0.5em;
     text-decoration: none;
-    font-family: "Darker Grotesque", sans-serif;
+    font-family: $grotesque;
     @include tablet {
       padding: 0;
       padding-right: 0.8em;
@@ -69,7 +69,7 @@ nav {
     color: $white;
     font-size: 1em;
     text-transform: lowercase;
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: $open-sans;
     font-weight: 600;
     letter-spacing: 0.35em;
 
