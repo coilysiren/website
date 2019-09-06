@@ -11,7 +11,7 @@ function Navigation(props) {
           src="src/images/cool-logo.svg"
           alt="An abstract shape with lines and circles Tech by Wenjie Jiang from the Noun Project"
         />
-        <h2>Lynn's Blog</h2>
+        <h2>{`Lynn` + `'` + `s Blog`}</h2>
       </Link>
       <ul className="links" id="links">
         <li>
