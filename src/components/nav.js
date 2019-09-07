@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import "../sass/nav.scss"
-// import "../images/" --> this is what autocompleted told me
 
 function Navigation(props) {
   return (
