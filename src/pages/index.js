@@ -4,7 +4,6 @@ import Navigation from "../components/nav"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <>
     <Navigation />
     <SEO title="Home" />
     <h1>🚧 Under Constructionm, hi lynn!!! 🚧</h1>
