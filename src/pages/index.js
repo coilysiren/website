@@ -4,6 +4,7 @@ import Navigation from "../components/nav"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
+  <div>
     <Navigation />
     <SEO title="Home" />
     <h1>🚧 Under Constructionm, hi lynn!!! 🚧</h1>
@@ -17,6 +18,7 @@ const IndexPage = () => (
         the old website
       </a>
     </p>
+  </div>
 )
 
 export default IndexPage
