@@ -18,7 +18,6 @@ const IndexPage = () => (
         the old website
       </a>
     </p>
-  </>
 )
 
 export default IndexPage
