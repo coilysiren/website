@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
+import iconSVG from "../images/cool-logo.svg"
 import "../sass/nav.scss"
 
 function Navigation(props) {
@@ -7,7 +8,7 @@ function Navigation(props) {
     <nav>
       <Link to="/" activeClassName="activeNavButton" className="logoName">
         <img
-          src="src/images/cool-logo.svg"
+          src={iconSVG}
           alt="An abstract shape with lines and circles Tech by Wenjie Jiang from the Noun Project"
         />
         <h2>{`Lynn` + `'` + `s Blog`}</h2>
