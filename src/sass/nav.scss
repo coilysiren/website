@@ -13,19 +13,29 @@ nav {
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.2);
   position: fixed;
   z-index: 10;
   background-color: $mid-purple;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
-.logoName {
+.nav-logoName {
   display: flex;
   // Text decoration has to be set to none here, applying it directly to
   // h2 doesn't work for unknown reasons.
   text-decoration: none;
   align-items: center;
   height: 2em;
+
+  @include tablet {
+    font-size: 1em;
+    padding-left: 2em;
+    padding-bottom: 0.5em;
+  }
 
   img {
     height: 95%;
@@ -45,13 +55,21 @@ nav {
   }
 }
 
-.links {
+.nav-links {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   list-style: none;
   padding: 0;
   flex-wrap: wrap;
+
+  @include tablet {
+    width: 55%;
+  }
+
+  @include desktop {
+    width: 35%;
+  }
 
   li a {
     text-decoration: none;
@@ -67,10 +85,3 @@ nav {
     text-decoration: underline;
   }
 }
-
-// Syntax reference, will be gone in next commit
-// @include tablet {
-//   padding: 0;
-//   padding-right: 0.8em;
-//   font-size: 2em;
-// }
