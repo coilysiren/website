@@ -20,7 +20,7 @@
     color: $white;
     line-height: 1em;
     letter-spacing: 0;
-    font-family: "Playfair Display", serif;
+    font-family: $playfair;
     margin-bottom: 0.2em;
     @include tablet {
       font-size: 3.1em;
