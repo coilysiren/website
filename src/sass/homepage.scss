@@ -3,24 +3,37 @@
 
 .header {
   text-align: center;
-  line-height: 3em;
+  line-height: 2em;
   letter-spacing: 0.1em;
   height: 35em;
   width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
   background-color: $mid-purple;
-  background-size: 100% 100%;
-  top: 4em;
+  top: 0;
   position: absolute;
 
   h2 {
-    margin-top: 2.5em;
-    font-size: 3.1em;
+    margin-top: 2.8em;
+    font-size: 2.4em;
+    font-weight: normal;
     color: $white;
     line-height: 1em;
     letter-spacing: 0;
-    // font-family: "Great Vibes", cursive;
-    // font-family: "Darker Grotesque", sans-serif;
-    font-family: "Playfair Display", serif;
+    font-family: $playfair;
     margin-bottom: 0.2em;
+    @include tablet {
+      font-size: 3.1em;
+    }
+  }
+
+  h4 {
+    font-family: $open-sans;
+    color: #ffffff81;
+    font-size: 1.1em;
+    letter-spacing: 0.15em;
+    @include tablet {
+      font-size: 1.2em;
+    }
   }
 }
