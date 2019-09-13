@@ -1,0 +1,26 @@
+@import "vars.scss";
+@import "fonts.scss";
+
+.header {
+  text-align: center;
+  line-height: 3em;
+  letter-spacing: 0.1em;
+  height: 35em;
+  width: 100%;
+  background-color: $mid-purple;
+  background-size: 100% 100%;
+  top: 4em;
+  position: absolute;
+
+  h2 {
+    margin-top: 2.5em;
+    font-size: 3.1em;
+    color: $white;
+    line-height: 1em;
+    letter-spacing: 0;
+    // font-family: "Great Vibes", cursive;
+    // font-family: "Darker Grotesque", sans-serif;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 0.2em;
+  }
+}
