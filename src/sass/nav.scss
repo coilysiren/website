@@ -20,6 +20,9 @@ nav {
   @include tablet {
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 4em;
+    padding-right: 4em;
+    box-sizing: border-box;
   }
 }
 
