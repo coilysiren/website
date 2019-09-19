@@ -70,6 +70,12 @@
   align-items: center;
   height: auto;
 
+  @include tablet {
+    border-radius: 1em;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+
   h2 {
     text-align: center;
     color: $dark-purple;
@@ -98,15 +104,24 @@
     color: $dark-purple;
     font-size: 1.15em;
     padding: 0.6em;
+    @include tablet {
+      text-indent: 40px;
+    }
   }
 }
 
 .homepage-buttons {
-  // background: blue;
   height: auto;
   width: 100%;
   box-sizing: border-box;
   padding: 0 1.5em 0 1.5em;
+
+  @include tablet {
+    display: flex;
+    height: 4em;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
   .star-counter {
     width: 99%;
@@ -118,19 +133,32 @@
     border: 2px solid #666899;
     border-radius: 0.8em;
 
+    @include tablet {
+      width: 5em;
+      height: 2em;
+      border-radius: 1.5em;
+    }
+
     img {
       height: 70%;
       width: auto;
       margin-right: 0.7em;
+
+      @include tablet {
+        margin-right: 0.3em;
+      }
     }
 
     h5 {
       color: $mid-purple;
       font-family: $open-sans;
       letter-spacing: 0.05em;
-      // font-weight: 600;
       font-size: 1.3em;
       margin: 0;
+
+      @include tablet {
+        font-size: 1.15em;
+      }
     }
   }
   .continue-reading {
@@ -146,5 +174,13 @@
     letter-spacing: 0.02em;
     font-size: 1.1em;
     color: $white;
+
+    @include tablet {
+      width: 12em;
+      height: 2.3em;
+      margin: 0;
+      margin-left: 1em;
+      border-radius: 0.7em;
+    }
   }
 }
