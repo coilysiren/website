@@ -10,8 +10,6 @@ $open-sans: "Open Sans Condensed", sans-serif;
 $playfair: "Playfair Display", serif;
 $white: #e0e0e0;
 
-// 350px minimum for mobile first
-
 @mixin tablet {
   @media (min-width: 600px) {
     @content;

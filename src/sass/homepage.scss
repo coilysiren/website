@@ -76,6 +76,10 @@
     box-sizing: border-box;
   }
 
+  @include desktop {
+    padding: 2em;
+  }
+
   h2 {
     text-align: center;
     color: $dark-purple;
@@ -83,6 +87,9 @@
     letter-spacing: 0.02em;
     margin: 0.2em;
     font-size: 2em;
+    @include desktop {
+      font-size: 2.7em;
+    }
   }
 
   h4 {
@@ -92,6 +99,9 @@
     color: $mid-purple;
     margin: 0.6em;
     margin-top: 0.2em;
+    @include desktop {
+      font-size: 1.3em;
+    }
   }
 
   img {
