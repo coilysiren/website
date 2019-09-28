@@ -23,7 +23,7 @@
   box-sizing: border-box;
   height: auto;
   width: 100%;
-  background: white;
+  background: #fafafa;
   color: $dark-purple;
   display: flex;
   flex-direction: column;
@@ -46,4 +46,11 @@
     margin: 0.5em;
     color: $mid-purple;
   }
+}
+
+.post-content {
+  padding: 1em;
+  line-height: 2em;
+  color: $dark-purple;
+  box-sizing: border-box;
 }
