@@ -1,13 +1,49 @@
 @import "vars.scss";
 @import "fonts.scss";
 
-.post-cover {
+.post-body {
+  background: $white;
   top: 5.2em;
-  position: relative;
-  width: 100%;
   height: auto;
+  width: 100%;
+  position: relative;
 
   @include tablet {
     top: 3.3em;
+  }
+}
+
+.post-cover {
+  width: 100%;
+  height: auto;
+}
+
+.post-header {
+  padding: 0.5em;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  background: white;
+  color: $dark-purple;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    margin: 0.6em;
+    text-align: center;
+  }
+
+  h4 {
+    font-family: $open-sans;
+    letter-spacing: 0.1em;
+    color: $mid-purple;
+    text-align: right;
+    margin: 0.5em;
+  }
+
+  h5 {
+    font-family: $open-sans;
+    letter-spacing: 0.1em;
+    margin: 0.5em;
+    color: $mid-purple;
   }
 }
