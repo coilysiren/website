@@ -1,0 +1,13 @@
+@import "vars.scss";
+@import "fonts.scss";
+
+.post-cover {
+  top: 5.2em;
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  @include tablet {
+    top: 3.3em;
+  }
+}
