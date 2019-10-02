@@ -29,7 +29,11 @@
   flex-direction: column;
   h2 {
     margin: 0.6em;
+    font-size: 1.7em;
+    margin-left: 0;
+    margin-right: 0;
     text-align: center;
+    line-height: 1.4em;
   }
 
   h4 {
@@ -44,6 +48,8 @@
     font-family: $open-sans;
     letter-spacing: 0.1em;
     margin: 0.5em;
+    margin-left: 1em;
+    margin-top: 1em;
     color: $mid-purple;
   }
 }
@@ -53,4 +59,10 @@
   line-height: 2em;
   color: $dark-purple;
   box-sizing: border-box;
+}
+
+.highlight {
+  background: #fafafa;
+  border-radius: 2em;
+  padding: 0.15em;
 }

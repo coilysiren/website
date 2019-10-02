@@ -9,7 +9,7 @@ function Post(props) {
     <div className="post-body">
       <img className="post-cover" src={blogPostImg} />
       <div className="post-header">
-        <h2>Making Axios Calls: The Comprehensive Tutorial</h2>
+        <h2>Axios Calls: The Comprehensive Tutorial</h2>
         <h4>
           Quick tutorial diving into doing 3rd party API calls using axios npm.
         </h4>
@@ -18,13 +18,15 @@ function Post(props) {
       <div className="post-content">
         <div className="post-paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Cum sociis
-          natoque penatibus et magnis dis. Id volutpat lacus laoreet non
-          curabitur gravida. Pretium lectus quam id leo in vitae. Quis ipsum
-          suspendisse ultrices gravida. Nibh tortor id aliquet lectus. Pretium
-          aenean pharetra magna ac. Euismod in pellentesque massa placerat duis
-          ultricies lacus sed. Vestibulum lectus mauris ultrices eros in cursus
-          turpis massa tincidunt. Sem nulla pharetra diam sit amet nisl.
+          eiusmod <span className="highlight">tempor</span> incididunt ut labore
+          et dolore magna aliqua. Cum sociis natoque penatibus et magnis dis. Id
+          volutpat lacus laoreet non curabitur gravida. Pretium lectus quam id
+          leo in vitae. Quis ipsum suspendisse ultrices gravida. Nibh tortor id
+          aliquet lectus. Pretium aenean pharetra magna ac.{" "}
+          <span className="highlight">Euismod in pellentesque massa</span>{" "}
+          placerat duis ultricies lacus sed. Vestibulum lectus mauris ultrices
+          eros in cursus turpis massa tincidunt. Sem nulla pharetra diam sit
+          amet nisl.
         </div>
         <div className="post-paragraph">
           Feugiat sed lectus vestibulum mattis ullamcorper. Eget mauris pharetra
