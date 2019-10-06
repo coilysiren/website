@@ -59,7 +59,9 @@ function Post(props) {
 
         <h1 className="h1-title">Title 1</h1>
         <h2 className="h2-title">Title 2</h2>
-        <h3 className="h3-title">Title 3</h3>
+        <h3 className="h3-title">
+          Just a longer Title 3 to test how it looks like
+        </h3>
         <h4 className="h4-title">Title 4</h4>
         <h5 className="h5-title">Title 5 - in case you want small text</h5>
 
@@ -80,14 +82,14 @@ function Post(props) {
           faucibus nisl tincidunt eget.
         </div>
         <ol className="ordered-list">
-          <li>Making some coffee?</li>
+          <li className="h4-title">Making some coffee?</li>
           <ol>
             <li>Latte</li>
             <li>Spiced latte</li>
-            <li>More latte?</li>
+            <li className="h5-title">More latte?</li>
           </ol>
-          <li>Tea</li>
-          <li>Milk</li>
+          <li className="h4-title">Tea</li>
+          <li className="h4-title">Milk</li>
         </ol>
         <div className="post-paragraph">
           Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Duis at
@@ -100,6 +102,15 @@ function Post(props) {
           Amet tellus cras adipiscing enim eu. Pretium vulputate sapien nec
           sagittis aliquam malesuada bibendum arcu vitae. Et malesuada fames ac
           turpis egestas.
+        </div>
+        <div className="image-segment">
+          <img
+            src={blogPostImg}
+            alt="You can put any alt text here that will also go under the picture"
+          />
+          <p>
+            You can put any alt text here that will also go under the picture
+          </p>
         </div>
         <div className="post-paragraph">
           Fermentum iaculis eu non diam phasellus vestibulum lorem. Non tellus

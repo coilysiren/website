@@ -8,6 +8,11 @@
   width: 100%;
   position: relative;
 
+  img {
+    width: 100%;
+    height: auto;
+  }
+
   @include tablet {
     top: 3.3em;
   }
@@ -23,7 +28,7 @@
   box-sizing: border-box;
   height: auto;
   width: 100%;
-  background: #fafafa;
+  background: $whiter-white;
   color: $dark-purple;
   display: flex;
   flex-direction: column;
@@ -62,12 +67,13 @@
 }
 
 .highlight {
-  background: #fafafa;
+  background: $whiter-white;
   border-radius: 2em;
   padding: 0.15em;
 }
 
 .unordered-list {
+  font-size: 1.1em;
   padding: inherit;
   padding-right: 0;
   padding-bottom: 0;
@@ -75,6 +81,7 @@
 }
 
 .ordered-list {
+  font-size: 1.1em;
   padding: inherit;
   padding-right: 0;
   padding-bottom: 0;
@@ -85,24 +92,57 @@
   font-family: $playfair;
   font-size: 2.5em;
   letter-spacing: 0.06em;
+  margin: 0.5em 0 0.5em 0;
+  font-weight: 600;
 }
 .h2-title {
   font-family: $playfair;
   font-size: 2em;
   letter-spacing: 0.06em;
+  margin: 0.5em 0 0.5em 0;
+  font-weight: 600;
 }
 .h3-title {
   font-family: $playfair;
   font-size: 1.5em;
   letter-spacing: 0.06em;
+  margin: 0.5em 0 0.5em 0;
+  font-weight: 600;
 }
 .h4-title {
   font-family: $playfair;
-  font-size: 1em;
+  font-size: 1.2em;
   letter-spacing: 0.06em;
+  margin: 0.5em 0 0.5em 0;
+  font-weight: 600;
 }
 .h5-title {
   font-family: $playfair;
-  font-size: 0.7em;
+  font-size: 0.6em;
   letter-spacing: 0.06em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.image-segment {
+  margin: 1.5em 0 1.5em 0;
+  background: #fff;
+  border-radius: 1em;
+
+  img {
+    border: #fff solid 0.25em;
+    box-sizing: border-box;
+  }
+
+  p {
+    color: $gray;
+    font-family: $grotesque;
+    font-weight: 600;
+    line-height: 1.5em;
+    letter-spacing: 0.03em;
+    padding: 0 0.5em 1em 0.5em;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+  }
 }
