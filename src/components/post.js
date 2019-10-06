@@ -58,8 +58,8 @@ function Post(props) {
           convallis.
         </div>
 
-        <h1 className="h1-title">Title 1</h1>
-        <h2 className="h2-title">Title 2</h2>
+        <h1 className="h1-title text-center">Title 1</h1>
+        <h2 className="h2-title text-center">Title 2</h2>
         <h3 className="h3-title">
           Just a longer Title 3 to test how it looks like
         </h3>
