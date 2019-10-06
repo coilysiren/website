@@ -66,3 +66,43 @@
   border-radius: 2em;
   padding: 0.15em;
 }
+
+.unordered-list {
+  padding: inherit;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.ordered-list {
+  padding: inherit;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.h1-title {
+  font-family: $playfair;
+  font-size: 2.5em;
+  letter-spacing: 0.06em;
+}
+.h2-title {
+  font-family: $playfair;
+  font-size: 2em;
+  letter-spacing: 0.06em;
+}
+.h3-title {
+  font-family: $playfair;
+  font-size: 1.5em;
+  letter-spacing: 0.06em;
+}
+.h4-title {
+  font-family: $playfair;
+  font-size: 1em;
+  letter-spacing: 0.06em;
+}
+.h5-title {
+  font-family: $playfair;
+  font-size: 0.7em;
+  letter-spacing: 0.06em;
+}

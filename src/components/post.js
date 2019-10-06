@@ -28,47 +28,19 @@ function Post(props) {
           eros in cursus turpis massa tincidunt. Sem nulla pharetra diam sit
           amet nisl.
         </div>
-        <div className="post-paragraph">
-          Feugiat sed lectus vestibulum mattis ullamcorper. Eget mauris pharetra
-          et ultrices neque ornare aenean euismod elementum. Pellentesque eu
-          tincidunt tortor aliquam nulla. Quam lacus suspendisse faucibus
-          interdum posuere. Dui ut ornare lectus sit. Nisl nisi scelerisque eu
-          ultrices vitae. Ac turpis egestas sed tempus urna et pharetra pharetra
-          massa. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar
-          sapien et. Cursus sit amet dictum sit amet justo donec enim diam.
-          Mollis nunc sed id semper risus in hendrerit gravida rutrum. Donec
-          ultrices tincidunt arcu non sodales. Venenatis cras sed felis eget
-          velit. Quam lacus suspendisse faucibus interdum.
-        </div>{" "}
-        <div className="post-paragraph">
-          Fermentum iaculis eu non diam phasellus vestibulum lorem. Non tellus
-          orci ac auctor. Odio morbi quis commodo odio aenean sed adipiscing.
-          Massa tempor nec feugiat nisl pretium fusce. Nunc consequat interdum
-          varius sit amet mattis. Ut aliquam purus sit amet luctus. Nulla
-          malesuada pellentesque elit eget gravida. Aliquam vestibulum morbi
-          blandit cursus risus at. Adipiscing bibendum est ultricies integer
-          quis. Dictumst quisque sagittis purus sit amet. Imperdiet proin
-          fermentum leo vel orci porta. Volutpat diam ut venenatis tellus in
-          metus vulputate eu scelerisque.
-        </div>
-        <div className="post-paragraph">
-          Et ligula ullamcorper malesuada proin. Magna fringilla urna porttitor
-          rhoncus dolor purus non enim praesent. Dolor morbi non arcu risus quis
-          varius quam. Ante in nibh mauris cursus mattis molestie a iaculis.
-          Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar
-          pellentesque habitant. Felis eget velit aliquet sagittis id
-          consectetur purus. Tellus cras adipiscing enim eu turpis egestas
-          pretium aenean. Mauris pellentesque pulvinar pellentesque habitant
-          morbi tristique senectus et netus. Lectus arcu bibendum at varius vel
-          pharetra vel turpis. Egestas congue quisque egestas diam in arcu
-          cursus euismod. Ac placerat vestibulum lectus mauris ultrices eros in
-          cursus. Maecenas accumsan lacus vel facilisis volutpat est velit. Nunc
-          sed augue lacus viverra vitae congue eu. Blandit aliquam etiam erat
-          velit scelerisque in dictum non consectetur. Diam ut venenatis tellus
-          in metus. Duis ultricies lacus sed turpis tincidunt id aliquet. Enim
-          blandit volutpat maecenas volutpat blandit aliquam etiam erat velit.
-          Nam libero justo laoreet sit amet cursus.
-        </div>
+        <ul className="unordered-list">
+          <li>Here's a quick</li>
+          <ul>
+            <li>Black tea</li>
+            <li>Green tea</li>
+          </ul>
+          <li>Check on how does the</li>
+          <li>
+            Unordered list looks like 🤔 More tex in order to test how will the
+            padding look!
+          </li>
+        </ul>
+
         <div className="post-paragraph">
           Fringilla est ullamcorper eget nulla facilisi etiam dignissim. Sed
           risus pretium quam vulputate dignissim suspendisse in. Nec dui nunc
@@ -84,32 +56,13 @@ function Post(props) {
           morbi tristique. Non curabitur gravida arcu ac tortor dignissim
           convallis.
         </div>
-        <div className="post-paragraph">
-          Eu mi bibendum neque egestas. Viverra vitae congue eu consequat ac
-          felis donec. Eget mauris pharetra et ultrices neque. Laoreet sit amet
-          cursus sit amet dictum sit amet. Pellentesque eu tincidunt tortor
-          aliquam nulla. Viverra orci sagittis eu volutpat odio facilisis mauris
-          sit amet. Massa massa ultricies mi quis hendrerit. Volutpat maecenas
-          volutpat blandit aliquam etiam erat velit. Vitae proin sagittis nisl
-          rhoncus. Tristique senectus et netus et malesuada fames ac turpis.
-          Enim nulla aliquet porttitor lacus luctus accumsan tortor. Feugiat in
-          fermentum posuere urna. Arcu odio ut sem nulla pharetra diam sit. A
-          condimentum vitae sapien pellentesque.
-        </div>
-        <div className="post-paragraph">
-          Sodales neque sodales ut etiam sit amet nisl purus in. Aliquet
-          bibendum enim facilisis gravida neque convallis a. Nibh tellus
-          molestie nunc non blandit. Volutpat commodo sed egestas egestas
-          fringilla phasellus faucibus. Dignissim suspendisse in est ante in
-          nibh mauris. Sit amet nisl suscipit adipiscing bibendum est. Vivamus
-          at augue eget arcu dictum. Pellentesque adipiscing commodo elit at
-          imperdiet dui accumsan sit amet. Nibh venenatis cras sed felis eget
-          velit. Lorem mollis aliquam ut porttitor. Pharetra convallis posuere
-          morbi leo urna molestie at. Quisque sagittis purus sit amet volutpat
-          consequat mauris nunc. Et ligula ullamcorper malesuada proin libero
-          nunc consequat interdum varius. Lacus luctus accumsan tortor posuere
-          ac ut consequat semper viverra.
-        </div>
+
+        <h1 className="h1-title">Title 1</h1>
+        <h2 className="h2-title">Title 2</h2>
+        <h3 className="h3-title">Title 3</h3>
+        <h4 className="h4-title">Title 4</h4>
+        <h5 className="h5-title">Title 5 - in case you want small text</h5>
+
         <div className="post-paragraph">
           A erat nam at lectus urna duis convallis. Tincidunt dui ut ornare
           lectus sit amet est. Lacus suspendisse faucibus interdum posuere lorem
@@ -126,6 +79,16 @@ function Post(props) {
           vitae purus. Ultrices vitae auctor eu augue. Consectetur libero id
           faucibus nisl tincidunt eget.
         </div>
+        <ol className="ordered-list">
+          <li>Making some coffee?</li>
+          <ol>
+            <li>Latte</li>
+            <li>Spiced latte</li>
+            <li>More latte?</li>
+          </ol>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ol>
         <div className="post-paragraph">
           Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Duis at
           consectetur lorem donec. Volutpat odio facilisis mauris sit amet. Est
@@ -137,7 +100,18 @@ function Post(props) {
           Amet tellus cras adipiscing enim eu. Pretium vulputate sapien nec
           sagittis aliquam malesuada bibendum arcu vitae. Et malesuada fames ac
           turpis egestas.
-        </div>{" "}
+        </div>
+        <div className="post-paragraph">
+          Fermentum iaculis eu non diam phasellus vestibulum lorem. Non tellus
+          orci ac auctor. Odio morbi quis commodo odio aenean sed adipiscing.
+          Massa tempor nec feugiat nisl pretium fusce. Nunc consequat interdum
+          varius sit amet mattis. Ut aliquam purus sit amet luctus. Nulla
+          malesuada pellentesque elit eget gravida. Aliquam vestibulum morbi
+          blandit cursus risus at. Adipiscing bibendum est ultricies integer
+          quis. Dictumst quisque sagittis purus sit amet. Imperdiet proin
+          fermentum leo vel orci porta. Volutpat diam ut venenatis tellus in
+          metus vulputate eu scelerisque.
+        </div>
       </div>
     </div>
   )
