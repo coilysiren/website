@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import blogPostImg from "../images/blogpost.png"
+import catImg from "../images/cat.png"
 import sparkles from "../images/sparkles-twitter.svg"
 import { Link } from "gatsby"
 import "../sass/post.scss"
@@ -91,6 +92,15 @@ function Post(props) {
           <li className="h4-title">Tea</li>
           <li className="h4-title">Milk</li>
         </ol>
+        <div className="image-segment">
+          <img
+            src={blogPostImg}
+            alt="You can put any alt text here that will also go under the picture"
+          />
+          <p>
+            You can put any alt text here that will also go under the picture
+          </p>
+        </div>
         <div className="post-paragraph">
           Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Duis at
           consectetur lorem donec. Volutpat odio facilisis mauris sit amet. Est
@@ -105,12 +115,10 @@ function Post(props) {
         </div>
         <div className="image-segment">
           <img
-            src={blogPostImg}
+            src={catImg}
             alt="You can put any alt text here that will also go under the picture"
           />
-          <p>
-            You can put any alt text here that will also go under the picture
-          </p>
+          <p>Cat's face looking deeply into your soul from inside of a box</p>
         </div>
         <div className="post-paragraph">
           Fermentum iaculis eu non diam phasellus vestibulum lorem. Non tellus
