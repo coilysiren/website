@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import blogPostImg from "../images/blogpost.png"
 import sparkles from "../images/sparkles-twitter.svg"
 import { Link } from "gatsby"
+import Footer from "./footer"
 import "../sass/post.scss"
 
 function Post(props) {
@@ -139,6 +140,7 @@ function Post(props) {
           turpis egestas.
         </div>{" "}
       </div>
+      <Footer />
     </div>
   )
 }
