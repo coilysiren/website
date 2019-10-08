@@ -3,6 +3,7 @@ import blogPostImg from "../images/blogpost.png"
 import catImg from "../images/cat.png"
 import sparkles from "../images/sparkles-twitter.svg"
 import { Link } from "gatsby"
+import Footer from "./footer"
 import "../sass/post.scss"
 
 function Post(props) {
@@ -132,6 +133,7 @@ function Post(props) {
           metus vulputate eu scelerisque.
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
