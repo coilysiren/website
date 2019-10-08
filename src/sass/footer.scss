@@ -5,20 +5,39 @@ footer {
   width: 100%;
   text-align: center;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  background: #afb0ce;
+  background: #9e9fc2;
 
   h4 {
-    font-family: $open-sans;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-family: $grotesque;
     font-weight: 0;
     margin: 0;
+    font-size: 1em;
     padding: 0 0 2em 0;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+
+    a {
+      color: white;
+    }
   }
 }
 
 .copyright-footer {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
+  width: 14em;
+  height: 3em;
+  font-family: $playfair;
+  letter-spacing: 0.1em;
+  align-items: center;
+  justify-content: space-around;
+
+  img {
+    width: 1.5em;
+    height: auto;
+  }
 }

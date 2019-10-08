@@ -10,9 +10,12 @@ function Footer(props) {
         <h3>Copyright 2019</h3>
         <img src={sparkles} />
       </div>
-      <h4>Website made with :heart by @Kefimochi and @Komal</h4>
+      <h4>
+        Website made with love by{" "}
+        <a href="https://twitter.com/kefimochi">@Kefimochi</a> and{" "}
+        <a href="/">@Komal</a>
+      </h4>
     </footer>
   )
 }
-
 export default Footer
