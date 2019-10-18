@@ -140,7 +140,6 @@ function Post(props) {
           turpis egestas.
         </div>{" "}
       </div>
-      <Footer />
     </div>
   )
 }
