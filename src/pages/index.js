@@ -9,13 +9,12 @@ import Layout from "../components/Layout"
 const IndexPage = () => (
   <Layout>
     <div>
-        {/* Outcommented in order to work on individual blog posts now */}
-        {/* <Homepage /> */}
-        <Post />
-        <SEO title="Home" />
-  </div>
+      {/* Outcommented in order to work on individual blog posts now */}
+      {/* <Homepage /> */}
+      <Post />
+      <SEO title="Home" />
+    </div>
   </Layout>
+)
 
-    )
-    
-    export default IndexPage
+export default IndexPage
