@@ -14,7 +14,7 @@ const TemplateWrapper = ({children}) =>{
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-
+        {/* Image is WIP, so this aspect of react-helmet will be commented out for now */}
         {/* <link
           rel="apple-touch-icon"
           sizes="180x180"
