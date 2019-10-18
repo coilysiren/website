@@ -1,6 +1,7 @@
 backend:
-  name: github
-  repo: lynncyrin/lynncyrin-dot-me
+  name: test-repo
+  # name: github
+  # repo: lynncyrin/lynncyrin-dot-me
 
 media_folder: static/img
 public_folder: /images
@@ -12,11 +13,13 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "story-post"}
+      - {label: "Template Key", name: "template-key", widget: "hidden", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      - {label: "Featured Image", name: "featuredimage", widget: image}
+      #  Removing Featuring options as this is a personal blog not a Professional blog or article site
+      # - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
+      # - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+      # I still need to integrate Tags
+      # - {label: "Tags", name: "tags", widget: "list"}
