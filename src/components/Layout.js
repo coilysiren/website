@@ -1,5 +1,4 @@
 import React from "react"
-import blogPostImg from "../images/blogpost.png"
 import { Link } from "gatsby"
 import { Helmet } from 'react-helmet'
 import Footer from "./footer"
