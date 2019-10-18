@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Lynn Cyrin <lynncyrin@gmail.com>",
   "dependencies": {
-    "gatsby": "^2.16.3",
+    "gatsby": "^2.16.4",
     "gatsby-plugin-netlify": "^2.1.22",
     "gatsby-plugin-netlify-cms": "^4.1.25",
     "gatsby-cli": "^2.8.2",
