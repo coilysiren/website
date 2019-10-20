@@ -1,7 +1,7 @@
 backend:
-  name: test-repo
-  # name: github
-  # repo: lynncyrin/lynncyrin-dot-me
+  # name: test-repo
+  name: github
+  repo: lynncyrin/lynncyrin-dot-me
 
 media_folder: static/img
 public_folder: /images
