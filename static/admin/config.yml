@@ -1,5 +1,4 @@
 backend:
-  # name: test-repo
   name: github
   repo: lynncyrin/lynncyrin-dot-me
 
