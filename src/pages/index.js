@@ -13,7 +13,7 @@ const IndexPage = () => (
       {/* Outcommented in order to work on individual blog posts now */}
       {/* <Homepage /> */}
       {/* Outcommented to test BlogList */}
-      {/* <Post /> */}
+      <Post />
       <BlogList/>
       <SEO title="Home" />
     </div>
