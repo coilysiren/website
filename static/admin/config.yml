@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: lynncyrin/lynncyrin-dot-me
+  branch: main
 
 media_folder: static/img
 public_folder: /images
