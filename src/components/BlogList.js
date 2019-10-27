@@ -15,8 +15,8 @@ const BlogList = ({ data }) => {
               {console.log(post.frontmatter)}
               <h2>{post.frontmatter.title}</h2>
               <h4>{post.frontmatter.description}</h4>
-              <span className="subtitle">{post.frontmatter.date}</span>
-              {/* <img src={blogPostImg} alt="Temporary static picture" /> */}
+              {/* <span className="subtitle">{post.frontmatter.date}</span> */}
+              <img src={blogPostImg} alt="Temporary static picture" />
               <p>
                 {/* TODO: Optional Description instead of using excerpt */}
                 {post.excerpt}
