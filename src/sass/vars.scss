@@ -2,13 +2,13 @@ $light-blue: #dff0ea;
 $mid-blue: #95adbe;
 $light-purple: #9192bb;
 $mid-purple: #574f7d;
-$dark-purple: #4f3a65;
-$white: #f5f5f5;
+$dark-purple: #3e375d;
+$white: #eeeeee;
 
 $grotesque: "Darker Grotesque", sans-serif;
 $open-sans: "Open Sans Condensed", sans-serif;
 $playfair: "Playfair Display", serif;
-$white: #e0e0e0;
+$constantia: "Constantia";
 
 @mixin tablet {
   @media (min-width: 600px) {
