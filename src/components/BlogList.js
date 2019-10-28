@@ -26,7 +26,7 @@ const BlogList = ({ data }) => {
                   <img src={sparkles} alt="A shiny emoji with three stars" />
                   <h5>340</h5>
                 </div>
-                <Link className="continue-reading">Continue reading...</Link>
+                <Link className="continue-reading" to={post.fields.slug}>Continue reading...</Link>
               </div>
             </article>
           </div>
