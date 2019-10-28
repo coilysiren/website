@@ -60,6 +60,7 @@
   border: 0.2em solid $dark-purple;
   border-top: 1.3em solid $dark-purple;
   padding: 1.3em;
+  padding-left: 0;
   @include tablet {
     width: 82%;
     padding: 2em 0 2em 0;
