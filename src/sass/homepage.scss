@@ -5,7 +5,7 @@
   text-align: center;
   line-height: 2em;
   letter-spacing: 0.1em;
-  height: 35em;
+  height: 32em;
   width: 100%;
   padding: 1em;
   box-sizing: border-box;
@@ -40,84 +40,82 @@
 
 .homepage-container {
   width: 100%;
-  height: auto;
   position: relative;
-  top: 23em;
+  top: 24em;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  @include tablet {
-    top: 27em;
-  }
+  padding: 0 0.5em 0 0.5em;
+  box-sizing: border-box;
 }
 
 .homepage-list {
   width: 100%;
+  width: 30em;
   height: auto;
+  background: $white;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-bottom: 5em;
+  flex-wrap: wrap;
+  border: 0.2em solid $dark-purple;
+  border-top: 1.3em solid $dark-purple;
+  padding: 1.3em;
+  padding-left: 0;
   @include tablet {
-    width: 86%;
+    width: 82%;
+    padding: 2em 0 2em 0;
+  }
+  @include desktop {
+    width: 60%;
   }
 }
 
 .homepage-post {
-  margin-bottom: 1.5em;
-  background-color: $white;
   width: 100%;
-  padding-bottom: 2.5em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-decoration: none;
   height: auto;
+  margin-bottom: 1.3em;
 
   @include tablet {
     border-radius: 1em;
-    padding: 1em;
-    box-sizing: border-box;
-  }
-
-  @include desktop {
-    padding: 2em;
+    padding: 0.5em 0.5em 0 0;
   }
 
   h2 {
-    text-align: center;
     color: $dark-purple;
-    font-family: $grotesque;
+    font-family: $constantia;
     letter-spacing: 0.02em;
-    margin: 0.2em;
-    font-size: 2em;
-    @include desktop {
-      font-size: 2.7em;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 0.3em;
+    font-size: 1.5em;
+    @include tablet {
+      font-size: 1.4em;
     }
   }
 
   h4 {
-    text-align: center;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: normal;
     color: $mid-purple;
-    margin: 0.6em;
-    margin-top: 0.2em;
-    @include desktop {
-      font-size: 1.3em;
-    }
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-
-  p {
-    line-height: 1.8em;
-    color: $dark-purple;
-    font-size: 1.15em;
-    padding: 0.6em;
+    margin: 0em;
+    font-family: $constantia;
     @include tablet {
-      text-indent: 40px;
+      font-size: 1em;
     }
   }
+}
+
+.purple-fold {
+  background: $dark-purple;
+  position: relative;
+  right: 0.2em;
+  height: 3.4em;
+  top: 0.5em;
+  border-radius: 5em;
+  width: 0.6em;
+  margin-right: 2em;
 }
 
 .homepage-buttons {
