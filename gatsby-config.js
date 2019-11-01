@@ -6,7 +6,14 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("sass"),  
+      }
+    },
+    //Replacing standard sass plugin with a specific Dart-Sass implementation
+    // `gatsby-plugin-sass`, 
     {
       resolve: `gatsby-source-filesystem`,
       options: {
