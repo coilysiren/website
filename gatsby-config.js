@@ -12,8 +12,6 @@ module.exports = {
         implementation: require("sass"),  
       }
     },
-    //Replacing standard sass plugin with a specific Dart-Sass implementation
-    // `gatsby-plugin-sass`, 
     {
       resolve: `gatsby-source-filesystem`,
       options: {
