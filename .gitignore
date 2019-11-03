@@ -1,4 +1,6 @@
 .idea
+cypress/fixtures/
+cypress/screenshots/
 
 # Logs
 logs
