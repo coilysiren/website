@@ -58,12 +58,13 @@
     line-height: 1.4em;
   }
 
-  h4 {
+  p {
     font-family: $open-sans;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: $mid-purple;
     text-align: right;
     margin: 0.5em;
+    font-weight: 700;
   }
 
   h5 {
@@ -81,6 +82,9 @@
     border-bottom: none;
     width: 90%;
     padding: 1em;
+    p {
+      letter-spacing: 0.1em;
+    }
   }
 
   @include desktop {
@@ -92,7 +96,7 @@
       font-size: 2em;
       margin-bottom: 0;
     }
-    h4 {
+    p {
       text-align: left;
       margin: 0.6em 0;
       font-size: 1.1em;

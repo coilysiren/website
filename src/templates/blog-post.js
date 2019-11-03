@@ -22,7 +22,7 @@ export const BlogPostTemplate = ({
         {helmet || ""}
         <div className="post-header">
           <h2>{title}</h2>
-          <h4>{description}</h4>
+          <p>{description}</p>
           <h5>{date}</h5>
         </div>
 
