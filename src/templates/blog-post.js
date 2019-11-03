@@ -24,7 +24,7 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
+            <p className="description">{description}</p>
             <PostContent content={content} />
             {/* Tags coming in next feature push */}
             {/* {tags && tags.length ? (
