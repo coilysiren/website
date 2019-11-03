@@ -4,14 +4,14 @@ describe('Basic test workflow', () => {
 
     cy.title()
 
-    cy.contains(`Lynn's Blog`).click()
+    cy.get('.blog-main-title').click()
 
-    cy.contains(`My Second post`).click()
+    cy.get('.homepage-post').eq(0).click()
 
-    cy.url().should('include', '/posts/post2/')
+    cy.url().should('include', '/posts/')
 
     cy.title()
 
-    cy.get('.description').contains('a Hella post!')
+    cy.get('.description')
   })
 })

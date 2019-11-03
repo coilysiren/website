@@ -11,7 +11,7 @@ function Navigation(props) {
           src={iconSVG}
           alt="An abstract shape with lines and circles Tech by Wenjie Jiang from the Noun Project"
         />
-        <h2>{`Lynn` + `'` + `s Blog`}</h2>
+        <h2 className="blog-main-title">{`Lynn` + `'` + `s Blog`}</h2>
       </Link>
       <ul className="nav-links" id="links">
         <li>
