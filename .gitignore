@@ -1,6 +1,6 @@
 .idea
 cypress/fixtures/
-cypress/screenshots/
+cypress/screenshots
 cypress/videos
 
 # Logs
