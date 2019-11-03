@@ -12,6 +12,6 @@ describe('Basic test workflow', () => {
 
     cy.title()
 
-    cy.get('.description')
+    cy.get('.description').should('not.have.value', '')
   })
 })
