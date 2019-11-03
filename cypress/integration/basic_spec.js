@@ -1,11 +1,17 @@
 describe('Basic test workflow', () => {
-  it('Visits the app', () => {
+  it('Visits the blog', () => {
     cy.visit('http://localhost:8000/')
 
-    cy.contains('Under Construction')
+    cy.title()
 
-    cy.contains('New Website Frontend').click()
+    cy.contains(`Lynn's Blog`).click()
 
-    cy.url().should('include', '/page-2/')
+    cy.contains(`My Second post`).click()
+
+    cy.url().should('include', '/posts/post2/')
+
+    cy.title()
+
+    cy.get('.description').contains('a Hella post!')
   })
 })
