@@ -24,7 +24,3 @@ jobs:
       - checkout
       - run: npm ci
       - run: npm run test:e2e:ci
-      - store_artifacts:
-          path: /cypress/screenshots
-      - store_artifacts:
-          path: /cypress/videos
