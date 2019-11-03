@@ -22,8 +22,6 @@ In part one, we will mainly focus on a reader's thorough understanding of how fl
 * Part 3: Advanced Flexbox and CSS
   * Covering everything from using flexbox in order to make a website responsive all the way to how to create your own designs. We'll also get to look at real-world implementations of everything learned throughout this series.
 
-<img src="https://thepracticaldev.s3.amazonaws.com/i/bzr47frhmg7w17i22gw9.png"  alt="A black text divider" height="50%" width="50%">
-
 ## Introduction to "Cats and Boxes"
 
 ![Cat's face looking deeply into your soul from inside of a box](https://thepracticaldev.s3.amazonaws.com/i/04tkt4ec6pmgu5zxv731.jpg)
@@ -108,11 +106,12 @@ Going back to the visual example with cats, it now supposed to make sense why we
 We can have some fun playing with various others `justify-content`, here's a visual representation of how it changes things using this gif:
 
 ![A gif showing properties like `justify-content` flex-start, flex-end, space-evenly and space-between](https://thepracticaldev.s3.amazonaws.com/i/d1kvha5eo6zlu2zmchyi.gif)
+
+<img src="https://thepracticaldev.s3.amazonaws.com/i/d1kvha5eo6zlu2zmchyi.gif"  alt="Demonstrates difference between various `justify-content` properties">
 <figcaption>A gif showing properties like `justify-content` flex-start, flex-end, space-evenly and space-between</figcaption>
 
 <img src="https://thepracticaldev.s3.amazonaws.com/i/gh7fdb1a4rssmr1c368a.png"  alt="Demonstrates difference between various `justify-content` properties" height="50%" width="50%">
 
-<img src="https://thepracticaldev.s3.amazonaws.com/i/bzr47frhmg7w17i22gw9.png"  alt="A black text divider" height="50%" width="50%">
 
 ## Conclusion
 
