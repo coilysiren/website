@@ -1,6 +1,19 @@
 @import "vars.scss";
 @import "fonts.scss";
 
+html,
+body,
+___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+.layoutWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   text-align: center;
   line-height: 2em;
