@@ -111,12 +111,20 @@
   height: auto;
   padding: 1em;
   line-height: 2em;
+  display: flex;
+  flex-direction: column;
   color: $dark-purple;
   box-sizing: border-box;
 
+  figcaption {
+    text-align: center;
+    color: #707070;
+    font-style: italic;
+  }
+
   img {
     height: auto;
-    max-width: 100%;
+    width: 100%;
   }
 
   @include tablet {
@@ -124,6 +132,12 @@
     border-top: none;
     width: 90%;
     padding: 1em 3em;
+    img {
+      align-self: center;
+      height: auto;
+      width: auto;
+      max-width: 70%;
+    }
   }
 
   @include desktop {
