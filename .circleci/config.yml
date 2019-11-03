@@ -1,6 +1,14 @@
 version: 2
 
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build
+      - test-e2e
+
 jobs:
+
   build:
     docker:
       - image: circleci/node:12
@@ -8,3 +16,11 @@ jobs:
       - checkout
       - run: npm ci
       - run: npm run build
+
+  test-e2e:
+    docker:
+      - image: cypress/included:3.5.0
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm run test:e2e:ci
