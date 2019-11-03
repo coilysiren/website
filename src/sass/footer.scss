@@ -8,6 +8,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: auto;
   color: white;
   background: #9e9fc2;
 
@@ -16,8 +17,9 @@ footer {
     font-family: $grotesque;
     font-weight: 0;
     margin: 0;
+
     font-size: 1em;
-    padding: 0 0 2em 0;
+    padding: 0;
     letter-spacing: 0.12em;
 
     a {
