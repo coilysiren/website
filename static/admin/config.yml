@@ -17,9 +17,4 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
-      #  Removing Featuring options as this is a personal blog not a Professional blog or article site
-      # - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      # - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
-      # I still need to integrate Tags
-      # - {label: "Tags", name: "tags", widget: "list"}
