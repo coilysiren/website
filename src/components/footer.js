@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import sparkles from "../images/sparkles-twitter.svg"
 import "../sass/footer.scss"
 
-function Footer(props) {
+function Footer() {
   return (
     <footer>
       <div className="copyright-footer">
@@ -12,8 +12,9 @@ function Footer(props) {
       </div>
       <h4>
         Website made with love by{" "}
-        <a href="https://twitter.com/kefimochi">@Kefimochi</a> and{" "}
-        <a href="/">@Komal</a>
+        <a href="https://twitter.com/kefimochi">@Kefimochi</a>,{" "}
+        <a href="https://twitter.com/slimekat">@Sadie</a> and{" "}
+        <a href="https://github.com/komalali">@Komal</a>
       </h4>
     </footer>
   )
