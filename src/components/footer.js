@@ -12,9 +12,9 @@ function Footer() {
       </div>
       <h4>
         Website made with love by{" "}
-        <a href="https://twitter.com/kefimochi">@Kefimochi</a>,{" "}
-        <a href="https://twitter.com/slimekat">@Sadie</a> and{" "}
-        <a href="https://github.com/komalali">@Komal</a>
+        <a href="https://twitter.com/kefimochi">@kefimochi</a>,{" "}
+        <a href="https://twitter.com/slimekat">@slimekat</a> and{" "}
+        <a href="https://github.com/komalali">@komal</a>
       </h4>
     </footer>
   )
