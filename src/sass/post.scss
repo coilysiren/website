@@ -1,22 +1,44 @@
 @import "vars.scss";
 @import "fonts.scss";
 
+.post-purple-block {
+  text-align: center;
+  line-height: 2em;
+  letter-spacing: 0.1em;
+  height: 15em;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: $mid-purple;
+  top: 0;
+  position: relative;
+}
+
 .post-body {
-  background: $white;
-  top: 5.2em;
   height: auto;
   width: 100%;
+  box-sizing: border-box;
   position: relative;
+  top: -5em;
 
   @include tablet {
-    top: 3.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.post-cover {
-  width: 100%;
-  height: auto;
-}
+// In case anyone will want to add a cover image
+// .post-cover {
+//   margin-top: 4em;
+//   width: 100%;
+//   height: auto;
+//   @include tablet {
+//     margin-top: 2em;
+//     width: 80%;
+//   }
+// }
 
 .post-header {
   padding: 0.5em;
@@ -38,7 +60,7 @@
 
   h4 {
     font-family: $open-sans;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: $mid-purple;
     text-align: right;
     margin: 0.5em;
@@ -52,13 +74,83 @@
     margin-top: 1em;
     color: $mid-purple;
   }
+
+  @include tablet {
+    border: 0.2em solid $dark-purple;
+    border-top: 1.3em solid $dark-purple;
+    border-bottom: none;
+    width: 90%;
+    padding: 1em;
+    h4 {
+      letter-spacing: 0.1em;
+    }
+  }
+
+  @include desktop {
+    width: 75%;
+    padding: 2em 4em;
+
+    h2 {
+      text-align: left;
+      font-size: 2em;
+      margin-bottom: 0;
+    }
+    h4 {
+      text-align: left;
+      margin: 0.6em 0;
+      font-size: 1.1em;
+    }
+    h5 {
+      text-align: right;
+      font-size: 1em;
+      margin: 0;
+    }
+  }
 }
 
 .post-content {
+  background: $white;
+  width: 100%;
+  height: auto;
   padding: 1em;
   line-height: 2em;
+  display: flex;
+  flex-direction: column;
   color: $dark-purple;
   box-sizing: border-box;
+
+  figcaption {
+    text-align: center;
+    color: #707070;
+    font-style: italic;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  @include tablet {
+    border: 0.2em solid $dark-purple;
+    border-top: none;
+    width: 90%;
+    padding: 1em 3em;
+    img {
+      align-self: center;
+      height: auto;
+      width: auto;
+      max-width: 70%;
+    }
+  }
+
+  @include desktop {
+    width: 75%;
+    padding: 1em 7em;
+
+    p {
+      font-size: 1.15em;
+    }
+  }
 }
 
 .highlight {

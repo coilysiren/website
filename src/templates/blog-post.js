@@ -1,34 +1,34 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import { graphql, Link } from "gatsby"
+import Layout from "../components/Layout"
+import Content, { HTMLContent } from "../components/Content"
 
 export const BlogPostTemplate = ({
   content,
   contentComponent,
   description,
   title,
+  date,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p className="description">{description}</p>
-            <PostContent content={content} />
-          </div>
+    <div>
+      <div className="post-purple-block"> </div>
+      <section className="post-body">
+        {helmet || ""}
+        <div className="post-header">
+          <h2>{title}</h2>
+          <h4>{description}</h4>
+          <h5>{date}</h5>
         </div>
-      </div>
-    </section>
+
+        <PostContent className="post-content" content={content} />
+      </section>
+    </div>
   )
 }
 
@@ -37,6 +37,7 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
+  date: PropTypes.string,
   helmet: PropTypes.object,
 }
 
@@ -49,6 +50,7 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
+        date={post.frontmatter.date}
         helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
