@@ -1,7 +1,5 @@
 import React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
-import blogPostImg from "../images/blogpost.png"
-import sparkles from "../images/sparkles-twitter.svg"
 
 const BlogList = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
