@@ -45,7 +45,7 @@
   box-sizing: border-box;
   height: auto;
   width: 100%;
-  background: #fafafa;
+  background: #fff;
   color: $dark-purple;
   display: flex;
   flex-direction: column;
@@ -154,10 +154,23 @@
   }
 }
 
-.highlight {
-  background: #fafafa;
+// Styling of single ``
+p > code {
+  background: #fff;
   border-radius: 2em;
   padding: 0.15em;
+}
+
+// Styling of triple ```
+pre {
+  background-color: $dark-purple;
+  background-image: url("../images/rows-triangles.svg");
+  background-repeat: repeat-x;
+  background-size: 150%;
+  background-position: top;
+  display: flex;
+  padding: 2em 0 2em 2em;
+  color: $white;
 }
 
 .about-container {
@@ -172,7 +185,7 @@
 }
 
 .about-top {
-  background: #fafafa;
+  background: #fff;
   display: flex;
   height: auto;
   width: 100%;
@@ -213,7 +226,7 @@
 }
 
 .about-bottom {
-  background: #fafafa;
+  background: #fff;
   padding: 1em 1.5em 3em 1.5em;
   box-sizing: border-box;
   display: flex;
