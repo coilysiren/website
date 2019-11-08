@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import iconSVG from "../images/cool-logo.svg"
 import "../sass/nav.scss"
@@ -17,11 +17,6 @@ function Navigation(props) {
         <li>
           <Link to="/" activeClassName="activeNavButton">
             Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/about" activeClassName="activeNavButton">
-            About
           </Link>
         </li>
         <li>
