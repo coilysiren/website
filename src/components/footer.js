@@ -6,9 +6,9 @@ function Footer() {
   return (
     <footer>
       <div className="copyright-footer">
-        <img src={sparkles} />
+        <img src={sparkles} alt="Three sparkles colored in purple" />
         <h3>Copyright 2019</h3>
-        <img src={sparkles} />
+        <img src={sparkles} alt="Three sparkles colored in purple" />
       </div>
       <h4>
         Website made with love by{" "}
