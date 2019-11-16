@@ -1,7 +1,67 @@
+@import "vars.scss";
+@import "fonts.scss";
+
 .not-found {
   // height: 35em;
   // width: 100%;
   // position: relative;
   // top: 15em;
   text-align: center;
+  color: $dark-purple;
+}
+
+.nonexistent-header {
+  text-align: center;
+  line-height: 2em;
+  letter-spacing: 0.1em;
+  height: 20em;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: $mid-purple;
+  top: 0;
+  position: relative;
+}
+
+.nonexistent-container {
+  width: 100%;
+  position: relative;
+  top: -7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5em 0 0.5em;
+  box-sizing: border-box;
+}
+
+.nonexistent-content {
+  width: 100%;
+  height: 15em;
+  background: $white;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  flex-wrap: wrap;
+  border: 0.2em solid $dark-purple;
+  border-top: 1.3em solid $dark-purple;
+  padding: 1.3em;
+
+  h1 {
+    font-family: $playfair;
+    font-size: 1.7em;
+    @include tablet {
+      font-size: 2.1em;
+    }
+  }
+  h4 {
+    font-size: 1.3em;
+    color: $mid-purple;
+    font-family: $grotesque;
+  }
+  @include tablet {
+    width: 82%;
+    padding: 2em 0 2em 0;
+  }
+  @include desktop {
+    width: 60%;
+  }
 }
