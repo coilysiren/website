@@ -20,9 +20,12 @@ function Navigation(props) {
           </Link>
         </li>
         <li>
-          <Link to="/contact" activeClassName="activeNavButton">
+          <a
+            href="mailto:lynncyrin@gmail.com"
+            activeClassName="activeNavButton"
+          >
             Contact
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>
