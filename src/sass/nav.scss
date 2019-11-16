@@ -18,6 +18,7 @@ nav {
   align-items: center;
   flex-direction: column;
   position: fixed;
+  padding-bottom: 0.6em;
   z-index: 10;
   background-color: $mid-purple;
 
@@ -36,6 +37,7 @@ nav {
   // h2 doesn't work for unknown reasons.
   text-decoration: none;
   align-items: center;
+  margin: 0.5em;
   height: 2em;
 
   @include tablet {
