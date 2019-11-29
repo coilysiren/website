@@ -42,7 +42,7 @@
     "serve": "gatsby serve",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test:quick": "eslint src && prettier --check src/**/*.js",
+    "test:quick": "eslint src && eslint cypress",
     "test:e2e:local": "start-server-and-test start http://localhost:8000 cy:open",
     "test:e2e:ci": "start-server-and-test start http://localhost:8000 cy:run"
   },
