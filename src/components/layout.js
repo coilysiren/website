@@ -2,7 +2,7 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import Footer from './footer';
 import Nav from './nav';
-import useSiteMetadata from './sitemetadata';
+import useSiteMetadata from './site-metadata';
 import '../sass/layout.scss';
 import '../sass/post.scss';
 
