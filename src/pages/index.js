@@ -1,15 +1,15 @@
 import React from "react"
 import SEO from "../components/seo"
 import Homepage from "../components/homepage"
-import Layout from "../components/Layout"
+import layout from "../components/layout"
 
 const IndexPage = () => (
-  <Layout>
+  <layout>
     <div>
       <Homepage />
       <SEO title="Home" />
     </div>
-  </Layout>
+  </layout>
 )
 
 export default IndexPage
