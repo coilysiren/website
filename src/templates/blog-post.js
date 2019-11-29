@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {graphql} from 'gatsby';
-import layout from '../components/layout';
-import content, {HTMLcontent} from '../components/content';
+import Layout from '../components/layout';
+import Content, {HTMLcontent} from '../components/content';
 import About from '../components/about';
 
 export const BlogPostTemplate = ({
@@ -14,7 +14,7 @@ export const BlogPostTemplate = ({
 	date,
 	helmet
 }) => {
-	const Postcontent = contentComponent || content;
+	const PostContent = contentComponent || Content;
 
 	return (
 		<div>
@@ -27,7 +27,7 @@ export const BlogPostTemplate = ({
 					<h5>{date}</h5>
 				</div>
 
-				<Postcontent className="post-content" content={content} />
+				<PostContent className="post-content" content={content} />
 			</section>
 			<About />
 		</div>
@@ -47,7 +47,7 @@ const BlogPost = ({data}) => {
 	const {markdownRemark: post} = data;
 
 	return (
-		<layout>
+		<Layout>
 			<BlogPostTemplate
 				content={post.html}
 				contentComponent={HTMLcontent}
@@ -64,7 +64,7 @@ const BlogPost = ({data}) => {
 				}
 				title={post.frontmatter.title}
 			/>
-		</layout>
+		</Layout>
 	);
 };
 

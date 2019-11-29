@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const HTMLcontent = ({content, className}) => (
+export const HTMLContent = ({content, className}) => (
 	<div className={className} dangerouslySetInnerHTML={{__html: content}} />
 );
 
-const content = ({content, className}) => (
+const Content = ({content, className}) => (
 	<div className={className}>{content}</div>
 );
 
-content.propTypes = {
+Content.propTypes = {
 	content: PropTypes.node,
 	className: PropTypes.string
 };
 
-HTMLcontent.propTypes = content.propTypes;
+HTMLContent.propTypes = Content.propTypes;
 
-export default content;
+export default Content;

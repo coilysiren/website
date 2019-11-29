@@ -4,12 +4,12 @@ import Homepage from '../components/homepage';
 import layout from '../components/layout';
 
 const IndexPage = () => (
-	<layout>
+	<Layout>
 		<div>
 			<Homepage />
 			<SEO title="Home" />
 		</div>
-	</layout>
+	</Layout>
 );
 
 export default IndexPage;
