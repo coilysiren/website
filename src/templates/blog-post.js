@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-import Content, { HTMLcontent } from '../components/content';
+import Content, { HTMLContent } from '../components/content';
 import About from '../components/about';
 
 export const BlogPostTemplate = ({
@@ -50,7 +50,7 @@ const BlogPost = ({ data }) => {
 		<Layout>
 			<BlogPostTemplate
 				content={post.html}
-				contentComponent={HTMLcontent}
+				contentComponent={HTMLContent}
 				description={post.frontmatter.description}
 				date={post.frontmatter.date}
 				helmet={

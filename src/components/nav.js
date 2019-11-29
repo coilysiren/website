@@ -20,12 +20,7 @@ function Navigation() {
 					</Link>
 				</li>
 				<li>
-					<a
-						href="mailto:lynncyrin@gmail.com"
-						activeClassName="activeNavButton"
-					>
-						Contact
-					</a>
+					<a href="mailto:lynncyrin@gmail.com">Contact</a>
 				</li>
 			</ul>
 		</nav>
