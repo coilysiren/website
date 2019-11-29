@@ -1,50 +1,148 @@
 {
-  "name": "lynncyrin-dot-me",
-  "description": "a website",
-  "version": "1.0.0",
-  "author": "Lynn Cyrin <lynncyrin@gmail.com>",
-  "dependencies": {
-    "gatsby": "^2.18.5",
-    "gatsby-cli": "^2.8.14",
-    "gatsby-image": "^2.2.34",
-    "gatsby-plugin-netlify": "^2.1.27",
-    "gatsby-plugin-netlify-cms": "^4.1.30",
-    "gatsby-plugin-react-helmet": "^3.1.16",
-    "gatsby-plugin-sass": "^2.1.24",
-    "gatsby-plugin-sharp": "^2.3.4",
-    "gatsby-remark-copy-linked-files": "^2.1.31",
-    "gatsby-remark-images": "^3.1.34",
-    "gatsby-remark-relative-images": "^0.2.3",
-    "gatsby-source-filesystem": "^2.1.39",
-    "gatsby-transformer-remark": "^2.6.38",
-    "gatsby-transformer-sharp": "^2.3.6",
-    "netlify-cms-app": "^2.9.7",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "sass": "^1.23.7"
-  },
-  "devDependencies": {
-    "cypress": "^3.7.0",
-    "prettier": "^1.19.1",
-    "start-server-and-test": "^1.10.6"
-  },
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
-    "test:e2e:local": "start-server-and-test start http://localhost:8000 cy:open",
-    "test:e2e:ci": "start-server-and-test start http://localhost:8000 cy:run"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lynncyrin/lynncyrin-dot-me"
-  },
-  "bugs": {
-    "url": "https://github.com/lynncyrin/lynncyrin-dot-me/issues"
-  }
+	"name": "lynncyrin-dot-me",
+	"description": "a website",
+	"version": "1.0.0",
+	"author": "Lynn Cyrin <lynncyrin@gmail.com>",
+	"dependencies": {
+		"gatsby": "^2.18.5",
+		"gatsby-cli": "^2.8.14",
+		"gatsby-image": "^2.2.34",
+		"gatsby-plugin-netlify": "^2.1.27",
+		"gatsby-plugin-netlify-cms": "^4.1.30",
+		"gatsby-plugin-react-helmet": "^3.1.16",
+		"gatsby-plugin-sass": "^2.1.24",
+		"gatsby-plugin-sharp": "^2.3.4",
+		"gatsby-remark-copy-linked-files": "^2.1.31",
+		"gatsby-remark-images": "^3.1.34",
+		"gatsby-remark-relative-images": "^0.2.3",
+		"gatsby-source-filesystem": "^2.1.39",
+		"gatsby-transformer-remark": "^2.6.38",
+		"gatsby-transformer-sharp": "^2.3.6",
+		"netlify-cms-app": "^2.9.7",
+		"prop-types": "^15.7.2",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"react-helmet": "^5.2.1",
+		"sass": "^1.23.7"
+	},
+	"devDependencies": {
+		"cypress": "^3.7.0",
+		"eslint": "^6.7.1",
+		"eslint-plugin-react": "^7.17.0",
+		"eslint-plugin-unicorn": "^14.0.0",
+		"prettier": "^1.19.1",
+		"start-server-and-test": "^1.10.6"
+	},
+	"license": "MIT",
+	"scripts": {
+		"build": "gatsby build",
+		"start": "gatsby develop",
+		"serve": "gatsby serve",
+		"cy:run": "cypress run",
+		"cy:open": "cypress open",
+		"test:quick": "eslint src",
+		"test:e2e:local": "start-server-and-test start http://localhost:8000 cy:open",
+		"test:e2e:ci": "start-server-and-test start http://localhost:8000 cy:run"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lynncyrin/lynncyrin-dot-me"
+	},
+	"bugs": {
+		"url": "https://github.com/lynncyrin/lynncyrin-dot-me/issues"
+	},
+	"eslintConfig": {
+		"extends": [
+			"eslint:recommended",
+			"plugin:react/recommended"
+		],
+		"env": {
+			"es6": true
+		},
+		"parserOptions": {
+			"ecmaVersion": 2020,
+			"sourceType": "module",
+			"ecmaFeatures": {
+				"jsx": true
+			}
+		},
+		"plugins": [
+			"unicorn"
+		],
+		"settings": {
+			"react": {
+				"createClass": "createReactClass",
+				"pragma": "React",
+				"version": "detect"
+			},
+			"propWrapperFunctions": [
+				"forbidExtraProps",
+				{
+					"property": "freeze",
+					"object": "Object"
+				},
+				{
+					"property": "myFavoriteWrapper"
+				}
+			],
+			"linkComponents": [
+				"Hyperlink",
+				{
+					"name": "Link",
+					"linkAttribute": "to"
+				}
+			]
+		},
+		"rules": {
+			"react/prop-types": 0,
+			"react/jsx-uses-react": "error",
+			"react/jsx-uses-vars": "error",
+			"unicorn/filename-case": "error",
+			"unicorn/catch-error-name": "error",
+			"unicorn/consistent-function-scoping": "error",
+			"unicorn/custom-error-definition": "off",
+			"unicorn/error-message": "error",
+			"unicorn/escape-case": "error",
+			"unicorn/expiring-todo-comments": "error",
+			"unicorn/explicit-length-check": "error",
+			"unicorn/import-index": "error",
+			"unicorn/new-for-builtins": "error",
+			"unicorn/no-abusive-eslint-disable": "error",
+			"unicorn/no-array-instanceof": "error",
+			"unicorn/no-console-spaces": "error",
+			"unicorn/no-fn-reference-in-iterator": "off",
+			"unicorn/no-for-loop": "error",
+			"unicorn/no-hex-escape": "error",
+			"unicorn/no-keyword-prefix": "off",
+			"no-nested-ternary": "off",
+			"unicorn/no-nested-ternary": "error",
+			"unicorn/no-new-buffer": "error",
+			"unicorn/no-process-exit": "error",
+			"unicorn/no-unreadable-array-destructuring": "error",
+			"unicorn/no-unsafe-regex": "off",
+			"unicorn/no-unused-properties": "off",
+			"unicorn/no-zero-fractions": "error",
+			"unicorn/number-literal-case": "error",
+			"unicorn/prefer-add-event-listener": "error",
+			"unicorn/prefer-dataset": "error",
+			"unicorn/prefer-event-key": "error",
+			"unicorn/prefer-exponentiation-operator": "error",
+			"unicorn/prefer-flat-map": "error",
+			"unicorn/prefer-includes": "error",
+			"unicorn/prefer-negative-index": "error",
+			"unicorn/prefer-node-append": "error",
+			"unicorn/prefer-node-remove": "error",
+			"unicorn/prefer-query-selector": "error",
+			"unicorn/prefer-reflect-apply": "error",
+			"unicorn/prefer-spread": "error",
+			"unicorn/prefer-starts-ends-with": "error",
+			"unicorn/prefer-string-slice": "error",
+			"unicorn/prefer-text-content": "error",
+			"unicorn/prefer-trim-start-end": "error",
+			"unicorn/prefer-type-error": "error",
+			"unicorn/prevent-abbreviations": "error",
+			"unicorn/regex-shorthand": "error",
+			"unicorn/throw-new-error": "error"
+		}
+	}
 }
