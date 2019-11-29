@@ -1,5 +1,5 @@
 import React from 'react';
-import blogList from './blogList';
+import blogList from './blog-list';
 import '../sass/homepage.scss';
 
 function Homepage(props) {
