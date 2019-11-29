@@ -4,18 +4,19 @@ workflows:
   version: 2
   all:
     jobs:
-      - build
+      - build-and-test
       - test-e2e
 
 jobs:
 
-  build:
+  build-and-test:
     docker:
       - image: circleci/node:12
     steps:
       - checkout
       - run: npm ci
       - run: npm run build
+      - run: npm run test:quick
 
   test-e2e:
     docker:
