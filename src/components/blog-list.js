@@ -1,30 +1,30 @@
 import React from 'react';
-import {Link, graphql, StaticQuery} from 'gatsby';
+import { Link, graphql, StaticQuery } from 'gatsby';
 
-const BlogList = ({data}) => {
-	const {edges: posts} = data.allMarkdownRemark;
+const BlogList = ({ data }) => {
+  const { edges: posts } = data.allMarkdownRemark;
 
-	return (
-		<div>
-			{posts &&
-        posts.map(({node: post}) => (
-        	<div key={post.id}>
-        		<Link className="homepage-post" to={post.fields.slug}>
-        			<div className="purple-fold"></div>
-        			<div>
-        				<h2>{post.frontmatter.title}</h2>
-        				<h4>{post.frontmatter.description}</h4>
-        			</div>
-        		</Link>
-        	</div>
+  return (
+    <div>
+      {posts &&
+        posts.map(({ node: post }) => (
+          <div key={post.id}>
+            <Link className="homepage-post" to={post.fields.slug}>
+              <div className="purple-fold"></div>
+              <div>
+                <h2>{post.frontmatter.title}</h2>
+                <h4>{post.frontmatter.description}</h4>
+              </div>
+            </Link>
+          </div>
         ))}
-		</div>
-	);
+    </div>
+  );
 };
 
-export default () => (
-	<StaticQuery
-		query={graphql`
+const BlogListWithQuery = () => (
+  <StaticQuery
+    query={graphql`
       query BlogListQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
@@ -46,6 +46,8 @@ export default () => (
         }
       }
     `}
-		render={(data, count) => <BlogList data={data} count={count} />}
-	/>
+    render={(data, count) => <BlogList data={data} count={count} />}
+  />
 );
+
+export default BlogListWithQuery;

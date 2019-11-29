@@ -2,12 +2,12 @@ import React from 'react';
 import BlogList from './blog-list';
 import '../sass/homepage.scss';
 
-function Homepage(props) {
+function Homepage() {
 	return (
 		<div>
 			<div className="header">
-				<h2>Hi! I'm Lynn</h2>
-				<h4>and I write about stuff. Please check it out!</h4>
+				<h2>Lynn Cyrin</h2>
+				<h4>software engineer</h4>
 			</div>
 			<div className="homepage-container">
 				<div className="homepage-list">

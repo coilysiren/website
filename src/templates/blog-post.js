@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-import Content, {HTMLcontent} from '../components/content';
+import Content, { HTMLcontent } from '../components/content';
 import About from '../components/about';
 
 export const BlogPostTemplate = ({
@@ -43,8 +43,8 @@ BlogPostTemplate.propTypes = {
 	helmet: PropTypes.object
 };
 
-const BlogPost = ({data}) => {
-	const {markdownRemark: post} = data;
+const BlogPost = ({ data }) => {
+	const { markdownRemark: post } = data;
 
 	return (
 		<Layout>

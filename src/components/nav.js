@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 import iconSVG from '../images/cool-logo.svg';
 import '../sass/nav.scss';
 
-function Navigation(props) {
+function Navigation() {
 	return (
 		<nav>
 			<Link to="/" activeClassName="activeNavButton" className="nav-logoName">
@@ -16,7 +16,7 @@ function Navigation(props) {
 			<ul className="nav-links" id="links">
 				<li>
 					<Link to="/" activeClassName="activeNavButton">
-            Home
+						Home
 					</Link>
 				</li>
 				<li>
@@ -24,7 +24,7 @@ function Navigation(props) {
 						href="mailto:lynncyrin@gmail.com"
 						activeClassName="activeNavButton"
 					>
-            Contact
+						Contact
 					</a>
 				</li>
 			</ul>
