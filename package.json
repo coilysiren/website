@@ -28,6 +28,7 @@
 		"devDependencies": {
 				"cypress": "^3.7.0",
 				"eslint": "^6.7.1",
+				"eslint-plugin-react": "^7.17.0",
 				"eslint-plugin-unicorn": "^14.0.0",
 				"prettier": "^1.19.1",
 				"start-server-and-test": "^1.10.6",
@@ -51,6 +52,10 @@
 				"url": "https://github.com/lynncyrin/lynncyrin-dot-me/issues"
 		},
 		"eslintConfig": {
+				"extends": [
+						"eslint:recommended",
+						"plugin:react/recommended"
+				],
 				"env": {
 						"es6": true
 				},
