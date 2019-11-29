@@ -10,9 +10,9 @@ function About() {
   return (
     <div className="about-container">
       <div className="about-top">
-        <Link className="home-btn">
+        <Link className="home-btn" to="/">
           <img src={Arrow} alt="arrow pointing left" />
-          <h4 to="/">Home</h4>
+          <h4>Home</h4>
         </Link>
         <h3>{siteMetadata.title}</h3>
       </div>
