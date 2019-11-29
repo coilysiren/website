@@ -11,9 +11,9 @@ function Footer() {
         <img src={sparkles} alt="Three sparkles colored in purple" />
       </div>
       <h4>
-        Website made with love by{" "}
+        Website made with contributions from{" "}
         <a href="https://twitter.com/kefimochi">@kefimochi</a>,{" "}
-        <a href="https://twitter.com/slimekat">@slimekat</a> and{" "}
+        <a href="https://twitter.com/slimekat">@slimekat</a>,{" "}
         <a href="https://github.com/komalali">@komal</a>
       </h4>
     </footer>
