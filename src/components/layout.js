@@ -2,12 +2,12 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import Footer from "./footer"
 import Nav from "./nav"
-import usesitemetadata from "./sitemetadata"
+import useSiteMetadata from "./sitemetadata"
 import "../sass/layout.scss"
 import "../sass/post.scss"
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description } = usesitemetadata()
+  const { title, description } = useSiteMetadata()
   return (
     <div className="layoutWrapper">
       <Helmet>
