@@ -1,8 +1,16 @@
 module.exports = {
   siteMetadata: {
     title: "Lynn Cyrin",
-    description: "QTPoC \\ software engineer \\ organizer",
+    description: "🔮 sufficiently advanced technologist",
+    longDescription: [
+      "// 🔮 sufficiently advanced technologist",
+      "// 🗨️ http://my.pronoun.is/they?or=she",
+      "// 📣 organizer @ Write/Speak/Code Seattle",
+      "// ⚒️ currently @ Textio",
+      "// ⚒️ prev @ Project Callisto, Bundler, NASA",
+    ],
     author: "@lynncyrin",
+    email: "lynncyrin@gmal.com",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

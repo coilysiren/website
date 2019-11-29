@@ -6,8 +6,8 @@ import Layout from "../components/layout"
 const IndexPage = () => (
   <Layout>
     <div>
-      <Homepage />
       <SEO title="Home" />
+      <Homepage />
     </div>
   </Layout>
 )
