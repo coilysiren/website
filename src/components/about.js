@@ -2,9 +2,11 @@ import React from "react"
 import { Link } from "gatsby"
 import "../sass/post.scss"
 import Arrow from "../images/arrow-left.svg"
-import Lynn from "../images/lynn.jpg"
+import Self from "../images/self.jpg"
+import useSiteMetadata from "./site-metadata"
 
 function About() {
+  const siteMetadata = useSiteMetadata()
   return (
     <div className="about-container">
       <div className="about-top">
@@ -12,17 +14,11 @@ function About() {
           <img src={Arrow} alt="arrow pointing left" />
           <h4 to="/">Home</h4>
         </Link>
-        <h3>Lynn Cyrin</h3>
+        <h3>{siteMetadata.title}</h3>
       </div>
       <div className="about-bottom">
-        <p>
-          lynncyrin@gmail.com \\ QTPoC \\ infrastructure engineer @textio
-          organizer @WSCseattle \\ prev @callisto @bundlerio @NASA
-        </p>
-        <img
-          src={Lynn}
-          alt="Image of a Lynn's head and shoulders  with LGBTQA+ flag on the background"
-        />
+        <p>{siteMetadata.longDescription}</p>
+        <img src={Self} alt="an image of me" />
       </div>
     </div>
   )

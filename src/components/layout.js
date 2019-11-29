@@ -7,13 +7,13 @@ import "../sass/layout.scss"
 import "../sass/post.scss"
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+  const siteMetadata = useSiteMetadata()
   return (
     <div className="layoutWrapper">
       <Helmet>
         <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{siteMetadata.title}</title>
+        <meta name="description" content={siteMetadata.description} />
       </Helmet>
       <Nav />
       <div>{children}</div>
