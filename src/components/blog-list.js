@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, graphql, StaticQuery} from 'gatsby';
 
-const blogList = ({data}) => {
+const BlogList = ({data}) => {
 	const {edges: posts} = data.allMarkdownRemark;
 
 	return (
@@ -46,6 +46,6 @@ export default () => (
         }
       }
     `}
-		render={(data, count) => <blogList data={data} count={count} />}
+		render={(data, count) => <BlogList data={data} count={count} />}
 	/>
 );

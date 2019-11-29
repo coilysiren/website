@@ -1,5 +1,5 @@
 import React from 'react';
-import blogList from './blog-list';
+import BlogList from './blog-list';
 import '../sass/homepage.scss';
 
 function Homepage(props) {
@@ -11,7 +11,7 @@ function Homepage(props) {
 			</div>
 			<div className="homepage-container">
 				<div className="homepage-list">
-					<blogList />
+					<BlogList />
 				</div>
 			</div>
 		</div>
