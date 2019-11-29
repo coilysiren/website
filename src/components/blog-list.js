@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link, graphql, StaticQuery } from 'gatsby';
+import React from "react"
+import { Link, graphql, StaticQuery } from "gatsby"
 
 const BlogList = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark;
+  const { edges: posts } = data.allMarkdownRemark
 
   return (
     <div>
@@ -19,8 +19,8 @@ const BlogList = ({ data }) => {
           </div>
         ))}
     </div>
-  );
-};
+  )
+}
 
 const BlogListWithQuery = () => (
   <StaticQuery
@@ -48,6 +48,6 @@ const BlogListWithQuery = () => (
     `}
     render={(data, count) => <BlogList data={data} count={count} />}
   />
-);
+)
 
-export default BlogListWithQuery;
+export default BlogListWithQuery
