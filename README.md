@@ -1,6 +1,6 @@
 # lynncyrin.me
 
-a website
+an internet website
 
 ## Status
 
