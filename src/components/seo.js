@@ -10,17 +10,13 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import useSiteMetadata from "./site-metadata"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, title }) {
   const siteMetadata = useSiteMetadata()
   const metaDescription = description || siteMetadata.description
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
       title={title}
-      titleTemplate={`%s | ${siteMetadata.title}`}
       meta={[
         {
           name: "description",
@@ -54,7 +50,7 @@ function SEO({ description, lang, meta, title }) {
           name: "twitter:description",
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]}
     />
   )
 }
