@@ -13,7 +13,7 @@ I started with of the following search:
 
 - open issues
 - that need a fix
-- that don't have a changelist
+- that don't have a CL (eg. [a changelist](https://news.ycombinator.com/item?id=20891103))
 - that aren't planned to be fixed by the go team
 - about toolspeed
 
