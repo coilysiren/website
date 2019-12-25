@@ -185,17 +185,12 @@ pre {
 
 .about-container {
   position: relative;
-  top: -2em;
   color: $dark-purple;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: auto;
   width: 100%;
-
-  @include tablet {
-    top: -5em;
-  }
 }
 
 .about-top {

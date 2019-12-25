@@ -28,8 +28,8 @@ export const BlogPostTemplate = ({
         </div>
 
         <PostContent className="post-content" content={content} />
+        <About />
       </section>
-      <About />
     </div>
   )
 }
