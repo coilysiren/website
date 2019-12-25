@@ -1,7 +1,7 @@
 import React from "react"
-import BlogList from "./blog-list"
-import Layout from "../components/layout"
-import useSiteMetadata from "./site-metadata"
+import BlogList from "./../components/blog-list"
+import Layout from "./../components/layout"
+import useSiteMetadata from "./../components/site-metadata"
 
 const IndexPage = () => {
   const siteMetadata = useSiteMetadata()
