@@ -3,15 +3,30 @@ import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "./layout"
 import About from "./about"
+import useSiteMetadata from "./site-metadata"
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
+  const siteMetadata = useSiteMetadata()
 
   return (
     <Layout>
-      <Helmet titleTemplate="%s | Blog">
+      <Helmet>
         <title>{`${post.frontmatter.title}`}</title>
+        <meta name="og:title" content={`${post.frontmatter.title}`} />
+        <meta name="twitter:title" content={`${post.frontmatter.title}`} />
         <meta name="description" content={`${post.frontmatter.description}`} />
+        <meta
+          name="og:description"
+          content={`${post.frontmatter.description}`}
+        />
+        <meta
+          name="twitter:description"
+          content={`${post.frontmatter.description}`}
+        />
+        <meta name="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content={`${siteMetadata.author}`} />
       </Helmet>
       <div className="post-purple-block"></div>
       <section className="post-body">

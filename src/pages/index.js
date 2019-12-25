@@ -1,15 +1,24 @@
 import React from "react"
-import SEO from "../components/seo"
-import Homepage from "../components/homepage"
+import BlogList from "./blog-list"
 import Layout from "../components/layout"
+import useSiteMetadata from "./site-metadata"
 
-const IndexPage = () => (
-  <Layout>
-    <div>
-      <SEO title="Home" />
-      <Homepage />
-    </div>
-  </Layout>
-)
+const IndexPage = () => {
+  const siteMetadata = useSiteMetadata()
+
+  return (
+    <Layout>
+      <div className="header">
+        <h2>{siteMetadata.title}</h2>
+        <h4>{siteMetadata.description}</h4>
+      </div>
+      <div className="homepage-container">
+        <div className="homepage-list">
+          <BlogList />
+        </div>
+      </div>
+    </Layout>
+  )
+}
 
 export default IndexPage
