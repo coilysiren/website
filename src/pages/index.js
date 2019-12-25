@@ -2,6 +2,7 @@ import React from "react"
 import BlogList from "./../components/blog-list"
 import Layout from "./../components/layout"
 import useSiteMetadata from "./../components/site-metadata"
+import "../sass/index.scss"
 
 const IndexPage = () => {
   const siteMetadata = useSiteMetadata()
