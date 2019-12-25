@@ -18,7 +18,7 @@ export const BlogPostTemplate = ({
 
   return (
     <div>
-      <div className="post-purple-block"> </div>
+      <div className="post-purple-block"></div>
       <section className="post-body">
         {helmet || ""}
         <div className="post-header">
