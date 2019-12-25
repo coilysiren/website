@@ -1,69 +1,46 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "./layout"
-import Content, { HTMLContent } from "./content"
 import About from "./about"
-
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  title,
-  date,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
-
-  return (
-    <div>
-      <div className="post-purple-block"></div>
-      <section className="post-body">
-        {helmet || ""}
-        <div className="post-header">
-          <h2>{title}</h2>
-          <h4>{description}</h4>
-          <h5>{date}</h5>
-        </div>
-
-        <PostContent className="post-content" content={content} />
-        <About />
-      </section>
-    </div>
-  )
-}
-
-BlogPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
-  date: PropTypes.string,
-  helmet: PropTypes.object,
-}
+import useSiteMetadata from "./site-metadata"
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
+  const siteMetadata = useSiteMetadata()
 
   return (
     <Layout>
-      <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
-        description={post.frontmatter.description}
-        date={post.frontmatter.date}
-        helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-          </Helmet>
-        }
-        title={post.frontmatter.title}
-      />
+      <Helmet>
+        <title>{`${post.frontmatter.title}`}</title>
+        <meta name="og:title" content={`${post.frontmatter.title}`} />
+        <meta name="twitter:title" content={`${post.frontmatter.title}`} />
+        <meta name="description" content={`${post.frontmatter.description}`} />
+        <meta
+          name="og:description"
+          content={`${post.frontmatter.description}`}
+        />
+        <meta
+          name="twitter:description"
+          content={`${post.frontmatter.description}`}
+        />
+        <meta name="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content={`${siteMetadata.author}`} />
+      </Helmet>
+      <div className="post-purple-block"></div>
+      <section className="post-body">
+        <div className="post-header">
+          <h2>{post.frontmatter.title}</h2>
+          <h4>{post.frontmatter.description}</h4>
+          <h5>{post.frontmatter.date}</h5>
+        </div>
+        <div
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+        <About />
+      </section>
     </Layout>
   )
 }
