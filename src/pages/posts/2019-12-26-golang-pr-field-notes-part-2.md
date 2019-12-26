@@ -5,6 +5,8 @@ date: 2019-12-26T00:55:34.626Z
 description: Today we do concept exploration! Tomorrow is concept definition.
 ---
 
+if you're looking for part 1, [it's back this way](https://lynncyrin.me/posts/2019-12-25-golang-pr-field-notes-part-1/) <===
+
 ## Starting up again
 
 Something I under-estimated, is how amazingly useful having my notes [from yesterday](https://lynncyrin.me/posts/2019-12-25-golang-pr-field-notes-part-1/) would be. Having written so much down gives me a much stronger launching pad for furthering my knowledge, particularly when the alternative is having to remember everything.
