@@ -1,5 +1,4 @@
-@import "vars.scss";
-@import "fonts.scss";
+@import "_vars.scss";
 
 .post-purple-block {
   text-align: center;
@@ -41,79 +40,90 @@ ul {
   }
 }
 
-// In case anyone will want to add a cover image
-// .post-cover {
-//   margin-top: 4em;
-//   width: 100%;
-//   height: auto;
-//   @include tablet {
-//     margin-top: 2em;
-//     width: 80%;
-//   }
-// }
+@mixin post-sizing {
+  width: 100%;
+
+  $pading-h: 1em;
+  padding-left: $pading-h;
+  padding-right: 1em;
+
+  @include tablet {
+    width: 90%;
+
+    $pading-h: 3em;
+    padding-left: $pading-h;
+    padding-right: $pading-h;
+  }
+
+  @include desktop {
+    width: 75%;
+
+    $pading-h: 7em;
+    padding-left: $pading-h;
+    padding-right: $pading-h;
+  }
+}
 
 .post-header {
-  padding: 0.5em;
+  @include post-sizing;
+  $padding-v: 0.5em;
+  padding-top: $padding-v;
+  padding-bottom: $padding-v;
+
   box-sizing: border-box;
   height: auto;
-  width: 100%;
-  background: #fff;
+  background: #eeeeee;
   color: $dark-purple;
   display: flex;
   flex-direction: column;
+  text-align: center;
+
   h2 {
-    margin: 0.6em;
+    margin-bottom: 1em;
     font-size: 1.7em;
-    margin-left: 0;
-    margin-right: 0;
-    text-align: center;
-    line-height: 1.4em;
   }
 
   h4 {
-    font-family: $open-sans;
-    letter-spacing: 0.15em;
+    font-family: $font-family-body;
     color: $mid-purple;
-    text-align: right;
-    margin: 0.5em;
+    margin-bottom: 2em;
   }
 
   h5 {
-    font-family: $open-sans;
+    text-align: left;
+    font-family: $font-family-body;
     letter-spacing: 0.1em;
-    margin: 0.5em;
-    margin-left: 1em;
-    margin-top: 1em;
+    margin: 0;
     color: $mid-purple;
   }
 
   @include tablet {
+    $padding-v: 1em;
+    padding-top: $padding-v;
+    padding-bottom: $padding-v;
+
     border: 0.2em solid $dark-purple;
     border-top: 1.3em solid $dark-purple;
     border-bottom: none;
-    width: 90%;
-    padding: 1em;
     h4 {
       letter-spacing: 0.1em;
     }
   }
 
   @include desktop {
-    width: 75%;
-    padding: 2em 4em;
+    $padding-v: 2em;
+    padding-top: $padding-v;
+    padding-bottom: $padding-v;
 
     h2 {
-      text-align: left;
       font-size: 2em;
       margin-bottom: 0;
     }
     h4 {
-      text-align: left;
       margin: 0.6em 0;
       font-size: 1.1em;
     }
     h5 {
-      text-align: right;
       font-size: 1em;
       margin: 0;
     }
@@ -121,10 +131,13 @@ ul {
 }
 
 .post-content {
-  background: $white;
-  width: 100%;
+  @include post-sizing;
+  $padding-v: 1em;
+  padding-top: $padding-v;
+  padding-bottom: $padding-v;
+
+  background: #fff;
   height: auto;
-  padding: 1em;
   line-height: 2em;
   display: flex;
   flex-direction: column;
@@ -146,8 +159,6 @@ ul {
     border: 0.2em solid $dark-purple;
     border-bottom: none;
     border-top: none;
-    width: 90%;
-    padding: 1em 3em;
     img {
       align-self: center;
       height: auto;
@@ -157,9 +168,6 @@ ul {
   }
 
   @include desktop {
-    width: 75%;
-    padding: 1em 7em;
-
     p {
       font-size: 1.15em;
     }
@@ -171,6 +179,7 @@ p > code {
   background: #fff;
   border-radius: 2em;
   padding: 0.15em;
+  font-family: $font-family-mono;
 }
 
 // Styling of triple ```
@@ -184,6 +193,7 @@ pre {
   padding: 2em 0 2em 2em;
   color: $white;
   overflow-x: auto;
+  font-family: $font-family-mono;
 }
 
 .about-container {
@@ -197,27 +207,27 @@ pre {
 }
 
 .about-top {
-  background: #fff;
+  @include post-sizing;
+  $padding-v: 0.25em;
+  padding-top: $padding-v;
+  padding-bottom: $padding-v;
+
+  background: #eeeeee;
   display: flex;
   height: auto;
-  width: 100%;
   justify-content: space-between;
   box-sizing: border-box;
 
   h3 {
-    margin-right: 1em;
-    font-family: $constantia;
+    margin-right: 0;
+    font-family: $font-family-body;
     font-size: 1.4em;
   }
+
   @include tablet {
-    width: 90%;
     border: 0.2em solid $dark-purple;
     border-top: none;
     border-bottom: none;
-    justify-content: space-around;
-  }
-  @include desktop {
-    width: 75%;
   }
 }
 
@@ -228,8 +238,9 @@ pre {
   color: $dark-purple;
   font-size: 1.1em;
   letter-spacing: 0.1em;
-  font-family: $grotesque;
+  font-family: $font-family-body;
   font-weight: 700;
+
   img {
     margin: 0 0.5em 0 1em;
     height: 1.4em;
@@ -238,14 +249,16 @@ pre {
 }
 
 .about-bottom {
-  background: #fff;
-  padding: 1em 1.5em 3em 1.5em;
+  @include post-sizing;
+  padding-top: 0;
+
+  background: #eeeeee;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: auto;
-  width: 100%;
+
   img {
     height: 6em;
     width: auto;
@@ -256,19 +269,16 @@ pre {
       margin-left: 2em;
     }
   }
+
   @include tablet {
-    width: 90%;
+    padding-bottom: 2em;
     border: 0.2em solid $dark-purple;
     border-bottom: 0.2em solid $dark-purple;
     border-top: none;
-    padding: 0 7em;
-    padding-bottom: 2em;
     text-align: right;
   }
 
   @include desktop {
-    width: 75%;
-    padding: 0 15em;
     padding-bottom: 2em;
   }
 }

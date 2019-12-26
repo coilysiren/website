@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
 $light-blue: #dff0ea;
 $mid-blue: #95adbe;
 $light-purple: #9192bb;
@@ -5,10 +7,8 @@ $mid-purple: #574f7d;
 $dark-purple: #3e375d;
 $white: #eeeeee;
 
-$grotesque: "Darker Grotesque", sans-serif;
-$open-sans: "Open Sans Condensed", sans-serif;
-$playfair: "Playfair Display", serif;
-$constantia: "Constantia";
+$font-family-body: -apple-system, system-ui, "Source Sans Pro";
+$font-family-mono: SFMono-Regular, Consolas, Menlo, monospace;
 
 @mixin tablet {
   @media (min-width: 600px) {

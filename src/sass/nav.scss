@@ -1,13 +1,10 @@
-@import "vars.scss";
-@import "fonts.scss";
+@import "_vars.scss";
 
-// Its temporary here, will be a new branch w/ more scss styles later :)
 body {
   margin: 0;
   background: $light-purple;
   background-image: url("../images/background-shapes.svg");
   background-size: 100%;
-  // background-attachment: fixed;
 }
 
 nav {
@@ -60,7 +57,7 @@ nav {
     margin: 0;
     // Font weight defaults to bold, so has to be reset back to normal
     font-weight: normal;
-    font-family: $grotesque;
+    font-family: $font-family-body;
   }
 }
 
@@ -86,7 +83,7 @@ nav {
     color: $white;
     font-size: 1em;
     text-transform: lowercase;
-    font-family: $open-sans;
+    font-family: $font-family-body;
     font-weight: 600;
   }
 

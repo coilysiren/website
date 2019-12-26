@@ -1,5 +1,4 @@
-@import "vars.scss";
-@import "fonts.scss";
+@import "_vars.scss";
 
 footer {
   width: 100%;
@@ -15,7 +14,7 @@ footer {
 
   h4 {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    font-family: $grotesque;
+    font-family: $font-family-body;
     font-weight: 0;
     margin: 0;
     font-size: 1em;
@@ -33,7 +32,7 @@ footer {
   display: flex;
   width: 14em;
   height: 3em;
-  font-family: $playfair;
+  font-family: $font-family-body;
   letter-spacing: 0.1em;
   align-items: center;
   justify-content: space-around;
