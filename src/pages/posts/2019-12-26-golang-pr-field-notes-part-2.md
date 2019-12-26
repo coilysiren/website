@@ -70,7 +70,7 @@ Now what? Well, we need to look through the issues to look for a few things. Red
 - what is the difference between go build and go install? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144121444)
 - how could go's build system work without a pkg directory? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144121444)
 - what are object files, what does it mean to link object files? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144125808)
-- what is gb? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144199351 and https://github.com/golang/go/issues/)14271#issue-132335366
+- what is gb? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144199351 and [#14271](https://github.com/golang/go/issues/14271#issue-132335366)
 - what is cgo, what does it mean to be cgo-enabled? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-341861487)
 - what does compilation specifically mean for go? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-470268217)
 - how do binaries relate to source code? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-470268217)
@@ -86,8 +86,8 @@ Short pause. Certain people are referenced in these issues a TON. I'm getting th
 
 Another aside -- I think I just spotted [a remnant](https://github.com/golang/go/issues/8893#issuecomment-100422418) of the point at which golang switched to compiling itself. A quick google and I now know that go was originally written [in C](https://docs.google.com/document/d/1P3BLR31VA8cvLJLfMibSuTdwTuF7WWLux71CYD0eeD8/preview?pli=1). Back to concepts!
 
-- what is asm compilation? via [#17566](https://github.com/golang/go/issues/8893#issuecomment-101070036 and https://github.com/golang/go/issues/)17566#issuecomment-256156430
-- what is SSA? via [#15736](https://github.com/golang/go/issues/8893#issuecomment-134458436 and https://github.com/golang/go/issues/)15736#issue-155612156 and https://github.com/golang/go/issues/17566#issuecomment-256149722
+- what is asm compilation? via [#8893](https://github.com/golang/go/issues/8893#issuecomment-101070036 and [#17566](https://github.com/golang/go/issues/17566#issuecomment-256156430)
+- what is SSA? via [#8893](https://github.com/golang/go/issues/8893#issuecomment-134458436) and [#15736](https://github.com/golang/go/issues/15736#issue-155612156) and [#17566](https://github.com/golang/go/issues/17566#issuecomment-256149722)
 - how do you avoid recompiling a package every time you run tests? via [#11193](https://github.com/golang/go/issues/11193#issuecomment-229522796)
 - what does it mean to compile versus to link? via [#14271](https://github.com/golang/go/issues/14271#issue-132335366)
 - what is cmd/go? via [#14271](https://github.com/golang/go/issues/14271#issue-132335366)
@@ -101,7 +101,7 @@ Did you know -- if you're spending hours reading GitHub issues in the winter, yo
 - what are .c files? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-380967328)
 - does golang use gcc? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-380967328)
 - what is the difference between export data and machine code? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860)
-- what are inlined functions? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860 and https://github.com/golang/go/issues/)17566#issue-184877974
+- what are inlined functions? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860 and [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what does it mean to walk a function? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860)
 - what is a semaphore? via [#15734](https://github.com/golang/go/issues/15734#issuecomment-220172384)
 - what is a VFS? via [#15734](https://github.com/golang/go/issues/15734#issuecomment-220172384)
@@ -121,7 +121,7 @@ Something I've noticed while writing this, is that the detail amount of time I c
 - what is a gc node? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what are OKEY and OAPPEND nodes? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what does it mean to inline during compilation? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
-- what are bounds checks? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974 and https://github.com/golang/go/issues/)25862#issue-331945781
+- what are bounds checks? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974 and [#25862](https://github.com/golang/go/issues/25862#issue-331945781)
 - what does "generating code" mean in the context of compilation? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what would be the benefit of inlining performance critical functions? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what is the cost of inlining a function? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
