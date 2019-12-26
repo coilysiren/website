@@ -62,7 +62,7 @@ There's a lot of them ^^ some of the linked issues are near / exact matches of m
 
 Now what? Well, we need to look through the issues to look for a few things. Red flags, yellow flag, potential PRs that might solve the origin issue, and concepts I don't understand. The unknown concepts are going to be what requires the most work here, I'll need to list them out and add gain concrete understanding of them all before I can do any "real work". Scanning through the issues, here's those concepts:
 
-- what is the difference between $GOROOT/pkg, $GOPATH/pkg? via [#4719](https://github.com/golang/go/issues/4719#issue-51282533)
+- what is the difference between `$GOROOT/pkg`, `$GOPATH/pkg`? via [#4719](https://github.com/golang/go/issues/4719#issue-51282533)
 - what is *.a cache? via [#4719](https://github.com/golang/go/issues/4719#issue-51282533)
 - what does "lazy cleaning" mean? via [#4719](https://github.com/golang/go/issues/4719#issue-51282533)
 - what are *.a binaries? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-66074024)
@@ -70,7 +70,7 @@ Now what? Well, we need to look through the issues to look for a few things. Red
 - what is the difference between go build and go install? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144121444)
 - how could go's build system work without a pkg directory? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144121444)
 - what are object files, what does it mean to link object files? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144125808)
-- what is gb? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144199351 and [#14271](https://github.com/golang/go/issues/14271#issue-132335366)
+- what is gb? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-144199351) and [#14271](https://github.com/golang/go/issues/14271#issue-132335366)
 - what is cgo, what does it mean to be cgo-enabled? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-341861487)
 - what does compilation specifically mean for go? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-470268217)
 - how do binaries relate to source code? via [#4719](https://github.com/golang/go/issues/4719#issuecomment-470268217)
@@ -78,15 +78,15 @@ Now what? Well, we need to look through the issues to look for a few things. Red
 Short pause. Certain people are referenced in these issues a TON. I'm getting the impression that programming languages are only really written by a very small number of people (less than a dozen) who have a lot of support infrastructure (of hundreds or thousands). At any rate, back to concepts.
 
 - how does go compilation differ from cgo compilation? via [#9887](https://github.com/golang/go/issues/9887#issue-57753156)
-- does golang support compilation to multiple different target languages, eg. C, C++, and Fortran? if so, why? via [#9887](https://github.com/)golang/go/issues/9887#issuecomment-456852196
+- does golang support compilation to multiple different target languages, eg. C, C++, and Fortran? if so, why? via [#9887](https://github.com/golang/go/issues/9887#issuecomment-456852196)
 - what does the go tool "scheduling work" mean? via [#8893](https://github.com/golang/go/issues/8893#issue-51288838)
-- what does topological mean, and how could it lead to suboptimal parallelization? via [#8893](https://github.com/golang/go/issues/)8893#issue-51288838
+- what does topological mean, and how could it lead to suboptimal parallelization? via [#8893](https://github.com/golang/go/issues/8893#issue-51288838)
 - what is critical path scheduling? via [#8893](https://github.com/golang/go/issues/8893#issue-51288838)
 - why is cgo compilation heavy? via [#8893](https://github.com/golang/go/issues/8893#issuecomment-73424189)
 
 Another aside -- I think I just spotted [a remnant](https://github.com/golang/go/issues/8893#issuecomment-100422418) of the point at which golang switched to compiling itself. A quick google and I now know that go was originally written [in C](https://docs.google.com/document/d/1P3BLR31VA8cvLJLfMibSuTdwTuF7WWLux71CYD0eeD8/preview?pli=1). Back to concepts!
 
-- what is asm compilation? via [#8893](https://github.com/golang/go/issues/8893#issuecomment-101070036 and [#17566](https://github.com/golang/go/issues/17566#issuecomment-256156430)
+- what is asm compilation? via [#8893](https://github.com/golang/go/issues/8893#issuecomment-101070036) and [#17566](https://github.com/golang/go/issues/17566#issuecomment-256156430)
 - what is SSA? via [#8893](https://github.com/golang/go/issues/8893#issuecomment-134458436) and [#15736](https://github.com/golang/go/issues/15736#issue-155612156) and [#17566](https://github.com/golang/go/issues/17566#issuecomment-256149722)
 - how do you avoid recompiling a package every time you run tests? via [#11193](https://github.com/golang/go/issues/11193#issuecomment-229522796)
 - what does it mean to compile versus to link? via [#14271](https://github.com/golang/go/issues/14271#issue-132335366)
@@ -96,12 +96,12 @@ Another aside -- I think I just spotted [a remnant](https://github.com/golang/go
 Did you know -- if you're spending hours reading GitHub issues in the winter, you can concurrently be applying lotion to your dry skin? It's true! Anyways.
 
 - what are go:cgo_import_dynamic directives? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-239866168)
-- what is the relationship between golang and C? what is the relationship between c compilations and the linker? via [#15681](https://github.com/)golang/go/issues/15681#issuecomment-240319812
+- what is the relationship between golang and C? what is the relationship between c compilations and the linker? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-240319812)
 - how do .a files relate to .o files? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-380967328)
 - what are .c files? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-380967328)
 - does golang use gcc? via [#15681](https://github.com/golang/go/issues/15681#issuecomment-380967328)
 - what is the difference between export data and machine code? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860)
-- what are inlined functions? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860 and [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
+- what are inlined functions? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860) and [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what does it mean to walk a function? via [#15734](https://github.com/golang/go/issues/15734#issue-155608860)
 - what is a semaphore? via [#15734](https://github.com/golang/go/issues/15734#issuecomment-220172384)
 - what is a VFS? via [#15734](https://github.com/golang/go/issues/15734#issuecomment-220172384)
@@ -116,12 +116,12 @@ Something I've noticed while writing this, is that the detail amount of time I c
 - what is typechecking? via [#15756](https://github.com/golang/go/issues/15756#issue-155838129)
 - what is escape analysis? via [#15756](https://github.com/golang/go/issues/15756#issue-155838129)
 - what steps are required for compilation? via [#15756](https://github.com/golang/go/issues/15756#issue-155838129)
-- what does it mean to "rebuild even when target is up to date" eg. what is the target of builds? via [#15799](https://github.com/golang/go/)issues/15799#issue-156283605
+- what does it mean to "rebuild even when target is up to date" eg. what is the target of builds? via [#15799](https://github.com/golang/go/issues/15799#issue-156283605)
 - what is yyerrorn? via [#15913](https://github.com/golang/go/issues/15913#issue-157781645)
 - what is a gc node? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what are OKEY and OAPPEND nodes? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what does it mean to inline during compilation? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
-- what are bounds checks? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974 and [#25862](https://github.com/golang/go/issues/25862#issue-331945781)
+- what are bounds checks? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974) and [#25862](https://github.com/golang/go/issues/25862#issue-331945781)
 - what does "generating code" mean in the context of compilation? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what would be the benefit of inlining performance critical functions? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
 - what is the cost of inlining a function? via [#17566](https://github.com/golang/go/issues/17566#issue-184877974)
@@ -144,7 +144,7 @@ I just went through an entire (long) issue without noticing any new concepts! Ex
 - what is an unbuffered channel? via [#27345](https://github.com/golang/go/issues/27345#issuecomment-419254790)
 - what is BCE? via [#28314](https://github.com/golang/go/issues/28314)
 - what is morestack? via [#29067](https://github.com/golang/go/issues/29067)
-- what is a branch target buffer, what are backwards versus forward branches? via [#29067](https://github.com/golang/go/issues/)29067#issuecomment-443587472
+- what is a branch target buffer, what are backwards versus forward branches? via [#29067](https://github.com/golang/go/issues/29067#issuecomment-443587472)
 - what is icache? via [#29067](https://github.com/golang/go/issues/29067#issuecomment-443887583)
 
 ## Wow that was exhausting
