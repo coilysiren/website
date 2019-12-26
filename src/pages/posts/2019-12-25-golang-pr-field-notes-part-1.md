@@ -111,3 +111,7 @@ So far we've identified the following:
 - there is some active work on this issue, but not so much active work that my contributions would be invalidated
 
 In summary, there's work to do! My next step is to double down on investigating this issue, and gain any surrounding context that I might need.
+
+## Up next
+
+===> [part 2 is this way](https://lynncyrin.me/posts/2019-12-26-golang-pr-field-notes-part-2/)
