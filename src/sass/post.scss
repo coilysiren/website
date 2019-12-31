@@ -40,6 +40,14 @@
   ul {
     margin-top: 0;
     margin-bottom: 1em;
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      margin-bottom: 0;
+    }
   }
 
   hr {
@@ -53,10 +61,6 @@
     margin: 0;
     padding: 1em 2em;
     border-left: 10px solid #ccc;
-  }
-
-  blockquote p {
-    display: inline;
   }
 }
 

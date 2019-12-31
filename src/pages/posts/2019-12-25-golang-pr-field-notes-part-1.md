@@ -31,8 +31,10 @@ This makes accurately labeling issues a fairly high priority concern for reposit
 
 ## Exploring the issue
 
-So, with the previously mentioned search as my guide, I went for the first issue that looked the most approachable. "Approachable" here is a subjective definition, it translates roughly to "do I feel capable of doing this". The issue I picked was https://github.com/golang/go/issues/15752, with the title
+So, with the previously mentioned search as my guide, I went for the first issue that looked the most approachable. "Approachable" here is a subjective definition, it translates roughly to "do I feel capable of doing this". The issue I picked was:
 
+> **https://github.com/golang/go/issues/15752**
+>
 > cmd/go: only rebuild dependent packages when export data has changed
 
 From the title, I determined that the issue relies on core understanding of two concepts:
