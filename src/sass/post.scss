@@ -18,10 +18,6 @@
   }
 }
 
-ul {
-  margin: 0;
-}
-
 .post-body {
   height: auto;
   width: 100%;
@@ -30,6 +26,8 @@ ul {
   $post-body-offset: 5em;
   top: $post-body-offset;
   margin-bottom: $post-body-offset*1.2;
+  font-size: 16px;
+
   @include tablet {
     top: -$post-body-offset;
     margin-bottom: 0;
@@ -37,6 +35,28 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  ul {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  hr {
+    height: 2px;
+    width: 100%;
+    background-color: $light-purple;
+  }
+
+  blockquote {
+    background: #eeeeee;
+    margin: 0;
+    padding: 1em 2em;
+    border-left: 10px solid #ccc;
+  }
+
+  blockquote p {
+    display: inline;
   }
 }
 
@@ -66,10 +86,11 @@ ul {
 
 .post-header {
   @include post-sizing;
-  $padding-v: 0.5em;
+  $padding-v: 1em;
   padding-top: $padding-v;
   padding-bottom: $padding-v;
 
+  margin-top: 2em;
   box-sizing: border-box;
   height: auto;
   background: #eeeeee;
@@ -79,7 +100,7 @@ ul {
   text-align: center;
 
   h2 {
-    margin-bottom: 1em;
+    margin: 0.5em 0;
     font-size: 1.7em;
   }
 
@@ -92,7 +113,6 @@ ul {
   h5 {
     text-align: left;
     font-family: $font-family-body;
-    letter-spacing: 0.1em;
     margin: 0;
     color: $mid-purple;
   }
@@ -102,25 +122,27 @@ ul {
     padding-top: $padding-v;
     padding-bottom: $padding-v;
 
+    margin-top: 0;
     border: 0.2em solid $dark-purple;
     border-top: 1.3em solid $dark-purple;
     border-bottom: none;
+
     h4 {
       letter-spacing: 0.1em;
     }
   }
 
   @include desktop {
-    $padding-v: 2em;
+    $padding-v: 1em;
     padding-top: $padding-v;
     padding-bottom: $padding-v;
 
     h2 {
       font-size: 2em;
-      margin-bottom: 0;
+      margin-bottom: 0.5em;
     }
     h4 {
-      margin: 0.6em 0;
+      margin: 1em 0 1.5em;
       font-size: 1.1em;
     }
     h5 {
@@ -164,12 +186,6 @@ ul {
       height: auto;
       width: auto;
       max-width: 70%;
-    }
-  }
-
-  @include desktop {
-    p {
-      font-size: 1.15em;
     }
   }
 }
