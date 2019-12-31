@@ -26,41 +26,40 @@ Judging from how they were mentioned and the frequency of mentions, here's what 
 
 ### high level programming concepts
 
-- code compilation _([wikipedia](https://en.wikipedia.org/wiki/Compiler))_
-- compiler optimization _([wikipedia](https://en.wikipedia.org/wiki/Optimizing_compiler))_
-- generating assembly code _([github](https://github.com/golang/go/issues/17566)) ([wikipedia](https://en.wikipedia.org/wiki/Code_generation_(compiler)))_
+- code compilation *([wikipedia](https://en.wikipedia.org/wiki/Compiler))*
+- compiler optimization *([wikipedia](https://en.wikipedia.org/wiki/Optimizing_compiler))*
+- generating assembly code *([github](https://github.com/golang/go/issues/17566)) ([wikipedia](https://en.wikipedia.org/wiki/Code_generation_(compiler)))*
 
 ### computer processor concepts
 
-- inter process communication (IPC) _([github](https://github.com/golang/go/issues/15734#issuecomment-220172384)) ([wikipedia](https://en.wikipedia.org/wiki/Inter-process_communication))_
-- semaphore _([github](https://github.com/golang/go/issues/15734#issuecomment-220172384)) ([wikipedia](https://en.wikipedia.org/wiki/Semaphore_(programming)))_
-- instruction cache (icache) _([github](https://github.com/golang/go/issues/29067#issuecomment-443887583)) ([wikipedia](https://en.wikipedia.org/wiki/CPU_cache#ICACHE))_
-- registers _([github](https://github.com/golang/go/issues/25999#issuecomment-399196221)) ([wikipedia](https://en.wikipedia.org/wiki/Processor_register))_
-
+- inter process communication (IPC) *([github](https://github.com/golang/go/issues/15734#issuecomment-220172384)) ([wikipedia](https://en.wikipedia.org/wiki/Inter-process_communication))*
+- semaphore *([github](https://github.com/golang/go/issues/15734#issuecomment-220172384)) ([wikipedia](https://en.wikipedia.org/wiki/Semaphore_(programming)))*
+- instruction cache (icache) *([github](https://github.com/golang/go/issues/29067#issuecomment-443887583)) ([wikipedia](https://en.wikipedia.org/wiki/CPU_cache#ICACHE))*
+- registers *([github](https://github.com/golang/go/issues/25999#issuecomment-399196221)) ([wikipedia](https://en.wikipedia.org/wiki/Processor_register))*
 
 ### general compilation concepts
 
-- bounds checks _(github [1](https://github.com/golang/go/issues/17566), [2](https://github.com/golang/go/issues/25862)) ([wikipedia](https://en.wikipedia.org/wiki/Bounds_checking))_
-- function walking / `walk` _([github](https://github.com/golang/go/issues/15734)) ([wikipedia](https://en.wikipedia.org/wiki/Interpreter_(computing)))_
-- typechecking _([github](https://github.com/golang/go/issues/15756)) ([wikipedia](https://en.wikipedia.org/wiki/Type_system))_
-- compiled function nodes / abstract syntax trees (ASTs) _([github](https://github.com/golang/go/issues/17566)) ([wikipedia](https://en.wikipedia.org/wiki/Abstract_syntax_tree))_
-- inlining functions _([github](https://github.com/golang/go/issues/17566)) ([wikipedia](https://en.wikipedia.org/wiki/Inline_expansion))_
-- intrinsic functions _([github](https://github.com/golang/go/issues/17566#issuecomment-417111586)) ([wikipedia](https://en.wikipedia.org/wiki/Intrinsic_function))_
+- bounds checks *(github [1](https://github.com/golang/go/issues/17566), [2](https://github.com/golang/go/issues/25862)) ([wikipedia](https://en.wikipedia.org/wiki/Bounds_checking))*
+- function walking / `walk` *([github](https://github.com/golang/go/issues/15734)) ([wikipedia](https://en.wikipedia.org/wiki/Interpreter_(computing)))*
+- typechecking *([github](https://github.com/golang/go/issues/15756)) ([wikipedia](https://en.wikipedia.org/wiki/Type_system))*
+- compiled function nodes / abstract syntax trees (ASTs) *([github](https://github.com/golang/go/issues/17566)) ([wikipedia](https://en.wikipedia.org/wiki/Abstract_syntax_tree))*
+- inlining functions *([github](https://github.com/golang/go/issues/17566)) ([wikipedia](https://en.wikipedia.org/wiki/Inline_expansion))*
+- intrinsic functions *([github](https://github.com/golang/go/issues/17566#issuecomment-417111586)) ([wikipedia](https://en.wikipedia.org/wiki/Intrinsic_function))*
 
 ### compilation concepts with large impact on golang
 
-- static single assignment (SSA) _(github [1](https://github.com/golang/go/issues/8893#issuecomment-134458436), [2](https://github.com/golang/go/issues/15736#issue-155612156), [3](https://github.com/golang/go/issues/17566#issuecomment-256149722)) ([godoc](https://godoc.org/golang.org/x/tools/go/ssa)) ([wikipedia](https://en.wikipedia.org/wiki/Static_single_assignment_form))_
+- static single assignment (SSA) *(github [1](https://github.com/golang/go/issues/8893#issuecomment-134458436), [2](https://github.com/golang/go/issues/15736#issue-155612156), [3](https://github.com/golang/go/issues/17566#issuecomment-256149722)) ([godoc](https://godoc.org/golang.org/x/tools/go/ssa)) ([wikipedia](https://en.wikipedia.org/wiki/Static_single_assignment_form))*
 - binary files / executables _(github [1](https://github.com/golang/go/issues/4719#issuecomment-66074026) [2](https://github.com/golang/go/issues/4719#issuecomment-470268217) [3](https://github.com/golang/go/issues/20070#issuecomment-296292391)) ([wikipedia](https://en.wikipedia.org/wiki/Executable))_
-- `*.o` object files _(github [1](https://github.com/golang/go/issues/4719#issuecomment-144125808), [2](https://github.com/golang/go/issues/15734#issuecomment-339211682)) ([googlesource](https://go.googlesource.com/proposal/+/master/design/14386-zip-package-archives.md)) ([wikipedia](https://en.wikipedia.org/wiki/Object_file)_
-- `*.a` archive files, the `ar` format _(github [1](https://github.com/golang/go/issues/4719), [2](https://github.com/golang/go/issues/15681#issuecomment-380967328), [3](https://github.com/golang/go/issues/15734#issuecomment-220173676)) ([stackoverflow](https://stackoverflow.com/questions/15551293/what-are-a-files-in-go)) ([googlesource](https://go.googlesource.com/proposal/+/master/design/14386-zip-package-archives.md)) ([wikipedia](https://en.wikipedia.org/wiki/Ar_(Unix)))_
-- file linking / static vs dynamic linking _(github [1](https://github.com/golang/go/issues/14271), [2](https://github.com/golang/go/issues/4719#issuecomment-144125808), [3](https://github.com/golang/go/issues/15681#issuecomment-240319812)) ([wikipedia](https://en.wikipedia.org/wiki/Static_library)) (stackoverflow [1](https://stackoverflow.com/questions/26418883/golang-how-to-link-c-objects-using-cgo-ofiles), [2](https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking)) ([reddit](https://www.reddit.com/r/golang/comments/53nl4b/why_all_go_binaries_are_staticallylinked/))_
+- `*.o` object files *(github [1](https://github.com/golang/go/issues/4719#issuecomment-144125808), [2](https://github.com/golang/go/issues/15734#issuecomment-339211682)) ([googlesource](https://go.googlesource.com/proposal/+/master/design/14386-zip-package-archives.md)) ([wikipedia](https://en.wikipedia.org/wiki/Object_file)*
+- `*.a` archive files, the `ar` format *(github [1](https://github.com/golang/go/issues/4719), [2](https://github.com/golang/go/issues/15681#issuecomment-380967328), [3](https://github.com/golang/go/issues/15734#issuecomment-220173676)) ([stackoverflow](https://stackoverflow.com/questions/15551293/what-are-a-files-in-go)) ([googlesource](https://go.googlesource.com/proposal/+/master/design/14386-zip-package-archives.md)) ([wikipedia](https://en.wikipedia.org/wiki/Ar_(Unix)))*
+- file linking / static vs dynamic linking *(github [1](https://github.com/golang/go/issues/14271), [2](https://github.com/golang/go/issues/4719#issuecomment-144125808), [3](https://github.com/golang/go/issues/15681#issuecomment-240319812)) ([wikipedia](https://en.wikipedia.org/wiki/Static_library)) (stackoverflow [1](https://stackoverflow.com/questions/26418883/golang-how-to-link-c-objects-using-cgo-ofiles), [2](https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking)) ([reddit](https://www.reddit.com/r/golang/comments/53nl4b/why_all_go_binaries_are_staticallylinked/))*
 - export data _(github [1](https://github.com/golang/go/issues/15752), [2](https://github.com/golang/go/issues/15734), [3](https://github.com/golang/go/issues/20070)) (godoc [1](https://godoc.org/golang.org/x/tools/go/internal/gcimporter), [2](https://godoc.org/golang.org/x/tools/go/gcexportdata), [3](https://godoc.org/golang.org/x/tools/cmd/godex))_
 
 ### general computer science concepts
 
 - runes _([github](https://github.com/golang/go/issues/27148#issuecomment-415131187)) ([stackoverflow](https://stackoverflow.com/questions/19310700/what-is-a-rune)) ([wikipedia](https://en.wikipedia.org/wiki/Runes))_
 - the stack vs the heap _([github](https://github.com/golang/go/issues/25999#issuecomment-400841088)) ([stackoverflow](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap))_
-- control flow _([github](https://github.com/golang/go/issues/17566#issuecomment-385211150)) ([wikipedia](https://en.wikipedia.org/wiki/Control_flow))_
+- control flow *([github](https://github.com/golang/go/issues/17566#issuecomment-385211150)) ([wikipedia](https://en.wikipedia.org/wiki/Control_flow))*
 
 ### golang general concepts
 
