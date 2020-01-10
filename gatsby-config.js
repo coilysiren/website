@@ -10,7 +10,7 @@ module.exports = {
       "// ⚒️ prev @ Project Callisto, Bundler, NASA",
     ],
     author: "@lynncyrin",
-    email: "lynncyrin@gmal.com",
+    email: "lynncyrin@gmail.com",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
