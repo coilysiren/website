@@ -1,8 +1,8 @@
 ---
 name: a large fix
-about: "<📈🔧>"
+about: "<📈🔧> a large fix"
 title: "<📈🔧> (issue title here)"
-labels: 'size/big, type/fix'
+labels: 'size/large, type/fix'
 
 ---
 
