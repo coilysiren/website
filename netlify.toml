@@ -1,0 +1,13 @@
+# docs: https://docs.netlify.com/routing/redirects
+
+[[redirects]]
+  from = "/posts/2019-12-25-golang-pr-field-notes-part-1"
+  to = "/posts/golang-pr-notes-1"
+
+[[redirects]]
+  from = "/posts/2019-12-26-golang-pr-field-notes-part-2"
+  to = "/posts/golang-pr-notes-2"
+
+[[redirects]]
+  from = "/posts/2019-12-29-golang-pr-field-notes-part-3"
+  to = "/posts/golang-pr-notes-3"
