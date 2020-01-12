@@ -2,8 +2,8 @@
 path: "/posts/code-janitor"
 template-key: "blog-post"
 date: "2019-07-27"
-title: "The Maintainer:: Aspects of Code Janitor"
-description: "The code janitor is a servant leadership of a codebase."
+title: "The Maintainer - Aspect of Code Janitor"
+description: "The code janitor is a servant leader of the codebase."
 
 ---
 
