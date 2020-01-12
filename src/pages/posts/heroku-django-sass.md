@@ -2,7 +2,7 @@
 path: "/posts/heroku-django-sass"
 template-key: "blog-post"
 date: "2017-03-30"
-title: "Heroku-django pipeline sass.md"
+title: "Heroku + Django Pipeline + Sass"
 description: "A currently existing django project, hosted on heroku, with a bunch of css"
 
 ---
