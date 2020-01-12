@@ -1,9 +1,8 @@
 ---
 name: a big feature
 about: "<📈⚙>"
-title: ''
+title: "<📈⚙> (issue title here)"
 labels: 'size: big, type: feature'
-assignees: lynncyrin
 
 ---
 
