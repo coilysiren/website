@@ -1,5 +1,5 @@
 ---
-path: "/posts/my-fifth-post"
+path: "/posts/code-janitor"
 template-key: "blog-post"
 date: "2019-07-27"
 title: "The Maintainer:: Aspects of Code Janitor"
