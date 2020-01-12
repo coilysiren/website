@@ -1,8 +1,8 @@
 ---
 name: a small feature
-about: "<📉⚙>"
+about: "<📉⚙> a small feature"
 title: "<📉⚙> (issue title here)"
-labels: 'size: small, type: feature'
+labels: 'size/small, type/feature'
 
 ---
 
