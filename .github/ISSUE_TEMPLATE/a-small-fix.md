@@ -1,9 +1,8 @@
 ---
 name: a small fix
 about: "<📉🔧>"
-title: ''
+title: "<📉🔧> (issue title here)"
 labels: 'size: small, type: fix'
-assignees: lynncyrin
 
 ---
 
