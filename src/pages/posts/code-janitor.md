@@ -4,6 +4,7 @@ template-key: "blog-post"
 date: "2019-07-27"
 title: "The Maintainer:: Aspects of Code Janitor"
 description: "The code janitor is a servant leadership of a codebase."
+
 ---
 
 The code janitor is a servant leadership of a codebase. They use their skills primarily to increase the software engineering velocity of the team as a whole / increase the stability of the code. Their roles are such:
