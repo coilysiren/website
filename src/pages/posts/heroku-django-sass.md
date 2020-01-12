@@ -1,9 +1,10 @@
 ---
-path: "/posts/my-fifth-post"
+path: "/posts/heroku-django-sass"
 template-key: "blog-post"
 date: "2017-03-30"
 title: "Heroku-django pipeline sass.md"
 description: "A currently existing django project, hosted on heroku, with a bunch of css"
+
 ---
 
 ##### ( valid as of March 30th 2017 )
