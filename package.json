@@ -23,7 +23,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
-    "sass": "^1.26.2"
+    "sass": "^1.26.3"
   },
   "devDependencies": {
     "cypress": "^4.1.0",
