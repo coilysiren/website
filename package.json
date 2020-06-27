@@ -13,7 +13,7 @@
     "gatsby-plugin-sass": "^2.3.6",
     "gatsby-plugin-sharp": "^2.6.3",
     "gatsby-remark-copy-linked-files": "^2.3.7",
-    "gatsby-remark-images": "^3.3.3",
+    "gatsby-remark-images": "^3.3.13",
     "gatsby-remark-relative-images": "^0.3.0",
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-transformer-remark": "^2.7.0",
