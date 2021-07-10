@@ -34,7 +34,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-unicorn": "^19.0.1",
     "prettier": "^1.19.1",
-    "start-server-and-test": "^1.12.5"
+    "start-server-and-test": "^1.12.6"
   },
   "license": "MIT",
   "scripts": {
