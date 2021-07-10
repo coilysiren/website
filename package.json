@@ -26,7 +26,7 @@
     "sass": "^1.35.1"
   },
   "devDependencies": {
-    "cypress": "^7.6.0",
+    "cypress": "^7.7.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-cypress": "^2.11.2",
