@@ -5,7 +5,7 @@
   "author": "Lynn Cyrin <lynncyrin@gmail.com>",
   "dependencies": {
     "gatsby": "^2.32.13",
-    "gatsby-cli": "^2.19.2",
+    "gatsby-cli": "^3.9.0",
     "gatsby-image": "^3.8.0",
     "gatsby-plugin-netlify": "^2.11.1",
     "gatsby-plugin-netlify-cms": "^4.10.0",
