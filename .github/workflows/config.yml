@@ -11,7 +11,7 @@ jobs:
     # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
     # https://hub.docker.com/_/node/
-    container: node:16
+    container: node:18
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
     # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
     # https://docs.cypress.io/examples/docker
-    container: cypress/included:7.7.0
+    container: cypress/included:13.2.0
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v3
