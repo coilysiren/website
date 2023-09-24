@@ -20,9 +20,9 @@
     "gatsby-transformer-sharp": "^2.12.1",
     "netlify-cms-app": "^2.15.20",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-helmet": "^6.1.0",
+    "react": "^16",
+    "react-dom": "^16",
+    "react-helmet": "*",
     "sass": "^1.35.1"
   },
   "devDependencies": {
