@@ -34,7 +34,6 @@ module.exports = {
         name: "pages",
       },
     },
-    "gatsby-plugin-netlify-cms",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
@@ -65,6 +64,5 @@ module.exports = {
         ],
       },
     },
-    "gatsby-plugin-netlify",
   ],
 }
