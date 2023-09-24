@@ -8,7 +8,7 @@ description: >-
 
 ---
 
-I was [recently reflecting](https://twitter.com/lynncyrin/status/1215860950684667904) on the fact that [AWS IAM](https://aws.amazon.com/iam/) has the best permissions model on the market, and wondering why I think most other platforms have such a dramatically inferior setup. I had never put much thought into this prior, so my first conclusion was _"wow everyone but Amazon is bad at this!"_.
+I was [recently reflecting](https://twitter.com/coilysiren/status/1215860950684667904) on the fact that [AWS IAM](https://aws.amazon.com/iam/) has the best permissions model on the market, and wondering why I think most other platforms have such a dramatically inferior setup. I had never put much thought into this prior, so my first conclusion was _"wow everyone but Amazon is bad at this!"_.
 
 Except that's not actually how the world works 🙂 In reality there are concrete tradeoffs and decisions that lead to products being in a certain state. And in situations like this? A well designed foundation will get you 90% of the way there. With that context I imagined: how would I design a platform such that future people working on it _(eg. without my direct assistance)_ would replicate the success and effectiveness of IAM? This post is me taking a shot at that.
 

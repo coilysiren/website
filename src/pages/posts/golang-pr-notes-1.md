@@ -18,7 +18,7 @@ I started with of the following search:
 
 [From this url](https://github.com/golang/go/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3AToolSpeed+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22+milestone%3AUnplanned+). There were a few considerations that went into that search. In my experience with open source, and also under the guidance of go's [contributing guide](https://golang.org/doc/contribute.html#before_contributing), I determined that _"open issues that will take a fix, but no fix is planned"_ is the best path for contribution. They essentially say _"we will take a fix that looks like this, if anyone drops in to create it"_. The golang issue tracker separates "backlog" from "unplanned", which I learned about here => https://github.com/golang/go/issues/34376. I assume that a backlog issue may have someone on the golang team drop in and sweep it out from under me, whereas unplanned issues are free game essentially indefinitely. I've had a variant of that happen to me before, where I created a PR for django and then a maintainer decided to [take some of my work and start their own PR](https://github.com/django/django/pull/9016#issuecomment-373777203). So, I'm painfully allergic to that happening again here.
 
-The focus on toolspeed is inspired by my learning goals, I go into that briefly on twitter here => https://twitter.com/lynncyrin/status/1209628089346490368. There's another label that fits my learning goal, the "performance" label. Here's both the toolspeed and performance searches, mostly for my future reference:
+The focus on toolspeed is inspired by my learning goals, I go into that briefly on twitter here => https://twitter.com/coilysiren/status/1209628089346490368. There's another label that fits my learning goal, the "performance" label. Here's both the toolspeed and performance searches, mostly for my future reference:
 
 - [toolspeed](https://github.com/golang/go/issues?utf8=%E2%9C%93&q=is%3Aopen+label%3AToolSpeed+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22+milestone%3AUnplanned+)
 - [performance](https://github.com/golang/go/issues?q=is%3Aopen+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22+milestone%3AUnplanned+label%3APerformance)
@@ -116,4 +116,4 @@ In summary, there's work to do! My next step is to double down on investigating 
 
 ## Up next
 
-===> [part 2 is this way](https://lynncyrin.me/posts/2019-12-26-golang-pr-field-notes-part-2/)
+===> [part 2 is this way](https://coilysiren.me/posts/2019-12-26-golang-pr-field-notes-part-2/)

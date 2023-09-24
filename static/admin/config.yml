@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: lynncyrin/lynncyrin-dot-me
+  repo: coilysiren/website
   branch: main
 
 media_folder: static/img
