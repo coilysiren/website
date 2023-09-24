@@ -9,13 +9,26 @@ on:
 jobs:
   test:
     # https://github.com/actions/runner-images
-    runs:
-      using: docker
-      image: node:16
-
+    runs-on: ubuntu-22.04
+    # https://hub.docker.com/_/node/
+    container: node:16
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v3
       - run: npm ci
       - run: npm run build
       - run: npm run test:quick
+  test-e2e:
+    # https://github.com/actions/runner-images
+    runs-on: ubuntu-22.04
+    # https://docs.cypress.io/examples/docker
+    container: cypress/included:7.7.0
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run test:e2e:ci
