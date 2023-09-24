@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Lynn Cyrin",
+    title: "Kai Siren",
     description: "🔮 sufficiently advanced technologist",
     longDescription: [
       "// 🔮 sufficiently advanced technologist",
@@ -9,8 +9,8 @@ module.exports = {
       "// ⚒️ currently @ Textio",
       "// ⚒️ prev @ Project Callisto, Bundler, NASA",
     ],
-    author: "@lynncyrin",
-    email: "lynncyrin@gmail.com",
+    author: "@coilysiren",
+    email: "coilysiren@gmail.com",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

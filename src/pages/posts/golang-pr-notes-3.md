@@ -6,7 +6,7 @@ description: 'In this part, we start building foundational knowledge.'
 
 ---
 
-if you're looking for part 2, [it's back this way <===](https://lynncyrin.me/posts/2019-12-26-golang-pr-field-notes-part-2/)
+if you're looking for part 2, [it's back this way <===](https://coilysiren.me/posts/2019-12-26-golang-pr-field-notes-part-2/)
 
 ## When we last saw our protagonist
 

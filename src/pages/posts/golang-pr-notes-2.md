@@ -6,11 +6,11 @@ description: Today we do concept exploration! Tomorrow is concept definition.
 
 ---
 
-if you're looking for part 1, [it's back this way <===](https://lynncyrin.me/posts/2019-12-25-golang-pr-field-notes-part-1/)
+if you're looking for part 1, [it's back this way <===](https://coilysiren.me/posts/2019-12-25-golang-pr-field-notes-part-1/)
 
 ## Starting up again
 
-Something I under-estimated, is how amazingly useful having my notes [from yesterday](https://lynncyrin.me/posts/2019-12-25-golang-pr-field-notes-part-1/) would be. Having written so much down gives me a much stronger launching pad for furthering my knowledge, particularly when the alternative is having to remember everything.
+Something I under-estimated, is how amazingly useful having my notes [from yesterday](https://coilysiren.me/posts/2019-12-25-golang-pr-field-notes-part-1/) would be. Having written so much down gives me a much stronger launching pad for furthering my knowledge, particularly when the alternative is having to remember everything.
 
 To kick off the day, here's the list of questions I need to answer:
 
@@ -59,7 +59,7 @@ So here are all the issues mentioned up to 2 steps out, in order of their creati
 - https://github.com/golang/go/issues/28314
 - https://github.com/golang/go/issues/29067
 
-There's a lot of them ^^ some of the linked issues are near / exact matches of my search criteria [from yesterday](https://lynncyrin.me/posts/2019-12-25-golang-pr-field-notes-part-1/). This is a good sign, it tells me that even if I can't solve my origin issue, that I'll be able to use the context I'm gaining to look into a nearby issue.
+There's a lot of them ^^ some of the linked issues are near / exact matches of my search criteria [from yesterday](https://coilysiren.me/posts/2019-12-25-golang-pr-field-notes-part-1/). This is a good sign, it tells me that even if I can't solve my origin issue, that I'll be able to use the context I'm gaining to look into a nearby issue.
 
 ## Concept discovery
 
@@ -168,4 +168,4 @@ That'll come later! For today, I'm headed back to video games.
 
 ## Up next
 
-===> [part 3 is this way](https://lynncyrin.me/posts/2019-12-29-golang-pr-field-notes-part-3/)
+===> [part 3 is this way](https://coilysiren.me/posts/2019-12-29-golang-pr-field-notes-part-3/)

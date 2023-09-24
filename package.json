@@ -47,13 +47,6 @@
     "test:e2e:local": "start-server-and-test 8000 'cypress open'",
     "test:e2e:ci": "start-server-and-test 8000 'cypress run'"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lynncyrin/lynncyrin-dot-me"
-  },
-  "bugs": {
-    "url": "https://github.com/lynncyrin/lynncyrin-dot-me/issues"
-  },
   "prettier": {
     "endOfLine": "lf",
     "semi": false,
