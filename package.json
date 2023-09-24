@@ -42,8 +42,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "test:quick": "eslint src && eslint cypress && eslint *.js",
-    "test:e2e:local": "start-server-and-test start http://localhost:8000 cypress open",
-    "test:e2e:ci": "start-server-and-test start http://localhost:8000 cypress run"
+    "test:e2e:local": "start-server-and-test 8000 'cypress open'",
+    "test:e2e:ci": "start-server-and-test 8000 'cypress run'"
   },
   "repository": {
     "type": "git",
