@@ -1,0 +1,21 @@
+name: Run Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    # https://github.com/actions/runner-images
+    runs:
+      using: docker
+      image: node:16
+
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:quick
