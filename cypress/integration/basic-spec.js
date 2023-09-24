@@ -3,9 +3,7 @@ describe("Basic test workflow", () => {
     // Setup
     cy.visit("http://localhost:8000/")
     cy.get(".blog-main-title").click()
-    cy.get(".homepage-post")
-      .eq(0)
-      .click()
+    cy.get(".homepage-post").eq(0).click()
 
     // Assertions
     cy.url().should("include", "/posts/")
