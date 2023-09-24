@@ -18,4 +18,13 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:quick
+  test-e2e:
+    # https://github.com/actions/runner-images
+    runs-on: ubuntu-22.04
+    # https://docs.cypress.io/examples/docker
+    container: cypress/included:7.6.0
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+      - run: npm ci
       - run: npm run test:e2e:ci
