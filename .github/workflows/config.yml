@@ -9,10 +9,9 @@ on:
 jobs:
   test:
     # https://github.com/actions/runner-images
-    runs:
-      using: docker
-      image: node:16
-
+    runs-on: ubuntu-22.04
+    # https://hub.docker.com/_/node/
+    container: node:16
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v3
