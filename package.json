@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Kai Siren <coilysiren@gmail.com>",
   "dependencies": {
-    "gatsby": "^5.12.4",
+    "gatsby": "^5.12.5",
     "gatsby-cli": "^5.12.1",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-react-helmet": "^6.12.0",
@@ -20,10 +20,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "sass": "^1.68.0"
+    "sass": "^1.69.0"
   },
   "devDependencies": {
-    "cypress": "^13.2.0",
+    "cypress": "^13.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-cypress": "^2.15.1",
