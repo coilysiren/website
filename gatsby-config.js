@@ -1,13 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: "Kai Siren",
-    description: "🔮 sufficiently advanced technologist",
+    description: "devops engineer 🖥️ // plant mom 🌱 // builder 🔨",
     longDescription: [
-      "// 🔮 sufficiently advanced technologist",
-      "// 🗨️ http://my.pronoun.is/they?or=she",
-      "// 📣 organizer @ Write/Speak/Code Seattle",
-      "// ⚒️ currently @ Textio",
-      "// ⚒️ prev @ Project Callisto, Bundler, NASA",
+      `
+// devops engineer 🖥️ // plant mom 🌱 // builder 🔨
+// 🗨️ http://my.pronoun.is/they?or=she,
+    `,
     ],
     author: "@coilysiren",
     email: "coilysiren@gmail.com",

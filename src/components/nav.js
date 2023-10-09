@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import iconSVG from "../images/cool-logo.svg"
+import icon from "../images/icon.png"
 import useSiteMetadata from "./site-metadata"
 import "../sass/nav.scss"
 
@@ -10,8 +10,8 @@ function Navigation() {
     <nav>
       <Link to="/" activeClassName="activeNavButton" className="nav-logoName">
         <img
-          src={iconSVG}
-          alt="An abstract shape with lines and circles Tech by Wenjie Jiang from the Noun Project"
+          src={icon}
+          alt="My personal icon, a stylized C and Y shaped like a power button"
         />
         <h2 className="blog-main-title">{siteMetadata.title}</h2>
       </Link>
