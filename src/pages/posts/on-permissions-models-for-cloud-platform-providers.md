@@ -2,7 +2,7 @@
 
 template-key: blog-post
 title: On Permissions Models for Cloud Platform Providers
-date: 2020-01-12T03:16:57.613Z
+date: 2020-01-12
 description: >-
   If I were doing permissions for a cloud platform provider, I'd do them like this!
 

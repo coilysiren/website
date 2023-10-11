@@ -1,7 +1,7 @@
 ---
 template-key: blog-post
 title: Golang PR Field Notes (Part 1)
-date: 2019-12-25T02:57:55.736Z
+date: 2019-12-25
 description: I'm writing these notes as a part of my grand quest to make a performance improvement to Golang!
 
 ---
