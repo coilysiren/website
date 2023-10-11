@@ -103,7 +103,7 @@ module "azure_openai" {
   # of what these numbers mean, and how to set them, is beyond the scope of this
   # post. But I will try my best to describe it in brief!
   #
-  # A "vent" is a virtual network group. This network group needs an address,
+  # A "vnet" is a virtual network group. This network group needs an address,
   # similar to a street address. The "cidr" is that address, represented as a range.
   # A "subnet" or "sub network" is simply a sub group of the broader vnet.
   # A vnet is like a house. The vnet cdir is the address to that house. The
