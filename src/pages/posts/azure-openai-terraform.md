@@ -471,6 +471,10 @@ resource "azurerm_cognitive_deployment" "private" {
 }
 ```
 
-All of that! Should be deploy-able with a `terraform apply` without requiring much additional configuration. With, of course, the significant except of putting your IP address into the `ip_rules`.
+All of that! Should be deploy-able with a `terraform init && terraform apply` without requiring much additional configuration. With, of course, the significant except of putting your IP address into the `ip_rules`.
+
+I don't expect this example will quite work so easily if you are working with existing architecture. If you're looking for another example terraform configuration to compare against your architecture, I would recommend this Github repo from Azure:
+
+https://github.com/Azure-Samples/azure-openai-terraform-deployment-sample
 
 Good luck! And do follow-up with those network security improvements, dear reader.
