@@ -1,48 +1,5 @@
 @import "_vars.scss";
 
-.layoutWrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  text-align: center;
-  line-height: 2em;
-  letter-spacing: 0.1em;
-  height: 32em;
-  width: 100%;
-  padding: 1em;
-  box-sizing: border-box;
-  background-color: $mid-purple;
-  top: 0;
-  position: relative;
-
-  h2 {
-    margin-top: 2.8em;
-    font-size: 2.4em;
-    font-weight: normal;
-    color: $white;
-    line-height: 1em;
-    letter-spacing: 0;
-    font-family: $font-family-body;
-    margin-bottom: 0.2em;
-    @include tablet {
-      font-size: 3.1em;
-    }
-  }
-
-  h4 {
-    font-family: $font-family-body;
-    color: #ffffff81;
-    font-size: 1.1em;
-    letter-spacing: 0.15em;
-    @include tablet {
-      font-size: 1.2em;
-    }
-  }
-}
-
 .homepage-container {
   width: 100%;
   position: relative;
@@ -53,34 +10,12 @@
   box-sizing: border-box;
 }
 
-.homepage-list {
-  width: 100%;
-  width: 30em;
-  height: auto;
-  background: $white;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
-  flex-wrap: wrap;
-  border: 0.2em solid $dark-purple;
-  border-top: 1.3em solid $dark-purple;
-  padding: 1.3em;
-  padding-left: 0;
-  @include tablet {
-    width: 82%;
-    padding: 2em 0 2em 0;
-  }
-  @include desktop {
-    width: 60%;
-  }
-}
-
 .homepage-post {
   width: 100%;
   display: flex;
   text-decoration: none;
   height: auto;
   margin-bottom: 1.3em;
-  padding: 0 1em;
   @include tablet {
     border-radius: 1em;
     padding: 0.5em 0.5em 0 0;

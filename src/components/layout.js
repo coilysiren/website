@@ -17,6 +17,14 @@ const TemplateWrapper = ({ children }) => {
         <link rel="icon" href={favicon} type="image/x-icon" />
         <meta name="description" content={siteMetadata.description} />
         <meta name="robots" content="follow, index" />
+        {/* https://cdnjs.com/libraries/font-awesome */}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
       </Helmet>
       <Nav />
       <div>{children}</div>

@@ -13,7 +13,6 @@ function Navigation() {
           src={icon}
           alt="My personal icon, a stylized C and Y shaped like a power button"
         />
-        <h2 className="blog-main-title">{siteMetadata.title}</h2>
       </Link>
       <ul className="nav-links" id="links">
         <li>

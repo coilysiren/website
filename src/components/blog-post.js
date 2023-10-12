@@ -28,7 +28,6 @@ const BlogPost = ({ data }) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content={`${siteMetadata.author}`} />
       </Helmet>
-      <div className="post-purple-block"></div>
       <section className="post-body">
         <div className="post-header">
           <h2>{post.frontmatter.title}</h2>

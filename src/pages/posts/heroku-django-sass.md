@@ -7,8 +7,6 @@ description: "A currently existing django project, hosted on heroku, with a bunc
 
 ---
 
-##### ( valid as of March 30th 2017 )
-
 ### What you have
 
 - A currently existing django project, hosted on heroku, with a bunch of css

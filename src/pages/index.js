@@ -13,11 +13,9 @@ const IndexPage = () => {
         <h2>{siteMetadata.title}</h2>
         <h4>{siteMetadata.description}</h4>
       </div>
-      <div className="homepage-container">
-        <div className="homepage-list">
-          <BlogList />
-        </div>
-      </div>
+      <section>
+        <BlogList />
+      </section>
     </Layout>
   )
 }

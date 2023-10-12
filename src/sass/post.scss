@@ -19,17 +19,9 @@
 }
 
 .post-body {
-  height: auto;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  $post-body-offset: 5em;
-  top: $post-body-offset;
-  margin-bottom: $post-body-offset*1.2;
   font-size: 16px;
 
   @include tablet {
-    top: -$post-body-offset;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;

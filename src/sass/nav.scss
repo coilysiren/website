@@ -14,7 +14,7 @@ nav {
   display: flex;
   align-items: center;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   padding-bottom: 0.6em;
   z-index: 10;
   background-color: $mid-purple;

@@ -6,3 +6,74 @@ body,
 #gatsby-focus-wrapper {
   height: 100%;
 }
+
+.layoutWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  line-height: 2em;
+  letter-spacing: 0.1em;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: $mid-purple;
+  top: 0;
+  position: relative;
+  z-index: -1;
+
+  h2 {
+    margin-top: 1em;
+    font-size: 2.4em;
+    font-weight: normal;
+    color: $white;
+    line-height: 1em;
+    letter-spacing: 0;
+    font-family: $font-family-body;
+    margin-bottom: 0.2em;
+    @include tablet {
+      font-size: 3.1em;
+    }
+  }
+
+  h4 {
+    font-family: $font-family-body;
+    color: #ffffff81;
+    font-size: 1.1em;
+    letter-spacing: 0.15em;
+    margin-bottom: 2em;
+    @include tablet {
+      font-size: 1.2em;
+    }
+  }
+}
+
+section {
+  height: auto;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  background: $white;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 0.2em solid $dark-purple;
+  border-top: 1.3em solid $dark-purple;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+
+  @include phone {
+    width: 100%;
+    padding: 1em;
+  }
+  @include tablet {
+    width: 82%;
+    padding: 2em 0 2em 0;
+  }
+  @include desktop {
+    width: 60%;
+  }
+}
