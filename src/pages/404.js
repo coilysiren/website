@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import Layout from "../components/layout"
-import "../sass/404.scss"
+import Closer from "../components/closer"
 
 const NotFoundPage = () => {
   const notFoundTitle = "404: Not found"
@@ -15,15 +15,15 @@ const NotFoundPage = () => {
         <title>{notFoundTitle}</title>
         <meta name="description" content={notFoundDescription} />
       </Helmet>
-      <div className="nonexistent-header"></div>
-      <div className="not-found">
-        <div className="nonexistent-container">
-          <div className="nonexistent-content">
-            <h1>{notFoundTitle}</h1>
-            <h4>{notFoundDescription}</h4>
-          </div>
+      <section className="not-found">
+        <div className="post-header">
+          <h1>{notFoundTitle}</h1>
         </div>
-      </div>
+        <div className="post-content">
+          <p>{notFoundDescription}</p>
+        </div>
+        <Closer />
+      </section>
     </Layout>
   )
 }

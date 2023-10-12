@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "./layout"
-import About from "./about"
+import Closer from "./closer"
 import useSiteMetadata from "./site-metadata"
 
 const BlogPost = ({ data }) => {
@@ -38,7 +38,7 @@ const BlogPost = ({ data }) => {
           className="post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
-        <About />
+        <Closer />
       </section>
     </Layout>
   )

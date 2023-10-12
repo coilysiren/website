@@ -27,7 +27,13 @@ const TemplateWrapper = ({ children }) => {
         />
       </Helmet>
       <Nav />
-      <div>{children}</div>
+      <div>
+        <div className="header">
+          <h2>{siteMetadata.title}</h2>
+          <h4>{siteMetadata.description}</h4>
+        </div>
+        <div>{children}</div>
+      </div>
       <Footer />
     </div>
   )
