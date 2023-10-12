@@ -40,9 +40,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
+    "build": "gatsby clean && gatsby build",
+    "start": "gatsby clean && gatsby develop",
+    "serve": "gatsby clean && gatsby serve",
     "test:quick": "eslint src && eslint cypress && eslint *.js",
     "test:e2e:local": "start-server-and-test 8000 'cypress open'",
     "test:e2e:ci": "start-server-and-test 8000 'cypress run'"

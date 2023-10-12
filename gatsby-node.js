@@ -29,7 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
       const { id } = edge.node
       createPage({
         path: edge.node.fields.slug,
-        component: path.resolve("src/components/blog-post.js"),
+        component: path.resolve("src/components/content-block.js"),
         context: { id },
       })
     })

@@ -69,7 +69,12 @@ section {
   }
 }
 
-section, .post-closer {
+section {
+  overflow: hidden;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
+}
+
+div.post-closer {
+  background-color: $faint-purple;
 }

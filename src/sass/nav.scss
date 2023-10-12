@@ -60,6 +60,18 @@ nav {
   }
 }
 
+#navbar-links {
+  width: 100%;
+
+  @include tablet {
+    width: 66%;
+  }
+
+  @include desktop {
+    width: 33%;
+  }
+}
+
 .nav-links {
   display: flex;
   width: 100%;
@@ -68,12 +80,12 @@ nav {
   padding: 0;
   flex-wrap: wrap;
 
-  @include tablet {
-    width: 55%;
-  }
-
-  @include desktop {
-    width: 35%;
+  .nav-btn {
+    margin: 0 2em;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    color: $off-white;
+    font-weight: bold;
   }
 
   li a {

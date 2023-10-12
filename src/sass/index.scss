@@ -1,7 +1,7 @@
 @import "_vars.scss";
 
 .homepage-post {
-  width: 100%;
+  width: auto;
   display: flex;
   text-decoration: none;
   height: auto;
@@ -21,9 +21,6 @@
     margin: 0;
     margin-bottom: 0.3em;
     font-size: 1.5em;
-    @include tablet {
-      font-size: 1.4em;
-    }
   }
 
   h4 {
@@ -31,9 +28,11 @@
     font-weight: normal;
     color: $mid-purple;
     margin: 0em;
-    @include tablet {
-      font-size: 1em;
-    }
+  }
+
+  @include phone {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
   }
 }
 
@@ -47,79 +46,5 @@
   display: none;
   @include tablet {
     display: flex;
-  }
-}
-
-.homepage-buttons {
-  height: auto;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 1.5em 0 1.5em;
-
-  @include tablet {
-    display: flex;
-    height: 4em;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  .star-counter {
-    width: 99%;
-    height: 2.3em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #666899;
-    border-radius: 0.8em;
-
-    @include tablet {
-      width: 5em;
-      height: 2em;
-      border-radius: 1.5em;
-    }
-
-    img {
-      height: 70%;
-      width: auto;
-      margin-right: 0.7em;
-
-      @include tablet {
-        margin-right: 0.3em;
-      }
-    }
-
-    h5 {
-      color: $mid-purple;
-      letter-spacing: 0.05em;
-      font-size: 1.3em;
-      margin: 0;
-
-      @include tablet {
-        font-size: 1.15em;
-      }
-    }
-  }
-  .continue-reading {
-    margin-top: 0.7em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    background: $mid-purple;
-    border-radius: 0.8em;
-    height: 2.5em;
-    width: 100%;
-    letter-spacing: 0.02em;
-    font-size: 1.1em;
-    color: $off-white;
-
-    @include tablet {
-      width: 12em;
-      height: 2.3em;
-      margin: 0;
-      margin-left: 1em;
-      border-radius: 0.7em;
-    }
   }
 }
