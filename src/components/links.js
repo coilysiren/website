@@ -30,7 +30,7 @@ function Links() {
             className="nav-btn"
             to="https://www.linkedin.com/in/coilysiren/"
             target="_blank"
-            rel="noreferrer"
+            rel="me noreferrer"
           >
             <i className="fa-solid fa-arrow-up-right-from-square"></i>
             <i className="fa-brands fa-linkedin"></i>{" "}
@@ -42,7 +42,7 @@ function Links() {
             className="nav-btn"
             to="https://github.com/coilysiren"
             target="_blank"
-            rel="noreferrer"
+            rel="me noreferrer"
           >
             <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
             <i className="fa-brands fa-square-github"></i>{" "}
@@ -54,7 +54,7 @@ function Links() {
             className="nav-btn"
             to="https://tech.lgbt/@coilysiren"
             target="_blank"
-            rel="noreferrer"
+            rel="me noreferrer"
           >
             <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
             <i className="fa-brands fa-mastodon"></i>{" "}
