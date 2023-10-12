@@ -14,6 +14,7 @@ const BlogList = ({ data }) => {
               <div>
                 <h2>{post.frontmatter.title}</h2>
                 <h4>{post.frontmatter.description}</h4>
+                <p>{post.frontmatter.date}</p>
               </div>
             </Link>
           </div>
@@ -40,6 +41,7 @@ const BlogListWithQuery = () => (
                 title
                 template_key
                 description
+                date(formatString: "MMMM YYYY")
               }
             }
           }

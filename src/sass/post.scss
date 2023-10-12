@@ -1,40 +1,19 @@
 @import "_vars.scss";
 
-.post-purple-block {
-  text-align: center;
-  line-height: 2em;
-  letter-spacing: 0.1em;
-  height: 15em;
-  width: 100%;
-  padding: 1em;
-  box-sizing: border-box;
-  background-color: $mid-purple;
-  top: 0;
-  position: relative;
-  display: none;
-
-  @include tablet {
-    display: flex;
-  }
-}
-
 .post-body {
-  height: auto;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  $post-body-offset: 5em;
-  top: $post-body-offset;
-  margin-bottom: $post-body-offset*1.2;
-  font-size: 16px;
+  padding: 0;
+  background: #fff;
+
+  @include phone {
+    width: 100%;
+  }
 
   @include tablet {
-    top: -$post-body-offset;
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 90%;
+  }
+
+  @include desktop {
+    width: 75%;
   }
 
   ul {
@@ -64,44 +43,13 @@
   }
 }
 
-@mixin post-sizing {
-  width: 100%;
-
-  $pading-h: 1em;
-  padding-left: $pading-h;
-  padding-right: 1em;
-
-  @include tablet {
-    width: 90%;
-
-    $pading-h: 3em;
-    padding-left: $pading-h;
-    padding-right: $pading-h;
-  }
-
-  @include desktop {
-    width: 75%;
-
-    $pading-h: 7em;
-    padding-left: $pading-h;
-    padding-right: $pading-h;
-  }
-}
-
-.post-header {
-  @include post-sizing;
-  $padding-v: 1em;
-  padding-top: $padding-v;
-  padding-bottom: $padding-v;
-
-  margin-top: 2em;
-  box-sizing: border-box;
-  height: auto;
+.post-header, .post-closer {
   background: #eeeeee;
   color: $dark-purple;
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding: 2em;
 
   h2 {
     margin: 0.5em 0;
@@ -109,59 +57,20 @@
   }
 
   h4 {
-    font-family: $font-family-body;
     color: $mid-purple;
     margin-bottom: 2em;
   }
 
   h5 {
     text-align: left;
-    font-family: $font-family-body;
     margin: 0;
     color: $mid-purple;
-  }
-
-  @include tablet {
-    $padding-v: 1em;
-    padding-top: $padding-v;
-    padding-bottom: $padding-v;
-
-    margin-top: 0;
-    border: 0.2em solid $dark-purple;
-    border-top: 1.3em solid $dark-purple;
-    border-bottom: none;
-
-    h4 {
-      letter-spacing: 0.1em;
-    }
-  }
-
-  @include desktop {
-    $padding-v: 1em;
-    padding-top: $padding-v;
-    padding-bottom: $padding-v;
-
-    h2 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-    h4 {
-      margin: 1em 0 1.5em;
-      font-size: 1.1em;
-    }
-    h5 {
-      font-size: 1em;
-      margin: 0;
-    }
+    font-weight: 700;
   }
 }
 
 .post-content {
-  @include post-sizing;
-  $padding-v: 1em;
-  padding-top: $padding-v;
-  padding-bottom: $padding-v;
-
+  padding: 0.5em;
   background: #fff;
   height: auto;
   line-height: 2em;
@@ -182,12 +91,8 @@
   }
 
   @include tablet {
-    border: 0.2em solid $dark-purple;
-    border-bottom: none;
-    border-top: none;
     img {
       align-self: center;
-      height: auto;
       width: auto;
       max-width: 70%;
     }
@@ -196,8 +101,9 @@
 
 // Styling of single ``
 p > code {
-  background: #fff;
-  border-radius: 2em;
+  background: $dark-purple;
+  color: $pure-white;
+  border-radius: 0.2em;
   padding: 0.15em;
   font-family: $font-family-mono;
 }
@@ -210,95 +116,14 @@ pre {
   background-size: 150%;
   background-position: top;
   display: flex;
-  padding: 2em 0 2em 2em;
-  color: $white;
+  padding: 1em 0.5em 2em;
+  color: $pure-white;
   overflow-x: auto;
   font-family: $font-family-mono;
 }
 
-.about-container {
-  position: relative;
-  color: $dark-purple;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-  width: 100%;
-}
-
-.about-top {
-  @include post-sizing;
-  $padding-v: 0.25em;
-  padding-top: $padding-v;
-  padding-bottom: $padding-v;
-
-  background: #eeeeee;
-  display: flex;
-  height: auto;
-  justify-content: space-between;
-  box-sizing: border-box;
-
-  h3 {
-    margin-right: 0;
-    font-family: $font-family-body;
-    font-size: 1.4em;
-  }
-
-  @include tablet {
-    border: 0.2em solid $dark-purple;
-    border-top: none;
-    border-bottom: none;
-  }
-}
-
-.home-btn {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: $dark-purple;
-  font-size: 1.1em;
-  letter-spacing: 0.1em;
-  font-family: $font-family-body;
-  font-weight: 700;
-
-  img {
-    margin: 0 0.5em 0 1em;
-    height: 1.4em;
-    width: auto;
-  }
-}
-
-.about-bottom {
-  @include post-sizing;
-  padding-top: 0;
-
-  background: #eeeeee;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: auto;
-
-  img {
-    height: 6em;
-    width: auto;
-    border-radius: 100em;
-    margin-left: 1em;
-    @include tablet {
-      height: 8em;
-      margin-left: 2em;
-    }
-  }
-
-  @include tablet {
-    padding-bottom: 2em;
-    border: 0.2em solid $dark-purple;
-    border-bottom: 0.2em solid $dark-purple;
-    border-top: none;
-    text-align: right;
-  }
-
-  @include desktop {
-    padding-bottom: 2em;
+.post-closer {
+  a {
+    text-decoration: none;
   }
 }

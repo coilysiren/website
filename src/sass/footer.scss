@@ -14,7 +14,6 @@ footer {
 
   h4 {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    font-family: $font-family-body;
     font-weight: 0;
     margin: 0;
     font-size: 1em;
@@ -30,9 +29,7 @@ footer {
 .copyright-footer {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   display: flex;
-  width: 14em;
   height: 3em;
-  font-family: $font-family-body;
   letter-spacing: 0.1em;
   align-items: center;
   justify-content: space-around;

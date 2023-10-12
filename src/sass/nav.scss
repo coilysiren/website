@@ -14,7 +14,7 @@ nav {
   display: flex;
   align-items: center;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   padding-bottom: 0.6em;
   z-index: 10;
   background-color: $mid-purple;
@@ -57,7 +57,6 @@ nav {
     margin: 0;
     // Font weight defaults to bold, so has to be reset back to normal
     font-weight: normal;
-    font-family: $font-family-body;
   }
 }
 
@@ -80,10 +79,9 @@ nav {
   li a {
     text-decoration: none;
     letter-spacing: 0.15em;
-    color: $white;
+    color: $off-white;
     font-size: 1em;
     text-transform: lowercase;
-    font-family: $font-family-body;
     font-weight: 600;
   }
 

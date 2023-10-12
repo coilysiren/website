@@ -1,14 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,700&display=swap');
 
 $light-blue: #dff0ea;
 $mid-blue: #95adbe;
 $light-purple: #9192bb;
 $mid-purple: #574f7d;
 $dark-purple: #3e375d;
-$white: #eeeeee;
+$off-white: #eeeeee;
+$pure-white: #ffffff;
 
-$font-family-body: -apple-system, system-ui, "Source Sans Pro";
+$font-family-body: "Roboto", sans-serif;;
 $font-family-mono: SFMono-Regular, Consolas, Menlo, monospace;
+
+@mixin phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
 
 @mixin tablet {
   @media (min-width: 600px) {
