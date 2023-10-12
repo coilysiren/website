@@ -70,6 +70,10 @@ nav {
   @include desktop {
     width: 33%;
   }
+
+  .nav-text {
+    display: none;
+  }
 }
 
 .nav-links {
