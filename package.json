@@ -31,7 +31,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-unicorn": "^40.1.0",
     "prettier": "^2.8.8",
-    "start-server-and-test": "^2.0.1"
+    "start-server-and-test": "^2.0.2"
   },
   "overrides": {
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
