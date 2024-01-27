@@ -13,7 +13,7 @@
     "gatsby-remark-copy-linked-files": "^6.13.0",
     "gatsby-remark-images": "^7.13.0",
     "gatsby-remark-relative-images": "^2.0.5",
-    "gatsby-source-filesystem": "^5.13.0",
+    "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.0",
     "gatsby-transformer-sharp": "^5.13.0",
     "prop-types": "^15.8.1",
