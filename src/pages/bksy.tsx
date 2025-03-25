@@ -78,7 +78,7 @@ const Bksy = () => {
 
     await agent.login({
       identifier: handle,
-      password: process.env.PASSWORD || "",
+      password: process.env.BKSY_PASSWORD || "",
     })
 
     setFollowers(await getFollowers(agent, handle))
@@ -91,7 +91,7 @@ const Bksy = () => {
 
     await agent.login({
       identifier: handle,
-      password: process.env.PASSWORD || "",
+      password: process.env.BKSY_PASSWORD || "",
     })
 
     setFollowing(await getFollowing(agent, handle))
