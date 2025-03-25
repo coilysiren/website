@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kai Siren <coilysiren@gmail.com>",
   "dependencies": {
+    "@atproto/api": "^0.14.10",
     "gatsby": "^5.14.1",
     "gatsby-cli": "^5.14.0",
     "gatsby-image": "^3.11.0",
