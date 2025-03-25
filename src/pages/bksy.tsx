@@ -61,8 +61,13 @@ const Bksy = () => {
   const [showFollowers, setShowFollowers] = useState<boolean>(true)
   const [showFollowing, setShowFollowing] = useState<boolean>(true)
 
-  const params = new URLSearchParams(window.location.search)
-  const handle = params.get("handle") || ""
+  var handle
+  if (typeof window === "undefined") {
+    handle = "coilysiren.me"
+  } else {
+    const params = new URLSearchParams(window.location.search)
+    handle = params.get("handle") || ""
+  }
 
   const handleShowFollowers = () => {
     setShowFollowers(!showFollowers)
