@@ -2,66 +2,52 @@ import React, { useState } from "react"
 import { AtpAgent } from "@atproto/api"
 import Layout from "../components/layout"
 import Closer from "../components/closer"
+import { ProfileView } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
-interface Follower {
-  did: string
-  handle: string
-  displayName: string
-  avatar: string
-  description: string
+async function getFollowers(
+  agent: AtpAgent,
+  handle: string,
+  follows: Promise<ProfileView[]> = Promise.resolve([]),
+  cursor: string = ""
+): Promise<ProfileView[]> {
+  try {
+    const reponse = await agent.app.bsky.graph.getFollowers({
+      cursor: cursor,
+      actor: handle,
+      limit: 100,
+    })
+
+    const data = await reponse.data
+    follows = follows.then((follows) => follows.concat(data.followers))
+
+    return data.cursor
+      ? getFollowers(agent, handle, follows, data.cursor)
+      : follows
+  } catch (error) {
+    console.error(error)
+    return []
+  }
 }
 
-async function getFollowers(handle: string): Promise<Follower[]> {
+async function getFollowing(
+  agent: AtpAgent,
+  handle: string,
+  follows: Promise<ProfileView[]> = Promise.resolve([]),
+  cursor: string = ""
+): Promise<ProfileView[]> {
   try {
-    const agent = new AtpAgent({
-      service: "https://bsky.social",
+    const reponse = await agent.app.bsky.graph.getFollows({
+      cursor: cursor,
+      actor: handle,
+      limit: 100,
     })
 
-    await agent.login({
-      identifier: "coilysiren.me",
-      password: process.env.PASSWORD || "",
-    })
+    const data = await reponse.data
+    follows = follows.then((follows) => follows.concat(data.follows))
 
-    // Step 1: Resolve handle to DID
-    const didResponse = await fetch(
-      `https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${handle}`
-    )
-    const didData = await didResponse.json()
-    if (!didData.did) {
-      throw new Error("Failed to resolve handle to DID")
-    }
-
-    console.log(`Resolved DID: ${didData.did}`)
-
-    // Step 2: Fetch the DID document to get the user's PDS instance
-    const didDocResponse = await fetch(`https://plc.directory/${didData.did}`)
-    const didDoc = await didDocResponse.json()
-
-    const pdsEndpoint = didDoc?.service?.find(
-      (service: { type: string }) =>
-        service.type === "AtprotoPersonalDataServer"
-    )?.serviceEndpoint
-    if (!pdsEndpoint) {
-      throw new Error("Failed to determine PDS endpoint")
-    }
-
-    // Step 3: Fetch user following from their PDS
-    const reponse = await fetch(
-      `${pdsEndpoint}/xrpc/app.bsky.graph.getFollows?actor=${didData.did}&limit=10`,
-      {
-        headers: {
-          Authorization: `Bearer ${agent.session?.accessJwt}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
-
-    if (!reponse.ok) {
-      throw new Error("Failed to fetch")
-    }
-
-    const data = await reponse.json()
-    return data.follows
+    return data.cursor
+      ? getFollowers(agent, handle, follows, data.cursor)
+      : follows
   } catch (error) {
     console.error(error)
     return []
@@ -69,46 +55,131 @@ async function getFollowers(handle: string): Promise<Follower[]> {
 }
 
 const Bksy = () => {
-  const [data, setData] = useState<Follower[]>([])
+  const [followers, setFollowers] = useState<ProfileView[]>([])
+  const [following, setFollowing] = useState<ProfileView[]>([])
 
-  const handleSubmit = async () => {
-    setData(await getFollowers("coilysiren.me"))
+  const [showFollowers, setShowFollowers] = useState<boolean>(true)
+  const [showFollowing, setShowFollowing] = useState<boolean>(true)
+
+  const params = new URLSearchParams(window.location.search)
+  const handle = params.get("handle") || ""
+
+  const handleShowFollowers = () => {
+    setShowFollowers(!showFollowers)
   }
+  const handleShowFollowering = () => {
+    setShowFollowing(!showFollowing)
+  }
+
+  const handleGetFollowers = async () => {
+    const agent = new AtpAgent({
+      service: "https://bsky.social",
+    })
+
+    await agent.login({
+      identifier: handle,
+      password: process.env.PASSWORD || "",
+    })
+
+    setFollowers(await getFollowers(agent, handle))
+  }
+
+  const handleGetFollowing = async () => {
+    const agent = new AtpAgent({
+      service: "https://bsky.social",
+    })
+
+    await agent.login({
+      identifier: handle,
+      password: process.env.PASSWORD || "",
+    })
+
+    setFollowing(await getFollowing(agent, handle))
+  }
+
+  const followersComponent = (
+    <div style={!showFollowers ? { display: "none" } : {}}>
+      <h2>Followers</h2>
+      <button onClick={handleGetFollowers}>
+        <h3>Get Followers</h3>
+      </button>
+      <ul className="flex flex-column profile-view">
+        {followers.map((profile: ProfileView) => (
+          <li key={profile.did} className="flex flex-row gap-4">
+            <img
+              src={profile.avatar}
+              alt={profile.displayName}
+              className="img-thumbnail"
+              width={40}
+              height={40}
+            />
+            <div className="flex flex-column">
+              <p>{profile.displayName}</p>
+              <a href={`https://bsky.app/profile/${profile.handle}`}>
+                <p>@{profile.handle}</p>
+              </a>
+              <p>{profile.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
+  const followingComponent = (
+    <div style={!showFollowing ? { display: "none" } : {}}>
+      <h2>Following</h2>
+      <button onClick={handleGetFollowing}>
+        <h3>Get Following</h3>
+      </button>
+      <ul className="flex flex-column profile-view">
+        {following.map((profile: ProfileView) => (
+          <li key={profile.did} className="flex flex-row gap-4">
+            <img
+              src={profile.avatar}
+              alt={profile.displayName}
+              className="img-thumbnail"
+              width={40}
+              height={40}
+            />
+            <div className="flex flex-column">
+              <p>{profile.displayName}</p>
+              <a href={`https://bsky.app/profile/${profile.handle}`}>
+                <p>@{profile.handle}</p>
+              </a>
+              <p>{profile.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 
   return (
     <Layout>
       <section className="post-body">
         <div className="post-header">
           <h2>
-            <a href="https://bsky.app/profile/coilysiren.me">
-              bsky.app/profile/coilysiren.me
+            <a href="https://bsky.app/profile/handle">
+              bsky.app/profile/{handle}
             </a>
           </h2>
         </div>
         <div className="post-content">
-          <button onClick={handleSubmit}>
-            <h2>Get!</h2>
-          </button>
-          <ul className="flex flex-col gap-4 items-center sm:items-start">
-            {data.map((follower: Follower) => (
-              <li key={follower.did} className="flex items-center gap-4">
-                <img
-                  src={follower.avatar}
-                  alt={follower.displayName}
-                  className="img-thumbnail"
-                  width={120}
-                  height={120}
-                />
-                <div className="flex flex-col">
-                  <p>{follower.displayName}</p>
-                  <a href={`https://bsky.app/profile/${follower.handle}`}>
-                    <p>@{follower.handle}</p>
-                  </a>
-                  <p>{follower.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <div className="flex flex-column gap-4">
+              <div className="flex flex-row">
+                <button onClick={handleShowFollowers}>
+                  {showFollowers ? "Hide Followers" : "Show Followers"}
+                </button>
+                <button onClick={handleShowFollowering}>
+                  {showFollowing ? "Hide Following" : "Show Following"}
+                </button>
+              </div>
+              {followersComponent}
+              {followingComponent}
+            </div>
+          </div>
         </div>
         <Closer />
       </section>

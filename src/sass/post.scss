@@ -97,6 +97,41 @@
       max-width: 70%;
     }
   }
+
+  button {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 1em;
+  }
+
+  ul.profile-view {
+    padding: 0;
+  }
+
+  ul.profile-view li img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+
+  ul.profile-view li {
+    padding: 0.5em;
+    background-color: #eeeeee;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 1em;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 // Styling of single ``
