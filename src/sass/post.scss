@@ -1,18 +1,18 @@
-@import "_vars.scss";
+@use "_vars.scss";
 
 .post-body {
   padding: 0;
   background: #fff;
 
-  @include phone {
+  @include vars.phone {
     width: 100%;
   }
 
-  @include tablet {
+  @include vars.tablet {
     width: 90%;
   }
 
-  @include desktop {
+  @include vars.desktop {
     width: 75%;
   }
 
@@ -32,7 +32,7 @@
   hr {
     height: 2px;
     width: 100%;
-    background-color: $light-purple;
+    background-color: vars.$light-purple;
   }
 
   blockquote {
@@ -45,7 +45,7 @@
 
 .post-header, .post-closer {
   background: #eeeeee;
-  color: $dark-purple;
+  color: vars.$dark-purple;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -57,14 +57,14 @@
   }
 
   h4 {
-    color: $mid-purple;
+    color: vars.$mid-purple;
     margin-bottom: 2em;
   }
 
   h5 {
     text-align: left;
     margin: 0;
-    color: $mid-purple;
+    color: vars.$mid-purple;
     font-weight: 700;
   }
 }
@@ -76,7 +76,7 @@
   line-height: 2em;
   display: flex;
   flex-direction: column;
-  color: $dark-purple;
+  color: vars.$dark-purple;
   box-sizing: border-box;
 
   figcaption {
@@ -90,7 +90,7 @@
     width: 100%;
   }
 
-  @include tablet {
+  @include vars.tablet {
     img {
       align-self: center;
       width: auto;
@@ -101,25 +101,25 @@
 
 // Styling of single ``
 p > code {
-  background: $dark-purple;
-  color: $pure-white;
+  background: vars.$dark-purple;
+  color: vars.$pure-white;
   border-radius: 0.2em;
   padding: 0.15em;
-  font-family: $font-family-mono;
+  font-family: vars.$font-family-mono;
 }
 
 // Styling of triple ```
 pre {
-  background-color: $dark-purple;
+  background-color: vars.$dark-purple;
   background-image: url("../images/rows-triangles.svg");
   background-repeat: repeat-x;
   background-size: 150%;
   background-position: top;
   display: flex;
   padding: 1em 0.5em 2em;
-  color: $pure-white;
+  color: vars.$pure-white;
   overflow-x: auto;
-  font-family: $font-family-mono;
+  font-family: vars.$font-family-mono;
 }
 
 .post-closer {

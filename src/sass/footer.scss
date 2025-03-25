@@ -1,4 +1,4 @@
-@import "_vars.scss";
+@use "_vars.scss";
 
 footer {
   width: 100%;
@@ -8,7 +8,7 @@ footer {
   flex-direction: column;
   align-items: center;
   color: white;
-  background: $faint-purple;
+  background: vars.$faint-purple;
   margin-top: auto;
   padding-bottom: 1em;
 

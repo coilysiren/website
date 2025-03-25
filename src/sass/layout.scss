@@ -1,4 +1,4 @@
-@import "_vars.scss";
+@use "_vars.scss";
 
 html,
 body,
@@ -6,7 +6,7 @@ body,
 #gatsby-focus-wrapper {
   height: 100%;
   font-size: 16px;
-  font-family: $font-family-body;
+  font-family: vars.$font-family-body;
 }
 
 .layoutWrapper {
@@ -22,7 +22,7 @@ body,
   width: 100%;
   padding: 1em;
   box-sizing: border-box;
-  background-color: $mid-purple;
+  background-color: vars.$mid-purple;
   top: 0;
   position: relative;
   z-index: -1;
@@ -31,7 +31,7 @@ body,
     margin-top: 1em;
     font-size: 2.4em;
     font-weight: normal;
-    color: $off-white;
+    color: vars.$off-white;
     line-height: 1em;
     letter-spacing: 0;
     margin-bottom: 0.2em;
@@ -51,20 +51,20 @@ section {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10%;
-  background: $off-white;
+  background: vars.$off-white;
   padding: 0;
   flex-wrap: wrap;
   box-sizing: border-box;
-  border: 0.2em solid $dark-purple;
-  border-top: 1.3em solid $dark-purple;
+  border: 0.2em solid vars.$dark-purple;
+  border-top: 1.3em solid vars.$dark-purple;
 
-  @include phone {
+  @include vars.phone {
     width: 100%;
   }
-  @include tablet {
+  @include vars.tablet {
     width: 82%;
   }
-  @include desktop {
+  @include vars.desktop {
     width: 60%;
   }
 }
@@ -76,5 +76,5 @@ section {
 }
 
 div.post-closer {
-  background-color: $faint-purple;
+  background-color: vars.$faint-purple;
 }

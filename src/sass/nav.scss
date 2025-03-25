@@ -1,8 +1,8 @@
-@import "_vars.scss";
+@use "_vars.scss";
 
 body {
   margin: 0;
-  background: $light-purple;
+  background: vars.$light-purple;
   background-image: url("../images/background-shapes.svg");
   background-size: 100%;
 }
@@ -17,9 +17,9 @@ nav {
   position: sticky;
   padding-bottom: 0.6em;
   z-index: 10;
-  background-color: $mid-purple;
+  background-color: vars.$mid-purple;
 
-  @include tablet {
+  @include vars.tablet {
     flex-direction: row;
     justify-content: space-between;
     padding-left: 4em;
@@ -37,7 +37,7 @@ nav {
   margin: 0.5em;
   height: 2em;
 
-  @include tablet {
+  @include vars.tablet {
     font-size: 1em;
     padding-left: 2em;
     padding-bottom: 0.5em;
@@ -63,11 +63,11 @@ nav {
 #navbar-links {
   width: 100%;
 
-  @include tablet {
+  @include vars.tablet {
     width: 66%;
   }
 
-  @include desktop {
+  @include vars.desktop {
     width: 33%;
   }
 
@@ -88,14 +88,14 @@ nav {
     margin: 0 2em;
     letter-spacing: 0.15em;
     text-transform: lowercase;
-    color: $off-white;
+    color: vars.$off-white;
     font-weight: bold;
   }
 
   li a {
     text-decoration: none;
     letter-spacing: 0.15em;
-    color: $off-white;
+    color: vars.$off-white;
     font-size: 1em;
     text-transform: lowercase;
     font-weight: 600;

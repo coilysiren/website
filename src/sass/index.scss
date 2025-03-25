@@ -1,4 +1,4 @@
-@import "_vars.scss";
+@use "_vars.scss";
 
 .homepage-post {
   width: auto;
@@ -7,15 +7,15 @@
   height: auto;
   margin: 1em 0;
   padding: 0.5em 0;
-  background-color: $off-white;
+  background-color: vars.$off-white;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: $pure-white;
+    background-color: vars.$pure-white;
   }
 
   h2 {
-    color: $dark-purple;
+    color: vars.$dark-purple;
     letter-spacing: 0.02em;
     font-weight: normal;
     margin: 0;
@@ -26,25 +26,25 @@
   h4 {
     font-size: 1em;
     font-weight: normal;
-    color: $mid-purple;
+    color: vars.$mid-purple;
     margin: 0em;
   }
 
-  @include phone {
+  @include vars.phone {
     padding-left: 0.5em;
     padding-right: 0.5em;
   }
 }
 
 .purple-fold {
-  background: $dark-purple;
+  background: vars.$dark-purple;
   position: relative;
   right: 0.2em;
   border-radius: 5em;
   width: 0.6em;
   margin-right: 2em;
   display: none;
-  @include tablet {
+  @include vars.tablet {
     display: flex;
   }
 }
