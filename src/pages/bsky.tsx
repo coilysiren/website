@@ -21,7 +21,13 @@ const Bksy = () => {
   const [reccomendationDetails, setReccomendationDetails] = useState<
     IReccomendationDetails[]
   >([])
-  const myHandle = "coilysiren.me"
+
+  var myHandle
+  // get the "handle" query parameter
+  if (window?.location?.search != null) {
+    const urlParams = new URLSearchParams(window.location.search)
+    myHandle = urlParams.get("handle")
+  }
 
   console.log("component remounted")
 
