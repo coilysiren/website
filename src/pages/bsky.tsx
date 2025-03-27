@@ -15,6 +15,10 @@ const Bksy = () => {
 
   console.log("component remounted")
 
+  if (recommendedHandles.length != 0 && reccomendsPage != -1) {
+    setTimeout(() => handleGetReccommendedHandles(), 1000)
+  }
+
   const handleGetReccommendedHandles = async () => {
     try {
       const response = await fetch(
@@ -29,6 +33,7 @@ const Bksy = () => {
       )
       setReccomendsPage(() => data.next)
       setReccommendedHandles(() => thisRecommendedHandles)
+
       console.log(data)
       console.log(
         `recommendedHandles?.length: ${thisRecommendedHandles?.length}`
@@ -44,13 +49,14 @@ const Bksy = () => {
         setReccomesLoaded(() => true)
         return
       }
-
-      // Wait for a bit before running again to avoid rate limiting
-      setTimeout(handleGetReccommendedHandles, 1000)
     } catch (error) {
       console.error("Error fetching reccomended handles:", error)
       return
     }
+  }
+
+  if (reccomendsPage == -1) {
+    setTimeout(() => handleGetCredibilities(), 1000)
   }
 
   const handleGetCredibilities = async () => {
@@ -78,9 +84,6 @@ const Bksy = () => {
       if (recommendedHandles?.length == 0) {
         return
       }
-
-      // Wait for a bit before running again to avoid rate limiting
-      setTimeout(handleGetCredibilities, 1000)
     } catch (error) {
       console.error("Error fetching credibility:", error)
       return
