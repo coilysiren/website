@@ -6,11 +6,16 @@ import {
   ProfileViewDetailed,
 } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
+interface ICreditability {
+  handle: string
+  percent: number
+}
+
 const Bksy = () => {
   const [recommendedHandles, setReccommendedHandles] = useState<string[]>([])
   const [reccomendsPage, setReccomendsPage] = useState<number>(0)
   const [reccomendsLoaded, setReccomesLoaded] = useState<boolean>(false)
-  const [credibilities, setCredibilities] = useState<[string, number][]>([])
+  const [credibilities, setCredibilities] = useState<ICreditability[]>([])
   const myHandle = "coilysiren.me"
 
   console.log("component remounted")
@@ -31,6 +36,11 @@ const Bksy = () => {
       const thisRecommendedHandles = Array.from(
         new Set((recommendedHandles || []).concat(data.reccomendations))
       )
+
+      // Randomize the order of the handles.
+      // This is done to prevent the same handles from being recommended in the same order.
+      thisRecommendedHandles.sort(() => Math.random() - 0.5)
+
       setReccomendsPage(() => data.next)
       setReccommendedHandles(() => thisRecommendedHandles)
 
@@ -61,7 +71,8 @@ const Bksy = () => {
 
   const handleGetCredibilities = async () => {
     try {
-      const recommendedHandlesCopy = [...(recommendedHandles || [])] // Create a copy
+      const recommendedHandlesCopy = recommendedHandles.slice() // Create a copy
+      recommendedHandlesCopy.sort(() => Math.random() - 0.5) // Randomize the order
       const theirHandle = recommendedHandlesCopy.pop() // Remove last item
 
       if (!theirHandle) return
@@ -72,14 +83,23 @@ const Bksy = () => {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      const thisCredibility: [string, number] = [theirHandle || "", data]
+      const thisCredibility: ICreditability = {
+        handle: theirHandle,
+        percent: data,
+      }
 
-      setCredibilities((prev) => [...(prev || []), thisCredibility])
-      setReccommendedHandles(recommendedHandlesCopy)
+      const credibilitiesCopy = credibilities.slice() // Create a copy
+      const thisCredibilities = credibilitiesCopy.concat(thisCredibility)
+      thisCredibilities.sort((a, b) => a[1] - b[1])
+
+      setCredibilities(() => thisCredibilities)
+      setReccommendedHandles(() => recommendedHandlesCopy)
 
       console.log(`data: ${data}`)
-      console.log(`thisCredibility: ${thisCredibility}`)
-      console.log(`credibilities: ${credibilities}`)
+      console.log(`thisCredibility: ${thisCredibilities}`)
+      console.log(
+        `recommendedHandlesCopy?.length: ${recommendedHandlesCopy?.length}`
+      )
 
       if (recommendedHandles?.length == 0) {
         return
@@ -110,11 +130,11 @@ const Bksy = () => {
           </button>
           <ul>
             {credibilities?.map((credibility) => (
-              <li key={credibility[0]} className="flex flex-row gap-4">
-                <a href={`https://bsky.app/profile/${credibility[0]}`}>
-                  @{credibility[0]}
+              <li key={credibility.handle} className="flex flex-row gap-4">
+                <a href={`https://bsky.app/profile/${credibility.handle}`}>
+                  @{credibility.handle}
                 </a>
-                <p>{credibility[1]}</p>
+                <p>{credibility.percent}</p>
               </li>
             ))}
           </ul>
