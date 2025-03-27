@@ -26,40 +26,40 @@ function Links() {
       </ul>
       <ul className="nav-links">
         <li>
-          <Link
+          <a
             className="nav-btn"
-            to="https://www.linkedin.com/in/coilysiren/"
+            href="https://www.linkedin.com/in/coilysiren/"
             target="_blank"
             rel="me noreferrer"
           >
             <i className="fa-solid fa-arrow-up-right-from-square"></i>
             <i className="fa-brands fa-linkedin"></i>{" "}
             <span className="nav-text">/in/coilysiren</span>
-          </Link>
+          </a>
         </li>
         <li>
-          <Link
+          <a
             className="nav-btn"
-            to="https://github.com/coilysiren"
+            href="https://github.com/coilysiren"
             target="_blank"
             rel="me noreferrer"
           >
             <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
             <i className="fa-brands fa-square-github"></i>{" "}
             <span className="nav-text">@coilysiren</span>
-          </Link>
+          </a>
         </li>
         <li>
-          <Link
+          <a
             className="nav-btn"
-            to="https://tech.lgbt/@coilysiren"
+            href="https://tech.lgbt/@coilysiren"
             target="_blank"
             rel="me noreferrer"
           >
             <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
             <i className="fa-brands fa-mastodon"></i>{" "}
             <span className="nav-text">@coilysiren</span>
-          </Link>
+          </a>
         </li>
       </ul>
     </div>

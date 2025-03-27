@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import Closer from "../components/closer"
 import {
@@ -7,37 +7,119 @@ import {
 } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
 const Bksy = () => {
-  const [following, setFollowing] = useState<ProfileViewDetailed[]>([])
-  const [showFollowing, setShowFollowing] = useState<boolean>(true)
-  const handle = "coilysiren.me"
+  const [recommandedHandles, setReccommendedHandles] = useState<string[]>([])
+  const [reccomendsPage, setReccomendsPage] = useState<number>(0)
+  const [reccomendsLoaded, setReccomesLoaded] = useState<boolean>(false)
+  const [credibilities, setCredibilities] = useState<[string, number][]>([])
+  const myHandle = "coilysiren.me"
 
-  const handleShowFollowing = () => {
-    setShowFollowing(!showFollowing)
-  }
+  console.log("component remounted")
 
-  const handleGetFollowing = async () => {
+  const handleGetReccommendedHandles = async () => {
     try {
       const response = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${handle}/following`
+        `${process.env.GATSBY_API_URL}/bsky/${myHandle}/recommendations/${reccomendsPage}`
       )
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      const data: { [key: string]: ProfileViewDetailed } = await response.json()
-      const dataFormatted: ProfileViewDetailed[] = Object.values(data)
-      setFollowing(dataFormatted)
+      const data = await response.json()
+      const thisRecommandedHandles = Array.from(
+        new Set((recommandedHandles || []).concat(data.reccomendations))
+      )
+      setReccomendsPage(() => data.next)
+      setReccommendedHandles(() => thisRecommandedHandles)
+      console.log(data)
+      console.log(
+        `recommandedHandles?.length: ${thisRecommandedHandles?.length}`
+      )
+
+      if (data.next === -1) {
+        setReccomesLoaded(() => true)
+        return
+      }
+
+      // This should never happen under normal circumstances
+      if (data.reccomendations.length === 0) {
+        setReccomesLoaded(() => true)
+        return
+      }
+
+      // Wait for a bit before running again to avoid rate limiting
+      setTimeout(handleGetReccommendedHandles, 1000)
     } catch (error) {
-      console.error("Error fetching following:", error)
+      console.error("Error fetching reccomended handles:", error)
+      return
+    }
+  }
+
+  const handleGetCredibilities = async () => {
+    try {
+      const recommandedHandlesCopy = [...(recommandedHandles || [])] // Create a copy
+      const theirHandle = recommandedHandlesCopy.pop() // Remove last item
+
+      if (!theirHandle) return
+      const response = await fetch(
+        `${process.env.GATSBY_API_URL}/bsky/${myHandle}/credibility/${theirHandle}/percent`
+      )
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      const thisCredibility: [string, number] = [theirHandle || "", data]
+
+      setCredibilities((prev) => [...(prev || []), thisCredibility])
+      setReccommendedHandles(recommandedHandlesCopy)
+
+      console.log(`data: ${data}`)
+      console.log(`thisCredibility: ${thisCredibility}`)
+      console.log(`credibilities: ${credibilities}`)
+
+      if (recommandedHandles?.length == 0) {
+        return
+      }
+
+      // Wait for a bit before running again to avoid rate limiting
+      setTimeout(handleGetCredibilities, 1000)
+    } catch (error) {
+      console.error("Error fetching credibility:", error)
+      return
     }
   }
 
   const followingComponent = (
-    <div style={!showFollowing ? { display: "none" } : {}}>
-      <h2>Following</h2>
-      <button onClick={handleGetFollowing}>
-        <h3>Get Following</h3>
-      </button>
-      <ul className="flex flex-column profile-view">
+    <div>
+      <h2>Reccomendations</h2>
+      {!reccomendsLoaded ? (
+        <div>
+          <h3>Handles loaded: {recommandedHandles?.length}</h3>
+          <button onClick={handleGetReccommendedHandles}>
+            <h3>Load More Handles</h3>
+          </button>
+        </div>
+      ) : (
+        <div></div>
+      )}
+      {reccomendsLoaded ? (
+        <div>
+          <button onClick={handleGetCredibilities}>
+            <h3>Get Credibilities</h3>
+          </button>
+          <ul>
+            {credibilities?.map((credibility) => (
+              <li key={credibility[0]} className="flex flex-row gap-4">
+                <a href={`https://bsky.app/profile/${credibility[0]}`}>
+                  @{credibility[0]}
+                </a>
+                <p>{credibility[1]}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div></div>
+      )}
+      {/* <ul className="flex flex-column profile-view">
         {following.map((profile: ProfileViewDetailed) => (
           <li key={profile.did} className="flex flex-row gap-4">
             <img
@@ -56,7 +138,7 @@ const Bksy = () => {
             </div>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   )
 
@@ -66,20 +148,13 @@ const Bksy = () => {
         <div className="post-header">
           <h2>
             <a href="https://bsky.app/profile/handle">
-              bsky.app/profile/{handle}
+              bsky.app/profile/{myHandle}
             </a>
           </h2>
         </div>
         <div className="post-content">
           <div>
-            <div className="flex flex-column gap-4">
-              <div className="flex flex-row">
-                <button onClick={handleShowFollowing}>
-                  {showFollowing ? "Hide Following" : "Show Following"}
-                </button>
-              </div>
-              {followingComponent}
-            </div>
+            <div className="flex flex-column gap-4">{followingComponent}</div>
           </div>
         </div>
         <Closer />
