@@ -7,7 +7,7 @@ import {
 } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
 const Bksy = () => {
-  const [recommandedHandles, setReccommendedHandles] = useState<string[]>([])
+  const [recommendedHandles, setReccommendedHandles] = useState<string[]>([])
   const [reccomendsPage, setReccomendsPage] = useState<number>(0)
   const [reccomendsLoaded, setReccomesLoaded] = useState<boolean>(false)
   const [credibilities, setCredibilities] = useState<[string, number][]>([])
@@ -24,14 +24,14 @@ const Bksy = () => {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data = await response.json()
-      const thisRecommandedHandles = Array.from(
-        new Set((recommandedHandles || []).concat(data.reccomendations))
+      const thisRecommendedHandles = Array.from(
+        new Set((recommendedHandles || []).concat(data.reccomendations))
       )
       setReccomendsPage(() => data.next)
-      setReccommendedHandles(() => thisRecommandedHandles)
+      setReccommendedHandles(() => thisRecommendedHandles)
       console.log(data)
       console.log(
-        `recommandedHandles?.length: ${thisRecommandedHandles?.length}`
+        `recommendedHandles?.length: ${thisRecommendedHandles?.length}`
       )
 
       if (data.next === -1) {
@@ -55,8 +55,8 @@ const Bksy = () => {
 
   const handleGetCredibilities = async () => {
     try {
-      const recommandedHandlesCopy = [...(recommandedHandles || [])] // Create a copy
-      const theirHandle = recommandedHandlesCopy.pop() // Remove last item
+      const recommendedHandlesCopy = [...(recommendedHandles || [])] // Create a copy
+      const theirHandle = recommendedHandlesCopy.pop() // Remove last item
 
       if (!theirHandle) return
       const response = await fetch(
@@ -69,13 +69,13 @@ const Bksy = () => {
       const thisCredibility: [string, number] = [theirHandle || "", data]
 
       setCredibilities((prev) => [...(prev || []), thisCredibility])
-      setReccommendedHandles(recommandedHandlesCopy)
+      setReccommendedHandles(recommendedHandlesCopy)
 
       console.log(`data: ${data}`)
       console.log(`thisCredibility: ${thisCredibility}`)
       console.log(`credibilities: ${credibilities}`)
 
-      if (recommandedHandles?.length == 0) {
+      if (recommendedHandles?.length == 0) {
         return
       }
 
@@ -92,7 +92,7 @@ const Bksy = () => {
       <h2>Reccomendations</h2>
       {!reccomendsLoaded ? (
         <div>
-          <h3>Handles loaded: {recommandedHandles?.length}</h3>
+          <h3>Handles loaded: {recommendedHandles?.length}</h3>
           <button onClick={handleGetReccommendedHandles}>
             <h3>Load More Handles</h3>
           </button>
