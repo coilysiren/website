@@ -1,130 +1,165 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import Closer from "../components/closer"
-import {
-  ProfileView,
-  ProfileViewDetailed,
-} from "@atproto/api/dist/client/types/app/bsky/actor/defs"
+import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
-interface ICreditability {
-  handle: string
-  credibility: number
+interface IReccomendationDetails {
+  myFollowersCount: number
   score: number
   profile: ProfileViewDetailed
 }
 
 const Bksy = () => {
-  const [recommendedHandles, setReccommendedHandles] = useState<string[]>([])
-  const [reccomendsPage, setReccomendsPage] = useState<number>(0)
-  const [reccomendsLoaded, setReccomesLoaded] = useState<boolean>(false)
-  const [credibilities, setCredibilities] = useState<ICreditability[]>([])
+  const [following, setFollowing] = useState<string[]>([])
+  const [myFollowingCount, setMyFollowingCount] = useState<number>(0)
+  const [reccomendationCount, setReccomendationCount] = useState<{
+    [key: string]: number
+  }>({})
+  const [reccomendationCountSorted, setReccomendationCountSorted] = useState<
+    [string, number][]
+  >([])
+  const [reccomendationDetails, setReccomendationDetails] = useState<
+    IReccomendationDetails[]
+  >([])
   const myHandle = "coilysiren.me"
 
   console.log("component remounted")
 
-  if (recommendedHandles.length != 0 && reccomendsPage != -1) {
-    setTimeout(() => handleGetReccommendedHandles(), 1000)
-  }
-
-  const handleGetReccommendedHandles = async () => {
+  const handleFollowing = async () => {
     try {
       const response = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${myHandle}/recommendations/${reccomendsPage}`
+        `${process.env.GATSBY_API_URL}/bsky/${myHandle}/following/handles`
       )
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      const data = await response.json()
-      const thisRecommendedHandles = Array.from(
-        new Set((recommendedHandles || []).concat(data.reccomendations))
+      const data: string[] = await response.json()
+      setFollowing(data)
+      setMyFollowingCount(data.length)
+    } catch (error) {
+      console.error("Error fetching following:", error)
+      return
+    }
+  }
+
+  if (Object.keys(following).length != 0) {
+    setTimeout(() => handleReccomedationCounts(), 100)
+  }
+
+  const handleReccomedationCounts = async () => {
+    try {
+      var myFollowingCopy = [...following]
+      const myFollowingHandle = myFollowingCopy.pop()
+
+      // Get for a person that I follow, get a list of the people they follow
+      const response = await fetch(
+        `${process.env.GATSBY_API_URL}/bsky/${myFollowingHandle}/following/handles`
       )
-
-      // Randomize the order of the handles.
-      // This is done to prevent the same handles from being recommended in the same order.
-      thisRecommendedHandles.sort(() => Math.random() - 0.5)
-
-      setReccomendsPage(() => data.next)
-      setReccommendedHandles(() => thisRecommendedHandles)
-
-      console.log(data)
-      console.log(
-        `recommendedHandles?.length: ${thisRecommendedHandles?.length}`
-      )
-
-      if (data.next === -1) {
-        setReccomesLoaded(() => true)
-        return
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
+      const data: string[] = await response.json()
 
-      // This should never happen under normal circumstances
-      if (data.reccomendations.length === 0) {
-        setReccomesLoaded(() => true)
-        return
-      }
+      // Generate a "reccomendation" int for each handle that they follow
+      // If the handle is already in the reccomendations, increment the count.
+      var reccomendationsCopy = { ...reccomendationCount }
+      data.forEach((theirFollowingHandle) => {
+        const validHandle = !["handle.invalid", ""].includes(
+          theirFollowingHandle
+        )
+        if (validHandle) {
+          var reccomendationCount = reccomendationsCopy[theirFollowingHandle]
+          reccomendationCount = reccomendationCount
+            ? reccomendationCount + 1
+            : 1
+          reccomendationsCopy[theirFollowingHandle] = reccomendationCount
+        }
+      })
+      console.log("Reccomendations:", reccomendationsCopy)
+
+      setReccomendationCount(reccomendationsCopy)
+      setFollowing(myFollowingCopy)
     } catch (error) {
       console.error("Error fetching reccomended handles:", error)
       return
     }
   }
 
-  if (reccomendsPage == -1) {
-    setTimeout(() => handleGetCredibilities(), 1000)
+  if (
+    Object.keys(reccomendationCount).length != 0 &&
+    Object.keys(following).length == 0
+  ) {
+    setTimeout(() => handleReccomedationCountSorted(), 100)
   }
 
-  const handleGetCredibilities = async () => {
+  const handleReccomedationCountSorted = async () => {
     try {
-      const recommendedHandlesCopy = recommendedHandles.slice() // Create a copy
-      recommendedHandlesCopy.sort(() => Math.random() - 0.5) // Randomize the order
-      const theirHandle = recommendedHandlesCopy.pop() // Remove last item
-
-      if (!theirHandle) return
-      const credbilityResponse = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${myHandle}/credibility/${theirHandle}/percent`
-      )
-      if (!credbilityResponse.ok) {
-        throw new Error(`HTTP error! status: ${credbilityResponse.status}`)
+      const reccomendationCountCopy: { [key: string]: number } = {
+        ...reccomendationCount,
       }
-      const credibility = await credbilityResponse.json()
-
-      const profileResponse = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${theirHandle}/profile`
-      )
-      if (!profileResponse.ok) {
-        throw new Error(`HTTP error! status: ${profileResponse.status}`)
-      }
-      const profile: ProfileViewDetailed = await profileResponse.json()
-
-      const score = credibility * (profile.followersCount ?? 0)
-      const thisCredibility: ICreditability = {
-        handle: theirHandle,
-        credibility: credibility,
-        profile: profile,
-        score: score,
-      }
-
-      if (score < 0.1) {
-        setReccommendedHandles(() => recommendedHandlesCopy)
-        return
-      }
-
-      const credibilitiesCopy = credibilities.slice() // Create a copy
-      const thisCredibilities = credibilitiesCopy.concat(thisCredibility)
-      thisCredibilities.sort((a, b) => a[1] - b[1])
-
-      setCredibilities(() => thisCredibilities)
-      setReccommendedHandles(() => recommendedHandlesCopy)
-
-      console.log(`data: ${credibility}`)
-      console.log(`thisCredibility: ${thisCredibilities}`)
-      console.log(
-        `recommendedHandlesCopy?.length: ${recommendedHandlesCopy?.length}`
-      )
-
-      if (recommendedHandles?.length == 0) {
-        return
-      }
+      const reccomendationCountSortedCopy: [string, number][] = Object.entries(
+        reccomendationCountCopy
+      ).sort((a, b) => b[1] - a[1])
+      setReccomendationCountSorted(reccomendationCountSortedCopy)
+      setReccomendationCount({})
     } catch (error) {
-      console.error("Error fetching credibility:", error)
+      console.error("Error sorting reccomendations:", error)
+      return
+    }
+  }
+
+  if (reccomendationCountSorted.length != 0) {
+    setTimeout(() => handleReccomendationDetails(), 100)
+  }
+
+  const handleReccomendationDetails = async () => {
+    try {
+      const reccomendationDetailsCopy = [...reccomendationDetails]
+      const reccomendationCountSortedCopy = [...reccomendationCountSorted]
+      const shiftedItem = reccomendationCountSortedCopy.shift()
+
+      if (!shiftedItem) {
+        console.error("No handle found to process.")
+        reccomendationCountSortedCopy.pop()
+        setReccomendationCountSorted(reccomendationCountSortedCopy)
+        return
+      }
+
+      const [handle, myFollowers] = shiftedItem
+      if (!handle) {
+        console.error("No handle found to process.")
+        reccomendationCountSortedCopy.pop()
+        setReccomendationCountSorted(reccomendationCountSortedCopy)
+        return
+      }
+
+      const tooFewFollowers = myFollowingCount / 10 > myFollowers
+      if (tooFewFollowers) {
+        console.log("Too few followers, skipping rest of list")
+        setReccomendationCountSorted([])
+        return
+      }
+
+      const response = await fetch(
+        `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
+      )
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data: { [key: string]: ProfileViewDetailed } = await response.json()
+      const profile: ProfileViewDetailed = Object.values(data)[0]
+
+      reccomendationDetailsCopy.push({
+        myFollowersCount: myFollowers,
+        score: myFollowers / (profile.followersCount ?? 1), // number of my following, divided by number of their followers
+        profile: profile,
+      })
+
+      reccomendationCountSortedCopy.pop()
+      setReccomendationCountSorted(reccomendationCountSortedCopy)
+      setReccomendationDetails(reccomendationDetailsCopy)
+    } catch (error) {
+      console.error("Error hydrating reccomendations:", error)
       return
     }
   }
@@ -132,45 +167,48 @@ const Bksy = () => {
   const followingComponent = (
     <div>
       <h2>Reccomendations</h2>
-      {!reccomendsLoaded ? (
-        <div>
-          <h3>Handles loaded: {recommendedHandles?.length}</h3>
-          <button onClick={handleGetReccommendedHandles}>
-            <h3>Load More Handles</h3>
-          </button>
-        </div>
-      ) : (
-        <div></div>
-      )}
-      {reccomendsLoaded ? (
-        <div>
-          <button onClick={handleGetCredibilities}>
-            <h3>Get Credibilities</h3>
-          </button>
-          <ul>
-            {credibilities?.map((credibility) => (
-              <li key={credibility.profile.did} className="flex flex-row gap-4">
-                <img
-                  src={credibility.profile.avatar}
-                  alt={credibility.profile.displayName}
-                  className="img-thumbnail"
-                  width={40}
-                  height={40}
-                />
-                <div className="flex flex-column">
-                  <p>{credibility.profile.displayName}</p>
-                  <a href={`https://bsky.app/profile/${profile.handle}`}>
-                    <p>@{credibility.profile.handle}</p>
-                  </a>
-                  <p>{credibility.profile.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <div></div>
-      )}
+      <div>
+        <h3>Following To Reccomendatins From: {following.length}</h3>
+        <h3>
+          Reccomendations Counted: {Object.keys(reccomendationCount).length}
+        </h3>
+        <h3>Reccomendations Sorted: {reccomendationCountSorted.length}</h3>
+        <h3>
+          Reccomendations Detailed: {Object.keys(reccomendationDetails).length}
+        </h3>
+        <button onClick={handleFollowing}>
+          <h3>Get Data</h3>
+        </button>
+      </div>
+      <div>
+        <ul className="flex flex-column profile-view">
+          {reccomendationDetails.map((reccomendation) => (
+            <li
+              key={reccomendation.profile.did}
+              className="flex flex-row gap-4"
+            >
+              <img
+                src={reccomendation.profile.avatar}
+                alt={reccomendation.profile.displayName}
+                className="img-thumbnail"
+                width={40}
+                height={40}
+              />
+              <div className="flex flex-column">
+                <p>{reccomendation.profile.displayName}</p>
+                <a
+                  href={`https://bsky.app/profile/${reccomendation.profile.handle}`}
+                >
+                  <p>@{reccomendation.profile.handle}</p>
+                </a>
+                <p>{reccomendation.profile.description}</p>
+                <p>my followers: {reccomendation.myFollowersCount}</p>
+                <p>score: {reccomendation.score}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
       {/* <ul className="flex flex-column profile-view">
         {following.map((profile: ProfileViewDetailed) => (
         ))}
