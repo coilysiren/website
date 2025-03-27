@@ -8,7 +8,9 @@ import {
 
 interface ICreditability {
   handle: string
-  percent: number
+  credibility: number
+  score: number
+  profile: ProfileViewDetailed
 }
 
 const Bksy = () => {
@@ -76,16 +78,33 @@ const Bksy = () => {
       const theirHandle = recommendedHandlesCopy.pop() // Remove last item
 
       if (!theirHandle) return
-      const response = await fetch(
+      const credbilityResponse = await fetch(
         `${process.env.GATSBY_API_URL}/bsky/${myHandle}/credibility/${theirHandle}/percent`
       )
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+      if (!credbilityResponse.ok) {
+        throw new Error(`HTTP error! status: ${credbilityResponse.status}`)
       }
-      const data = await response.json()
+      const credibility = await credbilityResponse.json()
+
+      const profileResponse = await fetch(
+        `${process.env.GATSBY_API_URL}/bsky/${theirHandle}/profile`
+      )
+      if (!profileResponse.ok) {
+        throw new Error(`HTTP error! status: ${profileResponse.status}`)
+      }
+      const profile: ProfileViewDetailed = await profileResponse.json()
+
+      const score = credibility * (profile.followersCount ?? 0)
       const thisCredibility: ICreditability = {
         handle: theirHandle,
-        percent: data,
+        credibility: credibility,
+        profile: profile,
+        score: score,
+      }
+
+      if (score < 0.1) {
+        setReccommendedHandles(() => recommendedHandlesCopy)
+        return
       }
 
       const credibilitiesCopy = credibilities.slice() // Create a copy
@@ -95,7 +114,7 @@ const Bksy = () => {
       setCredibilities(() => thisCredibilities)
       setReccommendedHandles(() => recommendedHandlesCopy)
 
-      console.log(`data: ${data}`)
+      console.log(`data: ${credibility}`)
       console.log(`thisCredibility: ${thisCredibilities}`)
       console.log(
         `recommendedHandlesCopy?.length: ${recommendedHandlesCopy?.length}`
@@ -130,11 +149,21 @@ const Bksy = () => {
           </button>
           <ul>
             {credibilities?.map((credibility) => (
-              <li key={credibility.handle} className="flex flex-row gap-4">
-                <a href={`https://bsky.app/profile/${credibility.handle}`}>
-                  @{credibility.handle}
-                </a>
-                <p>{credibility.percent}</p>
+              <li key={credibility.profile.did} className="flex flex-row gap-4">
+                <img
+                  src={credibility.profile.avatar}
+                  alt={credibility.profile.displayName}
+                  className="img-thumbnail"
+                  width={40}
+                  height={40}
+                />
+                <div className="flex flex-column">
+                  <p>{credibility.profile.displayName}</p>
+                  <a href={`https://bsky.app/profile/${profile.handle}`}>
+                    <p>@{credibility.profile.handle}</p>
+                  </a>
+                  <p>{credibility.profile.description}</p>
+                </div>
               </li>
             ))}
           </ul>
@@ -144,22 +173,6 @@ const Bksy = () => {
       )}
       {/* <ul className="flex flex-column profile-view">
         {following.map((profile: ProfileViewDetailed) => (
-          <li key={profile.did} className="flex flex-row gap-4">
-            <img
-              src={profile.avatar}
-              alt={profile.displayName}
-              className="img-thumbnail"
-              width={40}
-              height={40}
-            />
-            <div className="flex flex-column">
-              <p>{profile.displayName}</p>
-              <a href={`https://bsky.app/profile/${profile.handle}`}>
-                <p>@{profile.handle}</p>
-              </a>
-              <p>{profile.description}</p>
-            </div>
-          </li>
         ))}
       </ul> */}
     </div>
