@@ -3,24 +3,29 @@ import Layout from "../components/layout"
 import Closer from "../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
-interface IReccomendationDetails {
+interface IRecommendationDetails {
   myFollowersCount: number
+  folledByMe: boolean
   score: number
   profile: ProfileViewDetailed
 }
 
 const Bksy = () => {
   const [following, setFollowing] = useState<string[]>([])
-  const [myFollowingCount, setMyFollowingCount] = useState<number>(0)
-  const [reccomendationCount, setReccomendationCount] = useState<{
+  const [followingCopy, setMyFollowingCopy] = useState<string[]>([])
+  const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
+  const [recommendationCount, setRecommendationCount] = useState<{
     [key: string]: number
   }>({})
-  const [reccomendationCountSorted, setReccomendationCountSorted] = useState<
+  const [recommendationCountSorted, setRecommendationCountSorted] = useState<
     [string, number][]
   >([])
-  const [reccomendationDetails, setReccomendationDetails] = useState<
-    IReccomendationDetails[]
+  const [recommendationDetails, setRecommendationDetails] = useState<
+    IRecommendationDetails[]
   >([])
+  const [recommendationDetailsByScore, setRecommendationDetailsByScore] =
+    useState<IRecommendationDetails[]>([])
+  const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
 
   var myHandle
   // get the "handle" query parameter
@@ -28,8 +33,6 @@ const Bksy = () => {
     const urlParams = new URLSearchParams(window.location.search)
     myHandle = urlParams.get("handle")
   }
-
-  console.log("component remounted")
 
   const handleFollowing = async () => {
     try {
@@ -41,7 +44,7 @@ const Bksy = () => {
       }
       const data: string[] = await response.json()
       setFollowing(data)
-      setMyFollowingCount(data.length)
+      setMyFollowingCopy(data)
     } catch (error) {
       console.error("Error fetching following:", error)
       return
@@ -49,10 +52,10 @@ const Bksy = () => {
   }
 
   if (Object.keys(following).length != 0) {
-    setTimeout(() => handleReccomedationCounts(), 100)
+    setTimeout(() => handleRecommedationCounts(), 100)
   }
 
-  const handleReccomedationCounts = async () => {
+  const handleRecommedationCounts = async () => {
     try {
       var myFollowingCopy = [...following]
       const myFollowingHandle = myFollowingCopy.pop()
@@ -66,83 +69,80 @@ const Bksy = () => {
       }
       const data: string[] = await response.json()
 
-      // Generate a "reccomendation" int for each handle that they follow
-      // If the handle is already in the reccomendations, increment the count.
-      var reccomendationsCopy = { ...reccomendationCount }
+      // Generate a "recommendation" int for each handle that they follow
+      // If the handle is already in the recommendations, increment the count.
+      var recommendationsCopy = { ...recommendationCount }
       data.forEach((theirFollowingHandle) => {
         const validHandle = !["handle.invalid", ""].includes(
           theirFollowingHandle
         )
         if (validHandle) {
-          var reccomendationCount = reccomendationsCopy[theirFollowingHandle]
-          reccomendationCount = reccomendationCount
-            ? reccomendationCount + 1
+          var recommendationCount = recommendationsCopy[theirFollowingHandle]
+          recommendationCount = recommendationCount
+            ? recommendationCount + 1
             : 1
-          reccomendationsCopy[theirFollowingHandle] = reccomendationCount
+          recommendationsCopy[theirFollowingHandle] = recommendationCount
         }
       })
-      console.log("Reccomendations:", reccomendationsCopy)
-
-      setReccomendationCount(reccomendationsCopy)
+      setRecommendationCount(recommendationsCopy)
       setFollowing(myFollowingCopy)
     } catch (error) {
-      console.error("Error fetching reccomended handles:", error)
+      console.error("Error fetching recommended handles:", error)
       return
     }
   }
 
   if (
-    Object.keys(reccomendationCount).length != 0 &&
+    Object.keys(recommendationCount).length != 0 &&
     Object.keys(following).length == 0
   ) {
-    setTimeout(() => handleReccomedationCountSorted(), 100)
+    setTimeout(() => handleRecommedationCountSorted(), 100)
   }
 
-  const handleReccomedationCountSorted = async () => {
+  const handleRecommedationCountSorted = async () => {
     try {
-      const reccomendationCountCopy: { [key: string]: number } = {
-        ...reccomendationCount,
+      const recommendationCountCopy: { [key: string]: number } = {
+        ...recommendationCount,
       }
-      const reccomendationCountSortedCopy: [string, number][] = Object.entries(
-        reccomendationCountCopy
+      const recommendationCountSortedCopy: [string, number][] = Object.entries(
+        recommendationCountCopy
       ).sort((a, b) => b[1] - a[1])
-      setReccomendationCountSorted(reccomendationCountSortedCopy)
-      setReccomendationCount({})
+      setRecommendationCountSorted(recommendationCountSortedCopy)
+      setRecommendationCount({})
     } catch (error) {
-      console.error("Error sorting reccomendations:", error)
+      console.error("Error sorting recommendations:", error)
       return
     }
   }
 
-  if (reccomendationCountSorted.length != 0) {
-    setTimeout(() => handleReccomendationDetails(), 100)
+  if (recommendationCountSorted.length != 0) {
+    setTimeout(() => handleRecommendationDetails(), 100)
   }
 
-  const handleReccomendationDetails = async () => {
+  const handleRecommendationDetails = async () => {
     try {
-      const reccomendationDetailsCopy = [...reccomendationDetails]
-      const reccomendationCountSortedCopy = [...reccomendationCountSorted]
-      const shiftedItem = reccomendationCountSortedCopy.shift()
+      const recommendationDetailsCopy = [...recommendationDetails]
+      const recommendationCountSortedCopy = [...recommendationCountSorted]
+      const shiftedItem = recommendationCountSortedCopy.shift()
 
       if (!shiftedItem) {
         console.error("No handle found to process.")
-        reccomendationCountSortedCopy.pop()
-        setReccomendationCountSorted(reccomendationCountSortedCopy)
+        recommendationCountSortedCopy.pop()
+        setRecommendationCountSorted(recommendationCountSortedCopy)
         return
       }
 
       const [handle, myFollowers] = shiftedItem
       if (!handle) {
         console.error("No handle found to process.")
-        reccomendationCountSortedCopy.pop()
-        setReccomendationCountSorted(reccomendationCountSortedCopy)
+        recommendationCountSortedCopy.pop()
+        setRecommendationCountSorted(recommendationCountSortedCopy)
         return
       }
 
-      const tooFewFollowers = myFollowingCount / 10 > myFollowers
+      const tooFewFollowers = followingCopy.length / 10 > myFollowers
       if (tooFewFollowers) {
-        console.log("Too few followers, skipping rest of list")
-        setReccomendationCountSorted([])
+        setRecommendationCountSorted([])
         return
       }
 
@@ -155,70 +155,110 @@ const Bksy = () => {
       const data: { [key: string]: ProfileViewDetailed } = await response.json()
       const profile: ProfileViewDetailed = Object.values(data)[0]
 
-      reccomendationDetailsCopy.push({
+      recommendationDetailsCopy.push({
         myFollowersCount: myFollowers,
         score: myFollowers / (profile.followersCount ?? 1), // number of my following, divided by number of their followers
         profile: profile,
+        folledByMe: followingCopy.includes(profile.handle),
       })
 
-      reccomendationCountSortedCopy.pop()
-      setReccomendationCountSorted(reccomendationCountSortedCopy)
-      setReccomendationDetails(reccomendationDetailsCopy)
+      recommendationCountSortedCopy.pop()
+      setRecommendationCountSorted(recommendationCountSortedCopy)
+      setRecommendationDetails(recommendationDetailsCopy)
     } catch (error) {
-      console.error("Error hydrating reccomendations:", error)
+      console.error("Error hydrating recommendations:", error)
+      return
+    }
+  }
+
+  if (
+    recommendationDetails.length != 0 &&
+    recommendationDetailsByScore.length == 0
+  ) {
+    setTimeout(() => handleSortDetailedByScore(), 100)
+  }
+
+  const handleSortDetailedByScore = async () => {
+    try {
+      const recommendationDetailsCopy = [...recommendationDetails]
+      recommendationDetailsCopy.sort((a, b) => b.score - a.score)
+      setRecommendationDetailsByScore(recommendationDetailsCopy)
+    } catch (error) {
+      console.error("Error sorting recommendations by score:", error)
       return
     }
   }
 
   const followingComponent = (
     <div>
-      <h2>Reccomendations</h2>
+      <h2>Recommendations</h2>
       <div>
-        <h3>Following To Reccomendatins From: {following.length}</h3>
+        <h3>Following To Recommendatins From: {following.length}</h3>
         <h3>
-          Reccomendations Counted: {Object.keys(reccomendationCount).length}
+          Recommendations Counted: {Object.keys(recommendationCount).length}
         </h3>
-        <h3>Reccomendations Sorted: {reccomendationCountSorted.length}</h3>
+        <h3>Recommendations Sorted: {recommendationCountSorted.length}</h3>
         <h3>
-          Reccomendations Detailed: {Object.keys(reccomendationDetails).length}
+          Recommendations Detailed: {Object.keys(recommendationDetails).length}
         </h3>
         <button onClick={handleFollowing}>
           <h3>Get Data</h3>
         </button>
+        <button onClick={() => setShowFollowedByMe(!showFollowedByMe)}>
+          <h3>
+            {showFollowedByMe
+              ? "Showing People I Follow"
+              : "Hiding People I Follow"}
+          </h3>
+        </button>
+        <button onClick={() => setShowDetailsByScore(!showDetailsByScore)}>
+          <h3>
+            {showDetailsByScore
+              ? "Sorting By Percent Following"
+              : "Sorting By Total Following"}
+          </h3>
+        </button>
       </div>
       <div>
         <ul className="flex flex-column profile-view">
-          {reccomendationDetails.map((reccomendation) => (
+          {(showDetailsByScore
+            ? recommendationDetailsByScore
+            : recommendationDetails
+          ).map((recommendation) => (
             <li
-              key={reccomendation.profile.did}
+              style={
+                !showFollowedByMe && recommendation.folledByMe
+                  ? { display: "none" }
+                  : {}
+              }
+              key={recommendation.profile.did}
               className="flex flex-row gap-4"
             >
               <img
-                src={reccomendation.profile.avatar}
-                alt={reccomendation.profile.displayName}
+                src={recommendation.profile.avatar}
+                alt={recommendation.profile.displayName}
                 className="img-thumbnail"
                 width={40}
                 height={40}
               />
               <div className="block">
-                <p>{reccomendation.profile.displayName}</p>
+                <p>{recommendation.profile.displayName}</p>
                 <a
-                  href={`https://bsky.app/profile/${reccomendation.profile.handle}`}
+                  href={`https://bsky.app/profile/${recommendation.profile.handle}`}
                 >
-                  <p>@{reccomendation.profile.handle}</p>
+                  <p>@{recommendation.profile.handle}</p>
                 </a>
-                <p>{reccomendation.profile.description}</p>
-                <p>my followers: {reccomendation.myFollowersCount}</p>
-                <p>score: {reccomendation.score}</p>
+                <p>{recommendation.profile.description}</p>
+                <p>My followers: {recommendation.myFollowersCount}</p>
+                <p>
+                  {Math.round(recommendation.score * 100)}% followed by people I
+                  follow
+                </p>
               </div>
             </li>
           ))}
         </ul>
       </div>
-      {/* <ul className="flex flex-column profile-view">
-        {following.map((profile: ProfileViewDetailed) => (
-        ))}
-      </ul> */}
     </div>
   )
 
