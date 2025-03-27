@@ -115,6 +115,14 @@
     border-radius: 50%;
   }
 
+  ul.profile-view li .block {
+    display: block;
+    a {
+      display: inline-block;
+
+    }
+  }
+
   ul.profile-view li {
     padding: 0.5em;
     background-color: #eeeeee;
