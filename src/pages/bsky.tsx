@@ -43,8 +43,10 @@ const Bksy = () => {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       const data: string[] = await response.json()
-      setFollowing(data)
-      setMyFollowingCopy(data)
+      // This is done to prevent the same handles from being recommended in the same order.
+      const dataRandomized = [...new Set(data.sort(() => Math.random() - 0.5))]
+      setFollowing(dataRandomized)
+      setMyFollowingCopy(dataRandomized)
     } catch (error) {
       console.error("Error fetching following:", error)
       return
@@ -52,7 +54,7 @@ const Bksy = () => {
   }
 
   if (Object.keys(following).length != 0) {
-    setTimeout(() => handleRecommedationCounts(), 100)
+    setTimeout(() => handleRecommedationCounts(), 250)
   }
 
   const handleRecommedationCounts = async () => {
@@ -73,7 +75,7 @@ const Bksy = () => {
       // If the handle is already in the recommendations, increment the count.
       var recommendationsCopy = { ...recommendationCount }
       data.forEach((theirFollowingHandle) => {
-        const validHandle = !["handle.invalid", ""].includes(
+        const validHandle = ![myHandle, "handle.invalid", ""].includes(
           theirFollowingHandle
         )
         if (validHandle) {
@@ -96,7 +98,7 @@ const Bksy = () => {
     Object.keys(recommendationCount).length != 0 &&
     Object.keys(following).length == 0
   ) {
-    setTimeout(() => handleRecommedationCountSorted(), 100)
+    setTimeout(() => handleRecommedationCountSorted(), 250)
   }
 
   const handleRecommedationCountSorted = async () => {
@@ -116,7 +118,7 @@ const Bksy = () => {
   }
 
   if (recommendationCountSorted.length != 0) {
-    setTimeout(() => handleRecommendationDetails(), 100)
+    setTimeout(() => handleRecommendationDetails(), 250)
   }
 
   const handleRecommendationDetails = async () => {
@@ -137,6 +139,12 @@ const Bksy = () => {
         console.error("No handle found to process.")
         recommendationCountSortedCopy.pop()
         setRecommendationCountSorted(recommendationCountSortedCopy)
+        return
+      }
+
+      const tooManyDetails = recommendationDetailsCopy.length > 250
+      if (tooManyDetails) {
+        setRecommendationCountSorted([])
         return
       }
 
@@ -172,10 +180,10 @@ const Bksy = () => {
   }
 
   if (
-    recommendationDetails.length != 0 &&
+    recommendationCountSorted.length == 0 &&
     recommendationDetailsByScore.length == 0
   ) {
-    setTimeout(() => handleSortDetailedByScore(), 100)
+    setTimeout(() => handleSortDetailedByScore(), 250)
   }
 
   const handleSortDetailedByScore = async () => {
@@ -193,7 +201,7 @@ const Bksy = () => {
     <div>
       <h2>Recommendations</h2>
       <div>
-        <h3>Following To Recommendatins From: {following.length}</h3>
+        <h3>Following To Get Recommendatins From: {following.length}</h3>
         <h3>
           Recommendations Counted: {Object.keys(recommendationCount).length}
         </h3>
