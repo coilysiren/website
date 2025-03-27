@@ -24,7 +24,7 @@ const Bksy = () => {
 
   var myHandle
   // get the "handle" query parameter
-  if (window?.location?.search != null) {
+  if (window != null) {
     const urlParams = new URLSearchParams(window.location.search)
     myHandle = urlParams.get("handle")
   }
