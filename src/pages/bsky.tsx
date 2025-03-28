@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import Closer from "../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
@@ -53,9 +53,12 @@ const Bksy = () => {
     }
   }
 
-  if (Object.keys(following).length != 0) {
-    setTimeout(() => handleRecommedationCounts(), 250)
-  }
+  useEffect(() => {
+    if (Object.keys(following).length !== 0) {
+      const timer = setTimeout(() => handleRecommedationCounts(), 250)
+      return () => clearTimeout(timer)
+    }
+  }, [following])
 
   const handleRecommedationCounts = async () => {
     try {
@@ -94,12 +97,15 @@ const Bksy = () => {
     }
   }
 
-  if (
-    Object.keys(recommendationCount).length != 0 &&
-    Object.keys(following).length == 0
-  ) {
-    setTimeout(() => handleRecommedationCountSorted(), 250)
-  }
+  useEffect(() => {
+    if (
+      Object.keys(recommendationCount).length != 0 &&
+      Object.keys(following).length == 0
+    ) {
+      const timer = setTimeout(() => handleRecommedationCountSorted(), 250)
+      return () => clearTimeout(timer)
+    }
+  }, [following, recommendationCount])
 
   const handleRecommedationCountSorted = async () => {
     try {
@@ -117,9 +123,12 @@ const Bksy = () => {
     }
   }
 
-  if (recommendationCountSorted.length != 0) {
-    setTimeout(() => handleRecommendationDetails(), 250)
-  }
+  useEffect(() => {
+    if (recommendationCountSorted.length != 0) {
+      const timer = setTimeout(() => handleRecommendationDetails(), 250)
+      return () => clearTimeout(timer)
+    }
+  }, [recommendationCountSorted])
 
   const handleRecommendationDetails = async () => {
     try {
@@ -179,12 +188,15 @@ const Bksy = () => {
     }
   }
 
-  if (
-    recommendationCountSorted.length == 0 &&
-    recommendationDetailsByScore.length == 0
-  ) {
-    setTimeout(() => handleSortDetailedByScore(), 250)
-  }
+  useEffect(() => {
+    if (
+      recommendationCountSorted.length == 0 &&
+      recommendationDetailsByScore.length == 0
+    ) {
+      const timer = setTimeout(() => handleSortDetailedByScore(), 250)
+      return () => clearTimeout(timer)
+    }
+  }, [recommendationCountSorted, recommendationDetailsByScore])
 
   const handleSortDetailedByScore = async () => {
     try {
