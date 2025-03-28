@@ -7,20 +7,12 @@ function Links() {
       <ul className="nav-links">
         <li>
           <Link className="nav-btn" to="/">
-            /<i className="fa-solid fa-house"></i>{" "}
-            <span className="nav-text">home</span>
+            ./home<i className="fa-solid fa-house"></i>{" "}
           </Link>
         </li>
         <li>
           <Link className="nav-btn" to="/about">
-            /<i className="fa-solid fa-face-laugh"></i>{" "}
-            <span className="nav-text">about</span>
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/contact">
-            /<i className="fa-solid fa-envelope"></i>{" "}
-            <span className="nav-text">contact</span>
+            ./about<i className="fa-solid fa-face-laugh"></i>{" "}
           </Link>
         </li>
       </ul>
@@ -32,9 +24,8 @@ function Links() {
             target="_blank"
             rel="me noreferrer"
           >
-            <i className="fa-solid fa-arrow-up-right-from-square"></i>
+            linkedin<i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
             <i className="fa-brands fa-linkedin"></i>{" "}
-            <span className="nav-text">/in/coilysiren</span>
           </a>
         </li>
         <li>
@@ -44,21 +35,19 @@ function Links() {
             target="_blank"
             rel="me noreferrer"
           >
-            <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
+            github<i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
             <i className="fa-brands fa-square-github"></i>{" "}
-            <span className="nav-text">@coilysiren</span>
           </a>
         </li>
         <li>
           <a
             className="nav-btn"
-            href="https://tech.lgbt/@coilysiren"
+            href="http://bsky.app/profile/coilysiren.me/"
             target="_blank"
             rel="me noreferrer"
           >
-            <i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
-            <i className="fa-brands fa-mastodon"></i>{" "}
-            <span className="nav-text">@coilysiren</span>
+            bluesky<i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
+            <i className="fa-brands fa-bluesky"></i>{" "}
           </a>
         </li>
       </ul>

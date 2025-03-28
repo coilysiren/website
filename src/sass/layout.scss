@@ -9,6 +9,13 @@ body,
   font-family: vars.$font-family-body;
 }
 
+body {
+  margin: 0;
+  background: vars.$light-purple !important;
+  background-image: url("../images/background-shapes.svg") !important;
+  background-size: 100%;
+}
+
 .layoutWrapper {
   min-height: 100%;
   display: flex;
@@ -76,5 +83,5 @@ section {
 }
 
 div.post-closer {
-  background-color: vars.$faint-purple;
+  background-color: vars.$mid-purple;
 }

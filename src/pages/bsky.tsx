@@ -49,8 +49,7 @@ const Bksy = () => {
       setFollowing(dataRandomized)
       setMyFollowingCopy(dataRandomized)
     } catch (error) {
-      console.error("Error fetching following:", error)
-      return
+      console.error(error)
     }
   }
 
@@ -102,8 +101,7 @@ const Bksy = () => {
       setReccCount(reccsCopy)
       setFollowing(myFollowingCopy)
     } catch (error) {
-      console.error("Error fetching recommended handles:", error)
-      return
+      console.error(error)
     }
   }
 
@@ -142,8 +140,7 @@ const Bksy = () => {
       setReccCountSorted(reccCountSortedCopy)
       setReccCount({})
     } catch (error) {
-      console.error("Error sorting reccs:", error)
-      return
+      console.error(error)
     }
   }
 
@@ -212,8 +209,7 @@ const Bksy = () => {
       setReccCountSorted(reccCountSortedCopy)
       setReccDetails(reccDetailsCopy)
     } catch (error) {
-      console.error("Error hydrating reccs:", error)
-      return
+      console.error(error)
     }
   }
 
@@ -232,8 +228,7 @@ const Bksy = () => {
       reccDetailsCopy.sort((a, b) => b.score - a.score)
       setReccDetailsByScore(reccDetailsCopy)
     } catch (error) {
-      console.error("Error sorting reccs by score:", error)
-      return
+      console.error(error)
     }
   }
 
@@ -265,38 +260,37 @@ const Bksy = () => {
       </div>
       <div>
         <ul className="flex flex-column profile-view">
-          {(showDetailsByScore ? reccDetailsByScore : reccDetails).map(
-            (recc) => (
-              <li
-                style={
-                  !showFollowedByMe && recc.folledByMe
-                    ? { display: "none" }
-                    : {}
-                }
-                key={recc.profile.did}
-                className="flex flex-row gap-4"
-              >
-                <img
-                  src={recc.profile.avatar}
-                  alt={recc.profile.displayName}
-                  className="img-thumbnail"
-                  width={40}
-                  height={40}
-                />
-                <div className="block">
-                  <p>{recc.profile.displayName}</p>
-                  <a href={`https://bsky.app/profile/${recc.profile.handle}`}>
-                    <p>@{recc.profile.handle}</p>
-                  </a>
-                  <p>{recc.profile.description}</p>
-                  <p>My followers: {recc.myFollowersCount}</p>
-                  <p>
-                    {Math.round(recc.score * 100)}% followed by people I follow
-                  </p>
-                </div>
-              </li>
-            )
-          )}
+          {(showDetailsByScore
+            ? reccDetails.sort((a, b) => b.score - a.score)
+            : reccDetails
+          ).map((recc) => (
+            <li
+              style={
+                !showFollowedByMe && recc.folledByMe ? { display: "none" } : {}
+              }
+              key={recc.profile.did}
+              className="flex flex-row gap-4"
+            >
+              <img
+                src={recc.profile.avatar}
+                alt={recc.profile.displayName}
+                className="img-thumbnail"
+                width={40}
+                height={40}
+              />
+              <div className="block">
+                <p>{recc.profile.displayName}</p>
+                <a href={`https://bsky.app/profile/${recc.profile.handle}`}>
+                  <p>@{recc.profile.handle}</p>
+                </a>
+                <p>{recc.profile.description}</p>
+                <p>My followers: {recc.myFollowersCount}</p>
+                <p>
+                  {Math.round(recc.score * 100)}% followed by people I follow
+                </p>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

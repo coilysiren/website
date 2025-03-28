@@ -1,42 +1,19 @@
 @use "_vars.scss";
 
-body {
-  margin: 0;
-  background: vars.$light-purple;
-  background-image: url("../images/background-shapes.svg");
-  background-size: 100%;
-}
-
-nav {
+nav.nav {
   top: 0;
   width: 100%;
   height: auto;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  position: sticky;
-  padding-bottom: 0.6em;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 1em;
   z-index: 10;
   background-color: vars.$mid-purple;
-
-  @include vars.tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 4em;
-    padding-right: 4em;
-    box-sizing: border-box;
-  }
 }
 
 .nav-logoName {
-  display: flex;
-  // Text decoration has to be set to none here, applying it directly to
-  // h2 doesn't work for unknown reasons.
-  text-decoration: none;
-  align-items: center;
-  margin: 0.5em;
-  height: 2em;
-
   @include vars.tablet {
     font-size: 1em;
     padding-left: 2em;
@@ -68,7 +45,7 @@ nav {
   }
 
   @include vars.desktop {
-    width: 33%;
+    width: 66%;
   }
 
   .nav-text {
@@ -78,18 +55,22 @@ nav {
 
 .nav-links {
   display: flex;
-  width: 100%;
   justify-content: space-evenly;
+  width: 100%;
   list-style: none;
   padding: 0;
   flex-wrap: wrap;
 
   .nav-btn {
-    margin: 0 2em;
+    display: ruby;
+    margin: 6em;
     letter-spacing: 0.15em;
-    text-transform: lowercase;
     color: vars.$off-white;
     font-weight: bold;
+
+    @include vars.phone {
+      margin: 1em;
+    }
   }
 
   li a {
@@ -97,7 +78,6 @@ nav {
     letter-spacing: 0.15em;
     color: vars.$off-white;
     font-size: 1em;
-    text-transform: lowercase;
     font-weight: 600;
   }
 
