@@ -236,28 +236,62 @@ const Bsky = () => {
   const followingComponent = (
     <div>
       <div>
-        <h3>Following to count: {following.length}</h3>
+        <h3>Getting reccomendations from followers: {following.length}</h3>
         <h3>Total recc count: {Object.keys(reccCount).length}</h3>
         <h3>Reccs sorted: {reccCountSorted.length}</h3>
         <h3>Reccs detailed: {Object.keys(reccDetails).length}</h3>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => setShowFollowedByMe(!showFollowedByMe)}
-        >
-          {showFollowedByMe
-            ? "Showing People I Follow"
-            : "Hiding People I Follow"}
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => setShowDetailsByScore(!showDetailsByScore)}
-        >
-          {showDetailsByScore
-            ? "Sorting By Percent Following"
-            : "Sorting By Total Following"}
-        </button>
+        <hr />
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+            onClick={() => setShowFollowedByMe(true)}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault1">
+            Show people I follow
+          </label>
+        </div>
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            onClick={() => setShowFollowedByMe(false)}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault2">
+            Hide people I follow
+          </label>
+        </div>
+        <hr />
+
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+            onClick={() => setShowDetailsByScore(false)}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault1">
+            Sort By Percent Following
+          </label>
+        </div>
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            onClick={() => setShowDetailsByScore(true)}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault2">
+            Sort By Total Following
+          </label>
+        </div>
+        <hr />
       </div>
       <div>
         <ul className="flex flex-column profile-view">
@@ -323,7 +357,7 @@ const Bsky = () => {
                 handleFollowing()
               }}
             >
-              Recommend
+              Recommendations
             </button>
           </div>
         </div>
