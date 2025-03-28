@@ -260,7 +260,7 @@ const Bsky = () => {
           <input
             className="form-check-input"
             type="radio"
-            name="flexRadioDefault"
+            name="peopleIFollow"
             id="flexRadioDefault1"
             onClick={() => setShowFollowedByMe(true)}
           />
@@ -272,7 +272,7 @@ const Bsky = () => {
           <input
             className="form-check-input"
             type="radio"
-            name="flexRadioDefault"
+            name="peopleIFollow"
             id="flexRadioDefault2"
             onClick={() => setShowFollowedByMe(false)}
           />
@@ -286,11 +286,11 @@ const Bsky = () => {
           <input
             className="form-check-input"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="sortBy"
+            id="flexRadioDefault3"
             onClick={() => setShowDetailsByScore(false)}
           />
-          <label className="form-check-label" htmlFor="flexRadioDefault1">
+          <label className="form-check-label" htmlFor="flexRadioDefault3">
             Sort By Percent Following
           </label>
         </div>
@@ -298,11 +298,11 @@ const Bsky = () => {
           <input
             className="form-check-input"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault2"
+            name="sortBy"
+            id="flexRadioDefault4"
             onClick={() => setShowDetailsByScore(true)}
           />
-          <label className="form-check-label" htmlFor="flexRadioDefault2">
+          <label className="form-check-label" htmlFor="flexRadioDefault4">
             Sort By Total Following
           </label>
         </div>
