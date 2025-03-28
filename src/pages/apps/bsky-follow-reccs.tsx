@@ -29,6 +29,8 @@ const Bsky = () => {
   )
   const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
 
+  const requestFrequency = 100
+
   // Get the "handle" query parameter.
   // This should eventually be replaced with a user input field.
   // "I / Me" from this point are the perspective of the user, eg. the handle.
@@ -47,8 +49,8 @@ const Bsky = () => {
       const data: string[] = await response.json()
       // This is done to prevent the same handles from being recommended in the same order.
       const dataRandomized = [...new Set(data.sort(() => Math.random() - 0.5))]
-      setFollowing(dataRandomized)
-      setMyFollowingCopy(dataRandomized)
+      setFollowing(() => dataRandomized)
+      setMyFollowingCopy(() => dataRandomized)
     } catch (error) {
       showError(setError, error)
     }
@@ -57,7 +59,10 @@ const Bsky = () => {
   // When you have my followers ...
   useEffect(() => {
     if (Object.keys(following).length !== 0) {
-      const timer = setTimeout(() => handleRecommedationCounts(), 250)
+      const timer = setTimeout(
+        () => handleRecommedationCounts(),
+        requestFrequency
+      )
       return () => clearTimeout(timer)
     }
   }, [following])
@@ -99,8 +104,8 @@ const Bsky = () => {
           reccsCopy[theirFollowingHandle] = reccCount
         }
       })
-      setReccCount(reccsCopy)
-      setFollowing(myFollowingCopy)
+      setReccCount(() => reccsCopy)
+      setFollowing(() => myFollowingCopy)
     } catch (error) {
       showError(setError, error)
     }
@@ -112,7 +117,10 @@ const Bsky = () => {
       Object.keys(reccCount).length != 0 &&
       Object.keys(following).length == 0
     ) {
-      const timer = setTimeout(() => handleRecommedationCountSorted(), 250)
+      const timer = setTimeout(
+        () => handleRecommedationCountSorted(),
+        requestFrequency
+      )
       return () => clearTimeout(timer)
     }
   }, [following, reccCount])
@@ -125,7 +133,7 @@ const Bsky = () => {
   // Sort by `(a, b) => b[1] - a[1]` (eg. highest first)
   // produces a list dominated by popular people.
   //
-  // Sort by `() => Math.random() - 0.5)` (eg. random)
+  // Sort by `() => Math.random() - 0.5` (eg. random)
   // produces most of less the same output for the "most popular" list,
   // but produces dramatically different results for the "percent following" list.
   //
@@ -137,8 +145,9 @@ const Bsky = () => {
       }
       const reccCountSortedCopy: [string, number][] = Object.entries(
         reccCountCopy
-      ).sort(() => Math.random() - 0.5)
-      setReccCountSorted(reccCountSortedCopy)
+      ).sort((a, b) => b[1] - a[1])
+      console.log("reccCountSortedCopy", reccCountSortedCopy)
+      setReccCountSorted(() => reccCountSortedCopy)
       setReccCount({})
     } catch (error) {
       showError(setError, error)
@@ -148,7 +157,7 @@ const Bsky = () => {
   // When you have the sorted reccomendation counts ...
   useEffect(() => {
     if (reccCountSorted.length != 0) {
-      const timer = setTimeout(() => handleReccDetails(), 250)
+      const timer = setTimeout(() => handleReccDetails(), requestFrequency)
       return () => clearTimeout(timer)
     }
   }, [reccCountSorted])
@@ -166,7 +175,7 @@ const Bsky = () => {
       if (!shiftedItem) {
         console.error("No handle found to process.")
         reccCountSortedCopy.pop()
-        setReccCountSorted(reccCountSortedCopy)
+        setReccCountSorted(() => reccCountSortedCopy)
         return
       }
 
@@ -174,18 +183,21 @@ const Bsky = () => {
       if (!handle) {
         console.error("No handle found to process.")
         reccCountSortedCopy.pop()
-        setReccCountSorted(reccCountSortedCopy)
+        setReccCountSorted(() => reccCountSortedCopy)
         return
       }
 
       const tooManyDetails = reccDetailsCopy.length > 250
       if (tooManyDetails) {
+        console.log("Too many details")
         setReccCountSorted([])
         return
       }
 
       const tooFewFollowers = followingCopy.length / 10 > myFollowers
       if (tooFewFollowers) {
+        console.log("handle =>", handle)
+        console.log("Too few followers =>", followingCopy.length, myFollowers)
         setReccCountSorted([])
         return
       }
@@ -201,14 +213,14 @@ const Bsky = () => {
 
       reccDetailsCopy.push({
         myFollowersCount: myFollowers,
-        score: myFollowers / (profile.followersCount ?? 1), // number of my following, divided by number of their followers
+        score: myFollowers / (profile.followersCount ?? 1),
         profile: profile,
         folledByMe: followingCopy.includes(profile.handle),
       })
 
       reccCountSortedCopy.pop()
-      setReccCountSorted(reccCountSortedCopy)
-      setReccDetails(reccDetailsCopy)
+      setReccCountSorted(() => reccCountSortedCopy)
+      setReccDetails(() => reccDetailsCopy)
     } catch (error) {
       showError(setError, error)
     }
@@ -217,7 +229,10 @@ const Bsky = () => {
   // When you have the reccomendation details ...
   useEffect(() => {
     if (reccCountSorted.length == 0 && reccDetailsByScore.length == 0) {
-      const timer = setTimeout(() => handleSortDetailedByScore(), 250)
+      const timer = setTimeout(
+        () => handleSortDetailedByScore(),
+        requestFrequency
+      )
       return () => clearTimeout(timer)
     }
   }, [reccCountSorted, reccDetailsByScore])
@@ -227,7 +242,7 @@ const Bsky = () => {
     try {
       const reccDetailsCopy = [...reccDetails]
       reccDetailsCopy.sort((a, b) => b.score - a.score)
-      setReccDetailsByScore(reccDetailsCopy)
+      setReccDetailsByScore(() => reccDetailsCopy)
     } catch (error) {
       showError(setError, error)
     }
