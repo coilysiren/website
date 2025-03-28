@@ -312,7 +312,9 @@ const Bsky = () => {
         <ul className="flex flex-column profile-view">
           {(showDetailsByScore
             ? reccDetails.sort((a, b) => b.score - a.score)
-            : reccDetails
+            : reccDetails.sort(
+                (a, b) => b.myFollowersCount - a.myFollowersCount
+              )
           ).map((recc) => (
             <li
               style={
