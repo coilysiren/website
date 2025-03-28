@@ -67,6 +67,17 @@
     color: vars.$mid-purple;
     font-weight: 700;
   }
+
+  .input-group {
+    @include vars.phone {
+      flex-direction: column;
+
+      > * {
+        width: 100% !important;
+        border-radius: 0;
+      }
+    }
+  }
 }
 
 .post-content {

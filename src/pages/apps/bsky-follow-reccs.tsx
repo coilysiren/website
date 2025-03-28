@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react"
-import Layout from "../components/layout"
-import Closer from "../components/closer"
+import React, { useEffect, useRef, useState } from "react"
+import { useSearchParams, BrowserRouter } from "react-router-dom"
+import Layout from "../../components/layout"
+import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
+import showError from "../../components/error"
 
 interface IReccDetails {
   myFollowersCount: number
@@ -10,7 +12,10 @@ interface IReccDetails {
   profile: ProfileViewDetailed
 }
 
-const Bksy = () => {
+const Bsky = () => {
+  const handleRef = useRef<HTMLInputElement | null>(null)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [error, setError] = useState<React.ReactNode>()
   const [following, setFollowing] = useState<string[]>([])
   const [followingCopy, setMyFollowingCopy] = useState<string[]>([])
   const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
@@ -28,11 +33,7 @@ const Bksy = () => {
   // This should eventually be replaced with a user input field.
   // "I / Me" from this point are the perspective of the user, eg. the handle.
   // "You" is the server / website.
-  var myHandle
-  if (typeof window !== "undefined") {
-    const urlParams = new URLSearchParams(window.location.search)
-    myHandle = urlParams.get("handle")
-  }
+  const myHandle = searchParams.get("handle")
 
   // Get the list of people that I follow.
   const handleFollowing = async () => {
@@ -49,7 +50,7 @@ const Bksy = () => {
       setFollowing(dataRandomized)
       setMyFollowingCopy(dataRandomized)
     } catch (error) {
-      console.error(error)
+      showError(setError, error)
     }
   }
 
@@ -85,7 +86,7 @@ const Bksy = () => {
       }
       const data: string[] = await response.json()
 
-      // Generate a "recc" int for each handle that they follow
+      // Generate a "reccCount" int for each handle that they follow
       // If the handle is already in the reccs, increment the count.
       var reccsCopy = { ...reccCount }
       data.forEach((theirFollowingHandle) => {
@@ -101,7 +102,7 @@ const Bksy = () => {
       setReccCount(reccsCopy)
       setFollowing(myFollowingCopy)
     } catch (error) {
-      console.error(error)
+      showError(setError, error)
     }
   }
 
@@ -140,7 +141,7 @@ const Bksy = () => {
       setReccCountSorted(reccCountSortedCopy)
       setReccCount({})
     } catch (error) {
-      console.error(error)
+      showError(setError, error)
     }
   }
 
@@ -209,7 +210,7 @@ const Bksy = () => {
       setReccCountSorted(reccCountSortedCopy)
       setReccDetails(reccDetailsCopy)
     } catch (error) {
-      console.error(error)
+      showError(setError, error)
     }
   }
 
@@ -228,34 +229,34 @@ const Bksy = () => {
       reccDetailsCopy.sort((a, b) => b.score - a.score)
       setReccDetailsByScore(reccDetailsCopy)
     } catch (error) {
-      console.error(error)
+      showError(setError, error)
     }
   }
 
   const followingComponent = (
     <div>
-      <h2>Reccs</h2>
       <div>
-        <h3>Following To Get Recommendatins From: {following.length}</h3>
-        <h3>Reccs Counted: {Object.keys(reccCount).length}</h3>
-        <h3>Reccs Sorted: {reccCountSorted.length}</h3>
-        <h3>Reccs Detailed: {Object.keys(reccDetails).length}</h3>
-        <button onClick={handleFollowing}>
-          <h3>Get Data</h3>
+        <h3>Following to count: {following.length}</h3>
+        <h3>Total recc count: {Object.keys(reccCount).length}</h3>
+        <h3>Reccs sorted: {reccCountSorted.length}</h3>
+        <h3>Reccs detailed: {Object.keys(reccDetails).length}</h3>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => setShowFollowedByMe(!showFollowedByMe)}
+        >
+          {showFollowedByMe
+            ? "Showing People I Follow"
+            : "Hiding People I Follow"}
         </button>
-        <button onClick={() => setShowFollowedByMe(!showFollowedByMe)}>
-          <h3>
-            {showFollowedByMe
-              ? "Showing People I Follow"
-              : "Hiding People I Follow"}
-          </h3>
-        </button>
-        <button onClick={() => setShowDetailsByScore(!showDetailsByScore)}>
-          <h3>
-            {showDetailsByScore
-              ? "Sorting By Percent Following"
-              : "Sorting By Total Following"}
-          </h3>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => setShowDetailsByScore(!showDetailsByScore)}
+        >
+          {showDetailsByScore
+            ? "Sorting By Percent Following"
+            : "Sorting By Total Following"}
         </button>
       </div>
       <div>
@@ -301,12 +302,39 @@ const Bksy = () => {
       <section className="post-body">
         <div className="post-header">
           <h2>
-            <a href="https://bsky.app/profile/handle">
-              bsky.app/profile/{myHandle}
-            </a>
+            <p>Bluesky Follow Recommendations</p>
           </h2>
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              defaultValue={myHandle || ""}
+              placeholder="enter handle"
+              aria-label="enter handle"
+              aria-describedby="button-addon2"
+              ref={handleRef}
+            />
+            <button
+              className="btn btn-outline-secondary"
+              type="button"
+              disabled={!handleRef.current?.value}
+              onClick={() => {
+                setSearchParams({ handle: handleRef.current?.value || "" })
+                handleFollowing()
+              }}
+            >
+              Recommend
+            </button>
+          </div>
         </div>
         <div className="post-content">
+          {error ? (
+            <div className="alert alert-danger" role="alert">
+              {error}
+            </div>
+          ) : (
+            <div></div>
+          )}
           <div>
             <div className="flex flex-column gap-4">{followingComponent}</div>
           </div>
@@ -317,4 +345,10 @@ const Bksy = () => {
   )
 }
 
-export default Bksy
+export default () => {
+  return (
+    <BrowserRouter>
+      <Bsky />
+    </BrowserRouter>
+  )
+}
