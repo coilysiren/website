@@ -14,7 +14,7 @@ interface IReccDetails {
 
 const Bsky = () => {
   const handleRef = useRef<HTMLInputElement | null>(null)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = typeof window !== "undefined" ? useSearchParams() : [new URLSearchParams(), () => {}]
   const [error, setError] = useState<React.ReactNode>()
   const [following, setFollowing] = useState<string[]>([])
   const [followingCopy, setMyFollowingCopy] = useState<string[]>([])
@@ -368,7 +368,7 @@ const Bsky = () => {
             <button
               className="btn btn-outline-secondary"
               type="button"
-              disabled={!handleRef.current?.value}
+              disabled={typeof window === "undefined" || !handleRef.current?.value}
               onClick={() => {
                 setSearchParams({ handle: handleRef.current?.value || "" })
                 handleFollowing()
@@ -398,8 +398,10 @@ const Bsky = () => {
 
 export default () => {
   return (
-    <BrowserRouter>
-      <Bsky />
-    </BrowserRouter>
+    typeof window !== "undefined" ? (
+      <BrowserRouter>
+        <Bsky />
+      </BrowserRouter>
+    ) : null
   )
 }
