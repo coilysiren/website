@@ -12,7 +12,6 @@ const maxSuggestions = 100
 const Bsky = () => {
   // START: GENERIC STATE
   // This kind of state is likely to be used in most applications.
-  const handleRef = useRef<HTMLInputElement | null>(null)
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const setParams = (key: string, value: string) => {
@@ -53,6 +52,7 @@ const Bsky = () => {
   // START: UI STATE
   // This is similar to the application state,
   // different in that it doesn't need to be reset.
+  const handleRef = useRef<HTMLInputElement | null>(null)
   const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
   const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
   // END: UI STATE
