@@ -297,6 +297,7 @@ const Bsky = () => {
             </a>
             , go check that out as well!
           </p>
+          <p>Something broken? Reload the page and try again.</p>
           {started && !done ? (
             <div className="flex-center flex">
               <div className="spinner-border" role="status">
