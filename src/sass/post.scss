@@ -80,6 +80,10 @@
   }
 }
 
+p.large {
+  font-size: 4em;
+}
+
 .post-content {
   padding: 0.5em;
   background: #fff;
@@ -109,7 +113,7 @@
     }
   }
 
-  button {
+  button & .button {
     padding: 0.5em;
     margin: 0.5em;
     border-radius: 1em;

@@ -7,7 +7,7 @@ import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
 const requestFrequency = 250
-const maxSuggestions = 250
+const maxSuggestions = 100
 const maxSuggestionDetailRequests = 1000
 
 const Bsky = () => {
@@ -266,7 +266,7 @@ const Bsky = () => {
               onClick={() => {
                 clearApplicationState()
                 setError(null)
-                setParams("handle", handleRef.current?.value || "")
+                setParams("handle", handleRef.current?.value || myHandle || "")
                 getSuggestions(handleRef.current?.value || "")
                 setStarted(true)
               }}
