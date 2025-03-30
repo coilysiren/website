@@ -7,8 +7,8 @@ import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
 const requestFrequency = 250
-const maxSuggestions = process.env.GATSBY_ENV == "dev" ? 100 : 500
-const maxSuggestionDetailRequests = process.env.GATSBY_ENV == "dev" ? 500 : 2500
+const maxSuggestions = 250
+const maxSuggestionDetailRequests = 1000
 
 const Bsky = () => {
   // START: GENERIC STATE
@@ -21,6 +21,8 @@ const Bsky = () => {
     window.history.pushState(null, "", url.toString())
   }
   const [error, setError] = useState<React.ReactNode>()
+  const [started, setStarted] = useState<boolean>(false)
+  const [done, setDone] = useState<boolean>(false)
   // END: GENERIC STATE
 
   // START: APPLICATION STATE
@@ -40,6 +42,8 @@ const Bsky = () => {
     setSuggestionCounts({})
     setSuggestionDetails({})
     setSuggestionDetailRequests(0)
+    setStarted(false)
+    setDone(false)
   }
   // END: APPLICATION STATE
 
@@ -53,23 +57,20 @@ const Bsky = () => {
   const myHandle = searchParams.get("handle")
 
   // Once you start getting suggestions, keep getting them until there are no more.
+
   useEffect(() => {
-    if (suggestionsIndex != 0 && suggestionsIndex != -1) {
+    if (!done && suggestionsIndex != 0 && suggestionsIndex != -1) {
       const timer = setTimeout(() => getSuggestions(myHandle), requestFrequency)
       return () => clearTimeout(timer)
     }
-  }, [suggestionsIndex])
+  }, [suggestionsIndex, done])
 
   // Get a list of suggestions, then aggregate the counts of each handle.
   const getSuggestions = async (handle: string | null) => {
-    if (!handle) {
-      return
-    }
-
     // Get suggested follows from the server for the given handle.
     const suggestionCountsCopy = { ...suggestionCounts }
     const response = await fetch(
-      `${process.env.GATSBY_API_URL}/bsky/${myHandle}/suggestions/${suggestionsIndex}`
+      `${process.env.GATSBY_API_URL}/bsky/${handle}/suggestions/${suggestionsIndex}`
     )
     if (!response.ok) {
       clearApplicationState()
@@ -92,22 +93,19 @@ const Bsky = () => {
   // Once you start getting suggestion counts, sort them by the number of followers.
   // Then start getting details for each suggestion.
   useEffect(() => {
-    const missingCount = maxSuggestions - Object.keys(suggestionDetails).length
     if (
+      !done &&
       Object.keys(suggestionCounts).length !== 0 &&
-      missingCount > 0 &&
+      maxSuggestions - Object.keys(suggestionDetails).length > 0 &&
       suggestionDetailRequests < maxSuggestionDetailRequests
     ) {
       const timer = setTimeout(() => getSuggestionDetails(), requestFrequency)
       return () => clearTimeout(timer)
     }
-  }, [suggestionCounts, suggestionDetails])
+  }, [done, suggestionCounts, suggestionDetails])
 
   // Then start getting details for each suggestion until there are no more left.
   const getSuggestionDetails = async () => {
-    if (Object.keys(suggestionDetails).length >= maxSuggestions) return
-    if (suggestionDetailRequests >= maxSuggestionDetailRequests) return
-
     // Get a list of suggestions to detail via looking through the suggestion counts.
     // Removing the list of handles that already have details.
     // Sorting the list to get the people with the most followers first.
@@ -120,6 +118,16 @@ const Bsky = () => {
 
     // Get details for each suggestion.
     for (const handle of suggestionsToDetail) {
+      // Check for done-ness inside of the loop to avoid infinite loop nonsense.
+      if (Object.keys(suggestionDetails).length >= maxSuggestions) {
+        setDone(true)
+        return
+      }
+      if (suggestionDetailRequests >= maxSuggestionDetailRequests) {
+        setDone(true)
+        return
+      }
+
       const response = await fetch(
         `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
       )
@@ -255,6 +263,7 @@ const Bsky = () => {
                 setError(null)
                 setParams("handle", handleRef.current?.value || "")
                 getSuggestions(handleRef.current?.value || "")
+                setStarted(true)
               }}
             >
               Suggest!
@@ -283,6 +292,19 @@ const Bsky = () => {
             </a>
             , go check that out as well!
           </p>
+          {started && !done ? (
+            <div className="flex-center flex">
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+            </div>
+          ) : null}
         </div>
         <div className="post-content">
           {error ? error : null}
