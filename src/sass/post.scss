@@ -151,6 +151,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  p.profile-description {
+    line-height: 1.5em;
+  }
 }
 
 // Styling of single ``
