@@ -3,14 +3,7 @@ import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
-import getProfileList from "../../components/bsky"
-
-interface IExpandedProfileDetails {
-  myFollowersCount: number
-  folledByMe: boolean
-  score: number
-  profile: ProfileViewDetailed
-}
+import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
 const Testing = () => {
   // START: GENERIC STATE

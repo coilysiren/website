@@ -1,27 +1,20 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useSearchParams, BrowserRouter } from "react-router-dom"
+import { useLocation, navigate } from "@reach/router"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
+import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
 const requestFrequency = 100
-
-interface ISuggestionDetails {
-  myFollowersCount: number
-  folledByMe: boolean
-  score: number
-  profile: ProfileViewDetailed
-}
+const maxSuggestions = 100
 
 const Bsky = () => {
   // START: GENERIC STATE
   // This kind of state is likely to be used in most applications.
   const handleRef = useRef<HTMLInputElement | null>(null)
-  const [searchParams, setSearchParams] =
-    typeof window !== "undefined"
-      ? useSearchParams()
-      : [new URLSearchParams(), () => {}]
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
   const [error, setError] = useState<React.ReactNode>()
   // END: GENERIC STATE
 
@@ -37,10 +30,10 @@ const Bsky = () => {
     [string, number][]
   >([])
   const [suggestionDetails, setSuggestionDetails] = useState<
-    ISuggestionDetails[]
+    IExpandedProfileDetails[]
   >([])
   const [suggestionDetailsByScore, setSuggestionDetailsByScore] = useState<
-    ISuggestionDetails[]
+    IExpandedProfileDetails[]
   >([])
   const clearApplicationState = () => {
     setFollowing([])
@@ -164,7 +157,6 @@ const Bsky = () => {
     const suggestionCountSortedCopy: [string, number][] = Object.entries(
       suggestionCountCopy
     ).sort((a, b) => b[1] - a[1])
-    console.log("suggestionCountSortedCopy", suggestionCountSortedCopy)
     setSuggestionCountSorted(() => suggestionCountSortedCopy)
     setSuggestionCount({})
   }
@@ -190,7 +182,6 @@ const Bsky = () => {
     const shiftedItem = suggestionCountSortedCopy.shift()
 
     if (!shiftedItem) {
-      console.error("No handle found to process.")
       suggestionCountSortedCopy.pop()
       setSuggestionCountSorted(() => suggestionCountSortedCopy)
       return
@@ -198,23 +189,19 @@ const Bsky = () => {
 
     const [handle, myFollowers] = shiftedItem
     if (!handle) {
-      console.error("No handle found to process.")
       suggestionCountSortedCopy.pop()
       setSuggestionCountSorted(() => suggestionCountSortedCopy)
       return
     }
 
-    const tooManyDetails = suggestionDetailsCopy.length > 250
+    const tooManyDetails = suggestionDetailsCopy.length > maxSuggestions
     if (tooManyDetails) {
-      console.log("Too many details")
       setSuggestionCountSorted([])
       return
     }
 
     const tooFewFollowers = followingCopy.length / 10 > myFollowers
     if (tooFewFollowers) {
-      console.log("handle =>", handle)
-      console.log("Too few followers =>", followingCopy.length, myFollowers)
       setSuggestionCountSorted([])
       return
     }
@@ -323,47 +310,18 @@ const Bsky = () => {
         </div>
         <hr />
       </div>
-      <div>
-        <ul className="flex flex-column profile-view">
-          {(showDetailsByScore
-            ? suggestionDetails.sort((a, b) => b.score - a.score)
-            : suggestionDetails.sort(
+      <div className="post-content">
+        {showDetailsByScore
+          ? getProfileList(
+              suggestionDetails.sort((a, b) => b.score - a.score),
+              null
+            )
+          : getProfileList(
+              suggestionDetails.sort(
                 (a, b) => b.myFollowersCount - a.myFollowersCount
-              )
-          ).map((suggestion) => (
-            <li
-              style={
-                !showFollowedByMe && suggestion.folledByMe
-                  ? { display: "none" }
-                  : {}
-              }
-              key={suggestion.profile.did}
-              className="flex flex-row gap-4"
-            >
-              <img
-                src={suggestion.profile.avatar}
-                alt={suggestion.profile.displayName}
-                className="img-thumbnail"
-                width={40}
-                height={40}
-              />
-              <div className="block">
-                <p>{suggestion.profile.displayName}</p>
-                <a
-                  href={`https://bsky.app/profile/${suggestion.profile.handle}`}
-                >
-                  <p>@{suggestion.profile.handle}</p>
-                </a>
-                <p>{suggestion.profile.description}</p>
-                <p>My followers: {suggestion.myFollowersCount}</p>
-                <p>
-                  {Math.round(suggestion.score * 100)}% followed by people I
-                  follow
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+              ),
+              null
+            )}
       </div>
     </div>
   )
@@ -392,7 +350,6 @@ const Bsky = () => {
                 typeof window === "undefined" || !handleRef.current?.value
               }
               onClick={() => {
-                setSearchParams({ handle: handleRef.current?.value || "" })
                 handleFollowing(handleRef.current?.value || "")
               }}
             >
@@ -412,10 +369,4 @@ const Bsky = () => {
   )
 }
 
-export default () => {
-  return typeof window !== "undefined" ? (
-    <BrowserRouter>
-      <Bsky />
-    </BrowserRouter>
-  ) : null
-}
+export default Bsky
