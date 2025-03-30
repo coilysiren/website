@@ -318,13 +318,25 @@ const Bsky = () => {
       <div className="post-content">
         {showDetailsByScore
           ? getProfileList(
-              suggestionDetails.sort((a, b) => b.score - a.score),
+              suggestionDetails
+                .sort((a, b) => b.score - a.score)
+                .filter((details) => {
+                  if (showFollowedByMe) {
+                    return details.folledByMe
+                  }
+                  return true
+                }),
               null
             )
           : getProfileList(
-              suggestionDetails.sort(
-                (a, b) => b.myFollowersCount - a.myFollowersCount
-              ),
+              suggestionDetails
+                .sort((a, b) => b.myFollowersCount - a.myFollowersCount)
+                .filter((details) => {
+                  if (showFollowedByMe) {
+                    return details.folledByMe
+                  }
+                  return true
+                }),
               null
             )}
       </div>
