@@ -8,7 +8,7 @@ import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
 const starletteRope = 5
 const requestFrequency = 250
-const absoluteMaxStarlettes = 100
+const absoluteMaxStarlettes = 250
 
 const Bsky = () => {
   // START: GENERIC STATE
