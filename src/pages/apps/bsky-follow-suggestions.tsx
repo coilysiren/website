@@ -5,6 +5,8 @@ import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import showError from "../../components/error"
 
+const requestFrequency = 100
+
 interface ISuggestionDetails {
   myFollowersCount: number
   folledByMe: boolean
@@ -13,15 +15,21 @@ interface ISuggestionDetails {
 }
 
 const Bsky = () => {
+  // START: GENERIC STATE
+  // This kind of state is likely to be used in most applications.
   const handleRef = useRef<HTMLInputElement | null>(null)
   const [searchParams, setSearchParams] =
     typeof window !== "undefined"
       ? useSearchParams()
       : [new URLSearchParams(), () => {}]
   const [error, setError] = useState<React.ReactNode>()
+  // END: GENERIC STATE
+
+  // START: APPLICATION STATE
+  // Reset all of this stuff whenever there is an error
+  // or whenever the user does something that implies a page refesh.
   const [following, setFollowing] = useState<string[]>([])
   const [followingCopy, setMyFollowingCopy] = useState<string[]>([])
-  const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
   const [suggestionCount, setSuggestionCount] = useState<{
     [key: string]: number
   }>({})
@@ -34,9 +42,22 @@ const Bsky = () => {
   const [suggestionDetailsByScore, setSuggestionDetailsByScore] = useState<
     ISuggestionDetails[]
   >([])
-  const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
+  const clearApplicationState = () => {
+    setFollowing([])
+    setMyFollowingCopy([])
+    setSuggestionCount({})
+    setSuggestionCountSorted([])
+    setSuggestionDetails([])
+    setSuggestionDetailsByScore([])
+  }
+  // END: APPLICATION STATE
 
-  const requestFrequency = 100
+  // START: UI STATE
+  // This is similar to the application state,
+  // different in that it doesn't need to be reset.
+  const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
+  const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
+  // END: UI STATE
 
   // Get the "handle" query parameter.
   // This should eventually be replaced with a user input field.
@@ -45,22 +66,18 @@ const Bsky = () => {
   const myHandle = searchParams.get("handle")
 
   // Get the list of people that I follow.
-  const handleFollowing = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${myHandle}/following/handles`
-      )
-      if (!response.ok) {
-        throw new Error(await response.text())
-      }
-      const data: string[] = await response.json()
-      // This is done to prevent the same handles from being suggested in the same order.
-      const dataRandomized = [...new Set(data.sort(() => Math.random() - 0.5))]
-      setFollowing(() => dataRandomized)
-      setMyFollowingCopy(() => dataRandomized)
-    } catch (error) {
-      showError(setError, error.toString())
+  const handleFollowing = async (handle: string) => {
+    const response = await fetch(
+      `${process.env.GATSBY_API_URL}/bsky/${handle}/following/handles`
+    )
+    if (!response.ok) {
+      clearApplicationState()
+      showError(setError, response)
+      return
     }
+    const data: string[] = await response.json()
+    setFollowing(() => data)
+    setMyFollowingCopy(() => data)
   }
 
   // When you have my followers ...
@@ -82,37 +99,35 @@ const Bsky = () => {
   // - C: 2
   // - D: 1
   const handleSuggestionCounts = async () => {
-    try {
-      var myFollowingCopy = [...following]
-      const myFollowingHandle = myFollowingCopy.pop()
+    var myFollowingCopy = [...following]
+    const myFollowingHandle = myFollowingCopy.pop()
 
-      // Get for a person that I follow, get a list of the people they follow
-      const response = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${myFollowingHandle}/following/handles`
-      )
-      if (!response.ok) {
-        throw new Error(await response.text())
-      }
-      const data: string[] = await response.json()
-
-      // Generate a "suggestionCount" int for each handle that they follow
-      // If the handle is already in the suggestions, increment the count.
-      var suggestionsCopy = { ...suggestionCount }
-      data.forEach((theirFollowingHandle) => {
-        const validHandle = ![myHandle, "handle.invalid", ""].includes(
-          theirFollowingHandle
-        )
-        if (validHandle) {
-          var suggestionCount = suggestionsCopy[theirFollowingHandle]
-          suggestionCount = suggestionCount ? suggestionCount + 1 : 1
-          suggestionsCopy[theirFollowingHandle] = suggestionCount
-        }
-      })
-      setSuggestionCount(() => suggestionsCopy)
-      setFollowing(() => myFollowingCopy)
-    } catch (error) {
-      showError(setError, error.toString())
+    // Get for a person that I follow, get a list of the people they follow
+    const response = await fetch(
+      `${process.env.GATSBY_API_URL}/bsky/${myFollowingHandle}/following/handles`
+    )
+    if (!response.ok) {
+      clearApplicationState()
+      showError(setError, response)
+      return
     }
+    const data: string[] = await response.json()
+
+    // Generate a "suggestionCount" int for each handle that they follow
+    // If the handle is already in the suggestions, increment the count.
+    var suggestionsCopy = { ...suggestionCount }
+    data.forEach((theirFollowingHandle) => {
+      const validHandle = ![myHandle, "handle.invalid", ""].includes(
+        theirFollowingHandle
+      )
+      if (validHandle) {
+        var suggestionCount = suggestionsCopy[theirFollowingHandle]
+        suggestionCount = suggestionCount ? suggestionCount + 1 : 1
+        suggestionsCopy[theirFollowingHandle] = suggestionCount
+      }
+    })
+    setSuggestionCount(() => suggestionsCopy)
+    setFollowing(() => myFollowingCopy)
   }
 
   // When you have the suggestionomendation counts ...
@@ -170,63 +185,61 @@ const Bsky = () => {
   // "Details" here means any profile information required to
   // display the suggestion to the user.
   const handleSuggestionDetails = async () => {
-    try {
-      const suggestionDetailsCopy = [...suggestionDetails]
-      const suggestionCountSortedCopy = [...suggestionCountSorted]
-      const shiftedItem = suggestionCountSortedCopy.shift()
+    const suggestionDetailsCopy = [...suggestionDetails]
+    const suggestionCountSortedCopy = [...suggestionCountSorted]
+    const shiftedItem = suggestionCountSortedCopy.shift()
 
-      if (!shiftedItem) {
-        console.error("No handle found to process.")
-        suggestionCountSortedCopy.pop()
-        setSuggestionCountSorted(() => suggestionCountSortedCopy)
-        return
-      }
-
-      const [handle, myFollowers] = shiftedItem
-      if (!handle) {
-        console.error("No handle found to process.")
-        suggestionCountSortedCopy.pop()
-        setSuggestionCountSorted(() => suggestionCountSortedCopy)
-        return
-      }
-
-      const tooManyDetails = suggestionDetailsCopy.length > 250
-      if (tooManyDetails) {
-        console.log("Too many details")
-        setSuggestionCountSorted([])
-        return
-      }
-
-      const tooFewFollowers = followingCopy.length / 10 > myFollowers
-      if (tooFewFollowers) {
-        console.log("handle =>", handle)
-        console.log("Too few followers =>", followingCopy.length, myFollowers)
-        setSuggestionCountSorted([])
-        return
-      }
-
-      const response = await fetch(
-        `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
-      )
-      if (!response.ok) {
-        throw new Error(await response.text())
-      }
-      const data: { [key: string]: ProfileViewDetailed } = await response.json()
-      const profile: ProfileViewDetailed = Object.values(data)[0]
-
-      suggestionDetailsCopy.push({
-        myFollowersCount: myFollowers,
-        score: myFollowers / (profile.followersCount ?? 1),
-        profile: profile,
-        folledByMe: followingCopy.includes(profile.handle),
-      })
-
+    if (!shiftedItem) {
+      console.error("No handle found to process.")
       suggestionCountSortedCopy.pop()
       setSuggestionCountSorted(() => suggestionCountSortedCopy)
-      setSuggestionDetails(() => suggestionDetailsCopy)
-    } catch (error) {
-      showError(setError, error.toString())
+      return
     }
+
+    const [handle, myFollowers] = shiftedItem
+    if (!handle) {
+      console.error("No handle found to process.")
+      suggestionCountSortedCopy.pop()
+      setSuggestionCountSorted(() => suggestionCountSortedCopy)
+      return
+    }
+
+    const tooManyDetails = suggestionDetailsCopy.length > 250
+    if (tooManyDetails) {
+      console.log("Too many details")
+      setSuggestionCountSorted([])
+      return
+    }
+
+    const tooFewFollowers = followingCopy.length / 10 > myFollowers
+    if (tooFewFollowers) {
+      console.log("handle =>", handle)
+      console.log("Too few followers =>", followingCopy.length, myFollowers)
+      setSuggestionCountSorted([])
+      return
+    }
+
+    const response = await fetch(
+      `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
+    )
+    if (!response.ok) {
+      clearApplicationState()
+      showError(setError, response)
+      return
+    }
+    const data: { [key: string]: ProfileViewDetailed } = await response.json()
+    const profile: ProfileViewDetailed = Object.values(data)[0]
+
+    suggestionDetailsCopy.push({
+      myFollowersCount: myFollowers,
+      score: myFollowers / (profile.followersCount ?? 1),
+      profile: profile,
+      folledByMe: followingCopy.includes(profile.handle),
+    })
+
+    suggestionCountSortedCopy.pop()
+    setSuggestionCountSorted(() => suggestionCountSortedCopy)
+    setSuggestionDetails(() => suggestionDetailsCopy)
   }
 
   // When you have the suggestionomendation details ...
@@ -380,7 +393,7 @@ const Bsky = () => {
               }
               onClick={() => {
                 setSearchParams({ handle: handleRef.current?.value || "" })
-                handleFollowing()
+                handleFollowing(handleRef.current?.value || "")
               }}
             >
               Suggest!

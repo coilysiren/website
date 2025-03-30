@@ -163,7 +163,7 @@ p > code {
 }
 
 // Styling of triple ```
-pre {
+pre:not(.error-message) {
   background-color: vars.$dark-purple;
   background-image: url("../images/rows-triangles.svg");
   background-repeat: repeat-x;
