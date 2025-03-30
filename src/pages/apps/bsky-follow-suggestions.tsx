@@ -67,6 +67,8 @@ const Bsky = () => {
 
   // Get a list of suggestions, then aggregate the counts of each handle.
   const getSuggestions = async (handle: string | null) => {
+    if (done) return
+
     // Get suggested follows from the server for the given handle.
     const suggestionCountsCopy = { ...suggestionCounts }
     const response = await fetch(
@@ -106,6 +108,8 @@ const Bsky = () => {
 
   // Then start getting details for each suggestion until there are no more left.
   const getSuggestionDetails = async () => {
+    if (done) return
+
     // Get a list of suggestions to detail via looking through the suggestion counts.
     // Removing the list of handles that already have details.
     // Sorting the list to get the people with the most followers first.
@@ -118,15 +122,7 @@ const Bsky = () => {
 
     // Get details for each suggestion.
     for (const handle of suggestionsToDetail) {
-      // Check for done-ness inside of the loop to avoid infinite loop nonsense.
-      if (Object.keys(suggestionDetails).length >= maxSuggestions) {
-        setDone(true)
-        return
-      }
-      if (suggestionDetailRequests >= maxSuggestionDetailRequests) {
-        setDone(true)
-        return
-      }
+      if (done) return
 
       const response = await fetch(
         `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
@@ -151,22 +147,30 @@ const Bsky = () => {
     }
   }
 
+  useEffect(() => {
+    if (Object.keys(suggestionDetails).length >= maxSuggestions) {
+      setDone(true)
+    }
+    if (suggestionDetailRequests >= maxSuggestionDetailRequests) {
+      setDone(true)
+    }
+  }, [suggestionDetails, suggestionDetailRequests])
+
   const followingComponent = (
     <div>
       <div>
-        <p>
-          Suggestions should finish loading after either of these bars is full:
-        </p>
         <div className="progress" style={{ height: "20px" }}>
           <div
             className="progress-bar progress-bar-striped bg-success"
             role="progressbar"
             style={{
               width:
-                (
-                  (100 * suggestionDetailRequests) /
-                  maxSuggestionDetailRequests
-                ).toString() + "%",
+                (done
+                  ? 100
+                  : (
+                      (100 * suggestionDetailRequests) /
+                      maxSuggestionDetailRequests
+                    ).toString()) + "%",
             }}
             aria-valuenow={suggestionDetailRequests}
             aria-valuemin={0}
@@ -179,9 +183,10 @@ const Bsky = () => {
             role="progressbar"
             style={{
               width:
-                (
-                  (100 * Object.keys(suggestionDetails).length) /
-                  maxSuggestions
+                (done
+                  ? 100
+                  : (100 * Object.keys(suggestionDetails).length) /
+                    maxSuggestions
                 ).toString() + "%",
             }}
             aria-valuenow={Object.keys(suggestionDetails).length}
