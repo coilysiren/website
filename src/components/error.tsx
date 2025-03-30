@@ -1,6 +1,6 @@
 import React from "react"
 
-const showError = async (
+const showHTTPError = async (
   setter: (value: React.SetStateAction<React.ReactNode>) => void,
   response: Response
 ) => {
@@ -8,17 +8,24 @@ const showError = async (
     response.status < 500
       ? JSON.stringify(await response.json(), null, 2)
       : await response.text()
+  return await showError(setter, response.status < 500, data)
+}
+
+const showError = async (
+  setter: (value: React.SetStateAction<React.ReactNode>) => void,
+  warning: boolean,
+  message: string
+) => {
+  console.log(message)
   setter(() => (
     <div>
       <div
-        className={
-          response.status < 500 ? "alert alert-warning" : "alert alert-danger"
-        }
+        className={warning ? "alert alert-warning" : "alert alert-danger"}
         role="alert"
       >
-        {response.status < 500 ? (
+        {warning ? (
           <div>
-            <pre className="error-message">{data}</pre>
+            <pre className="warning-message">{message}</pre>
           </div>
         ) : (
           <p>
@@ -38,4 +45,4 @@ const showError = async (
   ))
 }
 
-export default showError
+export { showHTTPError, showError }

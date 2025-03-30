@@ -3,7 +3,7 @@ import { useSearchParams, BrowserRouter } from "react-router-dom"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
-import showError from "../../components/error"
+import { showHTTPError } from "../../components/error"
 
 const requestFrequency = 100
 
@@ -72,7 +72,7 @@ const Bsky = () => {
     )
     if (!response.ok) {
       clearApplicationState()
-      showError(setError, response)
+      showHTTPError(setError, response)
       return
     }
     const data: string[] = await response.json()
@@ -108,7 +108,7 @@ const Bsky = () => {
     )
     if (!response.ok) {
       clearApplicationState()
-      showError(setError, response)
+      showHTTPError(setError, response)
       return
     }
     const data: string[] = await response.json()
@@ -224,7 +224,7 @@ const Bsky = () => {
     )
     if (!response.ok) {
       clearApplicationState()
-      showError(setError, response)
+      showHTTPError(setError, response)
       return
     }
     const data: { [key: string]: ProfileViewDetailed } = await response.json()
