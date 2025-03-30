@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react"
-import { useLocation, navigate } from "@reach/router"
+import React, { useEffect, useState } from "react"
+import { useLocation } from "@reach/router"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
@@ -50,29 +50,33 @@ const Bsky = () => {
   // START: UI STATE
   // This is similar to the application state,
   // different in that it doesn't need to be reset.
-  const handleRef = useRef<HTMLInputElement | null>(null)
+  const [handleState, setHandleState] = useState<string>("")
+  if (
+    searchParams.get("handle") != null &&
+    searchParams.get("handle") !== handleState
+  ) {
+    setHandleState(searchParams.get("handle") || "")
+  }
   const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
   // END: UI STATE
-
-  const myHandle = searchParams.get("handle")
 
   // Once you start getting suggestions, keep getting them until there are no more.
 
   useEffect(() => {
     if (!done && suggestionsIndex != 0 && suggestionsIndex != -1) {
-      const timer = setTimeout(() => getSuggestions(myHandle), requestFrequency)
+      const timer = setTimeout(() => getSuggestions(), requestFrequency)
       return () => clearTimeout(timer)
     }
   }, [suggestionsIndex, done])
 
   // Get a list of suggestions, then aggregate the counts of each handle.
-  const getSuggestions = async (handle: string | null) => {
+  const getSuggestions = async () => {
     if (done) return
 
     // Get suggested follows from the server for the given handle.
     const suggestionCountsCopy = { ...suggestionCounts }
     const response = await fetch(
-      `${process.env.GATSBY_API_URL}/bsky/${handle}/suggestions/${suggestionsIndex}`
+      `${process.env.GATSBY_API_URL}/bsky/${handleState}/suggestions/${suggestionsIndex}`
     )
     if (!response.ok) {
       clearApplicationState()
@@ -117,7 +121,7 @@ const Bsky = () => {
     const suggestionsToDetail = Object.keys(suggestionCounts)
       .sort((a, b) => suggestionCounts[b] - suggestionCounts[a])
       .filter((suggestion) => suggestionCounts[suggestion] > 1)
-      .filter((suggestion) => suggestion != myHandle)
+      .filter((suggestion) => suggestion != handleState)
       .slice(0, maxSuggestions - Object.keys(suggestionDetails).length)
 
     // Get details for each suggestion.
@@ -254,20 +258,23 @@ const Bsky = () => {
             <input
               type="text"
               className="form-control"
-              defaultValue={myHandle || ""}
+              defaultValue={handleState}
               placeholder="enter handle"
               aria-label="enter handle"
               aria-describedby="button-addon2"
-              ref={handleRef}
+              onChange={(value) => {
+                setHandleState(value.target.value)
+                setParams("handle", value.target.value)
+              }}
             />
             <button
               className="btn btn-outline-secondary"
               type="button"
+              disabled={handleState.length == 0}
               onClick={() => {
                 clearApplicationState()
                 setError(null)
-                setParams("handle", handleRef.current?.value || myHandle || "")
-                getSuggestions(handleRef.current?.value || "")
+                getSuggestions()
                 setStarted(true)
               }}
             >

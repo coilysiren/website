@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react"
-import { useLocation, navigate } from "@reach/router"
+import React, { useEffect, useState } from "react"
+import { useLocation } from "@reach/router"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
@@ -49,10 +49,15 @@ const Bsky = () => {
   // START: UI STATE
   // This is similar to the application state,
   // different in that it doesn't need to be reset.
-  const handleRef = useRef<HTMLInputElement | null>(null)
+  const [handleState, setHandleState] = useState<string>("")
+  if (
+    searchParams.get("handle") != null &&
+    searchParams.get("handle") !== handleState
+  ) {
+    setHandleState(searchParams.get("handle") || "")
+  }
   // END: UI STATE
 
-  const myHandle = searchParams.get("handle")
   const maxStarlettes =
     absoluteMaxStarlettes < (profile?.followsCount || 0)
       ? absoluteMaxStarlettes
@@ -62,7 +67,7 @@ const Bsky = () => {
   // Check for "get profile" conditions
   useEffect(() => {
     if (started && !done) {
-      const timer = setTimeout(() => getProfile(myHandle), requestFrequency)
+      const timer = setTimeout(() => getProfile(handleState), requestFrequency)
       return () => clearTimeout(timer)
     }
   }, [started, done])
@@ -98,7 +103,7 @@ const Bsky = () => {
 
     const popularityCopy = { ...popularity }
     const response = await fetch(
-      `${process.env.GATSBY_API_URL}/bsky/${myHandle}/popularity/${popularityIndex}`
+      `${process.env.GATSBY_API_URL}/bsky/${handleState}/popularity/${popularityIndex}`
     )
     if (!response.ok) {
       clearApplicationState()
@@ -234,19 +239,22 @@ const Bsky = () => {
             <input
               type="text"
               className="form-control"
-              defaultValue={myHandle || ""}
+              defaultValue={handleState}
               placeholder="enter handle"
               aria-label="enter handle"
               aria-describedby="button-addon2"
-              ref={handleRef}
+              onChange={(value) => {
+                setHandleState(value.target.value)
+                setParams("handle", value.target.value)
+              }}
             />
             <button
               className="btn btn-outline-secondary"
               type="button"
+              disabled={handleState.length == 0}
               onClick={() => {
                 clearApplicationState()
                 setError(null)
-                setParams("handle", handleRef.current?.value || myHandle || "")
                 setStarted(true)
               }}
             >
