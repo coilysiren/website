@@ -15,6 +15,11 @@ const Bsky = () => {
   const handleRef = useRef<HTMLInputElement | null>(null)
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
+  const setParams = (key: string, value: string) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set(key, value)
+    window.history.pushState(null, "", url.toString())
+  }
   const [error, setError] = useState<React.ReactNode>()
   // END: GENERIC STATE
 
@@ -350,6 +355,8 @@ const Bsky = () => {
                 typeof window === "undefined" || !handleRef.current?.value
               }
               onClick={() => {
+                setError(null)
+                setParams("handle", handleRef.current?.value || "")
                 handleFollowing(handleRef.current?.value || "")
               }}
             >
