@@ -146,17 +146,41 @@ const Bsky = () => {
   const followingComponent = (
     <div>
       <div>
-        <h3>
-          Accounts suggested: {new Set(Object.keys(suggestionCounts)).size}
-        </h3>
-        <h3>
-          Suggestions checked: {suggestionDetailRequests} (max:{" "}
-          {maxSuggestionDetailRequests})
-        </h3>
-        <h3>
-          Suggestions detailed: {Object.keys(suggestionDetails).length} (max:{" "}
-          {maxSuggestions})
-        </h3>
+        <p>
+          Suggestions should finish loading after either of these bars is full:
+        </p>
+        <div className="progress" style={{ height: "20px" }}>
+          <div
+            className="progress-bar progress-bar-striped bg-success"
+            role="progressbar"
+            style={{
+              width:
+                (
+                  (100 * suggestionDetailRequests) /
+                  maxSuggestionDetailRequests
+                ).toString() + "%",
+            }}
+            aria-valuenow={suggestionDetailRequests}
+            aria-valuemin={0}
+            aria-valuemax={maxSuggestionDetailRequests}
+          ></div>
+        </div>
+        <div className="progress" style={{ height: "20px" }}>
+          <div
+            className="progress-bar progress-bar-striped"
+            role="progressbar"
+            style={{
+              width:
+                (
+                  (100 * Object.keys(suggestionDetails).length) /
+                  maxSuggestions
+                ).toString() + "%",
+            }}
+            aria-valuenow={Object.keys(suggestionDetails).length}
+            aria-valuemin={0}
+            aria-valuemax={maxSuggestions}
+          ></div>
+        </div>
         <hr />
         <div className="form-check">
           <input
@@ -236,6 +260,29 @@ const Bsky = () => {
               Suggest!
             </button>
           </div>
+          <p>
+            Hello and welcome to my first bluesky app! This is a tool to help
+            you find new people to follow. It will suggest accounts based on the
+            number of your followers that follow them. It can sort based on a
+            total number (favoring large accounts) or a percent (favoring niche
+            accounts).
+          </p>
+          <p>
+            The number of followers checked is subject to several limits, and is
+            slightly random. This is primarily to avoid overloading the server
+            and or your web browser. At the same time, there's a cache on the
+            server that will store the results for a short period of time. I say
+            that to say: you are encouraged to try this tool multiple times! You
+            may get different results, and subsequent runs should cost less
+            server resources than the first run.
+          </p>
+          <p>
+            This idea was based off of{" "}
+            <a href="https://bsky-follow-finder.theo.io/" target="_blank">
+              bsky-follow-finder
+            </a>
+            , go check that out as well!
+          </p>
         </div>
         <div className="post-content">
           {error ? error : null}
