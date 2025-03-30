@@ -5,7 +5,7 @@ import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import showError from "../../components/error"
 
-interface IReccDetails {
+interface ISuggestionDetails {
   myFollowersCount: number
   folledByMe: boolean
   score: number
@@ -14,19 +14,26 @@ interface IReccDetails {
 
 const Bsky = () => {
   const handleRef = useRef<HTMLInputElement | null>(null)
-  const [searchParams, setSearchParams] = typeof window !== "undefined" ? useSearchParams() : [new URLSearchParams(), () => {}]
+  const [searchParams, setSearchParams] =
+    typeof window !== "undefined"
+      ? useSearchParams()
+      : [new URLSearchParams(), () => {}]
   const [error, setError] = useState<React.ReactNode>()
   const [following, setFollowing] = useState<string[]>([])
   const [followingCopy, setMyFollowingCopy] = useState<string[]>([])
   const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
-  const [reccCount, setReccCount] = useState<{
+  const [suggestionCount, setSuggestionCount] = useState<{
     [key: string]: number
   }>({})
-  const [reccCountSorted, setReccCountSorted] = useState<[string, number][]>([])
-  const [reccDetails, setReccDetails] = useState<IReccDetails[]>([])
-  const [reccDetailsByScore, setReccDetailsByScore] = useState<IReccDetails[]>(
-    []
-  )
+  const [suggestionCountSorted, setSuggestionCountSorted] = useState<
+    [string, number][]
+  >([])
+  const [suggestionDetails, setSuggestionDetails] = useState<
+    ISuggestionDetails[]
+  >([])
+  const [suggestionDetailsByScore, setSuggestionDetailsByScore] = useState<
+    ISuggestionDetails[]
+  >([])
   const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
 
   const requestFrequency = 100
@@ -44,25 +51,22 @@ const Bsky = () => {
         `${process.env.GATSBY_API_URL}/bsky/${myHandle}/following/handles`
       )
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(await response.text())
       }
       const data: string[] = await response.json()
-      // This is done to prevent the same handles from being recommended in the same order.
+      // This is done to prevent the same handles from being suggested in the same order.
       const dataRandomized = [...new Set(data.sort(() => Math.random() - 0.5))]
       setFollowing(() => dataRandomized)
       setMyFollowingCopy(() => dataRandomized)
     } catch (error) {
-      showError(setError, error)
+      showError(setError, error.toString())
     }
   }
 
   // When you have my followers ...
   useEffect(() => {
     if (Object.keys(following).length !== 0) {
-      const timer = setTimeout(
-        () => handleRecommedationCounts(),
-        requestFrequency
-      )
+      const timer = setTimeout(() => handleSuggestionCounts(), requestFrequency)
       return () => clearTimeout(timer)
     }
   }, [following])
@@ -74,10 +78,10 @@ const Bsky = () => {
   // - A follows: [C, D]
   // - B follows: [C]
   //
-  // Then recommendation counts would be:
+  // Then suggestion counts would be:
   // - C: 2
   // - D: 1
-  const handleRecommedationCounts = async () => {
+  const handleSuggestionCounts = async () => {
     try {
       var myFollowingCopy = [...following]
       const myFollowingHandle = myFollowingCopy.pop()
@@ -87,45 +91,45 @@ const Bsky = () => {
         `${process.env.GATSBY_API_URL}/bsky/${myFollowingHandle}/following/handles`
       )
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(await response.text())
       }
       const data: string[] = await response.json()
 
-      // Generate a "reccCount" int for each handle that they follow
-      // If the handle is already in the reccs, increment the count.
-      var reccsCopy = { ...reccCount }
+      // Generate a "suggestionCount" int for each handle that they follow
+      // If the handle is already in the suggestions, increment the count.
+      var suggestionsCopy = { ...suggestionCount }
       data.forEach((theirFollowingHandle) => {
         const validHandle = ![myHandle, "handle.invalid", ""].includes(
           theirFollowingHandle
         )
         if (validHandle) {
-          var reccCount = reccsCopy[theirFollowingHandle]
-          reccCount = reccCount ? reccCount + 1 : 1
-          reccsCopy[theirFollowingHandle] = reccCount
+          var suggestionCount = suggestionsCopy[theirFollowingHandle]
+          suggestionCount = suggestionCount ? suggestionCount + 1 : 1
+          suggestionsCopy[theirFollowingHandle] = suggestionCount
         }
       })
-      setReccCount(() => reccsCopy)
+      setSuggestionCount(() => suggestionsCopy)
       setFollowing(() => myFollowingCopy)
     } catch (error) {
-      showError(setError, error)
+      showError(setError, error.toString())
     }
   }
 
-  // When you have the reccomendation counts ...
+  // When you have the suggestionomendation counts ...
   useEffect(() => {
     if (
-      Object.keys(reccCount).length != 0 &&
+      Object.keys(suggestionCount).length != 0 &&
       Object.keys(following).length == 0
     ) {
       const timer = setTimeout(
-        () => handleRecommedationCountSorted(),
+        () => handleSuggestionCountSorted(),
         requestFrequency
       )
       return () => clearTimeout(timer)
     }
-  }, [following, reccCount])
+  }, [following, suggestionCount])
 
-  // ... sort the reccomendation counts.
+  // ... sort the suggestionomendation counts.
   //
   // This logic produces pretty different results from the user perspective.
   // Based on the type of sorting method used.
@@ -138,59 +142,58 @@ const Bsky = () => {
   // but produces dramatically different results for the "percent following" list.
   //
   // We should probably let the user choose the sorting method???
-  const handleRecommedationCountSorted = async () => {
-    try {
-      const reccCountCopy: { [key: string]: number } = {
-        ...reccCount,
-      }
-      const reccCountSortedCopy: [string, number][] = Object.entries(
-        reccCountCopy
-      ).sort((a, b) => b[1] - a[1])
-      console.log("reccCountSortedCopy", reccCountSortedCopy)
-      setReccCountSorted(() => reccCountSortedCopy)
-      setReccCount({})
-    } catch (error) {
-      showError(setError, error)
+  const handleSuggestionCountSorted = async () => {
+    const suggestionCountCopy: { [key: string]: number } = {
+      ...suggestionCount,
     }
+    const suggestionCountSortedCopy: [string, number][] = Object.entries(
+      suggestionCountCopy
+    ).sort((a, b) => b[1] - a[1])
+    console.log("suggestionCountSortedCopy", suggestionCountSortedCopy)
+    setSuggestionCountSorted(() => suggestionCountSortedCopy)
+    setSuggestionCount({})
   }
 
-  // When you have the sorted reccomendation counts ...
+  // When you have the sorted suggestionomendation counts ...
   useEffect(() => {
-    if (reccCountSorted.length != 0) {
-      const timer = setTimeout(() => handleReccDetails(), requestFrequency)
+    if (suggestionCountSorted.length != 0) {
+      const timer = setTimeout(
+        () => handleSuggestionDetails(),
+        requestFrequency
+      )
       return () => clearTimeout(timer)
     }
-  }, [reccCountSorted])
+  }, [suggestionCountSorted])
 
-  // ... get the details for the reccomendations.
+  // ... get the details for the suggestions.
   //
   // "Details" here means any profile information required to
-  // display the recommendation to the user.
-  const handleReccDetails = async () => {
+  // display the suggestion to the user.
+  const handleSuggestionDetails = async () => {
     try {
-      const reccDetailsCopy = [...reccDetails]
-      const reccCountSortedCopy = [...reccCountSorted]
-      const shiftedItem = reccCountSortedCopy.shift()
+      const suggestionDetailsCopy = [...suggestionDetails]
+      const suggestionCountSortedCopy = [...suggestionCountSorted]
+      const shiftedItem = suggestionCountSortedCopy.shift()
 
       if (!shiftedItem) {
         console.error("No handle found to process.")
-        reccCountSortedCopy.pop()
-        setReccCountSorted(() => reccCountSortedCopy)
+        suggestionCountSortedCopy.pop()
+        setSuggestionCountSorted(() => suggestionCountSortedCopy)
         return
       }
 
       const [handle, myFollowers] = shiftedItem
       if (!handle) {
         console.error("No handle found to process.")
-        reccCountSortedCopy.pop()
-        setReccCountSorted(() => reccCountSortedCopy)
+        suggestionCountSortedCopy.pop()
+        setSuggestionCountSorted(() => suggestionCountSortedCopy)
         return
       }
 
-      const tooManyDetails = reccDetailsCopy.length > 250
+      const tooManyDetails = suggestionDetailsCopy.length > 250
       if (tooManyDetails) {
         console.log("Too many details")
-        setReccCountSorted([])
+        setSuggestionCountSorted([])
         return
       }
 
@@ -198,7 +201,7 @@ const Bsky = () => {
       if (tooFewFollowers) {
         console.log("handle =>", handle)
         console.log("Too few followers =>", followingCopy.length, myFollowers)
-        setReccCountSorted([])
+        setSuggestionCountSorted([])
         return
       }
 
@@ -206,55 +209,54 @@ const Bsky = () => {
         `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
       )
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(await response.text())
       }
       const data: { [key: string]: ProfileViewDetailed } = await response.json()
       const profile: ProfileViewDetailed = Object.values(data)[0]
 
-      reccDetailsCopy.push({
+      suggestionDetailsCopy.push({
         myFollowersCount: myFollowers,
         score: myFollowers / (profile.followersCount ?? 1),
         profile: profile,
         folledByMe: followingCopy.includes(profile.handle),
       })
 
-      reccCountSortedCopy.pop()
-      setReccCountSorted(() => reccCountSortedCopy)
-      setReccDetails(() => reccDetailsCopy)
+      suggestionCountSortedCopy.pop()
+      setSuggestionCountSorted(() => suggestionCountSortedCopy)
+      setSuggestionDetails(() => suggestionDetailsCopy)
     } catch (error) {
-      showError(setError, error)
+      showError(setError, error.toString())
     }
   }
 
-  // When you have the reccomendation details ...
+  // When you have the suggestionomendation details ...
   useEffect(() => {
-    if (reccCountSorted.length == 0 && reccDetailsByScore.length == 0) {
+    if (
+      suggestionCountSorted.length == 0 &&
+      suggestionDetailsByScore.length == 0
+    ) {
       const timer = setTimeout(
         () => handleSortDetailedByScore(),
         requestFrequency
       )
       return () => clearTimeout(timer)
     }
-  }, [reccCountSorted, reccDetailsByScore])
+  }, [suggestionCountSorted, suggestionDetailsByScore])
 
-  // ... sort the reccomendation details by score.
+  // ... sort the suggestionomendation details by score.
   const handleSortDetailedByScore = async () => {
-    try {
-      const reccDetailsCopy = [...reccDetails]
-      reccDetailsCopy.sort((a, b) => b.score - a.score)
-      setReccDetailsByScore(() => reccDetailsCopy)
-    } catch (error) {
-      showError(setError, error)
-    }
+    const suggestionDetailsCopy = [...suggestionDetails]
+    suggestionDetailsCopy.sort((a, b) => b.score - a.score)
+    setSuggestionDetailsByScore(() => suggestionDetailsCopy)
   }
 
   const followingComponent = (
     <div>
       <div>
-        <h3>Getting reccomendations from followers: {following.length}</h3>
-        <h3>Total recc count: {Object.keys(reccCount).length}</h3>
-        <h3>Reccs sorted: {reccCountSorted.length}</h3>
-        <h3>Reccs detailed: {Object.keys(reccDetails).length}</h3>
+        <h3>Getting suggestions from followers: {following.length}</h3>
+        <h3>Total suggestion count: {Object.keys(suggestionCount).length}</h3>
+        <h3>Suggestions sorted: {suggestionCountSorted.length}</h3>
+        <h3>Suggestions detailed: {Object.keys(suggestionDetails).length}</h3>
         <hr />
         <div className="form-check">
           <input
@@ -311,34 +313,39 @@ const Bsky = () => {
       <div>
         <ul className="flex flex-column profile-view">
           {(showDetailsByScore
-            ? reccDetails.sort((a, b) => b.score - a.score)
-            : reccDetails.sort(
+            ? suggestionDetails.sort((a, b) => b.score - a.score)
+            : suggestionDetails.sort(
                 (a, b) => b.myFollowersCount - a.myFollowersCount
               )
-          ).map((recc) => (
+          ).map((suggestion) => (
             <li
               style={
-                !showFollowedByMe && recc.folledByMe ? { display: "none" } : {}
+                !showFollowedByMe && suggestion.folledByMe
+                  ? { display: "none" }
+                  : {}
               }
-              key={recc.profile.did}
+              key={suggestion.profile.did}
               className="flex flex-row gap-4"
             >
               <img
-                src={recc.profile.avatar}
-                alt={recc.profile.displayName}
+                src={suggestion.profile.avatar}
+                alt={suggestion.profile.displayName}
                 className="img-thumbnail"
                 width={40}
                 height={40}
               />
               <div className="block">
-                <p>{recc.profile.displayName}</p>
-                <a href={`https://bsky.app/profile/${recc.profile.handle}`}>
-                  <p>@{recc.profile.handle}</p>
+                <p>{suggestion.profile.displayName}</p>
+                <a
+                  href={`https://bsky.app/profile/${suggestion.profile.handle}`}
+                >
+                  <p>@{suggestion.profile.handle}</p>
                 </a>
-                <p>{recc.profile.description}</p>
-                <p>My followers: {recc.myFollowersCount}</p>
+                <p>{suggestion.profile.description}</p>
+                <p>My followers: {suggestion.myFollowersCount}</p>
                 <p>
-                  {Math.round(recc.score * 100)}% followed by people I follow
+                  {Math.round(suggestion.score * 100)}% followed by people I
+                  follow
                 </p>
               </div>
             </li>
@@ -353,7 +360,7 @@ const Bsky = () => {
       <section className="post-body">
         <div className="post-header">
           <h2>
-            <p>Bluesky Follow Recommendations</p>
+            <p>Bluesky Follow Suggestions</p>
           </h2>
           <div className="input-group mb-3">
             <input
@@ -368,24 +375,20 @@ const Bsky = () => {
             <button
               className="btn btn-outline-secondary"
               type="button"
-              disabled={typeof window === "undefined" || !handleRef.current?.value}
+              disabled={
+                typeof window === "undefined" || !handleRef.current?.value
+              }
               onClick={() => {
                 setSearchParams({ handle: handleRef.current?.value || "" })
                 handleFollowing()
               }}
             >
-              Recommendations
+              Suggest!
             </button>
           </div>
         </div>
         <div className="post-content">
-          {error ? (
-            <div className="alert alert-danger" role="alert">
-              {error}
-            </div>
-          ) : (
-            <div></div>
-          )}
+          {error ? error : null}
           <div>
             <div className="flex flex-column gap-4">{followingComponent}</div>
           </div>
@@ -397,11 +400,9 @@ const Bsky = () => {
 }
 
 export default () => {
-  return (
-    typeof window !== "undefined" ? (
-      <BrowserRouter>
-        <Bsky />
-      </BrowserRouter>
-    ) : null
-  )
+  return typeof window !== "undefined" ? (
+    <BrowserRouter>
+      <Bsky />
+    </BrowserRouter>
+  ) : null
 }
