@@ -26,7 +26,6 @@ const Bsky = () => {
   // START: APPLICATION STATE
   // Reset all of this stuff whenever there is an error
   // or whenever the user does something that implies a page refesh.
-  const [myFollowing, setMyFollowing] = useState<string[]>([])
   const [suggestionsIndex, setSuggestionsIndex] = useState<number>(0)
   const [suggestionCounts, setSuggestionCounts] = useState<{
     [key: string]: number
@@ -37,7 +36,6 @@ const Bsky = () => {
   const [suggestionDetailRequests, setSuggestionDetailRequests] =
     useState<number>(0)
   const clearApplicationState = () => {
-    setMyFollowing([])
     setSuggestionsIndex(0)
     setSuggestionCounts({})
     setSuggestionDetails({})
