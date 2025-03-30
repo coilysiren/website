@@ -12,4 +12,5 @@ Create a `.env.development` file with these contents:
 
 ```bash
 GATSBY_API_URL=http://localhost:4000 # or whatever port you are running the API on
+GATSBY_ENV=dev
 ```

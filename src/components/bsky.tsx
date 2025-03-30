@@ -2,10 +2,9 @@ import React, { ReactElement } from "react"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 
 interface IExpandedProfileDetails {
-  myFollowersCount: number
-  folledByMe: boolean
-  score: number
   profile: ProfileViewDetailed
+  score?: number
+  myFollowers?: number
 }
 
 const getProfileList = (
@@ -14,31 +13,31 @@ const getProfileList = (
 ) => {
   return (
     <ul className="flex flex-column profile-view">
-      {profileDetails.map((suggestion, index) => (
+      {profileDetails.map((details, index) => (
         <li key={index} className="flex flex-column">
           <div className="flex flex-row align-items-center">
             <img
-              src={suggestion.profile.avatar}
-              alt={suggestion.profile.displayName}
+              src={details.profile.avatar}
+              alt={details.profile.displayName}
               className="img-thumbnail"
               width={40}
               height={40}
             />
             <div>
-              <p>{suggestion.profile.displayName}</p>
-              <a href={`https://bsky.app/profile/${suggestion.profile.handle}`}>
-                <p>@{suggestion.profile.handle}</p>
+              <p>{details.profile.displayName}</p>
+              <a href={`https://bsky.app/profile/${details.profile.handle}`}>
+                <p>@{details.profile.handle}</p>
               </a>
             </div>
           </div>
           {extra ? (
             <>
               <hr />
-              {extra(null)}
+              {extra(details)}
             </>
           ) : null}
           <hr />
-          {suggestion.profile.description?.split("\n").map((line, idx) => (
+          {details.profile.description?.split("\n").map((line, idx) => (
             <p className="profile-description" key={idx}>
               {line}
             </p>

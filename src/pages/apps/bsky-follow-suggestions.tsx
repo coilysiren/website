@@ -6,8 +6,9 @@ import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/act
 import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
-const requestFrequency = 100
-const maxSuggestions = 100
+const requestFrequency = 250
+const maxSuggestions = process.env.GATSBY_ENV == "dev" ? 100 : 500
+const maxSuggestionDetailRequests = process.env.GATSBY_ENV == "dev" ? 500 : 2500
 
 const Bsky = () => {
   // START: GENERIC STATE
@@ -25,27 +26,22 @@ const Bsky = () => {
   // START: APPLICATION STATE
   // Reset all of this stuff whenever there is an error
   // or whenever the user does something that implies a page refesh.
-  const [following, setFollowing] = useState<string[]>([])
-  const [followingCopy, setMyFollowingCopy] = useState<string[]>([])
-  const [suggestionCount, setSuggestionCount] = useState<{
+  const [myFollowing, setMyFollowing] = useState<string[]>([])
+  const [suggestionsIndex, setSuggestionsIndex] = useState<number>(0)
+  const [suggestionCounts, setSuggestionCounts] = useState<{
     [key: string]: number
   }>({})
-  const [suggestionCountSorted, setSuggestionCountSorted] = useState<
-    [string, number][]
-  >([])
-  const [suggestionDetails, setSuggestionDetails] = useState<
-    IExpandedProfileDetails[]
-  >([])
-  const [suggestionDetailsByScore, setSuggestionDetailsByScore] = useState<
-    IExpandedProfileDetails[]
-  >([])
+  const [suggestionDetails, setSuggestionDetails] = useState<{
+    [key: string]: IExpandedProfileDetails
+  }>({})
+  const [suggestionDetailRequests, setSuggestionDetailRequests] =
+    useState<number>(0)
   const clearApplicationState = () => {
-    setFollowing([])
-    setMyFollowingCopy([])
-    setSuggestionCount({})
-    setSuggestionCountSorted([])
-    setSuggestionDetails([])
-    setSuggestionDetailsByScore([])
+    setMyFollowing([])
+    setSuggestionsIndex(0)
+    setSuggestionCounts({})
+    setSuggestionDetails({})
+    setSuggestionDetailRequests(0)
   }
   // END: APPLICATION STATE
 
@@ -53,242 +49,117 @@ const Bsky = () => {
   // This is similar to the application state,
   // different in that it doesn't need to be reset.
   const handleRef = useRef<HTMLInputElement | null>(null)
-  const [showFollowedByMe, setShowFollowedByMe] = useState<boolean>(true)
   const [showDetailsByScore, setShowDetailsByScore] = useState<boolean>(false)
   // END: UI STATE
 
-  // Get the "handle" query parameter.
-  // This should eventually be replaced with a user input field.
-  // "I / Me" from this point are the perspective of the user, eg. the handle.
-  // "You" is the server / website.
   const myHandle = searchParams.get("handle")
 
-  // Get the list of people that I follow.
-  const handleFollowing = async (handle: string) => {
-    const response = await fetch(
-      `${process.env.GATSBY_API_URL}/bsky/${handle}/following/handles`
-    )
-    if (!response.ok) {
-      clearApplicationState()
-      showHTTPError(setError, response)
-      return
-    }
-    const data: string[] = await response.json()
-    setFollowing(() => data)
-    setMyFollowingCopy(() => data)
-  }
-
-  // When you have my followers ...
+  // Once you start getting suggestions, keep getting them until there are no more.
   useEffect(() => {
-    if (Object.keys(following).length !== 0) {
-      const timer = setTimeout(() => handleSuggestionCounts(), requestFrequency)
+    if (suggestionsIndex != 0 && suggestionsIndex != -1) {
+      const timer = setTimeout(() => getSuggestions(myHandle), requestFrequency)
       return () => clearTimeout(timer)
     }
-  }, [following])
+  }, [suggestionsIndex])
 
-  // ... get the count of the people that the people I follow follow.
-  //
-  // For exampe:
-  // - I follow: [A, B]
-  // - A follows: [C, D]
-  // - B follows: [C]
-  //
-  // Then suggestion counts would be:
-  // - C: 2
-  // - D: 1
-  const handleSuggestionCounts = async () => {
-    var myFollowingCopy = [...following]
-    const myFollowingHandle = myFollowingCopy.pop()
+  // Get a list of suggestions, then aggregate the counts of each handle.
+  const getSuggestions = async (handle: string | null) => {
+    if (!handle) {
+      return
+    }
 
-    // Get for a person that I follow, get a list of the people they follow
+    // Get suggested follows from the server for the given handle.
+    const suggestionCountsCopy = { ...suggestionCounts }
     const response = await fetch(
-      `${process.env.GATSBY_API_URL}/bsky/${myFollowingHandle}/following/handles`
+      `${process.env.GATSBY_API_URL}/bsky/${myHandle}/suggestions/${suggestionsIndex}`
     )
     if (!response.ok) {
       clearApplicationState()
       showHTTPError(setError, response)
       return
     }
-    const data: string[] = await response.json()
-
-    // Generate a "suggestionCount" int for each handle that they follow
-    // If the handle is already in the suggestions, increment the count.
-    var suggestionsCopy = { ...suggestionCount }
-    data.forEach((theirFollowingHandle) => {
-      const validHandle = ![myHandle, "handle.invalid", ""].includes(
-        theirFollowingHandle
-      )
-      if (validHandle) {
-        var suggestionCount = suggestionsCopy[theirFollowingHandle]
-        suggestionCount = suggestionCount ? suggestionCount + 1 : 1
-        suggestionsCopy[theirFollowingHandle] = suggestionCount
+    const data: { suggestions: string[]; next: number } = await response.json()
+    // Aggregate the suggestions into a count of how many times each handle appears.
+    data.suggestions.forEach((suggestion) => {
+      if (suggestionCountsCopy[suggestion]) {
+        suggestionCountsCopy[suggestion] += 1
+      } else {
+        suggestionCountsCopy[suggestion] = 1
       }
     })
-    setSuggestionCount(() => suggestionsCopy)
-    setFollowing(() => myFollowingCopy)
+    setSuggestionCounts(() => suggestionCountsCopy)
+    setSuggestionsIndex(() => data.next)
   }
 
-  // When you have the suggestionomendation counts ...
+  // Once you start getting suggestion counts, sort them by the number of followers.
+  // Then start getting details for each suggestion.
   useEffect(() => {
+    const missingCount = maxSuggestions - Object.keys(suggestionDetails).length
     if (
-      Object.keys(suggestionCount).length != 0 &&
-      Object.keys(following).length == 0
+      Object.keys(suggestionCounts).length !== 0 &&
+      missingCount > 0 &&
+      suggestionDetailRequests < maxSuggestionDetailRequests
     ) {
-      const timer = setTimeout(
-        () => handleSuggestionCountSorted(),
-        requestFrequency
-      )
+      const timer = setTimeout(() => getSuggestionDetails(), requestFrequency)
       return () => clearTimeout(timer)
     }
-  }, [following, suggestionCount])
+  }, [suggestionCounts, suggestionDetails])
 
-  // ... sort the suggestionomendation counts.
-  //
-  // This logic produces pretty different results from the user perspective.
-  // Based on the type of sorting method used.
-  //
-  // Sort by `(a, b) => b[1] - a[1]` (eg. highest first)
-  // produces a list dominated by popular people.
-  //
-  // Sort by `() => Math.random() - 0.5` (eg. random)
-  // produces most of less the same output for the "most popular" list,
-  // but produces dramatically different results for the "percent following" list.
-  //
-  // We should probably let the user choose the sorting method???
-  const handleSuggestionCountSorted = async () => {
-    const suggestionCountCopy: { [key: string]: number } = {
-      ...suggestionCount,
-    }
-    const suggestionCountSortedCopy: [string, number][] = Object.entries(
-      suggestionCountCopy
-    ).sort((a, b) => b[1] - a[1])
-    setSuggestionCountSorted(() => suggestionCountSortedCopy)
-    setSuggestionCount({})
-  }
+  // Then start getting details for each suggestion until there are no more left.
+  const getSuggestionDetails = async () => {
+    if (Object.keys(suggestionDetails).length >= maxSuggestions) return
+    if (suggestionDetailRequests >= maxSuggestionDetailRequests) return
 
-  // When you have the sorted suggestionomendation counts ...
-  useEffect(() => {
-    if (suggestionCountSorted.length != 0) {
-      const timer = setTimeout(
-        () => handleSuggestionDetails(),
-        requestFrequency
+    // Get a list of suggestions to detail via looking through the suggestion counts.
+    // Removing the list of handles that already have details.
+    // Sorting the list to get the people with the most followers first.
+    // Limit to the maximum number of suggestions to avoid too many requests.
+    const suggestionsToDetail = Object.keys(suggestionCounts)
+      .sort((a, b) => suggestionCounts[b] - suggestionCounts[a])
+      .filter((suggestion) => suggestionCounts[suggestion] > 1)
+      .filter((suggestion) => suggestion != myHandle)
+      .slice(0, maxSuggestions - Object.keys(suggestionDetails).length)
+
+    // Get details for each suggestion.
+    for (const handle of suggestionsToDetail) {
+      const response = await fetch(
+        `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
       )
-      return () => clearTimeout(timer)
+      if (!response.ok) {
+        showHTTPError(setError, response)
+        continue
+      }
+      const data: { [key: string]: ProfileViewDetailed } = await response.json()
+      const profile = Object.values(data)[0]
+      setSuggestionDetails((prev) => ({
+        ...prev,
+        [handle]: {
+          profile: profile,
+          score:
+            (suggestionCounts[profile.handle] || 0) /
+            (profile.followersCount || 1),
+          myFollowers: suggestionCounts[profile.handle] || 0,
+        },
+      }))
+      setSuggestionDetailRequests((prev) => prev + 1)
     }
-  }, [suggestionCountSorted])
-
-  // ... get the details for the suggestions.
-  //
-  // "Details" here means any profile information required to
-  // display the suggestion to the user.
-  const handleSuggestionDetails = async () => {
-    const suggestionDetailsCopy = [...suggestionDetails]
-    const suggestionCountSortedCopy = [...suggestionCountSorted]
-    const shiftedItem = suggestionCountSortedCopy.shift()
-
-    if (!shiftedItem) {
-      suggestionCountSortedCopy.pop()
-      setSuggestionCountSorted(() => suggestionCountSortedCopy)
-      return
-    }
-
-    const [handle, myFollowers] = shiftedItem
-    if (!handle) {
-      suggestionCountSortedCopy.pop()
-      setSuggestionCountSorted(() => suggestionCountSortedCopy)
-      return
-    }
-
-    const tooManyDetails = suggestionDetailsCopy.length > maxSuggestions
-    if (tooManyDetails) {
-      setSuggestionCountSorted([])
-      return
-    }
-
-    const tooFewFollowers = followingCopy.length / 10 > myFollowers
-    if (tooFewFollowers) {
-      setSuggestionCountSorted([])
-      return
-    }
-
-    const response = await fetch(
-      `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
-    )
-    if (!response.ok) {
-      clearApplicationState()
-      showHTTPError(setError, response)
-      return
-    }
-    const data: { [key: string]: ProfileViewDetailed } = await response.json()
-    const profile: ProfileViewDetailed = Object.values(data)[0]
-
-    suggestionDetailsCopy.push({
-      myFollowersCount: myFollowers,
-      score: myFollowers / (profile.followersCount ?? 1),
-      profile: profile,
-      folledByMe: followingCopy.includes(profile.handle),
-    })
-
-    suggestionCountSortedCopy.pop()
-    setSuggestionCountSorted(() => suggestionCountSortedCopy)
-    setSuggestionDetails(() => suggestionDetailsCopy)
-  }
-
-  // When you have the suggestionomendation details ...
-  useEffect(() => {
-    if (
-      suggestionCountSorted.length == 0 &&
-      suggestionDetailsByScore.length == 0
-    ) {
-      const timer = setTimeout(
-        () => handleSortDetailedByScore(),
-        requestFrequency
-      )
-      return () => clearTimeout(timer)
-    }
-  }, [suggestionCountSorted, suggestionDetailsByScore])
-
-  // ... sort the suggestionomendation details by score.
-  const handleSortDetailedByScore = async () => {
-    const suggestionDetailsCopy = [...suggestionDetails]
-    suggestionDetailsCopy.sort((a, b) => b.score - a.score)
-    setSuggestionDetailsByScore(() => suggestionDetailsCopy)
   }
 
   const followingComponent = (
     <div>
       <div>
-        <h3>Getting suggestions from followers: {following.length}</h3>
-        <h3>Total suggestion count: {Object.keys(suggestionCount).length}</h3>
-        <h3>Suggestions sorted: {suggestionCountSorted.length}</h3>
-        <h3>Suggestions detailed: {Object.keys(suggestionDetails).length}</h3>
+        <h3>
+          Accounts suggested: {new Set(Object.keys(suggestionCounts)).size}
+        </h3>
+        <h3>
+          Suggestions checked: {suggestionDetailRequests} (max:{" "}
+          {maxSuggestionDetailRequests})
+        </h3>
+        <h3>
+          Suggestions detailed: {Object.keys(suggestionDetails).length} (max:{" "}
+          {maxSuggestions})
+        </h3>
         <hr />
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="peopleIFollow"
-            id="flexRadioDefault1"
-            onClick={() => setShowFollowedByMe(true)}
-          />
-          <label className="form-check-label" htmlFor="flexRadioDefault1">
-            Show people I follow
-          </label>
-        </div>
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="peopleIFollow"
-            id="flexRadioDefault2"
-            onClick={() => setShowFollowedByMe(false)}
-          />
-          <label className="form-check-label" htmlFor="flexRadioDefault2">
-            Hide people I follow
-          </label>
-        </div>
-        <hr />
-
         <div className="form-check">
           <input
             className="form-check-input"
@@ -298,7 +169,7 @@ const Bsky = () => {
             onClick={() => setShowDetailsByScore(false)}
           />
           <label className="form-check-label" htmlFor="flexRadioDefault3">
-            Sort By Percent Following
+            Sort By Total Following
           </label>
         </div>
         <div className="form-check">
@@ -310,35 +181,29 @@ const Bsky = () => {
             onClick={() => setShowDetailsByScore(true)}
           />
           <label className="form-check-label" htmlFor="flexRadioDefault4">
-            Sort By Total Following
+            Sort By Follower Score
           </label>
         </div>
         <hr />
       </div>
       <div className="post-content">
-        {showDetailsByScore
-          ? getProfileList(
-              suggestionDetails
-                .sort((a, b) => b.score - a.score)
-                .filter((details) => {
-                  if (showFollowedByMe) {
-                    return details.folledByMe
-                  }
-                  return true
-                }),
-              null
+        {getProfileList(
+          showDetailsByScore
+            ? Object.values(suggestionDetails).sort(
+                (a, b) => (b.score || 0) - (a.score || 0)
+              )
+            : Object.values(suggestionDetails).sort(
+                (a, b) => (b.myFollowers || 0) - (a.myFollowers || 0)
+              ),
+          (details: IExpandedProfileDetails | null) => {
+            return (
+              <div>
+                <p>Score: {((details?.score || 0) * 10000).toFixed(2)}</p>
+                <p>My Followers: &gt;= {details?.myFollowers}</p>
+              </div>
             )
-          : getProfileList(
-              suggestionDetails
-                .sort((a, b) => b.myFollowersCount - a.myFollowersCount)
-                .filter((details) => {
-                  if (showFollowedByMe) {
-                    return details.folledByMe
-                  }
-                  return true
-                }),
-              null
-            )}
+          }
+        )}
       </div>
     </div>
   )
@@ -363,13 +228,11 @@ const Bsky = () => {
             <button
               className="btn btn-outline-secondary"
               type="button"
-              disabled={
-                typeof window === "undefined" || !handleRef.current?.value
-              }
               onClick={() => {
+                clearApplicationState()
                 setError(null)
                 setParams("handle", handleRef.current?.value || "")
-                handleFollowing(handleRef.current?.value || "")
+                getSuggestions(handleRef.current?.value || "")
               }}
             >
               Suggest!
