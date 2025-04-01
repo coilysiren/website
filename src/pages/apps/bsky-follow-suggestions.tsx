@@ -270,7 +270,7 @@ const Bsky = () => {
             <button
               className="btn btn-outline-secondary"
               type="button"
-              disabled={handleState.length == 0}
+              disabled={handleState.length === 0}
               onClick={() => {
                 clearApplicationState()
                 setError(null)
