@@ -160,6 +160,16 @@ const Bsky = () => {
     }
   }, [suggestionDetails, suggestionDetailRequests])
 
+  const clearCache = async (handle: string) => {
+    const response = await fetch(
+      `${process.env.GATSBY_API_URL}/cache/clear/${handle}`
+    )
+    if (!response.ok) {
+      showHTTPError(setError, response)
+      return
+    }
+  }
+
   const followingComponent = (
     <div>
       <div>
@@ -222,6 +232,21 @@ const Bsky = () => {
           <label className="form-check-label" htmlFor="flexRadioDefault4">
             Sort By Follower Score
           </label>
+        </div>
+        <hr />
+        <div className="post-content">
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={() => {
+              clearCache(handleState)
+            }}
+          >
+            <p>
+              Want another round of suggestions? Click here to clear the cache
+            </p>
+            <p>(you won't get a confirmation message)</p>
+          </button>
         </div>
         <hr />
       </div>
