@@ -9,12 +9,10 @@ title: "About Me"
   3. https://www.linkedin.com/in/coilysiren/
 -->
 
-I’m Kai Siren (preferred name), AKA Lynn Conway (legal name), a DevOps engineer with a decade of industry experience. I’m 50% dev (mostly Python) and 50% ops (mostly AWS). I have working experience writing in 6 programming languages - Python, Golang, and NodeJS being the strongest. I’m familiar with deploying to AWS, GCP, and Azure - and multi-cloud setups between them.
+I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I'm a platform engineer with over 10 years of experience building high-impact systems that empower engineering teams. I'm proficient in six programming languages, with Python, Go, and JavaScript as my strongest. I have hands-on experience deploying to AWS, GCP, and Azure, including designing multi-cloud environments. Across technologies and cloud platforms, I specialize in meeting engineers where they are and helping teams move faster and more effectively.
 
-My career goal is to empower engineering teams to reach their limits of productive potential. I weave this into my DevOps engineering practice, via helping teams quickly deliver high-quality products and services. Every job, every team, every project - is a new chance to learn and grow our collective ability to create. Or another chance for me to create something that I can spin off into its own DevOps product, whichever.
+My career is powered by a passion for enabling engineering teams to achieve their highest potential. I bring this focus to every role, ensuring that teams deliver high-quality products and services quickly and efficiently. Each project is an opportunity to learn, grow, and strengthen our collective capabilities—or to create tools and platforms that become valuable products in their own right.
 
-I’ve often been primarily responsible for implementing operations systems - like application monitoring, data pipelines, and deployment tooling - from scratch. Most of my career has been as an IC engineer, and I managed a small team at EnergyHub.
+Throughout my career, I've been primarily responsible for implementing operations systems - like application monitoring, data pipelines, and deployment tooling - from scratch. This hands-on experience has honed my skills as an IC engineer, and I also managed a small team at EnergyHub.
 
-I enjoy gaming, game development, gardening, and crafts. I also run a game server, which sits right on the intersection of the personal and the professional!
-
-Words to describe my work include: DevOps Engineer, Infrastructure Engineer, Platform Engineer, Site Reliability Engineer.
+Outside work, I enjoy gaming, game development, gardening, and crafts. I also manage a game server, a unique intersection of my personal and professional interests.
