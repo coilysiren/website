@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+
 import "../sass/nav.scss"
 import Links from "./links"
 

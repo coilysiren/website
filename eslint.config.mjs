@@ -1,14 +1,14 @@
-const js = require("@eslint/js")
-const tseslint = require("typescript-eslint")
-const react = require("eslint-plugin-react")
-const unicorn = require("eslint-plugin-unicorn")
-const cypress = require("eslint-plugin-cypress")
-const prettier = require("eslint-config-prettier")
+import js from "@eslint/js"
+import tseslint from "typescript-eslint"
+import react from "eslint-plugin-react"
+import unicorn from "eslint-plugin-unicorn"
+import cypress from "eslint-plugin-cypress"
+import prettier from "eslint-config-prettier"
 
-module.exports = [
+export default [
   // Global ignores
   {
-    ignores: ["node_modules/", "public/", ".cache/"],
+    ignores: ["node_modules/", "public/", ".cache/", ".claude/"],
   },
 
   // Base JS recommended rules for all files
@@ -87,7 +87,7 @@ module.exports = [
 
   // Root JS files (gatsby-config, gatsby-node, cypress.config)
   {
-    files: ["*.js"],
+    files: ["*.js", "cypress/plugins/**/*.js"],
     languageOptions: {
       sourceType: "commonjs",
       globals: {
@@ -97,6 +97,7 @@ module.exports = [
         __dirname: "readonly",
         __filename: "readonly",
         process: "readonly",
+        console: "readonly",
       },
     },
   },

@@ -10,16 +10,17 @@ const requestFrequency = 250
 const maxSuggestions = 100
 const maxSuggestionDetailRequests = 1000
 
+const setParams = (key: string, value: string) => {
+  const url = new URL(window.location.href)
+  url.searchParams.set(key, value)
+  window.history.pushState(null, "", url.toString())
+}
+
 const Bsky = () => {
   // START: GENERIC STATE
   // This kind of state is likely to be used in most applications.
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-  const setParams = (key: string, value: string) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set(key, value)
-    window.history.pushState(null, "", url.toString())
-  }
   const [error, setError] = useState<React.ReactNode>()
   const [started, setStarted] = useState<boolean>(false)
   const [done, setDone] = useState<boolean>(false)
@@ -101,7 +102,7 @@ const Bsky = () => {
   useEffect(() => {
     if (
       !done &&
-      Object.keys(suggestionCounts).length !== 0 &&
+      Object.keys(suggestionCounts).length > 0 &&
       maxSuggestions - Object.keys(suggestionDetails).length > 0 &&
       suggestionDetailRequests < maxSuggestionDetailRequests
     ) {
@@ -245,7 +246,7 @@ const Bsky = () => {
             <p>
               Want another round of suggestions? Click here to clear the cache
             </p>
-            <p>(you won't get a confirmation message)</p>
+            <p>(you won&apos;t get a confirmation message)</p>
           </button>
         </div>
         <hr />
@@ -315,7 +316,7 @@ const Bsky = () => {
           <p>
             The number of followers checked is subject to several limits, and is
             slightly random. This is primarily to avoid overloading the server
-            and or your web browser. At the same time, there's a cache on the
+            and or your web browser. At the same time, there&apos;s a cache on the
             server that will store the results for a short period of time. I say
             that to say: you are encouraged to try this tool multiple times! You
             may get different results, and subsequent runs should cost less
@@ -323,7 +324,7 @@ const Bsky = () => {
           </p>
           <p>
             This idea was based off of{" "}
-            <a href="https://bsky-follow-finder.theo.io/" target="_blank">
+            <a href="https://bsky-follow-finder.theo.io/" target="_blank" rel="noreferrer">
               bsky-follow-finder
             </a>
             , go check that out as well!

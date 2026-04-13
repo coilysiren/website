@@ -33,7 +33,7 @@ const showError = async (
               There has been an error! The error details will be in the console
               log. Please reload the page to see if that resolves the issue. If
               the issue persists, go tell{" "}
-              <a href="https://bsky.app/profile/coilysiren.me/" target="_blank">
+              <a href="https://bsky.app/profile/coilysiren.me/" target="_blank" rel="noreferrer">
                 @coilysiren.me
               </a>{" "}
               about it.

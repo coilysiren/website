@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"

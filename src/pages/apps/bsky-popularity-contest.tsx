@@ -10,16 +10,17 @@ const starletteRope = 5
 const requestFrequency = 250
 const absoluteMaxStarlettes = 250
 
+const setParams = (key: string, value: string) => {
+  const url = new URL(window.location.href)
+  url.searchParams.set(key, value)
+  window.history.pushState(null, "", url.toString())
+}
+
 const Bsky = () => {
   // START: GENERIC STATE
   // This kind of state is likely to be used in most applications.
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-  const setParams = (key: string, value: string) => {
-    const url = new URL(window.location.href)
-    url.searchParams.set(key, value)
-    window.history.pushState(null, "", url.toString())
-  }
   const [error, setError] = useState<React.ReactNode>()
   const [started, setStarted] = useState<boolean>(false)
   const [done, setDone] = useState<boolean>(false)
@@ -175,7 +176,7 @@ const Bsky = () => {
     if (
       started &&
       !done &&
-      Object.keys(popularityDetails).length != 0 &&
+      Object.keys(popularityDetails).length > 0 &&
       Object.keys(popularityDetails).length == maxStarlettes
     ) {
       setDone(true)
@@ -263,7 +264,7 @@ const Bsky = () => {
           <p className="large">📸 📸 📸</p>
           <p>
             You are a daring camera-enby, out here to capture the stars! They
-            won't avoid your notice, no matter how hard they try! The best of
+            won&apos;t avoid your notice, no matter how hard they try! The best of
             the best will be crowned the most popular starlette in the halls of
             Bluesky! This is a popularity contest, after all!
           </p>
