@@ -5,13 +5,17 @@
   display: flex;
   text-decoration: none;
   height: auto;
-  margin: 1em 0;
-  padding: 0.5em 0;
+  margin: 0.75em 0;
+  padding: 0.75em 1em;
   background-color: vars.$off-white;
-  transition: background-color 0.2s ease;
+  border-left: 4px solid vars.$dark-purple;
+  border-radius: 0 0.5em 0.5em 0;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 
   &:hover {
     background-color: vars.$pure-white;
+    box-shadow: 0 2px 12px rgba(62, 55, 93, 0.15);
+    border-left-color: vars.$mid-purple;
   }
 
   h2 {
@@ -27,24 +31,21 @@
     font-size: 1em;
     font-weight: normal;
     color: vars.$mid-purple;
-    margin: 0em;
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
+
+  p {
+    font-size: 0.85em;
+    color: vars.$light-purple;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   @include vars.phone {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-}
-
-.purple-fold {
-  background: vars.$dark-purple;
-  position: relative;
-  right: 0.2em;
-  border-radius: 5em;
-  width: 0.6em;
-  margin-right: 2em;
-  display: none;
-  @include vars.tablet {
-    display: flex;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
   }
 }

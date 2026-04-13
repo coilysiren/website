@@ -55,21 +55,24 @@ nav.nav {
 
 .nav-links {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 2em;
   width: 100%;
   list-style: none;
   padding: 0;
   flex-wrap: wrap;
 
+  @include vars.phone {
+    gap: 0.75em;
+  }
+
   .nav-btn {
-    display: ruby;
-    margin: 6em;
     letter-spacing: 0.15em;
     color: vars.$off-white;
     font-weight: bold;
 
-    @include vars.phone {
-      margin: 1em;
+    i {
+      margin-left: 0.3em;
     }
   }
 

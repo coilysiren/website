@@ -165,8 +165,9 @@ p.large {
 p > code {
   background: vars.$dark-purple;
   color: vars.$pure-white;
-  border-radius: 0.2em;
-  padding: 0.15em;
+  border-radius: 0.3em;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
   font-family: vars.$font-family-mono;
 }
 
@@ -178,10 +179,15 @@ pre:not(.warning-message) {
   background-size: 150%;
   background-position: top;
   display: flex;
-  padding: 1em 0.5em 2em;
+  padding: 1.5em 1.25em 2em;
+  margin: 1em 0;
   color: vars.$pure-white;
   overflow-x: auto;
   font-family: vars.$font-family-mono;
+  font-size: 0.9em;
+  line-height: 1.6em;
+  border-radius: 0.5em;
+  box-shadow: 0 2px 8px rgba(62, 55, 93, 0.25);
 }
 
 .post-closer {

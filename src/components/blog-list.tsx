@@ -10,7 +10,6 @@ const BlogList = ({ data }) => {
         posts.map(({ node: post }) => (
           <div key={post.id}>
             <Link className="homepage-post" to={post.fields.slug}>
-              <div className="purple-fold"></div>
               <div>
                 <h2>{post.frontmatter.title}</h2>
                 <h4>{post.frontmatter.description}</h4>

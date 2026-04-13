@@ -8,7 +8,8 @@ footer {
   flex-direction: column;
   align-items: center;
   color: white;
-  background: vars.$faint-purple;
+  background: vars.$dark-purple;
+  border-top: 3px solid vars.$mid-purple;
   margin-top: auto;
   padding-bottom: 1em;
 
