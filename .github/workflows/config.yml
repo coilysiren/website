@@ -11,10 +11,10 @@ jobs:
     # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
     # https://hub.docker.com/_/node/
-    container: node:18
+    container: node:22
     steps:
       # https://github.com/actions/checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: npm ci
       - run: npm run build
       - run: npm run test:quick
@@ -22,13 +22,14 @@ jobs:
     # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
     # https://docs.cypress.io/examples/docker
-    container: cypress/included:13.2.0
+    container: cypress/included:15.13.1
     steps:
       # https://github.com/actions/checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # https://github.com/actions/setup-node
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
       - run: npm ci
+      - run: npm run build
       - run: npm run test:e2e:ci
