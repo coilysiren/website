@@ -20,6 +20,16 @@ function Links() {
         <li>
           <a
             className="nav-btn"
+            href="/rss.xml"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ./rss<i className="fa-solid fa-rss"></i>{" "}
+          </a>
+        </li>
+        <li>
+          <a
+            className="nav-btn"
             href="https://www.linkedin.com/in/coilysiren/"
             target="_blank"
             rel="me noreferrer"

@@ -8,6 +8,59 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-plugin-feed",
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                author
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.nodes.map((node) => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.frontmatter.description || node.excerpt,
+                  date: node.frontmatter.date,
+                  url: `https://coilysiren.me${node.fields.slug}`,
+                  guid: `https://coilysiren.me${node.fields.slug}`,
+                  custom_elements: [{ "content:encoded": node.html }],
+                })
+              })
+            },
+            query: `{
+              allMarkdownRemark(
+                filter: { frontmatter: { template_key: { eq: "blog-post" } } }
+                sort: { frontmatter: { date: DESC } }
+              ) {
+                nodes {
+                  excerpt
+                  html
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    date
+                    description
+                  }
+                }
+              }
+            }`,
+            output: "/rss.xml",
+            title: "Kai Siren's Blog",
+            site_url: "https://coilysiren.me",
+          },
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-sass",
       options: {
         implementation: require("sass"),
