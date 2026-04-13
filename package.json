@@ -45,7 +45,7 @@
   "scripts": {
     "build": "gatsby clean && gatsby build",
     "dev": "gatsby clean && gatsby develop",
-    "serve": "gatsby clean && gatsby serve --port 8000",
+    "serve": "gatsby serve --port 8000 --host 0.0.0.0",
     "test:quick": "eslint .",
     "test:e2e:local": "start-server-and-test serve http://127.0.0.1:8000 'cypress open'",
     "test:e2e:ci": "start-server-and-test serve http://127.0.0.1:8000 'cypress run'"
