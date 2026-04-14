@@ -6,7 +6,7 @@ title: "Now"
 
 ## Building
 
-I'm in an aggressive build phase. The thing I'm most excited about right now is **[Gauntlet](https://github.com/coilysiren/gauntlet)** — a two-agent adversarial loop that infers software correctness by watching how code behaves under sustained, targeted attack in a dark factory environment. About 20 agents are running on it as I write this. No pressure to ship fast; the goal is to make the thing real, then write it up here.
+I'm in an aggressive build phase. The thing I'm most excited about right now is **[Gauntlet](https://github.com/coilysiren/gauntlet)** — a two-agent adversarial loop that infers software correctness by watching how code behaves under sustained, targeted attack in a [dark factory](https://en.wikipedia.org/wiki/Lights_out_(manufacturing)) environment. About 20 agents are running on it as I write this. No pressure to ship fast; the goal is to make the thing real, then write it up here.
 
 Day job is platform/SRE work that's slowly bending toward AI agents and observability — going deep on state-of-the-art agent and MCP patterns.
 
@@ -24,17 +24,30 @@ I'm also active in **Out in Tech** and a queer parents group, and I'm doing some
 
 I'm in catch-up mode on AI/tech news, working through a backlog and trying to settle into a sustainable info diet. Currently chewing on OpenAI's *Industrial Policy for the Intelligence Age* paper. Watching a lot of Sam Altman / a16z / agent-engineering content alongside Pod Save, Veritasium, SciShow, NASA, and KPIX (Bay Area civics).
 
-After moving left for a long stretch, I'm finding myself drifting back toward an accelerationist position now that AI has actually arrived. Wrestling with what that means, in public, mostly on Bluesky.
+After moving left for a long stretch, I'm finding myself drifting back toward an [accelerationist](https://en.wikipedia.org/wiki/Accelerationism) position now that AI has actually arrived. Wrestling with what that means, in public, mostly on Bluesky.
 
 ## Gaming
 
-Big chunks of my decompression time lately have gone into **[AETHUS](https://store.steampowered.com/app/2939320/AETHUS/)** — about 60 hours in the last two weeks. I'm also gearing up for a fresh **Eco** cycle starting at the end of this week, and **Wildermyth** is in heavy rotation.
+Big chunks of my decompression time lately have gone into **[AETHUS](https://store.steampowered.com/app/2939320/AETHUS/)** — about 60 hours in the last two weeks. I'm also gearing up for a fresh **[Eco](https://en.wikipedia.org/wiki/Eco_(2018_video_game))** cycle starting at the end of this week, and **[Wildermyth](https://en.wikipedia.org/wiki/Wildermyth)** is in heavy rotation.
 
 ## Life
 
-I live in **San Lorenzo, in the Bay Area**. I'm in the middle of planning an **ADU** for my house — picked a preliminary design recently, very excited about it. Recovering from a surgery, which has temporarily grounded me from biking (and my bike is broken anyway, perfect timing).
+I live in **[San Lorenzo](https://en.wikipedia.org/wiki/San_Lorenzo,_California), in the Bay Area**. I'm in the middle of planning an **[ADU](https://en.wikipedia.org/wiki/Secondary_suite)** for my house — picked a preliminary design recently, very excited about it. Recovering from a surgery, which has temporarily grounded me from biking (and my bike is broken anyway, perfect timing).
 
 Currently building a few daily habits: **Duolingo** (about a month deep now), and **leetcode** (deferred a week — too much else going on right now to add a third habit responsibly). Also recently lost some weight and hit a historical low, which is its own thing.
+
+---
+
+#### Footnotes — obscure things on this page
+
+In case any of these jumped out at you and you want to learn more:
+
+- **dark factory** — https://en.wikipedia.org/wiki/Lights_out_(manufacturing)
+- **accelerationism** — https://en.wikipedia.org/wiki/Accelerationism
+- **Eco (the game)** — https://en.wikipedia.org/wiki/Eco_(2018_video_game)
+- **Wildermyth** — https://en.wikipedia.org/wiki/Wildermyth
+- **San Lorenzo, CA** — https://en.wikipedia.org/wiki/San_Lorenzo,_California
+- **ADU (Accessory Dwelling Unit)** — https://en.wikipedia.org/wiki/Secondary_suite
 
 ---
 
