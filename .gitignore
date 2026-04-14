@@ -1,3 +1,9 @@
+docs/superpowers/
+scripts/.bsky-credentials.json
+scripts/.youtube-client-secret.json
+scripts/.youtube-token.json
+scripts/.steam-credentials.json
+scripts/now-data.json
 .claude/
 .idea
 cypress/fixtures/

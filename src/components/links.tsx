@@ -15,6 +15,11 @@ function Links() {
             ./about<i className="fa-solid fa-face-laugh"></i>{" "}
           </Link>
         </li>
+        <li>
+          <Link className="nav-btn" to="/now">
+            ./now<i className="fa-solid fa-clock"></i>{" "}
+          </Link>
+        </li>
       </ul>
       <ul className="nav-links">
         <li>
