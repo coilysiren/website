@@ -36,7 +36,7 @@ function httpsJson(options, body) {
       res.on("end", () => {
         try {
           resolve(JSON.parse(data))
-        } catch (err) {
+        } catch {
           reject(new Error(`Bad JSON from ${options.hostname}${options.path}: ${data.slice(0, 200)}`))
         }
       })

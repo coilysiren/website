@@ -87,7 +87,7 @@ export default [
 
   // Root JS files (gatsby-config, gatsby-node, cypress.config)
   {
-    files: ["*.js", "cypress/plugins/**/*.js"],
+    files: ["*.js", "cypress/plugins/**/*.js", "scripts/**/*.js"],
     languageOptions: {
       sourceType: "commonjs",
       globals: {
@@ -98,6 +98,13 @@ export default [
         __filename: "readonly",
         process: "readonly",
         console: "readonly",
+        Buffer: "readonly",
+        URL: "readonly",
+        URLSearchParams: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
       },
     },
   },
