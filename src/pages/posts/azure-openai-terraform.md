@@ -6,7 +6,7 @@ description: An end to end description of how to get Azure OpenAI deployed via T
 
 ---
 
-Hello! If you're here then I assume you are a reasonably experienced engineer, who is deploying Azure OpenAI for your day job. This blog post assumes that you are familiar with:
+This post is aimed at reasonably experienced engineers who are deploying Azure OpenAI for their day job. It assumes you're familiar with:
 
 - cloud deployments in general
 - terraform specifically
