@@ -1,5 +1,5 @@
 ---
-title: "About Me"
+title: "Resume"
 ---
 
 <!-- editors note:
@@ -8,8 +8,6 @@ title: "About Me"
   1. https://github.com/coilysiren/coilysiren/blob/main/README.md
   2. https://www.linkedin.com/in/coilysiren/
 -->
-
-My resume is also available as a [PDF](/resume.pdf).
 
 I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I’m a platform engineer with 13 years of experience building high-impact systems that empower engineering teams.
 
@@ -20,3 +18,5 @@ I'm proficient in six programming languages, with Python, Go, and JavaScript as 
 Throughout my career, I've been primarily responsible for implementing operations systems such as application monitoring, data pipelines, and deployment tooling from scratch. This hands-on experience has honed my skills as an IC engineer, and I also managed a small team at EnergyHub.
 
 Outside work, I enjoy gaming, game development, gardening, and crafts. I also manage a game server, a unique intersection of my personal and professional interests.
+
+My resume is also available as a [PDF](/resume.pdf).

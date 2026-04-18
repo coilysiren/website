@@ -1,6 +1,10 @@
 # docs: https://docs.netlify.com/routing/redirects
 
 [[redirects]]
+  from = "/about"
+  to = "/now"
+
+[[redirects]]
   from = "/posts/2019-12-25-golang-pr-field-notes-part-1"
   to = "/posts/golang-pr-notes-1"
 

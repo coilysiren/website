@@ -1,5 +1,51 @@
 @use "_vars.scss";
 
+.hero {
+  display: flex;
+  gap: 1.5em;
+  align-items: flex-start;
+  padding: 1.5em 1em;
+  color: vars.$dark-purple;
+  line-height: 1.6em;
+
+  a {
+    color: vars.$mid-purple;
+  }
+
+  p {
+    margin: 0 0 0.9em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .hero-photo {
+    flex: 0 0 auto;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid vars.$dark-purple;
+  }
+
+  .hero-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  @include vars.phone {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+    }
+  }
+}
+
 .homepage-post {
   width: auto;
   display: flex;

@@ -11,13 +11,13 @@ function Links() {
           </Link>
         </li>
         <li>
-          <Link className="nav-btn" to="/about">
-            ./about<i className="fa-solid fa-face-laugh"></i>{" "}
+          <Link className="nav-btn" to="/now">
+            ./now<i className="fa-solid fa-clock"></i>{" "}
           </Link>
         </li>
         <li>
-          <Link className="nav-btn" to="/now">
-            ./now<i className="fa-solid fa-clock"></i>{" "}
+          <Link className="nav-btn" to="/resume">
+            ./resume<i className="fa-solid fa-file-lines"></i>{" "}
           </Link>
         </li>
       </ul>
