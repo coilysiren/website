@@ -3,11 +3,10 @@ title: "About Me"
 ---
 
 <!-- editors note:
-  Canonical source is ~/projects/coilyco-vault/coilyco/Self/Resume.md.
-  This file (and the following downstream targets) are synced from it:
+  Canonical source: ~/projects/coilyco-vault/coilyco/Self/Resume.md (the intro paragraphs).
+  When that changes, mirror here and also sync to:
   1. https://github.com/coilysiren/coilysiren/blob/main/README.md
-  2. https://www.linkedin.com/in/coilysiren/ (manual paste via UI)
-  PDF resume is regenerated automatically via the `pdf` skill, not StackEdit.
+  2. https://www.linkedin.com/in/coilysiren/
 -->
 
 My resume is also available as a [PDF](/resume.pdf).
@@ -18,8 +17,6 @@ I have recent experience working with LLM-based systems and AI-assisted workflow
 
 I'm proficient in six programming languages, with Python, Go, and JavaScript as my strongest. I have hands-on experience deploying to AWS, GCP, and Azure, including designing multi-cloud environments. Across technologies and cloud platforms, I specialize in meeting engineers where they are and helping teams move faster and more effectively.
 
-My career is powered by a passion for enabling engineering teams to achieve their highest potential. I bring this focus to every role, ensuring that teams deliver high-quality products and services quickly and efficiently. Each project is an opportunity to learn, grow, and strengthen our collective capabilities or to create tools and platforms that become valuable products in their own right.
+Throughout my career, I've been primarily responsible for implementing operations systems such as application monitoring, data pipelines, and deployment tooling from scratch. This hands-on experience has honed my skills as an IC engineer, and I also managed a small team at EnergyHub.
 
-Throughout my career, I've been primarily responsible for implementing operations systems such as application monitoring, data pipelines, and deployment tooling from scratch. More recently, this has included systems that incorporate AI-driven components, extending my existing focus on reliability, observability, and developer productivity. This hands-on experience has honed my skills as an IC engineer, and I also managed a small team at EnergyHub.
-
-Outside work, I enjoy gaming, game development, gardening, and crafts. I also manage a game server, a unique intersection of my personal and professional interests
+Outside work, I enjoy gaming, game development, gardening, and crafts. I also manage a game server, a unique intersection of my personal and professional interests.
