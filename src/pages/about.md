@@ -5,9 +5,8 @@ title: "About Me"
 <!-- editors note:
   Canonical source: ~/projects/coilyco-vault/coilyco/Self/Resume.md (the intro paragraphs).
   When that changes, mirror here and also sync to:
-  1. https://stackedit.io/app# (for PDF resume generation)
-  2. https://github.com/coilysiren/coilysiren/blob/main/README.md
-  3. https://www.linkedin.com/in/coilysiren/
+  1. https://github.com/coilysiren/coilysiren/blob/main/README.md
+  2. https://www.linkedin.com/in/coilysiren/
 -->
 
 My resume is also available as a [PDF](/resume.pdf).
