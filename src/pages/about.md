@@ -3,13 +3,14 @@ title: "About Me"
 ---
 
 <!-- editors note:
-  This about me lives here canonically, but is then synced to several places.
-  1. https://stackedit.io/app# (for PDF resume generation)
-  2. https://github.com/coilysiren/coilysiren/blob/main/README.md
-  3. https://www.linkedin.com/in/coilysiren/
+  Canonical source is ~/projects/coilyco-vault/coilyco/Self/Resume.md.
+  This file (and the following downstream targets) are synced from it:
+  1. https://github.com/coilysiren/coilysiren/blob/main/README.md
+  2. https://www.linkedin.com/in/coilysiren/ (manual paste via UI)
+  PDF resume is regenerated automatically via the `pdf` skill, not StackEdit.
 -->
 
-I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I’m a platform engineer with over 10 years of experience building high-impact systems that empower engineering teams.
+I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I’m a platform engineer with 13 years of experience building high-impact systems that empower engineering teams.
 
 I have recent experience working with LLM-based systems and AI-assisted workflows, focusing on integrating them into existing platforms in a reliable and observable way. This includes designing systems that help teams experiment with and adopt AI without compromising production quality.
 
