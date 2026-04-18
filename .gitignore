@@ -3,6 +3,7 @@ scripts/.bsky-credentials.json
 scripts/.youtube-client-secret.json
 scripts/.youtube-token.json
 scripts/.steam-credentials.json
+scripts/.cache/
 scripts/now-data.json
 .claude/
 .idea
