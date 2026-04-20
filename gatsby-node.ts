@@ -2,6 +2,9 @@ import path from "path"
 import type { GatsbyNode } from "gatsby"
 import { createFilePath } from "gatsby-source-filesystem"
 
+const toRepoRelative = (absPath: string) =>
+  path.relative(__dirname, absPath).split(path.sep).join("/")
+
 export const createPages: GatsbyNode["createPages"] = ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
 
@@ -9,7 +12,13 @@ export const createPages: GatsbyNode["createPages"] = ({ actions, graphql }) => 
 
   return graphql<{
     allMarkdownRemark: {
-      edges: Array<{ node: { id: string; fields: { slug: string } } }>
+      edges: Array<{
+        node: {
+          id: string
+          fileAbsolutePath: string
+          fields: { slug: string }
+        }
+      }>
     }
   }>(`
     {
@@ -17,6 +26,7 @@ export const createPages: GatsbyNode["createPages"] = ({ actions, graphql }) => 
         edges {
           node {
             id
+            fileAbsolutePath
             fields {
               slug
             }
@@ -34,13 +44,27 @@ export const createPages: GatsbyNode["createPages"] = ({ actions, graphql }) => 
     const posts = result.data!.allMarkdownRemark.edges
 
     posts.forEach((edge) => {
-      const { id } = edge.node
+      const { id, fileAbsolutePath } = edge.node
       createPage({
         path: edge.node.fields.slug,
         component: path.resolve("src/components/content-block.tsx"),
-        context: { id },
+        context: { id, sourcePath: toRepoRelative(fileAbsolutePath) },
       })
     })
+  })
+}
+
+export const onCreatePage: GatsbyNode["onCreatePage"] = ({ page, actions }) => {
+  if (page.context && (page.context as { sourcePath?: string }).sourcePath) return
+  const { createPage, deletePage } = actions
+  const sourcePath = toRepoRelative(page.component)
+  deletePage(page)
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      sourcePath,
+    },
   })
 }
 

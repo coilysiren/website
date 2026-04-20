@@ -1,5 +1,11 @@
 import React from "react"
 import type { GatsbySSR } from "gatsby"
+import { PageMetaProvider } from "./src/components/page-context"
+
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element, props }) => {
+  const sourcePath = (props.pageContext as { sourcePath?: string } | undefined)?.sourcePath
+  return <PageMetaProvider value={{ sourcePath }}>{element}</PageMetaProvider>
+}
 
 export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   setHtmlAttributes,
