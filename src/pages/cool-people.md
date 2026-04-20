@@ -18,7 +18,7 @@ People I think are great and wanna hype up 🙌
 - **[@castpixel](https://github.com/castpixel)** 🎨🎮 — Game artist, illustrator, and art director with 20 years in the industry. Clients include Minecraft, Mojang, SEGA, Panic, Hasbro, Unity. [castpixel.artstation.com](https://castpixel.artstation.com)
 - **[@celanthe](https://github.com/celanthe)** 🎤 — **Go / JavaScript / HCL** developer advocate and OSS community builder at MacStadium. Co-leads the [CNCF Neurodiversity WG](https://contribute.cncf.io/about/tag-contributor-strategy/working-groups/neurodiversity/). [ckoliver.com](https://ckoliver.com)
 - **[@komalali](https://github.com/komalali)** 👥🐍 — **TypeScript / Python** engineering manager at Pulumi; contributor to this website. [komalali.github.io](https://komalali.github.io)
-- **[@cagyirey](https://github.com/cagyirey)** 🏭 — **C# / F#** platform engineer in Canada. Fancy rare skillset.
+- **[@cagyirey](https://github.com/cagyirey)** 🏭 — **C# / F#** platform engineer in Canada. Kubernetes and hardware optimization and general sys admin wizardry 
 - **[@mcclure](https://github.com/mcclure)** 🎮🎨 — **Lua / C# / C** game, systems, and experimental-art dev. "Glitch girl." [runhello.com](https://runhello.com)
 - **[@Enichan](https://github.com/Enichan)** 🎮 — **C# / Lua** indie game dev. Founder of [Kitsune Games](https://kitsunegames.com) — MidBoss (2017), Kitsune Tails (2024).
 
