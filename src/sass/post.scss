@@ -171,6 +171,13 @@ p > code {
   font-family: vars.$font-family-mono;
 }
 
+// Opt-in: soft-wrap long lines instead of horizontal scroll.
+// Used on /resume so the embedded resume markdown stays readable on narrow viewports.
+.wrap-pre pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 // Styling of triple ```
 pre:not(.warning-message) {
   background-color: vars.$dark-purple;

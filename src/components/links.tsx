@@ -20,6 +20,11 @@ function Links() {
             ./resume<i className="fa-solid fa-file-lines"></i>{" "}
           </Link>
         </li>
+        <li>
+          <Link className="nav-btn" to="/cool-people">
+            ./cool-people<i className="fa-solid fa-user-group"></i>{" "}
+          </Link>
+        </li>
       </ul>
       <ul className="nav-links">
         <li>
