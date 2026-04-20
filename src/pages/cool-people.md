@@ -22,6 +22,14 @@ People I think are great and wanna hype up 🙌
 - **[@mcclure](https://github.com/mcclure)** 🎮🎨 — **Lua / C# / C** game, systems, and experimental-art dev. "Glitch girl." [runhello.com](https://runhello.com)
 - **[@Enichan](https://github.com/Enichan)** 🎮 — **C# / Lua** indie game dev. Founder of [Kitsune Games](https://kitsunegames.com) — MidBoss (2017), Kitsune Tails (2024).
 
+## Demographics 🕵️
+
+Aggregated and rounded with a random offset to protect PII or whatever
+
+- ~80% queer or trans (incl. nonbinary)
+- ~70% women
+- ~30% POC
+
 ## Orgs, jobs, & projects where our paths crossed
 
 - 💎 **[Bundler](https://bundler.io) / [Ruby Together](https://rubycentral.org)** — I was a project manager at Ruby Together when [@indirect](https://github.com/indirect) was leading Bundler and RubyGems.
