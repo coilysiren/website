@@ -1,21 +1,22 @@
 // Fetches recent activity across GitHub, Bluesky, YouTube, Reddit, and Steam.
 // Writes the combined data to scripts/now-data.json for the /now page generator.
 //
-// Run with: node scripts/fetch-now-data.js
+// Run with: pnpm fetch-now-data
 //
 // Required credentials (all gitignored):
 //   - GitHub: gh CLI must be authed (`gh auth status`)
 //   - Bluesky: scripts/.bsky-credentials.json
-//   - YouTube: scripts/.youtube-token.json (run scripts/youtube-auth.js first)
+//   - YouTube: scripts/.youtube-token.json (run scripts/youtube-auth.ts first)
 //   - Reddit: no auth, public JSON API
 //   - Steam: scripts/.steam-credentials.json
 
-const fs = require("fs")
-const https = require("https")
-const path = require("path")
-const { execFileSync } = require("child_process")
+import fs from "node:fs"
+import https from "node:https"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
+import { execFileSync } from "node:child_process"
 
-const SCRIPTS_DIR = __dirname
+const SCRIPTS_DIR = path.dirname(fileURLToPath(import.meta.url))
 const OUTPUT_PATH = path.join(SCRIPTS_DIR, "now-data.json")
 const REDDIT_USERNAME = "coilysiren"
 const BSKY_HANDLE = "coilysiren.me"
@@ -24,18 +25,18 @@ const USER_AGENT = "coilysiren-now-page/1.0"
 
 // ---------- helpers ----------
 
-function readJsonFile(file) {
-  return JSON.parse(fs.readFileSync(file, "utf8"))
+function readJsonFile<T = unknown>(file: string): T {
+  return JSON.parse(fs.readFileSync(file, "utf8")) as T
 }
 
-function httpsJson(options, body) {
+function httpsJson<T = any>(options: https.RequestOptions, body?: string): Promise<T> {
   return new Promise((resolve, reject) => {
     const req = https.request(options, (res) => {
       let data = ""
       res.on("data", (c) => (data += c))
       res.on("end", () => {
         try {
-          resolve(JSON.parse(data))
+          resolve(JSON.parse(data) as T)
         } catch {
           reject(new Error(`Bad JSON from ${options.hostname}${options.path}: ${data.slice(0, 200)}`))
         }
@@ -47,9 +48,9 @@ function httpsJson(options, body) {
   })
 }
 
-function httpsGet(url, headers = {}) {
+function httpsGet<T = any>(url: string, headers: Record<string, string> = {}): Promise<T> {
   const u = new URL(url)
-  return httpsJson({
+  return httpsJson<T>({
     hostname: u.hostname,
     path: u.pathname + u.search,
     method: "GET",
@@ -61,18 +62,16 @@ function httpsGet(url, headers = {}) {
 
 async function fetchGitHub() {
   console.log("→ GitHub")
-  // Use gh CLI for authed access
-  const events = JSON.parse(
+  const events: any[] = JSON.parse(
     execFileSync("gh", ["api", `/users/${GH_USERNAME}/events?per_page=100`], {
       encoding: "utf8",
     })
   )
 
-  // Group events by type
-  const commits = []
-  const prs = []
-  const issueComments = []
-  const repoSet = new Set()
+  const commits: Array<{ repo: string; message: string; date: string }> = []
+  const prs: Array<{ repo: string; action: string; title?: string; date: string }> = []
+  const issueComments: Array<{ repo: string; issue?: string; body: string; date: string }> = []
+  const repoSet = new Set<string>()
 
   for (const e of events) {
     repoSet.add(e.repo.name)
@@ -101,12 +100,10 @@ async function fetchGitHub() {
     }
   }
 
-  const stars = JSON.parse(
-    execFileSync(
-      "gh",
-      ["api", `/users/${GH_USERNAME}/starred?per_page=10&sort=created`],
-      { encoding: "utf8" }
-    )
+  const stars = (
+    JSON.parse(
+      execFileSync("gh", ["api", `/users/${GH_USERNAME}/starred?per_page=10&sort=created`], { encoding: "utf8" })
+    ) as any[]
   ).map((r) => ({
     repo: r.full_name,
     description: r.description,
@@ -126,9 +123,11 @@ async function fetchGitHub() {
 
 async function fetchBluesky() {
   console.log("→ Bluesky")
-  const creds = readJsonFile(path.join(SCRIPTS_DIR, ".bsky-credentials.json"))
+  const creds = readJsonFile<{ identifier: string; password: string }>(
+    path.join(SCRIPTS_DIR, ".bsky-credentials.json")
+  )
 
-  const session = await httpsJson(
+  const session = await httpsJson<{ accessJwt?: string }>(
     {
       hostname: "bsky.social",
       path: "/xrpc/com.atproto.server.createSession",
@@ -144,21 +143,21 @@ async function fetchBluesky() {
 
   const auth = { Authorization: `Bearer ${session.accessJwt}` }
 
-  const feed = await httpsGet(
+  const feed = await httpsGet<any>(
     `https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed?actor=${BSKY_HANDLE}&limit=100`,
     auth
   )
-  const likes = await httpsGet(
+  const likes = await httpsGet<any>(
     `https://bsky.social/xrpc/app.bsky.feed.getActorLikes?actor=${BSKY_HANDLE}&limit=100`,
     auth
   )
-  const follows = await httpsGet(
+  const follows = await httpsGet<any>(
     `https://bsky.social/xrpc/app.bsky.graph.getFollows?actor=${BSKY_HANDLE}&limit=100`,
     auth
   )
 
   return {
-    posts: (feed.feed || []).map((item) => ({
+    posts: (feed.feed || []).map((item: any) => ({
       text: item.post.record.text,
       created_at: item.post.record.createdAt,
       reply_count: item.post.replyCount,
@@ -166,12 +165,12 @@ async function fetchBluesky() {
       repost_count: item.post.repostCount,
       is_repost: !!item.reason,
     })),
-    likes: (likes.feed || []).map((item) => ({
+    likes: (likes.feed || []).map((item: any) => ({
       author: item.post.author.handle,
       text: item.post.record.text,
       created_at: item.post.record.createdAt,
     })),
-    follows: (follows.follows || []).map((f) => ({
+    follows: (follows.follows || []).map((f: any) => ({
       handle: f.handle,
       display_name: f.displayName,
       description: (f.description || "").slice(0, 200),
@@ -181,11 +180,18 @@ async function fetchBluesky() {
 
 // ---------- YouTube ----------
 
-async function refreshYouTubeToken() {
+interface YouTubeToken {
+  access_token?: string
+  refresh_token: string
+  expires_in: number
+  obtained_at?: number
+}
+
+async function refreshYouTubeToken(): Promise<string> {
   const tokenPath = path.join(SCRIPTS_DIR, ".youtube-token.json")
   const secretPath = path.join(SCRIPTS_DIR, ".youtube-client-secret.json")
-  const token = readJsonFile(tokenPath)
-  const secret = readJsonFile(secretPath).installed
+  const token = readJsonFile<YouTubeToken>(tokenPath)
+  const secret = readJsonFile<{ installed: { client_id: string; client_secret: string } }>(secretPath).installed
 
   const ageMs = Date.now() - (token.obtained_at || 0)
   const expiresMs = (token.expires_in - 60) * 1000
@@ -201,7 +207,7 @@ async function refreshYouTubeToken() {
     grant_type: "refresh_token",
   }).toString()
 
-  const fresh = await httpsJson(
+  const fresh = await httpsJson<{ access_token?: string; expires_in: number }>(
     {
       hostname: "oauth2.googleapis.com",
       path: "/token",
@@ -218,7 +224,7 @@ async function refreshYouTubeToken() {
     throw new Error("YouTube refresh failed: " + JSON.stringify(fresh))
   }
 
-  const updated = {
+  const updated: YouTubeToken = {
     ...token,
     access_token: fresh.access_token,
     expires_in: fresh.expires_in,
@@ -233,29 +239,28 @@ async function fetchYouTube() {
   const accessToken = await refreshYouTubeToken()
   const auth = { Authorization: `Bearer ${accessToken}` }
 
-  const liked = await httpsGet(
+  const liked = await httpsGet<any>(
     "https://www.googleapis.com/youtube/v3/videos?myRating=like&part=snippet&maxResults=50",
     auth
   )
-  const subs = await httpsGet(
+  const subs = await httpsGet<any>(
     "https://www.googleapis.com/youtube/v3/subscriptions?mine=true&part=snippet&maxResults=50&order=relevance",
     auth
   )
 
   return {
-    // NOTE: Items are in reverse-chronological order by LIKE time
-    // (index 0 = most recently liked). The YouTube API does not
-    // expose the actual liked-at timestamp, so we use index as a proxy.
-    // video_published_at is when the video itself was published, not
-    // when Kai liked it.
-    liked: (liked.items || []).map((v, i) => ({
+    // Items are in reverse-chronological order by LIKE time (index 0 = most
+    // recently liked). The YouTube API does not expose the actual liked-at
+    // timestamp, so we use index as a proxy. video_published_at is when the
+    // video itself was published, not when Kai liked it.
+    liked: (liked.items || []).map((v: any, i: number) => ({
       like_recency_index: i,
       title: v.snippet.title,
       channel: v.snippet.channelTitle,
       video_published_at: v.snippet.publishedAt,
       description: (v.snippet.description || "").slice(0, 200),
     })),
-    subscriptions: (subs.items || []).map((s) => ({
+    subscriptions: (subs.items || []).map((s: any) => ({
       channel: s.snippet.title,
       description: (s.snippet.description || "").slice(0, 200),
     })),
@@ -266,15 +271,15 @@ async function fetchYouTube() {
 
 async function fetchReddit() {
   console.log("→ Reddit")
-  const submissions = await httpsGet(
+  const submissions = await httpsGet<any>(
     `https://www.reddit.com/user/${REDDIT_USERNAME}/submitted.json?limit=100`
   )
-  const comments = await httpsGet(
+  const comments = await httpsGet<any>(
     `https://www.reddit.com/user/${REDDIT_USERNAME}/comments.json?limit=100`
   )
 
   return {
-    submissions: (submissions.data?.children || []).map((c) => ({
+    submissions: (submissions.data?.children || []).map((c: any) => ({
       subreddit: c.data.subreddit,
       title: c.data.title,
       selftext: (c.data.selftext || "").slice(0, 300),
@@ -282,7 +287,7 @@ async function fetchReddit() {
       created_utc: c.data.created_utc,
       url: c.data.url,
     })),
-    comments: (comments.data?.children || []).map((c) => ({
+    comments: (comments.data?.children || []).map((c: any) => ({
       subreddit: c.data.subreddit,
       body: (c.data.body || "").slice(0, 400),
       score: c.data.score,
@@ -296,26 +301,27 @@ async function fetchReddit() {
 
 async function fetchSteam() {
   console.log("→ Steam")
-  const creds = readJsonFile(path.join(SCRIPTS_DIR, ".steam-credentials.json"))
+  const creds = readJsonFile<{ api_key: string; steam_id: string }>(
+    path.join(SCRIPTS_DIR, ".steam-credentials.json")
+  )
 
-  const recent = await httpsGet(
+  const recent = await httpsGet<any>(
     `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${creds.api_key}&steamid=${creds.steam_id}`
   )
-  const owned = await httpsGet(
+  const owned = await httpsGet<any>(
     `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${creds.api_key}&steamid=${creds.steam_id}&include_appinfo=true&include_played_free_games=true`
   )
 
-  const recentlyPlayed = (recent.response?.games || []).map((g) => ({
+  const recentlyPlayed = (recent.response?.games || []).map((g: any) => ({
     name: g.name,
     playtime_2weeks_hours: Math.round((g.playtime_2weeks / 60) * 10) / 10,
     playtime_total_hours: Math.round(g.playtime_forever / 60),
   }))
 
-  // Top owned games by total playtime, for context
   const topOwned = (owned.response?.games || [])
-    .sort((a, b) => b.playtime_forever - a.playtime_forever)
+    .sort((a: any, b: any) => b.playtime_forever - a.playtime_forever)
     .slice(0, 10)
-    .map((g) => ({
+    .map((g: any) => ({
       name: g.name,
       playtime_total_hours: Math.round(g.playtime_forever / 60),
     }))
@@ -330,12 +336,12 @@ async function fetchSteam() {
 // ---------- main ----------
 
 async function main() {
-  const out = {
+  const out: { fetched_at: string; sources: Record<string, unknown> } = {
     fetched_at: new Date().toISOString(),
     sources: {},
   }
 
-  const sources = [
+  const sources: Array<[string, () => Promise<unknown>]> = [
     ["github", fetchGitHub],
     ["bluesky", fetchBluesky],
     ["youtube", fetchYouTube],
@@ -347,8 +353,9 @@ async function main() {
     try {
       out.sources[name] = await fn()
     } catch (err) {
-      console.error(`✗ ${name}:`, err.message)
-      out.sources[name] = { error: err.message }
+      const message = err instanceof Error ? err.message : String(err)
+      console.error(`✗ ${name}:`, message)
+      out.sources[name] = { error: message }
     }
   }
 

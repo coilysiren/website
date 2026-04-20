@@ -1,7 +1,23 @@
 import React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
 
-const BlogList = ({ data }) => {
+interface BlogPost {
+  id: string
+  fields: { slug: string }
+  frontmatter: {
+    title: string
+    description?: string
+    date: string
+  }
+}
+
+interface BlogListData {
+  allMarkdownRemark: {
+    edges: Array<{ node: BlogPost }>
+  }
+}
+
+const BlogList = ({ data }: { data: BlogListData }) => {
   const { edges: posts } = data.allMarkdownRemark
 
   return (
@@ -47,7 +63,7 @@ const BlogListWithQuery = () => (
         }
       }
     `}
-    render={(data, count) => <BlogList data={data} count={count} />}
+    render={(data) => <BlogList data={data} />}
   />
 )
 

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { useLocation } from "@reach/router"
+import { useLocation } from "@gatsbyjs/reach-router"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
+import DefaultHead from "../../components/default-head"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
+
+export const Head = () => <DefaultHead title="Bluesky Popularity Contest" />
 
 const starletteRope = 5
 const requestFrequency = 250
@@ -88,6 +91,7 @@ const Bsky = () => {
     }
     const data: { [key: string]: ProfileViewDetailed } = await response.json()
     const profile = Object.values(data)[0]
+    if (!profile) return
     setProfile(() => profile)
   }
 
@@ -149,8 +153,9 @@ const Bsky = () => {
       })
       .filter((handle) => {
         // Don't request details for handles that have a score of 0 or less than goal
-        return popularity[handle] > starletteRope
+        return (popularity[handle] ?? 0) > starletteRope
       })[0]
+    if (!handle) return
 
     const response = await fetch(
       `${process.env.GATSBY_API_URL}/bsky/${handle}/profile`
@@ -161,14 +166,14 @@ const Bsky = () => {
       return
     }
     const data: { [key: string]: ProfileViewDetailed } = await response.json()
+    const profile = Object.values(data)[0]
+    if (!profile) return
 
-    setPopularityDetails((prevDetails) => ({
-      ...prevDetails,
-      [Object.values(data)[0].handle]: {
-        profile: Object.values(data)[0],
-        score: popularity[Object.values(data)[0].handle],
-      },
-    }))
+    const entry: IExpandedProfileDetails = {
+      profile,
+      score: popularity[profile.handle] ?? 0,
+    }
+    setPopularityDetails((prev) => ({ ...prev, [profile.handle]: entry }))
   }
 
   // Check done ness

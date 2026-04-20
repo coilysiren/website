@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { useLocation } from "@reach/router"
+import { useLocation } from "@gatsbyjs/reach-router"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
+import DefaultHead from "../../components/default-head"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
+
+export const Head = () => <DefaultHead title="Bluesky Follow Suggestions" />
 
 const requestFrequency = 250
 const maxSuggestions = 100
@@ -120,8 +123,8 @@ const Bsky = () => {
     // Sorting the list to get the people with the most followers first.
     // Limit to the maximum number of suggestions to avoid too many requests.
     const suggestionsToDetail = Object.keys(suggestionCounts)
-      .sort((a, b) => suggestionCounts[b] - suggestionCounts[a])
-      .filter((suggestion) => suggestionCounts[suggestion] > 1)
+      .sort((a, b) => (suggestionCounts[b] ?? 0) - (suggestionCounts[a] ?? 0))
+      .filter((suggestion) => (suggestionCounts[suggestion] ?? 0) > 1)
       .filter((suggestion) => suggestion != handleState)
       .slice(0, maxSuggestions - Object.keys(suggestionDetails).length)
 
@@ -138,16 +141,15 @@ const Bsky = () => {
       }
       const data: { [key: string]: ProfileViewDetailed } = await response.json()
       const profile = Object.values(data)[0]
-      setSuggestionDetails((prev) => ({
-        ...prev,
-        [handle]: {
-          profile: profile,
-          score:
-            (suggestionCounts[profile.handle] || 0) /
-            (profile.followersCount || 1),
-          myFollowers: suggestionCounts[profile.handle] || 0,
-        },
-      }))
+      if (!profile) continue
+      const entry: IExpandedProfileDetails = {
+        profile,
+        score:
+          (suggestionCounts[profile.handle] || 0) /
+          (profile.followersCount || 1),
+        myFollowers: suggestionCounts[profile.handle] || 0,
+      }
+      setSuggestionDetails((prev) => ({ ...prev, [handle]: entry }))
       setSuggestionDetailRequests((prev) => prev + 1)
     }
   }

@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
+import DefaultHead from "../../components/default-head"
 import { showError } from "../../components/error"
+
+export const Head = () => <DefaultHead title="Testing Errors" />
 
 const Testing = () => {
   // START: GENERIC STATE

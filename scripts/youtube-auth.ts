@@ -1,26 +1,36 @@
 // One-time OAuth setup for YouTube Data API.
-// Run with: node scripts/youtube-auth.js
+// Run with: pnpm youtube-auth
 // Saves refresh token to scripts/.youtube-token.json for future use.
 
-const fs = require("fs")
-const http = require("http")
-const https = require("https")
-const path = require("path")
-const { URL } = require("url")
-const { execFileSync } = require("child_process")
+import fs from "node:fs"
+import http from "node:http"
+import https from "node:https"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
+import { execFileSync } from "node:child_process"
+import type { AddressInfo } from "node:net"
 
-const SCRIPTS_DIR = path.join(__dirname)
+const SCRIPTS_DIR = path.dirname(fileURLToPath(import.meta.url))
 const CLIENT_SECRET_PATH = path.join(SCRIPTS_DIR, ".youtube-client-secret.json")
 const TOKEN_PATH = path.join(SCRIPTS_DIR, ".youtube-token.json")
 const SCOPE = "https://www.googleapis.com/auth/youtube.readonly"
 
-const clientSecret = JSON.parse(fs.readFileSync(CLIENT_SECRET_PATH, "utf8"))
+interface ClientSecret {
+  installed: {
+    client_id: string
+    client_secret: string
+    token_uri: string
+    auth_uri: string
+  }
+}
+
+const clientSecret = JSON.parse(fs.readFileSync(CLIENT_SECRET_PATH, "utf8")) as ClientSecret
 const { client_id, client_secret, token_uri, auth_uri } = clientSecret.installed
 
-// Pick a random free port for the local redirect server
 const server = http.createServer()
 server.listen(0, "127.0.0.1", () => {
-  const port = server.address().port
+  const addr = server.address() as AddressInfo
+  const port = addr.port
   const redirectUri = `http://127.0.0.1:${port}/callback`
 
   const authUrl = new URL(auth_uri)
@@ -45,12 +55,12 @@ server.listen(0, "127.0.0.1", () => {
 
 let handled = false
 server.on("request", (req, res) => {
-  const addr = server.address()
+  const addr = server.address() as AddressInfo | null
   if (!addr) {
     res.end()
     return
   }
-  const reqUrl = new URL(req.url, `http://127.0.0.1:${addr.port}`)
+  const reqUrl = new URL(req.url ?? "/", `http://127.0.0.1:${addr.port}`)
   if (reqUrl.pathname !== "/callback" || handled) {
     res.writeHead(404)
     res.end()
@@ -75,8 +85,7 @@ server.on("request", (req, res) => {
     return
   }
 
-  // Exchange code for tokens
-  const port = server.address().port
+  const port = addr.port
   const body = new URLSearchParams({
     code,
     client_id,
@@ -100,7 +109,11 @@ server.on("request", (req, res) => {
       let data = ""
       tokenRes.on("data", (chunk) => (data += chunk))
       tokenRes.on("end", () => {
-        const tokens = JSON.parse(data)
+        const tokens = JSON.parse(data) as {
+          error?: string
+          refresh_token?: string
+          [key: string]: unknown
+        }
         if (tokens.error) {
           res.writeHead(400, { "Content-Type": "text/html" })
           res.end(`<h1>Token exchange failed: ${tokens.error}</h1>`)
@@ -109,15 +122,12 @@ server.on("request", (req, res) => {
           process.exit(1)
         }
 
-        // Save to disk (include obtained_at for refresh logic)
         const toSave = { ...tokens, obtained_at: Date.now() }
         fs.writeFileSync(TOKEN_PATH, JSON.stringify(toSave, null, 2))
         fs.chmodSync(TOKEN_PATH, 0o600)
 
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(
-          "<h1>Success! You can close this tab and return to your terminal.</h1>"
-        )
+        res.end("<h1>Success! You can close this tab and return to your terminal.</h1>")
         console.log(`\n✓ Tokens saved to ${TOKEN_PATH}`)
         console.log("  Has refresh_token:", !!tokens.refresh_token)
         server.close()

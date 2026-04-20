@@ -48,4 +48,5 @@ const getProfileList = (
   )
 }
 
-export { IExpandedProfileDetails, getProfileList }
+export { getProfileList }
+export type { IExpandedProfileDetails }

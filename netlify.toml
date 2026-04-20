@@ -1,5 +1,12 @@
 # docs: https://docs.netlify.com/routing/redirects
 
+[build]
+  command = "pnpm build"
+  publish = "public"
+
+[build.environment]
+  NETLIFY_USE_PNPM = "true"
+
 [[redirects]]
   from = "/about"
   to = "/now"

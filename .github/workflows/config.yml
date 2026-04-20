@@ -15,9 +15,10 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test:quick
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test:quick
   test-e2e:
     # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
@@ -30,6 +31,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test:e2e:ci
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test:e2e:ci

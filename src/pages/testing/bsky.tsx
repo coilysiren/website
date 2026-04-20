@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
+import DefaultHead from "../../components/default-head"
 import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
+
+export const Head = () => <DefaultHead title="Bluesky Testing" />
 
 const Testing = () => {
   // START: GENERIC STATE
@@ -30,14 +33,14 @@ const Testing = () => {
       return
     }
     const data: { [key: string]: ProfileViewDetailed } = await response.json()
-    const profile: ProfileViewDetailed = Object.values(data)[0]
+    const profile = Object.values(data)[0]
+    if (!profile) return
     setSuggestionDetails((prevDetails) => [
       ...prevDetails,
       {
-        myFollowersCount: 500,
-        folledByMe: false,
+        myFollowers: 500,
         score: 0.5,
-        profile: profile,
+        profile,
       },
     ])
   }

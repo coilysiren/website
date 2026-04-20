@@ -1,4 +1,6 @@
-module.exports = {
+import type { GatsbyConfig } from "gatsby"
+
+const config: GatsbyConfig = {
   siteMetadata: {
     title: "Kai Siren",
     description: "⚙️ ( DevOps || Platform || Infrastructure ) && Engineer ⚙️",
@@ -6,7 +8,6 @@ module.exports = {
     email: "coilysiren@gmail.com",
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-feed",
       options: {
@@ -23,7 +24,7 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { allMarkdownRemark } }) => {
+            serialize: ({ query: { allMarkdownRemark } }: { query: { allMarkdownRemark: { nodes: Array<{ frontmatter: { title: string; date: string; description?: string }; excerpt: string; html: string; fields: { slug: string } }> } } }) => {
               return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.frontmatter.description || node.excerpt,
@@ -95,9 +96,6 @@ module.exports = {
           {
             resolve: "gatsby-remark-images",
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
               maxWidth: 2048,
             },
           },
@@ -112,3 +110,5 @@ module.exports = {
     },
   ],
 }
+
+export default config

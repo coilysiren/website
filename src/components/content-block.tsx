@@ -1,43 +1,36 @@
 import React from "react"
-import Helmet from "react-helmet"
 import Layout from "./layout"
 import Closer from "./closer"
-import { graphql } from "gatsby"
+import DefaultHead from "./default-head"
+import { graphql, HeadProps } from "gatsby"
 import useSiteMetadata from "./site-metadata"
 
-const ContentBlock = ({ data }) => {
+interface ContentBlockData {
+  markdownRemark: {
+    id?: string
+    html: string
+    frontmatter: {
+      title?: string
+      description?: string
+      date?: string
+    }
+  }
+}
+
+const ContentBlock = ({ data }: { data: ContentBlockData }) => {
   const { markdownRemark: post } = data
   const siteMetadata = useSiteMetadata()
 
-  // If the post has a title, use it. Otherwise, use the site's title.
-  const title = post.frontmatter.title
-    ? post.frontmatter.title
-    : siteMetadata.title
+  const title = post.frontmatter.title || siteMetadata.title
 
-  // If the post has a description, use it. Otherwise, use the site's description.
-  const description = post.frontmatter.description
-    ? post.frontmatter.description
-    : siteMetadata.description
-
-  // If the post has a description, use it. Otherwise, don't render anything.
   const descriptionBlock = post.frontmatter.description ? (
     <h4>{post.frontmatter.description}</h4>
   ) : null
 
-  // If the post has a date, use it. Otherwise, don't render anything.
-  const dateBlock = post.frontmatter.date ? (
-    <h5>{post.frontmatter.date}</h5>
-  ) : null
+  const dateBlock = post.frontmatter.date ? <h5>{post.frontmatter.date}</h5> : null
 
   return (
     <Layout>
-      <Helmet>
-        <title>{`${title}`}</title>
-        <meta name="og:title" content={`${title}`} />
-        <meta name="description" content={`${description}`} />
-        <meta name="og:description" content={`${description}`} />
-        <meta name="og:type" content="website" />
-      </Helmet>
       <section className="post-body">
         <div className="post-header">
           <h2>{title}</h2>
@@ -55,6 +48,13 @@ const ContentBlock = ({ data }) => {
 }
 
 export default ContentBlock
+
+export const Head = ({ data }: HeadProps<ContentBlockData>) => (
+  <DefaultHead
+    title={data.markdownRemark.frontmatter.title}
+    description={data.markdownRemark.frontmatter.description}
+  />
+)
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
