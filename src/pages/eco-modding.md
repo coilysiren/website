@@ -49,6 +49,31 @@ Cycle prep is automated by [eco-cycle-prep](https://github.com/coilysiren/eco-cy
 - Emitting the cross-server ad on the main Eco Discord plus the longer `#eco-configs` cycle post.
 - The actual go-live flip (runtime-only on the server, never committed to git).
 
+## Work in progress
+
+Two newer projects around the edges of the server, both still WIP:
+
+- [eco-mcp-app](https://github.com/coilysiren/eco-mcp-app) — an inline Claude Desktop widget (via the [MCP Apps](https://modelcontextprotocol.io/docs/concepts/apps) spec) for any public Eco server. Ask Claude "what's the Eco server doing?" and a live card comes back: meteor countdown, online/total players, world size, laws, economy, a Discord CTA. Points at Eco via Sirens by default but takes any hostname. Also doubles as a small tech demo — a hand-rolled MCP Apps iframe in ~300 lines of HTML, no bundler or React, useful as a Python/Starlette reference for anyone building MCP Apps off the default TypeScript [ext-apps](https://github.com/modelcontextprotocol/ext-apps) stack.
+- [eco-spec-tracker](https://github.com/coilysiren/eco-spec-tracker) — a FastAPI + Jinja2 + HTMX web app that lists every player's jobs (professions/specialties) with `active / total` counts, paired with a C# Eco server mod that exposes the underlying `/api/v1/skills` endpoint. Deployed at [eco-jobs-tracker.coilysiren.me](https://eco-jobs-tracker.coilysiren.me). The "two sides, one repo" shape (Python web app + C# mod, with a standalone C# shell harness so the Python side can iterate against a real HTTP server without booting Eco) is the pattern I expect to reuse for future per-server dashboards.
+
+## Live jobs tracker
+
+[eco-spec-tracker](https://github.com/coilysiren/eco-spec-tracker) (above) runs against the live Eco via Sirens server and shows every player's professions and specialties with `active / total` counts, pulled from a companion C# mod that exposes `/api/v1/skills` on the game server. Embedded below; open it directly at [eco-jobs-tracker.coilysiren.me](https://eco-jobs-tracker.coilysiren.me/) for a full-page view.
+
+<div id="eco-tracker-embed">
+  <iframe
+    src="https://eco-jobs-tracker.coilysiren.me/"
+    title="Eco Jobs Tracker"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin"
+    referrerpolicy="no-referrer-when-downgrade"
+    style="width: 100%; height: 720px; border: 0;"
+  ></iframe>
+  <p id="eco-tracker-offline" style="display: none; font-size: 0.9em; color: #a44; font-style: italic; margin-top: 0.5em;">
+    The jobs tracker looks offline right now — Eco via Sirens may be between cycles. Try <a href="https://eco-jobs-tracker.coilysiren.me/">eco-jobs-tracker.coilysiren.me</a> directly.
+  </p>
+</div>
+
 ## If you want to mod Eco yourself
 
 - Official modkit: [StrangeLoopGames/EcoModKit](https://github.com/StrangeLoopGames/EcoModKit).

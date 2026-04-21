@@ -25,6 +25,11 @@ function Links() {
             ./cool-people<i className="fa-solid fa-user-group"></i>{" "}
           </Link>
         </li>
+        <li>
+          <Link className="nav-btn" to="/eco-modding">
+            ./eco-modding<i className="fa-solid fa-gamepad"></i>{" "}
+          </Link>
+        </li>
       </ul>
       <ul className="nav-links">
         <li>
