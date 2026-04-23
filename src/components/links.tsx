@@ -21,6 +21,11 @@ function Links() {
           </Link>
         </li>
         <li>
+          <Link className="nav-btn" to="/apps">
+            ./apps<i className="fa-solid fa-server"></i>{" "}
+          </Link>
+        </li>
+        <li>
           <Link className="nav-btn" to="/cool-people">
             ./cool-people<i className="fa-solid fa-user-group"></i>{" "}
           </Link>
