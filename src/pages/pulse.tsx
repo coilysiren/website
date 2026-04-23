@@ -294,12 +294,12 @@ const PulsePage = ({ pageContext }: PageProps<object, { pulseData?: PulseData | 
 
   return (
     <Layout>
-      <section>
+      <section className="post-body">
         <div className="post-header">
           <h2>Pulse</h2>
           <h4>how the site is built, and what it&apos;s been up to</h4>
         </div>
-        <div className="post-content post-body">
+        <div className="post-content">
           <h3>The stack</h3>
           <ul>
             <li>
