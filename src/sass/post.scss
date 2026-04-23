@@ -85,8 +85,12 @@ p.large {
 }
 
 .post-content {
-  padding: 0.5em;
+  padding: 1em 1.5em;
   background: #fff;
+
+  @include vars.tablet {
+    padding: 1.5em 2.5em;
+  }
   height: auto;
   line-height: 2em;
   display: flex;
