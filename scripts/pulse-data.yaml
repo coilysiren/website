@@ -1,0 +1,429 @@
+refreshedAt: '2026-04-23T10:31:36.956Z'
+workflowRunUrl: null
+windowDays: 30
+repos:
+  coilysiren/backend:
+    language: Python
+    color: '#3572A5'
+  coilysiren/claude-code-pulse:
+    language: Python
+    color: '#3572A5'
+  coilysiren/coily:
+    language: Go
+    color: '#00ADD8'
+  coilysiren/coilysiren:
+    language: null
+    color: '#888888'
+  coilysiren/eco-agent:
+    language: Python
+    color: '#3572A5'
+  coilysiren/eco-cycle-prep:
+    language: Python
+    color: '#3572A5'
+  coilysiren/eco-mcp-app:
+    language: Python
+    color: '#3572A5'
+  coilysiren/eco-mods-public:
+    language: C#
+    color: '#178600'
+  coilysiren/eco-spec-tracker:
+    language: Python
+    color: '#3572A5'
+  coilysiren/galaxy-gen:
+    language: TypeScript
+    color: '#3178c6'
+  coilysiren/gauntlet:
+    language: Python
+    color: '#3572A5'
+  coilysiren/infrastructure:
+    language: Python
+    color: '#3572A5'
+  coilysiren/py-sh:
+    language: Makefile
+    color: '#427819'
+  coilysiren/website:
+    language: TypeScript
+    color: '#3178c6'
+days:
+  - date: '2026-03-25'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-03-26'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-03-27'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-03-28'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-03-29'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-03-30'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-03-31'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-01'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-02'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-03'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-04'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-05'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-06'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-07'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-08'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-09'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-10'
+    totalLoc: 9441
+    totalCommits: 57
+    topCommit:
+      sha: 79af4836e06328894fe39bae3c535cb918f375d3
+      repo: coilysiren/gauntlet
+      message: 'docs: add weapon/target/vitals implementation plan'
+      url: https://github.com/coilysiren/gauntlet/commit/79af4836e06328894fe39bae3c535cb918f375d3
+      loc: 916
+    segments:
+      - repo: coilysiren/gauntlet
+        loc: 9413
+        commits: 54
+      - repo: coilysiren/coilysiren
+        loc: 16
+        commits: 2
+      - repo: coilysiren/website
+        loc: 12
+        commits: 1
+  - date: '2026-04-11'
+    totalLoc: 3197
+    totalCommits: 23
+    topCommit:
+      sha: 4b3b71d0108047a8589b1466f4a537ca8c1676af
+      repo: coilysiren/gauntlet
+      message: cleanup
+      url: https://github.com/coilysiren/gauntlet/commit/4b3b71d0108047a8589b1466f4a537ca8c1676af
+      loc: 1041
+    segments:
+      - repo: coilysiren/gauntlet
+        loc: 3197
+        commits: 23
+  - date: '2026-04-12'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-13'
+    totalLoc: 25136
+    totalCommits: 62
+    topCommit:
+      sha: b63fc52bd194d65a48fa359d2c16090e39c25024
+      repo: coilysiren/galaxy-gen
+      message: Update all dependencies to latest stable versions
+      url: https://github.com/coilysiren/galaxy-gen/commit/b63fc52bd194d65a48fa359d2c16090e39c25024
+      loc: 8674
+    segments:
+      - repo: coilysiren/website
+        loc: 11076
+        commits: 10
+      - repo: coilysiren/galaxy-gen
+        loc: 8985
+        commits: 5
+      - repo: coilysiren/gauntlet
+        loc: 4818
+        commits: 42
+      - repo: coilysiren/eco-mods-public
+        loc: 207
+        commits: 3
+      - repo: coilysiren/infrastructure
+        loc: 50
+        commits: 2
+  - date: '2026-04-14'
+    totalLoc: 9012
+    totalCommits: 12
+    topCommit:
+      sha: 2dc5a85c8c8676d8a2d7c0cc522c76ee6386687e
+      repo: coilysiren/backend
+      message: migrate from poetry to uv, bump deps
+      url: https://github.com/coilysiren/backend/commit/2dc5a85c8c8676d8a2d7c0cc522c76ee6386687e
+      loc: 8153
+    segments:
+      - repo: coilysiren/backend
+        loc: 8592
+        commits: 5
+      - repo: coilysiren/infrastructure
+        loc: 377
+        commits: 4
+      - repo: coilysiren/py-sh
+        loc: 30
+        commits: 2
+      - repo: coilysiren/website
+        loc: 13
+        commits: 1
+  - date: '2026-04-15'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
+  - date: '2026-04-16'
+    totalLoc: 78
+    totalCommits: 5
+    topCommit:
+      sha: 4e7f10250fdbfe886082845114a5fe7638081767
+      repo: coilysiren/eco-cycle-prep
+      message: Initial commit
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/4e7f10250fdbfe886082845114a5fe7638081767
+      loc: 23
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 78
+        commits: 5
+  - date: '2026-04-17'
+    totalLoc: 3570
+    totalCommits: 37
+    topCommit:
+      sha: c209d1a264721909a8afb77ea2cfbcb84cc0181d
+      repo: coilysiren/eco-cycle-prep
+      message: Add framework for generating & evaluating Eco cycle maps
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/c209d1a264721909a8afb77ea2cfbcb84cc0181d
+      loc: 682
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 2810
+        commits: 24
+      - repo: coilysiren/website
+        loc: 715
+        commits: 3
+      - repo: coilysiren/eco-mods-public
+        loc: 20
+        commits: 3
+      - repo: coilysiren/eco-agent
+        loc: 14
+        commits: 2
+      - repo: coilysiren/coilysiren
+        loc: 8
+        commits: 2
+      - repo: coilysiren/backend
+        loc: 1
+        commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 1
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 1
+        commits: 1
+  - date: '2026-04-18'
+    totalLoc: 4999
+    totalCommits: 17
+    topCommit:
+      sha: b442c5a9ab09fc90a7c8fede9c9fa0509eddb4d8
+      repo: coilysiren/eco-cycle-prep
+      message: 'Split narrative.py into a package: blocks / features / text'
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/b442c5a9ab09fc90a7c8fede9c9fa0509eddb4d8
+      loc: 1854
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 4605
+        commits: 10
+      - repo: coilysiren/gauntlet
+        loc: 200
+        commits: 2
+      - repo: coilysiren/website
+        loc: 160
+        commits: 3
+      - repo: coilysiren/galaxy-gen
+        loc: 17
+        commits: 1
+      - repo: coilysiren/eco-mods-public
+        loc: 17
+        commits: 1
+  - date: '2026-04-19'
+    totalLoc: 60682
+    totalCommits: 69
+    topCommit:
+      sha: ff85bfba5a9e9051831420698c4de0c099fded72
+      repo: coilysiren/website
+      message: migrate to pnpm, TypeScript, React 19, and Gatsby Head API
+      url: https://github.com/coilysiren/website/commit/ff85bfba5a9e9051831420698c4de0c099fded72
+      loc: 39917
+    segments:
+      - repo: coilysiren/website
+        loc: 40242
+        commits: 8
+      - repo: coilysiren/gauntlet
+        loc: 18975
+        commits: 46
+      - repo: coilysiren/claude-code-pulse
+        loc: 932
+        commits: 6
+      - repo: coilysiren/eco-cycle-prep
+        loc: 378
+        commits: 5
+      - repo: coilysiren/eco-mods-public
+        loc: 155
+        commits: 4
+  - date: '2026-04-20'
+    totalLoc: 13351
+    totalCommits: 54
+    topCommit:
+      sha: 60fbfbaebe9aafd95323200296f7b40784e947a2
+      repo: coilysiren/galaxy-gen
+      message: Add Playwright E2E pipeline, modernize tooling, restyle UI
+      url: https://github.com/coilysiren/galaxy-gen/commit/60fbfbaebe9aafd95323200296f7b40784e947a2
+      loc: 5088
+    segments:
+      - repo: coilysiren/galaxy-gen
+        loc: 5612
+        commits: 2
+      - repo: coilysiren/eco-mcp-app
+        loc: 4695
+        commits: 24
+      - repo: coilysiren/eco-spec-tracker
+        loc: 2999
+        commits: 25
+      - repo: coilysiren/website
+        loc: 45
+        commits: 3
+  - date: '2026-04-21'
+    totalLoc: 33748
+    totalCommits: 102
+    topCommit:
+      sha: 7917e0952b30c31ae05ad320a6669b5bf7f90ae9
+      repo: coilysiren/eco-mcp-app
+      message: 'feat: pre-fetch ecopedia + species caches as committed JSON'
+      url: https://github.com/coilysiren/eco-mcp-app/commit/7917e0952b30c31ae05ad320a6669b5bf7f90ae9
+      loc: 3335
+    segments:
+      - repo: coilysiren/eco-mcp-app
+        loc: 25873
+        commits: 65
+      - repo: coilysiren/galaxy-gen
+        loc: 6690
+        commits: 20
+      - repo: coilysiren/infrastructure
+        loc: 874
+        commits: 5
+      - repo: coilysiren/backend
+        loc: 86
+        commits: 4
+      - repo: coilysiren/eco-spec-tracker
+        loc: 83
+        commits: 4
+      - repo: coilysiren/website
+        loc: 71
+        commits: 2
+      - repo: coilysiren/gauntlet
+        loc: 71
+        commits: 2
+  - date: '2026-04-22'
+    totalLoc: 514121
+    totalCommits: 34
+    topCommit:
+      sha: e978284ff69f826af852665d5e57fb720affeb3b
+      repo: coilysiren/coily
+      message: 'Initial commit: coily operator CLI with AI-agent safety boundary'
+      url: https://github.com/coilysiren/coily/commit/e978284ff69f826af852665d5e57fb720affeb3b
+      loc: 163243
+    segments:
+      - repo: coilysiren/coily
+        loc: 514121
+        commits: 34
+  - date: '2026-04-23'
+    totalLoc: 92821
+    totalCommits: 49
+    topCommit:
+      sha: 6c5c4e7da1899cce14e613d9ca23aaae554592cd
+      repo: coilysiren/coily
+      message: Add drift test for generated passthrough files and refresh outputs
+      url: https://github.com/coilysiren/coily/commit/6c5c4e7da1899cce14e613d9ca23aaae554592cd
+      loc: 88148
+    segments:
+      - repo: coilysiren/coily
+        loc: 88352
+        commits: 11
+      - repo: coilysiren/galaxy-gen
+        loc: 3348
+        commits: 22
+      - repo: coilysiren/website
+        loc: 605
+        commits: 4
+      - repo: coilysiren/eco-mods-public
+        loc: 112
+        commits: 3
+      - repo: coilysiren/eco-cycle-prep
+        loc: 112
+        commits: 3
+      - repo: coilysiren/eco-mcp-app
+        loc: 72
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 65
+        commits: 2
+      - repo: coilysiren/eco-spec-tracker
+        loc: 58
+        commits: 1
+      - repo: coilysiren/infrastructure
+        loc: 56
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 41
+        commits: 1
+outlier:
+  date: '2026-04-22'
+  loc: 514121
+  commits: 34
+  topCommit:
+    sha: e978284ff69f826af852665d5e57fb720affeb3b
+    repo: coilysiren/coily
+    message: 'Initial commit: coily operator CLI with AI-agent safety boundary'
+    url: https://github.com/coilysiren/coily/commit/e978284ff69f826af852665d5e57fb720affeb3b
+    loc: 163243

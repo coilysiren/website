@@ -18,6 +18,7 @@
     "gatsby-source-filesystem": "^5.16.0",
     "gatsby-transformer-remark": "^6.16.0",
     "gatsby-transformer-sharp": "^5.16.0",
+    "js-yaml": "^4.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.14.0",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.10.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
@@ -72,6 +74,7 @@
     "test:e2e:local": "start-server-and-test serve http://127.0.0.1:8000 'cypress open'",
     "test:e2e:ci": "start-server-and-test serve http://127.0.0.1:8000 'cypress run'",
     "fetch-now-data": "tsx scripts/fetch-now-data.ts",
+    "fetch-pulse-data": "tsx scripts/fetch-pulse-data.ts",
     "youtube-auth": "tsx scripts/youtube-auth.ts"
   },
   "prettier": {

@@ -1,0 +1,41 @@
+name: Refresh pulse data
+
+on:
+  schedule:
+    # Daily at 10:00 UTC (~3am PT).
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-22.04
+    container: node:22
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Fetch pulse data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SERVER_URL: ${{ github.server_url }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: pnpm fetch-pulse-data
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/pulse-data.yaml
+          if git diff --cached --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          git commit -m "chore(pulse): refresh data $(date -u +%Y-%m-%d)"
+          git push

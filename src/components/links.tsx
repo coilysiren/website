@@ -16,6 +16,11 @@ function Links() {
           </Link>
         </li>
         <li>
+          <Link className="nav-btn" to="/pulse">
+            ./pulse<i className="fa-solid fa-wave-square"></i>{" "}
+          </Link>
+        </li>
+        <li>
           <Link className="nav-btn" to="/resume">
             ./resume<i className="fa-solid fa-file-lines"></i>{" "}
           </Link>

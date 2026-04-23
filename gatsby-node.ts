@@ -1,6 +1,14 @@
+import fs from "fs"
 import path from "path"
 import type { GatsbyNode } from "gatsby"
 import { createFilePath } from "gatsby-source-filesystem"
+import yaml from "js-yaml"
+
+function loadPulseData(): unknown {
+  const p = path.join(__dirname, "scripts", "pulse-data.yaml")
+  if (!fs.existsSync(p)) return null
+  return yaml.load(fs.readFileSync(p, "utf8"))
+}
 
 const toRepoRelative = (absPath: string) =>
   path.relative(__dirname, absPath).split(path.sep).join("/")
@@ -58,12 +66,16 @@ export const onCreatePage: GatsbyNode["onCreatePage"] = ({ page, actions }) => {
   if (page.context && (page.context as { sourcePath?: string }).sourcePath) return
   const { createPage, deletePage } = actions
   const sourcePath = toRepoRelative(page.component)
+  const extraContext: Record<string, unknown> = { sourcePath }
+  if (page.path === "/pulse/" || page.path === "/pulse") {
+    extraContext.pulseData = loadPulseData()
+  }
   deletePage(page)
   createPage({
     ...page,
     context: {
       ...page.context,
-      sourcePath,
+      ...extraContext,
     },
   })
 }

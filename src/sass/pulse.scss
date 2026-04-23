@@ -1,0 +1,187 @@
+@use "_vars.scss";
+
+.pulse-outlier {
+  background: #fffae6;
+  border-left: 6px solid #e0b400;
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  border-radius: 0.3em;
+
+  .pulse-outlier-label {
+    font-family: vars.$font-family-mono;
+    font-size: 0.75em;
+    color: #8a6d00;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pulse-outlier-body {
+    margin-top: 0.3em;
+    line-height: 1.5em;
+  }
+
+  .pulse-outlier-aside {
+    color: #8a6d00;
+    font-style: italic;
+  }
+}
+
+.pulse-sparkline {
+  display: block;
+  width: 100%;
+  height: 140px;
+  margin: 1em 0 0.2em;
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 0.3em;
+  padding: 0;
+
+  .pulse-bar {
+    cursor: pointer;
+    outline: none;
+
+    &.selected rect:not(.pulse-bar-empty),
+    &:hover rect:not(.pulse-bar-empty),
+    &:focus-visible rect:not(.pulse-bar-empty) {
+      filter: brightness(1.15);
+    }
+  }
+
+  .pulse-bar-empty {
+    fill: #d0d0d0;
+  }
+
+  .pulse-bar-clamp {
+    fill: vars.$dark-purple;
+  }
+}
+
+.pulse-axis {
+  display: flex;
+  justify-content: space-between;
+  font-family: vars.$font-family-mono;
+  font-size: 0.75em;
+  color: vars.$mid-purple;
+  margin-bottom: 1em;
+}
+
+.pulse-daycard {
+  background: #f6f4fa;
+  border: 1px solid #d8d3e5;
+  border-radius: 0.3em;
+  padding: 0.8em 1em;
+  margin: 0.5em 0 1em;
+
+  &.empty {
+    color: vars.$mid-purple;
+    font-style: italic;
+  }
+
+  .pulse-daycard-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    font-weight: 700;
+    color: vars.$dark-purple;
+    flex-wrap: wrap;
+  }
+
+  .pulse-daycard-stats {
+    font-family: vars.$font-family-mono;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: vars.$mid-purple;
+  }
+
+  .pulse-daycard-top {
+    margin-top: 0.4em;
+    line-height: 1.5em;
+  }
+
+  .pulse-daycard-label {
+    font-family: vars.$font-family-mono;
+    font-size: 0.8em;
+    color: vars.$mid-purple;
+  }
+
+  .pulse-daycard-loc {
+    font-family: vars.$font-family-mono;
+    font-size: 0.85em;
+    color: vars.$mid-purple;
+  }
+
+  .pulse-daycard-segs {
+    list-style: none;
+    padding: 0;
+    margin: 0.6em 0 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.15em 0;
+      font-family: vars.$font-family-mono;
+      font-size: 0.9em;
+    }
+
+    .pulse-seg-repo {
+      flex: 1;
+      color: vars.$dark-purple;
+    }
+
+    .pulse-seg-nums {
+      color: vars.$mid-purple;
+    }
+  }
+
+  .pulse-daycard-empty {
+    margin-top: 0.3em;
+  }
+}
+
+.pulse-swatch {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.pulse-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 0.8em;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+    font-family: vars.$font-family-mono;
+    font-size: 0.85em;
+  }
+
+  .pulse-legend-lang {
+    color: vars.$dark-purple;
+  }
+
+  .pulse-legend-count {
+    color: vars.$mid-purple;
+  }
+}
+
+.pulse-footer {
+  font-family: vars.$font-family-mono;
+  font-size: 0.85em;
+  color: vars.$mid-purple;
+  margin-top: 2em;
+  border-top: 1px solid #e3e3e3;
+  padding-top: 0.8em;
+}
+
+.pulse-empty {
+  padding: 1em 0;
+  color: vars.$mid-purple;
+}
