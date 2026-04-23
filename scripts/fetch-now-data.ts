@@ -3,12 +3,13 @@
 //
 // Run with: pnpm fetch-now-data
 //
-// Required credentials (all gitignored):
+// Required credentials:
 //   - GitHub: gh CLI must be authed (`gh auth status`)
-//   - Bluesky: scripts/.bsky-credentials.json
-//   - YouTube: scripts/.youtube-token.json (run scripts/youtube-auth.ts first)
+//   - Bluesky: AWS SSM params /bsky/handle, /bsky/password
+//   - YouTube: AWS SSM params /youtube/client-id, /youtube/client-secret, /youtube/refresh-token
+//     (run scripts/youtube-auth.ts once to mint the refresh token)
 //   - Reddit: no auth, public JSON API
-//   - Steam: scripts/.steam-credentials.json
+//   - Steam: AWS SSM params /steam/web-api-key, /steam/steam-id-64
 
 import fs from "node:fs"
 import https from "node:https"
@@ -25,8 +26,12 @@ const USER_AGENT = "coilysiren-now-page/1.0"
 
 // ---------- helpers ----------
 
-function readJsonFile<T = unknown>(file: string): T {
-  return JSON.parse(fs.readFileSync(file, "utf8")) as T
+function ssmGet(name: string): string {
+  return execFileSync(
+    "aws",
+    ["ssm", "get-parameter", "--name", name, "--with-decryption", "--query", "Parameter.Value", "--output", "text"],
+    { encoding: "utf8" }
+  ).trim()
 }
 
 function httpsJson<T = any>(options: https.RequestOptions, body?: string): Promise<T> {
@@ -123,9 +128,8 @@ async function fetchGitHub() {
 
 async function fetchBluesky() {
   console.log("→ Bluesky")
-  const creds = readJsonFile<{ identifier: string; password: string }>(
-    path.join(SCRIPTS_DIR, ".bsky-credentials.json")
-  )
+  const identifier = ssmGet("/bsky/handle")
+  const password = ssmGet("/bsky/password")
 
   const session = await httpsJson<{ accessJwt?: string }>(
     {
@@ -134,7 +138,7 @@ async function fetchBluesky() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     },
-    JSON.stringify({ identifier: creds.identifier, password: creds.password })
+    JSON.stringify({ identifier, password })
   )
 
   if (!session.accessJwt) {
@@ -180,30 +184,15 @@ async function fetchBluesky() {
 
 // ---------- YouTube ----------
 
-interface YouTubeToken {
-  access_token?: string
-  refresh_token: string
-  expires_in: number
-  obtained_at?: number
-}
-
 async function refreshYouTubeToken(): Promise<string> {
-  const tokenPath = path.join(SCRIPTS_DIR, ".youtube-token.json")
-  const secretPath = path.join(SCRIPTS_DIR, ".youtube-client-secret.json")
-  const token = readJsonFile<YouTubeToken>(tokenPath)
-  const secret = readJsonFile<{ installed: { client_id: string; client_secret: string } }>(secretPath).installed
+  const clientId = ssmGet("/youtube/client-id")
+  const clientSecret = ssmGet("/youtube/client-secret")
+  const refreshToken = ssmGet("/youtube/refresh-token")
 
-  const ageMs = Date.now() - (token.obtained_at || 0)
-  const expiresMs = (token.expires_in - 60) * 1000
-  if (ageMs < expiresMs && token.access_token) {
-    return token.access_token
-  }
-
-  console.log("  refreshing YouTube token...")
   const body = new URLSearchParams({
-    client_id: secret.client_id,
-    client_secret: secret.client_secret,
-    refresh_token: token.refresh_token,
+    client_id: clientId,
+    client_secret: clientSecret,
+    refresh_token: refreshToken,
     grant_type: "refresh_token",
   }).toString()
 
@@ -223,14 +212,6 @@ async function refreshYouTubeToken(): Promise<string> {
   if (!fresh.access_token) {
     throw new Error("YouTube refresh failed: " + JSON.stringify(fresh))
   }
-
-  const updated: YouTubeToken = {
-    ...token,
-    access_token: fresh.access_token,
-    expires_in: fresh.expires_in,
-    obtained_at: Date.now(),
-  }
-  fs.writeFileSync(tokenPath, JSON.stringify(updated, null, 2))
   return fresh.access_token
 }
 
@@ -301,15 +282,14 @@ async function fetchReddit() {
 
 async function fetchSteam() {
   console.log("→ Steam")
-  const creds = readJsonFile<{ api_key: string; steam_id: string }>(
-    path.join(SCRIPTS_DIR, ".steam-credentials.json")
-  )
+  const apiKey = ssmGet("/steam/web-api-key")
+  const steamId = ssmGet("/steam/steam-id-64")
 
   const recent = await httpsGet<any>(
-    `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${creds.api_key}&steamid=${creds.steam_id}`
+    `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${apiKey}&steamid=${steamId}`
   )
   const owned = await httpsGet<any>(
-    `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${creds.api_key}&steamid=${creds.steam_id}&include_appinfo=true&include_played_free_games=true`
+    `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${apiKey}&steamid=${steamId}&include_appinfo=true&include_played_free_games=true`
   )
 
   const recentlyPlayed = (recent.response?.games || []).map((g: any) => ({

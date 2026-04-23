@@ -1,31 +1,36 @@
 // One-time OAuth setup for YouTube Data API.
 // Run with: pnpm youtube-auth
-// Saves refresh token to scripts/.youtube-token.json for future use.
+//
+// Reads /youtube/client-id and /youtube/client-secret from AWS SSM, runs the
+// OAuth consent flow, and writes the minted refresh token back to SSM under
+// /youtube/refresh-token.
+//
+// Re-run only when the refresh token gets revoked (sign-out, client-secret
+// rotation, 6-month inactivity).
 
-import fs from "node:fs"
 import http from "node:http"
 import https from "node:https"
-import path from "node:path"
-import { fileURLToPath } from "node:url"
 import { execFileSync } from "node:child_process"
 import type { AddressInfo } from "node:net"
 
-const SCRIPTS_DIR = path.dirname(fileURLToPath(import.meta.url))
-const CLIENT_SECRET_PATH = path.join(SCRIPTS_DIR, ".youtube-client-secret.json")
-const TOKEN_PATH = path.join(SCRIPTS_DIR, ".youtube-token.json")
 const SCOPE = "https://www.googleapis.com/auth/youtube.readonly"
+const AUTH_URI = "https://accounts.google.com/o/oauth2/auth"
+const TOKEN_URI = "https://oauth2.googleapis.com/token"
 
-interface ClientSecret {
-  installed: {
-    client_id: string
-    client_secret: string
-    token_uri: string
-    auth_uri: string
-  }
+function ssmGet(name: string): string {
+  return execFileSync(
+    "aws",
+    ["ssm", "get-parameter", "--name", name, "--with-decryption", "--query", "Parameter.Value", "--output", "text"],
+    { encoding: "utf8" }
+  ).trim()
 }
 
-const clientSecret = JSON.parse(fs.readFileSync(CLIENT_SECRET_PATH, "utf8")) as ClientSecret
-const { client_id, client_secret, token_uri, auth_uri } = clientSecret.installed
+function ssmPut(name: string, value: string): void {
+  execFileSync("aws", ["ssm", "put-parameter", "--name", name, "--type", "SecureString", "--value", value, "--overwrite"])
+}
+
+const client_id = ssmGet("/youtube/client-id")
+const client_secret = ssmGet("/youtube/client-secret")
 
 const server = http.createServer()
 server.listen(0, "127.0.0.1", () => {
@@ -33,7 +38,7 @@ server.listen(0, "127.0.0.1", () => {
   const port = addr.port
   const redirectUri = `http://127.0.0.1:${port}/callback`
 
-  const authUrl = new URL(auth_uri)
+  const authUrl = new URL(AUTH_URI)
   authUrl.searchParams.set("client_id", client_id)
   authUrl.searchParams.set("redirect_uri", redirectUri)
   authUrl.searchParams.set("response_type", "code")
@@ -49,7 +54,7 @@ server.listen(0, "127.0.0.1", () => {
   try {
     execFileSync("open", [authUrl.toString()])
   } catch {
-    // ignore — user can copy the URL
+    // ignore, user can copy the URL
   }
 })
 
@@ -94,7 +99,7 @@ server.on("request", (req, res) => {
     grant_type: "authorization_code",
   }).toString()
 
-  const tokenUrl = new URL(token_uri)
+  const tokenUrl = new URL(TOKEN_URI)
   const tokenReq = https.request(
     {
       hostname: tokenUrl.hostname,
@@ -112,7 +117,6 @@ server.on("request", (req, res) => {
         const tokens = JSON.parse(data) as {
           error?: string
           refresh_token?: string
-          [key: string]: unknown
         }
         if (tokens.error) {
           res.writeHead(400, { "Content-Type": "text/html" })
@@ -121,15 +125,19 @@ server.on("request", (req, res) => {
           server.close()
           process.exit(1)
         }
+        if (!tokens.refresh_token) {
+          res.writeHead(500, { "Content-Type": "text/html" })
+          res.end("<h1>No refresh_token in response. Check prompt=consent + access_type=offline.</h1>")
+          console.error("No refresh_token in token response:", tokens)
+          server.close()
+          process.exit(1)
+        }
 
-        const toSave = { ...tokens, obtained_at: Date.now() }
-        fs.writeFileSync(TOKEN_PATH, JSON.stringify(toSave, null, 2))
-        fs.chmodSync(TOKEN_PATH, 0o600)
+        ssmPut("/youtube/refresh-token", tokens.refresh_token)
 
         res.writeHead(200, { "Content-Type": "text/html" })
         res.end("<h1>Success! You can close this tab and return to your terminal.</h1>")
-        console.log(`\n✓ Tokens saved to ${TOKEN_PATH}`)
-        console.log("  Has refresh_token:", !!tokens.refresh_token)
+        console.log("\n✓ Refresh token written to SSM /youtube/refresh-token")
         server.close()
       })
     }
