@@ -19,23 +19,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: TruffleHog (filesystem, offline)
+      - name: TruffleHog (git, offline)
         run: |
-          cat > /tmp/trufflehog-exclude <<'EOF'
-          (^|/)\.git/
-          (^|/)\.venv/
-          (^|/)venv/
-          (^|/)node_modules/
-          (^|/)__pycache__/
-          (^|/)\.mypy_cache/
-          (^|/)\.pytest_cache/
-          (^|/)\.ruff_cache/
-          EOF
           docker run --rm \
             -v "${{ github.workspace }}:/pwd:ro" \
-            -v /tmp/trufflehog-exclude:/exclude:ro \
             trufflesecurity/trufflehog:latest \
-            filesystem /pwd \
-            --no-verification --no-update --fail \
-            --exclude-paths=/exclude
+            git file:///pwd \
+            --no-verification --no-update --fail
