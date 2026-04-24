@@ -24,8 +24,15 @@ jobs:
 
       - name: TruffleHog (git, offline)
         run: |
+          cat > /tmp/trufflehog-exclude <<'EOF'
+          (^|/)package-lock\.json$
+          (^|/)yarn\.lock$
+          (^|/)pnpm-lock\.yaml$
+          EOF
           docker run --rm \
             -v "${{ github.workspace }}:/pwd:ro" \
+            -v /tmp/trufflehog-exclude:/exclude:ro \
             trufflesecurity/trufflehog:latest \
             git file:///pwd \
-            --no-verification --no-update --fail
+            --no-verification --no-update --fail \
+            --exclude-paths=/exclude
