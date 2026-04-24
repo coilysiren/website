@@ -41,7 +41,7 @@
     "start-server-and-test": "^3.0.2",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
-    "typescript-eslint": "^8.58.1",
+    "typescript-eslint": "^8.59.0",
     "vitest": "^3.0.0"
   },
   "pnpm": {
