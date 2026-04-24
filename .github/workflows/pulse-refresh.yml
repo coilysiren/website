@@ -8,13 +8,17 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   refresh:
     runs-on: ubuntu-22.04
-    container: node:22
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - run: corepack enable
 
@@ -28,7 +32,9 @@ jobs:
           GITHUB_RUN_ID: ${{ github.run_id }}
         run: pnpm fetch-pulse-data
 
-      - name: Commit and push if changed
+      - name: Open PR if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -37,5 +43,18 @@ jobs:
             echo "no changes"
             exit 0
           fi
-          git commit -m "chore(pulse): refresh data $(date -u +%Y-%m-%d)"
-          git push
+          DATE="$(date -u +%Y-%m-%d)"
+          BRANCH="pulse-refresh/${DATE}"
+          git checkout -b "$BRANCH"
+          git commit -m "chore(pulse): refresh data ${DATE}"
+          git push --force --set-upstream origin "$BRANCH"
+          if gh pr view "$BRANCH" --json state --jq .state 2>/dev/null | grep -q OPEN; then
+            echo "PR already open for $BRANCH"
+          else
+            gh pr create \
+              --title "chore(pulse): refresh data ${DATE}" \
+              --body "Automated daily pulse data refresh." \
+              --base main \
+              --head "$BRANCH"
+          fi
+          gh pr merge --auto --squash --delete-branch "$BRANCH"

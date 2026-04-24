@@ -31,32 +31,6 @@ interface HostGroup {
 
 const groups: HostGroup[] = [
   {
-    name: "netlify (CDN)",
-    meta: "static / edge",
-    apps: [
-      {
-        host: "coilysiren.me",
-        url: "https://coilysiren.me",
-        desc: "this site - Gatsby, served from Netlify's edge.",
-        repo: "https://github.com/coilysiren/website",
-      },
-      {
-        host: "/apps/bsky-popularity-contest",
-        url: "/apps/bsky-popularity-contest",
-        desc: "rank a Bluesky user's follow list by adoring fans.",
-        repo: "https://github.com/coilysiren/website",
-        tag: "bluesky",
-      },
-      {
-        host: "/apps/bsky-follow-suggestions",
-        url: "/apps/bsky-follow-suggestions",
-        desc: "find people the people you follow follow.",
-        repo: "https://github.com/coilysiren/website",
-        tag: "bluesky",
-      },
-    ],
-  },
-  {
     name: "kai-server (k3s, San Lorenzo)",
     meta: "homelab tower / k3s cluster",
     apps: [
@@ -174,11 +148,10 @@ const AppsPage = () => {
         <div className="post-content apps-page">
           <div className="apps-intro">
             <p>
-              Most of these run on a tower in my living room (the homelab,
-              kai-server, running k3s). The static site you&apos;re reading lives
-              on Netlify&apos;s edge. Status dots are checked live in your browser
-              when this page loads, so if one&apos;s red it really is down right
-              now (or your network can&apos;t reach it).
+              These run on a tower in my living room (the homelab, kai-server,
+              running k3s). Status dots are checked live in your browser when
+              this page loads, so if one&apos;s red it really is down right now
+              (or your network can&apos;t reach it).
             </p>
           </div>
 

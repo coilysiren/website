@@ -6,6 +6,7 @@
   "dependencies": {
     "@atproto/api": "^0.19.8",
     "@gatsbyjs/reach-router": "^2.0.1",
+    "@sentry/gatsby": "^10.50.0",
     "gatsby": "^5.16.1",
     "gatsby-cli": "^5.16.0",
     "gatsby-image": "^3.11.0",
