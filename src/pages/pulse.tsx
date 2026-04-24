@@ -218,7 +218,7 @@ const outlierAside = (outlier: NonNullable<Outlier>): string | null => {
   if (!top) return null
   const msg = top.message.toLowerCase()
   if (/^(initial commit|first commit|import|bootstrap)/.test(msg) && top.loc > 10000) {
-    return "(yes, that was me pushing a whole repo to public at once.)"
+    return "(an initial-commit import, not a day of actual typing.)"
   }
   if (top.loc > 20000) {
     return "(mostly one enormous commit; probably a vendored drop, not me actually typing.)"
@@ -294,12 +294,12 @@ const PulsePage = ({ pageContext }: PageProps<object, { pulseData?: PulseData | 
 
   return (
     <Layout>
-      <section>
+      <section className="post-body">
         <div className="post-header">
           <h2>Pulse</h2>
           <h4>how the site is built, and what it&apos;s been up to</h4>
         </div>
-        <div className="post-content post-body">
+        <div className="post-content">
           <h3>The stack</h3>
           <ul>
             <li>
