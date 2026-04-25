@@ -16,6 +16,11 @@
     width: 75%;
   }
 
+  a {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
   ul {
     margin-top: 0;
     margin-bottom: 1em;
