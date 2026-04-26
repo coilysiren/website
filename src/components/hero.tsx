@@ -13,13 +13,13 @@ function Hero() {
           the ceiling has shifted a lot in the last year. Queer, Black, trans,
           living in{" "}
           <a
-            href="https://en.wikipedia.org/wiki/San_Lorenzo,_California"
+            href="https://en.wikipedia.org/wiki/East_Bay_(San_Francisco_Bay_Area)"
             target="_blank"
             rel="noreferrer"
           >
-            San Lorenzo
+            the East Bay
           </a>
-          , in the East Bay.
+          .
         </p>
         <p>
           I build things for the joy of it:{" "}

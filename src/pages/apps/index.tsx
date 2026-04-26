@@ -31,7 +31,7 @@ interface HostGroup {
 
 const groups: HostGroup[] = [
   {
-    name: "kai-server (k3s, San Lorenzo)",
+    name: "kai-server (k3s, East Bay)",
     meta: "homelab tower / k3s cluster",
     apps: [
       {

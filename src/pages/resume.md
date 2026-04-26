@@ -28,7 +28,7 @@ Outside work, I enjoy gaming, game development, gardening, and crafts. I also ma
 // github.com/coilysiren
 // coilysiren.me
 // email: coilysiren@gmail.com
-// location: San Lorenzo, CA (East Bay)
+// location: East Bay, CA
 // US Citizen
 
 ## Skills

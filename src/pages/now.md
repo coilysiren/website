@@ -32,7 +32,7 @@ Big chunks of my decompression time lately have gone into **[AETHUS](https://sto
 
 ## Life
 
-I live in **[San Lorenzo](https://en.wikipedia.org/wiki/San_Lorenzo,_California), in the Bay Area**. I'm in the middle of planning an **[ADU](https://en.wikipedia.org/wiki/Secondary_suite)** for my house — picked a preliminary design recently, very excited about it. Recovering from a surgery, which has temporarily grounded me from biking (and my bike is broken anyway, perfect timing).
+I live in **[the East Bay](https://en.wikipedia.org/wiki/East_Bay_(San_Francisco_Bay_Area))**. I'm in the middle of planning an **[ADU](https://en.wikipedia.org/wiki/Secondary_suite)** for my house — picked a preliminary design recently, very excited about it. Recovering from a surgery, which has temporarily grounded me from biking (and my bike is broken anyway, perfect timing).
 
 Currently building a few daily habits: **Duolingo** (about a month deep now), and **leetcode** (deferred a week — too much else going on right now to add a third habit responsibly). Also recently lost some weight and hit a historical low, which is its own thing.
 
@@ -46,7 +46,7 @@ In case any of these jumped out at you and you want to learn more:
 - **accelerationism** — https://en.wikipedia.org/wiki/Accelerationism
 - **Eco (the game)** — https://en.wikipedia.org/wiki/Eco_(2018_video_game)
 - **Wildermyth** — https://en.wikipedia.org/wiki/Wildermyth
-- **San Lorenzo, CA** — https://en.wikipedia.org/wiki/San_Lorenzo,_California
+- **East Bay** — https://en.wikipedia.org/wiki/East_Bay_(San_Francisco_Bay_Area)
 - **ADU (Accessory Dwelling Unit)** — https://en.wikipedia.org/wiki/Secondary_suite
 
 ---
