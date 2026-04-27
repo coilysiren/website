@@ -151,6 +151,11 @@ async function fetchCommits(): Promise<Commit[]> {
     }
   })
   console.log(`  found ${commits.length} commits`)
+  if (commits.length === 0) {
+    throw new Error(
+      "search/commits returned 0 results - refusing to overwrite pulse-data.yaml with empty data. The GitHub Search API is occasionally flaky; rerun the workflow.",
+    )
+  }
   return commits
 }
 
