@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   refresh:
@@ -65,3 +66,37 @@ jobs:
             -f path="scripts/pulse-data.yaml" \
             -f contents="$CONTENTS_B64" \
             -f headline="chore(pulse): refresh data ${DATE}"
+
+      - name: Notify on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          DATE_UTC="$(date -u +%Y-%m-%d)"
+          BODY_FILE="$(mktemp)"
+          cat > "$BODY_FILE" <<EOF
+          > 🤖 Filed by Claude Code on Kai's behalf.
+
+          The pulse-refresh workflow failed on ${DATE_UTC}.
+
+          Failed run: ${RUN_URL}
+
+          Common causes:
+          - GitHub \`/search/commits\` returned 0 results (flake; rerun the workflow).
+          - \`createCommitOnBranch\` rejected the push (HEAD moved between checkout and commit; rerun).
+          - pnpm/network hiccup in earlier steps.
+
+          Triage: open the run, find the failed step, decide whether to rerun or investigate.
+
+          > 🤖 Filed by Claude Code on Kai's behalf.
+          EOF
+          gh issue create \
+            --repo "$REPO" \
+            --title "pulse-refresh failed ${DATE_UTC}" \
+            --body-file "$BODY_FILE" \
+            --label "type/fix"
+          # Keep the run red even though this notify step succeeded.
+          exit 1
