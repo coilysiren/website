@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-27T21:14:08.625Z'
-workflowRunUrl: null
+refreshedAt: '2026-04-27T22:12:57.111Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25022317126
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -14,6 +14,9 @@ repos:
   coilysiren/coilysiren:
     language: null
     color: '#888888'
+  coilysiren/eco-agent:
+    language: Python
+    color: '#3572A5'
   coilysiren/eco-cycle-prep:
     language: Python
     color: '#3572A5'
@@ -41,6 +44,9 @@ repos:
   coilysiren/infrastructure:
     language: Python
     color: '#3572A5'
+  coilysiren/py-sh:
+    language: Makefile
+    color: '#427819'
   coilysiren/repo-recall:
     language: Rust
     color: '#dea584'
@@ -109,53 +115,169 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-10'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 9441
+    totalCommits: 57
+    topCommit:
+      sha: 79af4836e06328894fe39bae3c535cb918f375d3
+      repo: coilysiren/gauntlet
+      message: 'docs: add weapon/target/vitals implementation plan'
+      url: https://github.com/coilysiren/gauntlet/commit/79af4836e06328894fe39bae3c535cb918f375d3
+      loc: 916
+    segments:
+      - repo: coilysiren/gauntlet
+        loc: 9413
+        commits: 54
+      - repo: coilysiren/coilysiren
+        loc: 16
+        commits: 2
+      - repo: coilysiren/website
+        loc: 12
+        commits: 1
   - date: '2026-04-11'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 3197
+    totalCommits: 23
+    topCommit:
+      sha: 4b3b71d0108047a8589b1466f4a537ca8c1676af
+      repo: coilysiren/gauntlet
+      message: cleanup
+      url: https://github.com/coilysiren/gauntlet/commit/4b3b71d0108047a8589b1466f4a537ca8c1676af
+      loc: 1041
+    segments:
+      - repo: coilysiren/gauntlet
+        loc: 3197
+        commits: 23
   - date: '2026-04-12'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
     segments: []
   - date: '2026-04-13'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 25136
+    totalCommits: 62
+    topCommit:
+      sha: b63fc52bd194d65a48fa359d2c16090e39c25024
+      repo: coilysiren/galaxy-gen
+      message: Update all dependencies to latest stable versions
+      url: https://github.com/coilysiren/galaxy-gen/commit/b63fc52bd194d65a48fa359d2c16090e39c25024
+      loc: 8674
+    segments:
+      - repo: coilysiren/website
+        loc: 11076
+        commits: 10
+      - repo: coilysiren/galaxy-gen
+        loc: 8985
+        commits: 5
+      - repo: coilysiren/gauntlet
+        loc: 4818
+        commits: 42
+      - repo: coilysiren/eco-mods-public
+        loc: 207
+        commits: 3
+      - repo: coilysiren/infrastructure
+        loc: 50
+        commits: 2
   - date: '2026-04-14'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 9012
+    totalCommits: 12
+    topCommit:
+      sha: 2dc5a85c8c8676d8a2d7c0cc522c76ee6386687e
+      repo: coilysiren/backend
+      message: migrate from poetry to uv, bump deps
+      url: https://github.com/coilysiren/backend/commit/2dc5a85c8c8676d8a2d7c0cc522c76ee6386687e
+      loc: 8153
+    segments:
+      - repo: coilysiren/backend
+        loc: 8592
+        commits: 5
+      - repo: coilysiren/infrastructure
+        loc: 377
+        commits: 4
+      - repo: coilysiren/py-sh
+        loc: 30
+        commits: 2
+      - repo: coilysiren/website
+        loc: 13
+        commits: 1
   - date: '2026-04-15'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
     segments: []
   - date: '2026-04-16'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 78
+    totalCommits: 5
+    topCommit:
+      sha: 4e7f10250fdbfe886082845114a5fe7638081767
+      repo: coilysiren/eco-cycle-prep
+      message: Initial commit
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/4e7f10250fdbfe886082845114a5fe7638081767
+      loc: 23
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 78
+        commits: 5
   - date: '2026-04-17'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 3570
+    totalCommits: 37
+    topCommit:
+      sha: c209d1a264721909a8afb77ea2cfbcb84cc0181d
+      repo: coilysiren/eco-cycle-prep
+      message: Add framework for generating & evaluating Eco cycle maps
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/c209d1a264721909a8afb77ea2cfbcb84cc0181d
+      loc: 682
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 2810
+        commits: 24
+      - repo: coilysiren/website
+        loc: 715
+        commits: 3
+      - repo: coilysiren/eco-mods-public
+        loc: 20
+        commits: 3
+      - repo: coilysiren/eco-agent
+        loc: 14
+        commits: 2
+      - repo: coilysiren/coilysiren
+        loc: 8
+        commits: 2
+      - repo: coilysiren/backend
+        loc: 1
+        commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 1
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 1
+        commits: 1
   - date: '2026-04-18'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 4999
+    totalCommits: 17
+    topCommit:
+      sha: b442c5a9ab09fc90a7c8fede9c9fa0509eddb4d8
+      repo: coilysiren/eco-cycle-prep
+      message: 'Split narrative.py into a package: blocks / features / text'
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/b442c5a9ab09fc90a7c8fede9c9fa0509eddb4d8
+      loc: 1854
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 4605
+        commits: 10
+      - repo: coilysiren/gauntlet
+        loc: 200
+        commits: 2
+      - repo: coilysiren/website
+        loc: 160
+        commits: 3
+      - repo: coilysiren/galaxy-gen
+        loc: 17
+        commits: 1
+      - repo: coilysiren/eco-mods-public
+        loc: 17
+        commits: 1
   - date: '2026-04-19'
-    totalLoc: 54167
-    totalCommits: 59
+    totalLoc: 60682
+    totalCommits: 69
     topCommit:
       sha: ff85bfba5a9e9051831420698c4de0c099fded72
       repo: coilysiren/website
@@ -167,8 +289,8 @@ days:
         loc: 40242
         commits: 8
       - repo: coilysiren/gauntlet
-        loc: 12460
-        commits: 36
+        loc: 18975
+        commits: 46
       - repo: coilysiren/claude-code-pulse
         loc: 932
         commits: 6
@@ -399,8 +521,8 @@ days:
         loc: 147
         commits: 3
   - date: '2026-04-27'
-    totalLoc: 557
-    totalCommits: 4
+    totalLoc: 886
+    totalCommits: 10
     topCommit:
       sha: 78582aa7000fa5c8ea3171ae98584efb9032f6c7
       repo: coilysiren/website
@@ -409,8 +531,17 @@ days:
       loc: 467
     segments:
       - repo: coilysiren/website
-        loc: 557
-        commits: 4
+        loc: 821
+        commits: 6
+      - repo: coilysiren/coilysiren
+        loc: 39
+        commits: 2
+      - repo: coilysiren/repo-recall
+        loc: 22
+        commits: 1
+      - repo: coilysiren/homebrew-tap
+        loc: 4
+        commits: 1
 outlier:
   date: '2026-04-22'
   loc: 514121
