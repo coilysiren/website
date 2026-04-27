@@ -8,7 +8,7 @@ function Hero() {
       <img className="hero-photo" src={headshot} alt="Kai Siren" />
       <div className="hero-text">
         <p>
-          <strong>Hi! I&apos;m Kai</strong>, a platform engineer 13 years in,
+          <strong>Hi! I&apos;m Kai</strong>, a platform engineer >10 years in,
           currently most interested in what one person can build right now -
           the ceiling has shifted a lot in the last year. Queer, Black, trans,
           living in{" "}

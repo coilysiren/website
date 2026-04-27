@@ -14,7 +14,7 @@ title: "Resume"
 ````markdown
 # Kai Siren
 
-I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I’m a platform engineer with 13 years of experience building high-impact systems that empower engineering teams.
+I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I’m a platform engineer with >10 years of experience building high-impact systems that empower engineering teams.
 
 I have recent experience working with LLM-based systems and AI-assisted workflows, focusing on integrating them into existing platforms in a reliable and observable way. This includes designing systems that help teams experiment with and adopt AI without compromising production quality.
 
