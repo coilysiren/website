@@ -6,7 +6,7 @@ title: "Now"
 
 ## Building
 
-I'm in an aggressive build phase. The thing I'm most excited about right now is **[Gauntlet](https://github.com/coilysiren/gauntlet)** — a two-agent adversarial loop that infers software correctness by watching how code behaves under sustained, targeted attack in a [dark factory](https://en.wikipedia.org/wiki/Lights_out_(manufacturing)) environment. About 20 agents are running on it as I write this. No pressure to ship fast; the goal is to make the thing real, then write it up here.
+I'm in an aggressive build phase. The thing I'm most excited about right now is **[Gauntlet](https://github.com/coilysiren/gauntlet)** — a two-agent adversarial loop that infers software correctness by watching how code behaves under sustained, targeted attack in a [dark factory](https://en.wikipedia.org/wiki/Lights_out_(manufacturing)) environment. No pressure to ship fast; the goal is to make the thing real, then write it up here.
 
 Day job is platform/SRE work that's slowly bending toward AI agents and observability — going deep on state-of-the-art agent and MCP patterns.
 
