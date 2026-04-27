@@ -26,7 +26,10 @@ jobs:
 
       - name: Fetch pulse data
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Use a user PAT, not the install GITHUB_TOKEN. Actions runner
+          # IPs hitting /search/commits with an install token frequently
+          # get silently downgraded to 0 results. PAT traffic doesn't.
+          GITHUB_TOKEN: ${{ secrets.PULSE_REFRESH_PAT }}
           GITHUB_SERVER_URL: ${{ github.server_url }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_RUN_ID: ${{ github.run_id }}
