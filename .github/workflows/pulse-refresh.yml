@@ -57,4 +57,7 @@ jobs:
               --base main \
               --head "$BRANCH"
           fi
-          gh pr merge --auto --squash --delete-branch "$BRANCH"
+          # Auto-merge is intentionally not attempted - main requires
+          # signed commits (required_signatures + enforce_admins) and the
+          # github-actions bot cannot sign, so a human has to review and
+          # merge the PR manually.
