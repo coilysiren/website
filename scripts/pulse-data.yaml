@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-26T10:19:06.891Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/24954235553
+refreshedAt: '2026-04-27T10:42:33.647Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/24990376747
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -38,6 +38,9 @@ repos:
   coilysiren/gauntlet:
     language: Python
     color: '#3572A5'
+  coilysiren/homebrew-tap:
+    language: Shell
+    color: '#89e051'
   coilysiren/infrastructure:
     language: Python
     color: '#3572A5'
@@ -51,11 +54,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-03-28'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-03-29'
     totalLoc: 0
     totalCommits: 0
@@ -477,6 +475,52 @@ days:
         loc: 10
         commits: 3
   - date: '2026-04-26'
+    totalLoc: 26410
+    totalCommits: 58
+    topCommit:
+      sha: 01fab0e5080c56f983c3a46fab68207a24ac15eb
+      repo: coilysiren/coily
+      message: 'external-orchestrator surface: exit codes, yaml envelope, audit discovery, yaml command tree'
+      url: https://github.com/coilysiren/coily/commit/01fab0e5080c56f983c3a46fab68207a24ac15eb
+      loc: 15041
+    segments:
+      - repo: coilysiren/coily
+        loc: 21465
+        commits: 18
+      - repo: coilysiren/repo-recall
+        loc: 2794
+        commits: 20
+      - repo: coilysiren/homebrew-tap
+        loc: 505
+        commits: 8
+      - repo: coilysiren/eco-mcp-app
+        loc: 208
+        commits: 1
+      - repo: coilysiren/eco-spec-tracker
+        loc: 207
+        commits: 1
+      - repo: coilysiren/eco-telemetry
+        loc: 191
+        commits: 1
+      - repo: coilysiren/eco-cycle-prep
+        loc: 191
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 191
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 191
+        commits: 1
+      - repo: coilysiren/infrastructure
+        loc: 170
+        commits: 1
+      - repo: coilysiren/coilysiren
+        loc: 150
+        commits: 2
+      - repo: coilysiren/website
+        loc: 147
+        commits: 3
+  - date: '2026-04-27'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
