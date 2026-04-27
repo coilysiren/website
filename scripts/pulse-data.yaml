@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-23T10:31:36.956Z'
-workflowRunUrl: null
+refreshedAt: '2026-04-26T10:19:06.891Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/24954235553
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -29,6 +29,9 @@ repos:
   coilysiren/eco-spec-tracker:
     language: Python
     color: '#3572A5'
+  coilysiren/eco-telemetry:
+    language: C#
+    color: '#178600'
   coilysiren/galaxy-gen:
     language: TypeScript
     color: '#3178c6'
@@ -41,25 +44,13 @@ repos:
   coilysiren/py-sh:
     language: Makefile
     color: '#427819'
+  coilysiren/repo-recall:
+    language: Rust
+    color: '#dea584'
   coilysiren/website:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-03-25'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
-  - date: '2026-03-26'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
-  - date: '2026-03-27'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-03-28'
     totalLoc: 0
     totalCommits: 0
@@ -378,8 +369,8 @@ days:
         loc: 514121
         commits: 34
   - date: '2026-04-23'
-    totalLoc: 92821
-    totalCommits: 49
+    totalLoc: 102078
+    totalCommits: 105
     topCommit:
       sha: 6c5c4e7da1899cce14e613d9ca23aaae554592cd
       repo: coilysiren/coily
@@ -388,35 +379,108 @@ days:
       loc: 88148
     segments:
       - repo: coilysiren/coily
-        loc: 88352
-        commits: 11
+        loc: 91017
+        commits: 17
       - repo: coilysiren/galaxy-gen
-        loc: 3348
-        commits: 22
+        loc: 3794
+        commits: 29
       - repo: coilysiren/website
-        loc: 605
-        commits: 4
-      - repo: coilysiren/eco-mods-public
-        loc: 112
-        commits: 3
-      - repo: coilysiren/eco-cycle-prep
-        loc: 112
-        commits: 3
-      - repo: coilysiren/eco-mcp-app
-        loc: 72
-        commits: 1
+        loc: 2385
+        commits: 14
       - repo: coilysiren/backend
-        loc: 65
-        commits: 2
-      - repo: coilysiren/eco-spec-tracker
-        loc: 58
-        commits: 1
-      - repo: coilysiren/infrastructure
-        loc: 56
-        commits: 1
+        loc: 1522
+        commits: 10
       - repo: coilysiren/gauntlet
-        loc: 41
+        loc: 1297
+        commits: 4
+      - repo: coilysiren/eco-telemetry
+        loc: 767
         commits: 1
+      - repo: coilysiren/eco-cycle-prep
+        loc: 631
+        commits: 9
+      - repo: coilysiren/eco-mcp-app
+        loc: 236
+        commits: 5
+      - repo: coilysiren/eco-spec-tracker
+        loc: 220
+        commits: 8
+      - repo: coilysiren/eco-mods-public
+        loc: 133
+        commits: 5
+      - repo: coilysiren/infrastructure
+        loc: 76
+        commits: 3
+  - date: '2026-04-24'
+    totalLoc: 38521
+    totalCommits: 78
+    topCommit:
+      sha: 46abbc5b6c5238bfbbff9c81c22b331722c24457
+      repo: coilysiren/coily
+      message: Remove confirmation-token system entirely
+      url: https://github.com/coilysiren/coily/commit/46abbc5b6c5238bfbbff9c81c22b331722c24457
+      loc: 16682
+    segments:
+      - repo: coilysiren/coily
+        loc: 27080
+        commits: 15
+      - repo: coilysiren/repo-recall
+        loc: 8844
+        commits: 18
+      - repo: coilysiren/galaxy-gen
+        loc: 690
+        commits: 2
+      - repo: coilysiren/eco-mcp-app
+        loc: 335
+        commits: 9
+      - repo: coilysiren/gauntlet
+        loc: 327
+        commits: 6
+      - repo: coilysiren/eco-spec-tracker
+        loc: 307
+        commits: 8
+      - repo: coilysiren/infrastructure
+        loc: 264
+        commits: 6
+      - repo: coilysiren/backend
+        loc: 252
+        commits: 4
+      - repo: coilysiren/eco-cycle-prep
+        loc: 209
+        commits: 2
+      - repo: coilysiren/eco-telemetry
+        loc: 129
+        commits: 2
+      - repo: coilysiren/website
+        loc: 63
+        commits: 5
+      - repo: coilysiren/eco-mods-public
+        loc: 21
+        commits: 1
+  - date: '2026-04-25'
+    totalLoc: 200
+    totalCommits: 6
+    topCommit:
+      sha: ff4c09db4e985d5679eca4218c779b460b17d5f5
+      repo: coilysiren/backend
+      message: 'refactor: drop redis, swap cache backend to in-memory dict'
+      url: https://github.com/coilysiren/backend/commit/ff4c09db4e985d5679eca4218c779b460b17d5f5
+      loc: 132
+    segments:
+      - repo: coilysiren/backend
+        loc: 132
+        commits: 1
+      - repo: coilysiren/website
+        loc: 58
+        commits: 2
+      - repo: coilysiren/repo-recall
+        loc: 10
+        commits: 3
+  - date: '2026-04-26'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
 outlier:
   date: '2026-04-22'
   loc: 514121
