@@ -14,15 +14,15 @@ title: "Resume"
 ````markdown
 # Kai Siren
 
-I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I’m a platform engineer with >10 years of experience building high-impact systems that empower engineering teams.
+I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I'm a platform engineer, ten-plus years in. I build the tools that make engineering teams faster. The current edge of that work is agentic dev tooling and observability designed for LLM consumers.
 
-I have recent experience working with LLM-based systems and AI-assisted workflows, focusing on integrating them into existing platforms in a reliable and observable way. This includes designing systems that help teams experiment with and adopt AI without compromising production quality.
+The bet I'm making: an LLM that's even slightly faster than a human at finding bugs wins, because it doesn't get bored and it improves each model release. The asymmetry compounds. So I design observability for that consumer - raw event streams accessible via MCP, not prettier human dashboards.
 
-I'm proficient in six programming languages, with Python, Go, and JavaScript as my strongest. I have hands-on experience deploying to AWS, GCP, and Azure, including designing multi-cloud environments. Across technologies and cloud platforms, I specialize in meeting engineers where they are and helping teams move faster and more effectively.
+I work across Python, Go, and JavaScript primarily, with hands-on time across AWS, GCP, and Azure. The throughline across stacks isn't a specific technology, it's meeting engineers where they are and removing the friction between intent and ship.
 
-Throughout my career, I've been primarily responsible for implementing operations systems such as application monitoring, data pipelines, and deployment tooling from scratch. This hands-on experience has honed my skills as an IC engineer, and I also managed a small team at EnergyHub.
+My career arc has been mostly IC with a stretch managing a small DevOps team at EnergyHub. The work has consistently been platform work - the layer other engineers build on. Language-ecosystem dev tooling at Ruby Together, multi-cloud platforms at Textio, government infrastructure at Nava, and now developer leverage and agent ergonomics at Kapwing.
 
-Outside work, I enjoy gaming, game development, gardening, and crafts. I also manage a game server, a unique intersection of my personal and professional interests.
+Outside work, I enjoy gaming, game development, gardening, and crafts. I also run a homelab and a public game server. Both serve as testbeds for the observability work I do professionally.
 
 // linkedin.com/in/coilysiren
 // github.com/coilysiren
