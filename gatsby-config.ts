@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby"
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "Kai Siren",
-    description: "⚙️ ( DevOps || Platform || Infrastructure ) && Engineer ⚙️",
+    description: "⚙⚒ lights out, platform's green, agents are working the line ⚒⚙",
     author: "@coilysiren",
     email: "coilysiren@gmail.com",
   },
