@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-27T22:12:57.111Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25022317126
+refreshedAt: '2026-04-28T10:43:55.931Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25048262347
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -30,8 +30,8 @@ repos:
     language: Python
     color: '#3572A5'
   coilysiren/eco-telemetry:
-    language: C#
-    color: '#178600'
+    language: Shell
+    color: '#89e051'
   coilysiren/galaxy-gen:
     language: TypeScript
     color: '#3178c6'
@@ -42,8 +42,8 @@ repos:
     language: Shell
     color: '#89e051'
   coilysiren/infrastructure:
-    language: Python
-    color: '#3572A5'
+    language: Shell
+    color: '#89e051'
   coilysiren/py-sh:
     language: Makefile
     color: '#427819'
@@ -54,11 +54,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-03-29'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-03-30'
     totalLoc: 0
     totalCommits: 0
@@ -521,26 +516,72 @@ days:
         loc: 147
         commits: 3
   - date: '2026-04-27'
-    totalLoc: 886
-    totalCommits: 10
+    totalLoc: 345771
+    totalCommits: 129
     topCommit:
-      sha: 78582aa7000fa5c8ea3171ae98584efb9032f6c7
-      repo: coilysiren/website
-      message: 'Revert "chore(pulse): refresh data 2026-04-27"'
-      url: https://github.com/coilysiren/website/commit/78582aa7000fa5c8ea3171ae98584efb9032f6c7
-      loc: 467
+      sha: 9b6fb1e218535d2c4e61679220d559dcca1d3bcc
+      repo: coilysiren/coily
+      message: rip per-CLI generated subcommand trees; collapse to thin pass-throughs
+      url: https://github.com/coilysiren/coily/commit/9b6fb1e218535d2c4e61679220d559dcca1d3bcc
+      loc: 295394
     segments:
-      - repo: coilysiren/website
-        loc: 821
-        commits: 6
-      - repo: coilysiren/coilysiren
-        loc: 39
-        commits: 2
+      - repo: coilysiren/coily
+        loc: 337283
+        commits: 20
       - repo: coilysiren/repo-recall
-        loc: 22
-        commits: 1
+        loc: 5064
+        commits: 32
+      - repo: coilysiren/infrastructure
+        loc: 1277
+        commits: 16
+      - repo: coilysiren/website
+        loc: 868
+        commits: 12
+      - repo: coilysiren/eco-mcp-app
+        loc: 536
+        commits: 10
+      - repo: coilysiren/eco-telemetry
+        loc: 419
+        commits: 7
       - repo: coilysiren/homebrew-tap
-        loc: 4
+        loc: 125
+        commits: 17
+      - repo: coilysiren/coilysiren
+        loc: 69
+        commits: 8
+      - repo: coilysiren/galaxy-gen
+        loc: 40
+        commits: 2
+      - repo: coilysiren/eco-spec-tracker
+        loc: 40
+        commits: 2
+      - repo: coilysiren/backend
+        loc: 40
+        commits: 2
+      - repo: coilysiren/gauntlet
+        loc: 10
+        commits: 1
+  - date: '2026-04-28'
+    totalLoc: 608
+    totalCommits: 17
+    topCommit:
+      sha: ab746dabecd8cd202285dda4c1dabe944b0d73bc
+      repo: coilysiren/eco-telemetry
+      message: 'metrics: explicit AddMeter for runtime + EmitConsoleAlongsideOtlp diag flag'
+      url: https://github.com/coilysiren/eco-telemetry/commit/ab746dabecd8cd202285dda4c1dabe944b0d73bc
+      loc: 377
+    segments:
+      - repo: coilysiren/eco-telemetry
+        loc: 473
+        commits: 7
+      - repo: coilysiren/infrastructure
+        loc: 59
+        commits: 7
+      - repo: coilysiren/repo-recall
+        loc: 59
+        commits: 2
+      - repo: coilysiren/coily
+        loc: 17
         commits: 1
 outlier:
   date: '2026-04-22'
