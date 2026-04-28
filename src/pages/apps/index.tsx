@@ -63,6 +63,13 @@ const groups: HostGroup[] = [
         tag: "toy",
       },
       {
+        host: "grafana.coilysiren.me",
+        url: "https://grafana.coilysiren.me",
+        desc: "Grafana on the homelab. Node Exporter Full dashboard, anon viewer off.",
+        repo: "https://github.com/coilysiren/infrastructure",
+        tag: "obs",
+      },
+      {
         host: "eco.coilysiren.me",
         url: "https://eco-mcp.coilysiren.me/preview",
         desc: "the Sirens Eco game server itself (TCP, port 3001). preview link goes to its live status page.",

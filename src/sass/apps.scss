@@ -43,12 +43,8 @@
 
   .apps-hosts {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 1.5em;
-
-    @include vars.phone {
-      grid-template-columns: 1fr;
-    }
   }
 
   .apps-host {
