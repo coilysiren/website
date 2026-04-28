@@ -8,10 +8,10 @@ function Hero() {
       <img className="hero-photo" src={headshot} alt="Kai Siren" />
       <div className="hero-text">
         <p>
-          <strong>Hi! I&apos;m Kai</strong>, a platform engineer >10 years in,
+          <strong>Hi! I&apos;m Kai</strong>, a platform engineer &gt;10 years in,
           currently most interested in what one person can build right now -
-          the ceiling has shifted a lot in the last year. Queer, Black, trans,
-          living in{" "}
+          the ceiling has shifted a lot in the last year. Queer, Black, living
+          in{" "}
           <a
             href="https://en.wikipedia.org/wiki/East_Bay_(San_Francisco_Bay_Area)"
             target="_blank"
