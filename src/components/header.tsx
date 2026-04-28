@@ -26,6 +26,16 @@ const Header = ({ siteTitle = "" }: { siteTitle?: string }) => (
           {siteTitle}
         </Link>
       </h1>
+      <p
+        style={{
+          margin: "0.25rem 0 0",
+          color: "white",
+          fontSize: "0.95rem",
+          opacity: 0.85,
+        }}
+      >
+        ⚙⚒ lights out, platform&apos;s green, agents are working the line ⚒⚙
+      </p>
     </div>
   </header>
 )
