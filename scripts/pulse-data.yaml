@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-28T10:43:55.931Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25048262347
+refreshedAt: '2026-04-29T10:39:52.692Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25104180163
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -27,14 +27,17 @@ repos:
     language: C#
     color: '#178600'
   coilysiren/eco-spec-tracker:
-    language: Python
-    color: '#3572A5'
+    language: Shell
+    color: '#89e051'
   coilysiren/eco-telemetry:
     language: Shell
     color: '#89e051'
   coilysiren/galaxy-gen:
     language: TypeScript
     color: '#3178c6'
+  coilysiren/galaxySim:
+    language: Python
+    color: '#3572A5'
   coilysiren/gauntlet:
     language: Python
     color: '#3572A5'
@@ -54,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-03-30'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-03-31'
     totalLoc: 0
     totalCommits: 0
@@ -562,8 +560,8 @@ days:
         loc: 10
         commits: 1
   - date: '2026-04-28'
-    totalLoc: 608
-    totalCommits: 17
+    totalLoc: 3573
+    totalCommits: 31
     topCommit:
       sha: ab746dabecd8cd202285dda4c1dabe944b0d73bc
       repo: coilysiren/eco-telemetry
@@ -575,13 +573,86 @@ days:
         loc: 473
         commits: 7
       - repo: coilysiren/infrastructure
-        loc: 59
-        commits: 7
+        loc: 472
+        commits: 9
       - repo: coilysiren/repo-recall
-        loc: 59
+        loc: 420
+        commits: 3
+      - repo: coilysiren/eco-mcp-app
+        loc: 362
         commits: 2
+      - repo: coilysiren/homebrew-tap
+        loc: 361
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 361
+        commits: 1
+      - repo: coilysiren/eco-spec-tracker
+        loc: 361
+        commits: 1
+      - repo: coilysiren/eco-cycle-prep
+        loc: 361
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 361
+        commits: 1
       - repo: coilysiren/coily
         loc: 17
+        commits: 1
+      - repo: coilysiren/website
+        loc: 13
+        commits: 2
+      - repo: coilysiren/galaxySim
+        loc: 9
+        commits: 1
+      - repo: coilysiren/coilysiren
+        loc: 2
+        commits: 1
+  - date: '2026-04-29'
+    totalLoc: 1676
+    totalCommits: 14
+    topCommit:
+      sha: 1b691a3316f08a08e24dcf5da92ff4608a83bf19
+      repo: coilysiren/coily
+      message: 'git: add Audit-log: trailers and prepare-commit-msg hook'
+      url: https://github.com/coilysiren/coily/commit/1b691a3316f08a08e24dcf5da92ff4608a83bf19
+      loc: 1388
+    segments:
+      - repo: coilysiren/coily
+        loc: 1509
+        commits: 3
+      - repo: coilysiren/website
+        loc: 57
+        commits: 1
+      - repo: coilysiren/homebrew-tap
+        loc: 11
+        commits: 1
+      - repo: coilysiren/infrastructure
+        loc: 11
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 11
+        commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-telemetry
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-spec-tracker
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-mods-public
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-cycle-prep
+        loc: 11
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 11
         commits: 1
 outlier:
   date: '2026-04-22'
