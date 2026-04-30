@@ -17,6 +17,8 @@ export const createPages: GatsbyNode["createPages"] = ({ actions, graphql }) => 
   const { createPage, createRedirect } = actions
 
   createRedirect({ fromPath: "/about", toPath: "/now", isPermanent: true })
+  createRedirect({ fromPath: "/posts/agent-launch-pillars", toPath: "/", isPermanent: false })
+  createRedirect({ fromPath: "/posts/agent-launch-pillars/", toPath: "/", isPermanent: false })
 
   return graphql<{
     allMarkdownRemark: {

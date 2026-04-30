@@ -1,12 +1,19 @@
 ---
 
-template-key: blog-post
+template-key: draft
 title: "Agent Launch Pillars"
 date: 2026-04-28
 description: >-
   Pillars hold up a launch pad. Payloads fan out from the top. Each pillar is one full capability stack: substrate, observability, permissions lockdown, and the skill that wraps them. Agentic product velocity is launch cadence off the pad, gated by the weakest pillar. I call them Agent Launch Pillars, ALP.
 
 ---
+
+<!--
+Pulled from /src/pages/posts/ on 2026-04-30. Two issues to fix before relaunch:
+  1. Reframe around team environments, not a single human operator. The "single operator holds up a pad" opener and the personal pillar inventory ("My current pillars") drive the post solo. The intended subject is multi-engineer teams running agents against shared substrate, shared observability, shared trust boundaries.
+  2. Drop the personal-stack citations (coily-kubectl, gh-issue, release, cognition). They were illustrative for the solo framing and don't carry the team idea. Replace with team-shaped examples or cut entirely.
+-->
+
 
 A single human operator can hold up a launch pad if the pillars underneath are built right. Agents do the launching. The operator picks the targets, grades the pillars, and stays out of the loop the rest of the time.
 
