@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-29T10:39:52.692Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25104180163
+refreshedAt: '2026-04-30T10:38:18.591Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25160832888
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-03-31'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-01'
     totalLoc: 0
     totalCommits: 0
@@ -609,8 +604,8 @@ days:
         loc: 2
         commits: 1
   - date: '2026-04-29'
-    totalLoc: 1676
-    totalCommits: 14
+    totalLoc: 1745
+    totalCommits: 15
     topCommit:
       sha: 1b691a3316f08a08e24dcf5da92ff4608a83bf19
       repo: coilysiren/coily
@@ -619,8 +614,8 @@ days:
       loc: 1388
     segments:
       - repo: coilysiren/coily
-        loc: 1509
-        commits: 3
+        loc: 1578
+        commits: 4
       - repo: coilysiren/website
         loc: 57
         commits: 1
@@ -654,6 +649,19 @@ days:
       - repo: coilysiren/backend
         loc: 11
         commits: 1
+  - date: '2026-04-30'
+    totalLoc: 23
+    totalCommits: 2
+    topCommit:
+      sha: aca4501addca375fefe93931a3646b6ec3b403e6
+      repo: coilysiren/website
+      message: 'scripts/build-resume + pages/resume: update vault paths after Self/ -> Notes/ merge'
+      url: https://github.com/coilysiren/website/commit/aca4501addca375fefe93931a3646b6ec3b403e6
+      loc: 12
+    segments:
+      - repo: coilysiren/website
+        loc: 23
+        commits: 2
 outlier:
   date: '2026-04-22'
   loc: 514121
