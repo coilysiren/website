@@ -7,10 +7,12 @@ Usage:
     # multiple outputs in one run (e.g. website + vault)
     python scripts/build-resume.py \\
         --out static/resume.pdf \\
-        --out ~/projects/coilyco-vault/coilyco/Self/resume-2026.pdf
+        --out ~/projects/coilysiren/coilyco-vault/Obsidian\\ Vault/Notes/resume-2026.pdf
 
-    # custom source
-    python scripts/build-resume.py --source path/to/Resume.md
+    # custom source (note: canonical script is coilyco-ai/scripts/render-resume.py;
+    # this one is unused / stale and reads the whole markdown without extracting
+    # the resume marker block — point at a standalone resume markdown if you run it)
+    python scripts/build-resume.py --source path/to/resume.md
 
 Phone numbers are never written to the output PDF under any circumstance —
 even if the source markdown contains one. Anything public-enough to need a
@@ -51,8 +53,8 @@ from reportlab.platypus import (
 
 # --- defaults ----------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_SOURCE = Path.home() / "projects/coilyco-vault/coilyco/Self/Resume.md"
-DEFAULT_AVATAR = Path.home() / "projects/coilyco-vault/coilyco/Self/github-avatar.jpg"
+DEFAULT_SOURCE = Path.home() / "projects/coilysiren/coilyco-vault/Obsidian Vault/Notes/bio.md"
+DEFAULT_AVATAR = Path.home() / "projects/coilysiren/coilyco-vault/Obsidian Vault/Notes/github-avatar.jpg"
 DEFAULT_OUTPUT = REPO_ROOT / "static" / "resume.pdf"
 
 # --- palette -----------------------------------------------------------------
