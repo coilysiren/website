@@ -6,11 +6,13 @@
 // Auth: GITHUB_TOKEN env var (Actions) or `gh auth token` (local).
 
 import fs from "node:fs"
-import https from "node:https"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { execFileSync } from "node:child_process"
 import yaml from "js-yaml"
+import pLimit from "p-limit"
+import parseLinkHeader from "parse-link-header"
+import { format, subDays } from "date-fns"
 
 const SCRIPTS_DIR = path.dirname(fileURLToPath(import.meta.url))
 const OUTPUT_PATH = path.join(SCRIPTS_DIR, "pulse-data.yaml")
@@ -47,48 +49,25 @@ function ghToken(): string {
 
 const TOKEN = ghToken()
 
-type RawResponse = { status: number; body: string; linkHeader?: string }
-
-function httpsRequest(url: string, headers: Record<string, string> = {}): Promise<RawResponse> {
-  const u = new URL(url)
-  return new Promise((resolve, reject) => {
-    const req = https.request(
-      {
-        hostname: u.hostname,
-        path: u.pathname + u.search,
-        method: "GET",
-        headers: {
-          "User-Agent": USER_AGENT,
-          Accept: "application/vnd.github+json",
-          ...headers,
-        },
-      },
-      (res) => {
-        let data = ""
-        res.on("data", (c) => (data += c))
-        res.on("end", () => {
-          resolve({
-            status: res.statusCode || 0,
-            body: data,
-            linkHeader: res.headers.link as string | undefined,
-          })
-        })
-      }
-    )
-    req.on("error", reject)
-    req.end()
+async function ghFetch(url: string, extraHeaders: Record<string, string> = {}): Promise<Response> {
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": USER_AGENT,
+      Accept: "application/vnd.github+json",
+      ...extraHeaders,
+    },
   })
+  if (!res.ok) {
+    const body = await res.text()
+    throw new Error(`GitHub API ${res.status} on ${url}: ${body.slice(0, 200)}`)
+  }
+  return res
 }
 
 async function ghApi<T>(endpoint: string): Promise<T> {
-  const url = endpoint.startsWith("http")
-    ? endpoint
-    : `https://api.github.com${endpoint}`
-  const res = await httpsRequest(url, { Authorization: `Bearer ${TOKEN}` })
-  if (res.status >= 400) {
-    throw new Error(`GitHub API ${res.status} on ${endpoint}: ${res.body.slice(0, 200)}`)
-  }
-  return JSON.parse(res.body) as T
+  const url = endpoint.startsWith("http") ? endpoint : `https://api.github.com${endpoint}`
+  const res = await ghFetch(url, { Authorization: `Bearer ${TOKEN}` })
+  return (await res.json()) as T
 }
 
 async function ghApiPaginated<T>(
@@ -100,29 +79,16 @@ async function ghApiPaginated<T>(
     : `https://api.github.com${endpoint}`
   const items: T[] = []
   while (url) {
-    const res = await httpsRequest(url, { Authorization: `Bearer ${TOKEN}` })
-    if (res.status >= 400) {
-      throw new Error(`GitHub API ${res.status} on ${url}: ${res.body.slice(0, 200)}`)
-    }
-    items.push(...extract(JSON.parse(res.body)))
-    url = parseNextLink(res.linkHeader)
+    const res = await ghFetch(url, { Authorization: `Bearer ${TOKEN}` })
+    items.push(...extract(await res.json()))
+    const links = parseLinkHeader(res.headers.get("link"))
+    url = links?.next?.url ?? null
   }
   return items
 }
 
-function parseNextLink(header?: string): string | null {
-  if (!header) return null
-  for (const part of header.split(",")) {
-    const m = part.match(/<([^>]+)>;\s*rel="next"/)
-    if (m && m[1]) return m[1]
-  }
-  return null
-}
-
 function isoDaysAgo(n: number): string {
-  const d = new Date()
-  d.setUTCDate(d.getUTCDate() - n)
-  return d.toISOString().slice(0, 10)
+  return format(subDays(new Date(), n), "yyyy-MM-dd")
 }
 
 async function fetchCommits(): Promise<Commit[]> {
@@ -161,26 +127,25 @@ async function fetchCommits(): Promise<Commit[]> {
 
 async function enrichLoc(commits: Commit[]) {
   console.log(`→ stats for ${commits.length} commits (concurrency ${CONCURRENCY})`)
+  const limit = pLimit(CONCURRENCY)
   let done = 0
-  let cursor = 0
-  async function worker() {
-    while (cursor < commits.length) {
-      const c = commits[cursor++]
-      if (!c) break
-      try {
-        const info = await ghApi<{
-          stats?: { additions: number; deletions: number }
-        }>(`/repos/${c.repo}/commits/${c.sha}`)
-        c.loc = info.stats ? info.stats.additions + info.stats.deletions : 0
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err)
-        console.warn(`  stats failed for ${c.repo}@${c.sha.slice(0, 7)}: ${msg.slice(0, 120)}`)
-      }
-      done++
-      if (done % 100 === 0) console.log(`  ${done}/${commits.length}`)
-    }
-  }
-  await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()))
+  await Promise.all(
+    commits.map((c) =>
+      limit(async () => {
+        try {
+          const info = await ghApi<{
+            stats?: { additions: number; deletions: number }
+          }>(`/repos/${c.repo}/commits/${c.sha}`)
+          c.loc = info.stats ? info.stats.additions + info.stats.deletions : 0
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err)
+          console.warn(`  stats failed for ${c.repo}@${c.sha.slice(0, 7)}: ${msg.slice(0, 120)}`)
+        }
+        done++
+        if (done % 100 === 0) console.log(`  ${done}/${commits.length}`)
+      })
+    )
+  )
 }
 
 async function fetchRepoLanguages(
@@ -203,9 +168,8 @@ async function fetchRepoLanguages(
 
 async function fetchLinguistColors(): Promise<Record<string, string>> {
   console.log("→ linguist colors")
-  const res = await httpsRequest(LINGUIST_COLORS_URL)
-  if (res.status >= 400) throw new Error(`linguist colors ${res.status}`)
-  const raw = JSON.parse(res.body) as Record<string, { color?: string }>
+  const res = await ghFetch(LINGUIST_COLORS_URL)
+  const raw = (await res.json()) as Record<string, { color?: string }>
   const map: Record<string, string> = {}
   for (const [lang, entry] of Object.entries(raw)) {
     if (entry.color) map[lang] = entry.color
