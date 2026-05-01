@@ -1,5 +1,5 @@
-refreshedAt: '2026-04-30T10:38:18.591Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25160832888
+refreshedAt: '2026-05-01T10:33:49.724Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25211284311
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-01'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-02'
     totalLoc: 0
     totalCommits: 0
@@ -650,18 +645,49 @@ days:
         loc: 11
         commits: 1
   - date: '2026-04-30'
-    totalLoc: 23
-    totalCommits: 2
+    totalLoc: 1085
+    totalCommits: 9
     topCommit:
-      sha: aca4501addca375fefe93931a3646b6ec3b403e6
-      repo: coilysiren/website
-      message: 'scripts/build-resume + pages/resume: update vault paths after Self/ -> Notes/ merge'
-      url: https://github.com/coilysiren/website/commit/aca4501addca375fefe93931a3646b6ec3b403e6
-      loc: 12
+      sha: e449ab257a1e3830c807cd458d4b28a97548e561
+      repo: coilysiren/coily
+      message: 'egress: add CONNECT proxy, wire brew through enforce-mode allowlist'
+      url: https://github.com/coilysiren/coily/commit/e449ab257a1e3830c807cd458d4b28a97548e561
+      loc: 800
     segments:
+      - repo: coilysiren/coily
+        loc: 1052
+        commits: 4
       - repo: coilysiren/website
         loc: 23
         commits: 2
+      - repo: coilysiren/backend
+        loc: 6
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 2
+        commits: 1
+      - repo: coilysiren/eco-telemetry
+        loc: 2
+        commits: 1
+  - date: '2026-05-01'
+    totalLoc: 737
+    totalCommits: 6
+    topCommit:
+      sha: cdd37edeb9ab28f578a16a907cadfb51399a20cb
+      repo: coilysiren/coily
+      message: 'gaming: namespace eco/core-keeper/icarus + add factorio'
+      url: https://github.com/coilysiren/coily/commit/cdd37edeb9ab28f578a16a907cadfb51399a20cb
+      loc: 428
+    segments:
+      - repo: coilysiren/coily
+        loc: 442
+        commits: 2
+      - repo: coilysiren/website
+        loc: 155
+        commits: 1
+      - repo: coilysiren/infrastructure
+        loc: 140
+        commits: 3
 outlier:
   date: '2026-04-22'
   loc: 514121
