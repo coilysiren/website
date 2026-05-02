@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import DefaultHead from "../../components/default-head"
+import { groups, type Status, type OgMap } from "../../data/apps"
 import "../../sass/apps.scss"
 
 export const Head = () => (
@@ -10,76 +11,6 @@ export const Head = () => (
     description="A topology of the things I run on the internet."
   />
 )
-
-type Status = "unknown" | "up" | "down" | "na"
-
-interface AppEntry {
-  host: string
-  url: string
-  desc: string
-  repo?: string
-  tag?: string
-  // when set, status is fixed (e.g. game-server TCP can't be checked from a browser).
-  fixedStatus?: Status
-}
-
-interface HostGroup {
-  name: string
-  meta: string
-  apps: AppEntry[]
-}
-
-const groups: HostGroup[] = [
-  {
-    name: "kai-server (k3s, East Bay)",
-    meta: "homelab tower / k3s cluster",
-    apps: [
-      {
-        host: "api.coilysiren.me",
-        url: "https://api.coilysiren.me",
-        desc: "FastAPI backend powering the Bluesky apps and other small services.",
-        repo: "https://github.com/coilysiren/backend",
-        tag: "api",
-      },
-      {
-        host: "eco-mcp.coilysiren.me",
-        url: "https://eco-mcp.coilysiren.me",
-        desc: "MCP server + preview UI for the Eco game's live server data.",
-        repo: "https://github.com/coilysiren/eco-mcp-app",
-        tag: "mcp",
-      },
-      {
-        host: "eco-jobs-tracker.coilysiren.me",
-        url: "https://eco-jobs-tracker.coilysiren.me",
-        desc: "tracks player skill specs against in-game job demand on the Sirens Eco server.",
-        repo: "https://github.com/coilysiren/eco-spec-tracker",
-        tag: "tracker",
-      },
-      {
-        host: "galaxy-gen.coilysiren.me",
-        url: "https://galaxy-gen.coilysiren.me",
-        desc: "procedural galaxy generator. spin a seed, get a galaxy.",
-        repo: "https://github.com/coilysiren/galaxy-gen",
-        tag: "toy",
-      },
-      {
-        host: "grafana.coilysiren.me",
-        url: "https://grafana.coilysiren.me",
-        desc: "Grafana on the homelab. Node Exporter Full dashboard, anon viewer off.",
-        repo: "https://github.com/coilysiren/infrastructure",
-        tag: "obs",
-      },
-      {
-        host: "eco.coilysiren.me",
-        url: "https://eco-mcp.coilysiren.me/preview",
-        desc: "the Sirens Eco game server itself (TCP, port 3001). preview link goes to its live status page.",
-        repo: "https://github.com/coilysiren/infrastructure",
-        tag: "game",
-        fixedStatus: "na",
-      },
-    ],
-  },
-]
 
 const checkStatus = async (url: string): Promise<Status> => {
   if (url.startsWith("/")) return "up"
@@ -120,8 +51,15 @@ const StatusDot = ({ status }: { status: Status }) => {
   )
 }
 
-const AppsPage = () => {
+interface AppsPageProps {
+  pageContext: {
+    appsOg?: OgMap
+  }
+}
+
+const AppsPage = ({ pageContext }: AppsPageProps) => {
   const [statuses, setStatuses] = useState<Record<string, Status>>({})
+  const appsOg = pageContext.appsOg ?? {}
 
   useEffect(() => {
     let cancelled = false
@@ -180,6 +118,7 @@ const AppsPage = () => {
                 </div>
                 {group.apps.map((app) => {
                   const status = statuses[app.host] ?? "unknown"
+                  const og = appsOg[app.host]
                   return (
                     <div className="apps-card" key={app.host}>
                       <div className="apps-card-row1">
@@ -199,6 +138,42 @@ const AppsPage = () => {
                         ) : null}
                       </div>
                       <p className="apps-card-desc">{app.desc}</p>
+                      {og && (og.image || og.title || og.description) ? (
+                        <a
+                          className="apps-card-og"
+                          href={app.url}
+                          target={app.url.startsWith("/") ? undefined : "_blank"}
+                          rel={
+                            app.url.startsWith("/") ? undefined : "noreferrer"
+                          }
+                        >
+                          {og.image ? (
+                            <img
+                              className="apps-card-og-image"
+                              src={og.image}
+                              alt=""
+                              loading="lazy"
+                            />
+                          ) : null}
+                          <div className="apps-card-og-text">
+                            {og.title ? (
+                              <span className="apps-card-og-title">
+                                {og.title}
+                              </span>
+                            ) : null}
+                            {og.description ? (
+                              <span className="apps-card-og-desc">
+                                {og.description}
+                              </span>
+                            ) : null}
+                            {og.siteName ? (
+                              <span className="apps-card-og-site">
+                                {og.siteName}
+                              </span>
+                            ) : null}
+                          </div>
+                        </a>
+                      ) : null}
                       <div className="apps-card-links">
                         <a
                           href={app.url}

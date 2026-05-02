@@ -5,6 +5,7 @@ scripts/.youtube-token.json
 scripts/.steam-credentials.json
 scripts/.cache/
 scripts/now-data.json
+scripts/apps-og-cache.json
 .claude/
 .idea
 cypress/fixtures/
