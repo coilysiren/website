@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-01T10:33:49.724Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25211284311
+refreshedAt: '2026-05-02T10:22:25.162Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25249775625
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-02'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-03'
     totalLoc: 0
     totalCommits: 0
@@ -670,24 +665,50 @@ days:
         loc: 2
         commits: 1
   - date: '2026-05-01'
-    totalLoc: 737
-    totalCommits: 6
+    totalLoc: 2738
+    totalCommits: 34
     topCommit:
-      sha: cdd37edeb9ab28f578a16a907cadfb51399a20cb
+      sha: ae691315fe43b130b2ac7d2476e4478803a5ebb8
       repo: coilysiren/coily
-      message: 'gaming: namespace eco/core-keeper/icarus + add factorio'
-      url: https://github.com/coilysiren/coily/commit/cdd37edeb9ab28f578a16a907cadfb51399a20cb
-      loc: 428
+      message: 'feat(setup): install user-level coily-binary gate hook'
+      url: https://github.com/coilysiren/coily/commit/ae691315fe43b130b2ac7d2476e4478803a5ebb8
+      loc: 512
     segments:
       - repo: coilysiren/coily
-        loc: 442
+        loc: 1289
+        commits: 8
+      - repo: coilysiren/infrastructure
+        loc: 843
+        commits: 15
+      - repo: coilysiren/eco-cycle-prep
+        loc: 176
         commits: 2
       - repo: coilysiren/website
         loc: 155
         commits: 1
-      - repo: coilysiren/infrastructure
-        loc: 140
+      - repo: coilysiren/homebrew-tap
+        loc: 105
         commits: 3
+      - repo: coilysiren/gauntlet
+        loc: 34
+        commits: 1
+      - repo: coilysiren/eco-telemetry
+        loc: 34
+        commits: 1
+      - repo: coilysiren/eco-spec-tracker
+        loc: 34
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 34
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 34
+        commits: 1
+  - date: '2026-05-02'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
 outlier:
   date: '2026-04-22'
   loc: 514121
