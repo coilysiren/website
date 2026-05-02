@@ -45,7 +45,7 @@ export const groups: HostGroup[] = [
         host: "eco-jobs-tracker.coilysiren.me",
         url: "https://eco-jobs-tracker.coilysiren.me",
         desc: "tracks player skill specs against in-game job demand on the Sirens Eco server.",
-        repo: "https://github.com/coilysiren/eco-spec-tracker",
+        repo: "https://github.com/coilysiren/eco-jobs-tracker",
         tag: "tracker",
       },
       {
