@@ -59,16 +59,12 @@ const fmtRefreshed = (iso: string) => {
   return `${Math.round(diffHr / 24)}d ago`
 }
 
-const computeScaleMax = (days: Day[]): number => {
-  // Clamp the bar-height scale so a single huge day (e.g. a public-repo
-  // initial commit with tens of thousands of vendored lines) doesn't flatten
-  // every other day to invisible. Uses 2x the 75th percentile of non-zero
-  // days, which keeps normal busy days readable while letting outlier bars
-  // visibly peg the top.
-  const totals = days.map((d) => d.totalLoc).filter((n) => n > 0).sort((a, b) => a - b)
-  if (totals.length === 0) return 1
-  const p75 = totals[Math.floor(totals.length * 0.75)] ?? totals[totals.length - 1]!
-  return Math.max(1, (p75 ?? 1) * 2)
+const computeLogMax = (days: Day[]): number => {
+  // Log scale so a single huge day (e.g. a public-repo initial commit with
+  // tens of thousands of vendored lines) doesn't flatten every other day
+  // to invisible. Bar heights use log(loc + 1) / log(maxLoc + 1).
+  const max = days.reduce((m, d) => (d.totalLoc > m ? d.totalLoc : m), 0)
+  return Math.log10(max + 1) || 1
 }
 
 const Sparkline = ({
@@ -87,7 +83,7 @@ const Sparkline = ({
   const padY = 4
   const gap = 2
   const barW = (width - gap * (days.length - 1)) / days.length
-  const scaleMax = computeScaleMax(days)
+  const logMax = computeLogMax(days)
 
   return (
     <svg
@@ -99,9 +95,9 @@ const Sparkline = ({
     >
       {days.map((day, i) => {
         const x = i * (barW + gap)
-        const scale = Math.min(1, day.totalLoc / scaleMax)
+        const scale =
+          day.totalLoc > 0 ? Math.log10(day.totalLoc + 1) / logMax : 0
         const barH = scale * (height - padY * 2)
-        const clamped = day.totalLoc > scaleMax
         let yCursor = height - padY
         const isSelected = selected === i
         return (
@@ -143,15 +139,6 @@ const Sparkline = ({
                 )
               })
             )}
-            {clamped ? (
-              <rect
-                x={x}
-                y={padY - 1}
-                width={barW}
-                height={2}
-                className="pulse-bar-clamp"
-              />
-            ) : null}
           </g>
         )
       })}
