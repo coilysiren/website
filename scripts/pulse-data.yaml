@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-02T10:22:25.162Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25249775625
+refreshedAt: '2026-05-03T10:24:13.151Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25276578559
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -20,15 +20,15 @@ repos:
   coilysiren/eco-cycle-prep:
     language: Python
     color: '#3572A5'
+  coilysiren/eco-jobs-tracker:
+    language: Shell
+    color: '#89e051'
   coilysiren/eco-mcp-app:
     language: Python
     color: '#3572A5'
   coilysiren/eco-mods-public:
     language: C#
     color: '#178600'
-  coilysiren/eco-spec-tracker:
-    language: Shell
-    color: '#89e051'
   coilysiren/eco-telemetry:
     language: Shell
     color: '#89e051'
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-03'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-04'
     totalLoc: 0
     totalCommits: 0
@@ -294,7 +289,7 @@ days:
       - repo: coilysiren/eco-mcp-app
         loc: 4695
         commits: 24
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 2999
         commits: 25
       - repo: coilysiren/website
@@ -322,7 +317,7 @@ days:
       - repo: coilysiren/backend
         loc: 86
         commits: 4
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 83
         commits: 4
       - repo: coilysiren/website
@@ -378,7 +373,7 @@ days:
       - repo: coilysiren/eco-mcp-app
         loc: 236
         commits: 5
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 220
         commits: 8
       - repo: coilysiren/eco-mods-public
@@ -412,7 +407,7 @@ days:
       - repo: coilysiren/gauntlet
         loc: 327
         commits: 6
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 307
         commits: 8
       - repo: coilysiren/infrastructure
@@ -474,7 +469,7 @@ days:
       - repo: coilysiren/eco-mcp-app
         loc: 208
         commits: 1
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 207
         commits: 1
       - repo: coilysiren/eco-telemetry
@@ -535,7 +530,7 @@ days:
       - repo: coilysiren/galaxy-gen
         loc: 40
         commits: 2
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 40
         commits: 2
       - repo: coilysiren/backend
@@ -572,7 +567,7 @@ days:
       - repo: coilysiren/gauntlet
         loc: 361
         commits: 1
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 361
         commits: 1
       - repo: coilysiren/eco-cycle-prep
@@ -624,7 +619,7 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 11
         commits: 1
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 11
         commits: 1
       - repo: coilysiren/eco-mods-public
@@ -695,7 +690,7 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 34
         commits: 1
-      - repo: coilysiren/eco-spec-tracker
+      - repo: coilysiren/eco-jobs-tracker
         loc: 34
         commits: 1
       - repo: coilysiren/eco-mcp-app
@@ -705,6 +700,28 @@ days:
         loc: 34
         commits: 1
   - date: '2026-05-02'
+    totalLoc: 1494
+    totalCommits: 10
+    topCommit:
+      sha: 03c2161917eb8b93218c2deb4fe0e1d8e017d2f5
+      repo: coilysiren/eco-mcp-app
+      message: 'chore: move todo/ specs into gh issues #10-#19'
+      url: https://github.com/coilysiren/eco-mcp-app/commit/03c2161917eb8b93218c2deb4fe0e1d8e017d2f5
+      loc: 635
+    segments:
+      - repo: coilysiren/eco-mcp-app
+        loc: 635
+        commits: 1
+      - repo: coilysiren/infrastructure
+        loc: 439
+        commits: 3
+      - repo: coilysiren/website
+        loc: 385
+        commits: 2
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 35
+        commits: 4
+  - date: '2026-05-03'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
