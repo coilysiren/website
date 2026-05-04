@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gatsby-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "port": 8000
+    },
+    {
+      "name": "gatsby-dev-alt",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["exec", "gatsby", "develop", "-p", "8001"],
+      "port": 8001
+    }
+  ]
+}
