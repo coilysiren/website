@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-03T10:24:13.151Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25276578559
+refreshedAt: '2026-05-04T10:43:39.496Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25314534683
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -12,8 +12,8 @@ repos:
     language: Go
     color: '#00ADD8'
   coilysiren/coilysiren:
-    language: null
-    color: '#888888'
+    language: Shell
+    color: '#89e051'
   coilysiren/eco-agent:
     language: Python
     color: '#3572A5'
@@ -45,23 +45,21 @@ repos:
     language: Shell
     color: '#89e051'
   coilysiren/infrastructure:
-    language: Shell
-    color: '#89e051'
+    language: Python
+    color: '#3572A5'
   coilysiren/py-sh:
     language: Makefile
     color: '#427819'
   coilysiren/repo-recall:
     language: Rust
     color: '#dea584'
+  coilysiren/sirens-discord-ops:
+    language: Shell
+    color: '#89e051'
   coilysiren/website:
-    language: TypeScript
-    color: '#3178c6'
+    language: null
+    color: '#888888'
 days:
-  - date: '2026-04-04'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-05'
     totalLoc: 0
     totalCommits: 0
@@ -722,6 +720,46 @@ days:
         loc: 35
         commits: 4
   - date: '2026-05-03'
+    totalLoc: 5961
+    totalCommits: 32
+    topCommit:
+      sha: 40c6fc6ae737f6103681cda6dbc302cf297ed280
+      repo: coilysiren/galaxy-gen
+      message: 'chore: track .claude/settings.json and lockdown-deny.sh'
+      url: https://github.com/coilysiren/galaxy-gen/commit/40c6fc6ae737f6103681cda6dbc302cf297ed280
+      loc: 679
+    segments:
+      - repo: coilysiren/sirens-discord-ops
+        loc: 2108
+        commits: 13
+      - repo: coilysiren/website
+        loc: 730
+        commits: 3
+      - repo: coilysiren/galaxy-gen
+        loc: 690
+        commits: 2
+      - repo: coilysiren/eco-mods-public
+        loc: 678
+        commits: 1
+      - repo: coilysiren/coilysiren
+        loc: 678
+        commits: 1
+      - repo: coilysiren/infrastructure
+        loc: 519
+        commits: 6
+      - repo: coilysiren/coily
+        loc: 312
+        commits: 2
+      - repo: coilysiren/repo-recall
+        loc: 151
+        commits: 2
+      - repo: coilysiren/homebrew-tap
+        loc: 75
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 20
+        commits: 1
+  - date: '2026-05-04'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
