@@ -6,7 +6,8 @@ scripts/.steam-credentials.json
 scripts/.cache/
 scripts/now-data.json
 scripts/apps-og-cache.json
-.claude/
+.claude/settings.local.json
+.claude/worktrees/
 .idea
 cypress/fixtures/
 cypress/screenshots
