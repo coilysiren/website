@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-04T10:43:39.496Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25314534683
+refreshedAt: '2026-05-05T10:36:55.501Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25371385956
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -57,14 +57,9 @@ repos:
     language: Shell
     color: '#89e051'
   coilysiren/website:
-    language: null
-    color: '#888888'
+    language: TypeScript
+    color: '#3178c6'
 days:
-  - date: '2026-04-05'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-06'
     totalLoc: 0
     totalCommits: 0
@@ -86,8 +81,8 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-10'
-    totalLoc: 9441
-    totalCommits: 57
+    totalLoc: 6855
+    totalCommits: 46
     topCommit:
       sha: 79af4836e06328894fe39bae3c535cb918f375d3
       repo: coilysiren/gauntlet
@@ -96,8 +91,8 @@ days:
       loc: 916
     segments:
       - repo: coilysiren/gauntlet
-        loc: 9413
-        commits: 54
+        loc: 6827
+        commits: 43
       - repo: coilysiren/coilysiren
         loc: 16
         commits: 2
@@ -587,15 +582,18 @@ days:
         loc: 2
         commits: 1
   - date: '2026-04-29'
-    totalLoc: 1745
-    totalCommits: 15
+    totalLoc: 20523
+    totalCommits: 23
     topCommit:
-      sha: 1b691a3316f08a08e24dcf5da92ff4608a83bf19
-      repo: coilysiren/coily
-      message: 'git: add Audit-log: trailers and prepare-commit-msg hook'
-      url: https://github.com/coilysiren/coily/commit/1b691a3316f08a08e24dcf5da92ff4608a83bf19
-      loc: 1388
+      sha: baf690210ab4b0ae6de55728a05f52bce79d7b8a
+      repo: coilysiren/repo-recall
+      message: 'feat!: rewrite as MCP App server (pmcp 2.6, stdio transport)'
+      url: https://github.com/coilysiren/repo-recall/commit/baf690210ab4b0ae6de55728a05f52bce79d7b8a
+      loc: 9695
     segments:
+      - repo: coilysiren/repo-recall
+        loc: 18778
+        commits: 8
       - repo: coilysiren/coily
         loc: 1578
         commits: 4
@@ -658,8 +656,8 @@ days:
         loc: 2
         commits: 1
   - date: '2026-05-01'
-    totalLoc: 2738
-    totalCommits: 34
+    totalLoc: 2848
+    totalCommits: 36
     topCommit:
       sha: ae691315fe43b130b2ac7d2476e4478803a5ebb8
       repo: coilysiren/coily
@@ -679,6 +677,9 @@ days:
       - repo: coilysiren/website
         loc: 155
         commits: 1
+      - repo: coilysiren/repo-recall
+        loc: 110
+        commits: 2
       - repo: coilysiren/homebrew-tap
         loc: 105
         commits: 3
@@ -760,10 +761,37 @@ days:
         loc: 20
         commits: 1
   - date: '2026-05-04'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 207
+    totalCommits: 4
+    topCommit:
+      sha: b737ed46c094bc05816e6dd3641851ca720e0f72
+      repo: coilysiren/sirens-discord-ops
+      message: 'panel: ephemeral confirmation step before running verbs'
+      url: https://github.com/coilysiren/sirens-discord-ops/commit/b737ed46c094bc05816e6dd3641851ca720e0f72
+      loc: 95
+    segments:
+      - repo: coilysiren/sirens-discord-ops
+        loc: 207
+        commits: 4
+  - date: '2026-05-05'
+    totalLoc: 8408
+    totalCommits: 18
+    topCommit:
+      sha: cd7d012c001b57d4343fac0b1a08f94b9a694fbd
+      repo: coilysiren/repo-recall
+      message: 'feat: port cache DB from rusqlite to redb, drop SQLite entirely'
+      url: https://github.com/coilysiren/repo-recall/commit/cd7d012c001b57d4343fac0b1a08f94b9a694fbd
+      loc: 2809
+    segments:
+      - repo: coilysiren/repo-recall
+        loc: 7139
+        commits: 10
+      - repo: coilysiren/coily
+        loc: 773
+        commits: 5
+      - repo: coilysiren/infrastructure
+        loc: 496
+        commits: 3
 outlier:
   date: '2026-04-22'
   loc: 514121
