@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-05T10:36:55.501Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25371385956
+refreshedAt: '2026-05-06T10:44:25.250Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25430555745
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -47,6 +47,9 @@ repos:
   coilysiren/infrastructure:
     language: Python
     color: '#3572A5'
+  coilysiren/otel-a2a-relay:
+    language: Python
+    color: '#3572A5'
   coilysiren/py-sh:
     language: Makefile
     color: '#427819'
@@ -60,11 +63,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-06'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-07'
     totalLoc: 0
     totalCommits: 0
@@ -81,8 +79,8 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-10'
-    totalLoc: 6855
-    totalCommits: 46
+    totalLoc: 1659
+    totalCommits: 8
     topCommit:
       sha: 79af4836e06328894fe39bae3c535cb918f375d3
       repo: coilysiren/gauntlet
@@ -91,14 +89,8 @@ days:
       loc: 916
     segments:
       - repo: coilysiren/gauntlet
-        loc: 6827
-        commits: 43
-      - repo: coilysiren/coilysiren
-        loc: 16
-        commits: 2
-      - repo: coilysiren/website
-        loc: 12
-        commits: 1
+        loc: 1659
+        commits: 8
   - date: '2026-04-11'
     totalLoc: 3197
     totalCommits: 23
@@ -774,24 +766,43 @@ days:
         loc: 207
         commits: 4
   - date: '2026-05-05'
-    totalLoc: 8408
-    totalCommits: 18
+    totalLoc: 17788
+    totalCommits: 44
     topCommit:
-      sha: cd7d012c001b57d4343fac0b1a08f94b9a694fbd
-      repo: coilysiren/repo-recall
-      message: 'feat: port cache DB from rusqlite to redb, drop SQLite entirely'
-      url: https://github.com/coilysiren/repo-recall/commit/cd7d012c001b57d4343fac0b1a08f94b9a694fbd
-      loc: 2809
+      sha: 3974e54c3301b4c0bb949423fd127d0aa1504750
+      repo: coilysiren/otel-a2a-relay
+      message: convert to standard uv layout
+      url: https://github.com/coilysiren/otel-a2a-relay/commit/3974e54c3301b4c0bb949423fd127d0aa1504750
+      loc: 4037
     segments:
       - repo: coilysiren/repo-recall
         loc: 7139
         commits: 10
+      - repo: coilysiren/otel-a2a-relay
+        loc: 7003
+        commits: 17
       - repo: coilysiren/coily
-        loc: 773
-        commits: 5
+        loc: 2927
+        commits: 10
       - repo: coilysiren/infrastructure
-        loc: 496
+        loc: 638
+        commits: 4
+      - repo: coilysiren/homebrew-tap
+        loc: 81
         commits: 3
+  - date: '2026-05-06'
+    totalLoc: 6970
+    totalCommits: 12
+    topCommit:
+      sha: 91d9b1c5b14cb059c853b64b4e422a19be4685a9
+      repo: coilysiren/otel-a2a-relay
+      message: 'luca-flow: spec, script, fixtures, fonts'
+      url: https://github.com/coilysiren/otel-a2a-relay/commit/91d9b1c5b14cb059c853b64b4e422a19be4685a9
+      loc: 2900
+    segments:
+      - repo: coilysiren/otel-a2a-relay
+        loc: 6970
+        commits: 12
 outlier:
   date: '2026-04-22'
   loc: 514121
