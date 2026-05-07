@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-06T10:44:25.250Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25430555745
+refreshedAt: '2026-05-07T10:47:47.386Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25491155218
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -63,11 +63,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-07'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-08'
     totalLoc: 0
     totalCommits: 0
@@ -79,39 +74,23 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-10'
-    totalLoc: 1659
-    totalCommits: 8
-    topCommit:
-      sha: 79af4836e06328894fe39bae3c535cb918f375d3
-      repo: coilysiren/gauntlet
-      message: 'docs: add weapon/target/vitals implementation plan'
-      url: https://github.com/coilysiren/gauntlet/commit/79af4836e06328894fe39bae3c535cb918f375d3
-      loc: 916
-    segments:
-      - repo: coilysiren/gauntlet
-        loc: 1659
-        commits: 8
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-11'
-    totalLoc: 3197
-    totalCommits: 23
-    topCommit:
-      sha: 4b3b71d0108047a8589b1466f4a537ca8c1676af
-      repo: coilysiren/gauntlet
-      message: cleanup
-      url: https://github.com/coilysiren/gauntlet/commit/4b3b71d0108047a8589b1466f4a537ca8c1676af
-      loc: 1041
-    segments:
-      - repo: coilysiren/gauntlet
-        loc: 3197
-        commits: 23
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-12'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
     segments: []
   - date: '2026-04-13'
-    totalLoc: 25136
-    totalCommits: 62
+    totalLoc: 23492
+    totalCommits: 41
     topCommit:
       sha: b63fc52bd194d65a48fa359d2c16090e39c25024
       repo: coilysiren/galaxy-gen
@@ -126,8 +105,8 @@ days:
         loc: 8985
         commits: 5
       - repo: coilysiren/gauntlet
-        loc: 4818
-        commits: 42
+        loc: 3174
+        commits: 21
       - repo: coilysiren/eco-mods-public
         loc: 207
         commits: 3
@@ -791,8 +770,8 @@ days:
         loc: 81
         commits: 3
   - date: '2026-05-06'
-    totalLoc: 6970
-    totalCommits: 12
+    totalLoc: 15539
+    totalCommits: 34
     topCommit:
       sha: 91d9b1c5b14cb059c853b64b4e422a19be4685a9
       repo: coilysiren/otel-a2a-relay
@@ -801,8 +780,39 @@ days:
       loc: 2900
     segments:
       - repo: coilysiren/otel-a2a-relay
-        loc: 6970
-        commits: 12
+        loc: 13630
+        commits: 26
+      - repo: coilysiren/website
+        loc: 1079
+        commits: 1
+      - repo: coilysiren/repo-recall
+        loc: 759
+        commits: 4
+      - repo: coilysiren/infrastructure
+        loc: 61
+        commits: 1
+      - repo: coilysiren/coilysiren
+        loc: 9
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 1
+        commits: 1
+  - date: '2026-05-07'
+    totalLoc: 3542
+    totalCommits: 30
+    topCommit:
+      sha: 97e95b1d002d16df8b86b2a78262e6244f5aabef
+      repo: coilysiren/otel-a2a-relay
+      message: 'protocol v0.3: data-legibility surface for Phoenix'
+      url: https://github.com/coilysiren/otel-a2a-relay/commit/97e95b1d002d16df8b86b2a78262e6244f5aabef
+      loc: 1130
+    segments:
+      - repo: coilysiren/otel-a2a-relay
+        loc: 2529
+        commits: 22
+      - repo: coilysiren/coily
+        loc: 1013
+        commits: 8
 outlier:
   date: '2026-04-22'
   loc: 514121
