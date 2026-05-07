@@ -9,6 +9,7 @@ export const Head = () => (
   <DefaultHead
     title="Apps"
     description="A topology of the things I run on the internet."
+    image="/og/apps/index.png"
   />
 )
 

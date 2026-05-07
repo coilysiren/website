@@ -9,12 +9,22 @@ interface ContentBlockData {
   markdownRemark: {
     id?: string
     html: string
+    fields?: {
+      slug?: string
+    }
     frontmatter: {
       title?: string
       description?: string
       date?: string
     }
   }
+}
+
+const ogImageForSlug = (slug: string | undefined): string | undefined => {
+  if (!slug) return undefined
+  const trimmed = slug.replace(/^\/+|\/+$/g, "")
+  if (!trimmed) return undefined
+  return `/og/${trimmed}.png`
 }
 
 const ContentBlock = ({ data }: { data: ContentBlockData }) => {
@@ -53,6 +63,7 @@ export const Head = ({ data }: HeadProps<ContentBlockData>) => (
   <DefaultHead
     title={data.markdownRemark.frontmatter.title}
     description={data.markdownRemark.frontmatter.description}
+    image={ogImageForSlug(data.markdownRemark.fields?.slug)}
   />
 )
 
@@ -61,6 +72,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

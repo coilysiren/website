@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import DefaultHead from "../components/default-head"
 import "../sass/pulse.scss"
 
-export const Head = () => <DefaultHead title="Pulse" />
+export const Head = () => <DefaultHead title="Pulse" image="/og/pulse.png" />
 
 type RepoMeta = { language: string | null; color: string }
 type Segment = { repo: string; loc: number; commits: number }

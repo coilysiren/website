@@ -8,6 +8,7 @@ const useSiteMetadata = () => {
           title
           description
           email
+          siteUrl
         }
       }
     }

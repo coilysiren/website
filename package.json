@@ -29,6 +29,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@fontsource/roboto": "^5.2.10",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.10.0",
     "@types/parse-link-header": "^2.0.3",
@@ -44,6 +46,7 @@
     "p-limit": "^3.1.0",
     "parse-link-header": "^2.0.0",
     "prettier": "^3.8.2",
+    "satori": "^0.26.0",
     "start-server-and-test": "^3.0.2",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
@@ -72,7 +75,8 @@
   "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "build": "gatsby clean && gatsby build",
+    "build": "tsx scripts/render-og-images.tsx && gatsby clean && gatsby build",
+    "render-og": "tsx scripts/render-og-images.tsx",
     "dev": "gatsby clean && gatsby develop",
     "serve": "gatsby serve --port 8000 --host 0.0.0.0",
     "typecheck": "tsc --noEmit",

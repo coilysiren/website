@@ -6,7 +6,7 @@ import DefaultHead from "../components/default-head"
 import "../sass/index.scss"
 import Closer from "../components/closer"
 
-export const Head = () => <DefaultHead />
+export const Head = () => <DefaultHead image="/og/home.png" />
 
 const IndexPage = () => {
   return (

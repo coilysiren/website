@@ -7,7 +7,12 @@ import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/act
 import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
-export const Head = () => <DefaultHead title="Bluesky Popularity Contest" />
+export const Head = () => (
+  <DefaultHead
+    title="Bluesky Popularity Contest"
+    image="/og/apps/bsky-popularity-contest.png"
+  />
+)
 
 const starletteRope = 5
 const requestFrequency = 250

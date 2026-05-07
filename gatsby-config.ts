@@ -6,6 +6,7 @@ const config: GatsbyConfig = {
     description: "⚙⚒ lights out, platform's green, agents are working the line ⚒⚙",
     author: "@coilysiren",
     email: "coilysiren@gmail.com",
+    siteUrl: "https://coilysiren.me",
   },
   plugins: [
     {

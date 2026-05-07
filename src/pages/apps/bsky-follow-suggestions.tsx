@@ -7,7 +7,12 @@ import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/act
 import { showHTTPError } from "../../components/error"
 import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
 
-export const Head = () => <DefaultHead title="Bluesky Follow Suggestions" />
+export const Head = () => (
+  <DefaultHead
+    title="Bluesky Follow Suggestions"
+    image="/og/apps/bsky-follow-suggestions.png"
+  />
+)
 
 const requestFrequency = 250
 const maxSuggestions = 100
