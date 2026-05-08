@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-07T10:47:47.386Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25491155218
+refreshedAt: '2026-05-08T10:35:54.631Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25550871014
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -21,8 +21,8 @@ repos:
     language: Python
     color: '#3572A5'
   coilysiren/eco-jobs-tracker:
-    language: Shell
-    color: '#89e051'
+    language: Python
+    color: '#3572A5'
   coilysiren/eco-mcp-app:
     language: Python
     color: '#3572A5'
@@ -30,8 +30,8 @@ repos:
     language: C#
     color: '#178600'
   coilysiren/eco-telemetry:
-    language: Shell
-    color: '#89e051'
+    language: C#
+    color: '#178600'
   coilysiren/galaxy-gen:
     language: TypeScript
     color: '#3178c6'
@@ -50,24 +50,16 @@ repos:
   coilysiren/otel-a2a-relay:
     language: Python
     color: '#3572A5'
-  coilysiren/py-sh:
-    language: Makefile
-    color: '#427819'
   coilysiren/repo-recall:
     language: Rust
     color: '#dea584'
   coilysiren/sirens-discord-ops:
-    language: Shell
-    color: '#89e051'
+    language: Go
+    color: '#00ADD8'
   coilysiren/website:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-08'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-09'
     totalLoc: 0
     totalCommits: 0
@@ -89,70 +81,33 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-13'
-    totalLoc: 23492
-    totalCommits: 41
-    topCommit:
-      sha: b63fc52bd194d65a48fa359d2c16090e39c25024
-      repo: coilysiren/galaxy-gen
-      message: Update all dependencies to latest stable versions
-      url: https://github.com/coilysiren/galaxy-gen/commit/b63fc52bd194d65a48fa359d2c16090e39c25024
-      loc: 8674
-    segments:
-      - repo: coilysiren/website
-        loc: 11076
-        commits: 10
-      - repo: coilysiren/galaxy-gen
-        loc: 8985
-        commits: 5
-      - repo: coilysiren/gauntlet
-        loc: 3174
-        commits: 21
-      - repo: coilysiren/eco-mods-public
-        loc: 207
-        commits: 3
-      - repo: coilysiren/infrastructure
-        loc: 50
-        commits: 2
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-14'
-    totalLoc: 9012
-    totalCommits: 12
-    topCommit:
-      sha: 2dc5a85c8c8676d8a2d7c0cc522c76ee6386687e
-      repo: coilysiren/backend
-      message: migrate from poetry to uv, bump deps
-      url: https://github.com/coilysiren/backend/commit/2dc5a85c8c8676d8a2d7c0cc522c76ee6386687e
-      loc: 8153
-    segments:
-      - repo: coilysiren/backend
-        loc: 8592
-        commits: 5
-      - repo: coilysiren/infrastructure
-        loc: 377
-        commits: 4
-      - repo: coilysiren/py-sh
-        loc: 30
-        commits: 2
-      - repo: coilysiren/website
-        loc: 13
-        commits: 1
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-15'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
     segments: []
   - date: '2026-04-16'
-    totalLoc: 78
-    totalCommits: 5
+    totalLoc: 34
+    totalCommits: 3
     topCommit:
-      sha: 4e7f10250fdbfe886082845114a5fe7638081767
+      sha: 088a001036756ec943577b98dca8415a528d5a65
       repo: coilysiren/eco-cycle-prep
-      message: Initial commit
-      url: https://github.com/coilysiren/eco-cycle-prep/commit/4e7f10250fdbfe886082845114a5fe7638081767
-      loc: 23
+      message: Record Eco wiki and API doc URLs in AGENTS.md
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/088a001036756ec943577b98dca8415a528d5a65
+      loc: 13
     segments:
       - repo: coilysiren/eco-cycle-prep
-        loc: 78
-        commits: 5
+        loc: 34
+        commits: 3
   - date: '2026-04-17'
     totalLoc: 3570
     totalCommits: 37
@@ -798,21 +753,85 @@ days:
         loc: 1
         commits: 1
   - date: '2026-05-07'
-    totalLoc: 3542
-    totalCommits: 30
+    totalLoc: 45107
+    totalCommits: 78
     topCommit:
-      sha: 97e95b1d002d16df8b86b2a78262e6244f5aabef
-      repo: coilysiren/otel-a2a-relay
-      message: 'protocol v0.3: data-legibility surface for Phoenix'
-      url: https://github.com/coilysiren/otel-a2a-relay/commit/97e95b1d002d16df8b86b2a78262e6244f5aabef
-      loc: 1130
+      sha: 0cb87a8e314998cb08c3b9a92cab8fa070eac075
+      repo: coilysiren/coily
+      message: Add OpenAPI->coily generator; mount modio/glama/discord/sentry/trello-api under ops
+      url: https://github.com/coilysiren/coily/commit/0cb87a8e314998cb08c3b9a92cab8fa070eac075
+      loc: 27020
     segments:
-      - repo: coilysiren/otel-a2a-relay
-        loc: 2529
-        commits: 22
       - repo: coilysiren/coily
-        loc: 1013
-        commits: 8
+        loc: 32000
+        commits: 19
+      - repo: coilysiren/otel-a2a-relay
+        loc: 5844
+        commits: 28
+      - repo: coilysiren/repo-recall
+        loc: 536
+        commits: 3
+      - repo: coilysiren/coilysiren
+        loc: 519
+        commits: 2
+      - repo: coilysiren/sirens-discord-ops
+        loc: 518
+        commits: 2
+      - repo: coilysiren/infrastructure
+        loc: 518
+        commits: 2
+      - repo: coilysiren/galaxy-gen
+        loc: 518
+        commits: 2
+      - repo: coilysiren/eco-telemetry
+        loc: 518
+        commits: 2
+      - repo: coilysiren/eco-mods-public
+        loc: 518
+        commits: 2
+      - repo: coilysiren/eco-cycle-prep
+        loc: 518
+        commits: 2
+      - repo: coilysiren/homebrew-tap
+        loc: 518
+        commits: 3
+      - repo: coilysiren/website
+        loc: 518
+        commits: 3
+      - repo: coilysiren/gauntlet
+        loc: 516
+        commits: 2
+      - repo: coilysiren/eco-mcp-app
+        loc: 516
+        commits: 2
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 516
+        commits: 2
+      - repo: coilysiren/backend
+        loc: 516
+        commits: 2
+  - date: '2026-05-08'
+    totalLoc: 6011
+    totalCommits: 7
+    topCommit:
+      sha: 7844b55baf8e23b6c527370ee7bc90066e158210
+      repo: coilysiren/coily
+      message: Drop sirens-discord-ops verb tree; move glama/skillsmp from ops to pkg
+      url: https://github.com/coilysiren/coily/commit/7844b55baf8e23b6c527370ee7bc90066e158210
+      loc: 5548
+    segments:
+      - repo: coilysiren/coily
+        loc: 5999
+        commits: 4
+      - repo: coilysiren/otel-a2a-relay
+        loc: 7
+        commits: 1
+      - repo: coilysiren/coilysiren
+        loc: 3
+        commits: 1
+      - repo: coilysiren/sirens-discord-ops
+        loc: 2
+        commits: 1
 outlier:
   date: '2026-04-22'
   loc: 514121
