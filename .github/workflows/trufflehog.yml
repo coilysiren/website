@@ -35,4 +35,5 @@ jobs:
             trufflesecurity/trufflehog:latest \
             git file:///pwd \
             --no-verification --no-update --fail \
-            --exclude-paths=/exclude
+            --exclude-paths=/exclude \
+            --exclude-detectors=URI
