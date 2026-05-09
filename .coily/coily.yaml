@@ -1,0 +1,43 @@
+# Per-repo command allowlist for website (coilysiren.me). Coily is the
+# canonical entry point for dev verbs here; each command below delegates to
+# an npm script in package.json. The lockdown denies bare npm/npx
+# invocations, so operators (human or agent) type `coily <verb>`.
+#
+# Names follow coily's [a-z0-9-] rule. Argv validation rejects shell
+# metacharacters at invocation time, so flags forward verbatim through
+# coily's user-extras mechanism.
+
+commands:
+  dev:
+    run: npm run dev
+    description: gatsby clean + gatsby develop. Local dev server with HMR.
+  build:
+    run: npm run build
+    description: Render OG images, gatsby clean, gatsby build.
+  serve:
+    run: npm run serve
+    description: gatsby serve on port 8000 (host 0.0.0.0). Serves the build/ output.
+  render-og:
+    run: npm run render-og
+    description: Render OpenGraph images via tsx scripts/render-og-images.tsx.
+  typecheck:
+    run: npm run typecheck
+    description: tsc --noEmit.
+  test-quick:
+    run: npm run test:quick
+    description: eslint + tsc --noEmit. Fast pre-commit gate.
+  test-unit:
+    run: npm run test:unit
+    description: vitest run.
+  test-e2e-local:
+    run: npm run test:e2e:local
+    description: Boot serve + open Cypress interactively.
+  test-e2e-ci:
+    run: npm run test:e2e:ci
+    description: Boot serve + run Cypress headless. Mirrors CI.
+  fetch-now-data:
+    run: npm run fetch-now-data
+    description: Refresh /now page data via tsx scripts/fetch-now-data.ts.
+  fetch-pulse-data:
+    run: npm run fetch-pulse-data
+    description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.
