@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-08T10:35:54.631Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25550871014
+refreshedAt: '2026-05-09T10:24:55.959Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25598778883
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -14,9 +14,6 @@ repos:
   coilysiren/coilysiren:
     language: Shell
     color: '#89e051'
-  coilysiren/eco-agent:
-    language: Python
-    color: '#3572A5'
   coilysiren/eco-cycle-prep:
     language: Python
     color: '#3572A5'
@@ -60,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-09'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-10'
     totalLoc: 0
     totalCommits: 0
@@ -96,80 +88,23 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-16'
-    totalLoc: 34
-    totalCommits: 3
-    topCommit:
-      sha: 088a001036756ec943577b98dca8415a528d5a65
-      repo: coilysiren/eco-cycle-prep
-      message: Record Eco wiki and API doc URLs in AGENTS.md
-      url: https://github.com/coilysiren/eco-cycle-prep/commit/088a001036756ec943577b98dca8415a528d5a65
-      loc: 13
-    segments:
-      - repo: coilysiren/eco-cycle-prep
-        loc: 34
-        commits: 3
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-17'
-    totalLoc: 3570
-    totalCommits: 37
-    topCommit:
-      sha: c209d1a264721909a8afb77ea2cfbcb84cc0181d
-      repo: coilysiren/eco-cycle-prep
-      message: Add framework for generating & evaluating Eco cycle maps
-      url: https://github.com/coilysiren/eco-cycle-prep/commit/c209d1a264721909a8afb77ea2cfbcb84cc0181d
-      loc: 682
-    segments:
-      - repo: coilysiren/eco-cycle-prep
-        loc: 2810
-        commits: 24
-      - repo: coilysiren/website
-        loc: 715
-        commits: 3
-      - repo: coilysiren/eco-mods-public
-        loc: 20
-        commits: 3
-      - repo: coilysiren/eco-agent
-        loc: 14
-        commits: 2
-      - repo: coilysiren/coilysiren
-        loc: 8
-        commits: 2
-      - repo: coilysiren/backend
-        loc: 1
-        commits: 1
-      - repo: coilysiren/galaxy-gen
-        loc: 1
-        commits: 1
-      - repo: coilysiren/gauntlet
-        loc: 1
-        commits: 1
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-18'
-    totalLoc: 4999
-    totalCommits: 17
-    topCommit:
-      sha: b442c5a9ab09fc90a7c8fede9c9fa0509eddb4d8
-      repo: coilysiren/eco-cycle-prep
-      message: 'Split narrative.py into a package: blocks / features / text'
-      url: https://github.com/coilysiren/eco-cycle-prep/commit/b442c5a9ab09fc90a7c8fede9c9fa0509eddb4d8
-      loc: 1854
-    segments:
-      - repo: coilysiren/eco-cycle-prep
-        loc: 4605
-        commits: 10
-      - repo: coilysiren/gauntlet
-        loc: 200
-        commits: 2
-      - repo: coilysiren/website
-        loc: 160
-        commits: 3
-      - repo: coilysiren/galaxy-gen
-        loc: 17
-        commits: 1
-      - repo: coilysiren/eco-mods-public
-        loc: 17
-        commits: 1
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-19'
-    totalLoc: 60682
-    totalCommits: 69
+    totalLoc: 51125
+    totalCommits: 50
     topCommit:
       sha: ff85bfba5a9e9051831420698c4de0c099fded72
       repo: coilysiren/website
@@ -181,8 +116,8 @@ days:
         loc: 40242
         commits: 8
       - repo: coilysiren/gauntlet
-        loc: 18975
-        commits: 46
+        loc: 9418
+        commits: 27
       - repo: coilysiren/claude-code-pulse
         loc: 932
         commits: 6
@@ -811,8 +746,8 @@ days:
         loc: 516
         commits: 2
   - date: '2026-05-08'
-    totalLoc: 6011
-    totalCommits: 7
+    totalLoc: 17504
+    totalCommits: 83
     topCommit:
       sha: 7844b55baf8e23b6c527370ee7bc90066e158210
       repo: coilysiren/coily
@@ -821,17 +756,58 @@ days:
       loc: 5548
     segments:
       - repo: coilysiren/coily
-        loc: 5999
-        commits: 4
+        loc: 10212
+        commits: 25
       - repo: coilysiren/otel-a2a-relay
-        loc: 7
+        loc: 3419
+        commits: 17
+      - repo: coilysiren/repo-recall
+        loc: 1669
+        commits: 8
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 557
+        commits: 5
+      - repo: coilysiren/backend
+        loc: 491
+        commits: 4
+      - repo: coilysiren/eco-mcp-app
+        loc: 170
+        commits: 2
+      - repo: coilysiren/gauntlet
+        loc: 151
+        commits: 2
+      - repo: coilysiren/eco-cycle-prep
+        loc: 146
         commits: 1
-      - repo: coilysiren/coilysiren
-        loc: 3
-        commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 140
+        commits: 2
       - repo: coilysiren/sirens-discord-ops
-        loc: 2
-        commits: 1
+        loc: 136
+        commits: 3
+      - repo: coilysiren/eco-mods-public
+        loc: 129
+        commits: 2
+      - repo: coilysiren/homebrew-tap
+        loc: 77
+        commits: 3
+      - repo: coilysiren/infrastructure
+        loc: 69
+        commits: 2
+      - repo: coilysiren/eco-telemetry
+        loc: 63
+        commits: 3
+      - repo: coilysiren/website
+        loc: 56
+        commits: 2
+      - repo: coilysiren/coilysiren
+        loc: 19
+        commits: 2
+  - date: '2026-05-09'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
 outlier:
   date: '2026-04-22'
   loc: 514121
