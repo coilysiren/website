@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-09T10:24:55.959Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25598778883
+refreshedAt: '2026-05-10T10:29:43.942Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25626356562
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-10'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-11'
     totalLoc: 0
     totalCommits: 0
@@ -103,8 +98,8 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-19'
-    totalLoc: 51125
-    totalCommits: 50
+    totalLoc: 50866
+    totalCommits: 48
     topCommit:
       sha: ff85bfba5a9e9051831420698c4de0c099fded72
       repo: coilysiren/website
@@ -116,8 +111,8 @@ days:
         loc: 40242
         commits: 8
       - repo: coilysiren/gauntlet
-        loc: 9418
-        commits: 27
+        loc: 9159
+        commits: 25
       - repo: coilysiren/claude-code-pulse
         loc: 932
         commits: 6
@@ -804,6 +799,22 @@ days:
         loc: 19
         commits: 2
   - date: '2026-05-09'
+    totalLoc: 1288
+    totalCommits: 2
+    topCommit:
+      sha: db3a2bdfa5f0bf3c9573dbad6269b6226a62d981
+      repo: coilysiren/eco-cycle-prep
+      message: Migrate pyinvoke -> Makefile + coily
+      url: https://github.com/coilysiren/eco-cycle-prep/commit/db3a2bdfa5f0bf3c9573dbad6269b6226a62d981
+      loc: 1090
+    segments:
+      - repo: coilysiren/eco-cycle-prep
+        loc: 1090
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 198
+        commits: 1
+  - date: '2026-05-10'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
