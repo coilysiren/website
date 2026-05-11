@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-10T10:29:43.942Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25626356562
+refreshedAt: '2026-05-11T11:08:04.545Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25666402735
 windowDays: 30
 repos:
   coilysiren/backend:
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-11'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-12'
     totalLoc: 0
     totalCommits: 0
@@ -98,8 +93,8 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-19'
-    totalLoc: 50866
-    totalCommits: 48
+    totalLoc: 44581
+    totalCommits: 34
     topCommit:
       sha: ff85bfba5a9e9051831420698c4de0c099fded72
       repo: coilysiren/website
@@ -111,8 +106,8 @@ days:
         loc: 40242
         commits: 8
       - repo: coilysiren/gauntlet
-        loc: 9159
-        commits: 25
+        loc: 2874
+        commits: 11
       - repo: coilysiren/claude-code-pulse
         loc: 932
         commits: 6
@@ -815,6 +810,25 @@ days:
         loc: 198
         commits: 1
   - date: '2026-05-10'
+    totalLoc: 7057
+    totalCommits: 14
+    topCommit:
+      sha: f5c07b9be98e2917a896cccc56fcaf3b4a7053b7
+      repo: coilysiren/repo-recall
+      message: 'feat!: drop push notifications subsystem'
+      url: https://github.com/coilysiren/repo-recall/commit/f5c07b9be98e2917a896cccc56fcaf3b4a7053b7
+      loc: 2452
+    segments:
+      - repo: coilysiren/repo-recall
+        loc: 4323
+        commits: 5
+      - repo: coilysiren/eco-mcp-app
+        loc: 2340
+        commits: 5
+      - repo: coilysiren/coily
+        loc: 394
+        commits: 4
+  - date: '2026-05-11'
     totalLoc: 0
     totalCommits: 0
     topCommit: null
