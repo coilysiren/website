@@ -41,7 +41,7 @@ What I can't find much of is the seam I care about: end-to-end *cycle* automatio
 
 Eco via Sirens lives on my homelab, reachable over [Tailscale](https://tailscale.com/). The deploy side is handled out of [coilysiren/infrastructure](https://github.com/coilysiren/infrastructure). The server and the mods aren't two projects, they're one feedback loop: things I notice while playing become issues, and things I fix in mods get playtested on the next cycle.
 
-Cycle prep is automated by [eco-cycle-prep](https://github.com/coilysiren/eco-cycle-prep), a set of [Invoke](https://pyinvoke.org/) tasks in Python that handle:
+Cycle prep is automated by [eco-cycle-prep](https://github.com/coilysiren/eco-cycle-prep), a set of Python commands wired through [coily](https://github.com/coilysiren/coily) that handle:
 
 - `steamcmd` updates and git pulls across the config and mod repos.
 - Rolling candidate worldgen seeds against a checked-in `WorldGenerator.eco`, waiting for preview renders, and posting the preview GIFs to Discord.
