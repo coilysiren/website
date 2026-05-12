@@ -23,3 +23,11 @@ GATSBY_API_URL=http://localhost:4000 # or whatever port you are running the API 
 ## Commands
 
 Dev commands are declared in [`.coily/coily.yaml`](.coily/coily.yaml). Run them as `coily exec <verb>`.
+
+## See also
+
+- [AGENTS.md](AGENTS.md) - agent-facing operating rules.
+- [docs/FEATURES.md](docs/FEATURES.md) - inventory of what ships today.
+- [.coily/coily.yaml](.coily/coily.yaml) - allowlisted commands. Agents route through coily, not bare `make` / `uv` / `python` / `npm` / `cargo` / `dotnet`.
+
+Cross-reference convention from [coilysiren/coilyco-ai#313](https://github.com/coilysiren/coilyco-ai/issues/313).

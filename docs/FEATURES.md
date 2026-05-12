@@ -69,3 +69,11 @@ Under `.github/workflows/`:
 - [AGENTS.md](../AGENTS.md) - agent-facing operating rules (post-push CI verification cadence lives here).
 
 Cross-reference convention from [coilysiren/coilyco-ai#313](https://github.com/coilysiren/coilyco-ai/issues/313). The worked example is [otel-a2a-relay/docs/FEATURES.md](https://github.com/coilysiren/otel-a2a-relay/blob/main/docs/FEATURES.md).
+
+## See also
+
+- [README.md](../README.md) - human-facing intro.
+- [AGENTS.md](../AGENTS.md) - agent-facing operating rules.
+- [.coily/coily.yaml](../.coily/coily.yaml) - allowlisted commands.
+
+Cross-reference convention from [coilysiren/coilyco-ai#313](https://github.com/coilysiren/coilyco-ai/issues/313).
