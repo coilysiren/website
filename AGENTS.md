@@ -16,3 +16,7 @@ Per the workspace "Default to proactive scheduling" rule: after pushing to `main
 - **Verify CI**: `coily gh run list --repo coilysiren/website --limit 1` should show `completed/success`. Re-schedule once at +180s if in progress; surface and stop on failure.
 - **Skip** for trivia (typo fixes, content-only edits where Cypress smoke is irrelevant).
 - **Site deploy verification** is out of scope here - whichever host serves coilysiren.me handles that on its own cadence.
+
+## Commands
+
+Route every dev command through coily, which reads [`.coily/coily.yaml`](.coily/coily.yaml). The lockdown denies bare invocations of the underlying tools (`npm`, `npx`, etc.). Add new verbs to that file before invoking them.

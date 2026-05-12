@@ -19,3 +19,7 @@ Create a `.env.development` file with these contents:
 ```bash
 GATSBY_API_URL=http://localhost:4000 # or whatever port you are running the API on
 ```
+
+## Commands
+
+Dev commands are declared in [`.coily/coily.yaml`](.coily/coily.yaml). Run them as `coily exec <verb>`.
