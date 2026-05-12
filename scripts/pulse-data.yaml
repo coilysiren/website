@@ -1,11 +1,11 @@
-refreshedAt: '2026-05-11T11:08:04.545Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25666402735
+refreshedAt: '2026-05-12T10:51:06.242Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25729675225
 windowDays: 30
 repos:
   coilysiren/backend:
     language: Python
     color: '#3572A5'
-  coilysiren/claude-code-pulse:
+  coilysiren/claude-skill-discipline:
     language: Python
     color: '#3572A5'
   coilysiren/coily:
@@ -57,11 +57,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-12'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-13'
     totalLoc: 0
     totalCommits: 0
@@ -93,55 +88,18 @@ days:
     topCommit: null
     segments: []
   - date: '2026-04-19'
-    totalLoc: 44581
-    totalCommits: 34
-    topCommit:
-      sha: ff85bfba5a9e9051831420698c4de0c099fded72
-      repo: coilysiren/website
-      message: migrate to pnpm, TypeScript, React 19, and Gatsby Head API
-      url: https://github.com/coilysiren/website/commit/ff85bfba5a9e9051831420698c4de0c099fded72
-      loc: 39917
-    segments:
-      - repo: coilysiren/website
-        loc: 40242
-        commits: 8
-      - repo: coilysiren/gauntlet
-        loc: 2874
-        commits: 11
-      - repo: coilysiren/claude-code-pulse
-        loc: 932
-        commits: 6
-      - repo: coilysiren/eco-cycle-prep
-        loc: 378
-        commits: 5
-      - repo: coilysiren/eco-mods-public
-        loc: 155
-        commits: 4
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-20'
-    totalLoc: 13351
-    totalCommits: 54
-    topCommit:
-      sha: 60fbfbaebe9aafd95323200296f7b40784e947a2
-      repo: coilysiren/galaxy-gen
-      message: Add Playwright E2E pipeline, modernize tooling, restyle UI
-      url: https://github.com/coilysiren/galaxy-gen/commit/60fbfbaebe9aafd95323200296f7b40784e947a2
-      loc: 5088
-    segments:
-      - repo: coilysiren/galaxy-gen
-        loc: 5612
-        commits: 2
-      - repo: coilysiren/eco-mcp-app
-        loc: 4695
-        commits: 24
-      - repo: coilysiren/eco-jobs-tracker
-        loc: 2999
-        commits: 25
-      - repo: coilysiren/website
-        loc: 45
-        commits: 3
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
   - date: '2026-04-21'
-    totalLoc: 33748
-    totalCommits: 102
+    totalLoc: 11619
+    totalCommits: 69
     topCommit:
       sha: 7917e0952b30c31ae05ad320a6669b5bf7f90ae9
       repo: coilysiren/eco-mcp-app
@@ -150,14 +108,14 @@ days:
       loc: 3335
     segments:
       - repo: coilysiren/eco-mcp-app
-        loc: 25873
-        commits: 65
-      - repo: coilysiren/galaxy-gen
-        loc: 6690
-        commits: 20
+        loc: 10343
+        commits: 48
       - repo: coilysiren/infrastructure
         loc: 874
         commits: 5
+      - repo: coilysiren/galaxy-gen
+        loc: 91
+        commits: 4
       - repo: coilysiren/backend
         loc: 86
         commits: 4
@@ -829,10 +787,127 @@ days:
         loc: 394
         commits: 4
   - date: '2026-05-11'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
+    totalLoc: 9543
+    totalCommits: 85
+    topCommit:
+      sha: 65a59f6c687abd18998d6d7f58701bbc73097398
+      repo: coilysiren/galaxy-gen
+      message: Host coding-galaxy-gen-* skills with vendored skill-hygiene checks
+      url: https://github.com/coilysiren/galaxy-gen/commit/65a59f6c687abd18998d6d7f58701bbc73097398
+      loc: 1491
+    segments:
+      - repo: coilysiren/galaxy-gen
+        loc: 3114
+        commits: 12
+      - repo: coilysiren/infrastructure
+        loc: 1791
+        commits: 13
+      - repo: coilysiren/claude-skill-discipline
+        loc: 1466
+        commits: 8
+      - repo: coilysiren/coily
+        loc: 1231
+        commits: 9
+      - repo: coilysiren/eco-mods-public
+        loc: 488
+        commits: 3
+      - repo: coilysiren/otel-a2a-relay
+        loc: 391
+        commits: 7
+      - repo: coilysiren/gauntlet
+        loc: 307
+        commits: 3
+      - repo: coilysiren/eco-cycle-prep
+        loc: 138
+        commits: 3
+      - repo: coilysiren/eco-mcp-app
+        loc: 110
+        commits: 4
+      - repo: coilysiren/website
+        loc: 105
+        commits: 4
+      - repo: coilysiren/backend
+        loc: 87
+        commits: 3
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 79
+        commits: 3
+      - repo: coilysiren/repo-recall
+        loc: 69
+        commits: 5
+      - repo: coilysiren/homebrew-tap
+        loc: 69
+        commits: 3
+      - repo: coilysiren/sirens-discord-ops
+        loc: 37
+        commits: 2
+      - repo: coilysiren/eco-telemetry
+        loc: 32
+        commits: 2
+      - repo: coilysiren/coilysiren
+        loc: 29
+        commits: 1
+  - date: '2026-05-12'
+    totalLoc: 1555
+    totalCommits: 36
+    topCommit:
+      sha: 962e64e1c9acea73c8546db91403023bd0f9dd0a
+      repo: coilysiren/claude-skill-discipline
+      message: 'claude: track .claude/ generated by coily setup, closes #9'
+      url: https://github.com/coilysiren/claude-skill-discipline/commit/962e64e1c9acea73c8546db91403023bd0f9dd0a
+      loc: 273
+    segments:
+      - repo: coilysiren/repo-recall
+        loc: 662
+        commits: 15
+      - repo: coilysiren/claude-skill-discipline
+        loc: 273
+        commits: 1
+      - repo: coilysiren/coily
+        loc: 115
+        commits: 5
+      - repo: coilysiren/infrastructure
+        loc: 37
+        commits: 2
+      - repo: coilysiren/website
+        loc: 36
+        commits: 1
+      - repo: coilysiren/sirens-discord-ops
+        loc: 36
+        commits: 1
+      - repo: coilysiren/otel-a2a-relay
+        loc: 36
+        commits: 1
+      - repo: coilysiren/homebrew-tap
+        loc: 36
+        commits: 1
+      - repo: coilysiren/gauntlet
+        loc: 36
+        commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 36
+        commits: 1
+      - repo: coilysiren/eco-telemetry
+        loc: 36
+        commits: 1
+      - repo: coilysiren/eco-mods-public
+        loc: 36
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 36
+        commits: 1
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 36
+        commits: 1
+      - repo: coilysiren/eco-cycle-prep
+        loc: 36
+        commits: 1
+      - repo: coilysiren/coilysiren
+        loc: 36
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 36
+        commits: 1
 outlier:
   date: '2026-04-22'
   loc: 514121
