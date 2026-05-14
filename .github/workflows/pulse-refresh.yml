@@ -26,9 +26,10 @@ jobs:
 
       - name: Fetch pulse data
         env:
-          # Use a user PAT, not the install GITHUB_TOKEN. Actions runner
-          # IPs hitting /search/commits with an install token frequently
-          # get silently downgraded to 0 results. PAT traffic doesn't.
+          # User PAT kept for parity with prior /search/commits era. The
+          # current code uses REST /repos/X/commits, which works fine with
+          # the install GITHUB_TOKEN too. Switch only if PAT rotation gets
+          # painful.
           GITHUB_TOKEN: ${{ secrets.PULSE_REFRESH_PAT }}
           GITHUB_SERVER_URL: ${{ github.server_url }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -88,7 +89,7 @@ jobs:
           Failed run: ${RUN_URL}
 
           Common causes:
-          - GitHub \`/search/commits\` returned 0 results (flake; rerun the workflow).
+          - REST \`/repos/X/commits\` returned 0 across all owned repos (auth or pagination regression; investigate before rerunning).
           - \`createCommitOnBranch\` rejected the push (HEAD moved between checkout and commit; rerun).
           - pnpm/network hiccup in earlier steps.
 

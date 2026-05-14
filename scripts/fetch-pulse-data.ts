@@ -91,35 +91,70 @@ function isoDaysAgo(n: number): string {
   return format(subDays(new Date(), n), "yyyy-MM-dd")
 }
 
+async function listOwnedRepos(): Promise<string[]> {
+  // REST /users/{u}/repos returns public repos only (regardless of token scope).
+  // type=owner filters out repos the user contributes to but doesn't own.
+  const repos = await ghApiPaginated<Record<string, unknown>>(
+    `/users/${GH_USERNAME}/repos?per_page=100&type=owner&sort=pushed`,
+    (page) => (page as Record<string, unknown>[]) || []
+  )
+  return repos
+    .filter((r) => !r.archived && !r.fork && !r.disabled)
+    .map((r) => r.full_name as string)
+}
+
 async function fetchCommits(): Promise<Commit[]> {
   const since = isoDaysAgo(WINDOW_DAYS)
+  const sinceIso = new Date(`${since}T00:00:00Z`).toISOString()
   console.log(`→ commits since ${since}`)
-  const items = await ghApiPaginated<Record<string, unknown>>(
-    `/search/commits?q=author:${GH_USERNAME}+committer-date:>=${since}&sort=committer-date&order=desc&per_page=100`,
-    (page) => (page as { items?: Record<string, unknown>[] }).items || []
+
+  const repos = await listOwnedRepos()
+  console.log(`  scanning ${repos.length} owned public repos`)
+
+  const limit = pLimit(CONCURRENCY)
+  const perRepo = await Promise.all(
+    repos.map((repoFull) =>
+      limit(async () => {
+        try {
+          return await ghApiPaginated<Record<string, unknown>>(
+            `/repos/${repoFull}/commits?author=${GH_USERNAME}&since=${sinceIso}&per_page=100`,
+            (page) => (page as Record<string, unknown>[]) || []
+          )
+        } catch (err) {
+          // 409 Conflict = empty repo. Treat as no commits, not a failure.
+          const msg = err instanceof Error ? err.message : String(err)
+          if (msg.includes(" 409 ")) return []
+          throw err
+        }
+      })
+    )
   )
 
-  const commits: Commit[] = items.map((item) => {
-    const repoFull = (item.repository as { full_name: string }).full_name
-    const commit = item.commit as {
-      committer: { date: string }
-      message: string
+  const commits: Commit[] = []
+  for (let i = 0; i < repos.length; i++) {
+    const repoFull = repos[i]
+    for (const item of perRepo[i]) {
+      const commit = item.commit as {
+        committer: { date: string }
+        message: string
+      }
+      const sha = item.sha as string
+      const firstLine = (commit.message || "").split("\n")[0] || ""
+      commits.push({
+        sha,
+        repo: repoFull,
+        date: commit.committer.date,
+        message: firstLine.slice(0, 240),
+        url: `https://github.com/${repoFull}/commit/${sha}`,
+        loc: 0,
+      })
     }
-    const sha = item.sha as string
-    const firstLine = (commit.message || "").split("\n")[0] || ""
-    return {
-      sha,
-      repo: repoFull,
-      date: commit.committer.date,
-      message: firstLine.slice(0, 240),
-      url: `https://github.com/${repoFull}/commit/${sha}`,
-      loc: 0,
-    }
-  })
+  }
+
   console.log(`  found ${commits.length} commits`)
   if (commits.length === 0) {
     throw new Error(
-      "search/commits returned 0 results - refusing to overwrite pulse-data.yaml with empty data. The GitHub Search API is occasionally flaky; rerun the workflow.",
+      "REST /repos/X/commits returned 0 results across all owned repos - refusing to overwrite pulse-data.yaml with empty data. Likely an auth or pagination regression; investigate before rerunning.",
     )
   }
   return commits
