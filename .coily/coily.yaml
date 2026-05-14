@@ -41,3 +41,17 @@ commands:
   fetch-pulse-data:
     run: npm run fetch-pulse-data
     description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.
+
+# Catalog metadata for the cross-repo knowledge graph.
+# Schema: coilysiren/coilyco-ai#420 (tracker).
+catalog:
+  kind: Component
+  type: website
+  system: content
+  owner: kai
+  lifecycle: production
+  description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."
+  dependsOn:
+    - coilysiren/infrastructure
+  providesApis:
+    - coilysiren-me
