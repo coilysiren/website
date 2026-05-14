@@ -31,6 +31,7 @@ repos:
         stages: [commit-msg]
   # END managed by coilyco-ai/scripts/apply-commit-msg-hook.py
   
+  
   # BEGIN managed by coilyco-ai/scripts/apply-catalog-block-hook.py
   - repo: local
     hooks:
