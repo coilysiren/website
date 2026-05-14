@@ -131,9 +131,8 @@ async function fetchCommits(): Promise<Commit[]> {
   )
 
   const commits: Commit[] = []
-  for (let i = 0; i < repos.length; i++) {
-    const repoFull = repos[i]
-    for (const item of perRepo[i]) {
+  for (const [repoFull, items] of repos.map((r, i): [string, Record<string, unknown>[]] => [r, perRepo[i] ?? []])) {
+    for (const item of items) {
       const commit = item.commit as {
         committer: { date: string }
         message: string
