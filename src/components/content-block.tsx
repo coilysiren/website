@@ -17,7 +17,7 @@ interface ContentBlockData {
       description?: string
       date?: string
       isoDate?: string
-      templateKey?: string
+      template_key?: string
     }
   }
 }
@@ -63,7 +63,8 @@ export default ContentBlock
 
 export const Head = ({ data }: HeadProps<ContentBlockData>) => {
   const { frontmatter, fields } = data.markdownRemark
-  const isPost = frontmatter.templateKey === "blog-post"
+  const isPost = frontmatter.template_key === "blog-post"
+
   return (
     <DefaultHead
       title={frontmatter.title}
@@ -89,7 +90,7 @@ export const pageQuery = graphql`
         isoDate: date
         title
         description
-        templateKey
+        template_key
       }
     }
   }
