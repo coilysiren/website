@@ -16,6 +16,8 @@ interface ContentBlockData {
       title?: string
       description?: string
       date?: string
+      isoDate?: string
+      templateKey?: string
     }
   }
 }
@@ -59,13 +61,20 @@ const ContentBlock = ({ data }: { data: ContentBlockData }) => {
 
 export default ContentBlock
 
-export const Head = ({ data }: HeadProps<ContentBlockData>) => (
-  <DefaultHead
-    title={data.markdownRemark.frontmatter.title}
-    description={data.markdownRemark.frontmatter.description}
-    image={ogImageForSlug(data.markdownRemark.fields?.slug)}
-  />
-)
+export const Head = ({ data }: HeadProps<ContentBlockData>) => {
+  const { frontmatter, fields } = data.markdownRemark
+  const isPost = frontmatter.templateKey === "blog-post"
+  return (
+    <DefaultHead
+      title={frontmatter.title}
+      description={frontmatter.description}
+      image={ogImageForSlug(fields?.slug)}
+      type={isPost ? "article" : undefined}
+      publishedTime={isPost ? frontmatter.isoDate : undefined}
+      author={isPost ? "Kai Siren" : undefined}
+    />
+  )
+}
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
@@ -77,8 +86,10 @@ export const pageQuery = graphql`
       }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        isoDate: date
         title
         description
+        templateKey
       }
     }
   }
