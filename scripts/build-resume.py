@@ -9,7 +9,7 @@ Usage:
         --out static/resume.pdf \\
         --out ~/projects/coilysiren/coilyco-vault/Obsidian\\ Vault/Notes/resume-2026.pdf
 
-    # custom source (note: canonical script is coilyco-ai/scripts/render-resume.py;
+    # custom source (note: canonical script is agentic-os-kai/scripts/render-resume.py;
     # this one is unused / stale and reads the whole markdown without extracting
     # the resume marker block — point at a standalone resume markdown if you run it)
     python scripts/build-resume.py --source path/to/resume.md

@@ -43,7 +43,7 @@ commands:
     description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.
 
 # Catalog metadata for the cross-repo knowledge graph.
-# Schema: coilysiren/coilyco-ai#420 (tracker).
+# Schema: coilysiren/agentic-os-kai#420 (tracker).
 catalog:
   kind: Component
   type: website
