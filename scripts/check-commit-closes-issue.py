@@ -2,7 +2,7 @@
 """Reject commit messages that lack a same-repo GitHub closing keyword.
 
 Wired into each active coilysiren/* repo as a `commit-msg` pre-commit hook
-via `apply-commit-msg-hook.py`. Canonical copy lives here in coilyco-ai;
+via `apply-commit-msg-hook.py`. Canonical copy lives here in agentic-os-kai;
 rollout copies this file verbatim into each sibling repo.
 
 Accepted patterns (case-insensitive):
