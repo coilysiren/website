@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-17T10:33:23.108Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/25988404163
+refreshedAt: '2026-05-18T11:23:18.164Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26030373995
 windowDays: 30
 repos:
   coilysiren/agent-guard:
@@ -81,28 +81,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-18'
-    totalLoc: 3552
-    totalCommits: 34
-    topCommit:
-      sha: c209d1a264721909a8afb77ea2cfbcb84cc0181d
-      repo: coilysiren/eco-cycle-prep
-      message: Add framework for generating & evaluating Eco cycle maps
-      url: https://github.com/coilysiren/eco-cycle-prep/commit/c209d1a264721909a8afb77ea2cfbcb84cc0181d
-      loc: 682
-    segments:
-      - repo: coilysiren/eco-cycle-prep
-        loc: 2796
-        commits: 24
-      - repo: coilysiren/website
-        loc: 728
-        commits: 5
-      - repo: coilysiren/eco-mods-public
-        loc: 20
-        commits: 3
-      - repo: coilysiren/coilysiren
-        loc: 8
-        commits: 2
   - date: '2026-04-19'
     totalLoc: 533
     totalCommits: 9
@@ -346,13 +324,13 @@ days:
       - repo: coilysiren/homebrew-tap
         loc: 11
         commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 11
+        commits: 1
       - repo: coilysiren/gauntlet
         loc: 11
         commits: 1
       - repo: coilysiren/eco-telemetry
-        loc: 11
-        commits: 1
-      - repo: coilysiren/galaxy-gen
         loc: 11
         commits: 1
       - repo: coilysiren/eco-mods-public
@@ -619,15 +597,15 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 519
         commits: 3
+      - repo: coilysiren/galaxy-gen
+        loc: 518
+        commits: 2
       - repo: coilysiren/infrastructure
         loc: 518
         commits: 2
       - repo: coilysiren/website
         loc: 518
         commits: 3
-      - repo: coilysiren/galaxy-gen
-        loc: 518
-        commits: 2
       - repo: coilysiren/eco-mods-public
         loc: 518
         commits: 2
@@ -1099,24 +1077,64 @@ days:
         loc: 62
         commits: 2
   - date: '2026-05-17'
-    totalLoc: 468
-    totalCommits: 9
+    totalLoc: 8206
+    totalCommits: 23
     topCommit:
-      sha: 2ea1fa1cd241cb58d73b1fe74445894d66c97fb3
-      repo: coilysiren/agentic-os
-      message: 'brew: catalog modern CLI tools and dev-tool casks, closes #58'
-      url: https://github.com/coilysiren/agentic-os/commit/2ea1fa1cd241cb58d73b1fe74445894d66c97fb3
-      loc: 205
+      sha: e630ab3bedec6a0cd3cdcf12d44a0c162864fa1b
+      repo: coilysiren/repo-recall
+      message: strip HTML UI tier, JSON + MCP only
+      url: https://github.com/coilysiren/repo-recall/commit/e630ab3bedec6a0cd3cdcf12d44a0c162864fa1b
+      loc: 3550
     segments:
-      - repo: coilysiren/agentic-os
-        loc: 400
-        commits: 6
+      - repo: coilysiren/repo-recall
+        loc: 7014
+        commits: 4
       - repo: coilysiren/infrastructure
-        loc: 62
-        commits: 2
+        loc: 577
+        commits: 3
+      - repo: coilysiren/agentic-os
+        loc: 496
+        commits: 9
+      - repo: coilysiren/coily
+        loc: 98
+        commits: 5
+      - repo: coilysiren/personal-dashboard
+        loc: 15
+        commits: 1
       - repo: coilysiren/session-lattice
         loc: 6
         commits: 1
+  - date: '2026-05-18'
+    totalLoc: 4814
+    totalCommits: 22
+    topCommit:
+      sha: 672bbeed72bc5d8c14df923caa502632d69f8bb2
+      repo: coilysiren/coily
+      message: 'skills: delete 42 old coily-* dirs, keep coily-meta + coily-passthroughs, closes #236'
+      url: https://github.com/coilysiren/coily/commit/672bbeed72bc5d8c14df923caa502632d69f8bb2
+      loc: 1531
+    segments:
+      - repo: coilysiren/coily
+        loc: 3124
+        commits: 9
+      - repo: coilysiren/infrastructure
+        loc: 1512
+        commits: 4
+      - repo: coilysiren/cli-guard
+        loc: 93
+        commits: 1
+      - repo: coilysiren/galaxy-gen
+        loc: 40
+        commits: 2
+      - repo: coilysiren/agentic-os
+        loc: 22
+        commits: 3
+      - repo: coilysiren/homebrew-tap
+        loc: 14
+        commits: 1
+      - repo: coilysiren/repo-recall
+        loc: 9
+        commits: 2
 outlier:
   date: '2026-04-28'
   loc: 347537
