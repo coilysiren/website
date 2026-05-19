@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-18T11:23:18.164Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26030373995
+refreshedAt: '2026-05-19T11:07:30.474Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26093209614
 windowDays: 30
 repos:
   coilysiren/agent-guard:
@@ -72,8 +72,8 @@ repos:
     language: null
     color: '#888888'
   coilysiren/session-lattice:
-    language: Makefile
-    color: '#427819'
+    language: Python
+    color: '#3572A5'
   coilysiren/sirens-discord-ops:
     language: Go
     color: '#00ADD8'
@@ -81,22 +81,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-19'
-    totalLoc: 533
-    totalCommits: 9
-    topCommit:
-      sha: aa9b439c5ad16264700e77872af01d497702e5a5
-      repo: coilysiren/eco-cycle-prep
-      message: 'feat(discord): centralize one-off Discord posting via inv tasks'
-      url: https://github.com/coilysiren/eco-cycle-prep/commit/aa9b439c5ad16264700e77872af01d497702e5a5
-      loc: 187
-    segments:
-      - repo: coilysiren/eco-cycle-prep
-        loc: 378
-        commits: 5
-      - repo: coilysiren/eco-mods-public
-        loc: 155
-        commits: 4
   - date: '2026-04-20'
     totalLoc: 3
     totalCommits: 2
@@ -597,10 +581,10 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 519
         commits: 3
-      - repo: coilysiren/galaxy-gen
+      - repo: coilysiren/infrastructure
         loc: 518
         commits: 2
-      - repo: coilysiren/infrastructure
+      - repo: coilysiren/galaxy-gen
         loc: 518
         commits: 2
       - repo: coilysiren/website
@@ -1105,8 +1089,8 @@ days:
         loc: 6
         commits: 1
   - date: '2026-05-18'
-    totalLoc: 4814
-    totalCommits: 22
+    totalLoc: 5146
+    totalCommits: 29
     topCommit:
       sha: 672bbeed72bc5d8c14df923caa502632d69f8bb2
       repo: coilysiren/coily
@@ -1118,14 +1102,14 @@ days:
         loc: 3124
         commits: 9
       - repo: coilysiren/infrastructure
-        loc: 1512
+        loc: 1727
+        commits: 9
+      - repo: coilysiren/galaxy-gen
+        loc: 157
         commits: 4
       - repo: coilysiren/cli-guard
         loc: 93
         commits: 1
-      - repo: coilysiren/galaxy-gen
-        loc: 40
-        commits: 2
       - repo: coilysiren/agentic-os
         loc: 22
         commits: 3
@@ -1134,6 +1118,40 @@ days:
         commits: 1
       - repo: coilysiren/repo-recall
         loc: 9
+        commits: 2
+  - date: '2026-05-19'
+    totalLoc: 5393
+    totalCommits: 49
+    topCommit:
+      sha: b38c749a8db08526c4de6abae63c9aa08062987b
+      repo: coilysiren/coily
+      message: 'feat!: subsume coily brew under coily pkg brew, expand scope coverage to all mutating verbs, closes #253'
+      url: https://github.com/coilysiren/coily/commit/b38c749a8db08526c4de6abae63c9aa08062987b
+      loc: 641
+    segments:
+      - repo: coilysiren/coily
+        loc: 2469
+        commits: 17
+      - repo: coilysiren/session-lattice
+        loc: 873
+        commits: 8
+      - repo: coilysiren/cli-guard
+        loc: 587
+        commits: 1
+      - repo: coilysiren/repo-recall
+        loc: 366
+        commits: 7
+      - repo: coilysiren/homebrew-tap
+        loc: 311
+        commits: 3
+      - repo: coilysiren/infrastructure
+        loc: 289
+        commits: 8
+      - repo: coilysiren/personal-dashboard
+        loc: 250
+        commits: 3
+      - repo: coilysiren/agent-guard
+        loc: 248
         commits: 2
 outlier:
   date: '2026-04-28'
