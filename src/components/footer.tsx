@@ -25,6 +25,10 @@ function Footer() {
           <a href={`${REPO_URL}/blob/main/${sourcePath}`}>View source on GitHub</a>
         </h4>
       )}
+      <h4>
+        OAuth app <code>coilysiren-personal-gmail</code>:{" "}
+        <a href="/coilysiren-personal-gmail-privacy/">privacy policy</a>
+      </h4>
     </footer>
   )
 }
