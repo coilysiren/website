@@ -1,11 +1,14 @@
-refreshedAt: '2026-05-19T11:07:30.474Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26093209614
+refreshedAt: '2026-05-22T11:04:53.428Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26284079321
 windowDays: 30
 repos:
   coilysiren/agent-guard:
     language: Go
     color: '#00ADD8'
   coilysiren/agentic-os:
+    language: Python
+    color: '#3572A5'
+  coilysiren/atmosphere:
     language: Python
     color: '#3572A5'
   coilysiren/backend:
@@ -62,6 +65,9 @@ repos:
   coilysiren/linuxbrew-operator:
     language: Go
     color: '#00ADD8'
+  coilysiren/lunch-money-k8s:
+    language: Python
+    color: '#3572A5'
   coilysiren/personal-dashboard:
     language: Go
     color: '#00ADD8'
@@ -77,41 +83,13 @@ repos:
   coilysiren/sirens-discord-ops:
     language: Go
     color: '#00ADD8'
+  coilysiren/voice-flow-learning-loop:
+    language: Python
+    color: '#3572A5'
   coilysiren/website:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-20'
-    totalLoc: 3
-    totalCommits: 2
-    topCommit:
-      sha: f3a3793c9f7137e40273a0077cdad7079ae368f2
-      repo: coilysiren/website
-      message: Update cool-people.md
-      url: https://github.com/coilysiren/website/commit/f3a3793c9f7137e40273a0077cdad7079ae368f2
-      loc: 2
-    segments:
-      - repo: coilysiren/website
-        loc: 3
-        commits: 2
-  - date: '2026-04-21'
-    totalLoc: 745
-    totalCommits: 1
-    topCommit:
-      sha: 846336ce58db207ef43916688fdec76bc23db954
-      repo: coilysiren/infrastructure
-      message: 'docs: k3s-deploy-notes — the comprehensive homelab deploy writeup'
-      url: https://github.com/coilysiren/infrastructure/commit/846336ce58db207ef43916688fdec76bc23db954
-      loc: 745
-    segments:
-      - repo: coilysiren/infrastructure
-        loc: 745
-        commits: 1
-  - date: '2026-04-22'
-    totalLoc: 0
-    totalCommits: 0
-    topCommit: null
-    segments: []
   - date: '2026-04-23'
     totalLoc: 12
     totalCommits: 1
@@ -222,16 +200,16 @@ days:
       - repo: coilysiren/eco-jobs-tracker
         loc: 207
         commits: 1
-      - repo: coilysiren/gauntlet
-        loc: 191
-        commits: 1
-      - repo: coilysiren/eco-telemetry
+      - repo: coilysiren/backend
         loc: 191
         commits: 1
       - repo: coilysiren/eco-cycle-prep
         loc: 191
         commits: 1
-      - repo: coilysiren/backend
+      - repo: coilysiren/gauntlet
+        loc: 191
+        commits: 1
+      - repo: coilysiren/eco-telemetry
         loc: 191
         commits: 1
   - date: '2026-04-28'
@@ -262,10 +240,10 @@ days:
       - repo: coilysiren/homebrew-tap
         loc: 411
         commits: 13
-      - repo: coilysiren/eco-jobs-tracker
+      - repo: coilysiren/backend
         loc: 401
         commits: 3
-      - repo: coilysiren/backend
+      - repo: coilysiren/eco-jobs-tracker
         loc: 401
         commits: 3
       - repo: coilysiren/gauntlet
@@ -305,10 +283,22 @@ days:
       - repo: coilysiren/website
         loc: 57
         commits: 1
-      - repo: coilysiren/homebrew-tap
+      - repo: coilysiren/backend
         loc: 11
         commits: 1
       - repo: coilysiren/galaxy-gen
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-cycle-prep
+        loc: 11
+        commits: 1
+      - repo: coilysiren/homebrew-tap
         loc: 11
         commits: 1
       - repo: coilysiren/gauntlet
@@ -318,18 +308,6 @@ days:
         loc: 11
         commits: 1
       - repo: coilysiren/eco-mods-public
-        loc: 11
-        commits: 1
-      - repo: coilysiren/eco-mcp-app
-        loc: 11
-        commits: 1
-      - repo: coilysiren/eco-jobs-tracker
-        loc: 11
-        commits: 1
-      - repo: coilysiren/eco-cycle-prep
-        loc: 11
-        commits: 1
-      - repo: coilysiren/backend
         loc: 11
         commits: 1
   - date: '2026-04-30'
@@ -419,16 +397,16 @@ days:
       - repo: coilysiren/repo-recall
         loc: 36
         commits: 1
-      - repo: coilysiren/gauntlet
-        loc: 34
-        commits: 1
-      - repo: coilysiren/eco-telemetry
+      - repo: coilysiren/backend
         loc: 34
         commits: 1
       - repo: coilysiren/eco-cycle-prep
         loc: 34
         commits: 1
-      - repo: coilysiren/backend
+      - repo: coilysiren/gauntlet
+        loc: 34
+        commits: 1
+      - repo: coilysiren/eco-telemetry
         loc: 34
         commits: 1
   - date: '2026-05-03'
@@ -590,22 +568,22 @@ days:
       - repo: coilysiren/website
         loc: 518
         commits: 3
-      - repo: coilysiren/eco-mods-public
-        loc: 518
-        commits: 2
       - repo: coilysiren/eco-cycle-prep
         loc: 518
         commits: 2
-      - repo: coilysiren/gauntlet
-        loc: 516
+      - repo: coilysiren/eco-mods-public
+        loc: 518
         commits: 2
-      - repo: coilysiren/eco-mcp-app
+      - repo: coilysiren/backend
         loc: 516
         commits: 2
       - repo: coilysiren/eco-jobs-tracker
         loc: 516
         commits: 2
-      - repo: coilysiren/backend
+      - repo: coilysiren/eco-mcp-app
+        loc: 516
+        commits: 2
+      - repo: coilysiren/gauntlet
         loc: 516
         commits: 2
   - date: '2026-05-09'
@@ -793,16 +771,16 @@ days:
       - repo: coilysiren/infrastructure
         loc: 1215
         commits: 12
-      - repo: coilysiren/galaxy-gen
+      - repo: coilysiren/backend
         loc: 2
         commits: 1
-      - repo: coilysiren/eco-mcp-app
+      - repo: coilysiren/galaxy-gen
         loc: 2
         commits: 1
       - repo: coilysiren/eco-jobs-tracker
         loc: 2
         commits: 1
-      - repo: coilysiren/backend
+      - repo: coilysiren/eco-mcp-app
         loc: 2
         commits: 1
   - date: '2026-05-14'
@@ -863,21 +841,21 @@ days:
       - repo: coilysiren/website
         loc: 382
         commits: 9
-      - repo: coilysiren/cli-web-ops
+      - repo: coilysiren/cli-web-docs
         loc: 324
         commits: 7
-      - repo: coilysiren/cli-web-docs
+      - repo: coilysiren/cli-web-ops
         loc: 324
         commits: 7
       - repo: coilysiren/eco-telemetry
         loc: 295
         commits: 7
-      - repo: coilysiren/sirens-discord-ops
-        loc: 294
-        commits: 7
       - repo: coilysiren/eco-cycle-prep
         loc: 294
         commits: 8
+      - repo: coilysiren/sirens-discord-ops
+        loc: 294
+        commits: 7
       - repo: coilysiren/galaxy-gen
         loc: 293
         commits: 9
@@ -942,11 +920,17 @@ days:
       - repo: coilysiren/gauntlet
         loc: 32
         commits: 1
+      - repo: coilysiren/backend
+        loc: 30
+        commits: 1
       - repo: coilysiren/eco-cycle-prep
         loc: 30
         commits: 1
-      - repo: coilysiren/backend
-        loc: 30
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 28
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 28
         commits: 1
       - repo: coilysiren/eco-telemetry
         loc: 28
@@ -954,19 +938,13 @@ days:
       - repo: coilysiren/eco-mods-public
         loc: 28
         commits: 1
-      - repo: coilysiren/eco-mcp-app
-        loc: 28
-        commits: 1
-      - repo: coilysiren/eco-jobs-tracker
-        loc: 28
-        commits: 1
       - repo: coilysiren/coilysiren
         loc: 26
         commits: 1
-      - repo: coilysiren/cli-web-ops
+      - repo: coilysiren/cli-web-docs
         loc: 18
         commits: 1
-      - repo: coilysiren/cli-web-docs
+      - repo: coilysiren/cli-web-ops
         loc: 18
         commits: 1
       - repo: coilysiren/cli-mcp-go-ecosystem
@@ -1042,10 +1020,10 @@ days:
       - repo: coilysiren/cli-guard
         loc: 293
         commits: 4
-      - repo: coilysiren/cli-web-ops
+      - repo: coilysiren/cli-web-docs
         loc: 289
         commits: 3
-      - repo: coilysiren/cli-web-docs
+      - repo: coilysiren/cli-web-ops
         loc: 289
         commits: 3
       - repo: coilysiren/personal-dashboard
@@ -1120,8 +1098,8 @@ days:
         loc: 9
         commits: 2
   - date: '2026-05-19'
-    totalLoc: 5393
-    totalCommits: 49
+    totalLoc: 5582
+    totalCommits: 59
     topCommit:
       sha: b38c749a8db08526c4de6abae63c9aa08062987b
       repo: coilysiren/coily
@@ -1130,8 +1108,8 @@ days:
       loc: 641
     segments:
       - repo: coilysiren/coily
-        loc: 2469
-        commits: 17
+        loc: 2586
+        commits: 21
       - repo: coilysiren/session-lattice
         loc: 873
         commits: 8
@@ -1139,20 +1117,143 @@ days:
         loc: 587
         commits: 1
       - repo: coilysiren/repo-recall
-        loc: 366
-        commits: 7
+        loc: 373
+        commits: 8
       - repo: coilysiren/homebrew-tap
         loc: 311
         commits: 3
       - repo: coilysiren/infrastructure
-        loc: 289
-        commits: 8
+        loc: 291
+        commits: 9
       - repo: coilysiren/personal-dashboard
         loc: 250
         commits: 3
       - repo: coilysiren/agent-guard
         loc: 248
         commits: 2
+      - repo: coilysiren/agentic-os
+        loc: 63
+        commits: 4
+  - date: '2026-05-20'
+    totalLoc: 13729
+    totalCommits: 103
+    topCommit:
+      sha: cb70c07fc64f6745c1912e33027de844c6d2784e
+      repo: coilysiren/repo-recall
+      message: 'refactor!: retire autonomous-dispatch surface, move to LUCA, closes #223'
+      url: https://github.com/coilysiren/repo-recall/commit/cb70c07fc64f6745c1912e33027de844c6d2784e
+      loc: 2950
+    segments:
+      - repo: coilysiren/repo-recall
+        loc: 3747
+        commits: 5
+      - repo: coilysiren/coily
+        loc: 2929
+        commits: 22
+      - repo: coilysiren/cli-guard
+        loc: 2126
+        commits: 7
+      - repo: coilysiren/agentic-os
+        loc: 1451
+        commits: 27
+      - repo: coilysiren/session-lattice
+        loc: 1249
+        commits: 13
+      - repo: coilysiren/voice-flow-learning-loop
+        loc: 979
+        commits: 7
+      - repo: coilysiren/infrastructure
+        loc: 781
+        commits: 14
+      - repo: coilysiren/galaxy-gen
+        loc: 113
+        commits: 1
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 104
+        commits: 1
+      - repo: coilysiren/eco-mcp-app
+        loc: 104
+        commits: 1
+      - repo: coilysiren/backend
+        loc: 99
+        commits: 1
+      - repo: coilysiren/website
+        loc: 46
+        commits: 3
+      - repo: coilysiren/agent-guard
+        loc: 1
+        commits: 1
+  - date: '2026-05-21'
+    totalLoc: 43994
+    totalCommits: 67
+    topCommit:
+      sha: 2c08151ab4e9704988ab6ce45d86d0bce94ef851
+      repo: coilysiren/backend
+      message: 'feat(datastore): ambient personal CRUD store, retire dead bsky/data-science code (#66)'
+      url: https://github.com/coilysiren/backend/commit/2c08151ab4e9704988ab6ce45d86d0bce94ef851
+      loc: 22079
+    segments:
+      - repo: coilysiren/backend
+        loc: 23673
+        commits: 7
+      - repo: coilysiren/coily
+        loc: 6823
+        commits: 15
+      - repo: coilysiren/infrastructure
+        loc: 4507
+        commits: 18
+      - repo: coilysiren/repo-recall
+        loc: 3144
+        commits: 11
+      - repo: coilysiren/cli-guard
+        loc: 2991
+        commits: 3
+      - repo: coilysiren/atmosphere
+        loc: 1767
+        commits: 5
+      - repo: coilysiren/agentic-os
+        loc: 1056
+        commits: 7
+      - repo: coilysiren/personal-dashboard
+        loc: 33
+        commits: 1
+  - date: '2026-05-22'
+    totalLoc: 6354
+    totalCommits: 39
+    topCommit:
+      sha: 7b699243a43be34d34339fe5c3dded16a10ea354
+      repo: coilysiren/lunch-money-k8s
+      message: Bootstrap the containerized, Helm-deployable MCP server
+      url: https://github.com/coilysiren/lunch-money-k8s/commit/7b699243a43be34d34339fe5c3dded16a10ea354
+      loc: 2248
+    segments:
+      - repo: coilysiren/lunch-money-k8s
+        loc: 3639
+        commits: 10
+      - repo: coilysiren/agentic-os
+        loc: 1139
+        commits: 6
+      - repo: coilysiren/backend
+        loc: 642
+        commits: 4
+      - repo: coilysiren/coily
+        loc: 468
+        commits: 5
+      - repo: coilysiren/infrastructure
+        loc: 428
+        commits: 10
+      - repo: coilysiren/galaxy-gen
+        loc: 26
+        commits: 1
+      - repo: coilysiren/repo-recall
+        loc: 6
+        commits: 1
+      - repo: coilysiren/voice-flow-learning-loop
+        loc: 6
+        commits: 1
+      - repo: coilysiren/atmosphere
+        loc: 0
+        commits: 1
 outlier:
   date: '2026-04-28'
   loc: 347537
