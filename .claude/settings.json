@@ -16,6 +16,7 @@
     "allow": [
       "Bash(cat:*)",
       "Bash(coily ops flyctl:*)",
+      "Bash(coily ops gcloud:*)",
       "Bash(coily:*)",
       "Bash(file:*)",
       "Bash(find:*)",
