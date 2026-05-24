@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-23T10:33:51.222Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26330438533
+refreshedAt: '2026-05-24T10:36:23.005Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26358908406
 windowDays: 30
 repos:
   coilysiren/agent-guard:
@@ -93,31 +93,6 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-24'
-    totalLoc: 37499
-    totalCommits: 34
-    topCommit:
-      sha: 46abbc5b6c5238bfbbff9c81c22b331722c24457
-      repo: coilysiren/coily
-      message: Remove confirmation-token system entirely
-      url: https://github.com/coilysiren/coily/commit/46abbc5b6c5238bfbbff9c81c22b331722c24457
-      loc: 16682
-    segments:
-      - repo: coilysiren/coily
-        loc: 28507
-        commits: 14
-      - repo: coilysiren/repo-recall
-        loc: 8018
-        commits: 3
-      - repo: coilysiren/eco-cycle-prep
-        loc: 498
-        commits: 4
-      - repo: coilysiren/infrastructure
-        loc: 255
-        commits: 5
-      - repo: coilysiren/eco-jobs-tracker
-        loc: 221
-        commits: 8
   - date: '2026-04-25'
     totalLoc: 8
     totalCommits: 2
@@ -190,10 +165,10 @@ days:
       - repo: coilysiren/eco-jobs-tracker
         loc: 207
         commits: 1
-      - repo: coilysiren/eco-telemetry
+      - repo: coilysiren/gauntlet
         loc: 191
         commits: 1
-      - repo: coilysiren/gauntlet
+      - repo: coilysiren/eco-telemetry
         loc: 191
         commits: 1
       - repo: coilysiren/eco-cycle-prep
@@ -273,9 +248,6 @@ days:
       - repo: coilysiren/website
         loc: 57
         commits: 1
-      - repo: coilysiren/eco-telemetry
-        loc: 11
-        commits: 1
       - repo: coilysiren/homebrew-tap
         loc: 11
         commits: 1
@@ -283,6 +255,9 @@ days:
         loc: 11
         commits: 1
       - repo: coilysiren/galaxy-gen
+        loc: 11
+        commits: 1
+      - repo: coilysiren/eco-telemetry
         loc: 11
         commits: 1
       - repo: coilysiren/eco-mods-public
@@ -322,10 +297,10 @@ days:
       - repo: coilysiren/backend
         loc: 6
         commits: 1
-      - repo: coilysiren/eco-telemetry
+      - repo: coilysiren/gauntlet
         loc: 2
         commits: 1
-      - repo: coilysiren/gauntlet
+      - repo: coilysiren/eco-telemetry
         loc: 2
         commits: 1
   - date: '2026-05-01'
@@ -387,10 +362,10 @@ days:
       - repo: coilysiren/repo-recall
         loc: 36
         commits: 1
-      - repo: coilysiren/eco-telemetry
+      - repo: coilysiren/gauntlet
         loc: 34
         commits: 1
-      - repo: coilysiren/gauntlet
+      - repo: coilysiren/eco-telemetry
         loc: 34
         commits: 1
       - repo: coilysiren/eco-cycle-prep
@@ -558,6 +533,9 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 519
         commits: 3
+      - repo: coilysiren/website
+        loc: 518
+        commits: 3
       - repo: coilysiren/infrastructure
         loc: 518
         commits: 2
@@ -570,9 +548,6 @@ days:
       - repo: coilysiren/eco-cycle-prep
         loc: 518
         commits: 2
-      - repo: coilysiren/website
-        loc: 518
-        commits: 3
       - repo: coilysiren/gauntlet
         loc: 516
         commits: 2
@@ -1259,10 +1234,10 @@ days:
       - repo: coilysiren/galaxy-gen
         loc: 26
         commits: 1
-      - repo: coilysiren/voice-flow-learning-loop
+      - repo: coilysiren/repo-recall
         loc: 6
         commits: 1
-      - repo: coilysiren/repo-recall
+      - repo: coilysiren/voice-flow-learning-loop
         loc: 6
         commits: 1
       - repo: coilysiren/personal-dashboard
@@ -1272,8 +1247,8 @@ days:
         loc: 0
         commits: 1
   - date: '2026-05-23'
-    totalLoc: 7930
-    totalCommits: 56
+    totalLoc: 8560
+    totalCommits: 82
     topCommit:
       sha: 8e193bed6c8d4e3b4096d512093d834ab802be68
       repo: coilysiren/otel-a2a-relay
@@ -1282,71 +1257,91 @@ days:
       loc: 1090
     segments:
       - repo: coilysiren/coily
-        loc: 2128
-        commits: 13
+        loc: 2146
+        commits: 14
+      - repo: coilysiren/infrastructure
+        loc: 1224
+        commits: 8
       - repo: coilysiren/otel-a2a-relay
         loc: 1221
         commits: 3
-      - repo: coilysiren/infrastructure
-        loc: 1214
-        commits: 7
       - repo: coilysiren/cli-guard
-        loc: 1192
-        commits: 7
-      - repo: coilysiren/agentic-os
-        loc: 850
+        loc: 1206
         commits: 8
+      - repo: coilysiren/agentic-os
+        loc: 898
+        commits: 11
       - repo: coilysiren/backend
-        loc: 595
-        commits: 1
+        loc: 611
+        commits: 2
       - repo: coilysiren/cli-web-ops
-        loc: 107
-        commits: 1
+        loc: 122
+        commits: 2
       - repo: coilysiren/cli-web-docs
-        loc: 107
-        commits: 1
-      - repo: coilysiren/cli-mcp-go-ecosystem
-        loc: 107
-        commits: 1
+        loc: 122
+        commits: 2
       - repo: coilysiren/cli-mcp
+        loc: 122
+        commits: 2
+      - repo: coilysiren/cli-mcp-go-ecosystem
+        loc: 121
+        commits: 2
+      - repo: coilysiren/linuxbrew-operator
+        loc: 115
+        commits: 1
+      - repo: coilysiren/agent-guard
+        loc: 111
+        commits: 1
+      - repo: coilysiren/session-lattice
         loc: 107
         commits: 1
       - repo: coilysiren/voice-flow-learning-loop
         loc: 107
         commits: 1
+      - repo: coilysiren/eco-telemetry
+        loc: 28
+        commits: 2
+      - repo: coilysiren/sirens-discord-ops
+        loc: 27
+        commits: 2
+      - repo: coilysiren/homebrew-tap
+        loc: 27
+        commits: 2
+      - repo: coilysiren/gauntlet
+        loc: 27
+        commits: 2
+      - repo: coilysiren/eco-mods-public
+        loc: 27
+        commits: 2
+      - repo: coilysiren/eco-mcp-app
+        loc: 27
+        commits: 2
+      - repo: coilysiren/eco-jobs-tracker
+        loc: 27
+        commits: 2
+      - repo: coilysiren/eco-cycle-prep
+        loc: 27
+        commits: 2
+      - repo: coilysiren/coilysiren
+        loc: 27
+        commits: 2
+      - repo: coilysiren/galaxy-gen
+        loc: 24
+        commits: 2
+      - repo: coilysiren/website
+        loc: 21
+        commits: 1
       - repo: coilysiren/scoop-bucket
         loc: 20
         commits: 2
-      - repo: coilysiren/eco-telemetry
-        loc: 20
+      - repo: coilysiren/repo-recall
+        loc: 18
         commits: 1
-      - repo: coilysiren/sirens-discord-ops
-        loc: 19
-        commits: 1
-      - repo: coilysiren/homebrew-tap
-        loc: 17
-        commits: 1
-      - repo: coilysiren/gauntlet
-        loc: 17
-        commits: 1
-      - repo: coilysiren/galaxy-gen
-        loc: 17
-        commits: 1
-      - repo: coilysiren/eco-mods-public
-        loc: 17
-        commits: 1
-      - repo: coilysiren/eco-mcp-app
-        loc: 17
-        commits: 1
-      - repo: coilysiren/eco-jobs-tracker
-        loc: 17
-        commits: 1
-      - repo: coilysiren/eco-cycle-prep
-        loc: 17
-        commits: 1
-      - repo: coilysiren/coilysiren
-        loc: 17
-        commits: 1
+  - date: '2026-05-24'
+    totalLoc: 0
+    totalCommits: 0
+    topCommit: null
+    segments: []
 outlier:
   date: '2026-04-28'
   loc: 347537
