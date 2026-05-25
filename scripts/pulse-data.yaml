@@ -1,5 +1,5 @@
-refreshedAt: '2026-05-24T10:36:23.005Z'
-workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26358908406
+refreshedAt: '2026-05-25T11:26:00.670Z'
+workflowRunUrl: https://github.com/coilysiren/website/actions/runs/26397998569
 windowDays: 30
 repos:
   coilysiren/agent-guard:
@@ -56,9 +56,6 @@ repos:
   coilysiren/gauntlet:
     language: Python
     color: '#3572A5'
-  coilysiren/homebrew-tap:
-    language: Ruby
-    color: '#701516'
   coilysiren/infrastructure:
     language: Shell
     color: '#89e051'
@@ -93,22 +90,9 @@ repos:
     language: TypeScript
     color: '#3178c6'
 days:
-  - date: '2026-04-25'
-    totalLoc: 8
-    totalCommits: 2
-    topCommit:
-      sha: bdffd53dc6c4a11157ca9e67c1b0b45e4c9783c5
-      repo: coilysiren/gauntlet
-      message: 'skills/gauntlet: auto-fix high risk in auto mode'
-      url: https://github.com/coilysiren/gauntlet/commit/bdffd53dc6c4a11157ca9e67c1b0b45e4c9783c5
-      loc: 4
-    segments:
-      - repo: coilysiren/gauntlet
-        loc: 8
-        commits: 2
   - date: '2026-04-26'
-    totalLoc: 22415
-    totalCommits: 23
+    totalLoc: 22254
+    totalCommits: 21
     topCommit:
       sha: 01fab0e5080c56f983c3a46fab68207a24ac15eb
       repo: coilysiren/coily
@@ -122,9 +106,6 @@ days:
       - repo: coilysiren/repo-recall
         loc: 1466
         commits: 9
-      - repo: coilysiren/homebrew-tap
-        loc: 161
-        commits: 2
       - repo: coilysiren/backend
         loc: 132
         commits: 1
@@ -132,8 +113,8 @@ days:
         loc: 58
         commits: 2
   - date: '2026-04-27'
-    totalLoc: 5938
-    totalCommits: 68
+    totalLoc: 5519
+    totalCommits: 57
     topCommit:
       sha: 78582aa7000fa5c8ea3171ae98584efb9032f6c7
       repo: coilysiren/website
@@ -153,9 +134,6 @@ days:
       - repo: coilysiren/infrastructure
         loc: 445
         commits: 6
-      - repo: coilysiren/homebrew-tap
-        loc: 419
-        commits: 11
       - repo: coilysiren/coilysiren
         loc: 214
         commits: 9
@@ -178,8 +156,8 @@ days:
         loc: 191
         commits: 1
   - date: '2026-04-28'
-    totalLoc: 347537
-    totalCommits: 130
+    totalLoc: 347126
+    totalCommits: 117
     topCommit:
       sha: 9b6fb1e218535d2c4e61679220d559dcca1d3bcc
       repo: coilysiren/coily
@@ -202,9 +180,6 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 892
         commits: 14
-      - repo: coilysiren/homebrew-tap
-        loc: 411
-        commits: 13
       - repo: coilysiren/eco-jobs-tracker
         loc: 401
         commits: 3
@@ -227,8 +202,8 @@ days:
         loc: 7
         commits: 2
   - date: '2026-04-29'
-    totalLoc: 20389
-    totalCommits: 22
+    totalLoc: 20378
+    totalCommits: 21
     topCommit:
       sha: baf690210ab4b0ae6de55728a05f52bce79d7b8a
       repo: coilysiren/repo-recall
@@ -247,9 +222,6 @@ days:
         commits: 2
       - repo: coilysiren/website
         loc: 57
-        commits: 1
-      - repo: coilysiren/homebrew-tap
-        loc: 11
         commits: 1
       - repo: coilysiren/gauntlet
         loc: 11
@@ -304,8 +276,8 @@ days:
         loc: 2
         commits: 1
   - date: '2026-05-01'
-    totalLoc: 2431
-    totalCommits: 21
+    totalLoc: 2422
+    totalCommits: 20
     topCommit:
       sha: e449ab257a1e3830c807cd458d4b28a97548e561
       repo: coilysiren/coily
@@ -328,12 +300,9 @@ days:
       - repo: coilysiren/repo-recall
         loc: 74
         commits: 1
-      - repo: coilysiren/homebrew-tap
-        loc: 9
-        commits: 1
   - date: '2026-05-02'
-    totalLoc: 2692
-    totalCommits: 24
+    totalLoc: 2596
+    totalCommits: 22
     topCommit:
       sha: 03c2161917eb8b93218c2deb4fe0e1d8e017d2f5
       repo: coilysiren/eco-mcp-app
@@ -352,9 +321,6 @@ days:
         commits: 4
       - repo: coilysiren/website
         loc: 385
-        commits: 2
-      - repo: coilysiren/homebrew-tap
-        loc: 96
         commits: 2
       - repo: coilysiren/eco-jobs-tracker
         loc: 50
@@ -397,8 +363,8 @@ days:
         loc: 19
         commits: 2
   - date: '2026-05-04'
-    totalLoc: 5265
-    totalCommits: 24
+    totalLoc: 5190
+    totalCommits: 23
     topCommit:
       sha: 40c6fc6ae737f6103681cda6dbc302cf297ed280
       repo: coilysiren/galaxy-gen
@@ -427,9 +393,6 @@ days:
       - repo: coilysiren/repo-recall
         loc: 151
         commits: 2
-      - repo: coilysiren/homebrew-tap
-        loc: 75
-        commits: 1
       - repo: coilysiren/backend
         loc: 20
         commits: 1
@@ -456,8 +419,8 @@ days:
         loc: 207
         commits: 4
   - date: '2026-05-06'
-    totalLoc: 14054
-    totalCommits: 32
+    totalLoc: 13973
+    totalCommits: 29
     topCommit:
       sha: 3974e54c3301b4c0bb949423fd127d0aa1504750
       repo: coilysiren/otel-a2a-relay
@@ -468,9 +431,6 @@ days:
       - repo: coilysiren/otel-a2a-relay
         loc: 13973
         commits: 29
-      - repo: coilysiren/homebrew-tap
-        loc: 81
-        commits: 3
   - date: '2026-05-07'
     totalLoc: 15049
     totalCommits: 56
@@ -503,8 +463,8 @@ days:
         loc: 1
         commits: 1
   - date: '2026-05-08'
-    totalLoc: 51266
-    totalCommits: 80
+    totalLoc: 50690
+    totalCommits: 75
     topCommit:
       sha: 0cb87a8e314998cb08c3b9a92cab8fa070eac075
       repo: coilysiren/coily
@@ -521,9 +481,6 @@ days:
       - repo: coilysiren/repo-recall
         loc: 2066
         commits: 10
-      - repo: coilysiren/homebrew-tap
-        loc: 576
-        commits: 5
       - repo: coilysiren/coilysiren
         loc: 522
         commits: 3
@@ -533,12 +490,12 @@ days:
       - repo: coilysiren/eco-telemetry
         loc: 519
         commits: 3
-      - repo: coilysiren/website
-        loc: 518
-        commits: 3
       - repo: coilysiren/infrastructure
         loc: 518
         commits: 2
+      - repo: coilysiren/website
+        loc: 518
+        commits: 3
       - repo: coilysiren/galaxy-gen
         loc: 518
         commits: 2
@@ -561,8 +518,8 @@ days:
         loc: 516
         commits: 2
   - date: '2026-05-09'
-    totalLoc: 5063
-    totalCommits: 48
+    totalLoc: 5044
+    totalCommits: 47
     topCommit:
       sha: cd7facd65f616a629b7d0c48cfb77f048e0848ab
       repo: coilysiren/coily
@@ -612,9 +569,6 @@ days:
       - repo: coilysiren/website
         loc: 56
         commits: 2
-      - repo: coilysiren/homebrew-tap
-        loc: 19
-        commits: 1
       - repo: coilysiren/coilysiren
         loc: 16
         commits: 1
@@ -663,8 +617,8 @@ days:
         loc: 174
         commits: 1
   - date: '2026-05-12'
-    totalLoc: 8318
-    totalCommits: 110
+    totalLoc: 8213
+    totalCommits: 106
     topCommit:
       sha: ffcc0dbc634d5e1d1669bdde61068a4a7a490d36
       repo: coilysiren/infrastructure
@@ -704,9 +658,6 @@ days:
         commits: 4
       - repo: coilysiren/eco-jobs-tracker
         loc: 115
-        commits: 4
-      - repo: coilysiren/homebrew-tap
-        loc: 105
         commits: 4
       - repo: coilysiren/galaxy-gen
         loc: 92
@@ -770,8 +721,8 @@ days:
         loc: 2
         commits: 1
   - date: '2026-05-14'
-    totalLoc: 62404
-    totalCommits: 331
+    totalLoc: 61854
+    totalCommits: 319
     topCommit:
       sha: cf1fa6df5da2f0286a873160c5ddcae3737f00a8
       repo: coilysiren/personal-dashboard
@@ -818,9 +769,6 @@ days:
       - repo: coilysiren/session-lattice
         loc: 574
         commits: 6
-      - repo: coilysiren/homebrew-tap
-        loc: 550
-        commits: 12
       - repo: coilysiren/eco-jobs-tracker
         loc: 455
         commits: 10
@@ -855,8 +803,8 @@ days:
         loc: 290
         commits: 8
   - date: '2026-05-15'
-    totalLoc: 31156
-    totalCommits: 107
+    totalLoc: 30957
+    totalCommits: 102
     topCommit:
       sha: 62b91e816cda32a02ccd8fe7d901149e8fefe266
       repo: coilysiren/agentic-os
@@ -882,9 +830,6 @@ days:
       - repo: coilysiren/galaxy-gen
         loc: 918
         commits: 2
-      - repo: coilysiren/homebrew-tap
-        loc: 199
-        commits: 5
       - repo: coilysiren/sirens-discord-ops
         loc: 130
         commits: 2
@@ -943,8 +888,8 @@ days:
         loc: 18
         commits: 1
   - date: '2026-05-16'
-    totalLoc: 17538
-    totalCommits: 126
+    totalLoc: 16982
+    totalCommits: 121
     topCommit:
       sha: 395987d125ae00af8ff749b8c9c9e7340eb8d096
       repo: coilysiren/galaxy-gen
@@ -993,9 +938,6 @@ days:
         commits: 6
       - repo: coilysiren/eco-telemetry
         loc: 569
-        commits: 5
-      - repo: coilysiren/homebrew-tap
-        loc: 556
         commits: 5
       - repo: coilysiren/website
         loc: 555
@@ -1056,8 +998,8 @@ days:
         loc: 6
         commits: 1
   - date: '2026-05-18'
-    totalLoc: 5146
-    totalCommits: 29
+    totalLoc: 5132
+    totalCommits: 28
     topCommit:
       sha: 672bbeed72bc5d8c14df923caa502632d69f8bb2
       repo: coilysiren/coily
@@ -1080,15 +1022,12 @@ days:
       - repo: coilysiren/agentic-os
         loc: 22
         commits: 3
-      - repo: coilysiren/homebrew-tap
-        loc: 14
-        commits: 1
       - repo: coilysiren/repo-recall
         loc: 9
         commits: 2
   - date: '2026-05-19'
-    totalLoc: 5582
-    totalCommits: 59
+    totalLoc: 5271
+    totalCommits: 56
     topCommit:
       sha: b38c749a8db08526c4de6abae63c9aa08062987b
       repo: coilysiren/coily
@@ -1108,9 +1047,6 @@ days:
       - repo: coilysiren/repo-recall
         loc: 373
         commits: 8
-      - repo: coilysiren/homebrew-tap
-        loc: 311
-        commits: 3
       - repo: coilysiren/infrastructure
         loc: 291
         commits: 9
@@ -1247,8 +1183,8 @@ days:
         loc: 0
         commits: 1
   - date: '2026-05-23'
-    totalLoc: 8560
-    totalCommits: 82
+    totalLoc: 8533
+    totalCommits: 80
     topCommit:
       sha: 8e193bed6c8d4e3b4096d512093d834ab802be68
       repo: coilysiren/otel-a2a-relay
@@ -1304,9 +1240,6 @@ days:
       - repo: coilysiren/sirens-discord-ops
         loc: 27
         commits: 2
-      - repo: coilysiren/homebrew-tap
-        loc: 27
-        commits: 2
       - repo: coilysiren/gauntlet
         loc: 27
         commits: 2
@@ -1342,10 +1275,44 @@ days:
     totalCommits: 0
     topCommit: null
     segments: []
+  - date: '2026-05-25'
+    totalLoc: 3971
+    totalCommits: 27
+    topCommit:
+      sha: 28c6a75eec4ea15c6cd3ffec89c3941458cdd7cb
+      repo: coilysiren/coily
+      message: 'feat(ops forgejo): add PR lifecycle verbs'
+      url: https://github.com/coilysiren/coily/commit/28c6a75eec4ea15c6cd3ffec89c3941458cdd7cb
+      loc: 565
+    segments:
+      - repo: coilysiren/coily
+        loc: 2871
+        commits: 9
+      - repo: coilysiren/infrastructure
+        loc: 440
+        commits: 7
+      - repo: coilysiren/agentic-os
+        loc: 396
+        commits: 5
+      - repo: coilysiren/scoop-bucket
+        loc: 121
+        commits: 1
+      - repo: coilysiren/lunch-money-k8s
+        loc: 64
+        commits: 1
+      - repo: coilysiren/repo-recall
+        loc: 47
+        commits: 2
+      - repo: coilysiren/session-lattice
+        loc: 20
+        commits: 1
+      - repo: coilysiren/agent-guard
+        loc: 12
+        commits: 1
 outlier:
   date: '2026-04-28'
-  loc: 347537
-  commits: 130
+  loc: 347126
+  commits: 117
   topCommit:
     sha: 9b6fb1e218535d2c4e61679220d559dcca1d3bcc
     repo: coilysiren/coily
