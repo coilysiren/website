@@ -1,0 +1,25 @@
+# Per-repo config for agentic-os pre-commit hooks. Schema:
+# https://forgejo.coilysiren.me/coilysiren/agentic-os/issues/38
+
+# Gatsby content lives under src/pages/. Long-form blog posts and the
+# resume routinely exceed the 80-line / 4000-char doc cap on purpose.
+# These are content, not docs.
+[documentation-layout]
+excludes = [
+  "src/pages/**",
+  ".github/ISSUE_TEMPLATE/**",
+  "drafts/**",
+]
+
+[catalog-doc-size]
+excludes = [
+  "src/pages/**",
+  ".github/ISSUE_TEMPLATE/**",
+  "drafts/**",
+]
+
+# Trifecta H2 conventions are tuned for code/library repos. This is a
+# personal website; AGENTS.md does not need Scope / Repo boundaries /
+# Validation / Safety / Cross-repo contracts / Release / Agent rules.
+[catalog-trifecta]
+enabled = false

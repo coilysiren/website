@@ -66,13 +66,6 @@ Under `.github/workflows/`:
 ## See also
 
 - [README.md](../README.md) - human-facing intro and local-dev quickstart.
-- [AGENTS.md](../AGENTS.md) - agent-facing operating rules (post-push CI verification cadence lives here).
-
-Cross-reference convention from [coilysiren/agentic-os-kai#313](https://github.com/coilysiren/agentic-os-kai/issues/313). The worked example is [luca/docs/FEATURES.md](https://github.com/coilysiren/luca/blob/main/docs/FEATURES.md).
-
-## See also
-
-- [README.md](../README.md) - human-facing intro.
 - [AGENTS.md](../AGENTS.md) - agent-facing operating rules.
 - [.coily/coily.yaml](../.coily/coily.yaml) - allowlisted commands.
 
