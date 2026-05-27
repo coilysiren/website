@@ -18,6 +18,7 @@ interface ContentBlockData {
       date?: string
       isoDate?: string
       template_key?: string
+      unlisted?: boolean
     }
   }
 }
@@ -66,14 +67,19 @@ export const Head = ({ data }: HeadProps<ContentBlockData>) => {
   const isPost = frontmatter.template_key === "blog-post"
 
   return (
-    <DefaultHead
-      title={frontmatter.title}
-      description={frontmatter.description}
-      image={ogImageForSlug(fields?.slug)}
-      type={isPost ? "article" : undefined}
-      publishedTime={isPost ? frontmatter.isoDate : undefined}
-      author={isPost ? "Kai Siren" : undefined}
-    />
+    <>
+      <DefaultHead
+        title={frontmatter.title}
+        description={frontmatter.description}
+        image={ogImageForSlug(fields?.slug)}
+        type={isPost ? "article" : undefined}
+        publishedTime={isPost ? frontmatter.isoDate : undefined}
+        author={isPost ? "Kai Siren" : undefined}
+      />
+      {frontmatter.unlisted && (
+        <meta name="robots" content="noindex, nofollow" />
+      )}
+    </>
   )
 }
 
@@ -91,6 +97,7 @@ export const pageQuery = graphql`
         title
         description
         template_key
+        unlisted
       }
     }
   }
