@@ -34,9 +34,7 @@ const Bsky = () => {
   const [done, setDone] = useState<boolean>(false)
   // END: GENERIC STATE
 
-  // START: APPLICATION STATE
-  // Reset all of this stuff whenever there is an error
-  // or whenever the user does something that implies a page refesh.
+  // START: APPLICATION STATE (reset on error or page refresh)
   const [suggestionsIndex, setSuggestionsIndex] = useState<number>(0)
   const [suggestionCounts, setSuggestionCounts] = useState<{
     [key: string]: number
@@ -56,9 +54,7 @@ const Bsky = () => {
   }
   // END: APPLICATION STATE
 
-  // START: UI STATE
-  // This is similar to the application state,
-  // different in that it doesn't need to be reset.
+  // START: UI STATE (like application state but never reset)
   const [handleState, setHandleState] = useState<string>("")
   if (
     searchParams.get("handle") != null &&
@@ -123,10 +119,7 @@ const Bsky = () => {
   const getSuggestionDetails = async () => {
     if (done) return
 
-    // Get a list of suggestions to detail via looking through the suggestion counts.
-    // Removing the list of handles that already have details.
-    // Sorting the list to get the people with the most followers first.
-    // Limit to the maximum number of suggestions to avoid too many requests.
+    // Sort by suggestion count, drop already-detailed, cap to avoid request flood.
     const suggestionsToDetail = Object.keys(suggestionCounts)
       .sort((a, b) => (suggestionCounts[b] ?? 0) - (suggestionCounts[a] ?? 0))
       .filter((suggestion) => (suggestionCounts[suggestion] ?? 0) > 1)

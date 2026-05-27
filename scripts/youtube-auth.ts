@@ -1,13 +1,3 @@
-// One-time OAuth setup for YouTube Data API.
-// Run with: pnpm youtube-auth
-//
-// Reads /youtube/client-id and /youtube/client-secret from AWS SSM, runs the
-// OAuth consent flow, and writes the minted refresh token back to SSM under
-// /youtube/refresh-token.
-//
-// Re-run only when the refresh token gets revoked (sign-out, client-secret
-// rotation, 6-month inactivity).
-
 import http from "node:http"
 import https from "node:https"
 import { execFileSync } from "node:child_process"

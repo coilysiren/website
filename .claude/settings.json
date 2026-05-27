@@ -49,6 +49,7 @@
       "Bash(cscript:*)",
       "Bash(dash:*)",
       "Bash(deno:*)",
+      "Bash(echo*$*)",
       "Bash(env:*)",
       "Bash(exec:*)",
       "Bash(fish:*)",
@@ -69,6 +70,7 @@
       "Bash(perl:*)",
       "Bash(powershell.exe:*)",
       "Bash(powershell:*)",
+      "Bash(printf*$*)",
       "Bash(pwsh.exe:*)",
       "Bash(pwsh:*)",
       "Bash(python3:*)",
@@ -90,7 +92,9 @@
       "Bash(xargs:*)",
       "Bash(zsh:*)",
       "PowerShell",
-      "PowerShell(*)"
+      "PowerShell(*)",
+      "Read(/Users/kai/projects/coilysiren/coilyco-vault/**)",
+      "Read(~/projects/coilysiren/coilyco-vault/**)"
     ]
   }
 }

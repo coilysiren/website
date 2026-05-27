@@ -1,10 +1,3 @@
-// Fetches the last 30 days of public commits by coilysiren across all
-// public repos and writes a rollup to scripts/pulse-data.yaml for the
-// /pulse page's activity sparkline.
-//
-// Run with: pnpm fetch-pulse-data
-// Auth: GITHUB_TOKEN env var (Actions) or `gh auth token` (local).
-
 import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"

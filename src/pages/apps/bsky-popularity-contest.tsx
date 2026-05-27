@@ -34,9 +34,7 @@ const Bsky = () => {
   const [done, setDone] = useState<boolean>(false)
   // END: GENERIC STATE
 
-  // START: APPLICATION STATE
-  // Reset all of this stuff whenever there is an error
-  // or whenever the user does something that implies a page refesh.
+  // START: APPLICATION STATE (reset on error or page refresh)
   const [profile, setProfile] = useState<ProfileViewDetailed | null>(null)
   const [popularity, setPopularity] = useState<{
     [key: string]: number
@@ -55,9 +53,7 @@ const Bsky = () => {
   }
   // END: APPLICATION STATE
 
-  // START: UI STATE
-  // This is similar to the application state,
-  // different in that it doesn't need to be reset.
+  // START: UI STATE (like application state but never reset)
   const [handleState, setHandleState] = useState<string>("")
   if (
     searchParams.get("handle") != null &&

@@ -9,9 +9,7 @@ Usage:
         --out static/resume.pdf \\
         --out ~/projects/coilysiren/coilyco-vault/Obsidian\\ Vault/Notes/resume-2026.pdf
 
-    # custom source (note: canonical script is agentic-os-kai/scripts/render-resume.py;
-    # this one is unused / stale and reads the whole markdown without extracting
-    # the resume marker block — point at a standalone resume markdown if you run it)
+    # custom source (canonical is agentic-os-kai/scripts/render-resume.py)
     python scripts/build-resume.py --source path/to/resume.md
 
 Phone numbers are never written to the output PDF under any circumstance —
@@ -65,9 +63,7 @@ INK = HexColor("#2C2C2C")
 MUTED = HexColor("#6B6B6B")
 
 
-# =============================================================================
 # Markdown parser
-# =============================================================================
 @dataclass
 class Contact:
     email: Optional[str] = None
@@ -247,9 +243,7 @@ def _assign_contact(c: Contact, rest: str):
             c.website = rest
 
 
-# =============================================================================
 # Avatar -> circular PNG
-# =============================================================================
 def circular_avatar_png(src_path: Path, dest_path: Path, size_px: int = 512) -> Path:
     im = Image.open(src_path).convert("RGBA")
     side = min(im.size)
@@ -266,9 +260,7 @@ def circular_avatar_png(src_path: Path, dest_path: Path, size_px: int = 512) -> 
     return dest_path
 
 
-# =============================================================================
 # Decorative primitives drawn on canvas
-# =============================================================================
 def draw_sparkle(c, cx, cy, size=3.0, color=CORAL):
     c.saveState()
     c.setFillColor(color)
@@ -332,9 +324,7 @@ def draw_wave(c, x0, x1, y, color=TEAL, width=0.6, amplitude=1.2, wavelength=22)
     c.restoreState()
 
 
-# =============================================================================
 # Page + styles
-# =============================================================================
 PAGE_W, PAGE_H = LETTER
 L_MARGIN = 0.6 * inch
 R_MARGIN = 0.6 * inch
@@ -422,9 +412,7 @@ class WaveDivider(Flowable):
         draw_sparkle(self.canv, self.w / 2, 3, size=2.4, color=CORAL)
 
 
-# =============================================================================
 # Story assembly
-# =============================================================================
 def teal_link(text: str, href: Optional[str] = None, bold: bool = False) -> str:
     body = f"<b>{text}</b>" if bold else text
     inner = f'<font color="#1E5F6B">{body}</font>'
@@ -568,9 +556,7 @@ def build_story(styles, resume: Resume, avatar_png: Path,
     return story
 
 
-# =============================================================================
 # Build
-# =============================================================================
 def build_pdf(source: Path, outs: list[Path], avatar: Path):
     resume = parse_resume(source.read_text(encoding="utf-8"))
     # Defensive scrub: even if Resume.md contains a phone, never render it.

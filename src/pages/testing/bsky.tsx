@@ -15,9 +15,7 @@ const Testing = () => {
   const [error, setError] = useState<React.ReactNode>()
   // END: GENERIC STATE
 
-  // START: APPLICATION STATE
-  // Reset all of this stuff whenever there is an error
-  // or whenever the user does something that implies a page refesh.
+  // START: APPLICATION STATE (reset on error or page refresh)
   const [suggestionDetails, setSuggestionDetails] = useState<
     IExpandedProfileDetails[]
   >([])

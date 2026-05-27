@@ -1,14 +1,3 @@
-/**
- * Renders per-page Open Graph images at build time.
- *
- * Walks markdown frontmatter under src/pages/ for posts and top-level pages,
- * combines with a hardcoded list of TSX-page entries, and emits 1200x630 PNGs
- * to static/og/. Uses satori (JSX -> SVG) + resvg-js (SVG -> PNG), pure Node.
- *
- * Run as part of `pnpm build` (see package.json) or directly:
- *   pnpm tsx scripts/render-og-images.tsx
- */
-
 import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
@@ -275,9 +264,6 @@ function MarkBlock() {
 }
 
 function GridBackdrop() {
-  // Subtle dot pattern, drawn as overlapping 1px lines via box-shadow is not
-  // supported by satori. Instead, lay down a few absolutely-positioned panels
-  // to suggest depth, plus a thin diagonal accent stripe.
   return (
     <div
       style={{

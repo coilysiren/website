@@ -60,9 +60,7 @@ const fmtRefreshed = (iso: string) => {
 }
 
 const computeLogMax = (days: Day[]): number => {
-  // Log scale so a single huge day (e.g. a public-repo initial commit with
-  // tens of thousands of vendored lines) doesn't flatten every other day
-  // to invisible. Bar heights use log(loc + 1) / log(maxLoc + 1).
+  // Log scale so a single huge commit day doesn't flatten the rest.
   const max = days.reduce((m, d) => (d.totalLoc > m ? d.totalLoc : m), 0)
   return Math.log10(max + 1) || 1
 }

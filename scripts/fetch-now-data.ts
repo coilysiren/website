@@ -1,16 +1,3 @@
-// Fetches recent activity across GitHub, Bluesky, YouTube, Reddit, and Steam.
-// Writes the combined data to scripts/now-data.json for the /now page generator.
-//
-// Run with: pnpm fetch-now-data
-//
-// Required credentials:
-//   - GitHub: gh CLI must be authed (`gh auth status`)
-//   - Bluesky: AWS SSM params /bsky/handle, /bsky/password
-//   - YouTube: AWS SSM params /youtube/client-id, /youtube/client-secret, /youtube/refresh-token
-//     (run scripts/youtube-auth.ts once to mint the refresh token)
-//   - Reddit: no auth, public JSON API
-//   - Steam: AWS SSM params /steam/web-api-key, /steam/steam-id-64
-
 import fs from "node:fs"
 import https from "node:https"
 import path from "node:path"
@@ -230,10 +217,7 @@ async function fetchYouTube() {
   )
 
   return {
-    // Items are in reverse-chronological order by LIKE time (index 0 = most
-    // recently liked). The YouTube API does not expose the actual liked-at
-    // timestamp, so we use index as a proxy. video_published_at is when the
-    // video itself was published, not when Kai liked it.
+    // Reverse-chronological by like time; index is the only proxy YouTube exposes.
     liked: (liked.items || []).map((v: any, i: number) => ({
       like_recency_index: i,
       title: v.snippet.title,

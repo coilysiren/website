@@ -195,9 +195,7 @@ export const onCreatePage: GatsbyNode["onCreatePage"] = async ({ page, actions }
   })
 }
 
-// Gatsby's built-in eslint-loader pulls in eslint-config-react-app, which is
-// incompatible with eslint 9. We run eslint separately via `pnpm test:quick`,
-// so strip the plugin from Gatsby's webpack config to avoid the conflict.
+// Gatsby's bundled eslint-loader conflicts with eslint 9; lint runs via pnpm test:quick.
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions, getConfig }) => {
   const config = getConfig()
   config.plugins = config.plugins.filter(
