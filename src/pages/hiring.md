@@ -33,9 +33,13 @@ Senior platform engineer. The shapes I am strongest in:
 
 I do strong work in **system design**, **architecture deep-dives**, **take-home with a real-codebase prompt**, and **paired debugging on actual code**. Plenty of technical depth available in any of those formats.
 
-I am not pursuing roles where timed puzzle-style live coding is the primary gate. Senior platform work is systems integration, reliability, cost, and org-interface work. The formats above test what the job actually is. Puzzle-style live coding tests a different skill and filters on the wrong axis.
+I am not pursuing roles where timed puzzle-style coding is the primary gate. Senior platform work is systems integration, reliability, cost, and org-interface work. The formats above test what the job actually is. Puzzle-style coding tests a different skill and filters on the wrong axis.
 
-This is a stance, not a negotiation. If puzzle live coding is load-bearing in your loop, I am probably not the right fit and that is fine.
+The specific format I will not do is **async-proctored puzzle coding**. Webcam on, screen-shared, AI proctor watching the room, hard time limit, no human interviewer present. Products in this category include CodeSignal's General Coding Assessment / Industry Coding Assessment, HackerRank tests with Proctor Mode enabled, Codility async tests with proctoring (their CodeLive product is a separate live-interview format and is fine), Coderbyte assessments, TestGorilla coding tests, and Devskiller proctored tasks. This is a hard pass regardless of the role, the company, or where it sits in the loop.
+
+Live puzzle coding with a human interviewer present is a softer no. I will sometimes do it if the rest of the loop is strong, but it is not where I show best.
+
+This is a stance, not a negotiation. If async-proctored puzzle coding is load-bearing in your loop, I am not the right fit and that is fine.
 
 ## On tenure
 
