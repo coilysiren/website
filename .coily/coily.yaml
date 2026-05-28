@@ -52,6 +52,4 @@ catalog:
   lifecycle: production
   description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."
   dependsOn:
-    - coilysiren/infrastructure
-  providesApis:
-    - coilysiren-me
+    - forgejo.coilysiren.me/coilysiren/infrastructure
