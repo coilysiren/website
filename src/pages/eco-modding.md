@@ -16,7 +16,7 @@ Eco is a multiplayer survival and simulation game by [Strange Loop Games](https:
 
 ## What I build
 
-My mods live at [coilysiren/eco-mods-public](https://github.com/coilysiren/eco-mods-public). They target `Eco.ReferenceAssemblies`, build with `dotnet build`, and ship as `.zip` bundles. A lot of the repetitive boilerplate (recipes, crafting stations, skill trees) is code-generated from Python templates via `tasks.py` + `main.cs`, which keeps the surface area small enough for one person to maintain across cycles.
+My mods live at [coilyco-flight-deck/eco-mods-public](https://github.com/coilyco-flight-deck/eco-mods-public). They target `Eco.ReferenceAssemblies`, build with `dotnet build`, and ship as `.zip` bundles. A lot of the repetitive boilerplate (recipes, crafting stations, skill trees) is code-generated from Python templates via `tasks.py` + `main.cs`, which keeps the surface area small enough for one person to maintain across cycles.
 
 The **BunWulf** family fleshes out the mid-game economy with new professions and crop variety:
 
@@ -35,13 +35,13 @@ Standalone mods fill gaps I've hit while playing:
 
 There's a decent amount of adjacent work on GitHub but the overlap is narrow. On the mod side, there are a few public collections like [TheKye/elixr-mods](https://github.com/TheKye/elixr-mods) (the Elixr Mods family, a long-running community mod pack) and [Kirthos/KirthosMods](https://github.com/Kirthos/KirthosMods) (another single-author multi-mod library). On the ops side, the published projects are almost all Docker-first wrappers around the server binary, e.g. [zokradonh/ecogameserver](https://github.com/zokradonh/ecogameserver) and [stroebs/eco-docker](https://github.com/stroebs/eco-docker).
 
-What I can't find much of is the seam I care about: end-to-end *cycle* automation (seed rolls, preview GIF to Discord, mod sync, cross-server ad templating, go-live flip) against a native Eco install. [eco-cycle-prep](https://github.com/coilysiren/eco-cycle-prep) is the other shape: it assumes steamcmd + systemd on Linux and automates the cycle, not the container.
+What I can't find much of is the seam I care about: end-to-end *cycle* automation (seed rolls, preview GIF to Discord, mod sync, cross-server ad templating, go-live flip) against a native Eco install. [eco-cycle-prep](https://github.com/coilyco-bridge/eco-cycle-prep) is the other shape: it assumes steamcmd + systemd on Linux and automates the cycle, not the container.
 
 ## Running the server
 
-Eco via Sirens lives on my homelab, reachable over [Tailscale](https://tailscale.com/). The deploy side is handled out of [coilysiren/infrastructure](https://github.com/coilysiren/infrastructure). The server and the mods aren't two projects, they're one feedback loop: things I notice while playing become issues, and things I fix in mods get playtested on the next cycle.
+Eco via Sirens lives on my homelab, reachable over [Tailscale](https://tailscale.com/). The deploy side is handled out of [coilyco-flight-deck/infrastructure](https://github.com/coilyco-flight-deck/infrastructure). The server and the mods aren't two projects, they're one feedback loop: things I notice while playing become issues, and things I fix in mods get playtested on the next cycle.
 
-Cycle prep is automated by [eco-cycle-prep](https://github.com/coilysiren/eco-cycle-prep), a set of Python commands wired through [coily](https://github.com/coilysiren/coily) that handle:
+Cycle prep is automated by [eco-cycle-prep](https://github.com/coilyco-bridge/eco-cycle-prep), a set of Python commands wired through [coily](https://github.com/coilyco-bridge/coily) that handle:
 
 - `steamcmd` updates and git pulls across the config and mod repos.
 - Rolling candidate worldgen seeds against a checked-in `WorldGenerator.eco`, waiting for preview renders, and posting the preview GIFs to Discord.
@@ -53,12 +53,12 @@ Cycle prep is automated by [eco-cycle-prep](https://github.com/coilysiren/eco-cy
 
 Two newer projects around the edges of the server, both still WIP:
 
-- [eco-mcp-app](https://github.com/coilysiren/eco-mcp-app) — an inline Claude Desktop widget (via the [MCP Apps](https://modelcontextprotocol.io/docs/concepts/apps) spec) for any public Eco server. Ask Claude "what's the Eco server doing?" and a live card comes back: meteor countdown, online/total players, world size, laws, economy, a Discord CTA. Points at Eco via Sirens by default but takes any hostname. Also doubles as a small tech demo — a hand-rolled MCP Apps iframe in ~300 lines of HTML, no bundler or React, useful as a Python/Starlette reference for anyone building MCP Apps off the default TypeScript [ext-apps](https://github.com/modelcontextprotocol/ext-apps) stack.
-- [eco-jobs-tracker](https://github.com/coilysiren/eco-jobs-tracker) — a FastAPI + Jinja2 + HTMX web app that lists every player's jobs (professions/specialties) with `active / total` counts, paired with a C# Eco server mod that exposes the underlying `/api/v1/skills` endpoint. Deployed at [eco-jobs-tracker.coilysiren.me](https://eco-jobs-tracker.coilysiren.me). The "two sides, one repo" shape (Python web app + C# mod, with a standalone C# shell harness so the Python side can iterate against a real HTTP server without booting Eco) is the pattern I expect to reuse for future per-server dashboards.
+- [eco-mcp-app](https://github.com/coilyco-flight-deck/eco-mcp-app) — an inline Claude Desktop widget (via the [MCP Apps](https://modelcontextprotocol.io/docs/concepts/apps) spec) for any public Eco server. Ask Claude "what's the Eco server doing?" and a live card comes back: meteor countdown, online/total players, world size, laws, economy, a Discord CTA. Points at Eco via Sirens by default but takes any hostname. Also doubles as a small tech demo — a hand-rolled MCP Apps iframe in ~300 lines of HTML, no bundler or React, useful as a Python/Starlette reference for anyone building MCP Apps off the default TypeScript [ext-apps](https://github.com/modelcontextprotocol/ext-apps) stack.
+- [eco-jobs-tracker](https://github.com/coilyco-flight-deck/eco-jobs-tracker) — a FastAPI + Jinja2 + HTMX web app that lists every player's jobs (professions/specialties) with `active / total` counts, paired with a C# Eco server mod that exposes the underlying `/api/v1/skills` endpoint. Deployed at [eco-jobs-tracker.coilysiren.me](https://eco-jobs-tracker.coilysiren.me). The "two sides, one repo" shape (Python web app + C# mod, with a standalone C# shell harness so the Python side can iterate against a real HTTP server without booting Eco) is the pattern I expect to reuse for future per-server dashboards.
 
 ## Live jobs tracker
 
-[eco-jobs-tracker](https://github.com/coilysiren/eco-jobs-tracker) (above) runs against the live Eco via Sirens server and shows every player's professions and specialties with `active / total` counts, pulled from a companion C# mod that exposes `/api/v1/skills` on the game server. Embedded below; open it directly at [eco-jobs-tracker.coilysiren.me](https://eco-jobs-tracker.coilysiren.me/) for a full-page view.
+[eco-jobs-tracker](https://github.com/coilyco-flight-deck/eco-jobs-tracker) (above) runs against the live Eco via Sirens server and shows every player's professions and specialties with `active / total` counts, pulled from a companion C# mod that exposes `/api/v1/skills` on the game server. Embedded below; open it directly at [eco-jobs-tracker.coilysiren.me](https://eco-jobs-tracker.coilysiren.me/) for a full-page view.
 
 <div id="eco-tracker-embed">
   <iframe

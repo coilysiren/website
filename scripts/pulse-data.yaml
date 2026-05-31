@@ -85,7 +85,7 @@ days:
       sha: 9b6fb1e218535d2c4e61679220d559dcca1d3bcc
       repo: coilysiren/coily
       message: rip per-CLI generated subcommand trees; collapse to thin pass-throughs
-      url: https://github.com/coilysiren/coily/commit/9b6fb1e218535d2c4e61679220d559dcca1d3bcc
+      url: https://github.com/coilyco-bridge/coily/commit/9b6fb1e218535d2c4e61679220d559dcca1d3bcc
       loc: 295394
     segments:
       - repo: coilysiren/coily
@@ -131,7 +131,7 @@ days:
       sha: baf690210ab4b0ae6de55728a05f52bce79d7b8a
       repo: coilysiren/repo-recall
       message: 'feat!: rewrite as MCP App server (pmcp 2.6, stdio transport)'
-      url: https://github.com/coilysiren/repo-recall/commit/baf690210ab4b0ae6de55728a05f52bce79d7b8a
+      url: https://github.com/coilyco-flight-deck/repo-recall/commit/baf690210ab4b0ae6de55728a05f52bce79d7b8a
       loc: 9695
     segments:
       - repo: coilysiren/repo-recall
@@ -177,7 +177,7 @@ days:
       sha: f996defeeffa61d0871c0f586af2d26952513174
       repo: coilysiren/coily
       message: Nest package-manager passthroughs under `coily pkg`
-      url: https://github.com/coilysiren/coily/commit/f996defeeffa61d0871c0f586af2d26952513174
+      url: https://github.com/coilyco-bridge/coily/commit/f996defeeffa61d0871c0f586af2d26952513174
       loc: 207
     segments:
       - repo: coilysiren/coily
@@ -205,7 +205,7 @@ days:
       sha: e449ab257a1e3830c807cd458d4b28a97548e561
       repo: coilysiren/coily
       message: 'egress: add CONNECT proxy, wire brew through enforce-mode allowlist'
-      url: https://github.com/coilysiren/coily/commit/e449ab257a1e3830c807cd458d4b28a97548e561
+      url: https://github.com/coilyco-bridge/coily/commit/e449ab257a1e3830c807cd458d4b28a97548e561
       loc: 800
     segments:
       - repo: coilysiren/coily
@@ -230,7 +230,7 @@ days:
       sha: 03c2161917eb8b93218c2deb4fe0e1d8e017d2f5
       repo: coilysiren/eco-mcp-app
       message: 'chore: move todo/ specs into gh issues #10-#19'
-      url: https://github.com/coilysiren/eco-mcp-app/commit/03c2161917eb8b93218c2deb4fe0e1d8e017d2f5
+      url: https://github.com/coilyco-flight-deck/eco-mcp-app/commit/03c2161917eb8b93218c2deb4fe0e1d8e017d2f5
       loc: 635
     segments:
       - repo: coilysiren/coily
@@ -270,7 +270,7 @@ days:
       sha: 68a9b57dc5a71aed07a82bd36454ac85016d18ba
       repo: coilysiren/infrastructure
       message: 'grafana: move dashboards from helm values to terraform module'
-      url: https://github.com/coilysiren/infrastructure/commit/68a9b57dc5a71aed07a82bd36454ac85016d18ba
+      url: https://github.com/coilyco-flight-deck/infrastructure/commit/68a9b57dc5a71aed07a82bd36454ac85016d18ba
       loc: 328
     segments:
       - repo: coilysiren/infrastructure
@@ -292,7 +292,7 @@ days:
       sha: 40c6fc6ae737f6103681cda6dbc302cf297ed280
       repo: coilysiren/galaxy-gen
       message: 'chore: track .claude/settings.json and lockdown-deny.sh'
-      url: https://github.com/coilysiren/galaxy-gen/commit/40c6fc6ae737f6103681cda6dbc302cf297ed280
+      url: https://github.com/coilyco-flight-deck/galaxy-gen/commit/40c6fc6ae737f6103681cda6dbc302cf297ed280
       loc: 679
     segments:
       - repo: coilysiren/sirens-discord-ops
@@ -326,7 +326,7 @@ days:
       sha: cd7d012c001b57d4343fac0b1a08f94b9a694fbd
       repo: coilysiren/repo-recall
       message: 'feat: port cache DB from rusqlite to redb, drop SQLite entirely'
-      url: https://github.com/coilysiren/repo-recall/commit/cd7d012c001b57d4343fac0b1a08f94b9a694fbd
+      url: https://github.com/coilyco-flight-deck/repo-recall/commit/cd7d012c001b57d4343fac0b1a08f94b9a694fbd
       loc: 2809
     segments:
       - repo: coilysiren/repo-recall
@@ -348,7 +348,7 @@ days:
       sha: 3974e54c3301b4c0bb949423fd127d0aa1504750
       repo: coilysiren/otel-a2a-relay
       message: convert to standard uv layout
-      url: https://github.com/coilysiren/otel-a2a-relay/commit/3974e54c3301b4c0bb949423fd127d0aa1504750
+      url: https://github.com/coilyco-flight-deck/otel-a2a-relay/commit/3974e54c3301b4c0bb949423fd127d0aa1504750
       loc: 4037
     segments:
       - repo: coilysiren/otel-a2a-relay
@@ -361,7 +361,7 @@ days:
       sha: 229e10279b0448b53b8483fa76e7fcbdb8071731
       repo: coilysiren/otel-a2a-relay
       message: 'test: lock luca-flow demo outputs via byte + visual snapshots'
-      url: https://github.com/coilysiren/otel-a2a-relay/commit/229e10279b0448b53b8483fa76e7fcbdb8071731
+      url: https://github.com/coilyco-flight-deck/otel-a2a-relay/commit/229e10279b0448b53b8483fa76e7fcbdb8071731
       loc: 2809
     segments:
       - repo: coilysiren/otel-a2a-relay
@@ -392,7 +392,7 @@ days:
       sha: 0cb87a8e314998cb08c3b9a92cab8fa070eac075
       repo: coilysiren/coily
       message: Add OpenAPI->coily generator; mount modio/glama/discord/sentry/trello-api under ops
-      url: https://github.com/coilysiren/coily/commit/0cb87a8e314998cb08c3b9a92cab8fa070eac075
+      url: https://github.com/coilyco-bridge/coily/commit/0cb87a8e314998cb08c3b9a92cab8fa070eac075
       loc: 27020
     segments:
       - repo: coilysiren/coily
@@ -447,7 +447,7 @@ days:
       sha: cd7facd65f616a629b7d0c48cfb77f048e0848ab
       repo: coilysiren/coily
       message: fall back to direct-child .coily/coily.yaml discovery in coily exec
-      url: https://github.com/coilysiren/coily/commit/cd7facd65f616a629b7d0c48cfb77f048e0848ab
+      url: https://github.com/coilyco-bridge/coily/commit/cd7facd65f616a629b7d0c48cfb77f048e0848ab
       loc: 822
     segments:
       - repo: coilysiren/coily
@@ -502,7 +502,7 @@ days:
       sha: 1a2c9c442708a1bb79a96e93f4fa60ad7a75f4f4
       repo: coilysiren/eco-mcp-app
       message: 'Add get_eco_climate tool: CO2, sea level, polluter attribution, Earth anchor (#31)'
-      url: https://github.com/coilysiren/eco-mcp-app/commit/1a2c9c442708a1bb79a96e93f4fa60ad7a75f4f4
+      url: https://github.com/coilyco-flight-deck/eco-mcp-app/commit/1a2c9c442708a1bb79a96e93f4fa60ad7a75f4f4
       loc: 1633
     segments:
       - repo: coilysiren/eco-mcp-app
@@ -521,7 +521,7 @@ days:
       sha: f5c07b9be98e2917a896cccc56fcaf3b4a7053b7
       repo: coilysiren/repo-recall
       message: 'feat!: drop push notifications subsystem'
-      url: https://github.com/coilysiren/repo-recall/commit/f5c07b9be98e2917a896cccc56fcaf3b4a7053b7
+      url: https://github.com/coilyco-flight-deck/repo-recall/commit/f5c07b9be98e2917a896cccc56fcaf3b4a7053b7
       loc: 2452
     segments:
       - repo: coilysiren/repo-recall
@@ -546,7 +546,7 @@ days:
       sha: ffcc0dbc634d5e1d1669bdde61068a4a7a490d36
       repo: coilysiren/infrastructure
       message: 'chore: replace pyinvoke tasks.py with Makefile + coily'
-      url: https://github.com/coilysiren/infrastructure/commit/ffcc0dbc634d5e1d1669bdde61068a4a7a490d36
+      url: https://github.com/coilyco-flight-deck/infrastructure/commit/ffcc0dbc634d5e1d1669bdde61068a4a7a490d36
       loc: 1156
     segments:
       - repo: coilysiren/repo-recall
@@ -601,7 +601,7 @@ days:
       sha: 8d8be2ec2f7320d78574c051dcc6427ba5fc8b4d
       repo: coilysiren/cli-guard
       message: 'Scaffold cli-guard: extract framework primitives from coily/pkg/'
-      url: https://github.com/coilysiren/cli-guard/commit/8d8be2ec2f7320d78574c051dcc6427ba5fc8b4d
+      url: https://github.com/coilyco-flight-deck/cli-guard/commit/8d8be2ec2f7320d78574c051dcc6427ba5fc8b4d
       loc: 4460
     segments:
       - repo: coilysiren/cli-guard
@@ -708,7 +708,7 @@ days:
       sha: 62b91e816cda32a02ccd8fe7d901149e8fefe266
       repo: coilysiren/agentic-os
       message: receive 14 skills graduating from agentic-os-kai
-      url: https://github.com/coilysiren/agentic-os/commit/62b91e816cda32a02ccd8fe7d901149e8fefe266
+      url: https://github.com/coilyco-flight-deck/agentic-os/commit/62b91e816cda32a02ccd8fe7d901149e8fefe266
       loc: 4770
     segments:
       - repo: coilysiren/agentic-os
@@ -778,7 +778,7 @@ days:
       sha: 395987d125ae00af8ff749b8c9c9e7340eb8d096
       repo: coilysiren/galaxy-gen
       message: 'chore: adopt coilysiren/agentic-os v0.2.1 upstream-ref pre-commit suite'
-      url: https://github.com/coilysiren/galaxy-gen/commit/395987d125ae00af8ff749b8c9c9e7340eb8d096
+      url: https://github.com/coilyco-flight-deck/galaxy-gen/commit/395987d125ae00af8ff749b8c9c9e7340eb8d096
       loc: 1006
     segments:
       - repo: coilysiren/agentic-os
@@ -845,7 +845,7 @@ days:
       sha: e630ab3bedec6a0cd3cdcf12d44a0c162864fa1b
       repo: coilysiren/repo-recall
       message: strip HTML UI tier, JSON + MCP only
-      url: https://github.com/coilysiren/repo-recall/commit/e630ab3bedec6a0cd3cdcf12d44a0c162864fa1b
+      url: https://github.com/coilyco-flight-deck/repo-recall/commit/e630ab3bedec6a0cd3cdcf12d44a0c162864fa1b
       loc: 3550
     segments:
       - repo: coilysiren/repo-recall
@@ -873,7 +873,7 @@ days:
       sha: 672bbeed72bc5d8c14df923caa502632d69f8bb2
       repo: coilysiren/coily
       message: 'skills: delete 42 old coily-* dirs, keep coily-meta + coily-passthroughs, closes #236'
-      url: https://github.com/coilysiren/coily/commit/672bbeed72bc5d8c14df923caa502632d69f8bb2
+      url: https://github.com/coilyco-bridge/coily/commit/672bbeed72bc5d8c14df923caa502632d69f8bb2
       loc: 1531
     segments:
       - repo: coilysiren/coily
@@ -901,7 +901,7 @@ days:
       sha: b38c749a8db08526c4de6abae63c9aa08062987b
       repo: coilysiren/coily
       message: 'feat!: subsume coily brew under coily pkg brew, expand scope coverage to all mutating verbs, closes #253'
-      url: https://github.com/coilysiren/coily/commit/b38c749a8db08526c4de6abae63c9aa08062987b
+      url: https://github.com/coilyco-bridge/coily/commit/b38c749a8db08526c4de6abae63c9aa08062987b
       loc: 641
     segments:
       - repo: coilysiren/coily
@@ -935,7 +935,7 @@ days:
       sha: cb70c07fc64f6745c1912e33027de844c6d2784e
       repo: coilysiren/repo-recall
       message: 'refactor!: retire autonomous-dispatch surface, move to LUCA, closes #223'
-      url: https://github.com/coilysiren/repo-recall/commit/cb70c07fc64f6745c1912e33027de844c6d2784e
+      url: https://github.com/coilyco-flight-deck/repo-recall/commit/cb70c07fc64f6745c1912e33027de844c6d2784e
       loc: 2950
     segments:
       - repo: coilysiren/repo-recall
@@ -984,7 +984,7 @@ days:
       sha: 2c08151ab4e9704988ab6ce45d86d0bce94ef851
       repo: coilysiren/backend
       message: 'feat(datastore): ambient personal CRUD store, retire dead bsky/data-science code (#66)'
-      url: https://github.com/coilysiren/backend/commit/2c08151ab4e9704988ab6ce45d86d0bce94ef851
+      url: https://github.com/coilyco-flight-deck/backend/commit/2c08151ab4e9704988ab6ce45d86d0bce94ef851
       loc: 22079
     segments:
       - repo: coilysiren/backend
@@ -1018,7 +1018,7 @@ days:
       sha: 7b699243a43be34d34339fe5c3dded16a10ea354
       repo: coilysiren/lunch-money-k8s
       message: Bootstrap the containerized, Helm-deployable MCP server
-      url: https://github.com/coilysiren/lunch-money-k8s/commit/7b699243a43be34d34339fe5c3dded16a10ea354
+      url: https://github.com/coilyco-flight-deck/lunch-money-k8s/commit/7b699243a43be34d34339fe5c3dded16a10ea354
       loc: 2248
     segments:
       - repo: coilysiren/lunch-money-k8s
@@ -1061,7 +1061,7 @@ days:
       sha: 8e193bed6c8d4e3b4096d512093d834ab802be68
       repo: coilysiren/otel-a2a-relay
       message: Pull Agent Channel v2 implementation into otel-a2a-relay-channels
-      url: https://github.com/coilysiren/otel-a2a-relay/commit/8e193bed6c8d4e3b4096d512093d834ab802be68
+      url: https://github.com/coilyco-flight-deck/otel-a2a-relay/commit/8e193bed6c8d4e3b4096d512093d834ab802be68
       loc: 1090
     segments:
       - repo: coilysiren/coily
@@ -1139,7 +1139,7 @@ days:
       sha: 28c6a75eec4ea15c6cd3ffec89c3941458cdd7cb
       repo: coilysiren/coily
       message: 'feat(ops forgejo): add PR lifecycle verbs'
-      url: https://github.com/coilysiren/coily/commit/28c6a75eec4ea15c6cd3ffec89c3941458cdd7cb
+      url: https://github.com/coilyco-bridge/coily/commit/28c6a75eec4ea15c6cd3ffec89c3941458cdd7cb
       loc: 565
     segments:
       - repo: coilysiren/coily
@@ -1173,7 +1173,7 @@ days:
       sha: 65c4db532e1d6be3ba8bdcb15cd941e173186b37
       repo: coilysiren/cli-guard
       message: 'chore: clean up code-comments violations, agentic-os v0.2.8'
-      url: https://github.com/coilysiren/cli-guard/commit/65c4db532e1d6be3ba8bdcb15cd941e173186b37
+      url: https://github.com/coilyco-flight-deck/cli-guard/commit/65c4db532e1d6be3ba8bdcb15cd941e173186b37
       loc: 2985
     segments:
       - repo: coilysiren/cli-guard
@@ -1231,7 +1231,7 @@ days:
       sha: c484fa9c5060d8e9c7bef473899b1bee3718c012
       repo: coilysiren/infrastructure
       message: 'refactor: retire the three pre-merge tailscale stacks'
-      url: https://github.com/coilysiren/infrastructure/commit/c484fa9c5060d8e9c7bef473899b1bee3718c012
+      url: https://github.com/coilyco-flight-deck/infrastructure/commit/c484fa9c5060d8e9c7bef473899b1bee3718c012
       loc: 846
     segments:
       - repo: coilysiren/infrastructure
@@ -1287,5 +1287,5 @@ outlier:
     sha: 9b6fb1e218535d2c4e61679220d559dcca1d3bcc
     repo: coilysiren/coily
     message: rip per-CLI generated subcommand trees; collapse to thin pass-throughs
-    url: https://github.com/coilysiren/coily/commit/9b6fb1e218535d2c4e61679220d559dcca1d3bcc
+    url: https://github.com/coilyco-bridge/coily/commit/9b6fb1e218535d2c4e61679220d559dcca1d3bcc
     loc: 295394

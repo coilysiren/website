@@ -43,7 +43,7 @@ commands:
     description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.
 
 # Catalog metadata for the cross-repo knowledge graph.
-# Schema: coilysiren/agentic-os-kai#420 (tracker).
+# Schema: coilyco-bridge/agentic-os-kai#420 (tracker).
 catalog:
   kind: Component
   type: website
@@ -52,4 +52,4 @@ catalog:
   lifecycle: production
   description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."
   dependsOn:
-    - forgejo.coilysiren.me/coilysiren/infrastructure
+    - forgejo.coilysiren.me/coilyco-flight-deck/infrastructure

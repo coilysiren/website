@@ -24,7 +24,7 @@ function Hero() {
         <p>
           I build things for the joy of it:{" "}
           <a
-            href="https://github.com/coilysiren/gauntlet"
+            href="https://github.com/coilyco-flight-deck/gauntlet"
             target="_blank"
             rel="noreferrer"
           >
