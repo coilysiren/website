@@ -16,12 +16,6 @@
   </defs>
   <rect width="500" height="500" fill="#0d0a14"/>
 
-  <g clip-path="url(#disc)" filter="url(#inkfine)" fill="none" stroke-linecap="round">
-    <ellipse cx="250" cy="250" rx="150" ry="60" stroke="#b8a4d8" stroke-width="3.5" opacity="0.4" transform="rotate(-45 250 250)"/>
-    <ellipse cx="250" cy="250" rx="150" ry="60" stroke="#45cdd0" stroke-width="3.5" opacity="0.4" transform="rotate(45 250 250)"/>
-  </g>
-  <circle cx="364" cy="335" r="5" fill="#45cdd0" filter="url(#inkfine)"/>
-
   <g filter="url(#ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="250" cy="250" r="208" stroke="#45cdd0" stroke-width="16"/>
     <circle cx="250" cy="250" r="191.5" stroke="#b8a4d8" stroke-width="17"/>
@@ -33,14 +27,13 @@
     <path stroke="#b8a4d8" d="M 300 250 L 300 316 L 196 316"/>
   </g>
   </g>
-  <g transform="translate(-30.0 -26.5) scale(1.12)">
-  <g filter="url(#ink)" stroke-linecap="round" stroke-linejoin="round">
-    <path fill="none" stroke="#45cdd0" stroke-width="16" d="M 302 116 L 232 116 Q 205 116 205 143 L 205 192"/>
-    <g fill="#45cdd0" stroke="none">
-      <rect x="228" y="134" width="74" height="13" rx="6.5"/>
-      <rect x="228" y="156" width="56" height="13" rx="6.5"/>
-      <rect x="228" y="178" width="38" height="13" rx="6.5"/>
-    </g>
+  <g transform="translate(77 -19.4) scale(0.7)">
+  <g filter="url(#ink)">
+    <rect x="158" y="176" width="184" height="132" rx="18" fill="none" stroke="#45cdd0" stroke-width="16"/>
+    <circle cx="244" cy="256" r="29" fill="#45cdd0" stroke="none"/>
+    <ellipse cx="244" cy="256" rx="52" ry="16" fill="none" stroke="#45cdd0" stroke-width="8" transform="rotate(-18 244 256)"/>
+    <circle cx="302" cy="204" r="6.5" fill="#45cdd0" stroke="none"/>
+    <circle cx="316" cy="238" r="3.8" fill="#45cdd0" stroke="none"/>
   </g>
   </g>
   <rect width="500" height="500" filter="url(#grain)" pointer-events="none"/>

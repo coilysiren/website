@@ -16,12 +16,6 @@
   </defs>
   <rect width="500" height="500" fill="#0d0a14"/>
 
-  <g clip-path="url(#disc)" filter="url(#inkfine)" fill="none" stroke-linecap="round">
-    <ellipse cx="250" cy="250" rx="150" ry="60" stroke="#b8a4d8" stroke-width="3.5" opacity="0.4" transform="rotate(-45 250 250)"/>
-    <ellipse cx="250" cy="250" rx="150" ry="60" stroke="#45cdd0" stroke-width="3.5" opacity="0.4" transform="rotate(45 250 250)"/>
-  </g>
-  <circle cx="364" cy="335" r="5" fill="#45cdd0" filter="url(#inkfine)"/>
-
   <g filter="url(#ink)" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="250" cy="250" r="208" stroke="#45cdd0" stroke-width="16"/>
     <circle cx="250" cy="250" r="191.5" stroke="#b8a4d8" stroke-width="17"/>
