@@ -11,7 +11,7 @@ function Footer() {
     <footer>
       <div className="copyright-footer">
         <img src={sparkles} alt="Three sparkles colored in purple" />
-        <h3>Copyright {new Date().getFullYear()} Kai Siren</h3>
+        <h3>Copyright {new Date().getFullYear()} Kai Siren (Lynn Conway)</h3>
         <img src={sparkles} alt="Three sparkles colored in purple" />
       </div>
       <h4>
