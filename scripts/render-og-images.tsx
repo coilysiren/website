@@ -17,7 +17,15 @@ const SITE_HOST = "coilysiren.me"
 const SITE_TAGLINE = "lights out, platform's green, agents are working the line"
 const KAI = "Kai Siren"
 
-type Kind = "post" | "now" | "apps" | "page" | "default"
+// The brand mark (white paths on transparent) as a data URI so satori can
+// rasterize it inline. Subject of the "banner" card.
+const LOGO_SVG = fs.readFileSync(
+  path.join(__dirname, "..", "src", "images", "cool-logo.svg"),
+  "utf8",
+)
+const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
+
+type Kind = "post" | "now" | "apps" | "page" | "default" | "banner"
 
 interface Entry {
   outPath: string
@@ -48,6 +56,7 @@ const KIND_LABEL: Record<Kind, string> = {
   apps: "APPS",
   page: "PAGE",
   default: "",
+  banner: "",
 }
 
 function loadFont(file: string): Buffer {
@@ -136,6 +145,12 @@ const TSX_ENTRIES: Entry[] = [
   {
     outPath: "home.png",
     kind: "default",
+    title: KAI,
+    subtitle: SITE_TAGLINE,
+  },
+  {
+    outPath: "banner.png",
+    kind: "banner",
     title: KAI,
     subtitle: SITE_TAGLINE,
   },
@@ -643,6 +658,85 @@ function DefaultCard(entry: Entry) {
   )
 }
 
+function BannerCard(entry: Entry) {
+  // Logo-forward social banner: brand mark + wordmark anchor the left; the
+  // right ~60% is left empty so a title or tagline can be overlaid downstream.
+  return (
+    <div style={BASE_FRAME}>
+      <GridBackdrop />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flex: 1,
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: 36,
+            padding: "0 96px",
+            width: 480,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              width: 280,
+              height: 280,
+              borderRadius: 140,
+              border: `3px solid ${COLORS.accent}`,
+              backgroundColor: COLORS.panel,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img src={LOGO_DATA_URI} width={184} height={181} alt="" />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 18,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                width: 140,
+                height: 4,
+                backgroundColor: COLORS.accent,
+                borderRadius: 2,
+              }}
+            />
+            <div
+              style={{
+                fontSize: 30,
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                color: COLORS.textMuted,
+                textTransform: "uppercase",
+              }}
+            >
+              {SITE_HOST}
+            </div>
+          </div>
+        </div>
+        {/* Empty right column - reserved negative space for text overlay. */}
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+          }}
+        />
+      </div>
+    </div>
+  )
+}
+
 function routeFromOutPath(outPath: string): string {
   // home.png -> "/", default.png -> "/", "apps/index.png" -> "/apps/",
   // "posts/foo.png" -> "/posts/foo/", "now.png" -> "/now/"
@@ -653,6 +747,7 @@ function routeFromOutPath(outPath: string): string {
 }
 
 function renderToReactNode(entry: Entry) {
+  if (entry.kind === "banner") return BannerCard(entry)
   if (entry.kind === "default") return DefaultCard(entry)
   return StandardCard(entry)
 }

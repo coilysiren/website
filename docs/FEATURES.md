@@ -39,8 +39,8 @@ Under [scripts/](../scripts/):
 
 - **[build-resume.py](../scripts/build-resume.py)** - generates the resume page from source.
 - **[fetch-now-data.ts](../scripts/fetch-now-data.ts)** - pulls source data for the `/now` page.
-- **[fetch-pulse-data.ts](../scripts/fetch-pulse-data.ts)** - pulls live pulse data into [scripts/pulse-data.yaml](../scripts/pulse-data.yaml).
-- **[render-og-images.tsx](../scripts/render-og-images.tsx)** - renders OG preview images, cache at [apps-og-cache.json](../scripts/apps-og-cache.json).
+- **[fetch-pulse-data.ts](../scripts/fetch-pulse-data.ts)** - pulls pulse data into [scripts/pulse-data.yaml](../scripts/pulse-data.yaml).
+- **[render-og-images.tsx](../scripts/render-og-images.tsx)** - renders OG previews + logo `banner.png`, cached in [apps-og-cache.json](../scripts/apps-og-cache.json).
 - **[youtube-auth.ts](../scripts/youtube-auth.ts)** - YouTube data auth helper.
 
 ## CI workflows

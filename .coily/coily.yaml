@@ -8,6 +8,9 @@
 # coily's user-extras mechanism.
 
 commands:
+  install:
+    run: pnpm install --frozen-lockfile
+    description: Install dependencies from pnpm-lock.yaml (frozen).
   dev:
     run: npm run dev
     description: gatsby clean + gatsby develop. Local dev server with HMR.
