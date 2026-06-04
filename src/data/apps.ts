@@ -30,7 +30,7 @@ export const groups: HostGroup[] = [
       {
         host: "api.coilysiren.me",
         url: "https://api.coilysiren.me",
-        desc: "FastAPI backend powering the Bluesky apps and other small services.",
+        desc: "FastAPI ambient CRUD datastore - generic Postgres items table behind authed HTTP.",
         repo: "https://github.com/coilyco-flight-deck/backend",
         tag: "api",
       },
