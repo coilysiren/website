@@ -39,7 +39,10 @@
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git reset --hard:*)",
-      "Bash(mcporter:*)"
+      "Bash(mcporter:*)",
+      "Bash(ssh:*)",
+      "Read(/Users/kai/projects/coilysiren/coilyco-vault/**)",
+      "Read(~/projects/coilysiren/coilyco-vault/**)"
     ]
   }
 }
