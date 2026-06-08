@@ -2,7 +2,6 @@ name: Refresh pulse data
 
 on:
   schedule:
-    # Daily at 10:00 UTC (~3am PT).
     - cron: "0 10 * * *"
   workflow_dispatch:
 
@@ -26,10 +25,6 @@ jobs:
 
       - name: Fetch pulse data
         env:
-          # User PAT kept for parity with prior /search/commits era. The
-          # current code uses REST /repos/X/commits, which works fine with
-          # the install GITHUB_TOKEN too. Switch only if PAT rotation gets
-          # painful.
           GITHUB_TOKEN: ${{ secrets.PULSE_REFRESH_PAT }}
           GITHUB_SERVER_URL: ${{ github.server_url }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -41,10 +36,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-        # Direct-push to main via GraphQL createCommitOnBranch. Commits
-        # made through the GitHub API are signed by github-web-flow,
-        # which satisfies the required_signatures branch protection
-        # rule that blocks `git push` from github-actions[bot].
         run: |
           set -euo pipefail
           if git diff --quiet -- scripts/pulse-data.yaml; then

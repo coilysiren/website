@@ -8,26 +8,19 @@ on:
 
 jobs:
   test:
-    # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
-    # https://hub.docker.com/_/node/
     container: node:22
     steps:
-      # https://github.com/actions/checkout
       - uses: actions/checkout@v4
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm test:quick
   test-e2e:
-    # https://github.com/actions/runner-images
     runs-on: ubuntu-22.04
-    # https://docs.cypress.io/examples/docker
     container: cypress/included:15.13.1
     steps:
-      # https://github.com/actions/checkout
       - uses: actions/checkout@v4
-      # https://github.com/actions/setup-node
       - uses: actions/setup-node@v4
         with:
           node-version: 22

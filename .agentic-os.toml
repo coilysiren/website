@@ -23,3 +23,12 @@ excludes = [
 # Validation / Safety / Cross-repo contracts / Release / Agent rules.
 [catalog-trifecta]
 enabled = false
+
+# The managed-block BEGIN/END markers in .pre-commit-config.yaml are generated
+# and rewritten by agentic-os/scripts/apply-agentic-os-hooks.py - required
+# literal anchors, so the file is exempt from YAML comment discipline. Mirrors
+# agentic-os's own exclude for the same file.
+[code-comments]
+excludes = [
+  ".pre-commit-config.yaml",
+]

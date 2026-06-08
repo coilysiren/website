@@ -1,11 +1,4 @@
-# Per-repo command allowlist for website (coilysiren.me). Coily is the
-# canonical entry point for dev verbs here; each command below delegates to
-# an npm script in package.json. The lockdown denies bare npm/npx
-# invocations, so operators (human or agent) type `coily <verb>`.
-#
-# Names follow coily's [a-z0-9-] rule. Argv validation rejects shell
-# metacharacters at invocation time, so flags forward verbatim through
-# coily's user-extras mechanism.
+# Per-repo coily command allowlist for website (coilysiren.me); see docs/FEATURES.md.
 
 commands:
   install:
@@ -45,8 +38,6 @@ commands:
     run: npm run fetch-pulse-data
     description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.
 
-# Catalog metadata for the cross-repo knowledge graph.
-# Schema: coilyco-bridge/agentic-os-kai#420 (tracker).
 catalog:
   kind: Component
   type: website
