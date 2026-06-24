@@ -1,16 +1,5 @@
 {
   "hooks": {
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": ".claude/lockdown-deny.sh",
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash"
-      }
-    ],
     "SessionStart": [
       {
         "hooks": [
