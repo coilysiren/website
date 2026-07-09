@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: corepack enable
-      - run: ward exec install
+      - run: pnpm install --frozen-lockfile
       - run: ward exec build
       - run: ward exec test-quick
   test-e2e:
