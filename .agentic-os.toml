@@ -32,3 +32,8 @@ enabled = false
 excludes = [
   ".pre-commit-config.yaml",
 ]
+
+[dead-cross-links]
+excludes = [
+  "src/pages/**",
+]

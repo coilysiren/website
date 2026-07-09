@@ -1,23 +1,22 @@
 # CI workflows
 
-Durable rationale for the GitHub Actions workflows under `.github/workflows/`. YAML comment discipline (the agentic-os `code-comments` hook) keeps the workflow files themselves comment-free, so the why-not-what lives here.
+Durable rationale for the Forgejo workflows under `.forgejo/workflows/`. YAML comment discipline (the agentic-os `code-comments` hook) keeps the workflow files themselves comment-free, so the why-not-what lives here.
 
 ## `config.yml` - Run Tests
 
-Runs on every PR and on push to `main`. Two jobs: `test` (build + `pnpm test:quick`) on `node:22`, and `test-e2e` (build + `pnpm test:e2e:ci`) on the `cypress/included` image. Pinned `ubuntu-22.04` runners and container tags keep the matrix reproducible.
+Runs on every PR and on push to `main`.
+
+- `test` runs in the pinned dev-base image and uses `ward exec install`, `ward exec build`, and `ward exec test-quick`.
+- `test-e2e` runs the Cypress smoke path in the `cypress/included` image because the dev-base image does not carry a browser stack.
+
+The Forgejo workflow keeps package-manager behavior aligned with `packageManager` by letting `ward` own the install/build/test verbs where the image supports it.
 
 ## `pulse-refresh.yml` - Refresh pulse data
 
-Daily at 10:00 UTC (~3am PT) plus manual dispatch. Fetches `/pulse` data and direct-pushes `scripts/pulse-data.yaml` to `main` if it changed.
+This stays a separate design choice for now. The GitHub workflow still handles the daily `pulse-data.yaml` refresh, but there is no Forgejo equivalent in this pass.
 
-- **`PULSE_REFRESH_PAT`** - a user PAT kept for parity with the prior `/search/commits` era. The current code uses REST `/repos/X/commits`, which works fine with the install `GITHUB_TOKEN` too. Switch only if PAT rotation gets painful.
-- **`createCommitOnBranch` (GraphQL)** - the commit step pushes through the GitHub API rather than `git push`. API commits are signed by `github-web-flow`, which satisfies the `required_signatures` branch-protection rule that blocks `git push` from `github-actions[bot]`.
-- **Failure notify** - on failure the workflow files a `type/fix` issue and then `exit 1` to keep the run red.
-
-## `automerge.yml` - auto-merge
-
-Enables squash auto-merge on Dependabot PRs. Pattern from the [GitHub docs](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request).
+- **Decision** - no Forgejo port yet. The workflow mutates repo state and needs a separate call on whether canonical Forgejo should own that refresh, mirror it from GitHub, or replace it with a different ingestion path.
 
 ## `trufflehog.yml` - secret scan
 
-Push, PR, weekly cron (Mondays 12:00 UTC), and manual dispatch. Runs TruffleHog over the git history in offline mode, excluding lockfiles and the `URI` detector.
+Push, PR, weekly cron (Mondays 12:00 UTC), and manual dispatch. Runs TruffleHog over the git history in offline mode, excluding lockfiles and the `URI` detector. This is the canonical Forgejo secret-scan surface now.

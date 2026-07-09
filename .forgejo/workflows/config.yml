@@ -1,0 +1,26 @@
+name: Run Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: docker
+    container: forgejo.coilysiren.me/coilyco-flight-deck/agentic-os:v0.195.0
+    steps:
+      - uses: actions/checkout@v6
+      - run: ward exec install
+      - run: ward exec build
+      - run: ward exec test-quick
+  test-e2e:
+    runs-on: docker
+    container: cypress/included:15.13.1
+    steps:
+      - uses: actions/checkout@v6
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test:e2e:ci
