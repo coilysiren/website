@@ -12,6 +12,7 @@ jobs:
     container: forgejo.coilysiren.me/coilyco-flight-deck/agentic-os:v0.195.0
     steps:
       - uses: actions/checkout@v6
+      - run: corepack enable
       - run: ward exec install
       - run: ward exec build
       - run: ward exec test-quick
