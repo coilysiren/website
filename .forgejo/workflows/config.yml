@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: docker
-    container: forgejo.coilysiren.me/coilyco-flight-deck/agentic-os:v0.195.0
+    container: forgejo.coilysiren.me/coilyco-flight-deck/agentic-os:v0.255.0
     steps:
       - uses: actions/checkout@v6
       - run: corepack enable
