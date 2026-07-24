@@ -1,6 +1,7 @@
 .cache/
 .git/
 node_modules/
+.pnpm-store/
 public/
 static/
 **/*.md

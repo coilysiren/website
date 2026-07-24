@@ -8,7 +8,13 @@ import globals from "globals"
 export default [
   // Global ignores
   {
-    ignores: ["node_modules/", "public/", ".cache/", ".claude/"],
+    ignores: [
+      "node_modules/",
+      ".pnpm-store/",
+      "public/",
+      ".cache/",
+      ".claude/",
+    ],
   },
 
   // JavaScript configuration files and legacy scripts
