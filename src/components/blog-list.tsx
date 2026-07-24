@@ -43,7 +43,7 @@ const BlogListWithQuery = () => (
     query={graphql`
       query BlogListQuery {
         allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
+          sort: { frontmatter: { date: DESC } }
           filter: { frontmatter: { template_key: { eq: "blog-post" } } }
         ) {
           edges {

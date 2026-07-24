@@ -42,7 +42,10 @@ function ghToken(): string {
 
 const TOKEN = ghToken()
 
-async function ghFetch(url: string, extraHeaders: Record<string, string> = {}): Promise<Response> {
+async function ghFetch(
+  url: string,
+  extraHeaders: Record<string, string> = {}
+): Promise<Response> {
   const res = await fetch(url, {
     headers: {
       "User-Agent": USER_AGENT,
@@ -58,7 +61,9 @@ async function ghFetch(url: string, extraHeaders: Record<string, string> = {}): 
 }
 
 async function ghApi<T>(endpoint: string): Promise<T> {
-  const url = endpoint.startsWith("http") ? endpoint : `https://api.github.com${endpoint}`
+  const url = endpoint.startsWith("http")
+    ? endpoint
+    : `https://api.github.com${endpoint}`
   const res = await ghFetch(url, { Authorization: `Bearer ${TOKEN}` })
   return (await res.json()) as T
 }
@@ -124,7 +129,9 @@ async function fetchCommits(): Promise<Commit[]> {
   )
 
   const commits: Commit[] = []
-  for (const [repoFull, items] of repos.map((r, i): [string, Record<string, unknown>[]] => [r, perRepo[i] ?? []])) {
+  for (const [repoFull, items] of repos.map(
+    (r, i): [string, Record<string, unknown>[]] => [r, perRepo[i] ?? []]
+  )) {
     for (const item of items) {
       const commit = item.commit as {
         committer: { date: string }
@@ -146,14 +153,16 @@ async function fetchCommits(): Promise<Commit[]> {
   console.log(`  found ${commits.length} commits`)
   if (commits.length === 0) {
     throw new Error(
-      "REST /repos/X/commits returned 0 results across all owned repos - refusing to overwrite pulse-data.yaml with empty data. Likely an auth or pagination regression; investigate before rerunning.",
+      "REST /repos/X/commits returned 0 results across all owned repos - refusing to overwrite pulse-data.yaml with empty data. Likely an auth or pagination regression; investigate before rerunning."
     )
   }
   return commits
 }
 
 async function enrichLoc(commits: Commit[]) {
-  console.log(`→ stats for ${commits.length} commits (concurrency ${CONCURRENCY})`)
+  console.log(
+    `→ stats for ${commits.length} commits (concurrency ${CONCURRENCY})`
+  )
   const limit = pLimit(CONCURRENCY)
   let done = 0
   await Promise.all(
@@ -166,7 +175,9 @@ async function enrichLoc(commits: Commit[]) {
           c.loc = info.stats ? info.stats.additions + info.stats.deletions : 0
         } catch (err) {
           const msg = err instanceof Error ? err.message : String(err)
-          console.warn(`  stats failed for ${c.repo}@${c.sha.slice(0, 7)}: ${msg.slice(0, 120)}`)
+          console.warn(
+            `  stats failed for ${c.repo}@${c.sha.slice(0, 7)}: ${msg.slice(0, 120)}`
+          )
         }
         done++
         if (done % 100 === 0) console.log(`  ${done}/${commits.length}`)
@@ -263,7 +274,8 @@ async function main() {
     fetchLinguistColors(),
   ])
 
-  const repoMeta: Record<string, { language: string | null; color: string }> = {}
+  const repoMeta: Record<string, { language: string | null; color: string }> =
+    {}
   for (const r of uniqueRepos) {
     const lang = langs[r] ?? null
     repoMeta[r] = {
@@ -276,7 +288,9 @@ async function main() {
   const outlier = pickOutlier(days)
 
   const workflowRunUrl =
-    process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
+    process.env.GITHUB_SERVER_URL &&
+    process.env.GITHUB_REPOSITORY &&
+    process.env.GITHUB_RUN_ID
       ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
       : null
 

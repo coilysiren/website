@@ -13,7 +13,10 @@ interface DefaultHeadProps {
 
 const DEFAULT_OG_IMAGE = "/og/default.png"
 
-const resolveImage = (siteUrl: string | undefined, image: string | undefined): string => {
+const resolveImage = (
+  siteUrl: string | undefined,
+  image: string | undefined
+): string => {
   const path = image ?? DEFAULT_OG_IMAGE
   if (/^https?:\/\//i.test(path)) return path
   const base = (siteUrl ?? "").replace(/\/$/, "")
@@ -27,7 +30,14 @@ const toIsoDate = (value: string | undefined): string | undefined => {
   return d.toISOString()
 }
 
-const DefaultHead = ({ title, description, image, type, publishedTime, author }: DefaultHeadProps) => {
+const DefaultHead = ({
+  title,
+  description,
+  image,
+  type,
+  publishedTime,
+  author,
+}: DefaultHeadProps) => {
   const siteMetadata = useSiteMetadata()
   const resolvedTitle = title ?? siteMetadata.title
   const resolvedDescription = description ?? siteMetadata.description
@@ -47,7 +57,10 @@ const DefaultHead = ({ title, description, image, type, publishedTime, author }:
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       {resolvedType === "article" && resolvedPublishedTime && (
-        <meta property="article:published_time" content={resolvedPublishedTime} />
+        <meta
+          property="article:published_time"
+          content={resolvedPublishedTime}
+        />
       )}
       {resolvedType === "article" && author && (
         <meta property="article:author" content={author} />

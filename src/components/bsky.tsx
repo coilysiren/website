@@ -1,5 +1,7 @@
 import React, { ReactElement } from "react"
-import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
+import type { AppBskyActorDefs } from "@atproto/api"
+
+type ProfileViewDetailed = AppBskyActorDefs.ProfileViewDetailed
 
 interface IExpandedProfileDetails {
   profile: ProfileViewDetailed
@@ -49,4 +51,4 @@ const getProfileList = (
 }
 
 export { getProfileList }
-export type { IExpandedProfileDetails }
+export type { IExpandedProfileDetails, ProfileViewDetailed }

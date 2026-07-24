@@ -48,7 +48,11 @@ const StatusDot = ({ status }: { status: Status }) => {
           ? "not HTTP - status check skipped"
           : "checking..."
   return (
-    <span className={`apps-status-dot ${cls}`} title={title} aria-label={title} />
+    <span
+      className={`apps-status-dot ${cls}`}
+      title={title}
+      aria-label={title}
+    />
   )
 }
 
@@ -127,7 +131,9 @@ const AppsPage = ({ pageContext }: AppsPageProps) => {
                         <a
                           className="apps-card-host"
                           href={app.url}
-                          target={app.url.startsWith("/") ? undefined : "_blank"}
+                          target={
+                            app.url.startsWith("/") ? undefined : "_blank"
+                          }
                           rel={
                             app.url.startsWith("/") ? undefined : "noreferrer"
                           }
@@ -143,7 +149,9 @@ const AppsPage = ({ pageContext }: AppsPageProps) => {
                         <a
                           className="apps-card-og"
                           href={app.url}
-                          target={app.url.startsWith("/") ? undefined : "_blank"}
+                          target={
+                            app.url.startsWith("/") ? undefined : "_blank"
+                          }
                           rel={
                             app.url.startsWith("/") ? undefined : "noreferrer"
                           }
@@ -178,7 +186,9 @@ const AppsPage = ({ pageContext }: AppsPageProps) => {
                       <div className="apps-card-links">
                         <a
                           href={app.url}
-                          target={app.url.startsWith("/") ? undefined : "_blank"}
+                          target={
+                            app.url.startsWith("/") ? undefined : "_blank"
+                          }
                           rel={
                             app.url.startsWith("/") ? undefined : "noreferrer"
                           }
@@ -208,7 +218,8 @@ const AppsPage = ({ pageContext }: AppsPageProps) => {
               <span className="apps-status-dot down" /> unreachable
             </span>
             <span className="legend-item">
-              <span className="apps-status-dot na" /> not checked (TCP / non-HTTP)
+              <span className="apps-status-dot na" /> not checked (TCP /
+              non-HTTP)
             </span>
           </div>
         </div>

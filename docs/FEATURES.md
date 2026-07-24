@@ -54,7 +54,7 @@ Under `.forgejo/workflows/`:
 
 ## End-to-end tests
 
-- **Cypress** smoke tests under [cypress/e2e/](../cypress/e2e/), driven by [cypress.config.js](../cypress.config.js).
+- **Cypress** smoke tests under [cypress/e2e/](../cypress/e2e/), driven by [cypress.config.ts](../cypress.config.ts).
 
 ## Deploy
 

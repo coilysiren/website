@@ -6,7 +6,7 @@
 
 [build.environment]
   NETLIFY_USE_PNPM = "true"
-  NODE_VERSION = "22"
+  NODE_VERSION = "24.18.0"
 
 [[redirects]]
   from = "/about"

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { useLocation } from "@gatsbyjs/reach-router"
+import type { PageProps } from "gatsby"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import DefaultHead from "../../components/default-head"
-import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
-import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
+import {
+  getProfileList,
+  IExpandedProfileDetails,
+  ProfileViewDetailed,
+} from "../../components/bsky"
 
 export const Head = () => (
   <DefaultHead
@@ -24,10 +27,9 @@ const setParams = (key: string, value: string) => {
   window.history.pushState(null, "", url.toString())
 }
 
-const Bsky = () => {
+const Bsky = ({ location }: PageProps) => {
   // START: GENERIC STATE
   // This kind of state is likely to be used in most applications.
-  const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const [error, setError] = useState<React.ReactNode>()
   const [started, setStarted] = useState<boolean>(false)
@@ -316,15 +318,19 @@ const Bsky = () => {
           <p>
             The number of followers checked is subject to several limits, and is
             slightly random. This is primarily to avoid overloading the server
-            and or your web browser. At the same time, there&apos;s a cache on the
-            server that will store the results for a short period of time. I say
-            that to say: you are encouraged to try this tool multiple times! You
-            may get different results, and subsequent runs should cost less
+            and or your web browser. At the same time, there&apos;s a cache on
+            the server that will store the results for a short period of time. I
+            say that to say: you are encouraged to try this tool multiple times!
+            You may get different results, and subsequent runs should cost less
             server resources than the first run.
           </p>
           <p>
             This idea was based off of{" "}
-            <a href="https://bsky-follow-finder.theo.io/" target="_blank" rel="noreferrer">
+            <a
+              href="https://bsky-follow-finder.theo.io/"
+              target="_blank"
+              rel="noreferrer"
+            >
               bsky-follow-finder
             </a>
             , go check that out as well!

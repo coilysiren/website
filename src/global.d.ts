@@ -1,6 +1,6 @@
-declare module "@gatsbyjs/reach-router" {
-  export * from "@reach/router"
-}
+declare module "*.css"
+
+declare module "*.scss"
 
 declare module "*.svg" {
   const content: string

@@ -1,9 +1,9 @@
 import js from "@eslint/js"
 import tseslint from "typescript-eslint"
-import react from "eslint-plugin-react"
 import unicorn from "eslint-plugin-unicorn"
 import cypress from "eslint-plugin-cypress"
 import prettier from "eslint-config-prettier"
+import globals from "globals"
 
 export default [
   // Global ignores
@@ -11,32 +11,29 @@ export default [
     ignores: ["node_modules/", "public/", ".cache/", ".claude/"],
   },
 
-  // Base JS recommended rules for all files
-  js.configs.recommended,
+  // JavaScript configuration files and legacy scripts
+  {
+    ...js.configs.recommended,
+    files: ["**/*.{js,mjs,cjs}"],
+    languageOptions: {
+      ...js.configs.recommended.languageOptions,
+      globals: globals.node,
+    },
+  },
 
-  // TypeScript + React for src/
+  // TypeScript across application, build, scripts, and tests
   ...tseslint.configs.recommended.map((config) => ({
     ...config,
-    files: ["src/**/*.{ts,tsx}"],
+    files: ["**/*.{ts,tsx}"],
   })),
+
+  // Application code
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: ["src/**/*.{ts,tsx}", "gatsby-*.tsx", "scripts/**/*.tsx"],
     plugins: {
-      react,
       unicorn,
     },
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
     rules: {
-      // React
-      ...react.configs.recommended.rules,
-      "react/prop-types": "off",
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
-
       // Unicorn
       "unicorn/filename-case": "error",
       "unicorn/catch-error-name": "error",
@@ -82,30 +79,22 @@ export default [
   // Cypress tests
   {
     ...cypress.configs.recommended,
-    files: ["cypress/**/*.js"],
+    files: ["cypress/**/*.ts"],
+    languageOptions: {
+      ...cypress.configs.recommended.languageOptions,
+      globals: {
+        ...cypress.configs.recommended.languageOptions?.globals,
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
   },
 
-  // Root JS files (gatsby-config, gatsby-node, cypress.config)
+  // CLI scripts use exit codes to report failures to CI.
   {
-    files: ["*.js", "cypress/plugins/**/*.js", "scripts/**/*.js"],
-    languageOptions: {
-      sourceType: "commonjs",
-      globals: {
-        module: "readonly",
-        exports: "writable",
-        require: "readonly",
-        __dirname: "readonly",
-        __filename: "readonly",
-        process: "readonly",
-        console: "readonly",
-        Buffer: "readonly",
-        URL: "readonly",
-        URLSearchParams: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        setInterval: "readonly",
-        clearInterval: "readonly",
-      },
+    files: ["scripts/**/*.{ts,tsx}"],
+    rules: {
+      "unicorn/no-process-exit": "off",
     },
   },
 

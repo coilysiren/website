@@ -11,7 +11,13 @@ const __dirname = path.dirname(__filename)
 
 const ROOT = path.resolve(__dirname, "..")
 const OUT_DIR = path.join(ROOT, "static", "og")
-const FONT_DIR = path.join(ROOT, "node_modules", "@fontsource", "roboto", "files")
+const FONT_DIR = path.join(
+  ROOT,
+  "node_modules",
+  "@fontsource",
+  "roboto",
+  "files"
+)
 
 const SITE_HOST = "coilysiren.me"
 const SITE_TAGLINE = "lights out, platform's green, agents are working the line"
@@ -21,7 +27,7 @@ const KAI = "Kai Siren"
 // rasterize it inline. Subject of the "banner" card.
 const LOGO_SVG = fs.readFileSync(
   path.join(__dirname, "..", "src", "images", "cool-logo.svg"),
-  "utf8",
+  "utf8"
 )
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
@@ -70,22 +76,23 @@ interface Frontmatter {
   templateKey?: string
 }
 
+function pickString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() ? value.trim() : undefined
+}
+
 function parseFrontmatter(filepath: string): Frontmatter {
   const content = fs.readFileSync(filepath, "utf8")
   const m = content.match(/^---\r?\n([\s\S]*?)\r?\n---/)
   if (!m) return {}
   const raw = yaml.load(m[1] ?? "", { schema: yaml.JSON_SCHEMA }) as
-    | Record<string, unknown>
-    | null
-    | undefined
+    Record<string, unknown> | null | undefined
   if (!raw) return {}
-  const pickStr = (v: unknown): string | undefined =>
-    typeof v === "string" && v.trim() ? v.trim() : undefined
   return {
-    title: pickStr(raw.title),
-    description: pickStr(raw.description),
-    date: pickStr(raw.date),
-    templateKey: pickStr(raw["template-key"]) ?? pickStr(raw["template_key"]),
+    title: pickString(raw.title),
+    description: pickString(raw.description),
+    date: pickString(raw.date),
+    templateKey:
+      pickString(raw["template-key"]) ?? pickString(raw["template_key"]),
   }
 }
 
@@ -128,7 +135,8 @@ function discoverTopLevelMarkdown(): Entry[] {
 }
 
 const MARKDOWN_SUBTITLE_OVERRIDES: Record<string, string> = {
-  "now.png": "What I'm focused on at this point in my life - building, reading, and playing.",
+  "now.png":
+    "What I'm focused on at this point in my life - building, reading, and playing.",
   "cool-people.png": "People I think are great and want to hype up.",
   "eco-modding.png": "Public C# mods I've shipped for Strange Loop Games' Eco.",
   "resume.png":
@@ -158,7 +166,8 @@ const TSX_ENTRIES: Entry[] = [
     outPath: "pulse.png",
     kind: "page",
     title: "Pulse",
-    subtitle: "site activity rhythms - posts, builds, and the cadence of the week",
+    subtitle:
+      "site activity rhythms - posts, builds, and the cadence of the week",
   },
   {
     outPath: "apps/index.png",
@@ -195,7 +204,10 @@ function fitTitle(title: string, max = 90): string {
   return title.slice(0, max - 1).replace(/\s+\S*$/, "") + "..."
 }
 
-function fitSubtitle(subtitle: string | undefined, max = 180): string | undefined {
+function fitSubtitle(
+  subtitle: string | undefined,
+  max = 180
+): string | undefined {
   if (!subtitle) return undefined
   if (subtitle.length <= max) return subtitle
   return subtitle.slice(0, max - 1).replace(/\s+\S*$/, "") + "..."
@@ -378,7 +390,13 @@ function KindBadge({ kind }: { kind: Kind }) {
   )
 }
 
-function BoltMark({ size = 22, color = COLORS.accent }: { size?: number; color?: string }) {
+function BoltMark({
+  size = 22,
+  color = COLORS.accent,
+}: {
+  size?: number
+  color?: string
+}) {
   // A small "lightning bolt" mark drawn with two rotated rectangles, since
   // most unicode bolt glyphs (⌁ ⚡) are missing from Roboto's Latin set.
   const w = Math.round(size * 0.32)
@@ -424,7 +442,15 @@ function StandardCard(entry: Entry) {
   const subtitle = fitSubtitle(entry.subtitle)
   const titleLen = title.length
   const titleSize =
-    titleLen > 70 ? 64 : titleLen > 45 ? 78 : titleLen > 28 ? 92 : titleLen > 12 ? 108 : 132
+    titleLen > 70
+      ? 64
+      : titleLen > 45
+        ? 78
+        : titleLen > 28
+          ? 92
+          : titleLen > 12
+            ? 108
+            : 132
 
   return (
     <div style={BASE_FRAME}>
@@ -658,7 +684,7 @@ function DefaultCard(entry: Entry) {
   )
 }
 
-function BannerCard(entry: Entry) {
+function BannerCard() {
   // Logo-forward social banner: brand mark + wordmark anchor the left; the
   // right ~60% is left empty so a title or tagline can be overlaid downstream.
   return (
@@ -747,12 +773,15 @@ function routeFromOutPath(outPath: string): string {
 }
 
 function renderToReactNode(entry: Entry) {
-  if (entry.kind === "banner") return BannerCard(entry)
+  if (entry.kind === "banner") return BannerCard()
   if (entry.kind === "default") return DefaultCard(entry)
   return StandardCard(entry)
 }
 
-async function renderOne(entry: Entry, fonts: Awaited<ReturnType<typeof loadFonts>>): Promise<void> {
+async function renderOne(
+  entry: Entry,
+  fonts: Awaited<ReturnType<typeof loadFonts>>
+): Promise<void> {
   const node = renderToReactNode(entry)
   const svg = await satori(node, {
     width: 1200,
@@ -799,17 +828,22 @@ async function main() {
     try {
       await renderOne(entry, fonts)
       ok += 1
-    } catch (err) {
+    } catch (error) {
       failed += 1
-      console.error(`[og] FAIL ${entry.outPath}:`, err instanceof Error ? err.message : err)
+      console.error(
+        `[og] FAIL ${entry.outPath}:`,
+        error instanceof Error ? error.message : error
+      )
     }
   }
   const ms = Date.now() - t0
-  console.log(`[og] rendered ${ok}/${entries.length} images to static/og/ in ${ms}ms`)
+  console.log(
+    `[og] rendered ${ok}/${entries.length} images to static/og/ in ${ms}ms`
+  )
   if (failed > 0) process.exit(1)
 }
 
-main().catch((err) => {
-  console.error("[og] fatal:", err)
+main().catch((error) => {
+  console.error("[og] fatal:", error)
   process.exit(1)
 })

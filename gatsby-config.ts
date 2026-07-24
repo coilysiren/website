@@ -1,9 +1,11 @@
 import type { GatsbyConfig } from "gatsby"
+import * as sass from "sass"
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "Kai Siren",
-    description: "⚙⚒ lights out, platform's green, agents are working the line ⚒⚙",
+    description:
+      "⚙⚒ lights out, platform's green, agents are working the line ⚒⚙",
     author: "@coilysiren",
     email: "coilysiren@gmail.com",
     siteUrl: "https://coilysiren.me",
@@ -32,7 +34,24 @@ const config: GatsbyConfig = {
         `,
         feeds: [
           {
-            serialize: ({ query: { allMarkdownRemark } }: { query: { allMarkdownRemark: { nodes: Array<{ frontmatter: { title: string; date: string; description?: string }; excerpt: string; html: string; fields: { slug: string } }> } } }) => {
+            serialize: ({
+              query: { allMarkdownRemark },
+            }: {
+              query: {
+                allMarkdownRemark: {
+                  nodes: Array<{
+                    frontmatter: {
+                      title: string
+                      date: string
+                      description?: string
+                    }
+                    excerpt: string
+                    html: string
+                    fields: { slug: string }
+                  }>
+                }
+              }
+            }) => {
               return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.frontmatter.description || node.excerpt,
@@ -72,7 +91,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-sass",
       options: {
-        implementation: require("sass"),
+        implementation: sass,
       },
     },
     {
@@ -95,12 +114,6 @@ const config: GatsbyConfig = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          {
-            resolve: "gatsby-remark-relative-images",
-            options: {
-              name: "uploads",
-            },
-          },
           {
             resolve: "gatsby-remark-images",
             options: {

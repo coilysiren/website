@@ -8,8 +8,8 @@ function Hero() {
       <img className="hero-photo" src={headshot} alt="Kai Siren" />
       <div className="hero-text">
         <p>
-          <strong>Hi! I&apos;m Kai</strong>, a platform engineer &gt;10 years in,
-          currently most interested in what one person can build right now -
+          <strong>Hi! I&apos;m Kai</strong>, a platform engineer &gt;10 years
+          in, currently most interested in what one person can build right now -
           the ceiling has shifted a lot in the last year. Queer, Black, living
           in{" "}
           <a
@@ -41,8 +41,7 @@ function Hero() {
           </a>
           , a <Link to="/apps/bsky-popularity-contest/">Bluesky stats app</Link>
           , and a personal CRM in an Obsidian vault. Outside the keyboard:
-          factory / strategy / tactics games, gardening, and slowly planning
-          an{" "}
+          factory / strategy / tactics games, gardening, and slowly planning an{" "}
           <a
             href="https://en.wikipedia.org/wiki/Secondary_suite"
             target="_blank"
@@ -55,8 +54,8 @@ function Hero() {
         <p>
           <Link to="/now">/now</Link> is the living document - what I&apos;m
           thinking about, building, and playing this week.{" "}
-          <Link to="/resume">/resume</Link> is the career summary, updated
-          when someone asks.
+          <Link to="/resume">/resume</Link> is the career summary, updated when
+          someone asks.
         </p>
       </div>
     </div>

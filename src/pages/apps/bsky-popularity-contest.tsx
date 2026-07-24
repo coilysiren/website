@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { useLocation } from "@gatsbyjs/reach-router"
+import type { PageProps } from "gatsby"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import DefaultHead from "../../components/default-head"
-import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
-import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
+import {
+  getProfileList,
+  IExpandedProfileDetails,
+  ProfileViewDetailed,
+} from "../../components/bsky"
 
 export const Head = () => (
   <DefaultHead
@@ -24,10 +27,9 @@ const setParams = (key: string, value: string) => {
   window.history.pushState(null, "", url.toString())
 }
 
-const Bsky = () => {
+const Bsky = ({ location }: PageProps) => {
   // START: GENERIC STATE
   // This kind of state is likely to be used in most applications.
-  const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const [error, setError] = useState<React.ReactNode>()
   const [started, setStarted] = useState<boolean>(false)
@@ -270,9 +272,9 @@ const Bsky = () => {
           <p className="large">📸 📸 📸</p>
           <p>
             You are a daring camera-enby, out here to capture the stars! They
-            won&apos;t avoid your notice, no matter how hard they try! The best of
-            the best will be crowned the most popular starlette in the halls of
-            Bluesky! This is a popularity contest, after all!
+            won&apos;t avoid your notice, no matter how hard they try! The best
+            of the best will be crowned the most popular starlette in the halls
+            of Bluesky! This is a popularity contest, after all!
           </p>
           <p>Something broken? Reload the page and try again.</p>
           {started && !done ? (

@@ -83,7 +83,9 @@
     border-radius: 0 0.4em 0.4em 0;
     padding: 0.7em 0.9em;
     margin-bottom: 0.6em;
-    transition: box-shadow 0.2s ease, border-left-color 0.2s ease;
+    transition:
+      box-shadow 0.2s ease,
+      border-left-color 0.2s ease;
 
     &:last-child {
       margin-bottom: 0;
@@ -161,7 +163,9 @@
       border-radius: 0.4em;
       text-decoration: none;
       color: inherit;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
+      transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
 
       &:hover {
         border-color: vars.$mid-purple;

@@ -2,9 +2,12 @@ import React, { useRef, useState } from "react"
 import Layout from "../../components/layout"
 import Closer from "../../components/closer"
 import DefaultHead from "../../components/default-head"
-import { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs"
 import { showHTTPError } from "../../components/error"
-import { getProfileList, IExpandedProfileDetails } from "../../components/bsky"
+import {
+  getProfileList,
+  IExpandedProfileDetails,
+  ProfileViewDetailed,
+} from "../../components/bsky"
 
 export const Head = () => <DefaultHead title="Bluesky Testing" />
 
