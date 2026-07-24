@@ -18,7 +18,7 @@ export const onRouteUpdate: GatsbyBrowser["onRouteUpdate"] = () => {
   const iframe = wrap.querySelector<HTMLIFrameElement>("iframe")
   const offline = document.querySelector<HTMLElement>("#eco-tracker-offline")
   if (!iframe || !offline) return
-  fetch("https://eco-jobs-tracker.coilysiren.me/", {
+  fetch("https://eco-app.coilysiren.me/jobs/", {
     mode: "no-cors",
     cache: "no-store",
   }).catch(() => {
