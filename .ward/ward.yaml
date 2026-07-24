@@ -22,6 +22,12 @@ commands:
   build:
     run: pnpm run build
     description: Render OG images, gatsby clean, gatsby build.
+  image-build:
+    run: docker build --tag coilysiren-website:local .
+    description: Build the static staging image locally.
+  image-smoke:
+    run: docker run --rm coilysiren-website:local nginx -t
+    description: Validate the staging image nginx configuration.
   serve:
     run: pnpm run serve
     description: gatsby serve on port 8000 (host 0.0.0.0). Serves the build/ output.

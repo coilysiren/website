@@ -32,11 +32,21 @@ Dev commands are declared in [`.ward/ward.yaml`](.ward/ward.yaml). Run them as `
 - `ward exec dev` - start Gatsby with hot reload.
 - `ward exec test` - run formatting, lint, type, and unit checks.
 - `ward exec build` - render Open Graph assets and create the production site.
+- `ward exec image-build` - build the static staging image.
+- `ward exec image-smoke` - validate nginx inside the staging image.
 - `ward exec test-e2e-ci` - serve the production build and run the Cypress smoke test.
 - `ward exec deps-outdated` - report dependency releases available upstream.
 
 The dependency updater keeps Node types on the Node 24 runtime line and
 TypeScript on 6.x until typescript-eslint supports TypeScript 7.
+
+## Hosting
+
+Netlify remains the production host for the canonical
+<https://coilysiren.me> site. The [staging image](docs/staging.md) supplies the
+same static build to <https://website.coilysiren.me>. The
+`coilyco-bridge/deploy` repository owns that image's publication, Kubernetes
+rollout, DNS, and TLS.
 
 ## See also
 

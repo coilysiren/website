@@ -1,0 +1,12 @@
+.cache
+.env*
+.forgejo
+.git
+.github
+.ward
+coverage
+cypress/screenshots
+cypress/videos
+node_modules
+public
+*.log

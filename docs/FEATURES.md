@@ -6,7 +6,7 @@ Last full sweep: 2026-07-09.
 
 ## Stack
 
-- **Gatsby static site** (TypeScript), served from Netlify. Config at [gatsby-config.ts](../gatsby-config.ts), build hooks at [gatsby-node.ts](../gatsby-node.ts), browser/SSR shells at [gatsby-browser.tsx](../gatsby-browser.tsx) / [gatsby-ssr.tsx](../gatsby-ssr.tsx).
+- **Gatsby static site** (TypeScript), served from Netlify in production and an unprivileged nginx image in staging. Config at [gatsby-config.ts](../gatsby-config.ts), build hooks at [gatsby-node.ts](../gatsby-node.ts), browser/SSR shells at [gatsby-browser.tsx](../gatsby-browser.tsx) / [gatsby-ssr.tsx](../gatsby-ssr.tsx).
 - **Sentry** error reporting via `@sentry/gatsby`.
 - **RSS feed** via `gatsby-plugin-feed`.
 - **Sass** styles under [src/sass/](../src/sass/).
@@ -59,7 +59,8 @@ Under `.forgejo/workflows/`:
 ## Deploy
 
 - **Netlify** picks up `main`. Build status badge in the README. Site at <https://coilysiren.me>.
-- **Site-deploy verification is out of scope** here. The workflows cover tests, pulse refresh, and trufflehog. Netlify deploys on its own cadence (see [AGENTS.md](../AGENTS.md)).
+- **Staging image contract** builds the locked Gatsby site and serves it from unprivileged nginx on port 8080. The deploy repository publishes and rolls that image to <https://website.coilysiren.me>. See [staging.md](staging.md).
+- **Site-deploy verification is out of scope** here. The workflows cover tests, pulse refresh, and trufflehog. Netlify and the deploy repository roll their respective hosts on their own cadence (see [AGENTS.md](../AGENTS.md)).
 
 ## Repo baseline
 
@@ -68,6 +69,7 @@ Under `.forgejo/workflows/`:
 ## See also
 
 - [README.md](../README.md) - human-facing intro and local-dev quickstart.
+- [staging.md](staging.md) - staging image boundary and local verification.
 - [AGENTS.md](../AGENTS.md) - agent-facing operating rules.
 - [.ward/ward.yaml](../.ward/ward.yaml) - allowlisted commands.
 
