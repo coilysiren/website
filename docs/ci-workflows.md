@@ -6,7 +6,7 @@ Durable rationale for the Forgejo workflows under `.forgejo/workflows/`. YAML co
 
 Runs on every PR and on push to `main`.
 
-- `test` runs in the pinned dev-base image, enables Corepack, installs the
+- `test` runs in the moving :release dev-base image, enables Corepack, installs the
   pnpm 11 lockfile, and then uses `ward exec build` and
   `ward exec test-quick`.
 - `test-e2e` runs the TypeScript Cypress smoke path in the pinned

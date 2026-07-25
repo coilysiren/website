@@ -47,7 +47,7 @@ Under [scripts/](../scripts/):
 
 Under `.forgejo/workflows/`:
 
-- **`config.yml`** - main test workflow. Runs the repo gate in the pinned dev-base image through `ward exec`, plus the Cypress smoke job for browser coverage.
+- **`config.yml`** - main test workflow. Runs the repo gate in the moving :release dev-base image through `ward exec`, plus the Cypress smoke job for browser coverage.
 - **`trufflehog.yml`** - offline secret scan on push, PR, cron, and manual dispatch.
 
 `pulse-refresh.yml` stays on GitHub for now as a separate design decision. It has no Forgejo equivalent yet.
