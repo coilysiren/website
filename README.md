@@ -34,6 +34,7 @@ Dev commands are declared in [`.ward/ward.yaml`](.ward/ward.yaml). Run them as `
 - `ward exec build` - render Open Graph assets and create the production site.
 - `ward exec image-build` - build the static staging image.
 - `ward exec image-smoke` - validate nginx inside the staging image.
+- `ward exec image-publish-check` - validate the trusted publisher script.
 - `ward exec test-e2e-ci` - serve the production build and run the Cypress smoke test.
 - `ward exec deps-outdated` - report dependency releases available upstream.
 
@@ -45,8 +46,8 @@ TypeScript on 6.x until typescript-eslint supports TypeScript 7.
 Netlify remains the production host for the canonical
 <https://coilysiren.me> site. The [staging image](docs/staging.md) supplies the
 same static build to <https://website.coilysiren.me>. The
-`coilyco-bridge/deploy` repository owns that image's publication, Kubernetes
-rollout, DNS, and TLS.
+source repository publishes an immutable private image to Forgejo OCI.
+`coilyco-bridge/deploy` owns its Kubernetes rollout, DNS, and TLS.
 
 ## See also
 

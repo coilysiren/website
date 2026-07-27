@@ -28,6 +28,9 @@ commands:
   image-smoke:
     run: docker run --rm coilysiren-website:local nginx -t
     description: Validate the staging image nginx configuration.
+  image-publish-check:
+    run: bash -n scripts/publish-image.sh
+    description: Validate the trusted Forgejo OCI publisher shell contract.
   serve:
     run: pnpm run serve
     description: gatsby serve on port 8000 (host 0.0.0.0). Serves the build/ output.

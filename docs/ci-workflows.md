@@ -18,6 +18,14 @@ The Forgejo workflow keeps package-manager behavior aligned with
 supports it. GitHub mirror checks and Netlify builds use Node.js 24 from the
 repository runtime pin.
 
+## `publish-image.yml` - Publish staging image
+
+Every push to canonical `main` runs on the trusted `deploy:host` runner. The
+job publishes the checked-out source commit as
+`forgejo.coilysiren.me/coilysiren/website:<full-source-sha>` and passes only
+after remote manifest inspection succeeds. The package stays private and the
+runner supplies only the package-write credential.
+
 ## `pulse-refresh.yml` - Refresh pulse data
 
 This stays a separate design choice for now. The GitHub workflow still handles the daily `pulse-data.yaml` refresh, but there is no Forgejo equivalent in this pass.
