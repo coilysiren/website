@@ -1,7 +1,7 @@
 ---
 
 title: "Hiring"
-date: 2026-05-26
+date: 2026-07-27
 unlisted: true
 description: >-
   Long-running stance on what working with me looks like. If you are recruiting me, start here.
@@ -22,12 +22,22 @@ If you are recruiting me, this page is the place to start. It is a long-running 
 Senior platform engineer. The shapes I am strongest in:
 
 - **Systems integration** across cloud, observability, and developer tooling.
+- **Developer experience, internal platforms, and developer tooling** as the actual product of the role.
+- **Agent-first infrastructure**: MCP and tool interfaces, orchestration, evaluation, observability, safety, and debugging for agent consumers.
 - **Reliability and incident response** on production platforms.
 - **Cost-to-serve work**, especially resource accounting across cloud environments.
 - **Cross-org platform-team interface work**.
-- **Developer-experience leverage**. Agent workflows are an emerging focus.
+- **Meaningful ownership** across a platform or developer-tooling surface. Broad early-company scope and first-platform-hire charters are especially interesting.
 
 "Platform engineer" is the clearest-signal title. "DevOps" is the honest fallback. I do not frame myself as full-stack, even where the surface skills would justify it.
+
+Actual authority and scope matter more than title prestige. Senior is a good fit. Staff or Lead can also fit when the charter supports it, but neither title is inherently better.
+
+A strong platform charter with some SRE or product responsibility can fit. Primarily SRE, operations, or infrastructure maintenance is less aligned. Backend-product work as the actual role is a hard no. Generic AI branding does not add much unless agentic developer leverage is part of the work.
+
+For logistics, I prefer a remote-compatible role with a real Bay Area office, or a comfortable Bay Area hybrid arrangement. No Bay Area office is a hard stop. My base-compensation floor is **$170K**, with **$220K-$250K** the strongest range. Compensation is not load-bearing above the floor.
+
+Manager quality, autonomy, team composition, inclusion, communication style, on-call expectations, overtime, and room to work without masking all matter. A technically strong role can still be the wrong fit when the product direction conflicts with my values.
 
 ## Interview format
 
