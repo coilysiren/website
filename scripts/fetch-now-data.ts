@@ -11,17 +11,128 @@ const BSKY_HANDLE = "coilysiren.me"
 const GH_USERNAME = "coilysiren"
 const USER_AGENT = "coilysiren-now-page/1.0"
 
+interface GitHubEvent {
+  type: string
+  created_at: string
+  repo: { name: string }
+  payload: {
+    action?: string
+    commits?: Array<{ message: string }>
+    comment?: { body?: string }
+    issue?: { title?: string }
+    pull_request?: { title?: string }
+  }
+}
+
+interface GitHubStar {
+  full_name: string
+  description?: string | null
+  language?: string | null
+}
+
+interface BlueskyFeedItem {
+  post: {
+    author: { handle: string }
+    record: { text: string; createdAt: string }
+    replyCount?: number
+    likeCount?: number
+    repostCount?: number
+  }
+  reason?: unknown
+}
+
+interface BlueskyFeed {
+  feed?: BlueskyFeedItem[]
+}
+
+interface BlueskyFollows {
+  follows?: Array<{
+    handle: string
+    displayName?: string
+    description?: string
+  }>
+}
+
+interface YouTubeVideo {
+  snippet: {
+    title: string
+    channelTitle: string
+    publishedAt: string
+    description?: string
+  }
+}
+
+interface YouTubeSubscription {
+  snippet: {
+    title: string
+    description?: string
+  }
+}
+
+interface ItemsResponse<T> {
+  items?: T[]
+}
+
+interface RedditListing<T> {
+  data?: {
+    children?: Array<{ data: T }>
+  }
+}
+
+interface RedditSubmission {
+  subreddit: string
+  title: string
+  selftext?: string
+  score: number
+  created_utc: number
+  url: string
+}
+
+interface RedditComment {
+  subreddit: string
+  body?: string
+  score: number
+  created_utc: number
+  link_title?: string
+}
+
+interface SteamGame {
+  name: string
+  playtime_2weeks: number
+  playtime_forever: number
+}
+
+interface SteamGamesResponse {
+  response?: {
+    games?: SteamGame[]
+    game_count?: number
+  }
+}
+
 // ---------- helpers ----------
 
 function ssmGet(name: string): string {
   return execFileSync(
     "aws",
-    ["ssm", "get-parameter", "--name", name, "--with-decryption", "--query", "Parameter.Value", "--output", "text"],
+    [
+      "ssm",
+      "get-parameter",
+      "--name",
+      name,
+      "--with-decryption",
+      "--query",
+      "Parameter.Value",
+      "--output",
+      "text",
+    ],
     { encoding: "utf8" }
   ).trim()
 }
 
-function httpsJson<T = any>(options: https.RequestOptions, body?: string): Promise<T> {
+function httpsJson<T = unknown>(
+  options: https.RequestOptions,
+  body?: string
+): Promise<T> {
   return new Promise((resolve, reject) => {
     const req = https.request(options, (res) => {
       let data = ""
@@ -30,7 +141,11 @@ function httpsJson<T = any>(options: https.RequestOptions, body?: string): Promi
         try {
           resolve(JSON.parse(data) as T)
         } catch {
-          reject(new Error(`Bad JSON from ${options.hostname}${options.path}: ${data.slice(0, 200)}`))
+          reject(
+            new Error(
+              `Bad JSON from ${options.hostname}${options.path}: ${data.slice(0, 200)}`
+            )
+          )
         }
       })
     })
@@ -40,7 +155,10 @@ function httpsJson<T = any>(options: https.RequestOptions, body?: string): Promi
   })
 }
 
-function httpsGet<T = any>(url: string, headers: Record<string, string> = {}): Promise<T> {
+function httpsGet<T = unknown>(
+  url: string,
+  headers: Record<string, string> = {}
+): Promise<T> {
   const u = new URL(url)
   return httpsJson<T>({
     hostname: u.hostname,
@@ -54,15 +172,25 @@ function httpsGet<T = any>(url: string, headers: Record<string, string> = {}): P
 
 async function fetchGitHub() {
   console.log("→ GitHub")
-  const events: any[] = JSON.parse(
+  const events = JSON.parse(
     execFileSync("gh", ["api", `/users/${GH_USERNAME}/events?per_page=100`], {
       encoding: "utf8",
     })
-  )
+  ) as GitHubEvent[]
 
   const commits: Array<{ repo: string; message: string; date: string }> = []
-  const prs: Array<{ repo: string; action: string; title?: string; date: string }> = []
-  const issueComments: Array<{ repo: string; issue?: string; body: string; date: string }> = []
+  const prs: Array<{
+    repo: string
+    action: string
+    title?: string
+    date: string
+  }> = []
+  const issueComments: Array<{
+    repo: string
+    issue?: string
+    body: string
+    date: string
+  }> = []
   const repoSet = new Set<string>()
 
   for (const e of events) {
@@ -78,7 +206,7 @@ async function fetchGitHub() {
     } else if (e.type === "PullRequestEvent") {
       prs.push({
         repo: e.repo.name,
-        action: e.payload.action,
+        action: e.payload.action ?? "unknown",
         title: e.payload.pull_request?.title,
         date: e.created_at,
       })
@@ -94,8 +222,12 @@ async function fetchGitHub() {
 
   const stars = (
     JSON.parse(
-      execFileSync("gh", ["api", `/users/${GH_USERNAME}/starred?per_page=10&sort=created`], { encoding: "utf8" })
-    ) as any[]
+      execFileSync(
+        "gh",
+        ["api", `/users/${GH_USERNAME}/starred?per_page=10&sort=created`],
+        { encoding: "utf8" }
+      )
+    ) as GitHubStar[]
   ).map((r) => ({
     repo: r.full_name,
     description: r.description,
@@ -134,21 +266,21 @@ async function fetchBluesky() {
 
   const auth = { Authorization: `Bearer ${session.accessJwt}` }
 
-  const feed = await httpsGet<any>(
+  const feed = await httpsGet<BlueskyFeed>(
     `https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed?actor=${BSKY_HANDLE}&limit=100`,
     auth
   )
-  const likes = await httpsGet<any>(
+  const likes = await httpsGet<BlueskyFeed>(
     `https://bsky.social/xrpc/app.bsky.feed.getActorLikes?actor=${BSKY_HANDLE}&limit=100`,
     auth
   )
-  const follows = await httpsGet<any>(
+  const follows = await httpsGet<BlueskyFollows>(
     `https://bsky.social/xrpc/app.bsky.graph.getFollows?actor=${BSKY_HANDLE}&limit=100`,
     auth
   )
 
   return {
-    posts: (feed.feed || []).map((item: any) => ({
+    posts: (feed.feed || []).map((item) => ({
       text: item.post.record.text,
       created_at: item.post.record.createdAt,
       reply_count: item.post.replyCount,
@@ -156,12 +288,12 @@ async function fetchBluesky() {
       repost_count: item.post.repostCount,
       is_repost: !!item.reason,
     })),
-    likes: (likes.feed || []).map((item: any) => ({
+    likes: (likes.feed || []).map((item) => ({
       author: item.post.author.handle,
       text: item.post.record.text,
       created_at: item.post.record.createdAt,
     })),
-    follows: (follows.follows || []).map((f: any) => ({
+    follows: (follows.follows || []).map((f) => ({
       handle: f.handle,
       display_name: f.displayName,
       description: (f.description || "").slice(0, 200),
@@ -207,25 +339,25 @@ async function fetchYouTube() {
   const accessToken = await refreshYouTubeToken()
   const auth = { Authorization: `Bearer ${accessToken}` }
 
-  const liked = await httpsGet<any>(
+  const liked = await httpsGet<ItemsResponse<YouTubeVideo>>(
     "https://www.googleapis.com/youtube/v3/videos?myRating=like&part=snippet&maxResults=50",
     auth
   )
-  const subs = await httpsGet<any>(
+  const subs = await httpsGet<ItemsResponse<YouTubeSubscription>>(
     "https://www.googleapis.com/youtube/v3/subscriptions?mine=true&part=snippet&maxResults=50&order=relevance",
     auth
   )
 
   return {
     // Reverse-chronological by like time; index is the only proxy YouTube exposes.
-    liked: (liked.items || []).map((v: any, i: number) => ({
+    liked: (liked.items || []).map((v, i) => ({
       like_recency_index: i,
       title: v.snippet.title,
       channel: v.snippet.channelTitle,
       video_published_at: v.snippet.publishedAt,
       description: (v.snippet.description || "").slice(0, 200),
     })),
-    subscriptions: (subs.items || []).map((s: any) => ({
+    subscriptions: (subs.items || []).map((s) => ({
       channel: s.snippet.title,
       description: (s.snippet.description || "").slice(0, 200),
     })),
@@ -236,15 +368,15 @@ async function fetchYouTube() {
 
 async function fetchReddit() {
   console.log("→ Reddit")
-  const submissions = await httpsGet<any>(
+  const submissions = await httpsGet<RedditListing<RedditSubmission>>(
     `https://www.reddit.com/user/${REDDIT_USERNAME}/submitted.json?limit=100`
   )
-  const comments = await httpsGet<any>(
+  const comments = await httpsGet<RedditListing<RedditComment>>(
     `https://www.reddit.com/user/${REDDIT_USERNAME}/comments.json?limit=100`
   )
 
   return {
-    submissions: (submissions.data?.children || []).map((c: any) => ({
+    submissions: (submissions.data?.children || []).map((c) => ({
       subreddit: c.data.subreddit,
       title: c.data.title,
       selftext: (c.data.selftext || "").slice(0, 300),
@@ -252,7 +384,7 @@ async function fetchReddit() {
       created_utc: c.data.created_utc,
       url: c.data.url,
     })),
-    comments: (comments.data?.children || []).map((c: any) => ({
+    comments: (comments.data?.children || []).map((c) => ({
       subreddit: c.data.subreddit,
       body: (c.data.body || "").slice(0, 400),
       score: c.data.score,
@@ -269,23 +401,23 @@ async function fetchSteam() {
   const apiKey = ssmGet("/steam/web-api-key")
   const steamId = ssmGet("/steam/steam-id-64")
 
-  const recent = await httpsGet<any>(
+  const recent = await httpsGet<SteamGamesResponse>(
     `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${apiKey}&steamid=${steamId}`
   )
-  const owned = await httpsGet<any>(
+  const owned = await httpsGet<SteamGamesResponse>(
     `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${apiKey}&steamid=${steamId}&include_appinfo=true&include_played_free_games=true`
   )
 
-  const recentlyPlayed = (recent.response?.games || []).map((g: any) => ({
+  const recentlyPlayed = (recent.response?.games || []).map((g) => ({
     name: g.name,
     playtime_2weeks_hours: Math.round((g.playtime_2weeks / 60) * 10) / 10,
     playtime_total_hours: Math.round(g.playtime_forever / 60),
   }))
 
   const topOwned = (owned.response?.games || [])
-    .sort((a: any, b: any) => b.playtime_forever - a.playtime_forever)
+    .sort((a, b) => b.playtime_forever - a.playtime_forever)
     .slice(0, 10)
-    .map((g: any) => ({
+    .map((g) => ({
       name: g.name,
       playtime_total_hours: Math.round(g.playtime_forever / 60),
     }))

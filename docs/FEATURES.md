@@ -6,7 +6,7 @@ Last full sweep: 2026-07-09.
 
 ## Stack
 
-- **Gatsby static site** (TypeScript), served from Netlify. Config at [gatsby-config.ts](../gatsby-config.ts), build hooks at [gatsby-node.ts](../gatsby-node.ts), browser/SSR shells at [gatsby-browser.tsx](../gatsby-browser.tsx) / [gatsby-ssr.tsx](../gatsby-ssr.tsx).
+- **Gatsby static site** (TypeScript), served from Netlify in production and an unprivileged nginx image in staging. Config at [gatsby-config.ts](../gatsby-config.ts), build hooks at [gatsby-node.ts](../gatsby-node.ts), browser/SSR shells at [gatsby-browser.tsx](../gatsby-browser.tsx) / [gatsby-ssr.tsx](../gatsby-ssr.tsx).
 - **Sentry** error reporting via `@sentry/gatsby`.
 - **RSS feed** via `gatsby-plugin-feed`.
 - **Sass** styles under [src/sass/](../src/sass/).
@@ -47,19 +47,24 @@ Under [scripts/](../scripts/):
 
 Under `.forgejo/workflows/`:
 
-- **`config.yml`** - main test workflow. Runs the repo gate in the pinned dev-base image through `ward exec`, plus the Cypress smoke job for browser coverage.
+- **`config.yml`** - main test workflow. Runs the repo gate in the moving :release dev-base image through `ward exec`, plus the Cypress smoke job for browser coverage.
+- **`publish-image.yml`** - trusted main-only publisher for the private,
+  single-architecture staging image at
+  `forgejo.coilysiren.me/coilysiren/website:<full-source-sha>`. The job uses a
+  package-write credential and verifies the remote immutable manifest.
 - **`trufflehog.yml`** - offline secret scan on push, PR, cron, and manual dispatch.
 
 `pulse-refresh.yml` stays on GitHub for now as a separate design decision. It has no Forgejo equivalent yet.
 
 ## End-to-end tests
 
-- **Cypress** smoke tests under [cypress/e2e/](../cypress/e2e/), driven by [cypress.config.js](../cypress.config.js).
+- **Cypress** smoke tests under [cypress/e2e/](../cypress/e2e/), driven by [cypress.config.ts](../cypress.config.ts).
 
 ## Deploy
 
 - **Netlify** picks up `main`. Build status badge in the README. Site at <https://coilysiren.me>.
-- **Site-deploy verification is out of scope** here. The workflows cover tests, pulse refresh, and trufflehog. Netlify deploys on its own cadence (see [AGENTS.md](../AGENTS.md)).
+- **Staging image contract** builds the locked Gatsby site, serves it from unprivileged nginx on port 8080, and publishes the exact source commit to Forgejo OCI. The deploy repository pulls and rolls that image to <https://website.coilysiren.me>. See [staging.md](staging.md).
+- **Site-deploy verification is out of scope** here. The workflows cover tests, pulse refresh, and trufflehog. Netlify and the deploy repository roll their respective hosts on their own cadence (see [AGENTS.md](../AGENTS.md)).
 
 ## Repo baseline
 
@@ -68,6 +73,7 @@ Under `.forgejo/workflows/`:
 ## See also
 
 - [README.md](../README.md) - human-facing intro and local-dev quickstart.
+- [staging.md](staging.md) - staging image boundary and local verification.
 - [AGENTS.md](../AGENTS.md) - agent-facing operating rules.
 - [.ward/ward.yaml](../.ward/ward.yaml) - allowlisted commands.
 

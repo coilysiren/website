@@ -22,7 +22,9 @@ function Footer() {
       </h4>
       {sourcePath && (
         <h4>
-          <a href={`${REPO_URL}/blob/main/${sourcePath}`}>View source on GitHub</a>
+          <a href={`${REPO_URL}/blob/main/${sourcePath}`}>
+            View source on GitHub
+          </a>
         </h4>
       )}
       <h4>

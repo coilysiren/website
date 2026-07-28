@@ -1,0 +1,37 @@
+allowBuilds:
+  "@parcel/watcher": true
+  "@sentry/cli": false
+  core-js: true
+  core-js-pure: true
+  cypress: true
+  es5-ext: true
+  esbuild: true
+  gatsby: true
+  gatsby-cli: true
+  lmdb: true
+  msgpackr-extract: true
+  sharp: true
+
+minimumReleaseAgeExclude:
+  - "@atproto/api@0.20.33"
+  - js-yaml@5.2.2
+  - sass@1.101.7
+  - satori@0.29.0
+
+nodeLinker: hoisted
+
+overrides:
+  react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825>react: ^19
+
+peerDependencyRules:
+  allowedVersions:
+    "@gatsbyjs/reach-router>react": "19"
+    "@gatsbyjs/reach-router>react-dom": "19"
+    "@sentry/gatsby>react": "19"
+    "eslint-config-react-app>@typescript-eslint/eslint-plugin": "5"
+    "eslint-config-react-app>@typescript-eslint/parser": "5"
+
+updateConfig:
+  ignoreDependencies:
+    - "@types/node"
+    - typescript

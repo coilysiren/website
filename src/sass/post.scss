@@ -48,7 +48,8 @@
   }
 }
 
-.post-header, .post-closer {
+.post-header,
+.post-closer {
   background: #eeeeee;
   color: vars.$dark-purple;
   display: flex;
@@ -143,7 +144,6 @@ p.large {
     display: block;
     a {
       display: inline-block;
-
     }
   }
 

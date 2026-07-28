@@ -99,7 +99,12 @@ export const SITES: Record<SiteId, SiteConfig> = {
       accent: "#4fd6e8",
       accentMid: "#3d7a91",
     },
-    card: { dialect: "metrics", backdrop: "grid", mark: "bolt", showMetrics: true },
+    card: {
+      dialect: "metrics",
+      backdrop: "grid",
+      mark: "bolt",
+      showMetrics: true,
+    },
   },
 
   // warmth & narrative — Appleton. illustration over grid, no stat row.
@@ -127,7 +132,12 @@ export const SITES: Record<SiteId, SiteConfig> = {
       accent: "#f0b27a",
       accentMid: "#a8794f",
     },
-    card: { dialect: "narrative", backdrop: "illustration", mark: "custom", showMetrics: false },
+    card: {
+      dialect: "narrative",
+      backdrop: "illustration",
+      mark: "custom",
+      showMetrics: false,
+    },
   },
 
   // personal + weird, a blend — keeps the current coilysiren violet palette verbatim.
@@ -154,6 +164,11 @@ export const SITES: Record<SiteId, SiteConfig> = {
       accent: "#dff0ea",
       accentMid: "#95adbe",
     },
-    card: { dialect: "blend", backdrop: "blend", mark: "bolt", showMetrics: true },
+    card: {
+      dialect: "blend",
+      backdrop: "blend",
+      mark: "bolt",
+      showMetrics: true,
+    },
   },
 }

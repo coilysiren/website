@@ -10,13 +10,33 @@ const TOKEN_URI = "https://oauth2.googleapis.com/token"
 function ssmGet(name: string): string {
   return execFileSync(
     "aws",
-    ["ssm", "get-parameter", "--name", name, "--with-decryption", "--query", "Parameter.Value", "--output", "text"],
+    [
+      "ssm",
+      "get-parameter",
+      "--name",
+      name,
+      "--with-decryption",
+      "--query",
+      "Parameter.Value",
+      "--output",
+      "text",
+    ],
     { encoding: "utf8" }
   ).trim()
 }
 
 function ssmPut(name: string, value: string): void {
-  execFileSync("aws", ["ssm", "put-parameter", "--name", name, "--type", "SecureString", "--value", value, "--overwrite"])
+  execFileSync("aws", [
+    "ssm",
+    "put-parameter",
+    "--name",
+    name,
+    "--type",
+    "SecureString",
+    "--value",
+    value,
+    "--overwrite",
+  ])
 }
 
 const client_id = ssmGet("/youtube/client-id")
@@ -117,7 +137,9 @@ server.on("request", (req, res) => {
         }
         if (!tokens.refresh_token) {
           res.writeHead(500, { "Content-Type": "text/html" })
-          res.end("<h1>No refresh_token in response. Check prompt=consent + access_type=offline.</h1>")
+          res.end(
+            "<h1>No refresh_token in response. Check prompt=consent + access_type=offline.</h1>"
+          )
           console.error("No refresh_token in token response:", tokens)
           server.close()
           process.exit(1)
@@ -126,7 +148,9 @@ server.on("request", (req, res) => {
         ssmPut("/youtube/refresh-token", tokens.refresh_token)
 
         res.writeHead(200, { "Content-Type": "text/html" })
-        res.end("<h1>Success! You can close this tab and return to your terminal.</h1>")
+        res.end(
+          "<h1>Success! You can close this tab and return to your terminal.</h1>"
+        )
         console.log("\n✓ Refresh token written to SSM /youtube/refresh-token")
         server.close()
       })

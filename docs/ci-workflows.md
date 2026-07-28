@@ -6,11 +6,25 @@ Durable rationale for the Forgejo workflows under `.forgejo/workflows/`. YAML co
 
 Runs on every PR and on push to `main`.
 
-- `test` runs in the pinned dev-base image and uses `ward exec install`, `ward exec build`, and `ward exec test-quick`.
-- `test` runs in the pinned dev-base image, enables corepack, installs with `pnpm install --frozen-lockfile`, and then uses `ward exec build` and `ward exec test-quick`.
-- `test-e2e` runs the Cypress smoke path in the `cypress/included` image because the dev-base image does not carry a browser stack.
+- `test` runs in the moving :release dev-base image, enables Corepack, installs the
+  pnpm 11 lockfile, and then uses `ward exec build` and
+  `ward exec test-quick`.
+- `test-e2e` runs the TypeScript Cypress smoke path in the pinned
+  `cypress/included` image because the dev-base image does not carry a browser
+  stack.
 
-The Forgejo workflow keeps package-manager behavior aligned with `packageManager` by letting `ward` own the install/build/test verbs where the image supports it.
+The Forgejo workflow keeps package-manager behavior aligned with
+`packageManager` by letting `ward` own the build and test verbs where the image
+supports it. GitHub mirror checks and Netlify builds use Node.js 24 from the
+repository runtime pin.
+
+## `publish-image.yml` - Publish staging image
+
+Every push to canonical `main` runs on the trusted `deploy:host` runner. The
+job publishes the checked-out source commit as
+`forgejo.coilysiren.me/coilysiren/website:<full-source-sha>` and passes only
+after remote manifest inspection succeeds. The package stays private and the
+runner supplies only the package-write credential.
 
 ## `pulse-refresh.yml` - Refresh pulse data
 

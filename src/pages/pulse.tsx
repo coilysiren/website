@@ -106,13 +106,7 @@ const Sparkline = ({
             tabIndex={0}
             className={isSelected ? "pulse-bar selected" : "pulse-bar"}
           >
-            <rect
-              x={x}
-              y={0}
-              width={barW}
-              height={height}
-              fill="transparent"
-            />
+            <rect x={x} y={0} width={barW} height={height} fill="transparent" />
             {day.segments.length === 0 ? (
               <rect
                 x={x}
@@ -202,7 +196,10 @@ const outlierAside = (outlier: NonNullable<Outlier>): string | null => {
   const top = outlier.topCommit
   if (!top) return null
   const msg = top.message.toLowerCase()
-  if (/^(initial commit|first commit|import|bootstrap)/.test(msg) && top.loc > 10000) {
+  if (
+    /^(initial commit|first commit|import|bootstrap)/.test(msg) &&
+    top.loc > 10000
+  ) {
     return "(an initial-commit import, not a day of actual typing.)"
   }
   if (top.loc > 20000) {
@@ -227,8 +224,8 @@ const OutlierCallout = ({ outlier }: { outlier: Outlier }) => {
         <a href={outlier.topCommit.url} target="_blank" rel="noreferrer">
           {outlier.topCommit.message}
         </a>{" "}
-        (+{fmtLoc(outlier.topCommit.loc)} in{" "}
-        {shortRepo(outlier.topCommit.repo)}).
+        (+{fmtLoc(outlier.topCommit.loc)} in {shortRepo(outlier.topCommit.repo)}
+        ).
         {aside ? <span className="pulse-outlier-aside"> {aside}</span> : null}
       </div>
     </div>
@@ -271,7 +268,9 @@ const NoData = () => (
   </div>
 )
 
-const PulsePage = ({ pageContext }: PageProps<object, { pulseData?: PulseData | null }>) => {
+const PulsePage = ({
+  pageContext,
+}: PageProps<object, { pulseData?: PulseData | null }>) => {
   const data = pageContext.pulseData
   const [selected, setSelected] = useState<number | null>(
     data ? data.days.length - 1 : null
@@ -288,8 +287,8 @@ const PulsePage = ({ pageContext }: PageProps<object, { pulseData?: PulseData | 
           <h3>The stack</h3>
           <ul>
             <li>
-              <strong>Gatsby 5</strong> with React 19, TypeScript, and Sass.
-              The page you&apos;re reading is an SSR&apos;d React component.
+              <strong>Gatsby 5</strong> with React 19, TypeScript, and Sass. The
+              page you&apos;re reading is an SSR&apos;d React component.
             </li>
             <li>
               <strong>Netlify</strong> handles builds and hosting. A push to{" "}
@@ -322,9 +321,9 @@ const PulsePage = ({ pageContext }: PageProps<object, { pulseData?: PulseData | 
             <li>
               <strong>/pulse</strong> (this page) is driven by{" "}
               <code>scripts/fetch-pulse-data.ts</code>, which hits the GitHub
-              search API for every public commit I&apos;ve authored in the
-              last 30 days, enriches each with line-change stats, and colors
-              them by each repo&apos;s primary language via{" "}
+              search API for every public commit I&apos;ve authored in the last
+              30 days, enriches each with line-change stats, and colors them by
+              each repo&apos;s primary language via{" "}
               <a
                 href="https://github.com/github-linguist/linguist"
                 target="_blank"
@@ -347,7 +346,9 @@ const PulsePage = ({ pageContext }: PageProps<object, { pulseData?: PulseData | 
                 setSelected={setSelected}
               />
               <div className="pulse-axis">
-                <span>{data.days[0] ? fmtShortDate(data.days[0].date) : ""}</span>
+                <span>
+                  {data.days[0] ? fmtShortDate(data.days[0].date) : ""}
+                </span>
                 <span>
                   {data.days[data.days.length - 1]
                     ? fmtShortDate(data.days[data.days.length - 1]!.date)

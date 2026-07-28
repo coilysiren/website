@@ -14,4 +14,6 @@ export const PageMetaProvider = ({
 }: {
   value: PageMeta
   children: ReactNode
-}) => <PageMetaContext.Provider value={value}>{children}</PageMetaContext.Provider>
+}) => (
+  <PageMetaContext.Provider value={value}>{children}</PageMetaContext.Provider>
+)

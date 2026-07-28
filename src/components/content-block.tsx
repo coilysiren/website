@@ -40,7 +40,9 @@ const ContentBlock = ({ data }: { data: ContentBlockData }) => {
     <h4>{post.frontmatter.description}</h4>
   ) : null
 
-  const dateBlock = post.frontmatter.date ? <h5>{post.frontmatter.date}</h5> : null
+  const dateBlock = post.frontmatter.date ? (
+    <h5>{post.frontmatter.date}</h5>
+  ) : null
 
   return (
     <Layout>
