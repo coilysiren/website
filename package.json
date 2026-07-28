@@ -6,7 +6,6 @@
   "author": "Kai Siren <coilysiren@gmail.com>",
   "dependencies": {
     "@atproto/api": "^0.20.33",
-    "@sentry/gatsby": "^10.67.0",
     "gatsby": "^5.16.1",
     "gatsby-plugin-feed": "^5.16.0",
     "gatsby-plugin-sass": "^6.16.0",
