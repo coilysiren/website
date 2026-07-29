@@ -8,6 +8,10 @@ if [ -z "${REGISTRY_TOKEN:-}" ]; then
   echo "REGISTRY_TOKEN is required for the trusted image-publish lane." >&2
   exit 1
 fi
+if [ -z "${FORGEJO_EGRESS_PROXY:-}" ]; then
+  echo "FORGEJO_EGRESS_PROXY is required for the Website dependency build." >&2
+  exit 1
+fi
 
 sha="${GITHUB_SHA:-$(git rev-parse HEAD)}"
 case "${sha}" in
@@ -31,7 +35,12 @@ printf '%s' "${REGISTRY_TOKEN}" \
   | docker login "${registry}" --username coilyco-ops --password-stdin
 
 echo "==> building ${image}"
-docker build --pull -t "${image}" .
+docker build \
+  --pull \
+  --build-arg HTTP_PROXY="${FORGEJO_EGRESS_PROXY}" \
+  --build-arg HTTPS_PROXY="${FORGEJO_EGRESS_PROXY}" \
+  -t "${image}" \
+  .
 
 echo "==> publishing ${image}"
 docker push "${image}"
