@@ -2,7 +2,7 @@
 set -euo pipefail
 
 registry="forgejo.coilysiren.me"
-image_name="coilysiren/website"
+image_name="coilyco-bridge/website"
 
 if [ -z "${REGISTRY_TOKEN:-}" ]; then
   echo "REGISTRY_TOKEN is required for the trusted image-publish lane." >&2
