@@ -7,7 +7,6 @@ Last full sweep: 2026-07-09.
 ## Stack
 
 - **Gatsby static site** (TypeScript), served from Netlify in production and an unprivileged nginx image in staging. Config at [gatsby-config.ts](../gatsby-config.ts), build hooks at [gatsby-node.ts](../gatsby-node.ts), browser/SSR shells at [gatsby-browser.tsx](../gatsby-browser.tsx) / [gatsby-ssr.tsx](../gatsby-ssr.tsx).
-- **Sentry** error reporting via `@sentry/gatsby`.
 - **RSS feed** via `gatsby-plugin-feed`.
 - **Sass** styles under [src/sass/](../src/sass/).
 

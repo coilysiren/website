@@ -12,13 +12,6 @@ const config: GatsbyConfig = {
   },
   plugins: [
     {
-      resolve: "@sentry/gatsby",
-      options: {
-        dsn: process.env.GATSBY_SENTRY_DSN,
-        // tracesSampleRate: 0.1, // opt-in later
-      },
-    },
-    {
       resolve: "gatsby-plugin-feed",
       options: {
         query: `

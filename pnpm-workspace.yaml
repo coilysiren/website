@@ -1,6 +1,5 @@
 allowBuilds:
   "@parcel/watcher": true
-  "@sentry/cli": false
   core-js: true
   core-js-pure: true
   cypress: true
@@ -27,7 +26,6 @@ peerDependencyRules:
   allowedVersions:
     "@gatsbyjs/reach-router>react": "19"
     "@gatsbyjs/reach-router>react-dom": "19"
-    "@sentry/gatsby>react": "19"
     "eslint-config-react-app>@typescript-eslint/eslint-plugin": "5"
     "eslint-config-react-app>@typescript-eslint/parser": "5"
 
