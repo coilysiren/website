@@ -26,7 +26,14 @@ Under [src/pages/](../src/pages/):
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
-- **`apps/`** - embedded mini-apps: `bsky-follow-suggestions.tsx`, `bsky-popularity-contest.tsx`, `index.tsx`.
+- **`apps/`** - portfolio and embedded mini-apps. `index.tsx` presents four
+  public apps, the observability stack as a first-class engineering capability,
+  and an icon-forward inventory of bounded MCP integrations. It preserves the
+  browser-side reachability lights for public apps and links to the two embedded
+  Bluesky experiments (`bsky-follow-suggestions.tsx` and
+  `bsky-popularity-contest.tsx`). Brand marks used by integration cards are
+  vendored under `static/apps-icons/`, with provenance recorded in
+  [app-icons.md](app-icons.md).
 - **`testing/`** - test fixtures.
 
 ## Components

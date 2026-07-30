@@ -173,7 +173,8 @@ const TSX_ENTRIES: Entry[] = [
     outPath: "apps/index.png",
     kind: "apps",
     title: "Apps",
-    subtitle: "A topology of the things I run on the internet.",
+    subtitle:
+      "Apps, observability systems, and agent integrations I build and run.",
   },
   {
     outPath: "apps/bsky-popularity-contest.png",
