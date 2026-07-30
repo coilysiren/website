@@ -6,6 +6,7 @@ interface DefaultHeadProps {
   title?: string
   description?: string
   image?: string
+  canonical?: string
   type?: string
   publishedTime?: string
   author?: string
@@ -34,6 +35,7 @@ const DefaultHead = ({
   title,
   description,
   image,
+  canonical,
   type,
   publishedTime,
   author,
@@ -42,6 +44,9 @@ const DefaultHead = ({
   const resolvedTitle = title ?? siteMetadata.title
   const resolvedDescription = description ?? siteMetadata.description
   const resolvedImage = resolveImage(siteMetadata.siteUrl, image)
+  const resolvedCanonical = canonical
+    ? resolveImage(siteMetadata.siteUrl, canonical)
+    : undefined
   const resolvedType = type ?? "website"
   const resolvedPublishedTime = toIsoDate(publishedTime)
 
@@ -56,6 +61,12 @@ const DefaultHead = ({
       <meta property="og:image" content={resolvedImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      {resolvedCanonical ? (
+        <>
+          <link rel="canonical" href={resolvedCanonical} />
+          <meta property="og:url" content={resolvedCanonical} />
+        </>
+      ) : null}
       {resolvedType === "article" && resolvedPublishedTime && (
         <meta
           property="article:published_time"

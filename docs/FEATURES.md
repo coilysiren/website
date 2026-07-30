@@ -33,6 +33,12 @@ Under [src/pages/](../src/pages/):
   `bsky-popularity-contest.tsx`). Brand marks used by integration cards are
   vendored under `static/apps-icons/`, with provenance recorded in
   [app-icons.md](app-icons.md).
+- **`orgs/`** - organization hub and native profile pages for
+  `coilyco-flight-deck`, `coilyco-bridge`, and `coilyco-gaming`. The static
+  catalog mirrors the three GitHub organization profile READMEs, including
+  repository and topic cross-indexes, and uses the existing organization SVG
+  marks with distinct shared-room accents. Every route has dedicated metadata,
+  Open Graph art, keyboard-visible actions, and cross-navigation.
 - **`testing/`** - test fixtures.
 
 ## Components

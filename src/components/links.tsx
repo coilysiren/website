@@ -31,6 +31,11 @@ function Links() {
           </Link>
         </li>
         <li>
+          <Link className="nav-btn" to="/orgs">
+            ./orgs<i className="fa-solid fa-building"></i>{" "}
+          </Link>
+        </li>
+        <li>
           <Link className="nav-btn" to="/cool-people">
             ./cool-people<i className="fa-solid fa-user-group"></i>{" "}
           </Link>

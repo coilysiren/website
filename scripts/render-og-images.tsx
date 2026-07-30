@@ -31,7 +31,7 @@ const LOGO_SVG = fs.readFileSync(
 )
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
-type Kind = "post" | "now" | "apps" | "page" | "default" | "banner"
+type Kind = "post" | "now" | "apps" | "orgs" | "page" | "default" | "banner"
 
 interface Entry {
   outPath: string
@@ -60,6 +60,7 @@ const KIND_LABEL: Record<Kind, string> = {
   post: "POST",
   now: "NOW",
   apps: "APPS",
+  orgs: "ORGS",
   page: "PAGE",
   default: "",
   banner: "",
@@ -187,6 +188,32 @@ const TSX_ENTRIES: Entry[] = [
     kind: "apps",
     title: "Bluesky Follow Suggestions",
     subtitle: "Find new accounts via the people you already follow.",
+  },
+  {
+    outPath: "orgs/index.png",
+    kind: "orgs",
+    title: "The Coily Co orgs",
+    subtitle:
+      "Public tools, the operator back office, and the games where the machinery gets playtested.",
+  },
+  {
+    outPath: "orgs/coilyco-flight-deck.png",
+    kind: "orgs",
+    title: "coilyco-flight-deck",
+    subtitle:
+      "Public OSS. LLM observability, agent devex, and tooling for AI consumers.",
+  },
+  {
+    outPath: "orgs/coilyco-bridge.png",
+    kind: "orgs",
+    title: "coilyco-bridge",
+    subtitle: "Operational back office, with Forgejo as the canonical source.",
+  },
+  {
+    outPath: "orgs/coilyco-gaming.png",
+    kind: "orgs",
+    title: "coilyco-gaming",
+    subtitle: "Games, simulations, mods, and game-service tooling.",
   },
 ]
 
