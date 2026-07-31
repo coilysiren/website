@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title description">
   <title id="title">Lesbian pride flag</title>
   <desc id="description">Five horizontal stripes in dark orange, orange, white, pink, and dark pink.</desc>
-  <rect width="900" height="240" y="0" fill="#d52d00" />
-  <rect width="900" height="240" y="240" fill="#ef7627" />
-  <rect width="900" height="240" y="480" fill="#ffffff" />
-  <rect width="900" height="240" y="720" fill="#d162a4" />
-  <rect width="900" height="240" y="960" fill="#a30262" />
+  <rect width="900" height="120" y="0" fill="#d52d00" />
+  <rect width="900" height="120" y="120" fill="#ef7627" />
+  <rect width="900" height="120" y="240" fill="#ffffff" />
+  <rect width="900" height="120" y="360" fill="#d162a4" />
+  <rect width="900" height="120" y="480" fill="#a30262" />
 </svg>

@@ -110,24 +110,11 @@ const MyLifePage = () => (
           </figure>
           <figure className="my-life-identity-card">
             <img
-              src="/my-life/identity-african-american-flag.jpg"
-              alt="David Hammons's African-American Flag on display at the National Gallery of Art"
+              src="/my-life/identity-african-american-flag.svg"
+              alt="African-American flag in red, black, and green"
             />
-            <figcaption>
-              Photo:{" "}
-              <a href="https://commons.wikimedia.org/wiki/File%3ADavid_Hammons%2C_African-American_Flag_at_NGA.jpg">
-                19h00s / Wikimedia Commons
-              </a>{" "}
-              ·{" "}
-              <a
-                href="https://creativecommons.org/licenses/by-sa/4.0/"
-                rel="license"
-              >
-                CC BY-SA 4.0
-              </a>
-            </figcaption>
           </figure>
-          <figure className="my-life-identity-card">
+          <figure className="my-life-identity-card my-life-identity-card--symbol">
             <img src="/my-life/identity-woman.svg" alt="Pink Venus symbol" />
           </figure>
         </div>

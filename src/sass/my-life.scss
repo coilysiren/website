@@ -152,32 +152,20 @@
   position: relative;
   min-width: 0;
   margin: 0;
-  overflow: hidden;
-  background: #211b36;
-  box-shadow: 0 1.2em 2.7em rgba(13, 8, 25, 0.36);
 
   img {
     display: block;
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 3 / 2;
     object-fit: cover;
+    box-shadow: 0 1.2em 2.7em rgba(13, 8, 25, 0.36);
   }
+}
 
-  figcaption {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0.7em 0.8em;
-    color: rgba(255, 255, 255, 0.82);
-    font-size: clamp(0.5em, 0.65vw, 0.7em);
-    line-height: 1.35;
-    background: linear-gradient(transparent, rgba(13, 8, 25, 0.9) 32%);
-
-    a {
-      color: inherit;
-      text-underline-offset: 0.15em;
-    }
+.my-life-identity-card--symbol {
+  img {
+    object-fit: contain;
+    box-shadow: none;
   }
 }
 
@@ -559,10 +547,6 @@
 
   .my-life-identity-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .my-life-identity-card figcaption {
-    font-size: 0.48em;
   }
 
   .my-life-slide__portrait {
