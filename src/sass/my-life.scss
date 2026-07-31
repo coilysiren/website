@@ -13,6 +13,7 @@
   display: grid;
   min-height: min(56.25vw, 61em);
   overflow: hidden;
+  scroll-margin-top: 1.5rem;
   isolation: isolate;
   color: vars.$pure-white;
   background: #30274b;
@@ -36,6 +37,20 @@
     margin-bottom: 0;
     line-height: 0.84;
     letter-spacing: -0.075em;
+
+    a {
+      color: inherit;
+      text-decoration-line: underline;
+      text-decoration-color: transparent;
+      text-decoration-thickness: 0.045em;
+      text-underline-offset: 0.1em;
+      transition: text-decoration-color 160ms ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration-color: currentColor;
+    }
   }
 
   h1 {
@@ -413,9 +428,13 @@
   background: linear-gradient(135deg, #3a4a32, #2b3048);
 
   .my-life-favorite-grid {
+    width: min(38vw, 40em);
     height: auto;
     min-height: 0;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    aspect-ratio: 1 / 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    justify-self: center;
   }
 
   .my-life-favorite-grid img,
@@ -538,6 +557,7 @@
   }
 
   .my-life-slide--animals .my-life-favorite-grid {
+    width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
     img {

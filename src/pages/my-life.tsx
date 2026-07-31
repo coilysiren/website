@@ -7,15 +7,26 @@ import "../sass/my-life.scss"
 type Favorite = { src: string; alt: string; label: string }
 
 type FavoriteSlideProps = {
+  id: string
   title: string
   className: string
   favorites: Favorite[]
 }
 
-const FavoriteSlide = ({ title, className, favorites }: FavoriteSlideProps) => (
-  <article className={`my-life-slide my-life-slide--favorites ${className}`}>
+const FavoriteSlide = ({
+  id,
+  title,
+  className,
+  favorites,
+}: FavoriteSlideProps) => (
+  <article
+    id={id}
+    className={`my-life-slide my-life-slide--favorites ${className}`}
+  >
     <div className="my-life-slide__copy">
-      <h2>{title}</h2>
+      <h2>
+        <a href={`#${id}`}>{title}</a>
+      </h2>
       <ul className="my-life-slide__list">
         {favorites.map((favorite) => (
           <li key={favorite.label}>{favorite.label}</li>
@@ -41,7 +52,7 @@ export const Head = () => (
 const MyLifePage = () => (
   <Layout>
     <section className="my-life">
-      <header className="my-life-slide my-life-slide--intro">
+      <header id="my-life" className="my-life-slide my-life-slide--intro">
         <img
           className="my-life-slide__portrait"
           src="/my-life/11-social-look-sunglasses-purple-tails.jpg"
@@ -53,13 +64,20 @@ const MyLifePage = () => (
           alt="Kai wearing sunglasses and headphones in a car"
         />
         <div className="my-life-slide__copy">
-          <h1>My Life</h1>
+          <h1>
+            <a href="#my-life">My Life</a>
+          </h1>
         </div>
       </header>
 
-      <article className="my-life-slide my-life-slide--technology">
+      <article
+        id="technology"
+        className="my-life-slide my-life-slide--technology"
+      >
         <div className="my-life-slide__copy">
-          <h2>Technology</h2>
+          <h2>
+            <a href="#technology">Technology</a>
+          </h2>
           <ul className="my-life-slide__list">
             <li>Towers</li>
             <li>Monitors</li>
@@ -84,9 +102,11 @@ const MyLifePage = () => (
         </div>
       </article>
 
-      <article className="my-life-slide my-life-slide--gaming">
+      <article id="gaming" className="my-life-slide my-life-slide--gaming">
         <div className="my-life-slide__copy">
-          <h2>Gaming</h2>
+          <h2>
+            <a href="#gaming">Gaming</a>
+          </h2>
           <ul className="my-life-slide__list">
             <li>Factories</li>
             <li>Galaxies</li>
@@ -112,7 +132,7 @@ const MyLifePage = () => (
         </div>
       </article>
 
-      <article className="my-life-slide my-life-slide--home">
+      <article id="fabrication" className="my-life-slide my-life-slide--home">
         <div className="my-life-home-images">
           <img
             className="my-life-home-images__primary"
@@ -136,7 +156,9 @@ const MyLifePage = () => (
           />
         </div>
         <div className="my-life-slide__copy">
-          <h2>Fabrication</h2>
+          <h2>
+            <a href="#fabrication">Fabrication</a>
+          </h2>
           <ul className="my-life-slide__list">
             <li>Walls</li>
             <li>Gardens</li>
@@ -146,6 +168,7 @@ const MyLifePage = () => (
       </article>
 
       <FavoriteSlide
+        id="movies"
         title="Movies"
         className="my-life-slide--movies"
         favorites={[
@@ -172,6 +195,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
+        id="books"
         title="Books"
         className="my-life-slide--books"
         favorites={[
@@ -198,6 +222,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
+        id="games"
         title="Games"
         className="my-life-slide--games"
         favorites={[
@@ -224,6 +249,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
+        id="shows"
         title="Shows"
         className="my-life-slide--shows"
         favorites={[
@@ -245,6 +271,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
+        id="anime"
         title="Anime"
         className="my-life-slide--anime"
         favorites={[
@@ -266,6 +293,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
+        id="animals"
         title="Animals"
         className="my-life-slide--animals"
         favorites={[
