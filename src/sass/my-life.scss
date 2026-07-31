@@ -323,6 +323,11 @@
     object-fit: cover;
     transform: none;
   }
+
+  .my-life-favorite-grid img[src$="/my-life/fav-game_eco.jpg"] {
+    object-fit: contain;
+    background: #122c2b;
+  }
 }
 
 .my-life-slide--shows {
