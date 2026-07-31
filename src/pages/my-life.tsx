@@ -7,25 +7,15 @@ import "../sass/my-life.scss"
 type Favorite = { src: string; alt: string }
 
 type FavoriteSlideProps = {
-  number: string
   title: string
-  body: string
   className: string
   favorites: Favorite[]
 }
 
-const FavoriteSlide = ({
-  number,
-  title,
-  body,
-  className,
-  favorites,
-}: FavoriteSlideProps) => (
+const FavoriteSlide = ({ title, className, favorites }: FavoriteSlideProps) => (
   <article className={`my-life-slide my-life-slide--favorites ${className}`}>
     <div className="my-life-slide__copy">
-      <span className="my-life-kicker">{number}</span>
       <h2>{title}</h2>
-      <p>{body}</p>
     </div>
     <div className="my-life-favorite-grid">
       {favorites.map((favorite) => (
@@ -58,23 +48,13 @@ const MyLifePage = () => (
           alt="Kai wearing sunglasses and headphones in a car"
         />
         <div className="my-life-slide__copy">
-          <span className="my-life-kicker">A VERY SMALL EXHIBITION</span>
           <h1>My Life</h1>
-          <p>
-            A living scrapbook of people, projects, places, and little things
-            that make a life feel like mine.
-          </p>
         </div>
       </header>
 
       <article className="my-life-slide my-life-slide--making">
         <div className="my-life-slide__copy">
-          <span className="my-life-kicker">01 / THE MAKING</span>
           <h2>Things I make</h2>
-          <p>
-            Sometimes the idea is a game, sometimes it is a tool, and sometimes
-            it needs its own tiny universe.
-          </p>
         </div>
         <div className="my-life-media-grid my-life-media-grid--making">
           <video
@@ -144,19 +124,12 @@ const MyLifePage = () => (
           />
         </div>
         <div className="my-life-slide__copy">
-          <span className="my-life-kicker">02 / HOME, SLOWLY</span>
           <h2>Making room</h2>
-          <p>
-            Plans, framing, dirt under my nails, and the patient work of making
-            a place feel more like home.
-          </p>
         </div>
       </article>
 
       <FavoriteSlide
-        number="03 / MOVIES"
         title="Favorite movies"
-        body="The ones with impossible worlds, impossible choices, and a little magic."
         className="my-life-slide--movies"
         favorites={[
           {
@@ -178,9 +151,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="04 / BOOKS"
         title="Favorite books"
-        body="Books I keep returning to, even after the first read is long gone."
         className="my-life-slide--books"
         favorites={[
           {
@@ -202,9 +173,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="05 / GAMES"
         title="Favorite games"
-        body="Systems to untangle, worlds to tend, and a good excuse to stay up too late."
         className="my-life-slide--games"
         favorites={[
           {
@@ -223,9 +192,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="06 / SHOWS"
         title="Favorite shows"
-        body="The kind of television that makes me want to talk about it for hours."
         className="my-life-slide--shows"
         favorites={[
           {
@@ -243,9 +210,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="07 / ANIME"
         title="Favorite anime"
-        body="For the worlds, the machinery, the questions, and the feelings that come out of nowhere."
         className="my-life-slide--anime"
         favorites={[
           {
@@ -263,9 +228,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="08 / ANIMALS"
         title="Favorite animals"
-        body="Clever, strange, social, wild - a small bestiary of things I admire."
         className="my-life-slide--animals"
         favorites={[
           { src: "/my-life/fav-animal_crow.jpg", alt: "A crow" },

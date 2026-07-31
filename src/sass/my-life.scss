@@ -27,14 +27,13 @@
   z-index: 2;
 
   h1,
-  h2,
-  p {
+  h2 {
     margin-top: 0;
   }
 
   h1,
   h2 {
-    margin-bottom: 0.25em;
+    margin-bottom: 0;
     line-height: 0.84;
     letter-spacing: -0.075em;
   }
@@ -48,24 +47,6 @@
     max-width: 8ch;
     font-size: clamp(3em, 8vw, 7em);
   }
-
-  p {
-    max-width: 33em;
-    margin-bottom: 0;
-    color: #e9e5f4;
-    font-size: clamp(1em, 1.75vw, 1.3em);
-    line-height: 1.55;
-  }
-}
-
-.my-life-kicker {
-  display: block;
-  margin-bottom: 1.3em;
-  color: #f5d689;
-  font-family: vars.$font-family-mono;
-  font-size: 0.72em;
-  font-weight: 700;
-  letter-spacing: 0.16em;
 }
 
 .my-life-slide--intro {
