@@ -235,6 +235,7 @@ const MyLifePage = () => (
         className="my-life-slide--animals"
         favorites={[
           { src: "/my-life/fav-animal_crow.jpg", alt: "A crow" },
+          { src: "/my-life/fav-animal_beaver.jpg", alt: "A beaver" },
           {
             src: "/my-life/fav-animal_dolphin.jpg",
             alt: "A dolphin swimming underwater",
