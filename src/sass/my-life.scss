@@ -306,6 +306,18 @@
 
 .my-life-slide--books {
   background: linear-gradient(135deg, #523e28, #253c42);
+
+  .my-life-favorite-grid {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .my-life-favorite-grid img,
+  .my-life-favorite-grid img:nth-child(even) {
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 .my-life-slide--games {
@@ -501,6 +513,10 @@
   }
 
   .my-life-slide--anime .my-life-favorite-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .my-life-slide--books .my-life-favorite-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
