@@ -22,6 +22,7 @@ Under [src/pages/](../src/pages/):
 - **`cool-people.md`** - links page.
 - **`eco-modding.md`** - Eco-modding writeups.
 - **`hiring.md`** - unlisted recruiting stance page (`unlisted: true`, `noindex`, robots-Disallowed). Direct link only.
+- **`my-life.tsx`** - image-first personal presentation with room for a portrait and themed visual collections.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
