@@ -37,11 +37,8 @@ commands:
   render-og:
     run: pnpm run render-og
     description: Render OpenGraph images via tsx scripts/render-og-images.tsx.
-  playwright-install:
-    run: npx --yes playwright@1.57.0 install chromium
-    description: Install the pinned Chromium runtime for temporary visual QA.
   playwright-my-life:
-    run: npx --yes playwright@1.57.0 screenshot --browser chromium --viewport-size=1920,1080 --full-page http://127.0.0.1:8000/my-life/ /private/tmp/my-life-wide.png
+    run: npx --yes playwright@1.57.0 screenshot --browser chromium --channel=chrome --viewport-size=1920,1080 --full-page http://127.0.0.1:8000/my-life/ /private/tmp/my-life-wide.png
     description: Capture the My Life presentation at a widescreen viewport.
   format:
     run: pnpm run format
