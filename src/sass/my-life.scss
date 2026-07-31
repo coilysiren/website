@@ -353,6 +353,19 @@
 
 .my-life-slide--anime {
   background: linear-gradient(135deg, #4f314e, #253a59);
+
+  .my-life-favorite-grid {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .my-life-favorite-grid img,
+  .my-life-favorite-grid img:nth-child(even) {
+    height: auto;
+    aspect-ratio: 266 / 375;
+    object-fit: cover;
+  }
 }
 
 .my-life-slide--animals {
@@ -480,6 +493,10 @@
     img {
       height: 12em;
     }
+  }
+
+  .my-life-slide--anime .my-life-favorite-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .my-life-slide--games .my-life-favorite-grid,
