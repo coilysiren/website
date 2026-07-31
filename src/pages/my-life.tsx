@@ -52,40 +52,48 @@ const MyLifePage = () => (
         </div>
       </header>
 
-      <article className="my-life-slide my-life-slide--making">
+      <article className="my-life-slide my-life-slide--technology">
         <div className="my-life-slide__copy">
-          <h2>Things I make</h2>
+          <h2>Technology</h2>
         </div>
-        <div className="my-life-media-grid my-life-media-grid--making">
-          <video
-            className="my-life-video"
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/my-life/03-factory-game-take-3-poster.jpg"
-            aria-label="A factory game in motion"
-          >
-            <source
-              src="/my-life/03-factory-game-take-3.mp4"
-              type="video/mp4"
-            />
-          </video>
+        <div className="my-life-project-grid my-life-technology-grid">
           <img
-            src="/my-life/05-eco-app-dashboard.png"
-            alt="A dark green Eco application dashboard"
+            className="my-life-technology-grid__tower"
+            src="/my-life/17-tower-interior.jpg"
+            alt="The blue and purple lit interior of a desktop computer tower"
           />
           <img
-            src="/my-life/06-mcp-list.png"
-            alt="A directory of MCP integrations"
+            className="my-life-technology-grid__screens"
+            src="/my-life/14-two-monitor-desktop.jpg"
+            alt="A colorful two-monitor desk setup"
           />
           <img
+            className="my-life-technology-grid__hardware"
             src="/my-life/08-motherboard-and-gpu.jpg"
             alt="A motherboard and graphics card lit by purple LEDs"
           />
+        </div>
+      </article>
+
+      <article className="my-life-slide my-life-slide--gaming">
+        <div className="my-life-slide__copy">
+          <h2>Gaming</h2>
+        </div>
+        <div className="my-life-project-grid my-life-gaming-grid">
           <img
-            src="/my-life/14-two-monitor-desktop.jpg"
-            alt="A colorful two-monitor desk setup"
+            className="my-life-gaming-grid__factory"
+            src="/my-life/project-factory-game.gif"
+            alt="An animated factory game simulation"
+          />
+          <img
+            className="my-life-gaming-grid__galaxy"
+            src="/my-life/project-galaxy-gen.gif"
+            alt="An animated procedural galaxy generator"
+          />
+          <img
+            className="my-life-gaming-grid__eco"
+            src="/my-life/05-eco-app-dashboard.png"
+            alt="A dark green Eco application dashboard"
           />
         </div>
       </article>
@@ -111,11 +119,6 @@ const MyLifePage = () => (
             className="my-life-home-images__build"
             src="/my-life/18-garden-bed-construction.jpg"
             alt="Raised garden beds under construction"
-          />
-          <img
-            className="my-life-home-images__tower"
-            src="/my-life/17-tower-interior.jpg"
-            alt="A bright room inside the tower"
           />
           <img
             className="my-life-home-images__pothos"
