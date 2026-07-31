@@ -275,15 +275,48 @@
   background: linear-gradient(135deg, #523e28, #253c42);
 
   .my-life-favorite-grid {
-    height: auto;
+    position: relative;
+    display: block;
+    width: min(38vw, 40em);
+    height: min(38vw, 40em);
     min-height: 0;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-self: center;
   }
 
   .my-life-favorite-grid img,
   .my-life-favorite-grid img:nth-child(even) {
+    position: absolute;
+    width: 35%;
     height: auto;
     object-fit: contain;
+  }
+
+  .my-life-favorite-grid img:nth-child(1) {
+    z-index: 5;
+    top: 1%;
+    left: 16%;
+    transform: rotate(-5deg);
+  }
+
+  .my-life-favorite-grid img:nth-child(2) {
+    z-index: 4;
+    top: 0;
+    left: 47%;
+    transform: rotate(3.5deg);
+  }
+
+  .my-life-favorite-grid img:nth-child(3) {
+    z-index: 2;
+    top: 47%;
+    left: 14%;
+    transform: rotate(3deg);
+  }
+
+  .my-life-favorite-grid img:nth-child(4) {
+    z-index: 3;
+    top: 46%;
+    left: 45%;
+    transform: rotate(-4deg);
   }
 }
 
@@ -494,7 +527,19 @@
   }
 
   .my-life-slide--books .my-life-favorite-grid {
+    display: grid;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    img,
+    img:nth-child(n) {
+      position: static;
+      width: 100%;
+      height: auto;
+      transform: none;
+    }
   }
 
   .my-life-slide--games .my-life-favorite-grid,
