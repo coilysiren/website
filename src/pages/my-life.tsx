@@ -90,6 +90,49 @@ const MyLifePage = () => (
         </div>
       </header>
 
+      <article id="identity" className="my-life-slide my-life-slide--identity">
+        <div className="my-life-slide__copy">
+          <h2>
+            <a href="#identity">Identity</a>
+          </h2>
+          <ul className="my-life-slide__list">
+            <IconListItem icon="🏳️‍🌈" label="Lesbian" />
+            <IconListItem icon="🌎" label="Black" />
+            <IconListItem icon="♀️" label="Woman" />
+          </ul>
+        </div>
+        <div className="my-life-identity-grid">
+          <figure className="my-life-identity-card">
+            <img
+              src="/my-life/identity-lesbian-flag.svg"
+              alt="Lesbian pride flag"
+            />
+          </figure>
+          <figure className="my-life-identity-card">
+            <img
+              src="/my-life/identity-african-american-flag.jpg"
+              alt="David Hammons's African-American Flag on display at the National Gallery of Art"
+            />
+            <figcaption>
+              Photo:{" "}
+              <a href="https://commons.wikimedia.org/wiki/File%3ADavid_Hammons%2C_African-American_Flag_at_NGA.jpg">
+                19h00s / Wikimedia Commons
+              </a>{" "}
+              ·{" "}
+              <a
+                href="https://creativecommons.org/licenses/by-sa/4.0/"
+                rel="license"
+              >
+                CC BY-SA 4.0
+              </a>
+            </figcaption>
+          </figure>
+          <figure className="my-life-identity-card">
+            <img src="/my-life/identity-woman.svg" alt="Pink Venus symbol" />
+          </figure>
+        </div>
+      </article>
+
       <article
         id="technology"
         className="my-life-slide my-life-slide--technology"

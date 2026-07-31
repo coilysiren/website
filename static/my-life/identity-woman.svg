@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title description">
+  <title id="title">Pink Venus symbol</title>
+  <desc id="description">A bright pink Venus symbol on a soft pink background.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd1e6" />
+      <stop offset="0.52" stop-color="#f3a4cc" />
+      <stop offset="1" stop-color="#c94f91" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="32%" r="60%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#background)" />
+  <rect width="900" height="1200" fill="url(#glow)" />
+  <g fill="none" stroke="#a30262" stroke-linecap="round" stroke-width="76">
+    <circle cx="450" cy="430" r="245" />
+    <path d="M450 675v340M285 875h330" />
+  </g>
+  <g fill="none" stroke="#ffebf5" stroke-linecap="round" stroke-width="24" opacity="0.88">
+    <circle cx="450" cy="430" r="245" />
+    <path d="M450 675v340M285 875h330" />
+  </g>
+</svg>
