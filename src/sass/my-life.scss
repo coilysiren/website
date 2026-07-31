@@ -444,6 +444,11 @@
     object-fit: cover;
     transform: none;
   }
+
+  .my-life-favorite-grid img[src$="fav-animal_dolphin.jpg"] {
+    clip-path: inset(8.333%);
+    transform: scale(1.2);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
