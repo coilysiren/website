@@ -49,6 +49,37 @@
   }
 }
 
+.my-life-slide__list {
+  max-width: 22ch;
+  margin: clamp(1em, 2vw, 1.6em) 0 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.95em, 1.5vw, 1.35em);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1em;
+  }
+
+  li + li {
+    margin-top: 0.4em;
+  }
+
+  li::before {
+    position: absolute;
+    top: 0.61em;
+    left: 0;
+    width: 0.48em;
+    height: 0.11em;
+    content: "";
+    background: currentColor;
+    border-radius: 999px;
+  }
+}
+
 .my-life-slide--intro {
   grid-template-columns: minmax(17em, 0.85fr) minmax(0, 1.15fr);
   gap: clamp(2em, 8vw, 10em);
@@ -149,6 +180,10 @@
   align-items: center;
   padding: clamp(2em, 7vw, 7em);
   background: linear-gradient(135deg, #68464d, #3e2940 58%, #252033);
+}
+
+.my-life-slide--home .my-life-slide__copy h2 {
+  font-size: clamp(3em, 6vw, 5em);
 }
 
 .my-life-home-images {

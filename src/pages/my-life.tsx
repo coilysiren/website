@@ -4,7 +4,7 @@ import DefaultHead from "../components/default-head"
 import Layout from "../components/layout"
 import "../sass/my-life.scss"
 
-type Favorite = { src: string; alt: string }
+type Favorite = { src: string; alt: string; label: string }
 
 type FavoriteSlideProps = {
   title: string
@@ -16,6 +16,11 @@ const FavoriteSlide = ({ title, className, favorites }: FavoriteSlideProps) => (
   <article className={`my-life-slide my-life-slide--favorites ${className}`}>
     <div className="my-life-slide__copy">
       <h2>{title}</h2>
+      <ul className="my-life-slide__list">
+        {favorites.map((favorite) => (
+          <li key={favorite.label}>{favorite.label}</li>
+        ))}
+      </ul>
     </div>
     <div className="my-life-favorite-grid">
       {favorites.map((favorite) => (
@@ -55,6 +60,10 @@ const MyLifePage = () => (
       <article className="my-life-slide my-life-slide--technology">
         <div className="my-life-slide__copy">
           <h2>Technology</h2>
+          <ul className="my-life-slide__list">
+            <li>Towers</li>
+            <li>Monitors</li>
+          </ul>
         </div>
         <div className="my-life-project-grid my-life-technology-grid">
           <img
@@ -78,6 +87,11 @@ const MyLifePage = () => (
       <article className="my-life-slide my-life-slide--gaming">
         <div className="my-life-slide__copy">
           <h2>Gaming</h2>
+          <ul className="my-life-slide__list">
+            <li>Factories</li>
+            <li>Galaxies</li>
+            <li>Economies</li>
+          </ul>
         </div>
         <div className="my-life-project-grid my-life-gaming-grid">
           <img
@@ -122,120 +136,159 @@ const MyLifePage = () => (
           />
         </div>
         <div className="my-life-slide__copy">
-          <h2>Making room</h2>
+          <h2>Fabrication</h2>
+          <ul className="my-life-slide__list">
+            <li>Walls</li>
+            <li>Gardens</li>
+            <li>ADUs</li>
+          </ul>
         </div>
       </article>
 
       <FavoriteSlide
-        title="Favorite movies"
+        title="Movies"
         className="my-life-slide--movies"
         favorites={[
           {
             src: "/my-life/fav-movie_spirited-away.png",
             alt: "Spirited Away movie poster",
+            label: "Spirited Away",
           },
           {
             src: "/my-life/fav-movie_the-matrix.png",
             alt: "The Matrix movie poster",
+            label: "The Matrix",
           },
           {
             src: "/my-life/fav-movie_doctor-strange.jpg",
             alt: "Doctor Strange movie poster",
+            label: "Doctor Strange",
           },
           {
             src: "/my-life/fav-movie_avengers.jpg",
             alt: "Avengers movie poster",
+            label: "Avengers",
           },
         ]}
       />
       <FavoriteSlide
-        title="Favorite books"
+        title="Books"
         className="my-life-slide--books"
         favorites={[
           {
             src: "/my-life/fav-book_antimemetics-division.jpg",
             alt: "There Is No Antimemetics Division book cover",
+            label: "Antimemetics Division",
           },
           {
             src: "/my-life/fav-book_his-dark-materials.jpg",
             alt: "His Dark Materials book cover",
+            label: "His Dark Materials",
           },
           {
             src: "/my-life/fav-book_hunger-games.jpg",
             alt: "The Hunger Games book cover",
+            label: "The Hunger Games",
           },
           {
             src: "/my-life/fav-book_iron-widow.png",
             alt: "Iron Widow book cover",
+            label: "Iron Widow",
           },
         ]}
       />
       <FavoriteSlide
-        title="Favorite games"
+        title="Games"
         className="my-life-slide--games"
         favorites={[
           {
             src: "/my-life/fav-game_dyson-sphere-program.jpg",
             alt: "Dyson Sphere Program game artwork",
+            label: "Dyson Sphere Program",
           },
-          { src: "/my-life/fav-game_eco.jpg", alt: "Eco game artwork" },
+          {
+            src: "/my-life/fav-game_eco.jpg",
+            alt: "Eco game artwork",
+            label: "Eco",
+          },
           {
             src: "/my-life/fav-game_final-fantasy-xiv.jpg",
             alt: "Final Fantasy XIV game artwork",
+            label: "FFXIV",
           },
           {
             src: "/my-life/fav-game_oxygen-not-included.jpg",
             alt: "Oxygen Not Included game artwork",
+            label: "Oxygen Not Included",
           },
         ]}
       />
       <FavoriteSlide
-        title="Favorite shows"
+        title="Shows"
         className="my-life-slide--shows"
         favorites={[
           {
+            src: "/my-life/fav-show_the-expanse.jpg",
+            alt: "The Expanse show artwork",
+            label: "The Expanse",
+          },
+          {
             src: "/my-life/fav-show_korra.jpg",
             alt: "The Legend of Korra show artwork",
+            label: "The Legend of Korra",
           },
           {
             src: "/my-life/fav-show_pantheon.jpg",
             alt: "Pantheon show artwork",
-          },
-          {
-            src: "/my-life/fav-show_the-expanse.jpg",
-            alt: "The Expanse show artwork",
+            label: "Pantheon",
           },
         ]}
       />
       <FavoriteSlide
-        title="Favorite anime"
+        title="Anime"
         className="my-life-slide--anime"
         favorites={[
           {
             src: "/my-life/fav-anime_ghost-in-the-shell-sac.jpg",
             alt: "Ghost in the Shell Stand Alone Complex artwork",
+            label: "Ghost in the Shell",
           },
           {
             src: "/my-life/fav-anime_psycho-pass.png",
             alt: "Psycho-Pass artwork",
+            label: "Psycho-Pass",
           },
           {
             src: "/my-life/fav-anime_witch-from-mercury.jpg",
-            alt: "Mobile Suit Gundam The Witch from Mercury artwork",
+            alt: "Mobile Suit Gundam: The Witch from Mercury artwork",
+            label: "Mobile Suit Gundam: The Witch from Mercury",
           },
         ]}
       />
       <FavoriteSlide
-        title="Favorite animals"
+        title="Animals"
         className="my-life-slide--animals"
         favorites={[
-          { src: "/my-life/fav-animal_crow.jpg", alt: "A crow" },
-          { src: "/my-life/fav-animal_beaver.jpg", alt: "A beaver" },
+          {
+            src: "/my-life/fav-animal_crow.jpg",
+            alt: "A crow",
+            label: "Crow",
+          },
           {
             src: "/my-life/fav-animal_dolphin.jpg",
             alt: "A dolphin swimming underwater",
+            label: "Dolphin",
           },
-          { src: "/my-life/fav-animal_wolf.jpg", alt: "A wolf" },
+          {
+            src: "/my-life/fav-animal_wolf.jpg",
+            alt: "A wolf",
+            label: "Wolf",
+          },
+          {
+            src: "/my-life/fav-animal_beaver.jpg",
+            alt: "A beaver",
+            label: "Beaver",
+          },
         ]}
       />
       <Closer />
