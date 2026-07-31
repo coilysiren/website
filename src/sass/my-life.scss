@@ -94,6 +94,17 @@
   transform: rotate(-2.5deg);
 }
 
+.my-life-intro__secondary {
+  width: min(100%, 23em);
+  align-self: end;
+  margin-left: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 0.4em solid #f5c466;
+  box-shadow: 0 1.7em 3em rgba(21, 16, 39, 0.36);
+  transform: rotate(3deg) translateY(2em);
+}
+
 .my-life-slide--making {
   grid-template-columns: minmax(15em, 0.75fr) minmax(27em, 1.25fr);
   gap: clamp(2em, 6vw, 6em);
@@ -106,7 +117,7 @@
   display: grid;
   height: min(40vw, 43em);
   min-height: 24em;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.15fr 0.85fr 0.85fr;
   grid-template-rows: 1fr 1fr;
   gap: 0.8em;
 
@@ -171,6 +182,33 @@
   transform: rotate(-2deg);
 }
 
+.my-life-home-images__build {
+  right: 6%;
+  bottom: 15%;
+  width: 38%;
+  height: 28%;
+  border: 0.4em solid #d8bc83;
+  transform: rotate(5deg);
+}
+
+.my-life-home-images__tower {
+  top: 7%;
+  right: 2%;
+  width: 31%;
+  height: 32%;
+  border: 0.35em solid #d4e4ef;
+  transform: rotate(-3deg);
+}
+
+.my-life-home-images__pothos {
+  bottom: 3%;
+  left: 6%;
+  width: 28%;
+  height: 28%;
+  border: 0.35em solid #c8dbad;
+  transform: rotate(-4deg);
+}
+
 .my-life-slide--people {
   grid-template-columns: minmax(16em, 0.7fr) minmax(29em, 1.3fr);
   gap: clamp(2em, 8vw, 8em);
@@ -183,7 +221,7 @@
   display: grid;
   height: min(42vw, 47em);
   min-height: 28em;
-  grid-template-columns: 0.65fr 1fr;
+  grid-template-columns: 0.65fr 1fr 1fr;
   grid-template-rows: 1fr 0.85fr;
   gap: 0.8em;
 
@@ -197,6 +235,10 @@
 
 .my-life-people-images__luna {
   grid-row: span 2;
+}
+
+.my-life-people-images__kai-and-luna {
+  grid-column: span 2;
 }
 
 .my-life-slide--favorites {
@@ -228,6 +270,69 @@
   border: 0.3em solid #d5b460;
   box-shadow: 0 1em 2.5em rgba(13, 18, 16, 0.28);
   transform: rotate(3deg);
+}
+
+.my-life-slide--favorites {
+  grid-template-columns: minmax(15em, 0.7fr) minmax(29em, 1.3fr);
+  background: linear-gradient(135deg, #39463c, #262845);
+}
+
+.my-life-favorite-grid {
+  display: grid;
+  height: min(38vw, 39em);
+  min-height: 25em;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5em, 1.2vw, 1em);
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: min(32vw, 34em);
+    object-fit: cover;
+    border: 0.35em solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 1em 2.4em rgba(13, 18, 16, 0.3);
+    transform: rotate(-1.2deg);
+
+    &:nth-child(even) {
+      align-self: end;
+      transform: rotate(1.5deg) translateY(1em);
+    }
+  }
+}
+
+.my-life-slide--movies {
+  background: linear-gradient(135deg, #622b3c, #1d274d);
+}
+
+.my-life-slide--books {
+  background: linear-gradient(135deg, #523e28, #253c42);
+}
+
+.my-life-slide--games {
+  background: linear-gradient(135deg, #142e32, #253f63);
+}
+
+.my-life-slide--shows {
+  background: linear-gradient(135deg, #674b27, #25364d);
+}
+
+.my-life-slide--anime {
+  background: linear-gradient(135deg, #4f314e, #253a59);
+}
+
+.my-life-slide--animals {
+  background: linear-gradient(135deg, #3a4a32, #2b3048);
+
+  .my-life-favorite-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.my-life-slide--shows,
+.my-life-slide--games {
+  .my-life-favorite-grid img {
+    height: min(21vw, 23em);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -289,6 +394,11 @@
     width: min(76vw, 22em);
   }
 
+  .my-life-intro__secondary {
+    width: min(65vw, 18em);
+    margin-top: -4em;
+  }
+
   .my-life-media-grid,
   .my-life-people-images,
   .my-life-home-images {
@@ -310,6 +420,26 @@
 
     .my-life-favorites__korra {
       grid-row: 3;
+    }
+  }
+
+  .my-life-favorite-grid {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    img,
+    .my-life-slide--shows & img,
+    .my-life-slide--games & img {
+      height: 13em;
+    }
+  }
+
+  .my-life-slide--animals .my-life-favorite-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    img {
+      height: 12em;
     }
   }
 }
