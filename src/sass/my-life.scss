@@ -75,23 +75,22 @@
   list-style: none;
 
   li {
-    position: relative;
-    padding-left: 1em;
+    display: flex;
+    gap: 0.45em;
+    align-items: baseline;
   }
 
   li + li {
     margin-top: 0.4em;
   }
 
-  li::before {
-    position: absolute;
-    top: 0.61em;
-    left: 0;
-    width: 0.48em;
-    height: 0.11em;
-    content: "";
-    background: currentColor;
-    border-radius: 999px;
+  .my-life-slide__list-icon {
+    width: 1.25em;
+    flex: 0 0 1.25em;
+    color: vars.$pure-white;
+    font-size: 1.05em;
+    line-height: 1;
+    text-align: center;
   }
 }
 

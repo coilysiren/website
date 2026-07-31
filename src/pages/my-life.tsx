@@ -4,19 +4,35 @@ import DefaultHead from "../components/default-head"
 import Layout from "../components/layout"
 import "../sass/my-life.scss"
 
-type Favorite = { src: string; alt: string; label: string }
+type Favorite = { src: string; alt: string; label: string; icon?: string }
 
 type FavoriteSlideProps = {
   id: string
   title: string
   className: string
+  icon?: string
   favorites: Favorite[]
 }
+
+type IconListItemProps = {
+  icon: string
+  label: string
+}
+
+const IconListItem = ({ icon, label }: IconListItemProps) => (
+  <li>
+    <span className="my-life-slide__list-icon" aria-hidden="true">
+      {icon}
+    </span>
+    {label}
+  </li>
+)
 
 const FavoriteSlide = ({
   id,
   title,
   className,
+  icon,
   favorites,
 }: FavoriteSlideProps) => (
   <article
@@ -29,7 +45,11 @@ const FavoriteSlide = ({
       </h2>
       <ul className="my-life-slide__list">
         {favorites.map((favorite) => (
-          <li key={favorite.label}>{favorite.label}</li>
+          <IconListItem
+            key={favorite.label}
+            icon={favorite.icon ?? icon ?? "•"}
+            label={favorite.label}
+          />
         ))}
       </ul>
     </div>
@@ -79,8 +99,8 @@ const MyLifePage = () => (
             <a href="#technology">Technology</a>
           </h2>
           <ul className="my-life-slide__list">
-            <li>Towers</li>
-            <li>Monitors</li>
+            <IconListItem icon="💻" label="Towers" />
+            <IconListItem icon="💻" label="Monitors" />
           </ul>
         </div>
         <div className="my-life-project-grid my-life-technology-grid">
@@ -108,9 +128,9 @@ const MyLifePage = () => (
             <a href="#gaming">Gaming</a>
           </h2>
           <ul className="my-life-slide__list">
-            <li>Factories</li>
-            <li>Galaxies</li>
-            <li>Economies</li>
+            <IconListItem icon="🎮" label="Factories" />
+            <IconListItem icon="🎮" label="Galaxies" />
+            <IconListItem icon="🎮" label="Economies" />
           </ul>
         </div>
         <div className="my-life-project-grid my-life-gaming-grid">
@@ -160,9 +180,9 @@ const MyLifePage = () => (
             <a href="#fabrication">Fabrication</a>
           </h2>
           <ul className="my-life-slide__list">
-            <li>Walls</li>
-            <li>Gardens</li>
-            <li>ADUs</li>
+            <IconListItem icon="🛠️" label="Walls" />
+            <IconListItem icon="🛠️" label="Gardens" />
+            <IconListItem icon="🛠️" label="ADUs" />
           </ul>
         </div>
       </article>
@@ -171,6 +191,7 @@ const MyLifePage = () => (
         id="movies"
         title="Movies"
         className="my-life-slide--movies"
+        icon="📺"
         favorites={[
           {
             src: "/my-life/fav-movie_spirited-away.png",
@@ -198,6 +219,7 @@ const MyLifePage = () => (
         id="books"
         title="Books"
         className="my-life-slide--books"
+        icon="📖"
         favorites={[
           {
             src: "/my-life/fav-book_antimemetics-division.jpg",
@@ -225,6 +247,7 @@ const MyLifePage = () => (
         id="games"
         title="Games"
         className="my-life-slide--games"
+        icon="🎮"
         favorites={[
           {
             src: "/my-life/fav-game_dyson-sphere-program.jpg",
@@ -252,6 +275,7 @@ const MyLifePage = () => (
         id="shows"
         title="Shows"
         className="my-life-slide--shows"
+        icon="📺"
         favorites={[
           {
             src: "/my-life/fav-show_the-expanse.jpg",
@@ -274,6 +298,7 @@ const MyLifePage = () => (
         id="anime"
         title="Anime"
         className="my-life-slide--anime"
+        icon="📺"
         favorites={[
           {
             src: "/my-life/fav-anime_ghost-in-the-shell-sac.jpg",
@@ -301,21 +326,25 @@ const MyLifePage = () => (
             src: "/my-life/fav-animal_crow.jpg",
             alt: "A crow",
             label: "Crow",
+            icon: "🐦‍⬛",
           },
           {
             src: "/my-life/fav-animal_dolphin.jpg",
             alt: "A dolphin swimming underwater",
             label: "Dolphin",
+            icon: "🐬",
           },
           {
             src: "/my-life/fav-animal_wolf.jpg",
             alt: "A wolf",
             label: "Wolf",
+            icon: "🐺",
           },
           {
             src: "/my-life/fav-animal_beaver.jpg",
             alt: "A beaver",
             label: "Beaver",
+            icon: "🦫",
           },
         ]}
       />
