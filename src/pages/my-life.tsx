@@ -120,67 +120,37 @@ const MyLifePage = () => (
         </div>
       </article>
 
-      <article
-        id="technology"
-        className="my-life-slide my-life-slide--technology"
-      >
-        <div className="my-life-slide__copy">
-          <h2>
-            <a href="#technology">Technology</a>
-          </h2>
-          <ul className="my-life-slide__list">
-            <IconListItem icon="💻" label="Towers" />
-            <IconListItem icon="💻" label="Monitors" />
-          </ul>
-        </div>
-        <div className="my-life-project-grid my-life-technology-grid">
-          <img
-            className="my-life-technology-grid__tower"
-            src="/my-life/17-tower-interior.jpg"
-            alt="The blue and purple lit interior of a desktop computer tower"
-          />
-          <img
-            className="my-life-technology-grid__screens"
-            src="/my-life/14-two-monitor-desktop.jpg"
-            alt="A colorful two-monitor desk setup"
-          />
-          <img
-            className="my-life-technology-grid__hardware"
-            src="/my-life/08-motherboard-and-gpu.jpg"
-            alt="A motherboard and graphics card lit by purple LEDs"
-          />
-        </div>
-      </article>
-
-      <article id="gaming" className="my-life-slide my-life-slide--gaming">
-        <div className="my-life-slide__copy">
-          <h2>
-            <a href="#gaming">Gaming</a>
-          </h2>
-          <ul className="my-life-slide__list">
-            <IconListItem icon="🎮" label="Factories" />
-            <IconListItem icon="🎮" label="Galaxies" />
-            <IconListItem icon="🎮" label="Economies" />
-          </ul>
-        </div>
-        <div className="my-life-project-grid my-life-gaming-grid">
-          <img
-            className="my-life-gaming-grid__factory"
-            src="/my-life/project-factory-game.gif"
-            alt="An animated factory game simulation"
-          />
-          <img
-            className="my-life-gaming-grid__galaxy"
-            src="/my-life/project-galaxy-gen.gif"
-            alt="An animated procedural galaxy generator"
-          />
-          <img
-            className="my-life-gaming-grid__eco"
-            src="/my-life/05-eco-app-dashboard.png"
-            alt="A dark green Eco application dashboard"
-          />
-        </div>
-      </article>
+      <FavoriteSlide
+        id="animals"
+        title="Animals"
+        className="my-life-slide--animals"
+        favorites={[
+          {
+            src: "/my-life/fav-animal_crow.jpg",
+            alt: "A crow",
+            label: "Crow",
+            icon: "🐦‍⬛",
+          },
+          {
+            src: "/my-life/fav-animal_dolphin.jpg",
+            alt: "A dolphin swimming underwater",
+            label: "Dolphin",
+            icon: "🐬",
+          },
+          {
+            src: "/my-life/fav-animal_wolf.jpg",
+            alt: "A wolf",
+            label: "Wolf",
+            icon: "🐺",
+          },
+          {
+            src: "/my-life/fav-animal_beaver.jpg",
+            alt: "A beaver",
+            label: "Beaver",
+            icon: "🦫",
+          },
+        ]}
+      />
 
       <article id="fabrication" className="my-life-slide my-life-slide--home">
         <div className="my-life-home-images">
@@ -217,34 +187,35 @@ const MyLifePage = () => (
         </div>
       </article>
 
-      <FavoriteSlide
-        id="movies"
-        title="Movies"
-        className="my-life-slide--movies"
-        icon="📺"
-        favorites={[
-          {
-            src: "/my-life/fav-movie_spirited-away.png",
-            alt: "Spirited Away movie poster",
-            label: "Spirited Away",
-          },
-          {
-            src: "/my-life/fav-movie_the-matrix.png",
-            alt: "The Matrix movie poster",
-            label: "The Matrix",
-          },
-          {
-            src: "/my-life/fav-movie_doctor-strange.jpg",
-            alt: "Doctor Strange movie poster",
-            label: "Doctor Strange",
-          },
-          {
-            src: "/my-life/fav-movie_avengers.jpg",
-            alt: "Avengers movie poster",
-            label: "Avengers",
-          },
-        ]}
-      />
+      <article id="tech" className="my-life-slide my-life-slide--technology">
+        <div className="my-life-slide__copy">
+          <h2>
+            <a href="#tech">Tech</a>
+          </h2>
+          <ul className="my-life-slide__list">
+            <IconListItem icon="💻" label="Towers" />
+            <IconListItem icon="💻" label="Monitors" />
+          </ul>
+        </div>
+        <div className="my-life-project-grid my-life-technology-grid">
+          <img
+            className="my-life-technology-grid__tower"
+            src="/my-life/17-tower-interior.jpg"
+            alt="The blue and purple lit interior of a desktop computer tower"
+          />
+          <img
+            className="my-life-technology-grid__screens"
+            src="/my-life/14-two-monitor-desktop.jpg"
+            alt="A colorful two-monitor desk setup"
+          />
+          <img
+            className="my-life-technology-grid__hardware"
+            src="/my-life/08-motherboard-and-gpu.jpg"
+            alt="A motherboard and graphics card lit by purple LEDs"
+          />
+        </div>
+      </article>
+
       <FavoriteSlide
         id="books"
         title="Books"
@@ -301,6 +272,37 @@ const MyLifePage = () => (
           },
         ]}
       />
+
+      <article id="gaming" className="my-life-slide my-life-slide--gaming">
+        <div className="my-life-slide__copy">
+          <h2>
+            <a href="#gaming">Gaming</a>
+          </h2>
+          <ul className="my-life-slide__list">
+            <IconListItem icon="🎮" label="Factories" />
+            <IconListItem icon="🎮" label="Galaxies" />
+            <IconListItem icon="🎮" label="Economies" />
+          </ul>
+        </div>
+        <div className="my-life-project-grid my-life-gaming-grid">
+          <img
+            className="my-life-gaming-grid__factory"
+            src="/my-life/project-factory-game.gif"
+            alt="An animated factory game simulation"
+          />
+          <img
+            className="my-life-gaming-grid__galaxy"
+            src="/my-life/project-galaxy-gen.gif"
+            alt="An animated procedural galaxy generator"
+          />
+          <img
+            className="my-life-gaming-grid__eco"
+            src="/my-life/05-eco-app-dashboard.png"
+            alt="A dark green Eco application dashboard"
+          />
+        </div>
+      </article>
+
       <FavoriteSlide
         id="shows"
         title="Shows"
@@ -348,33 +350,30 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        id="animals"
-        title="Animals"
-        className="my-life-slide--animals"
+        id="movies"
+        title="Movies"
+        className="my-life-slide--movies"
+        icon="📺"
         favorites={[
           {
-            src: "/my-life/fav-animal_crow.jpg",
-            alt: "A crow",
-            label: "Crow",
-            icon: "🐦‍⬛",
+            src: "/my-life/fav-movie_spirited-away.png",
+            alt: "Spirited Away movie poster",
+            label: "Spirited Away",
           },
           {
-            src: "/my-life/fav-animal_dolphin.jpg",
-            alt: "A dolphin swimming underwater",
-            label: "Dolphin",
-            icon: "🐬",
+            src: "/my-life/fav-movie_the-matrix.png",
+            alt: "The Matrix movie poster",
+            label: "The Matrix",
           },
           {
-            src: "/my-life/fav-animal_wolf.jpg",
-            alt: "A wolf",
-            label: "Wolf",
-            icon: "🐺",
+            src: "/my-life/fav-movie_doctor-strange.jpg",
+            alt: "Doctor Strange movie poster",
+            label: "Doctor Strange",
           },
           {
-            src: "/my-life/fav-animal_beaver.jpg",
-            alt: "A beaver",
-            label: "Beaver",
-            icon: "🦫",
+            src: "/my-life/fav-movie_avengers.jpg",
+            alt: "Avengers movie poster",
+            label: "Avengers",
           },
         ]}
       />
