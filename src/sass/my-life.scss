@@ -310,10 +310,45 @@
 
 .my-life-slide--games {
   background: linear-gradient(135deg, #142e32, #253f63);
+
+  .my-life-favorite-grid {
+    height: min(31vw, 34em);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .my-life-favorite-grid img,
+  .my-life-favorite-grid img:nth-child(even) {
+    height: 100%;
+    object-fit: cover;
+    transform: none;
+  }
 }
 
 .my-life-slide--shows {
   background: linear-gradient(135deg, #674b27, #25364d);
+
+  .my-life-favorite-grid {
+    height: min(34vw, 37em);
+    grid-template-columns: minmax(0, 1.15fr) minmax(12em, 0.7fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .my-life-favorite-grid img,
+  .my-life-favorite-grid img:nth-child(even) {
+    height: 100%;
+    padding: 1em;
+    object-fit: contain;
+    background: rgba(245, 240, 224, 0.1);
+    transform: none;
+  }
+
+  .my-life-favorite-grid img:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    padding: 0;
+    object-fit: cover;
+  }
 }
 
 .my-life-slide--anime {
@@ -324,14 +359,18 @@
   background: linear-gradient(135deg, #3a4a32, #2b3048);
 
   .my-life-favorite-grid {
+    height: auto;
+    min-height: 0;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
 
-.my-life-slide--shows,
-.my-life-slide--games {
-  .my-life-favorite-grid img {
-    height: min(21vw, 23em);
+  .my-life-favorite-grid img,
+  .my-life-favorite-grid img:nth-child(even) {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: rgba(245, 240, 224, 0.08);
+    transform: none;
   }
 }
 
@@ -441,5 +480,22 @@
     img {
       height: 12em;
     }
+  }
+
+  .my-life-slide--games .my-life-favorite-grid,
+  .my-life-slide--shows .my-life-favorite-grid {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .my-life-slide--games .my-life-favorite-grid img,
+  .my-life-slide--shows .my-life-favorite-grid img,
+  .my-life-slide--shows .my-life-favorite-grid img:nth-child(2) {
+    height: auto;
+    min-height: 0;
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: auto;
   }
 }

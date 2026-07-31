@@ -83,11 +83,12 @@ const MyLifePage = () => (
             loop
             muted
             playsInline
+            poster="/my-life/03-factory-game-take-3-poster.jpg"
             aria-label="A factory game in motion"
           >
             <source
-              src="/my-life/03-factory-game-take-3.mov"
-              type="video/quicktime"
+              src="/my-life/03-factory-game-take-3.mp4"
+              type="video/mp4"
             />
           </video>
           <img
