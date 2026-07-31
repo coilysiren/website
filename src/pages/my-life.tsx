@@ -120,11 +120,6 @@ const MyLifePage = () => (
             src="/my-life/18-garden-bed-construction.jpg"
             alt="Raised garden beds under construction"
           />
-          <img
-            className="my-life-home-images__pothos"
-            src="/my-life/13-pothos-wall.jpg"
-            alt="A pothos cascading down an indoor wall"
-          />
         </div>
         <div className="my-life-slide__copy">
           <h2>Making room</h2>
