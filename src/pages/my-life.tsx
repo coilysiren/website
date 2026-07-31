@@ -199,16 +199,16 @@ const MyLifePage = () => (
         className="my-life-slide--shows"
         favorites={[
           {
-            src: "/my-life/fav-show_korra.png",
-            alt: "The Legend of Korra title mark",
+            src: "/my-life/fav-show_korra.jpg",
+            alt: "The Legend of Korra show artwork",
           },
           {
             src: "/my-life/fav-show_pantheon.jpg",
             alt: "Pantheon show artwork",
           },
           {
-            src: "/my-life/fav-show_the-expanse.png",
-            alt: "The Expanse title mark",
+            src: "/my-life/fav-show_the-expanse.jpg",
+            alt: "The Expanse show artwork",
           },
         ]}
       />
