@@ -147,7 +147,6 @@
     min-width: 0;
     min-height: 0;
     object-fit: cover;
-    border: 0.3em solid rgba(226, 215, 246, 0.78);
     background: #12111d;
     box-shadow: 0 1.2em 2.4em rgba(8, 10, 19, 0.32);
   }
@@ -282,7 +281,6 @@
     width: 100%;
     height: min(32vw, 34em);
     object-fit: cover;
-    border: 0.35em solid rgba(255, 255, 255, 0.85);
     box-shadow: 0 1em 2.4em rgba(13, 18, 16, 0.3);
     transform: rotate(-1.2deg);
 
@@ -424,8 +422,7 @@
   .my-life-favorite-grid img:nth-child(even) {
     height: auto;
     aspect-ratio: 1 / 1;
-    object-fit: contain;
-    background: rgba(245, 240, 224, 0.08);
+    object-fit: cover;
     transform: none;
   }
 }
