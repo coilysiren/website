@@ -153,41 +153,8 @@ const MyLifePage = () => (
         </div>
       </article>
 
-      <article className="my-life-slide my-life-slide--people">
-        <div className="my-life-slide__copy">
-          <span className="my-life-kicker">03 / MY PEOPLE</span>
-          <h2>The best part</h2>
-          <p>
-            The very good company, with one small creature who insists on being
-            in every chapter.
-          </p>
-        </div>
-        <div className="my-life-people-images">
-          <img
-            className="my-life-people-images__luna"
-            src="/my-life/09-luna.jpg"
-            alt="Luna, a Siamese cat, sitting on a pink bedspread"
-          />
-          <img
-            className="my-life-people-images__chavah"
-            src="/my-life/20-me-and-chavah.jpg"
-            alt="Kai and Chavah smiling together outside"
-          />
-          <img
-            className="my-life-people-images__elizabeth"
-            src="/my-life/19-me-and-elizabeth.jpg"
-            alt="Kai and Elizabeth smiling together"
-          />
-          <img
-            className="my-life-people-images__kai-and-luna"
-            src="/my-life/10-me-and-luna-face-blurred.png"
-            alt="Kai sitting with Luna"
-          />
-        </div>
-      </article>
-
       <FavoriteSlide
-        number="04 / MOVIES"
+        number="03 / MOVIES"
         title="Favorite movies"
         body="The ones with impossible worlds, impossible choices, and a little magic."
         className="my-life-slide--movies"
@@ -211,7 +178,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="05 / BOOKS"
+        number="04 / BOOKS"
         title="Favorite books"
         body="Books I keep returning to, even after the first read is long gone."
         className="my-life-slide--books"
@@ -235,7 +202,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="06 / GAMES"
+        number="05 / GAMES"
         title="Favorite games"
         body="Systems to untangle, worlds to tend, and a good excuse to stay up too late."
         className="my-life-slide--games"
@@ -256,7 +223,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="07 / SHOWS"
+        number="06 / SHOWS"
         title="Favorite shows"
         body="The kind of television that makes me want to talk about it for hours."
         className="my-life-slide--shows"
@@ -276,7 +243,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="08 / ANIME"
+        number="07 / ANIME"
         title="Favorite anime"
         body="For the worlds, the machinery, the questions, and the feelings that come out of nowhere."
         className="my-life-slide--anime"
@@ -296,7 +263,7 @@ const MyLifePage = () => (
         ]}
       />
       <FavoriteSlide
-        number="09 / ANIMALS"
+        number="08 / ANIMALS"
         title="Favorite animals"
         body="Clever, strange, social, wild - a small bestiary of things I admire."
         className="my-life-slide--animals"

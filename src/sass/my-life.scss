@@ -209,38 +209,6 @@
   transform: rotate(-4deg);
 }
 
-.my-life-slide--people {
-  grid-template-columns: minmax(16em, 0.7fr) minmax(29em, 1.3fr);
-  gap: clamp(2em, 8vw, 8em);
-  align-items: center;
-  padding: clamp(2em, 7vw, 7em);
-  background: linear-gradient(135deg, #62435c, #422e56 55%, #222034);
-}
-
-.my-life-people-images {
-  display: grid;
-  height: min(42vw, 47em);
-  min-height: 28em;
-  grid-template-columns: 0.65fr 1fr 1fr;
-  grid-template-rows: 1fr 0.85fr;
-  gap: 0.8em;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 0.35em solid rgba(255, 255, 255, 0.76);
-  }
-}
-
-.my-life-people-images__luna {
-  grid-row: span 2;
-}
-
-.my-life-people-images__kai-and-luna {
-  grid-column: span 2;
-}
-
 .my-life-slide--favorites {
   grid-template-columns: minmax(15em, 0.8fr) minmax(18em, 0.8fr) minmax(
       13em,
@@ -408,7 +376,6 @@
   .my-life-slide {
     .my-life-slide__portrait,
     .my-life-home-images img,
-    .my-life-people-images img,
     .my-life-favorites__plant,
     .my-life-favorites__korra {
       transition:
@@ -422,7 +389,6 @@
       }
 
       .my-life-home-images img,
-      .my-life-people-images img,
       .my-life-favorites__plant,
       .my-life-favorites__korra {
         filter: saturate(1.08);
@@ -444,7 +410,6 @@
   .my-life-slide--intro,
   .my-life-slide--making,
   .my-life-slide--home,
-  .my-life-slide--people,
   .my-life-slide--favorites {
     min-height: auto;
     grid-template-columns: 1fr;
@@ -453,7 +418,6 @@
   .my-life-slide--intro,
   .my-life-slide--making,
   .my-life-slide--home,
-  .my-life-slide--people,
   .my-life-slide--favorites {
     gap: 2em;
     padding: 3em 1.4em;
@@ -469,7 +433,6 @@
   }
 
   .my-life-media-grid,
-  .my-life-people-images,
   .my-life-home-images {
     min-height: 22em;
     height: 70vw;
