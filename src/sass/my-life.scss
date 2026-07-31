@@ -307,6 +307,14 @@
     object-fit: contain;
     background: #122c2b;
   }
+
+  .my-life-favorite-grid img[src$="/my-life/fav-game_final-fantasy-xiv.jpg"],
+  .my-life-favorite-grid img[src$="/my-life/fav-game_oxygen-not-included.jpg"] {
+    box-sizing: border-box;
+    padding: clamp(0.3em, 0.55vw, 0.55em);
+    object-fit: contain;
+    background: #122c2b;
+  }
 }
 
 .my-life-slide--shows {
