@@ -1,92 +1,66 @@
 @use "_vars.scss";
 
 .my-life {
+  width: min(94vw, 110em);
+  margin-bottom: 6%;
   color: vars.$dark-purple;
   font-family: vars.$font-family-body;
+  background: #211b36;
 }
 
-.my-life-hero {
+.my-life-slide {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(11em, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(1.5em, 6vw, 4.5em);
-  align-items: center;
-  padding: clamp(2em, 7vw, 5em);
+  min-height: min(56.25vw, 61em);
   overflow: hidden;
+  isolation: isolate;
   color: vars.$pure-white;
-  background:
-    radial-gradient(circle at 84% 17%, #f5c466 0 0.26em, transparent 0.31em),
-    radial-gradient(circle at 77% 70%, #f08f8f 0 0.42em, transparent 0.48em),
-    radial-gradient(circle at 57% 86%, #85d6c8 0 0.22em, transparent 0.28em),
-    linear-gradient(135deg, #30274b, vars.$dark-purple 58%, #554777);
-}
+  background: #30274b;
 
-.my-life-hero__portrait-wrap {
-  position: relative;
-  max-width: 19em;
-  margin: 0 auto;
-
-  &::before,
-  &::after {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    content: "";
-  }
-
-  &::before {
-    top: -0.8em;
-    left: -0.8em;
-    transform: rotate(-5deg);
-  }
-
-  &::after {
-    right: -0.8em;
-    bottom: -0.8em;
-    border-color: rgba(245, 196, 102, 0.8);
-    transform: rotate(4deg);
+  & + & {
+    border-top: 0.65em solid #211b36;
   }
 }
 
-.my-life-hero__portrait {
+.my-life-slide__copy {
   position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border: 0.35em solid vars.$pure-white;
-  box-shadow: 0 1.2em 2.5em rgba(21, 16, 39, 0.35);
-}
-
-.my-life-hero__copy {
-  position: relative;
-  z-index: 1;
+  z-index: 2;
 
   h1,
+  h2,
   p {
     margin-top: 0;
   }
 
-  h1 {
-    max-width: 7ch;
+  h1,
+  h2 {
     margin-bottom: 0.25em;
-    font-size: clamp(3.7em, 11vw, 7.4em);
-    line-height: 0.83;
+    line-height: 0.84;
     letter-spacing: -0.075em;
   }
 
+  h1 {
+    max-width: 7ch;
+    font-size: clamp(4.6em, 12vw, 10.5em);
+  }
+
+  h2 {
+    max-width: 8ch;
+    font-size: clamp(3em, 8vw, 7em);
+  }
+
   p {
-    max-width: 28em;
+    max-width: 33em;
     margin-bottom: 0;
-    color: #ebe8f5;
-    font-size: clamp(1em, 2vw, 1.18em);
+    color: #e9e5f4;
+    font-size: clamp(1em, 1.75vw, 1.3em);
     line-height: 1.55;
   }
 }
 
-.my-life-kicker,
-.my-life-subject__number {
+.my-life-kicker {
+  display: block;
+  margin-bottom: 1.3em;
   color: #f5d689;
   font-family: vars.$font-family-mono;
   font-size: 0.72em;
@@ -94,174 +68,248 @@
   letter-spacing: 0.16em;
 }
 
-.my-life-kicker {
-  display: block;
-  margin-bottom: 1.2em;
-}
-
-.my-life-subjects {
-  padding: clamp(1.2em, 5vw, 3.5em);
-}
-
-.my-life-subject {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(15em, 1.2fr);
-  gap: clamp(1.4em, 6vw, 5em);
+.my-life-slide--intro {
+  grid-template-columns: minmax(17em, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2em, 8vw, 10em);
   align-items: center;
-  padding: clamp(2em, 7vw, 5em) 0;
-
-  & + & {
-    border-top: 1px solid #d8d5e1;
-  }
-
-  &:nth-child(even) {
-    grid-template-columns: minmax(15em, 1.2fr) minmax(0, 0.8fr);
-
-    .my-life-subject__copy {
-      grid-column: 2;
-      grid-row: 1;
-    }
-
-    .my-life-frame {
-      grid-column: 1;
-      grid-row: 1;
-    }
-  }
+  padding: clamp(2em, 7vw, 7em);
+  background:
+    radial-gradient(circle at 89% 18%, #f5c466 0 0.33em, transparent 0.39em),
+    radial-gradient(circle at 74% 72%, #f08f8f 0 0.5em, transparent 0.57em),
+    radial-gradient(circle at 51% 88%, #85d6c8 0 0.27em, transparent 0.34em),
+    linear-gradient(135deg, #30274b, vars.$dark-purple 58%, #554777);
 }
 
-.my-life-subject__copy {
-  h2,
-  p {
-    margin-top: 0;
-  }
-
-  h2 {
-    margin: 0.25em 0 0.45em;
-    font-size: clamp(2em, 5vw, 3.9em);
-    line-height: 0.95;
-    letter-spacing: -0.055em;
-  }
-
-  p {
-    max-width: 25em;
-    margin-bottom: 0;
-    color: vars.$mid-purple;
-    line-height: 1.6;
-  }
-}
-
-.my-life-subject__number {
-  color: vars.$mid-purple;
-}
-
-.my-life-frame {
-  display: grid;
-  min-height: clamp(15em, 38vw, 25em);
-  place-items: end start;
-  padding: 1em;
-  overflow: hidden;
-  color: rgba(62, 55, 93, 0.75);
-  background-color: #e3e0eb;
-  border: 0.6em solid vars.$pure-white;
+.my-life-slide__portrait {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 29em);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 0.5em solid vars.$pure-white;
   box-shadow:
-    0 0 0 1px #c5c1d1,
-    0 1.1em 2.5em rgba(62, 55, 93, 0.14);
-  transform: rotate(-1.5deg);
+    -1em 1em 0 #f5c466,
+    1.5em 2em 0 rgba(0, 0, 0, 0.16),
+    0 2em 4em rgba(21, 16, 39, 0.45);
+  transform: rotate(-2.5deg);
+}
 
-  span {
-    max-width: 15ch;
-    padding: 0.55em 0.7em;
-    background: rgba(255, 255, 255, 0.82);
-    font-family: vars.$font-family-mono;
-    font-size: 0.72em;
-    font-weight: 700;
-    line-height: 1.35;
+.my-life-slide--making {
+  grid-template-columns: minmax(15em, 0.75fr) minmax(27em, 1.25fr);
+  gap: clamp(2em, 6vw, 6em);
+  align-items: center;
+  padding: clamp(2em, 7vw, 7em);
+  background: linear-gradient(135deg, #121b29, #263751 58%, #16142c);
+}
+
+.my-life-media-grid {
+  display: grid;
+  height: min(40vw, 43em);
+  min-height: 24em;
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.8em;
+
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #12111d;
+  }
+
+  .my-life-video {
+    grid-row: span 2;
+    border: 0.3em solid #ad81e6;
   }
 }
 
-.my-life-frame--self {
-  background:
-    linear-gradient(
-      135deg,
-      transparent 39%,
-      rgba(255, 255, 255, 0.45) 40% 41%,
-      transparent 42%
-    ),
-    linear-gradient(115deg, #f4c4b9, #fedf94 48%, #d1e8d4);
+.my-life-slide--home {
+  grid-template-columns: minmax(29em, 1.25fr) minmax(16em, 0.75fr);
+  gap: clamp(2em, 7vw, 7em);
+  align-items: center;
+  padding: clamp(2em, 7vw, 7em);
+  background: linear-gradient(135deg, #68464d, #3e2940 58%, #252033);
 }
 
-.my-life-frame--movies {
-  background:
-    linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.25) 25%,
-      transparent 25% 75%,
-      rgba(255, 255, 255, 0.25) 75%
-    ),
-    linear-gradient(135deg, #42305b, #ed7870 48%, #f0c85b);
-  background-size:
-    3em 3em,
-    auto;
+.my-life-home-images {
+  position: relative;
+  height: min(42vw, 47em);
+  min-height: 28em;
+
+  img {
+    position: absolute;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 1.2em 2.7em rgba(24, 13, 24, 0.35);
+  }
 }
 
-.my-life-frame--books {
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #e67f6a 0 1.2em,
-      #f1c873 1.2em 2.35em,
-      #83a89c 2.35em 3.2em,
-      #715987 3.2em 4.25em
-    ),
-    #e6decf;
+.my-life-home-images__primary {
+  inset: 0 16% 7% 0;
+  width: 84%;
+  height: 93%;
+  border: 0.5em solid #f5dfcf;
 }
 
-.my-life-frame--things {
+.my-life-home-images__plan {
+  top: 3%;
+  right: 0;
+  width: 41%;
+  height: 40%;
+  padding: 0.45em;
+  background: #f4eadf;
+  transform: rotate(4deg);
+}
+
+.my-life-home-images__garden {
+  right: 0;
+  bottom: 0;
+  width: 51%;
+  height: 27%;
+  border: 0.45em solid #eaa07e;
+  transform: rotate(-2deg);
+}
+
+.my-life-slide--people {
+  grid-template-columns: minmax(16em, 0.7fr) minmax(29em, 1.3fr);
+  gap: clamp(2em, 8vw, 8em);
+  align-items: center;
+  padding: clamp(2em, 7vw, 7em);
+  background: linear-gradient(135deg, #62435c, #422e56 55%, #222034);
+}
+
+.my-life-people-images {
+  display: grid;
+  height: min(42vw, 47em);
+  min-height: 28em;
+  grid-template-columns: 0.65fr 1fr;
+  grid-template-rows: 1fr 0.85fr;
+  gap: 0.8em;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0.35em solid rgba(255, 255, 255, 0.76);
+  }
+}
+
+.my-life-people-images__luna {
+  grid-row: span 2;
+}
+
+.my-life-slide--favorites {
+  grid-template-columns: minmax(15em, 0.8fr) minmax(18em, 0.8fr) minmax(
+      13em,
+      0.45fr
+    );
+  gap: clamp(1.5em, 5vw, 5em);
+  align-items: center;
+  padding: clamp(2em, 7vw, 7em);
   background:
-    radial-gradient(circle at 25% 30%, #ef9276 0 1.7em, transparent 1.75em),
-    radial-gradient(circle at 73% 66%, #f3cf72 0 2.6em, transparent 2.65em),
-    linear-gradient(135deg, #a8d7cd, #d9e7bd);
+    linear-gradient(90deg, rgba(25, 31, 30, 0.65), rgba(37, 39, 61, 0.4)),
+    #39463c;
+}
+
+.my-life-favorites__plant {
+  width: 100%;
+  height: min(42vw, 45em);
+  min-height: 26em;
+  object-fit: cover;
+  border: 0.45em solid #d6e7c9;
+  box-shadow: 0 1.3em 3em rgba(13, 18, 16, 0.36);
+}
+
+.my-life-favorites__korra {
+  width: min(100%, 19em);
+  padding: 1em;
+  background: rgba(255, 250, 225, 0.94);
+  border: 0.3em solid #d5b460;
+  box-shadow: 0 1em 2.5em rgba(13, 18, 16, 0.28);
+  transform: rotate(3deg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .my-life-frame {
-    transition:
-      transform 180ms ease,
-      box-shadow 180ms ease;
+  .my-life-slide {
+    .my-life-slide__portrait,
+    .my-life-home-images img,
+    .my-life-people-images img,
+    .my-life-favorites__plant,
+    .my-life-favorites__korra {
+      transition:
+        transform 220ms ease,
+        filter 220ms ease;
+    }
 
     &:hover {
-      box-shadow:
-        0 0 0 1px #ada7be,
-        0 1.5em 3em rgba(62, 55, 93, 0.2);
-      transform: rotate(0deg) translateY(-0.2em);
+      .my-life-slide__portrait {
+        transform: rotate(-1deg) scale(1.01);
+      }
+
+      .my-life-home-images img,
+      .my-life-people-images img,
+      .my-life-favorites__plant,
+      .my-life-favorites__korra {
+        filter: saturate(1.08);
+      }
     }
   }
 }
 
 @include vars.phone {
-  .my-life-hero,
-  .my-life-subject,
-  .my-life-subject:nth-child(even) {
+  .my-life {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    border-radius: 0;
+  }
+
+  .my-life-slide,
+  .my-life-slide--intro,
+  .my-life-slide--making,
+  .my-life-slide--home,
+  .my-life-slide--people,
+  .my-life-slide--favorites {
+    min-height: auto;
     grid-template-columns: 1fr;
   }
 
-  .my-life-hero {
+  .my-life-slide--intro,
+  .my-life-slide--making,
+  .my-life-slide--home,
+  .my-life-slide--people,
+  .my-life-slide--favorites {
     gap: 2em;
+    padding: 3em 1.4em;
   }
 
-  .my-life-hero__portrait-wrap {
-    width: min(72vw, 17em);
+  .my-life-slide__portrait {
+    width: min(76vw, 22em);
   }
 
-  .my-life-subject:nth-child(even) {
-    .my-life-subject__copy,
-    .my-life-frame {
-      grid-column: auto;
-      grid-row: auto;
+  .my-life-media-grid,
+  .my-life-people-images,
+  .my-life-home-images {
+    min-height: 22em;
+    height: 70vw;
+  }
+
+  .my-life-media-grid {
+    min-height: 25em;
+    height: 82vw;
+  }
+
+  .my-life-slide--favorites {
+    .my-life-favorites__plant {
+      grid-row: 1;
+      min-height: 21em;
+      height: 70vw;
     }
-  }
 
-  .my-life-frame {
-    min-height: 16em;
+    .my-life-favorites__korra {
+      grid-row: 3;
+    }
   }
 }
