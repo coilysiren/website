@@ -314,11 +314,6 @@ const PulsePage = ({
           <h3>Where the data comes from</h3>
           <ul>
             <li>
-              <strong>/now</strong> is hand-written from a JSON snapshot
-              produced by <code>scripts/fetch-now-data.ts</code>, which pulls
-              from GitHub, Bluesky, YouTube, Reddit, and Steam.
-            </li>
-            <li>
               <strong>/pulse</strong> (this page) is driven by{" "}
               <code>scripts/fetch-pulse-data.ts</code>, which hits the GitHub
               search API for every public commit I&apos;ve authored in the last

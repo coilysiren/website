@@ -70,9 +70,6 @@ commands:
   test-e2e-ci:
     run: pnpm run test:e2e:ci
     description: Boot serve + run Cypress headless. Mirrors CI.
-  fetch-now-data:
-    run: pnpm run fetch-now-data
-    description: Refresh /now page data via tsx scripts/fetch-now-data.ts.
   fetch-pulse-data:
     run: pnpm run fetch-pulse-data
     description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.

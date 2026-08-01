@@ -31,7 +31,7 @@ const LOGO_SVG = fs.readFileSync(
 )
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
-type Kind = "post" | "now" | "apps" | "orgs" | "page" | "default" | "banner"
+type Kind = "post" | "apps" | "orgs" | "page" | "default" | "banner"
 
 interface Entry {
   outPath: string
@@ -58,7 +58,6 @@ const COLORS = {
 
 const KIND_LABEL: Record<Kind, string> = {
   post: "POST",
-  now: "NOW",
   apps: "APPS",
   orgs: "ORGS",
   page: "PAGE",
@@ -124,7 +123,7 @@ function discoverTopLevelMarkdown(): Entry[] {
     .map((f) => {
       const stem = f.slice(0, -3)
       const fm = parseFrontmatter(path.join(dir, f))
-      const kind: Kind = stem === "now" ? "now" : "page"
+      const kind: Kind = "page"
       const outPath = `${stem}.png`
       return {
         outPath,
@@ -136,8 +135,6 @@ function discoverTopLevelMarkdown(): Entry[] {
 }
 
 const MARKDOWN_SUBTITLE_OVERRIDES: Record<string, string> = {
-  "now.png":
-    "What I'm focused on at this point in my life - building, reading, and playing.",
   "cool-people.png": "People I think are great and want to hype up.",
   "eco-modding.png": "Public C# mods I've shipped for Strange Loop Games' Eco.",
   "resume.png":
@@ -793,7 +790,7 @@ function BannerCard() {
 
 function routeFromOutPath(outPath: string): string {
   // home.png -> "/", default.png -> "/", "apps/index.png" -> "/apps/",
-  // "posts/foo.png" -> "/posts/foo/", "now.png" -> "/now/"
+  // "posts/foo.png" -> "/posts/foo/"
   const stem = outPath.replace(/\.png$/, "")
   if (stem === "home" || stem === "default") return "/"
   if (stem.endsWith("/index")) return `/${stem.slice(0, -"/index".length)}/`

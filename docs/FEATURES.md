@@ -15,14 +15,12 @@ Last full sweep: 2026-07-09.
 Under [src/pages/](../src/pages/):
 
 - **`index.tsx`** - home / landing.
-- **`about.tsx`** - bio. Sync target for `Resume.md`'s intro paragraphs (per the parent `AGENTS.md` sync list).
+- **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
 - **`resume.md`** - canonical resume surface.
-- **`now.md`** - living "what I'm into this week" page, regenerated via the `generate-now-page` skill.
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
 - **`cool-people.md`** - links page.
 - **`eco-modding.md`** - Eco-modding writeups.
 - **`hiring.md`** - unlisted recruiting stance page (`unlisted: true`, `noindex`, robots-Disallowed). Direct link only.
-- **`my-life.tsx`** - image-first personal presentation with room for a portrait and themed visual collections.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
@@ -51,7 +49,6 @@ React/TS components under [src/components/](../src/components/): `hero`, `header
 Under [scripts/](../scripts/):
 
 - **[build-resume.py](../scripts/build-resume.py)** - generates the resume page from source.
-- **[fetch-now-data.ts](../scripts/fetch-now-data.ts)** - pulls source data for the `/now` page.
 - **[fetch-pulse-data.ts](../scripts/fetch-pulse-data.ts)** - pulls pulse data into [scripts/pulse-data.yaml](../scripts/pulse-data.yaml).
 - **[render-og-images.tsx](../scripts/render-og-images.tsx)** - renders OG previews + logo `banner.png`, with derived output cached beside the script-generated assets.
 - **[youtube-auth.ts](../scripts/youtube-auth.ts)** - YouTube data auth helper.

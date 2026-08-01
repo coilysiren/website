@@ -52,8 +52,8 @@ function Hero() {
           .
         </p>
         <p>
-          <Link to="/now">/now</Link> is the living document - what I&apos;m
-          thinking about, building, and playing this week.{" "}
+          <Link to="/about">/about</Link> is the visual autobiography - a
+          tour of the things that make up my life.{" "}
           <Link to="/resume">/resume</Link> is the career summary, updated when
           someone asks.
         </p>

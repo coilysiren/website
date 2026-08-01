@@ -11,8 +11,8 @@ function Links() {
           </Link>
         </li>
         <li>
-          <Link className="nav-btn" to="/now">
-            ./now<i className="fa-solid fa-clock"></i>{" "}
+          <Link className="nav-btn" to="/about">
+            ./about<i className="fa-solid fa-user"></i>{" "}
           </Link>
         </li>
         <li>

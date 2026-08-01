@@ -82,7 +82,9 @@ export const createPages: GatsbyNode["createPages"] = ({
 }) => {
   const { createPage, createRedirect } = actions
 
-  createRedirect({ fromPath: "/about", toPath: "/now", isPermanent: true })
+  for (const fromPath of ["/now", "/life", "/my-life"]) {
+    createRedirect({ fromPath, toPath: "/about/", isPermanent: true })
+  }
   createRedirect({
     fromPath: "/posts/agent-launch-pillars",
     toPath: "/",

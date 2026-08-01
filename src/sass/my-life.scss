@@ -102,6 +102,32 @@
   background: linear-gradient(135deg, #30274b, vars.$dark-purple 58%, #554777);
 }
 
+.my-life-slide--intro .my-life-slide__copy {
+  max-width: 34em;
+
+  p {
+    max-width: 39ch;
+    margin: 1.4em 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(1em, 1.5vw, 1.3em);
+    line-height: 1.45;
+  }
+}
+
+.my-life-intro__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.2em;
+  margin-top: 1.6em;
+  font-size: clamp(1em, 1.5vw, 1.3em);
+
+  a {
+    color: vars.$pure-white;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+}
+
 .my-life-slide__portrait {
   position: relative;
   z-index: 1;

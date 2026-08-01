@@ -71,7 +71,6 @@
     "test:unit": "vitest run",
     "test:e2e:local": "start-server-and-test \"pnpm run serve\" http://127.0.0.1:8000 \"pnpm exec cypress open --e2e\"",
     "test:e2e:ci": "start-server-and-test \"pnpm run serve\" http://127.0.0.1:8000 \"pnpm exec cypress run\"",
-    "fetch-now-data": "tsx scripts/fetch-now-data.ts",
     "fetch-pulse-data": "tsx scripts/fetch-pulse-data.ts",
     "youtube-auth": "tsx scripts/youtube-auth.ts"
   },

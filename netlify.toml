@@ -9,8 +9,19 @@
   NODE_VERSION = "24.18.0"
 
 [[redirects]]
-  from = "/about"
-  to = "/now"
+  from = "/now"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/life"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/my-life"
+  to = "/about/"
+  status = 301
 
 [[redirects]]
   from = "/posts/2019-12-25-golang-pr-field-notes-part-1"
