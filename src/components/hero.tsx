@@ -52,10 +52,9 @@ function Hero() {
           .
         </p>
         <p>
-          <Link to="/about">/about</Link> is the visual autobiography - a
-          tour of the things that make up my life.{" "}
-          <Link to="/resume">/resume</Link> is the career summary, updated when
-          someone asks.
+          <Link to="/about">/about</Link> is the visual autobiography - a tour
+          of the things that make up my life. <Link to="/resume">/resume</Link>{" "}
+          is the career summary, updated when someone asks.
         </p>
       </div>
     </div>

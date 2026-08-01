@@ -91,13 +91,13 @@ const AboutPage = () => (
           <p>
             I&apos;m a platform engineer with more than ten years of experience
             building systems that give engineering teams more leverage. I&apos;m
-            currently focused on agentic tooling and observability, and on
-            what one person can build with those tools.
+            currently focused on agentic tooling and observability, and on what
+            one person can build with those tools.
           </p>
           <p>
             Outside work, I live in the East Bay and spend time on games,
-            gardening, fabrication, and side projects. This is a visual tour
-            of the things that make up my life.
+            gardening, fabrication, and side projects. This is a visual tour of
+            the things that make up my life.
           </p>
           <nav className="my-life-intro__links" aria-label="About links">
             <Link to="/resume/">Resume</Link>
