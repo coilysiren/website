@@ -99,11 +99,7 @@
   gap: clamp(2em, 8vw, 10em);
   align-items: center;
   padding: clamp(2em, 7vw, 7em);
-  background:
-    radial-gradient(circle at 89% 18%, #f5c466 0 0.33em, transparent 0.39em),
-    radial-gradient(circle at 74% 72%, #f08f8f 0 0.5em, transparent 0.57em),
-    radial-gradient(circle at 51% 88%, #85d6c8 0 0.27em, transparent 0.34em),
-    linear-gradient(135deg, #30274b, vars.$dark-purple 58%, #554777);
+  background: linear-gradient(135deg, #30274b, vars.$dark-purple 58%, #554777);
 }
 
 .my-life-slide__portrait {
@@ -136,10 +132,7 @@
   gap: clamp(2em, 5vw, 5em);
   align-items: center;
   padding: clamp(2em, 7vw, 7em);
-  background:
-    radial-gradient(circle at 14% 16%, #a30262 0 0.35em, transparent 0.43em),
-    radial-gradient(circle at 90% 84%, #ef7627 0 0.45em, transparent 0.54em),
-    linear-gradient(135deg, #54233f, #302346 52%, #173e35);
+  background: linear-gradient(135deg, #54233f, #302346 52%, #173e35);
 }
 
 .my-life-identity-grid {
