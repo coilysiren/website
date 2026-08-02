@@ -20,7 +20,7 @@ Under [src/pages/](../src/pages/):
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
 - **`cool-people.md`** - links page.
 - **`eco-modding.md`** - Eco-modding writeups.
-- **`hiring.md`** - unlisted recruiting stance page (`unlisted: true`, `noindex`, robots-Disallowed). Direct link only.
+- **`hiring.md`** - unlisted recruiting stance page (`unlisted: true`, `noindex`, robots-Disallowed). Direct link only. It covers role shape, logistics, the weighted 120-point role scorecard, interview-format boundaries, and tenure context.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).

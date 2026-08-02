@@ -1,7 +1,7 @@
 ---
 
 title: "Hiring"
-date: 2026-07-30
+date: 2026-08-01
 unlisted: true
 description: >-
   Long-running stance on what working with me looks like. If you are recruiting me, start here.
@@ -41,6 +41,28 @@ For logistics, full-time remains the default. I am also open to direct independe
 I prefer a remote-compatible role with a real Bay Area office, or a comfortable Bay Area hybrid arrangement. No Bay Area office is a hard stop. My base-compensation floor is **$170K**, with **$220K-$250K** the strongest range. Compensation is not load-bearing above the floor.
 
 Manager quality, autonomy, team composition, inclusion, communication style, on-call expectations, overtime, and room to work without masking all matter. A technically strong role can still be the wrong fit when the product direction conflicts with my values.
+
+## How I evaluate a role
+
+I use a weighted 120-point scorecard to decide whether an opportunity is worth pursuing. It is a decision aid, not a claim of mathematical precision. The score weighs the work itself, the environment around it, practical constraints, and whether there is a realistic path from conversation to offer.
+
+- **Role and ownership, 30 points**: role shape (15) and ownership range (15). I score the actual charter, how central platform or developer-tooling work is, and how much meaningful territory the role can own.
+- **Working environment and impact, 35 points**: culture and operating fit (15), agentic developer leverage (10), and mission and product direction (10). I look at the manager, team, autonomy, pace, inclusion, on-call expectations, product values, and whether the work advances developer-facing agent systems.
+- **Practical fit, 30 points**: location and work arrangement (10), compensation (8), technical environment (7), and level and scope (5). The technical problem and real authority matter more than an exact stack match or title.
+- **Opportunity quality, 25 points**: offer likelihood (12), company viability and customer maturity (8), and representation and inclusion (5). A great role still needs a credible hiring path, a durable problem, real users, and an environment where I can do strong work.
+
+Unknowns receive neutral credit rather than an automatic penalty. Concrete evidence replaces inference as the conversation advances, and direct working evidence carries more weight than recruiting copy. Interview progress improves the realistic path to an offer, but it does not make the role, culture, or mission a better fit by itself.
+
+The most useful recruiter context is the office location and cadence, base-compensation band, actual role charter, manager and team shape, ownership boundaries, on-call and overtime expectations, technical environment, product and customer, company stage, interview format, and why my experience is specifically relevant. That is enough to make an early conversation substantive.
+
+The result lands in one of four buckets:
+
+- **Strong fit**: 90 points or higher, a credible path to an offer, no hard stop, and the overall judgment still holds.
+- **Mixed fit**: 60 to 89 points, or a high-scoring role held back by one important concern.
+- **Weak fit**: below 60 points, or several concerns that reinforce one another.
+- **Hard stop**: any non-negotiable constraint, regardless of the total.
+
+The hard stops already named on this page override the arithmetic: no Bay Area office, backend-product work as the primary job, an incompatible employment arrangement, confirmed base compensation below $170K without an explicit exception, async-proctored puzzle coding, or a product-direction or values conflict. Exceptional strengths can offset ordinary weaknesses. They cannot offset a hard stop.
 
 ## Interview format
 
