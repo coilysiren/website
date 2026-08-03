@@ -19,6 +19,8 @@ Under [src/pages/](../src/pages/):
   system, then groups the active portfolio into agent platform,
   infrastructure, and product cards. Repository cards retain their literal
   Forgejo descriptions and topics, while the product group adds visual marks.
+  The static Many MCPs card uses locally vendored Lunch Money, Reddit, and Steam
+  marks without requiring a separate catalogue page.
 - **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.
@@ -33,14 +35,8 @@ Under [src/pages/](../src/pages/):
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
-- **`apps/`** - portfolio and embedded mini-apps. `index.tsx` presents four
-  public apps, the observability stack as a first-class engineering capability,
-  and an icon-forward inventory of bounded MCP integrations. It preserves the
-  browser-side reachability lights for public apps and links to the two embedded
-  Bluesky experiments (`bsky-follow-suggestions.tsx` and
-  `bsky-popularity-contest.tsx`). Brand marks used by integration cards are
-  vendored under `static/apps-icons/`, with provenance recorded in
-  [app-icons.md](app-icons.md).
+- **`apps/bsky-*.tsx`** - two standalone Bluesky experiments for follow
+  suggestions and feed-based popularity. There is no `/apps/` index page.
 
 ## Components
 

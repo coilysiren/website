@@ -54,11 +54,11 @@ const ProjectCardContents = ({ project }: { project: ProjectLink }) => (
         ))}
       </span>
     )}
-    <small>
-      {project.privateRepo
-        ? "Private repository"
-        : (project.linkLabel ?? "Source ↗")}
-    </small>
+    {project.privateRepo ? (
+      <small>Private repository</small>
+    ) : (
+      project.url && <small>Source ↗</small>
+    )}
   </>
 )
 

@@ -16,7 +16,6 @@ export interface ProjectLink {
   tags: string[]
   url?: string
   privateRepo?: boolean
-  linkLabel?: string
   icons?: ProjectIcon[]
 }
 
@@ -167,8 +166,6 @@ export const projectGroups: ProjectGroup[] = [
         description:
           "Narrow agent interfaces for personal finance, private feeds, games, browsers, project work, and the systems around them.",
         tags: ["lunch-money", "reddit", "steam", "+6 more"],
-        url: "/apps/#agent-integrations",
-        linkLabel: "Explore integrations →",
         icons: [
           {
             kind: "image",

@@ -80,10 +80,21 @@ describe("Basic test workflow", () => {
     cy.contains(".project-card", "Many MCPs")
       .find(".project-card-icon")
       .should("have.length", 3)
+    cy.contains(".project-card", "Many MCPs").find("a").should("not.exist")
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(
         document.documentElement.clientWidth
       )
     })
+  })
+
+  it("retires the apps index without removing its standalone tools", () => {
+    cy.request({ url: "/apps/", failOnStatusCode: false })
+      .its("status")
+      .should("eq", 404)
+    cy.visit("/about/")
+    cy.get('a[href="/apps/"]').should("not.exist")
+    cy.request("/apps/bsky-popularity-contest/").its("status").should("eq", 200)
+    cy.request("/apps/bsky-follow-suggestions/").its("status").should("eq", 200)
   })
 })

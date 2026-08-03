@@ -181,13 +181,6 @@ const TSX_ENTRIES: Entry[] = [
       "The governed platform layer for developing, shipping, and operating agentic systems.",
   },
   {
-    outPath: "apps/index.png",
-    kind: "apps",
-    title: "Apps",
-    subtitle:
-      "Apps, observability systems, and agent integrations I build and run.",
-  },
-  {
     outPath: "apps/bsky-popularity-contest.png",
     kind: "apps",
     title: "Bluesky Popularity Contest",
@@ -777,8 +770,7 @@ function BannerCard() {
 }
 
 function routeFromOutPath(outPath: string): string {
-  // home.png -> "/", default.png -> "/", "apps/index.png" -> "/apps/",
-  // "posts/foo.png" -> "/posts/foo/"
+  // home.png -> "/", default.png -> "/", "posts/foo.png" -> "/posts/foo/"
   const stem = outPath.replace(/\.png$/, "")
   if (stem === "home" || stem === "default") return "/"
   if (stem.endsWith("/index")) return `/${stem.slice(0, -"/index".length)}/`

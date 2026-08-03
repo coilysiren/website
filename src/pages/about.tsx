@@ -102,7 +102,6 @@ const AboutPage = () => (
           </p>
           <nav className="my-life-intro__links" aria-label="About links">
             <Link to="/resume/">Resume</Link>
-            <Link to="/apps/">Apps</Link>
             <Link to="/pulse/">Pulse</Link>
           </nav>
         </div>

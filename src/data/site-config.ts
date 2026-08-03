@@ -65,7 +65,7 @@ export interface RepoEntry {
   kind: "repo"
   /** -> KindBadge text once #521 ships */
   bucket?: VelocityBucket
-  /** Populated at build time (same mechanism src/data/apps.ts uses for OG). */
+  /** Reserved for future build-time population. */
   metrics?: {
     stars?: number
     commitsPerWeek?: number

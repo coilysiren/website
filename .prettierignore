@@ -5,7 +5,6 @@ node_modules/
 public/
 static/
 **/*.md
-scripts/apps-og-cache.json
 scripts/pulse-data.yaml
 src/images/
 src/pages/**/*.md
