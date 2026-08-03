@@ -10,11 +10,6 @@ function Links() {
         </Link>
       </li>
       <li>
-        <Link className="nav-btn" to="/writing/">
-          ./writing
-        </Link>
-      </li>
-      <li>
         <Link className="nav-btn" to="/hiring/">
           ./hiring
         </Link>

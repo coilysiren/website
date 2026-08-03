@@ -33,20 +33,19 @@ Under [src/pages/](../src/pages/):
   navigation. It is a project-free information reference covering Kai's
   strongest role shapes, practical constraints, recruiter context, interview
   boundaries, and tenure context.
-- **`writing.tsx`** - date-ordered long-form archive linked from the primary
-  navigation.
+- **`writing.tsx`** - unlisted date-ordered long-form archive, reachable only
+  by direct URL.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - a fully designed not-found recovery page that preserves the
   real 404 response while carrying the homepage's visual system into clear
-  routes back to the portfolio, writing archive, and About page.
+  routes to the About, Hiring, and Resume pages.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
 ## Components
 
 React/TS components under [src/components/](../src/components/): `hero`, `header`, `footer`, `nav`, `layout`, `blog-list`, `closer`, `content-block`, `default-head`, `links`, `page-context`, `site-metadata`.
 
-The primary navigation keeps About, Writing, Hiring, and Resume visible, with
-the Kai Siren brand returning home and Source linking to the public GitHub
-profile.
+The primary navigation keeps About, Hiring, and Resume visible, with the Kai
+Siren brand returning home and Source linking to the public GitHub profile.
 
 The site-wide footer is a minimal identity line containing only Kai's public
 name and role.

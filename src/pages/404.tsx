@@ -6,22 +6,23 @@ import "../sass/not-found.scss"
 
 const recoveryRoutes = [
   {
-    path: "./",
-    title: "Home",
-    description: "Start with the active portfolio and platform thesis.",
-    to: "/",
-  },
-  {
     path: "./about",
     title: "About",
     description: "Meet Kai through her story and collected interests.",
     to: "/about/",
   },
   {
-    path: "./writing",
-    title: "Writing",
-    description: "Browse the long-form technical archive.",
-    to: "/writing/",
+    path: "./hiring",
+    title: "Hiring",
+    description:
+      "See role fit, practical constraints, and interview boundaries.",
+    to: "/hiring/",
+  },
+  {
+    path: "./resume",
+    title: "Resume",
+    description: "Read the canonical experience and impact record.",
+    to: "/resume/",
   },
 ]
 
@@ -84,6 +85,6 @@ export default NotFoundPage
 export const Head = () => (
   <DefaultHead
     title="Page not found · Kai Siren"
-    description="That route does not exist. Return to Kai Siren's portfolio, writing, or about page."
+    description="That route does not exist. Return to Kai Siren's about, hiring, or resume page."
   />
 )
