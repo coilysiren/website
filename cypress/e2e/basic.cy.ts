@@ -123,8 +123,8 @@ describe("Basic test workflow", () => {
     )
     cy.contains("Built to compose").should("not.exist")
     cy.get(".project-group").should("have.length", 3)
-    cy.get(".project-group").eq(0).contains("h3", "Agent platform")
-    cy.get(".project-group").eq(1).contains("h3", "Infrastructure")
+    cy.get(".project-group").eq(0).contains("h3", "Infrastructure")
+    cy.get(".project-group").eq(1).contains("h3", "Agent platform")
     cy.get(".project-group").eq(2).contains("h3", "Product")
     cy.contains(
       ".project-card-name",
