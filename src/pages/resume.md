@@ -14,10 +14,12 @@ The throughline is leverage. I meet engineers where the work is, make the bounda
 
 My career has been mostly individual-contributor work, with a chapter managing a small DevOps team at EnergyHub. I am strongest in ambiguous systems work where architecture, reliability, and developer experience have to meet.
 
+// <!--
 // linkedin.com/in/coilysiren
 // forgejo.coilysiren.me/coilysiren
 // github.com/coilysiren
 // coilysiren.me
+// -->[https://linkedin&#46;com/in/coilysiren](https://linkedin&#46;com/in/coilysiren) // [https://forgejo&#46;coilysiren&#46;me/coilysiren](https://forgejo&#46;coilysiren&#46;me/coilysiren) // [https://github&#46;com/coilysiren](https://github&#46;com/coilysiren) // [https://coilysiren&#46;me](https://coilysiren&#46;me)
 // email: coilysiren@gmail.com
 // location: East Bay, CA
 // US Citizen
