@@ -53,18 +53,11 @@ describe("Basic test workflow", () => {
     })
   })
 
-  for (const organization of [
-    "coilyco-flight-deck",
-    "coilyco-bridge",
-    "coilyco-gaming",
-  ]) {
-    it(`renders the ${organization} organization page`, () => {
-      cy.visit(`/orgs/${organization}/`)
+  it("opens Cool People from the primary navigation", () => {
+    cy.visit("/")
+    cy.contains("a.nav-btn", "./cool").click()
 
-      cy.contains("h1", organization).should("be.visible")
-      cy.contains("h2", "Repositories").should("be.visible")
-      cy.contains("h2", "Tags → repos").should("be.visible")
-      cy.contains("h2", "Repos → tags").should("be.visible")
-    })
-  }
+    cy.location("pathname").should("equal", "/cool-people/")
+    cy.contains("h2", "Cool People").should("be.visible")
+  })
 })

@@ -21,8 +21,8 @@ Under [src/pages/](../src/pages/):
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
-- **`cool-people.md`** - links page.
-- **`eco-modding.md`** - Eco-modding writeups.
+- **`cool-people.md`** - primary-navigation links page celebrating people
+  whose work and communities have crossed paths with Kai.
 - **`hiring.tsx`** - unlisted, noindex recruiting surface. The first mobile
   screen carries Kai's platform thesis and next actions, followed by the three
   proof routes, role shape, logistics, interview boundaries, and tenure context.
@@ -42,13 +42,6 @@ Under [src/pages/](../src/pages/):
   `bsky-popularity-contest.tsx`). Brand marks used by integration cards are
   vendored under `static/apps-icons/`, with provenance recorded in
   [app-icons.md](app-icons.md).
-- **`orgs/`** - organization hub and native profile pages for
-  `coilyco-flight-deck`, `coilyco-bridge`, and `coilyco-gaming`. The static
-  catalog mirrors the three GitHub organization profile READMEs, including
-  repository and topic cross-indexes, and uses the existing organization SVG
-  marks with distinct shared-room accents. Every route has dedicated metadata,
-  Open Graph art, keyboard-visible actions, and cross-navigation.
-- **`testing/`** - test fixtures.
 
 ## Components
 

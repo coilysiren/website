@@ -20,6 +20,11 @@ function Links() {
         </Link>
       </li>
       <li>
+        <Link className="nav-btn" to="/cool-people/">
+          ./cool
+        </Link>
+      </li>
+      <li>
         <Link className="nav-btn" to="/resume/">
           ./resume
         </Link>
