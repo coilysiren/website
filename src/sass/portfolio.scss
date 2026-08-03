@@ -480,16 +480,17 @@ $content-width: 1180px;
       border: 1px solid rgba(vars.$deep-ink, 0.18);
       box-shadow: 0 0.45rem 1rem rgba(vars.$deep-ink, 0.24);
 
-      i {
-        font-size: 1.3rem;
-      }
-
       img {
         display: block;
         width: 1.8rem;
         height: 1.8rem;
         object-fit: contain;
       }
+    }
+
+    .project-card-emoji {
+      font-size: 1.45rem;
+      line-height: 1;
     }
 
     .project-card-icons--stacked {

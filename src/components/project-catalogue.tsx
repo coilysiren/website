@@ -20,7 +20,13 @@ const ProjectIcons = ({
         {icon.kind === "image" ? (
           <img src={icon.src} alt={icon.alt} width="32" height="32" />
         ) : (
-          <i className={icon.className} aria-hidden="true" />
+          <span
+            className="project-card-emoji"
+            role="img"
+            aria-label={icon.label}
+          >
+            {icon.glyph}
+          </span>
         )}
       </span>
     ))}

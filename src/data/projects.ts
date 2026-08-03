@@ -20,7 +20,7 @@ export interface ProjectLink {
 }
 
 export type ProjectIcon =
-  | { kind: "font-awesome"; className: string }
+  | { kind: "emoji"; glyph: string; label: string }
   | { kind: "image"; src: string; alt: string }
 
 export interface ProjectGroup {
@@ -144,7 +144,7 @@ export const projectGroups: ProjectGroup[] = [
         description: "Eco MCP service - server, jobs, replay, telemetry.",
         tags: [],
         url: "https://forgejo.coilysiren.me/coilyco-gaming/eco-app",
-        icons: [{ kind: "font-awesome", className: "fa-solid fa-leaf" }],
+        icons: [{ kind: "emoji", glyph: "🌎", label: "Earth" }],
       },
       {
         name: "coilyco-gaming/galaxy-gen",
@@ -152,14 +152,14 @@ export const projectGroups: ProjectGroup[] = [
           "Procedural galaxy simulation - Rust compiled to WASM, rendered in the browser. Live at https://galaxy-gen.coilysiren.me",
         tags: ["procedural-galaxy-simulation", "rust-wasm"],
         url: "https://forgejo.coilysiren.me/coilyco-gaming/galaxy-gen",
-        icons: [{ kind: "font-awesome", className: "fa-solid fa-star" }],
+        icons: [{ kind: "emoji", glyph: "🌌", label: "Milky Way" }],
       },
       {
         name: "coilyco-gaming/sirens-echo",
         description: "Sirens Echo Community harness for the Sirens Discord.",
         tags: ["community", "discord", "harness"],
         privateRepo: true,
-        icons: [{ kind: "font-awesome", className: "fa-solid fa-wave-square" }],
+        icons: [{ kind: "emoji", glyph: "🤖", label: "Robot" }],
       },
       {
         name: "Many MCPs",

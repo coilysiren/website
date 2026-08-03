@@ -80,9 +80,25 @@ describe("Basic test workflow", () => {
         cy.get("a").should("not.exist")
       })
     })
+    const productEmojis: Array<[string, string]> = [
+      ["coilyco-gaming/eco-app", "🌎"],
+      ["coilyco-gaming/galaxy-gen", "🌌"],
+      ["coilyco-gaming/sirens-echo", "🤖"],
+    ]
+    productEmojis.forEach(([repository, emoji]) => {
+      cy.contains(".project-card", repository)
+        .find(".project-card-emoji")
+        .should("have.text", emoji)
+    })
     cy.contains(".project-card", "Many MCPs")
       .find(".project-card-icon")
       .should("have.length", 3)
+    cy.contains(".project-card", "Many MCPs")
+      .find("img")
+      .should("have.length", 3)
+    cy.contains(".project-card", "Many MCPs")
+      .find(".project-card-emoji")
+      .should("not.exist")
     cy.contains(".project-card", "Many MCPs").find("a").should("not.exist")
     cy.contains("Notes from the work.").should("not.exist")
     cy.contains("Working together").should("not.exist")
