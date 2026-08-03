@@ -37,8 +37,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Portable context for agents that work differently.",
     summary:
       "A context compiler that selects roles, personality, skills, and tool inventories, then emits an inspectable bundle without smuggling in executable authority.",
-    sourceUrl:
-      "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
+    sourceUrl: "https://github.com/coilyco-flight-deck/agent-compose",
     tone: "periwinkle",
   },
   {
@@ -48,7 +47,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Delegate real repository work without giving up the boundary.",
     summary:
       "A governed execution layer for unattended coding agents, built around fresh clones, least-access containers, fixed workflows, recoverable outcomes, and a durable audit trail.",
-    sourceUrl: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward",
+    sourceUrl: "https://github.com/coilyco-flight-deck/ward",
     tone: "mint",
   },
   {
@@ -58,7 +57,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Turn a narrow policy into a usable MCP service.",
     summary:
       "A runtime that derives Streamable HTTP MCP tools and matching HTTP endpoints from cli-guard policy, so tool discovery never becomes permission by implication.",
-    sourceUrl: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp",
+    sourceUrl: "https://github.com/coilyco-flight-deck/ward-mcp",
     tone: "coral",
   },
 ]
@@ -74,28 +73,28 @@ export const projectGroups: ProjectGroup[] = [
         description:
           "Context compiler that composes roles, personalities, skills, and tool inventories for AI-agent harnesses.",
         tags: ["ai-agents", "automation", "llm", "mcp"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
+        url: "https://github.com/coilyco-flight-deck/agent-compose",
       },
       {
         name: "coilyco-flight-deck/ward",
         description:
           "Governed execution layer for unattended coding agents in isolated repository workflows.",
         tags: ["ai-agents", "automation", "devops", "security"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward",
+        url: "https://github.com/coilyco-flight-deck/ward",
       },
       {
         name: "coilyco-flight-deck/ward-mcp",
         description:
           "MCP runtime that turns cli-guard policy files into guarded streamable HTTP services and container images.",
         tags: ["automation", "mcp", "model-context-protocol", "security"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp",
+        url: "https://github.com/coilyco-flight-deck/ward-mcp",
       },
       {
         name: "coilyco-flight-deck/agent-proxy",
         description:
           "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
         tags: ["ai-agents", "llm", "observability", "opentelemetry"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-proxy",
+        url: "https://github.com/coilyco-flight-deck/agent-proxy",
       },
     ],
   },
@@ -109,14 +108,14 @@ export const projectGroups: ProjectGroup[] = [
         description:
           "Cross-platform agentic operating layer with dotfiles, skills, guarded tooling, and repository validators.",
         tags: ["ai-agents", "automation", "dotfiles", "security"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os",
+        url: "https://github.com/coilyco-flight-deck/agentic-os",
       },
       {
         name: "coilyco-flight-deck/infrastructure",
         description:
           "Infrastructure-as-code for Kai's hosts and Kubernetes homelab, including Ansible convergence and observability.",
         tags: ["ansible", "homelab", "infrastructure-as-code", "kubernetes"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/infrastructure",
+        url: "https://github.com/coilyco-flight-deck/infrastructure",
       },
       {
         name: "coilyco-bridge/agentic-os-kai",
@@ -143,7 +142,7 @@ export const projectGroups: ProjectGroup[] = [
         name: "coilyco-gaming/eco-app",
         description: "Eco MCP service - server, jobs, replay, telemetry.",
         tags: [],
-        url: "https://forgejo.coilysiren.me/coilyco-gaming/eco-app",
+        url: "https://github.com/coilyco-gaming/eco-app",
         icons: [{ kind: "emoji", glyph: "🌎", label: "Earth" }],
       },
       {
@@ -151,7 +150,7 @@ export const projectGroups: ProjectGroup[] = [
         description:
           "Procedural galaxy simulation - Rust compiled to WASM, rendered in the browser. Live at https://galaxy-gen.coilysiren.me",
         tags: ["procedural-galaxy-simulation", "rust-wasm"],
-        url: "https://forgejo.coilysiren.me/coilyco-gaming/galaxy-gen",
+        url: "https://github.com/coilyco-gaming/galaxy-gen",
         icons: [{ kind: "emoji", glyph: "🌌", label: "Milky Way" }],
       },
       {

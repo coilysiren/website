@@ -15,8 +15,17 @@ describe("Basic test workflow", () => {
       .should(
         "have.attr",
         "href",
-        "https://forgejo.coilysiren.me/coilyco-flight-deck/ward"
+        "https://github.com/coilyco-flight-deck/ward"
       )
+    cy.get(".project-card a.project-card-surface").each(($link) => {
+      expect($link.attr("href")).to.match(/^https:\/\/github\.com\//)
+    })
+    cy.contains(".nav-source a", "source").should(
+      "have.attr",
+      "href",
+      "https://github.com/coilysiren"
+    )
+    cy.get('a[href^="https://forgejo.coilysiren.me/"]').should("not.exist")
   })
 
   it("keeps the hiring page a project-free information reference", () => {

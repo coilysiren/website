@@ -22,7 +22,7 @@ function Links() {
       <li className="nav-source">
         <a
           className="nav-btn"
-          href="https://forgejo.coilysiren.me/coilysiren"
+          href="https://github.com/coilysiren"
           target="_blank"
           rel="me noreferrer"
         >

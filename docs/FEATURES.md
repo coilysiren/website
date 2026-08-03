@@ -20,7 +20,8 @@ Under [src/pages/](../src/pages/):
   literal Forgejo descriptions and topics, while Eco App, Galaxy Gen, and
   Sirens Echo use emoji marks. The static Many MCPs card uses locally vendored
   Lunch Money, Reddit, and Steam marks without requiring a separate catalogue
-  page. The homepage ends after the active portfolio rather than repeating
+  page. Public repository cards point at their GitHub mirrors for sturdy public
+  access. The homepage ends after the active portfolio rather than repeating
   Writing and hiring calls to action.
 - **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
