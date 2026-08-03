@@ -1,90 +1,90 @@
 @use "_vars.scss";
 
 nav.nav {
+  position: sticky;
   top: 0;
   width: 100%;
-  height: auto;
   display: flex;
   align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 1em;
-  z-index: 10;
-  background-color: vars.$mid-purple;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 0.85rem clamp(1rem, 4vw, 4rem);
+  box-sizing: border-box;
+  z-index: 20;
+  background: rgba(vars.$deep-ink, 0.96);
+  border-bottom: 1px solid rgba(vars.$light-purple, 0.35);
+  backdrop-filter: blur(14px);
 }
 
-.nav-logoName {
-  @include vars.tablet {
-    font-size: 1em;
-    padding-left: 2em;
-    padding-bottom: 0.5em;
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  color: vars.$pure-white;
+  text-decoration: none;
+  line-height: 1.1;
+  flex: 0 0 auto;
+
+  span {
+    font-size: 1.05rem;
+    font-weight: 700;
   }
 
-  img {
-    height: 95%;
-    width: auto;
-    margin-top: 7px;
-    margin-right: 0.5em;
-  }
-
-  h2 {
-    color: white;
-    font-size: 1.8em;
-    text-align: center;
-    margin: 0;
-    // Font weight defaults to bold, so has to be reset back to normal
-    font-weight: normal;
+  small {
+    margin-top: 0.25rem;
+    color: vars.$mid-blue;
+    font-family: vars.$font-family-mono;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 }
 
 #navbar-links {
-  width: 100%;
-
-  @include vars.tablet {
-    width: 66%;
-  }
-
-  @include vars.desktop {
-    width: 66%;
-  }
-
-  .nav-text {
-    display: none;
-  }
+  min-width: 0;
 }
 
 .nav-links {
   display: flex;
-  justify-content: center;
-  gap: 2em;
-  width: 100%;
+  justify-content: flex-end;
+  gap: clamp(0.8rem, 2vw, 1.75rem);
   list-style: none;
+  margin: 0;
   padding: 0;
   flex-wrap: wrap;
 
-  @include vars.phone {
-    gap: 0.75em;
-  }
-
   .nav-btn {
-    letter-spacing: 0.15em;
     color: vars.$off-white;
-    font-weight: bold;
-
-    i {
-      margin-left: 0.3em;
-    }
+    font-family: vars.$font-family-mono;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 
   li a {
     text-decoration: none;
-    letter-spacing: 0.15em;
     color: vars.$off-white;
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
   }
 
   a:hover {
-    text-decoration: underline;
+    color: vars.$light-blue;
+  }
+}
+
+@include vars.phone {
+  nav.nav {
+    position: relative;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    row-gap: 0.65rem;
+
+    li a {
+      font-size: 0.82rem;
+    }
   }
 }

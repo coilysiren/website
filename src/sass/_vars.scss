@@ -8,6 +8,12 @@ $mid-purple: #574f7d;
 $dark-purple: #3e375d;
 $off-white: #eeeeee;
 $pure-white: #ffffff;
+$paper: #fbfaf7;
+$ink: #29243f;
+$deep-ink: #211c33;
+$coral: #dc8f72;
+$sage: #7f9f8d;
+$focus: #f0bd68;
 
 $font-family-body: "Roboto", sans-serif;
 $font-family-mono: SFMono-Regular, Consolas, Menlo, monospace;
@@ -26,6 +32,12 @@ $font-family-mono: SFMono-Regular, Consolas, Menlo, monospace;
 
 @mixin desktop {
   @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin reduce-motion {
+  @media (prefers-reduced-motion: reduce) {
     @content;
   }
 }

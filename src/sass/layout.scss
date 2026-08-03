@@ -11,9 +11,10 @@ body,
 
 body {
   margin: 0;
-  background: vars.$light-purple !important;
+  background: vars.$deep-ink !important;
   background-image: url("../images/background-shapes.svg") !important;
-  background-size: 100%;
+  background-size: 960px;
+  color: vars.$ink;
 }
 
 .layoutWrapper {
@@ -22,34 +23,8 @@ body {
   flex-direction: column;
 }
 
-.header {
-  text-align: center;
-  line-height: 2em;
-  letter-spacing: 0.1em;
-  width: 100%;
-  padding: 1em;
-  box-sizing: border-box;
-  background-color: vars.$mid-purple;
-  top: 0;
-  position: relative;
-  z-index: -1;
-
-  h2 {
-    margin-top: 1em;
-    font-size: 2.4em;
-    font-weight: normal;
-    color: vars.$off-white;
-    line-height: 1em;
-    letter-spacing: 0;
-    margin-bottom: 0.2em;
-  }
-
-  h4 {
-    color: #ffffff81;
-    font-size: 1.1em;
-    letter-spacing: 0.15em;
-    margin-bottom: 2em;
-  }
+main {
+  flex: 1;
 }
 
 section {
@@ -72,7 +47,7 @@ section {
     width: 82%;
   }
   @include vars.desktop {
-    width: 60%;
+    width: min(75%, 1080px);
   }
 }
 
@@ -84,4 +59,15 @@ section {
 
 div.post-closer {
   background-color: vars.$mid-purple;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid vars.$focus;
+  outline-offset: 4px;
+}
+
+::selection {
+  color: vars.$deep-ink;
+  background: vars.$focus;
 }

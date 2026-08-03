@@ -18,7 +18,6 @@ interface ContentBlockData {
       date?: string
       isoDate?: string
       template_key?: string
-      unlisted?: boolean
     }
   }
 }
@@ -43,10 +42,14 @@ const ContentBlock = ({ data }: { data: ContentBlockData }) => {
   const dateBlock = post.frontmatter.date ? (
     <h5>{post.frontmatter.date}</h5>
   ) : null
+  const pageClassName =
+    post.fields?.slug === "/resume/"
+      ? "post-body post-body--resume"
+      : "post-body"
 
   return (
     <Layout>
-      <section className="post-body">
+      <section className={pageClassName}>
         <div className="post-header">
           <h2>{title}</h2>
           {descriptionBlock}
@@ -78,9 +81,6 @@ export const Head = ({ data }: HeadProps<ContentBlockData>) => {
         publishedTime={isPost ? frontmatter.isoDate : undefined}
         author={isPost ? "Kai Siren" : undefined}
       />
-      {frontmatter.unlisted && (
-        <meta name="robots" content="noindex, nofollow" />
-      )}
     </>
   )
 }
@@ -99,7 +99,6 @@ export const pageQuery = graphql`
         title
         description
         template_key
-        unlisted
       }
     }
   }

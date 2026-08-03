@@ -1,21 +1,19 @@
-"""Build Kai's resume PDF from the canonical markdown in the vault.
+"""Build Kai's resume PDF from the checked-in semantic resume page.
 
 Usage:
     # single output (default: website static/)
     python scripts/build-resume.py
 
-    # multiple outputs in one run (e.g. website + vault)
+    # multiple outputs in one run
     python scripts/build-resume.py \\
         --out static/resume.pdf \\
         --out ~/projects/coilysiren/coilyco-vault/Obsidian\\ Vault/Notes/resume-2026.pdf
 
-    # custom source (canonical is agentic-os-kai/scripts/render-resume.py)
+    # custom source
     python scripts/build-resume.py --source path/to/resume.md
 
-Phone numbers are never written to the output PDF under any circumstance —
-even if the source markdown contains one. Anything public-enough to need a
-build script is public enough to leak, so phone stays local-only in the
-source file and never reaches rendered artifacts.
+Phone numbers are never written to the output PDF under any circumstance,
+even if the source markdown contains one.
 
 Requires: reportlab, pillow. Install with `pip install reportlab pillow`.
 """
@@ -51,8 +49,8 @@ from reportlab.platypus import (
 
 # --- defaults ----------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_SOURCE = Path.home() / "projects/coilysiren/coilyco-vault/Obsidian Vault/Notes/bio.md"
-DEFAULT_AVATAR = Path.home() / "projects/coilysiren/coilyco-vault/Obsidian Vault/Notes/github-avatar.jpg"
+DEFAULT_SOURCE = REPO_ROOT / "src" / "pages" / "resume.md"
+DEFAULT_AVATAR = REPO_ROOT / "src" / "images" / "headshot.jpg"
 DEFAULT_OUTPUT = REPO_ROOT / "static" / "resume.pdf"
 
 # --- palette -----------------------------------------------------------------
@@ -107,11 +105,17 @@ JOB_HEADER_RE = re.compile(
 SKILL_LINE_RE = re.compile(r"^-\s*\*\*(?P<label>[^*]+)\*\*:\s*(?P<value>.+)$")
 
 CONTACT_PREFIX_RE = re.compile(r"^//\s*(?P<rest>.+)$")
+STACK_LINE_RE = re.compile(r"^\*\*Stack:\*\*\s*(?P<value>.+)$")
+
+
+def _strip_page_frontmatter(md: str) -> str:
+    """Remove Gatsby frontmatter before parsing the shared resume body."""
+    return re.sub(r"\A---\s*\n[\s\S]*?\n---\s*\n", "", md, count=1)
 
 
 def parse_resume(md: str) -> Resume:
     r = Resume()
-    lines = md.splitlines()
+    lines = _strip_page_frontmatter(md).splitlines()
     i = 0
     section = "intro"  # intro | skills | experience | community
     current_job: Optional[Job] = None
@@ -192,6 +196,11 @@ def parse_resume(md: str) -> Resume:
                     location=loc,
                     dates=dates,
                 )
+                i += 1
+                continue
+            stack_match = STACK_LINE_RE.match(line)
+            if current_job is not None and current_job.stack is None and stack_match:
+                current_job.stack = stack_match.group("value").strip()
                 i += 1
                 continue
             # italic stack line: `*...*` or `_..._`
@@ -455,8 +464,8 @@ def build_header(styles, resume: Resume, avatar_png: Path,
     contact_line2 = "&nbsp;·&nbsp;".join(link_pieces)
 
     tagline = (
-        "Senior platform engineer — distributed systems, developer "
-        "experience, AI-assisted workflows."
+        "Staff platform engineer - governed AI systems, developer "
+        "infrastructure, and production platforms."
     )
 
     left_cell = [
@@ -582,7 +591,7 @@ def build_pdf(source: Path, outs: list[Path], avatar: Path):
             pagesize=LETTER,
             leftMargin=L_MARGIN, rightMargin=R_MARGIN,
             topMargin=T_MARGIN, bottomMargin=B_MARGIN,
-            title=f"{resume.name} — Resume",
+            title=f"{resume.name} - Resume",
             author=resume.name,
             subject="Resume",
             creator="coilysiren",

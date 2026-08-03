@@ -89,10 +89,11 @@ const AboutPage = () => (
             <a href="#about">Hi, I&apos;m Kai</a>
           </h1>
           <p>
-            I&apos;m a platform engineer with more than ten years of experience
-            building systems that give engineering teams more leverage. I&apos;m
-            currently focused on agentic tooling and observability, and on what
-            one person can build with those tools.
+            I&apos;m a Staff-level platform engineer with more than ten years
+            of experience building the systems other engineers rely on. My
+            current work focuses on the governed infrastructure around agents:
+            context, execution, MCP delivery, model routing, observability, and
+            the production systems underneath.
           </p>
           <p>
             Outside work, I live in the East Bay and spend time on games,

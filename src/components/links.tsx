@@ -3,95 +3,38 @@ import { Link } from "gatsby"
 
 function Links() {
   return (
-    <div>
-      <ul className="nav-links">
-        <li>
-          <Link className="nav-btn" to="/">
-            ./home<i className="fa-solid fa-house"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/about">
-            ./about<i className="fa-solid fa-user"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/pulse">
-            ./pulse<i className="fa-solid fa-wave-square"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/resume">
-            ./resume<i className="fa-solid fa-file-lines"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/apps">
-            ./apps<i className="fa-solid fa-server"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/orgs">
-            ./orgs<i className="fa-solid fa-building"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/cool-people">
-            ./cool-people<i className="fa-solid fa-user-group"></i>{" "}
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-btn" to="/eco-modding">
-            ./eco-modding<i className="fa-solid fa-gamepad"></i>{" "}
-          </Link>
-        </li>
-      </ul>
-      <ul className="nav-links">
-        <li>
-          <a
-            className="nav-btn"
-            href="/rss.xml"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ./rss<i className="fa-solid fa-rss"></i>{" "}
-          </a>
-        </li>
-        <li>
-          <a
-            className="nav-btn"
-            href="https://www.linkedin.com/in/coilysiren/"
-            target="_blank"
-            rel="me noreferrer"
-          >
-            linkedin<i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
-            <i className="fa-brands fa-linkedin"></i>{" "}
-          </a>
-        </li>
-        <li>
-          <a
-            className="nav-btn"
-            href="https://github.com/coilysiren"
-            target="_blank"
-            rel="me noreferrer"
-          >
-            github<i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
-            <i className="fa-brands fa-square-github"></i>{" "}
-          </a>
-        </li>
-        <li>
-          <a
-            className="nav-btn"
-            href="http://bsky.app/profile/coilysiren.me/"
-            target="_blank"
-            rel="me noreferrer"
-          >
-            bluesky<i className="fa-solid fa-arrow-up-right-from-square"></i>{" "}
-            <i className="fa-brands fa-bluesky"></i>{" "}
-          </a>
-        </li>
-      </ul>
-    </div>
+    <ul className="nav-links">
+      <li>
+        <Link className="nav-btn" to="/work/">
+          ./work
+        </Link>
+      </li>
+      <li>
+        <Link className="nav-btn" to="/writing/">
+          ./writing
+        </Link>
+      </li>
+      <li>
+        <Link className="nav-btn" to="/about/">
+          ./about
+        </Link>
+      </li>
+      <li>
+        <Link className="nav-btn" to="/resume/">
+          ./resume
+        </Link>
+      </li>
+      <li>
+        <a
+          className="nav-btn"
+          href="https://forgejo.coilysiren.me/coilysiren"
+          target="_blank"
+          rel="me noreferrer"
+        >
+          source ↗
+        </a>
+      </li>
+    </ul>
   )
 }
 

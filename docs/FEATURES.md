@@ -14,13 +14,23 @@ Last full sweep: 2026-07-09.
 
 Under [src/pages/](../src/pages/):
 
-- **`index.tsx`** - home / landing.
+- **`index.tsx`** - project-first home. It leads with Kai's platform thesis,
+  presents agent-compose, Ward, and Ward MCP as a compose / execute / expose
+  system, then groups the active portfolio by kind instead of date.
 - **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
-- **`resume.md`** - canonical resume surface.
+- **`resume.md`** - canonical semantic resume source for both the public page
+  and the generated PDF.
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
 - **`cool-people.md`** - links page.
 - **`eco-modding.md`** - Eco-modding writeups.
-- **`hiring.md`** - unlisted recruiting stance page (`unlisted: true`, `noindex`, robots-Disallowed). Direct link only. It covers role shape, logistics, the weighted 120-point role scorecard, interview-format boundaries, and tenure context.
+- **`hiring.tsx`** - unlisted, noindex recruiting surface. The first mobile
+  screen carries Kai's platform thesis and next actions, followed by the three
+  proof routes, role shape, logistics, interview boundaries, and tenure context.
+- **`work/`** - project catalogue plus focused Ward, agent-compose, and Ward
+  MCP case studies. Each page names the problem, system shape, hard judgment,
+  shipped evidence, current limit, source, and related platform layers.
+- **`writing.tsx`** - date-ordered long-form archive, separated from the
+  project-first home.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
@@ -48,7 +58,8 @@ React/TS components under [src/components/](../src/components/): `hero`, `header
 
 Under [scripts/](../scripts/):
 
-- **[build-resume.py](../scripts/build-resume.py)** - generates the resume page from source.
+- **[build-resume.py](../scripts/build-resume.py)** - generates the printable
+  resume PDF from the checked-in semantic resume page.
 - **[fetch-pulse-data.ts](../scripts/fetch-pulse-data.ts)** - pulls pulse data into [scripts/pulse-data.yaml](../scripts/pulse-data.yaml).
 - **[render-og-images.tsx](../scripts/render-og-images.tsx)** - renders OG previews + logo `banner.png`, with derived output cached beside the script-generated assets.
 - **[youtube-auth.ts](../scripts/youtube-auth.ts)** - YouTube data auth helper.

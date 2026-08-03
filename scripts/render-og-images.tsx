@@ -31,7 +31,14 @@ const LOGO_SVG = fs.readFileSync(
 )
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
-type Kind = "post" | "apps" | "orgs" | "page" | "default" | "banner"
+type Kind =
+  | "post"
+  | "apps"
+  | "orgs"
+  | "page"
+  | "case-study"
+  | "default"
+  | "banner"
 
 interface Entry {
   outPath: string
@@ -61,6 +68,7 @@ const KIND_LABEL: Record<Kind, string> = {
   apps: "APPS",
   orgs: "ORGS",
   page: "PAGE",
+  "case-study": "CASE STUDY",
   default: "",
   banner: "",
 }
@@ -152,7 +160,8 @@ const TSX_ENTRIES: Entry[] = [
     outPath: "home.png",
     kind: "default",
     title: KAI,
-    subtitle: SITE_TAGLINE,
+    subtitle:
+      "Governed agent systems, developer infrastructure, and the platform layer underneath.",
   },
   {
     outPath: "banner.png",
@@ -166,6 +175,46 @@ const TSX_ENTRIES: Entry[] = [
     title: "Pulse",
     subtitle:
       "site activity rhythms - posts, builds, and the cadence of the week",
+  },
+  {
+    outPath: "writing.png",
+    kind: "page",
+    title: "Writing",
+    subtitle:
+      "Platform engineering, cloud systems, developer tooling, and working with agents.",
+  },
+  {
+    outPath: "hiring.png",
+    kind: "page",
+    title: "Hiring",
+    subtitle:
+      "The governed platform layer for developing, shipping, and operating agentic systems.",
+  },
+  {
+    outPath: "work/index.png",
+    kind: "page",
+    title: "Work",
+    subtitle:
+      "Governed agent systems, platform infrastructure, and applied projects.",
+  },
+  {
+    outPath: "work/agent-compose.png",
+    kind: "case-study",
+    title: "agent-compose",
+    subtitle: "Portable context for agents that work differently.",
+  },
+  {
+    outPath: "work/ward.png",
+    kind: "case-study",
+    title: "Ward",
+    subtitle:
+      "Delegate real repository work without giving up the boundary.",
+  },
+  {
+    outPath: "work/ward-mcp.png",
+    kind: "case-study",
+    title: "Ward MCP",
+    subtitle: "Turn a narrow policy into a usable MCP service.",
   },
   {
     outPath: "apps/index.png",

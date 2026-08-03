@@ -86,6 +86,68 @@
   }
 }
 
+.post-body--resume {
+  border-top-color: vars.$coral;
+
+  .post-header {
+    text-align: left;
+
+    h2 {
+      font-family: vars.$font-family-mono;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h4 {
+      max-width: 60ch;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+  }
+
+  .post-content {
+    padding-block: clamp(2rem, 6vw, 5rem);
+
+    > h1 {
+      margin: 0 0 1rem;
+      color: vars.$ink;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    > h2 {
+      margin-top: 3.5rem;
+      padding-top: 1rem;
+      color: vars.$ink;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      border-top: 3px solid vars.$light-blue;
+    }
+
+    > p,
+    > ul {
+      max-width: 78ch;
+    }
+
+    > p {
+      line-height: 1.7;
+    }
+
+    > p:nth-of-type(-n + 3) {
+      font-size: 1.05rem;
+    }
+
+    li {
+      margin-bottom: 0.55rem;
+    }
+  }
+}
+
 p.large {
   font-size: 4em;
 }
