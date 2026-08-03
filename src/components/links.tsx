@@ -24,7 +24,7 @@ function Links() {
           ./resume
         </Link>
       </li>
-      <li>
+      <li className="nav-source">
         <a
           className="nav-btn"
           href="https://forgejo.coilysiren.me/coilysiren"

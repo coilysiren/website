@@ -12,12 +12,17 @@ export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({
 }
 
 export const onRenderBody: GatsbySSR["onRenderBody"] = ({
+  pathname,
   setHtmlAttributes,
   setHeadComponents,
 }) => {
   setHtmlAttributes({ lang: "en" })
   setHeadComponents([
-    <meta key="robots" name="robots" content="follow, index" />,
+    <meta
+      key="robots"
+      name="robots"
+      content={pathname === "/hiring/" ? "noindex, nofollow" : "follow, index"}
+    />,
     <link
       key="rss"
       rel="alternate"

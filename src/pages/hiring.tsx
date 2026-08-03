@@ -6,15 +6,12 @@ import PlatformDiagram from "../components/platform-diagram"
 import { featuredProjects } from "../data/projects"
 
 export const Head = () => (
-  <>
-    <DefaultHead
-      title="Hiring | Kai Siren"
-      description="Kai Siren builds the governed platform layer that lets engineering teams develop, ship, and operate agentic systems safely."
-      image="/og/hiring.png"
-      canonical="/hiring/"
-    />
-    <meta name="robots" content="noindex, nofollow" />
-  </>
+  <DefaultHead
+    title="Hiring | Kai Siren"
+    description="Kai Siren builds the governed platform layer that lets engineering teams develop, ship, and operate agentic systems safely."
+    image="/og/hiring.png"
+    canonical="/hiring/"
+  />
 )
 
 const HiringPage = () => (
