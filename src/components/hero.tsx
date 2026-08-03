@@ -6,7 +6,6 @@ function Hero() {
   return (
     <header className="portfolio-hero">
       <div className="portfolio-hero__copy">
-        <p className="eyebrow">Platform engineer · East Bay, CA</p>
         <h1>I build the platform for safer agentic systems.</h1>
         <p className="portfolio-hero__lede portfolio-hero__tagline">
           <span>
