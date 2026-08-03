@@ -65,28 +65,28 @@ endobj
 11 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://forgejo.coilysiren.me/coilyco-flight-deck/ward)
+/S /URI /Type /Action /URI (https://github.com/coilyco-flight-deck/ward)
 >> /Border [ 0 0 0 ] /Rect [ 218.2103 456.08 239.9502 467 ] /Subtype /Link /Type /Annot
 >>
 endobj
 12 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose)
+/S /URI /Type /Action /URI (https://github.com/coilyco-flight-deck/agent-compose)
 >> /Border [ 0 0 0 ] /Rect [ 260.1886 456.08 322.9058 467 ] /Subtype /Link /Type /Annot
 >>
 endobj
 13 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp)
+/S /URI /Type /Action /URI (https://github.com/coilyco-flight-deck/ward-mcp)
 >> /Border [ 0 0 0 ] /Rect [ 198.4906 429.68 242.8414 440.6 ] /Subtype /Link /Type /Annot
 >>
 endobj
 14 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://forgejo.coilysiren.me/coilyco-flight-deck/agent-proxy)
+/S /URI /Type /Action /URI (https://github.com/coilyco-flight-deck/agent-proxy)
 >> /Border [ 0 0 0 ] /Rect [ 452.8629 429.68 502.0929 440.6 ] /Subtype /Link /Type /Annot
 >>
 endobj
@@ -218,7 +218,7 @@ endobj
 endobj
 32 0 obj
 <<
-/Author (Kai Siren) /CreationDate (D:20260802233439-07'00') /Creator (coilysiren) /Keywords () /ModDate (D:20260802233439-07'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+/Author (Kai Siren) /CreationDate (D:20260802233934-07'00') /Creator (coilysiren) /Keywords () /ModDate (D:20260802233934-07'00') /Producer (ReportLab PDF Library - \(opensource\)) 
   /Subject (Resume) /Title (Kai Siren - Resume) /Trapped /False
 >>
 endobj
@@ -255,34 +255,34 @@ xref
 0000001058 00000 n 
 0000684842 00000 n 
 0000687731 00000 n 
-0000687931 00000 n 
-0000688140 00000 n 
-0000688346 00000 n 
-0000688555 00000 n 
-0000688722 00000 n 
-0000688888 00000 n 
-0000689219 00000 n 
-0000689380 00000 n 
-0000689549 00000 n 
-0000689718 00000 n 
-0000689924 00000 n 
-0000690085 00000 n 
-0000690260 00000 n 
-0000690426 00000 n 
-0000690590 00000 n 
-0000690769 00000 n 
-0000690941 00000 n 
-0000691116 00000 n 
-0000691286 00000 n 
-0000691581 00000 n 
-0000691651 00000 n 
-0000691919 00000 n 
-0000691987 00000 n 
-0000701401 00000 n 
+0000687920 00000 n 
+0000688118 00000 n 
+0000688313 00000 n 
+0000688511 00000 n 
+0000688678 00000 n 
+0000688844 00000 n 
+0000689175 00000 n 
+0000689336 00000 n 
+0000689505 00000 n 
+0000689674 00000 n 
+0000689880 00000 n 
+0000690041 00000 n 
+0000690216 00000 n 
+0000690382 00000 n 
+0000690546 00000 n 
+0000690725 00000 n 
+0000690897 00000 n 
+0000691072 00000 n 
+0000691242 00000 n 
+0000691537 00000 n 
+0000691607 00000 n 
+0000691875 00000 n 
+0000691943 00000 n 
+0000701357 00000 n 
 trailer
 <<
 /ID 
-[<c523fd605a3d1429134fc09b50db6b52><c523fd605a3d1429134fc09b50db6b52>]
+[<688fbf30bb5ff25eb8872ee52a229645><688fbf30bb5ff25eb8872ee52a229645>]
 % ReportLab generated PDF document -- digest (opensource)
 
 /Info 32 0 R
@@ -290,5 +290,5 @@ trailer
 /Size 36
 >>
 startxref
-706953
+706909
 %%EOF
