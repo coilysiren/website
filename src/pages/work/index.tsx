@@ -19,11 +19,13 @@ const WorkPage = () => (
     <div className="portfolio-page">
       <header className="portfolio-page__hero">
         <p className="eyebrow">Selected work</p>
-        <h1>Systems that let agents move without pretending authority is free.</h1>
+        <h1>
+          Systems that let agents move without pretending authority is free.
+        </h1>
         <p>
-          The strongest story is the system: context, execution, policy,
-          model transport, observability, and the infrastructure underneath.
-          No single flagship has to carry all of it.
+          The strongest story is the system: context, execution, policy, model
+          transport, observability, and the infrastructure underneath. No single
+          flagship has to carry all of it.
         </p>
         <Link className="text-link" to="/resume/">
           Read the career summary →

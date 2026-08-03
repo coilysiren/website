@@ -36,7 +36,9 @@ function Hero() {
         <div className="portrait-frame">
           <img src={headshot} alt="Kai Siren" />
         </div>
-        <p>⚙⚒ lights out, platform&apos;s green, agents are working the line ⚒⚙</p>
+        <p>
+          ⚙⚒ lights out, platform&apos;s green, agents are working the line ⚒⚙
+        </p>
       </aside>
     </header>
   )

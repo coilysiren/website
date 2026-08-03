@@ -349,7 +349,7 @@ def paint_page(c, doc):
     c.saveState()
     c.setFont("Helvetica", 7.5)
     c.setFillColor(MUTED)
-    c.drawCentredString(PAGE_W / 2, 0.28 * inch, f"— {doc.page} —")
+    c.drawCentredString(PAGE_W / 2, 0.28 * inch, f"- {doc.page} -")
     c.restoreState()
 
 
@@ -495,7 +495,7 @@ def build_header(styles, resume: Resume, avatar_png: Path,
 
 
 def render_job_block(styles, j: Job) -> KeepTogether:
-    dates_loc = f" — {j.location} · {j.dates}" if j.location else f" — {j.dates}"
+    dates_loc = f" | {j.location} · {j.dates}" if j.location else f" | {j.dates}"
     parts = [Paragraph(
         teal_link(j.company, j.url, bold=True)
         + f" &nbsp;·&nbsp; <b>{j.role}</b>"
@@ -511,7 +511,7 @@ def render_job_block(styles, j: Job) -> KeepTogether:
 
 def render_compact_job(styles, j: Job) -> Paragraph:
     dates = j.dates
-    extras = f" — {dates}" if dates else ""
+    extras = f" | {dates}" if dates else ""
     stack = (
         f' &nbsp; <i><font color="#6B6B6B">{j.stack}</font></i>' if j.stack else ""
     )

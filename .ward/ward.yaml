@@ -1,4 +1,4 @@
-# Per-repo coily command allowlist for website (coilysiren.me); see docs/FEATURES.md.
+# Per-repo coily command allowlist for website (coilysiren.me). See docs/FEATURES.md.
 
 commands:
   install:

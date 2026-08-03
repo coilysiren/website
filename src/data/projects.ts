@@ -109,7 +109,8 @@ export const featuredProjects: FeaturedProject[] = [
       },
       {
         label: "Run",
-        detail: "Work in a fresh clone and an ephemeral least-access container.",
+        detail:
+          "Work in a fresh clone and an ephemeral least-access container.",
       },
       {
         label: "Recover",
@@ -137,8 +138,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Turn a narrow policy into a usable MCP service.",
     summary:
       "A runtime that derives Streamable HTTP MCP tools and matching HTTP endpoints from cli-guard policy, so tool discovery never becomes permission by implication.",
-    sourceUrl:
-      "https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp",
+    sourceUrl: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp",
     caseStudyUrl: "/work/ward-mcp/",
     tone: "coral",
     problem:
@@ -146,7 +146,8 @@ export const featuredProjects: FeaturedProject[] = [
     flow: [
       {
         label: "Author",
-        detail: "Write the upstream, outbound auth, restrictions, and grants in KDL.",
+        detail:
+          "Write the upstream, outbound auth, restrictions, and grants in KDL.",
       },
       {
         label: "Project",

@@ -32,13 +32,7 @@ const LOGO_SVG = fs.readFileSync(
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
 type Kind =
-  | "post"
-  | "apps"
-  | "orgs"
-  | "page"
-  | "case-study"
-  | "default"
-  | "banner"
+  "post" | "apps" | "orgs" | "page" | "case-study" | "default" | "banner"
 
 interface Entry {
   outPath: string
@@ -207,8 +201,7 @@ const TSX_ENTRIES: Entry[] = [
     outPath: "work/ward.png",
     kind: "case-study",
     title: "Ward",
-    subtitle:
-      "Delegate real repository work without giving up the boundary.",
+    subtitle: "Delegate real repository work without giving up the boundary.",
   },
   {
     outPath: "work/ward-mcp.png",

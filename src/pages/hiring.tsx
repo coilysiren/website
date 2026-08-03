@@ -89,8 +89,8 @@ const HiringPage = () => (
           <li>
             <strong>Developer infrastructure</strong>
             <span>
-              Internal platforms, agent-development systems, and tools that
-              make other engineers faster.
+              Internal platforms, agent-development systems, and tools that make
+              other engineers faster.
             </span>
           </li>
           <li>
@@ -103,8 +103,8 @@ const HiringPage = () => (
           <li>
             <strong>Production judgment</strong>
             <span>
-              Reliability, incident response, rollout boundaries, and
-              long-term operability.
+              Reliability, incident response, rollout boundaries, and long-term
+              operability.
             </span>
           </li>
           <li>
@@ -177,7 +177,10 @@ const HiringPage = () => (
           <h2>Send the role, the team shape, and the actual charter.</h2>
         </div>
         <div className="button-row">
-          <a className="button button--primary" href="mailto:coilysiren@gmail.com">
+          <a
+            className="button button--primary"
+            href="mailto:coilysiren@gmail.com"
+          >
             coilysiren@gmail.com
           </a>
           <Link className="button button--quiet" to="/resume/">
