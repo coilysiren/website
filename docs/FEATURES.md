@@ -27,7 +27,6 @@ Under [src/pages/](../src/pages/):
   single portrait, followed by the visual autobiography and themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.
-- **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
 - **`cool-people.md`** - unlisted links page celebrating people whose work and
   communities have crossed paths with Kai.
 - **`hiring.tsx`** - noindex recruiting surface linked from the primary
@@ -39,12 +38,9 @@ Under [src/pages/](../src/pages/):
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
-- **`apps/bsky-*.tsx`** - two standalone Bluesky experiments for follow
-  suggestions and feed-based popularity. There is no `/apps/` index page.
-
 ## Components
 
-React/TS components under [src/components/](../src/components/): `hero`, `header`, `footer`, `nav`, `layout`, `blog-list`, `bsky`, `closer`, `content-block`, `default-head`, `error`, `links`, `page-context`, `site-metadata`.
+React/TS components under [src/components/](../src/components/): `hero`, `header`, `footer`, `nav`, `layout`, `blog-list`, `closer`, `content-block`, `default-head`, `links`, `page-context`, `site-metadata`.
 
 The site-wide footer is a minimal identity line containing only Kai's public
 name and role.

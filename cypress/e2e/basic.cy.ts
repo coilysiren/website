@@ -182,13 +182,20 @@ describe("Basic test workflow", () => {
     })
   })
 
-  it("retires the apps index without removing its standalone tools", () => {
-    cy.request({ url: "/apps/", failOnStatusCode: false })
-      .its("status")
-      .should("eq", 404)
+  it("does not expose retired app routes", () => {
+    const retiredRoutes = [
+      "/apps/",
+      "/apps/bsky-popularity-contest/",
+      "/apps/bsky-follow-suggestions/",
+      "/pulse/",
+    ]
+    retiredRoutes.forEach((url) => {
+      cy.request({ url, failOnStatusCode: false })
+        .its("status")
+        .should("eq", 404)
+    })
     cy.visit("/about/")
     cy.get('a[href="/apps/"]').should("not.exist")
-    cy.request("/apps/bsky-popularity-contest/").its("status").should("eq", 200)
-    cy.request("/apps/bsky-follow-suggestions/").its("status").should("eq", 200)
+    cy.get('a[href="/pulse/"]').should("not.exist")
   })
 })

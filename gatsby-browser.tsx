@@ -14,18 +14,3 @@ export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
     ?.sourcePath
   return <PageMetaProvider value={{ sourcePath }}>{element}</PageMetaProvider>
 }
-
-export const onRouteUpdate: GatsbyBrowser["onRouteUpdate"] = () => {
-  const wrap = document.querySelector<HTMLElement>("#eco-tracker-embed")
-  if (!wrap) return
-  const iframe = wrap.querySelector<HTMLIFrameElement>("iframe")
-  const offline = document.querySelector<HTMLElement>("#eco-tracker-offline")
-  if (!iframe || !offline) return
-  fetch("https://eco-app.coilysiren.me/jobs/", {
-    mode: "no-cors",
-    cache: "no-store",
-  }).catch(() => {
-    iframe.style.display = "none"
-    offline.style.display = "block"
-  })
-}

@@ -31,7 +31,7 @@ const LOGO_SVG = fs.readFileSync(
 )
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
-type Kind = "post" | "apps" | "page" | "default" | "banner"
+type Kind = "post" | "page" | "default" | "banner"
 
 interface Entry {
   outPath: string
@@ -58,7 +58,6 @@ const COLORS = {
 
 const KIND_LABEL: Record<Kind, string> = {
   post: "POST",
-  apps: "APPS",
   page: "PAGE",
   default: "",
   banner: "",
@@ -160,13 +159,6 @@ const TSX_ENTRIES: Entry[] = [
     subtitle: SITE_TAGLINE,
   },
   {
-    outPath: "pulse.png",
-    kind: "page",
-    title: "Pulse",
-    subtitle:
-      "site activity rhythms - posts, builds, and the cadence of the week",
-  },
-  {
     outPath: "writing.png",
     kind: "page",
     title: "Writing",
@@ -179,18 +171,6 @@ const TSX_ENTRIES: Entry[] = [
     title: "Hiring",
     subtitle:
       "The governed platform layer for developing, shipping, and operating agentic systems.",
-  },
-  {
-    outPath: "apps/bsky-popularity-contest.png",
-    kind: "apps",
-    title: "Bluesky Popularity Contest",
-    subtitle: "Rank your follows by who actually shows up in your feed.",
-  },
-  {
-    outPath: "apps/bsky-follow-suggestions.png",
-    kind: "apps",
-    title: "Bluesky Follow Suggestions",
-    subtitle: "Find new accounts via the people you already follow.",
   },
 ]
 
