@@ -516,7 +516,7 @@ function StandardCard(entry: Entry) {
         : titleLen > 28
           ? 92
           : titleLen > 12
-            ? 108
+            ? 72
             : 132
 
   return (
@@ -567,6 +567,7 @@ function StandardCard(entry: Entry) {
               lineHeight: 1.05,
               letterSpacing: "-0.015em",
               color: COLORS.text,
+              whiteSpace: titleLen <= 16 ? "nowrap" : "normal",
             }}
           >
             {title}
