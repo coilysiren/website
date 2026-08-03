@@ -5,20 +5,13 @@ import useSiteMetadata from "./site-metadata"
 interface DefaultHeadProps {
   title?: string
   description?: string
-  image?: string
   canonical?: string
   type?: string
   publishedTime?: string
   author?: string
 }
 
-const DEFAULT_OG_IMAGE = "/og/default.png"
-
-const resolveImage = (
-  siteUrl: string | undefined,
-  image: string | undefined
-): string => {
-  const path = image ?? DEFAULT_OG_IMAGE
+const resolveUrl = (siteUrl: string | undefined, path: string): string => {
   if (/^https?:\/\//i.test(path)) return path
   const base = (siteUrl ?? "").replace(/\/$/, "")
   return base ? `${base}${path}` : path
@@ -34,7 +27,6 @@ const toIsoDate = (value: string | undefined): string | undefined => {
 const DefaultHead = ({
   title,
   description,
-  image,
   canonical,
   type,
   publishedTime,
@@ -43,9 +35,8 @@ const DefaultHead = ({
   const siteMetadata = useSiteMetadata()
   const resolvedTitle = title ?? siteMetadata.title
   const resolvedDescription = description ?? siteMetadata.description
-  const resolvedImage = resolveImage(siteMetadata.siteUrl, image)
   const resolvedCanonical = canonical
-    ? resolveImage(siteMetadata.siteUrl, canonical)
+    ? resolveUrl(siteMetadata.siteUrl, canonical)
     : undefined
   const resolvedType = type ?? "website"
   const resolvedPublishedTime = toIsoDate(publishedTime)
@@ -58,9 +49,6 @@ const DefaultHead = ({
       <meta property="og:title" content={resolvedTitle} />
       <meta property="og:description" content={resolvedDescription} />
       <meta property="og:type" content={resolvedType} />
-      <meta property="og:image" content={resolvedImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
       {resolvedCanonical ? (
         <>
           <link rel="canonical" href={resolvedCanonical} />
@@ -76,10 +64,9 @@ const DefaultHead = ({
       {resolvedType === "article" && author && (
         <meta property="article:author" content={author} />
       )}
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={resolvedTitle} />
       <meta name="twitter:description" content={resolvedDescription} />
-      <meta name="twitter:image" content={resolvedImage} />
     </>
   )
 }

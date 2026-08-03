@@ -22,13 +22,6 @@ interface ContentBlockData {
   }
 }
 
-const ogImageForSlug = (slug: string | undefined): string | undefined => {
-  if (!slug) return undefined
-  const trimmed = slug.replace(/^\/+|\/+$/g, "")
-  if (!trimmed) return undefined
-  return `/og/${trimmed}.png`
-}
-
 const ContentBlock = ({ data }: { data: ContentBlockData }) => {
   const { markdownRemark: post } = data
   const siteMetadata = useSiteMetadata()
@@ -68,7 +61,7 @@ const ContentBlock = ({ data }: { data: ContentBlockData }) => {
 export default ContentBlock
 
 export const Head = ({ data }: HeadProps<ContentBlockData>) => {
-  const { frontmatter, fields } = data.markdownRemark
+  const { frontmatter } = data.markdownRemark
   const isPost = frontmatter.template_key === "blog-post"
 
   return (
@@ -76,7 +69,6 @@ export const Head = ({ data }: HeadProps<ContentBlockData>) => {
       <DefaultHead
         title={frontmatter.title}
         description={frontmatter.description}
-        image={ogImageForSlug(fields?.slug)}
         type={isPost ? "article" : undefined}
         publishedTime={isPost ? frontmatter.isoDate : undefined}
         author={isPost ? "Kai Siren" : undefined}

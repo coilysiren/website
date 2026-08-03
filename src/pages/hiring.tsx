@@ -7,7 +7,6 @@ export const Head = () => (
   <DefaultHead
     title="Hiring | Kai Siren"
     description="A reference for recruiters on Kai Siren's preferred platform-engineering work, practical fit, interview boundaries, and tenure."
-    image="/og/hiring.png"
     canonical="/hiring/"
   />
 )

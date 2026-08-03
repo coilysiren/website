@@ -8,7 +8,6 @@ import ProjectCatalogue from "../components/project-catalogue"
 export const Head = () => (
   <DefaultHead
     description="Kai Siren builds governed agent systems, developer infrastructure, and the platform layer underneath."
-    image="/og/home.png"
     canonical="/"
   />
 )
