@@ -32,7 +32,7 @@ Dev commands are declared in [`.ward/ward.yaml`](.ward/ward.yaml). Run them as `
 - `ward exec dev` - start Gatsby with hot reload.
 - `ward exec test` - run formatting, lint, type, and unit checks.
 - `ward exec build` - render Open Graph assets and create the production site.
-- `ward exec build-resume` - regenerate the PDF from the checked-in resume page.
+- `ward exec build-resume` - regenerate the PDF from the checked-in resume page in an isolated `uv` environment.
 - `ward exec image-build` - build the static staging image.
 - `ward exec image-smoke` - validate nginx inside the staging image.
 - `ward exec image-publish-check` - validate the trusted publisher script.
