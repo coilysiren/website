@@ -42,6 +42,11 @@ describe("Basic test workflow", () => {
     cy.viewport(390, 844)
     cy.visit("/")
 
+    cy.get(".portfolio-hero__tagline")
+      .should("be.visible")
+      .and("contain.text", "lights out")
+      .and("contain.text", "flight deck green")
+      .and("contain.text", "agents warded for an 8h+ run")
     cy.contains("h3", "Agent platform").should("be.visible")
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(

@@ -8,9 +8,16 @@ function Hero() {
       <div className="portfolio-hero__copy">
         <p className="eyebrow">Platform engineer · East Bay, CA</p>
         <h1>I build the platform for safer agentic systems.</h1>
-        <p className="portfolio-hero__lede">
-          Context, execution, tools, and infrastructure, designed as one
-          governed system.
+        <p className="portfolio-hero__lede portfolio-hero__tagline">
+          <span>
+            <span aria-hidden="true">🌑</span> lights out,
+          </span>
+          <span>
+            <span aria-hidden="true">🟢</span> flight deck green,
+          </span>
+          <span>
+            <span aria-hidden="true">🛡️</span> agents warded for an 8h+ run
+          </span>
         </p>
         <div className="button-row">
           <a className="button button--primary" href="#featured-work">
@@ -25,9 +32,6 @@ function Hero() {
         <div className="portrait-frame">
           <img src={headshot} alt="Kai Siren" />
         </div>
-        <p>
-          ⚙⚒ lights out, platform&apos;s green, agents are working the line ⚒⚙
-        </p>
       </aside>
     </header>
   )

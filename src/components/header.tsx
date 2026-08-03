@@ -34,7 +34,7 @@ const Header = ({ siteTitle = "" }: { siteTitle?: string }) => (
           opacity: 0.85,
         }}
       >
-        ⚙⚒ lights out, platform&apos;s green, agents are working the line ⚒⚙
+        🌑 lights out, 🟢 flight deck green, 🛡️ agents warded for an 8h+ run
       </p>
     </div>
   </header>

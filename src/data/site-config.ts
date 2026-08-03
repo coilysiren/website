@@ -147,7 +147,7 @@ export const SITES: Record<SiteId, SiteConfig> = {
       host: "coilysiren.me",
       wordmark: "coilysiren",
       owner: "Kai Siren",
-      tagline: "lights out, platform's green, agents are working the line",
+      tagline: "lights out, flight deck green, agents warded for an 8h+ run",
       footerKicker: "platform engineer / east bay",
     },
     palette: {

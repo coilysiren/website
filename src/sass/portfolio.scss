@@ -61,6 +61,20 @@ $content-width: 1180px;
   line-height: 1.6;
 }
 
+.portfolio-hero__tagline {
+  display: flex;
+  gap: 0.2rem 0.7rem;
+  flex-wrap: wrap;
+  max-width: 72ch;
+  font-family: vars.$font-family-mono;
+  font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+  font-weight: 700;
+
+  > span {
+    white-space: nowrap;
+  }
+}
+
 .portfolio-hero__portrait {
   position: relative;
 
@@ -88,15 +102,6 @@ $content-width: 1180px;
     aspect-ratio: 4 / 5;
     object-fit: cover;
     filter: saturate(0.9) contrast(1.03);
-  }
-
-  p {
-    position: relative;
-    margin: 1.5rem 0 0;
-    color: vars.$mid-blue;
-    font-family: vars.$font-family-mono;
-    font-size: 0.7rem;
-    line-height: 1.6;
   }
 }
 
@@ -803,6 +808,12 @@ $content-width: 1180px;
 
   .portfolio-hero__portrait {
     display: none;
+  }
+
+  .portfolio-hero__tagline {
+    gap: 0.15rem;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .button-row {
