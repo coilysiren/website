@@ -1,8 +1,17 @@
 describe("Basic test workflow", () => {
-  it("links the strongest project proof to its public source", () => {
+  it("moves the active portfolio into the homepage proof band", () => {
     cy.visit("/")
-    cy.contains(".featured-project", "Ward")
-      .contains("a", "View source")
+
+    cy.get(".portfolio-home > .portfolio-section")
+      .should("have.length", 1)
+      .and("have.class", "portfolio-section--featured")
+      .and("have.class", "portfolio-section--catalogue")
+      .and("have.attr", "id", "featured-work")
+    cy.contains("h2", "Active portfolio").should("be.visible")
+    cy.contains("One platform, three proof routes.").should("not.exist")
+    cy.get(".platform-diagram, .featured-project-grid").should("not.exist")
+    cy.contains(".project-card-name", /^coilyco-flight-deck\/ward$/)
+      .parents("a")
       .should(
         "have.attr",
         "href",

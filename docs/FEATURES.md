@@ -15,13 +15,13 @@ Last full sweep: 2026-07-09.
 Under [src/pages/](../src/pages/):
 
 - **`index.tsx`** - project-first home. It leads with Kai's platform thesis,
-  presents agent-compose, Ward, and Ward MCP as a compose / execute / expose
-  system, then groups the active portfolio into agent platform,
-  infrastructure, and product cards. Repository cards retain their literal
-  Forgejo descriptions and topics, while Eco App, Galaxy Gen, and Sirens Echo
-  use emoji marks. The static Many MCPs card uses locally vendored Lunch Money,
-  Reddit, and Steam marks without requiring a separate catalogue page. The homepage ends after
-  the active portfolio rather than repeating Writing and hiring calls to action.
+  then moves directly into a full-width active portfolio grouped into agent
+  platform, infrastructure, and product cards. Repository cards retain their
+  literal Forgejo descriptions and topics, while Eco App, Galaxy Gen, and
+  Sirens Echo use emoji marks. The static Many MCPs card uses locally vendored
+  Lunch Money, Reddit, and Steam marks without requiring a separate catalogue
+  page. The homepage ends after the active portfolio rather than repeating
+  Writing and hiring calls to action.
 - **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.

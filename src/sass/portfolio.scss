@@ -372,20 +372,69 @@ $content-width: 1180px;
 }
 
 .portfolio-section--catalogue {
-  color: vars.$pure-white;
+  color: vars.$ink;
 
   .section-label,
   .text-link {
-    color: vars.$light-blue;
+    color: vars.$mid-purple;
   }
 
   .section-heading {
     h2 {
-      color: vars.$pure-white;
+      color: vars.$ink;
     }
 
     > p:last-child {
-      color: #dfd9f0;
+      color: vars.$mid-purple;
+    }
+  }
+
+  .project-group {
+    header {
+      h3 {
+        color: vars.$ink;
+      }
+
+      p {
+        color: vars.$mid-purple;
+      }
+    }
+
+    ul {
+      border-color: rgba(vars.$mid-purple, 0.28);
+    }
+
+    li {
+      border-color: rgba(vars.$mid-purple, 0.28);
+
+      &:nth-child(odd) {
+        border-color: rgba(vars.$mid-purple, 0.28);
+      }
+    }
+
+    .project-card-surface {
+      color: vars.$ink;
+
+      p {
+        color: #51475f;
+      }
+
+      .project-repo-tags span {
+        color: vars.$mid-purple;
+        border-color: rgba(vars.$mid-purple, 0.3);
+      }
+
+      small {
+        color: vars.$mid-purple;
+      }
+    }
+
+    a.project-card-surface:hover {
+      background: rgba(vars.$mid-purple, 0.06);
+    }
+
+    .project-card-surface--private {
+      background: rgba(vars.$mid-purple, 0.045);
     }
   }
 }

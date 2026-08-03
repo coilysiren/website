@@ -3,9 +3,7 @@ import Hero from "../components/hero"
 import Layout from "../components/layout"
 import DefaultHead from "../components/default-head"
 import "../sass/index.scss"
-import PlatformDiagram from "../components/platform-diagram"
 import ProjectCatalogue from "../components/project-catalogue"
-import { featuredProjects } from "../data/projects"
 
 export const Head = () => (
   <DefaultHead
@@ -22,30 +20,8 @@ const IndexPage = () => {
         <Hero />
         <section
           id="featured-work"
-          className="portfolio-section portfolio-section--featured"
+          className="portfolio-section portfolio-section--featured portfolio-section--catalogue"
         >
-          <div className="section-heading">
-            <p className="section-label">Featured system</p>
-            <h2>One platform, three proof routes.</h2>
-          </div>
-          <PlatformDiagram compact />
-          <div className="featured-project-grid">
-            {featuredProjects.map((project) => (
-              <article
-                className={`featured-project featured-project--${project.tone}`}
-                key={project.slug}
-              >
-                <div className="featured-project__topline">
-                  <span>{project.stage}</span>
-                  <span>{project.name}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <a href={project.sourceUrl}>View source ↗</a>
-              </article>
-            ))}
-          </div>
-        </section>
-        <section className="portfolio-section portfolio-section--catalogue">
           <div className="section-heading">
             <h2>Active portfolio</h2>
           </div>
