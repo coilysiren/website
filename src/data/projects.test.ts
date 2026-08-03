@@ -4,6 +4,14 @@ import { projectGroups } from "./projects"
 const portfolioProjects = projectGroups.flatMap((group) => group.projects)
 
 describe("project portfolio", () => {
+  it("leads with infrastructure before the agent platform", () => {
+    expect(projectGroups.map((group) => group.title)).toEqual([
+      "Infrastructure",
+      "Agent platform",
+      "Product",
+    ])
+  })
+
   it("uses canonical organization and repository names", () => {
     const repositoryNames = portfolioProjects
       .filter((project) => project.name !== "Many MCPs")

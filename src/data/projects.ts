@@ -64,41 +64,6 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const projectGroups: ProjectGroup[] = [
   {
-    title: "Agent platform",
-    description:
-      "Context, governed execution, tool delivery, and the observable model path.",
-    projects: [
-      {
-        name: "coilyco-flight-deck/agent-compose",
-        description:
-          "Context compiler that composes roles, personalities, skills, and tool inventories for AI-agent harnesses.",
-        tags: ["ai-agents", "automation", "llm", "mcp"],
-        url: "https://github.com/coilyco-flight-deck/agent-compose",
-      },
-      {
-        name: "coilyco-flight-deck/ward",
-        description:
-          "Governed execution layer for unattended coding agents in isolated repository workflows.",
-        tags: ["ai-agents", "automation", "devops", "security"],
-        url: "https://github.com/coilyco-flight-deck/ward",
-      },
-      {
-        name: "coilyco-flight-deck/ward-mcp",
-        description:
-          "MCP runtime that turns cli-guard policy files into guarded streamable HTTP services and container images.",
-        tags: ["automation", "mcp", "model-context-protocol", "security"],
-        url: "https://github.com/coilyco-flight-deck/ward-mcp",
-      },
-      {
-        name: "coilyco-flight-deck/agent-proxy",
-        description:
-          "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
-        tags: ["ai-agents", "llm", "observability", "opentelemetry"],
-        url: "https://github.com/coilyco-flight-deck/agent-proxy",
-      },
-    ],
-  },
-  {
     title: "Infrastructure",
     description:
       "The operating and deployment layers beneath the agent platform.",
@@ -130,6 +95,41 @@ export const projectGroups: ProjectGroup[] = [
           "Kubernetes deployment monorepo for always-on services across Kai's homelab.",
         tags: ["devops", "helm", "homelab", "kubernetes"],
         privateRepo: true,
+      },
+    ],
+  },
+  {
+    title: "Agent platform",
+    description:
+      "Context, governed execution, tool delivery, and the observable model path.",
+    projects: [
+      {
+        name: "coilyco-flight-deck/agent-compose",
+        description:
+          "Context compiler that composes roles, personalities, skills, and tool inventories for AI-agent harnesses.",
+        tags: ["ai-agents", "automation", "llm", "mcp"],
+        url: "https://github.com/coilyco-flight-deck/agent-compose",
+      },
+      {
+        name: "coilyco-flight-deck/ward",
+        description:
+          "Governed execution layer for unattended coding agents in isolated repository workflows.",
+        tags: ["ai-agents", "automation", "devops", "security"],
+        url: "https://github.com/coilyco-flight-deck/ward",
+      },
+      {
+        name: "coilyco-flight-deck/ward-mcp",
+        description:
+          "MCP runtime that turns cli-guard policy files into guarded streamable HTTP services and container images.",
+        tags: ["automation", "mcp", "model-context-protocol", "security"],
+        url: "https://github.com/coilyco-flight-deck/ward-mcp",
+      },
+      {
+        name: "coilyco-flight-deck/agent-proxy",
+        description:
+          "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
+        tags: ["ai-agents", "llm", "observability", "opentelemetry"],
+        url: "https://github.com/coilyco-flight-deck/agent-proxy",
       },
     ],
   },
