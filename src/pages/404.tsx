@@ -12,16 +12,16 @@ const recoveryRoutes = [
     to: "/",
   },
   {
-    path: "./writing",
-    title: "Writing",
-    description: "Browse the long-form technical archive.",
-    to: "/writing/",
-  },
-  {
     path: "./about",
     title: "About",
     description: "Meet Kai through her story and collected interests.",
     to: "/about/",
+  },
+  {
+    path: "./writing",
+    title: "Writing",
+    description: "Browse the long-form technical archive.",
+    to: "/writing/",
   },
 ]
 

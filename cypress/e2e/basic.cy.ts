@@ -64,7 +64,12 @@ describe("Basic test workflow", () => {
   })
 
   it("keeps long-form writing reachable without making it the homepage", () => {
-    cy.visit("/writing/")
+    cy.visit("/")
+    cy.contains(".nav-links a", "./writing")
+      .should("be.visible")
+      .and("have.attr", "href", "/writing/")
+      .click()
+    cy.location("pathname").should("eq", "/writing/")
     cy.get(".homepage-post").first().click()
 
     cy.location("pathname").should("include", "/posts/")
@@ -216,6 +221,13 @@ describe("Basic test workflow", () => {
     cy.get(".not-found-signal__code").should("have.text", "404")
     cy.get(".not-found-route-list a").should("have.length", 3)
     cy.get('.not-found-route-list a[href="/"]').should("be.visible")
+    cy.get(".not-found-route-list strong").then(($titles) => {
+      expect([...$titles].map((title) => title.textContent)).to.deep.equal([
+        "Home",
+        "About",
+        "Writing",
+      ])
+    })
     cy.get('meta[name="robots"]').should(
       "have.attr",
       "content",
