@@ -1,5 +1,9 @@
 import React from "react"
-import { projectGroups, type ProjectIcon } from "../data/projects"
+import {
+  projectGroups,
+  type ProjectIcon,
+  type ProjectLink,
+} from "../data/projects"
 
 const ProjectIcons = ({
   icons,
@@ -23,6 +27,41 @@ const ProjectIcons = ({
   </span>
 )
 
+const ProjectCardContents = ({ project }: { project: ProjectLink }) => (
+  <>
+    <span className="project-card-topline">
+      <span className="project-card-name">
+        {project.name}
+        {project.privateRepo && (
+          <span className="project-card-lock" aria-label="Private repository">
+            {" "}
+            🔒
+          </span>
+        )}
+      </span>
+      {project.icons && (
+        <ProjectIcons icons={project.icons} projectName={project.name} />
+      )}
+    </span>
+    <p>{project.description}</p>
+    {project.tags.length > 0 && (
+      <span
+        className="project-repo-tags"
+        aria-label={`${project.name} repository tags`}
+      >
+        {project.tags.map((tag) => (
+          <span key={tag}>{tag}</span>
+        ))}
+      </span>
+    )}
+    <small>
+      {project.privateRepo
+        ? "Private repository"
+        : (project.linkLabel ?? "Source ↗")}
+    </small>
+  </>
+)
+
 const ProjectCatalogue = ({ condensed = false }: { condensed?: boolean }) => (
   <div
     className={`project-catalogue${condensed ? " project-catalogue--condensed" : ""}`}
@@ -36,29 +75,15 @@ const ProjectCatalogue = ({ condensed = false }: { condensed?: boolean }) => (
         <ul>
           {group.projects.map((project) => (
             <li className="project-card" key={project.name}>
-              <a href={project.url}>
-                <span className="project-card-topline">
-                  <span className="project-card-name">{project.name}</span>
-                  {project.icons && (
-                    <ProjectIcons
-                      icons={project.icons}
-                      projectName={project.name}
-                    />
-                  )}
-                </span>
-                <p>{project.description}</p>
-                {project.tags.length > 0 && (
-                  <span
-                    className="project-repo-tags"
-                    aria-label={`${project.name} repository tags`}
-                  >
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </span>
-                )}
-                <small>{project.linkLabel ?? "Source ↗"}</small>
-              </a>
+              {project.url ? (
+                <a className="project-card-surface" href={project.url}>
+                  <ProjectCardContents project={project} />
+                </a>
+              ) : (
+                <div className="project-card-surface project-card-surface--private">
+                  <ProjectCardContents project={project} />
+                </div>
+              )}
             </li>
           ))}
         </ul>

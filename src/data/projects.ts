@@ -14,7 +14,8 @@ export interface ProjectLink {
   name: string
   description: string
   tags: string[]
-  url: string
+  url?: string
+  privateRepo?: boolean
   linkLabel?: string
   icons?: ProjectIcon[]
 }
@@ -70,28 +71,28 @@ export const projectGroups: ProjectGroup[] = [
       "Context, governed execution, tool delivery, and the observable model path.",
     projects: [
       {
-        name: "acompose",
+        name: "coilyco-flight-deck/agent-compose",
         description:
           "Context compiler that composes roles, personalities, skills, and tool inventories for AI-agent harnesses.",
         tags: ["ai-agents", "automation", "llm", "mcp"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
       },
       {
-        name: "Ward",
+        name: "coilyco-flight-deck/ward",
         description:
           "Governed execution layer for unattended coding agents in isolated repository workflows.",
         tags: ["ai-agents", "automation", "devops", "security"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward",
       },
       {
-        name: "Ward MCP",
+        name: "coilyco-flight-deck/ward-mcp",
         description:
           "MCP runtime that turns cli-guard policy files into guarded streamable HTTP services and container images.",
         tags: ["automation", "mcp", "model-context-protocol", "security"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp",
       },
       {
-        name: "aproxy",
+        name: "coilyco-flight-deck/agent-proxy",
         description:
           "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
         tags: ["ai-agents", "llm", "observability", "opentelemetry"],
@@ -105,32 +106,32 @@ export const projectGroups: ProjectGroup[] = [
       "The operating and deployment layers beneath the agent platform.",
     projects: [
       {
-        name: "deck/aos",
+        name: "coilyco-flight-deck/agentic-os",
         description:
           "Cross-platform agentic operating layer with dotfiles, skills, guarded tooling, and repository validators.",
         tags: ["ai-agents", "automation", "dotfiles", "security"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os",
       },
       {
-        name: "deck/infra",
+        name: "coilyco-flight-deck/infrastructure",
         description:
           "Infrastructure-as-code for Kai's hosts and Kubernetes homelab, including Ansible convergence and observability.",
         tags: ["ansible", "homelab", "infrastructure-as-code", "kubernetes"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/infrastructure",
       },
       {
-        name: "bridge/aosk",
+        name: "coilyco-bridge/agentic-os-kai",
         description:
           "Kai's agent operating context, skill catalog, fleet inventory, and cross-repository automation.",
         tags: ["ai-agents", "automation", "devops", "mcp"],
-        url: "https://forgejo.coilysiren.me/coilyco-bridge/agentic-os-kai",
+        privateRepo: true,
       },
       {
-        name: "bridge/deploy",
+        name: "coilyco-bridge/deploy",
         description:
           "Kubernetes deployment monorepo for always-on services across Kai's homelab.",
         tags: ["devops", "helm", "homelab", "kubernetes"],
-        url: "https://forgejo.coilysiren.me/coilyco-bridge/deploy",
+        privateRepo: true,
       },
     ],
   },
@@ -140,14 +141,14 @@ export const projectGroups: ProjectGroup[] = [
       "Things built with the platform for communities, games, and daily life.",
     projects: [
       {
-        name: "Eco App",
+        name: "coilyco-gaming/eco-app",
         description: "Eco MCP service - server, jobs, replay, telemetry.",
         tags: [],
         url: "https://forgejo.coilysiren.me/coilyco-gaming/eco-app",
         icons: [{ kind: "font-awesome", className: "fa-solid fa-leaf" }],
       },
       {
-        name: "Galaxy Gen",
+        name: "coilyco-gaming/galaxy-gen",
         description:
           "Procedural galaxy simulation - Rust compiled to WASM, rendered in the browser. Live at https://galaxy-gen.coilysiren.me",
         tags: ["procedural-galaxy-simulation", "rust-wasm"],
@@ -155,10 +156,10 @@ export const projectGroups: ProjectGroup[] = [
         icons: [{ kind: "font-awesome", className: "fa-solid fa-star" }],
       },
       {
-        name: "Sirens Echo",
+        name: "coilyco-gaming/sirens-echo",
         description: "Sirens Echo Community harness for the Sirens Discord.",
         tags: ["community", "discord", "harness"],
-        url: "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
+        privateRepo: true,
         icons: [{ kind: "font-awesome", className: "fa-solid fa-wave-square" }],
       },
       {

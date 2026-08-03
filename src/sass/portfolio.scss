@@ -341,7 +341,7 @@ $content-width: 1180px;
     align-items: start;
   }
 
-  .project-group a {
+  .project-group .project-card-surface {
     display: flex;
     min-height: 240px;
     flex-direction: column;
@@ -438,7 +438,7 @@ $content-width: 1180px;
     }
   }
 
-  a {
+  .project-card-surface {
     display: block;
     min-height: 150px;
     padding: 1.25rem;
@@ -447,20 +447,19 @@ $content-width: 1180px;
     text-decoration: none;
     transition: background 160ms ease;
 
-    &:hover {
-      background: rgba(vars.$pure-white, 0.07);
-    }
-
     .project-card-topline {
       display: flex;
+      min-width: 0;
       gap: 1rem;
       align-items: flex-start;
       justify-content: space-between;
     }
 
     .project-card-name {
+      min-width: 0;
       font-size: 1.1rem;
       font-weight: 700;
+      overflow-wrap: anywhere;
     }
 
     .project-card-icons {
@@ -531,6 +530,14 @@ $content-width: 1180px;
       font-family: vars.$font-family-mono;
       font-weight: 700;
     }
+  }
+
+  a.project-card-surface:hover {
+    background: rgba(vars.$pure-white, 0.07);
+  }
+
+  .project-card-surface--private {
+    background: rgba(vars.$deep-ink, 0.18);
   }
 }
 
@@ -905,7 +912,7 @@ $content-width: 1180px;
       border-right: 0;
     }
 
-    a {
+    .project-card-surface {
       min-height: 0;
     }
   }

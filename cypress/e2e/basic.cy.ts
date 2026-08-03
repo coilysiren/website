@@ -55,6 +55,28 @@ describe("Basic test workflow", () => {
     cy.get(".project-group").eq(0).contains("h3", "Agent platform")
     cy.get(".project-group").eq(1).contains("h3", "Infrastructure")
     cy.get(".project-group").eq(2).contains("h3", "Product")
+    cy.contains(
+      ".project-card-name",
+      "coilyco-flight-deck/agent-compose"
+    ).should("be.visible")
+    cy.contains(
+      ".project-card-name",
+      "coilyco-flight-deck/infrastructure"
+    ).should("be.visible")
+    cy.contains(".project-card-name", "coilyco-gaming/galaxy-gen").should(
+      "be.visible"
+    )
+    const privateRepositories = [
+      "coilyco-bridge/agentic-os-kai",
+      "coilyco-bridge/deploy",
+      "coilyco-gaming/sirens-echo",
+    ]
+    privateRepositories.forEach((repository) => {
+      cy.contains(".project-card", repository).within(() => {
+        cy.get(".project-card-name").should("contain.text", `${repository} 🔒`)
+        cy.get("a").should("not.exist")
+      })
+    })
     cy.contains(".project-card", "Many MCPs")
       .find(".project-card-icon")
       .should("have.length", 3)
