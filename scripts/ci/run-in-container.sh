@@ -5,6 +5,7 @@ registry="forgejo.coilysiren.me"
 node_image="${registry}/coilyco-flight-deck/agentic-os:lang-node-release"
 scan_image="${registry}/coilyco-flight-deck/agentic-os:release"
 cypress_image="cypress/included:15.19.0"
+no_proxy_hosts="127.0.0.1,localhost,forgejo.coilysiren.me,forgejo.forgejo.svc.cluster.local,.svc,.cluster.local"
 
 if [ -z "${FORGEJO_EGRESS_PROXY:-}" ]; then
   echo "FORGEJO_EGRESS_PROXY is required for trusted CI dependency access." >&2
@@ -64,10 +65,10 @@ stream_checkout() {
       --env GITHUB_WORKSPACE=/workspace \
       --env HTTP_PROXY="${FORGEJO_EGRESS_PROXY}" \
       --env HTTPS_PROXY="${FORGEJO_EGRESS_PROXY}" \
-      --env NO_PROXY="127.0.0.1,localhost,forgejo.coilysiren.me" \
+      --env NO_PROXY="${no_proxy_hosts}" \
       --env http_proxy="${FORGEJO_EGRESS_PROXY}" \
       --env https_proxy="${FORGEJO_EGRESS_PROXY}" \
-      --env no_proxy="127.0.0.1,localhost,forgejo.coilysiren.me" \
+      --env no_proxy="${no_proxy_hosts}" \
       --workdir /workspace \
       --entrypoint bash \
       "${image}" -ceu "${command}"
