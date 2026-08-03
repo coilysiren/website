@@ -54,7 +54,7 @@ describe("Basic test workflow", () => {
     cy.get('meta[name="robots"]').should(
       "have.attr",
       "content",
-      "noindex, nofollow"
+      "follow, index"
     )
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(
@@ -66,6 +66,13 @@ describe("Basic test workflow", () => {
   it("keeps long-form writing out of visible navigation", () => {
     cy.visit("/")
     cy.get('a[href="/writing/"]').should("not.exist")
+
+    cy.visit("/writing/")
+    cy.get('meta[name="robots"]').should(
+      "have.attr",
+      "content",
+      "noindex, nofollow"
+    )
   })
 
   it("pairs the About introduction with one portrait on desktop", () => {
@@ -223,7 +230,7 @@ describe("Basic test workflow", () => {
     cy.get('meta[name="robots"]').should(
       "have.attr",
       "content",
-      "noindex, follow"
+      "noindex, nofollow"
     )
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(

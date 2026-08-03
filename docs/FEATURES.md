@@ -7,7 +7,10 @@ Last full sweep: 2026-07-09.
 ## Stack
 
 - **Gatsby static site** (TypeScript), served from Netlify in production and an unprivileged nginx image in staging. Config at [gatsby-config.ts](../gatsby-config.ts), build hooks at [gatsby-node.ts](../gatsby-node.ts), browser/SSR shells at [gatsby-browser.tsx](../gatsby-browser.tsx) / [gatsby-ssr.tsx](../gatsby-ssr.tsx).
-- **RSS feed** via `gatsby-plugin-feed`.
+- **Canonical discovery files** at `/sitemap.xml` and `/llms.txt`, limited to
+  the homepage, About, Hiring, and Resume surfaces.
+- **Legacy RSS output** via `gatsby-plugin-feed`, no longer advertised in page
+  metadata and retained temporarily for build compatibility.
 - **Sass** styles under [src/sass/](../src/sass/).
 
 ## Pages
@@ -33,13 +36,14 @@ Under [src/pages/](../src/pages/):
   navigation. It is a project-free information reference covering Kai's
   strongest role shapes, practical constraints, recruiter context, interview
   boundaries, and tenure context.
-- **`writing.tsx`** - unlisted date-ordered long-form archive, reachable only
-  by direct URL.
+- **`writing.tsx`** - retired date-ordered long-form archive, reachable only by
+  direct URL and marked `noindex, nofollow`.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - a fully designed not-found recovery page that preserves the
   real 404 response while carrying the homepage's visual system into clear
   routes to the About, Hiring, and Resume pages.
-- **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
+- **`posts/`** - retired long-form posts retained at their existing direct URLs
+  and marked `noindex, nofollow`.
 ## Components
 
 React/TS components under [src/components/](../src/components/): `hero`, `header`, `footer`, `nav`, `layout`, `blog-list`, `closer`, `content-block`, `default-head`, `links`, `page-context`, `site-metadata`.

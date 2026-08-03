@@ -2,6 +2,8 @@ import React from "react"
 import type { GatsbySSR } from "gatsby"
 import { PageMetaProvider } from "./src/components/page-context"
 
+const INDEXABLE_PATHS = new Set(["/", "/about/", "/hiring/", "/resume/"])
+
 export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({
   element,
   props,
@@ -16,22 +18,10 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   setHtmlAttributes,
   setHeadComponents,
 }) => {
-  const robots =
-    pathname === "/hiring/"
-      ? "noindex, nofollow"
-      : pathname === "/404/" || pathname === "/404.html"
-        ? "noindex, follow"
-        : "follow, index"
+  const robots = INDEXABLE_PATHS.has(pathname)
+    ? "follow, index"
+    : "noindex, nofollow"
 
   setHtmlAttributes({ lang: "en" })
-  setHeadComponents([
-    <meta key="robots" name="robots" content={robots} />,
-    <link
-      key="rss"
-      rel="alternate"
-      type="application/rss+xml"
-      title="Kai Siren's Blog"
-      href="/rss.xml"
-    />,
-  ])
+  setHeadComponents([<meta key="robots" name="robots" content={robots} />])
 }
