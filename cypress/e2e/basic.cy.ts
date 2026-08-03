@@ -111,6 +111,8 @@ describe("Basic test workflow", () => {
       .and("contain.text", "lights out")
       .and("contain.text", "flight deck green")
       .and("contain.text", "agents warded for an 8h+ run")
+    cy.get(".portfolio-hero .button-row").should("not.exist")
+    cy.contains(".portfolio-hero", "Explore the work").should("not.exist")
     cy.contains(".portfolio-section--catalogue h2", "Active portfolio").should(
       "be.visible"
     )
