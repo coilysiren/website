@@ -65,7 +65,7 @@ const FavoriteSlide = ({
 export const Head = () => (
   <DefaultHead
     title="About | Kai Siren"
-    description="Kai Siren is a Staff-level platform engineer building governed infrastructure for agentic systems."
+    description="Kai Siren is a platform engineer building governed infrastructure for agentic systems."
     canonical="/about/"
   />
 )
@@ -84,16 +84,9 @@ const AboutPage = () => (
             <a href="#about">Hi, I&apos;m Kai</a>
           </h1>
           <p>
-            I&apos;m a Staff-level platform engineer with more than ten years of
-            experience building the systems other engineers rely on. My current
-            work focuses on the governed infrastructure around agents: context,
-            execution, MCP delivery, model routing, observability, and the
-            production systems underneath.
-          </p>
-          <p>
-            Outside work, I live in the East Bay and spend time on games,
-            gardening, fabrication, and side projects. This is a visual tour of
-            the things that make up my life.
+            I live in the East Bay and spend time on games, gardening,
+            fabrication, and side projects. This is a visual tour of the things
+            that make up my life.
           </p>
           <nav className="my-life-intro__links" aria-label="About links">
             <Link to="/resume/">Resume</Link>
