@@ -89,6 +89,7 @@ class Resume:
     name: str = ""
     summary: list[str] = field(default_factory=list)
     contact: Contact = field(default_factory=Contact)
+    evidence: list[tuple[str, str]] = field(default_factory=list)
     skills: list[tuple[str, str]] = field(default_factory=list)
     jobs: list[Job] = field(default_factory=list)
     community: list[Job] = field(default_factory=list)
@@ -102,7 +103,9 @@ JOB_HEADER_RE = re.compile(
     r"\s*$"
 )
 
-SKILL_LINE_RE = re.compile(r"^-\s*\*\*(?P<label>[^*]+)\*\*:\s*(?P<value>.+)$")
+LABELED_LINE_RE = re.compile(
+    r"^-\s*\*\*(?P<label>[^*:]+):?\*\*:?\s*(?P<value>.+)$"
+)
 
 CONTACT_PREFIX_RE = re.compile(r"^//\s*(?P<rest>.+)$")
 STACK_LINE_RE = re.compile(r"^\*\*Stack:\*\*\s*(?P<value>.+)$")
@@ -117,7 +120,7 @@ def parse_resume(md: str) -> Resume:
     r = Resume()
     lines = _strip_page_frontmatter(md).splitlines()
     i = 0
-    section = "intro"  # intro | skills | experience | community
+    section = "intro"  # intro | evidence | skills | experience | community
     current_job: Optional[Job] = None
 
     def flush_job():
@@ -146,7 +149,9 @@ def parse_resume(md: str) -> Resume:
             header = line[3:].strip().lower()
             # normalize html entity / ampersand
             header = header.replace("&amp;", "&")
-            if "skill" in header:
+            if "evidence" in header:
+                section = "evidence"
+            elif "skill" in header:
                 section = "skills"
             elif "experience" in header:
                 section = "experience"
@@ -172,10 +177,17 @@ def parse_resume(md: str) -> Resume:
             i += 1
             continue
 
-        if section == "skills":
-            m = SKILL_LINE_RE.match(line)
+        if section in ("evidence", "skills"):
+            m = LABELED_LINE_RE.match(line)
             if m:
-                r.skills.append((m.group("label").strip(), m.group("value").strip()))
+                item = (
+                    m.group("label").strip(),
+                    _strip_inline_md(m.group("value").strip()),
+                )
+                if section == "evidence":
+                    r.evidence.append(item)
+                else:
+                    r.skills.append(item)
             i += 1
             continue
 
@@ -227,6 +239,7 @@ def parse_resume(md: str) -> Resume:
 
 def _strip_inline_md(text: str) -> str:
     """Keep **bold** and *italic* as HTML for reportlab Paragraphs."""
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<link href="\2">\1</link>', text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", text)
     text = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<i>\1</i>", text)
     return text
@@ -378,6 +391,9 @@ def build_styles():
                               spaceAfter=1.2),
         skills=ParagraphStyle("Sk", fontName=base, fontSize=9.5, leading=13,
                               textColor=INK, spaceAfter=2),
+        evidence=ParagraphStyle("Ev", fontName=base, fontSize=9.1, leading=12.2,
+                                textColor=INK, leftIndent=10, bulletIndent=0,
+                                spaceAfter=2),
         compact=ParagraphStyle("Cmp", fontName=base, fontSize=9.3, leading=12.3,
                                textColor=INK, spaceAfter=2),
     )
@@ -534,6 +550,14 @@ def build_story(styles, resume: Resume, avatar_png: Path,
 
     for p in resume.summary:
         story.append(Paragraph(p, styles["body"]))
+
+    if resume.evidence:
+        story.append(SectionHeading("Selected agent-platform evidence", styles["h2"]))
+        for label, value in resume.evidence:
+            story.append(Paragraph(
+                f'• <b><font color="#1E5F6B">{label}</font></b> &nbsp; {value}',
+                styles["evidence"],
+            ))
 
     if resume.skills:
         story.append(SectionHeading("Skills", styles["h2"]))
