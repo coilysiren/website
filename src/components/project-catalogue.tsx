@@ -1,20 +1,22 @@
 import React from "react"
 import { projectGroups } from "../data/projects"
 
-const ProjectCatalogue = () => (
-  <div className="project-catalogue">
+const ProjectCatalogue = ({ condensed = false }: { condensed?: boolean }) => (
+  <div
+    className={`project-catalogue${condensed ? " project-catalogue--condensed" : ""}`}
+  >
     {projectGroups.map((group) => (
       <section className="project-group" key={group.title}>
         <header>
           <h3>{group.title}</h3>
-          <p>{group.description}</p>
+          {!condensed && <p>{group.description}</p>}
         </header>
         <ul>
           {group.projects.map((project) => (
             <li key={project.name}>
               <a href={project.url}>
                 <span>{project.name}</span>
-                <p>{project.description}</p>
+                {!condensed && <p>{project.description}</p>}
                 <small>Source ↗</small>
               </a>
             </li>

@@ -27,13 +27,9 @@ const IndexPage = () => {
         >
           <div className="section-heading">
             <p className="section-label">Featured system</p>
-            <h2>Three proof routes, one platform story.</h2>
-            <p>
-              Context decides what the agent knows. Ward governs how the work
-              moves. Ward MCP exposes only the tools policy grants.
-            </p>
+            <h2>One platform, three proof routes.</h2>
           </div>
-          <PlatformDiagram />
+          <PlatformDiagram compact />
           <div className="featured-project-grid">
             {featuredProjects.map((project) => (
               <article
@@ -45,7 +41,6 @@ const IndexPage = () => {
                   <span>{project.name}</span>
                 </div>
                 <h3>{project.title}</h3>
-                <p>{project.summary}</p>
                 <Link to={project.caseStudyUrl}>Read the case study →</Link>
               </article>
             ))}
@@ -54,13 +49,9 @@ const IndexPage = () => {
         <section className="portfolio-section portfolio-section--catalogue">
           <div className="section-heading">
             <p className="section-label">Active portfolio</p>
-            <h2>Grouped by kind, not buried in a feed.</h2>
-            <p>
-              These are independently useful projects that compose into the
-              larger platform, plus the systems where the work meets real use.
-            </p>
+            <h2>Built to compose.</h2>
           </div>
-          <ProjectCatalogue />
+          <ProjectCatalogue condensed />
           <Link className="text-link" to="/work/">
             See the full work index →
           </Link>
@@ -68,22 +59,14 @@ const IndexPage = () => {
         <section className="portfolio-section portfolio-section--split">
           <div>
             <p className="section-label">Writing</p>
-            <h2>The reasoning stays inspectable too.</h2>
-            <p>
-              Notes on platform boundaries, cloud systems, developer tooling,
-              and methods for working with agents.
-            </p>
+            <h2>Notes from the work.</h2>
             <Link className="text-link" to="/writing/">
               Browse the writing →
             </Link>
           </div>
           <div className="portfolio-cta">
             <p className="section-label">Working together</p>
-            <h2>Start with the evidence, then the conversation.</h2>
-            <p>
-              The resume is the compact career record. Hiring notes cover role
-              shape, logistics, and interview fit.
-            </p>
+            <h2>The compact version.</h2>
             <div className="button-row">
               <Link className="button button--primary" to="/resume/">
                 Read the resume
