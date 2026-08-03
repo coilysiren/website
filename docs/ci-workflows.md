@@ -10,9 +10,9 @@ have an approved general `docker` runner. Pull requests are intentionally
 excluded because the host runner carries the package-write credential used by
 the trusted publisher lane.
 
-- `test` streams the checkout into the moving `:release` dev-base image,
-  enables Corepack, installs the pnpm 11 lockfile, and then uses
-  `ward exec build` and `ward exec test-quick`.
+- `test` streams the checkout into the moving `:lang-node-release` specialist
+  from the dev-base image family, enables Corepack, installs the pnpm 11
+  lockfile, and then uses `ward exec build` and `ward exec test-quick`.
 - `test-e2e` runs the TypeScript Cypress smoke path in the pinned
   `cypress/included` image through the same streamed-checkout boundary because
   the dev-base image does not carry a browser stack.
@@ -23,8 +23,11 @@ the trusted publisher lane.
 The host runner talks to its Docker sidecar, so bind mounts cannot carry the
 runner workspace into a test container. `scripts/ci/run-in-container.sh`
 therefore sends the checkout as a tar stream over standard input. The test
-environment stays isolated in the same images used by the former container
-jobs without broadening runner scope.
+environment stays isolated in the matching release image family without
+broadening runner scope. Every workflow sharing the runner uses the same
+concurrency group, and every Docker-producing script prunes the disposable
+daemon before and after work. This keeps the runner's 24 GiB scratch volume
+below its hard eviction limit.
 
 ## `publish-image.yml` - Publish staging image
 
@@ -32,7 +35,8 @@ Every push to canonical `main` runs on the trusted `deploy:host` runner. The
 job publishes the checked-out source commit as
 `forgejo.coilysiren.me/coilysiren/website:<full-source-sha>` and passes only
 after remote manifest inspection succeeds. The package stays private and the
-runner supplies only the package-write credential.
+runner supplies only the package-write credential. It shares the serialized
+runner concurrency group and clears disposable Docker state around the build.
 
 ## `pulse-refresh.yml` - Refresh pulse data
 

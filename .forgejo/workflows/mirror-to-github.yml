@@ -6,8 +6,8 @@ on:
     tags: ["v*"]
 
 concurrency:
-  group: test-and-mirror-${{ github.ref }}
-  cancel-in-progress: true
+  group: website-deploy-runner
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -25,6 +25,7 @@ jobs:
         run: bash scripts/ci/run-in-container.sh test
 
   test-e2e:
+    needs: test
     runs-on: deploy
     timeout-minutes: 30
     steps:

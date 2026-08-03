@@ -12,6 +12,10 @@ if [ -z "${FORGEJO_EGRESS_PROXY:-}" ]; then
   echo "FORGEJO_EGRESS_PROXY is required for the Website dependency build." >&2
   exit 1
 fi
+if [ "${DOCKER_HOST:-}" != "tcp://localhost:2375" ]; then
+  echo "The trusted publisher requires the repository runner Docker sidecar." >&2
+  exit 1
+fi
 
 sha="${GITHUB_SHA:-$(git rev-parse HEAD)}"
 case "${sha}" in
@@ -27,10 +31,15 @@ fi
 
 image="${registry}/${image_name}:${sha}"
 docker_config="$(mktemp -d)"
-trap 'rm -rf "${docker_config}"' EXIT
+cleanup() {
+  docker system prune --all --force --volumes >/dev/null 2>&1 || true
+  rm -rf "${docker_config}"
+}
+trap cleanup EXIT
 chmod 700 "${docker_config}"
 export DOCKER_CONFIG="${docker_config}"
 
+docker system prune --all --force --volumes >/dev/null
 printf '%s' "${REGISTRY_TOKEN}" \
   | docker login "${registry}" --username coilyco-ops --password-stdin
 

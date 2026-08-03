@@ -2,25 +2,37 @@
 set -euo pipefail
 
 registry="forgejo.coilysiren.me"
-dev_base_image="${registry}/coilyco-flight-deck/agentic-os:release"
+node_image="${registry}/coilyco-flight-deck/agentic-os:lang-node-release"
+scan_image="${registry}/coilyco-flight-deck/agentic-os:release"
 cypress_image="cypress/included:15.19.0"
 
 if [ -z "${FORGEJO_EGRESS_PROXY:-}" ]; then
   echo "FORGEJO_EGRESS_PROXY is required for trusted CI dependency access." >&2
   exit 1
 fi
+if [ "${DOCKER_HOST:-}" != "tcp://localhost:2375" ]; then
+  echo "The trusted CI adapter requires the repository runner Docker sidecar." >&2
+  exit 1
+fi
 
 docker_config=""
 cleanup() {
+  docker system prune --all --force --volumes >/dev/null 2>&1 || true
   if [ -n "${docker_config}" ]; then
     rm -rf "${docker_config}"
   fi
 }
 trap cleanup EXIT
 
-pull_dev_base() {
+prepare_docker() {
+  docker system prune --all --force --volumes >/dev/null
+}
+
+pull_private_image() {
+  local image="$1"
+
   if [ -z "${REGISTRY_TOKEN:-}" ]; then
-    echo "REGISTRY_TOKEN is required to pull the private dev-base image." >&2
+    echo "REGISTRY_TOKEN is required to pull the private CI image." >&2
     exit 1
   fi
 
@@ -29,7 +41,7 @@ pull_dev_base() {
   export DOCKER_CONFIG="${docker_config}"
   printf '%s' "${REGISTRY_TOKEN}" \
     | docker login "${registry}" --username coilyco-ops --password-stdin
-  docker pull "${dev_base_image}"
+  docker pull --quiet "${image}"
 }
 
 stream_checkout() {
@@ -43,10 +55,18 @@ stream_checkout() {
     -cf - . \
     | docker run --rm -i \
       --env CI=true \
+      --env FORGEJO_ACTIONS=true \
+      --env GITHUB_ACTIONS=true \
+      --env GITHUB_REF="${GITHUB_REF:-}" \
+      --env GITHUB_REPOSITORY="${GITHUB_REPOSITORY:-}" \
+      --env GITHUB_SHA="${GITHUB_SHA:-}" \
+      --env GITHUB_WORKSPACE=/workspace \
       --env HTTP_PROXY="${FORGEJO_EGRESS_PROXY}" \
       --env HTTPS_PROXY="${FORGEJO_EGRESS_PROXY}" \
+      --env NO_PROXY="127.0.0.1,localhost" \
       --env http_proxy="${FORGEJO_EGRESS_PROXY}" \
       --env https_proxy="${FORGEJO_EGRESS_PROXY}" \
+      --env no_proxy="127.0.0.1,localhost" \
       --workdir /workspace \
       --entrypoint bash \
       "${image}" -ceu "${command}"
@@ -54,8 +74,9 @@ stream_checkout() {
 
 case "${1:-}" in
   test)
-    pull_dev_base
-    stream_checkout "${dev_base_image}" '
+    prepare_docker
+    pull_private_image "${node_image}"
+    stream_checkout "${node_image}" '
       tar -xf -
       corepack enable
       pnpm install --frozen-lockfile
@@ -64,7 +85,8 @@ case "${1:-}" in
     '
     ;;
   e2e)
-    docker pull "${cypress_image}"
+    prepare_docker
+    docker pull --quiet "${cypress_image}"
     stream_checkout "${cypress_image}" '
       tar -xf -
       corepack enable
@@ -74,8 +96,9 @@ case "${1:-}" in
     '
     ;;
   scan)
-    pull_dev_base
-    stream_checkout "${dev_base_image}" '
+    prepare_docker
+    pull_private_image "${scan_image}"
+    stream_checkout "${scan_image}" '
       tar -xf -
       printf "%s\n" \
         "(^|/)package-lock\\.json$" \
