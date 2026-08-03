@@ -21,8 +21,8 @@ Under [src/pages/](../src/pages/):
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
-- **`cool-people.md`** - primary-navigation links page celebrating people
-  whose work and communities have crossed paths with Kai.
+- **`cool-people.md`** - unlisted links page celebrating people whose work and
+  communities have crossed paths with Kai.
 - **`hiring.tsx`** - unlisted, noindex recruiting surface. The first mobile
   screen carries Kai's platform thesis and next actions, followed by the three
   proof routes, role shape, logistics, interview boundaries, and tenure context.

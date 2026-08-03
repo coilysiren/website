@@ -52,12 +52,4 @@ describe("Basic test workflow", () => {
       )
     })
   })
-
-  it("opens Cool People from the primary navigation", () => {
-    cy.visit("/")
-    cy.contains("a.nav-btn", "./cool").click()
-
-    cy.location("pathname").should("equal", "/cool-people/")
-    cy.contains("h2", "Cool People").should("be.visible")
-  })
 })
