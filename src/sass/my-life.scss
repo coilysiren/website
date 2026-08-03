@@ -153,47 +153,6 @@
   transform: rotate(3deg) translateY(2em);
 }
 
-.my-life-slide--identity {
-  grid-template-columns: minmax(14em, 0.58fr) minmax(32em, 1.42fr);
-  gap: clamp(2em, 5vw, 5em);
-  align-items: center;
-  padding: clamp(2em, 7vw, 7em);
-  background: linear-gradient(135deg, #54233f, #302346 52%, #173e35);
-}
-
-.my-life-identity-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.65em, 1.3vw, 1.2em);
-}
-
-.my-life-identity-card {
-  position: relative;
-  min-width: 0;
-  margin: 0;
-
-  img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    box-shadow: 0 1.2em 2.7em rgba(13, 8, 25, 0.36);
-  }
-}
-
-.my-life-identity-card--symbol {
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 49%;
-    height: auto;
-    aspect-ratio: auto;
-    object-fit: contain;
-    box-shadow: none;
-  }
-}
-
 .my-life-slide--technology,
 .my-life-slide--gaming {
   grid-template-columns: minmax(15em, 0.75fr) minmax(27em, 1.25fr);
@@ -551,7 +510,6 @@
 
   .my-life-slide,
   .my-life-slide--intro,
-  .my-life-slide--identity,
   .my-life-slide--technology,
   .my-life-slide--gaming,
   .my-life-slide--home,
@@ -561,17 +519,12 @@
   }
 
   .my-life-slide--intro,
-  .my-life-slide--identity,
   .my-life-slide--technology,
   .my-life-slide--gaming,
   .my-life-slide--home,
   .my-life-slide--favorites {
     gap: 2em;
     padding: 3em 1.4em;
-  }
-
-  .my-life-identity-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .my-life-slide__portrait {

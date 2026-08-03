@@ -108,36 +108,6 @@ const AboutPage = () => (
         </div>
       </header>
 
-      <article id="identity" className="my-life-slide my-life-slide--identity">
-        <div className="my-life-slide__copy">
-          <h2>
-            <a href="#identity">Identity</a>
-          </h2>
-          <ul className="my-life-slide__list">
-            <IconListItem icon="🏳️‍🌈" label="Lesbian" />
-            <IconListItem icon="🌎" label="Black" />
-            <IconListItem icon="♀️" label="Woman" />
-          </ul>
-        </div>
-        <div className="my-life-identity-grid">
-          <figure className="my-life-identity-card">
-            <img
-              src="/my-life/identity-lesbian-flag.svg"
-              alt="Lesbian pride flag"
-            />
-          </figure>
-          <figure className="my-life-identity-card">
-            <img
-              src="/my-life/identity-african-american-flag.svg"
-              alt="African-American flag in red, black, and green"
-            />
-          </figure>
-          <figure className="my-life-identity-card my-life-identity-card--symbol">
-            <img src="/my-life/identity-woman.svg" alt="Pink Venus symbol" />
-          </figure>
-        </div>
-      </article>
-
       <FavoriteSlide
         id="animals"
         title="Animals"
