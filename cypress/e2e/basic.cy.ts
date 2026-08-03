@@ -38,14 +38,14 @@ describe("Basic test workflow", () => {
     cy.get("h2").should("be.visible")
   })
 
-  it("opens the organization hub from the primary navigation", () => {
+  it("opens the project index from the primary navigation", () => {
     cy.viewport(390, 844)
     cy.visit("/")
-    cy.contains("a.nav-btn", "./orgs").click()
+    cy.contains("a.nav-btn", "./work").click()
 
-    cy.location("pathname").should("equal", "/orgs/")
-    cy.contains("h1", "The Coily Co orgs").should("be.visible")
-    cy.get(".org-card").should("have.length", 3).and("be.visible")
+    cy.location("pathname").should("equal", "/work/")
+    cy.contains("h1", "Systems that let agents move").should("be.visible")
+    cy.contains("h3", "Agent platform").should("be.visible")
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(
         document.documentElement.clientWidth
