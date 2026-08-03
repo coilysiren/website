@@ -47,7 +47,17 @@ describe("Basic test workflow", () => {
       .and("contain.text", "lights out")
       .and("contain.text", "flight deck green")
       .and("contain.text", "agents warded for an 8h+ run")
-    cy.contains("h3", "Agent platform").should("be.visible")
+    cy.contains(".portfolio-section--catalogue h2", "Active portfolio").should(
+      "be.visible"
+    )
+    cy.contains("Built to compose").should("not.exist")
+    cy.get(".project-group").should("have.length", 3)
+    cy.get(".project-group").eq(0).contains("h3", "Agent platform")
+    cy.get(".project-group").eq(1).contains("h3", "Infrastructure")
+    cy.get(".project-group").eq(2).contains("h3", "Product")
+    cy.contains(".project-card", "Many MCPs")
+      .find(".project-card-icon")
+      .should("have.length", 3)
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(
         document.documentElement.clientWidth

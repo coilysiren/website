@@ -16,7 +16,9 @@ Under [src/pages/](../src/pages/):
 
 - **`index.tsx`** - project-first home. It leads with Kai's platform thesis,
   presents agent-compose, Ward, and Ward MCP as a compose / execute / expose
-  system, then groups the active portfolio by kind instead of date.
+  system, then groups the active portfolio into agent platform,
+  infrastructure, and product cards. Repository cards retain their literal
+  Forgejo descriptions and topics, while the product group adds visual marks.
 - **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.

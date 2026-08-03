@@ -48,8 +48,7 @@ const IndexPage = () => {
         </section>
         <section className="portfolio-section portfolio-section--catalogue">
           <div className="section-heading">
-            <p className="section-label">Active portfolio</p>
-            <h2>Built to compose.</h2>
+            <h2>Active portfolio</h2>
           </div>
           <ProjectCatalogue condensed />
         </section>

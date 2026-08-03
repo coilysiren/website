@@ -15,7 +15,13 @@ export interface ProjectLink {
   description: string
   tags: string[]
   url: string
+  linkLabel?: string
+  icons?: ProjectIcon[]
 }
+
+export type ProjectIcon =
+  | { kind: "font-awesome"; className: string }
+  | { kind: "image"; src: string; alt: string }
 
 export interface ProjectGroup {
   title: string
@@ -61,89 +67,124 @@ export const projectGroups: ProjectGroup[] = [
   {
     title: "Agent platform",
     description:
-      "Policy, context, execution, model transport, and the operating layer that holds them together.",
+      "Context, governed execution, tool delivery, and the observable model path.",
     projects: [
       {
-        name: "cli-guard",
+        name: "acompose",
         description:
-          "Security framework for guarded command-line tools with scoped authority, validation, and audit logs.",
-        tags: ["automation", "command-line", "devops", "security"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/cli-guard",
+          "Context compiler that composes roles, personalities, skills, and tool inventories for AI-agent harnesses.",
+        tags: ["ai-agents", "automation", "llm", "mcp"],
+        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
       },
       {
-        name: "agentic-os",
+        name: "Ward",
+        description:
+          "Governed execution layer for unattended coding agents in isolated repository workflows.",
+        tags: ["ai-agents", "automation", "devops", "security"],
+        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward",
+      },
+      {
+        name: "Ward MCP",
+        description:
+          "MCP runtime that turns cli-guard policy files into guarded streamable HTTP services and container images.",
+        tags: ["automation", "mcp", "model-context-protocol", "security"],
+        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp",
+      },
+      {
+        name: "aproxy",
+        description:
+          "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
+        tags: ["ai-agents", "llm", "observability", "opentelemetry"],
+        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-proxy",
+      },
+    ],
+  },
+  {
+    title: "Infrastructure",
+    description:
+      "The operating and deployment layers beneath the agent platform.",
+    projects: [
+      {
+        name: "deck/aos",
         description:
           "Cross-platform agentic operating layer with dotfiles, skills, guarded tooling, and repository validators.",
         tags: ["ai-agents", "automation", "dotfiles", "security"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os",
       },
       {
-        name: "agent-proxy",
-        description:
-          "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
-        tags: ["ai-agents", "llm", "observability", "opentelemetry"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-proxy",
-      },
-      {
-        name: "agentic-os-hardware",
-        description:
-          "Hardware and local-LLM knowledge base with device profiles, benchmarks, and model rankings.",
-        tags: ["benchmark", "homelab", "llm", "machine-learning"],
-        url: "https://forgejo.coilysiren.me/coilyco-bridge/agentic-os-hardware",
-      },
-    ],
-  },
-  {
-    title: "Platform and operations",
-    description:
-      "The Kubernetes, infrastructure, architecture, and observability substrate underneath the agent work.",
-    projects: [
-      {
-        name: "infrastructure",
+        name: "deck/infra",
         description:
           "Infrastructure-as-code for Kai's hosts and Kubernetes homelab, including Ansible convergence and observability.",
         tags: ["ansible", "homelab", "infrastructure-as-code", "kubernetes"],
         url: "https://forgejo.coilysiren.me/coilyco-flight-deck/infrastructure",
       },
       {
-        name: "deploy",
+        name: "bridge/aosk",
+        description:
+          "Kai's agent operating context, skill catalog, fleet inventory, and cross-repository automation.",
+        tags: ["ai-agents", "automation", "devops", "mcp"],
+        url: "https://forgejo.coilysiren.me/coilyco-bridge/agentic-os-kai",
+      },
+      {
+        name: "bridge/deploy",
         description:
           "Kubernetes deployment monorepo for always-on services across Kai's homelab.",
         tags: ["devops", "helm", "homelab", "kubernetes"],
         url: "https://forgejo.coilysiren.me/coilyco-bridge/deploy",
       },
-      {
-        name: "atlas",
-        description:
-          "Static architecture site that visualizes repositories and their cross-org dependency graph.",
-        tags: ["data-visualization", "devops", "static-site"],
-        url: "https://forgejo.coilysiren.me/coilyco-bridge/atlas",
-      },
     ],
   },
   {
-    title: "Applied systems",
+    title: "Product",
     description:
-      "Real communities, game services, and playful surfaces where the platform has to meet actual use.",
+      "Things built with the platform for communities, games, and daily life.",
     projects: [
       {
-        name: "sirens-echo",
-        description: "Sirens Echo Community harness for the Sirens Discord.",
-        tags: ["community", "discord", "harness"],
-        url: "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
-      },
-      {
-        name: "eco-app",
+        name: "Eco App",
         description: "Eco MCP service - server, jobs, replay, telemetry.",
         tags: [],
         url: "https://forgejo.coilysiren.me/coilyco-gaming/eco-app",
+        icons: [{ kind: "font-awesome", className: "fa-solid fa-leaf" }],
       },
       {
-        name: "galaxy-gen",
+        name: "Galaxy Gen",
         description:
           "Procedural galaxy simulation - Rust compiled to WASM, rendered in the browser. Live at https://galaxy-gen.coilysiren.me",
         tags: ["procedural-galaxy-simulation", "rust-wasm"],
         url: "https://forgejo.coilysiren.me/coilyco-gaming/galaxy-gen",
+        icons: [{ kind: "font-awesome", className: "fa-solid fa-star" }],
+      },
+      {
+        name: "Sirens Echo",
+        description: "Sirens Echo Community harness for the Sirens Discord.",
+        tags: ["community", "discord", "harness"],
+        url: "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
+        icons: [{ kind: "font-awesome", className: "fa-solid fa-wave-square" }],
+      },
+      {
+        name: "Many MCPs",
+        description:
+          "Narrow agent interfaces for personal finance, private feeds, games, browsers, project work, and the systems around them.",
+        tags: ["lunch-money", "reddit", "steam", "+6 more"],
+        url: "/apps/#agent-integrations",
+        linkLabel: "Explore integrations →",
+        icons: [
+          {
+            kind: "image",
+            src: "/apps-icons/lunch-money.ico",
+            alt: "Lunch Money",
+          },
+          {
+            kind: "image",
+            src: "/apps-icons/reddit.svg",
+            alt: "Reddit",
+          },
+          {
+            kind: "image",
+            src: "/apps-icons/steam.svg",
+            alt: "Steam",
+          },
+        ],
       },
     ],
   },
