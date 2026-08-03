@@ -29,8 +29,8 @@ Under [src/pages/](../src/pages/):
 - **`work/`** - project catalogue plus focused Ward, agent-compose, and Ward
   MCP case studies. Each page names the problem, system shape, hard judgment,
   shipped evidence, current limit, source, and related platform layers.
-- **`writing.tsx`** - date-ordered long-form archive, separated from the
-  project-first home.
+- **`writing.tsx`** - date-ordered long-form archive linked from the
+  project-first home rather than the primary navigation.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.tsx`** - not-found.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
