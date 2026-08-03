@@ -61,12 +61,16 @@ Under [scripts/](../scripts/):
 
 Under `.forgejo/workflows/`:
 
-- **`config.yml`** - main test workflow. Runs the repo gate in the moving :release dev-base image through `ward exec`, plus the Cypress smoke job for browser coverage.
+- **`mirror-to-github.yml`** - trusted main and tag workflow. It streams the
+  checkout from the repository-scoped host runner into the dev-base and
+  Cypress images, then fast-forwards the tested Forgejo history to the
+  read-only `coilysiren/website` GitHub mirror without force-pushing.
 - **`publish-image.yml`** - trusted main-only publisher for the private,
   single-architecture staging image at
   `forgejo.coilysiren.me/coilysiren/website:<full-source-sha>`. The job uses a
   package-write credential and verifies the remote immutable manifest.
-- **`trufflehog.yml`** - offline secret scan on push, PR, cron, and manual dispatch.
+- **`trufflehog.yml`** - trusted offline secret scan on push, cron, and manual
+  dispatch through the repository-scoped host runner and dev-base image.
 
 `pulse-refresh.yml` stays on GitHub for now as a separate design decision. It has no Forgejo equivalent yet.
 

@@ -3,7 +3,6 @@ name: TruffleHog
 on:
   push:
     branches: [main]
-  pull_request:
   schedule:
     - cron: "0 12 * * 1"
   workflow_dispatch:
@@ -14,22 +13,13 @@ permissions:
 jobs:
   scan:
     name: Scan for secrets
-    runs-on: docker
-    container: forgejo.coilysiren.me/coilyco-flight-deck/agentic-os:release
+    runs-on: deploy
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
+          persist-credentials: false
       - name: TruffleHog (git, offline)
-        run: |
-          cat > /tmp/trufflehog-exclude <<'EOF'
-          (^|/)package-lock\.json$
-          (^|/)yarn\.lock$
-          (^|/)pnpm-lock\.yaml$
-          EOF
-          trufflehog git file://. \
-            --no-verification --no-update --fail \
-            --exclude-paths=/tmp/trufflehog-exclude \
-            --exclude-detectors=URI
+        run: bash scripts/ci/run-in-container.sh scan

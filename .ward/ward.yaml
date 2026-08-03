@@ -31,6 +31,9 @@ commands:
   image-publish-check:
     run: bash -n scripts/publish-image.sh
     description: Validate the trusted Forgejo OCI publisher shell contract.
+  ci-script-check:
+    run: bash -n scripts/ci/run-in-container.sh scripts/ci/mirror-to-github.sh scripts/publish-image.sh
+    description: Validate the trusted Forgejo CI and publishing shell contracts.
   serve:
     run: pnpm run serve
     description: gatsby serve on port 8000 (host 0.0.0.0). Serves the build/ output.
