@@ -16,7 +16,17 @@ const ProjectCatalogue = ({ condensed = false }: { condensed?: boolean }) => (
             <li key={project.name}>
               <a href={project.url}>
                 <span>{project.name}</span>
-                {!condensed && <p>{project.description}</p>}
+                <p>{project.description}</p>
+                {project.tags.length > 0 && (
+                  <span
+                    className="project-repo-tags"
+                    aria-label={`${project.name} repository tags`}
+                  >
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </span>
+                )}
                 <small>Source ↗</small>
               </a>
             </li>

@@ -339,9 +339,12 @@ $content-width: 1180px;
 
   .project-group a {
     display: flex;
-    min-height: 92px;
+    min-height: 240px;
     flex-direction: column;
-    justify-content: space-between;
+
+    small {
+      margin-top: auto;
+    }
   }
 }
 
@@ -453,6 +456,23 @@ $content-width: 1180px;
       margin: 0.65rem 0 1rem;
       color: #dfd9f0;
       line-height: 1.5;
+    }
+
+    .project-repo-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin: 0 0 1rem;
+
+      span {
+        padding: 0.25rem 0.4rem;
+        color: vars.$mid-blue;
+        font-family: vars.$font-family-mono;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        border: 1px solid rgba(vars.$light-purple, 0.35);
+      }
     }
 
     small {
