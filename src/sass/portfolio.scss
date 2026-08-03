@@ -641,68 +641,38 @@ $content-width: 1180px;
 }
 
 .hiring-page {
-  width: min(calc(100% - 2rem), $content-width);
-  margin: 0 auto;
-  padding-bottom: 6rem;
-  color: vars.$pure-white;
+  width: min(calc(100% - 2rem), 1080px);
+  margin: 1rem auto 10%;
+  padding: 0;
+  box-sizing: border-box;
+  color: vars.$ink;
+  background: vars.$paper;
+  border: 0.2rem solid vars.$dark-purple;
+  border-top: 1.3rem solid vars.$coral;
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
 }
 
-.hiring-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.5fr);
-  gap: clamp(2rem, 7vw, 7rem);
-  align-items: end;
-  padding: clamp(3rem, 8vw, 7rem) 0;
-
-  .eyebrow {
-    color: vars.$mid-blue;
-  }
-
-  h1 {
-    max-width: 18ch;
-    margin: 0;
-    font-size: clamp(2.7rem, 6.5vw, 5.8rem);
-    line-height: 0.98;
-    letter-spacing: -0.055em;
-  }
-}
-
-.hiring-hero__lede {
-  max-width: 63ch;
-  color: #dfd9f0;
-  font-size: 1.12rem;
-  line-height: 1.65;
-}
-
-.hiring-hero__proof {
-  padding: 1.5rem;
-  color: vars.$deep-ink;
-  background: vars.$light-blue;
-  box-shadow: 0.8rem 0.8rem 0 vars.$coral;
+.hiring-header {
+  padding: 2rem clamp(1.5rem, 5vw, 3.5rem);
+  background: vars.$off-white;
 
   .section-label {
+    color: vars.$dark-purple;
+  }
+
+  > p:last-child {
+    max-width: 62ch;
+    margin: 0;
     color: vars.$mid-purple;
-  }
-
-  strong {
-    font-size: 2rem;
-  }
-
-  p:not(.section-label) {
     line-height: 1.55;
-  }
-
-  a {
-    color: vars.$deep-ink;
-    font-family: vars.$font-family-mono;
-    font-weight: 700;
   }
 }
 
 .hiring-section {
   width: auto;
   margin: 0;
-  padding: clamp(2rem, 6vw, 5rem);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 6vw, 5rem);
   color: vars.$ink;
   background: vars.$paper;
   border: 0;
@@ -721,120 +691,163 @@ $content-width: 1180px;
   }
 }
 
-.hiring-section--system {
-  border-top: 0.7rem solid vars.$coral;
-}
-
-.hiring-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-
-  article {
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    padding: 1.25rem;
-    background: vars.$pure-white;
-    border: 1px solid rgba(vars.$mid-purple, 0.2);
-
-    h3 {
-      margin: 0;
-      font-size: 1.4rem;
-    }
-
-    > p:not(.section-label) {
-      color: vars.$mid-purple;
-      line-height: 1.55;
-    }
-
-    > div {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-
-    a {
-      color: vars.$mid-purple;
-      font-family: vars.$font-family-mono;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
+.hiring-section--reference {
+  h1 {
+    max-width: 14ch;
+    margin: 0;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.055em;
   }
 }
 
-.hiring-section--fit,
-.hiring-section--details {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
-  gap: clamp(2rem, 7vw, 7rem);
+.hiring-lede {
+  max-width: 67ch;
+  margin: 1.5rem 0 0;
+  color: vars.$mid-purple;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.hiring-reference-block {
+  max-width: 78ch;
+
+  + .hiring-reference-block {
+    margin-top: clamp(3rem, 7vw, 5rem);
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    padding-top: 1rem;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    border-top: 3px solid vars.$light-blue;
+  }
+
+  > p:not(.hiring-lede) {
+    color: vars.$mid-purple;
+    line-height: 1.7;
+  }
+}
+
+.hiring-facts,
+.hiring-bullets,
+.hiring-checklist {
+  margin: 1.5rem 0 0;
 }
 
 .hiring-facts {
-  margin: 0;
   padding: 0;
   list-style: none;
 
   li {
-    display: grid;
-    grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
-    gap: 1rem;
     padding: 1.2rem 0;
     border-top: 1px solid rgba(vars.$mid-purple, 0.2);
   }
 
+  strong {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
   span {
+    display: block;
     color: vars.$mid-purple;
     line-height: 1.55;
   }
 }
 
-.hiring-detail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  background: rgba(vars.$mid-purple, 0.2);
-  border: 1px solid rgba(vars.$mid-purple, 0.2);
+.hiring-bullets,
+.hiring-checklist,
+.hiring-interview-copy ul {
+  padding-left: 1.25rem;
 
-  article {
-    padding: 1.25rem;
-    background: vars.$pure-white;
+  li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+    line-height: 1.55;
   }
 
-  h3 {
-    margin-top: 0;
+  li::marker {
+    color: vars.$coral;
   }
+}
 
-  p {
-    color: vars.$mid-purple;
-    line-height: 1.6;
+.hiring-checklist {
+  columns: 2 16rem;
+
+  li {
+    break-inside: avoid;
   }
 }
 
 .hiring-section--tenure {
-  color: vars.$deep-ink;
-  background: vars.$coral;
+  color: vars.$ink;
+  background: #f5e7e0;
+  box-shadow: inset 0.55rem 0 0 vars.$coral;
 
-  .section-label,
-  p {
-    color: vars.$deep-ink;
+  .section-label {
+    color: vars.$mid-purple;
+  }
+
+  h2,
+  p:not(.section-label) {
+    max-width: 74ch;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
   }
 
   p:not(.section-label) {
-    max-width: 70ch;
+    color: #51475f;
     line-height: 1.7;
   }
+}
+
+.hiring-section--interview {
+  color: vars.$pure-white;
+  background: vars.$mid-purple;
+
+  h2 {
+    max-width: 16ch;
+  }
+
+  .section-label {
+    color: vars.$light-blue;
+  }
+
+  h3 {
+    margin: 2.5rem 0 0.7rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(vars.$pure-white, 0.22);
+  }
+
+  p,
+  li {
+    color: #e7e2f0;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  li::marker {
+    color: vars.$light-blue;
+  }
+}
+
+.hiring-interview-copy {
+  max-width: 74ch;
 }
 
 .hiring-contact {
   display: flex;
   gap: 2rem;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: clamp(2rem, 6vw, 4rem);
-  background: vars.$mid-purple;
+  margin-top: clamp(3rem, 8vw, 5rem);
+  padding-top: 2rem;
+  border-top: 3px solid vars.$coral;
 
   h2 {
     max-width: 18ch;
@@ -843,8 +856,8 @@ $content-width: 1180px;
     line-height: 1.05;
   }
 
-  .section-label {
-    color: vars.$light-blue;
+  .button-row {
+    flex: none;
   }
 }
 
@@ -926,32 +939,8 @@ $content-width: 1180px;
     }
   }
 
-  .hiring-hero,
-  .hiring-section--fit,
-  .hiring-section--details {
-    grid-template-columns: 1fr;
-  }
-
-  .hiring-hero {
-    padding-top: 2.5rem;
-
-    h1 {
-      font-size: clamp(2.55rem, 12.5vw, 3.6rem);
-    }
-  }
-
-  .hiring-hero__proof {
-    display: none;
-  }
-
-  .hiring-proof-grid,
-  .hiring-detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hiring-facts li {
-    grid-template-columns: 1fr;
-    gap: 0.45rem;
+  .hiring-page {
+    width: 100%;
   }
 
   .hiring-contact {

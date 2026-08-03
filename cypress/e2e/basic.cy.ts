@@ -19,17 +19,28 @@ describe("Basic test workflow", () => {
       )
   })
 
-  it("keeps the hiring thesis and next action in the mobile entry view", () => {
+  it("keeps the hiring page a project-free information reference", () => {
     cy.viewport(390, 844)
     cy.visit("/hiring/")
 
     cy.contains(".nav-links a", "./hiring")
       .should("be.visible")
       .and("have.attr", "href", "/hiring/")
-    cy.contains("h1", "I build the governed platform layer").should(
+    cy.get(".hiring-page")
+      .should("be.visible")
+      .and("have.css", "border-top-color", "rgb(220, 143, 114)")
+    cy.contains("h1", "Where I do my best work").should("be.visible")
+    cy.contains("No Bay Area office is a hard stop").should("be.visible")
+    cy.contains("My base-compensation floor is $170K").should("be.visible")
+    cy.contains("h2", "I want the next chapter").should("be.visible")
+    cy.contains("I do not do async-proctored puzzle coding").should(
       "be.visible"
     )
-    cy.contains("a", "Read the resume").should("be.visible")
+    cy.contains("a", "Resume").should("be.visible")
+    cy.get(
+      ".hiring-hero, .hiring-proof-grid, .platform-diagram, .hiring-page table"
+    ).should("not.exist")
+    cy.get(".hiring-page").should("not.contain.text", "Ward")
     cy.get('meta[name="robots"]').should(
       "have.attr",
       "content",

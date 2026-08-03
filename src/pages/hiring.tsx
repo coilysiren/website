@@ -2,13 +2,11 @@ import { Link } from "gatsby"
 import React from "react"
 import DefaultHead from "../components/default-head"
 import Layout from "../components/layout"
-import PlatformDiagram from "../components/platform-diagram"
-import { featuredProjects } from "../data/projects"
 
 export const Head = () => (
   <DefaultHead
     title="Hiring | Kai Siren"
-    description="Kai Siren builds the governed platform layer that lets engineering teams develop, ship, and operate agentic systems safely."
+    description="A reference for recruiters on Kai Siren's preferred platform-engineering work, practical fit, interview boundaries, and tenure."
     image="/og/hiring.png"
     canonical="/hiring/"
   />
@@ -17,143 +15,164 @@ export const Head = () => (
 const HiringPage = () => (
   <Layout>
     <article className="hiring-page">
-      <header className="hiring-hero">
-        <div>
-          <p className="eyebrow">If you are recruiting me, start here</p>
-          <h1>
-            I build the governed platform layer that lets engineering teams
-            develop, ship, and operate agentic systems safely.
-          </h1>
-          <p className="hiring-hero__lede">
-            I am a Staff-level platform engineer in the East Bay. My strongest
-            work sits where developer infrastructure, agent orchestration,
-            observability, and production operations meet.
-          </p>
-          <div className="button-row">
-            <Link className="button button--primary" to="/resume/">
-              Read the resume
-            </Link>
-            <a
-              className="button button--quiet"
-              href="mailto:coilysiren@gmail.com"
-            >
-              Email me
-            </a>
-          </div>
-        </div>
-        <aside className="hiring-hero__proof">
-          <p className="section-label">Strongest proof</p>
-          <strong>Ward</strong>
-          <p>
-            Governed unattended repository execution in fresh clones and
-            least-access containers, with fixed workflows and durable evidence.
-          </p>
-          <a href="https://forgejo.coilysiren.me/coilyco-flight-deck/ward">
-            Read the source →
-          </a>
-        </aside>
+      <header className="hiring-header">
+        <p className="section-label">Hiring</p>
+        <p>
+          If you are recruiting me, start here. This is a long-running
+          reference, not a status update. It covers where I do my best work, the
+          practical shape of a role I can accept, and the interviews I am open
+          to.
+        </p>
       </header>
 
-      <section className="hiring-section hiring-section--system">
-        <div className="section-heading">
-          <p className="section-label">The system behind the claim</p>
-          <h2>Context, execution, and tools stay separate on purpose.</h2>
-          <p>
-            These projects are useful independently. Together, they show the
-            platform boundary from what an agent knows to what it can do.
+      <section className="hiring-section hiring-section--reference">
+        <div className="hiring-reference-block">
+          <h1>Where I do my best work</h1>
+          <p className="hiring-lede">
+            I am a senior platform engineer, more than ten years in. Platform
+            engineer is the clearest-signal title. DevOps is the honest
+            fallback. Actual authority and scope matter more than title
+            prestige.
           </p>
+          <ul className="hiring-facts">
+            <li>
+              <strong>Systems integration</strong>
+              <span>Across cloud, observability, and developer tooling.</span>
+            </li>
+            <li>
+              <strong>Developer experience</strong>
+              <span>
+                Internal platforms and developer tooling as the actual product
+                of the role.
+              </span>
+            </li>
+            <li>
+              <strong>Agent-first infrastructure</strong>
+              <span>
+                MCP and tool interfaces, orchestration, evaluation,
+                observability, safety, and debugging for agent consumers.
+              </span>
+            </li>
+            <li>
+              <strong>Production platforms</strong>
+              <span>
+                Reliability, incident response, rollout boundaries, and
+                long-term operability.
+              </span>
+            </li>
+            <li>
+              <strong>Cost to serve</strong>
+              <span>
+                Resource accounting and cost work across cloud environments.
+              </span>
+            </li>
+            <li>
+              <strong>Platform-team interfaces</strong>
+              <span>
+                Cross-organization work that makes ownership and handoffs
+                explicit.
+              </span>
+            </li>
+            <li>
+              <strong>Bounded delivery</strong>
+              <span>
+                Contract-shaped and embedded missions with real customer
+                problems, explicit handoffs, and periodic resets.
+              </span>
+            </li>
+            <li>
+              <strong>Meaningful ownership</strong>
+              <span>
+                Broad platform territory, especially early-company scope or a
+                first-platform-hire charter.
+              </span>
+            </li>
+          </ul>
         </div>
-        <PlatformDiagram />
-        <div className="hiring-proof-grid">
-          {featuredProjects.map((project) => (
-            <article key={project.slug}>
-              <p className="section-label">{project.stage}</p>
-              <h3>{project.name}</h3>
-              <p>{project.summary}</p>
-              <div>
-                <a href={project.sourceUrl}>Source ↗</a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className="hiring-section hiring-section--fit">
-        <div>
-          <p className="section-label">Where I do my best work</p>
-          <h2>Shared technical territory with real product ownership.</h2>
+        <div className="hiring-reference-block">
+          <h2>Role shape</h2>
+          <p>
+            Senior is a good fit. Staff or Lead can also fit when the charter
+            supports real authority across a platform or developer-tooling
+            surface.
+          </p>
+          <ul className="hiring-bullets">
+            <li>
+              A strong platform charter with some SRE or product responsibility
+              can fit well.
+            </li>
+            <li>
+              Primarily SRE, operations, or infrastructure maintenance is less
+              aligned.
+            </li>
+            <li>Backend-product work as the actual role is a hard no.</li>
+            <li>
+              Generic AI branding does not add much unless agentic developer
+              leverage is part of the work.
+            </li>
+          </ul>
         </div>
-        <ul className="hiring-facts">
-          <li>
-            <strong>Developer infrastructure</strong>
-            <span>
-              Internal platforms, agent-development systems, and tools that make
-              other engineers faster.
-            </span>
-          </li>
-          <li>
-            <strong>Systems integration</strong>
-            <span>
-              Cloud, Kubernetes, model APIs, MCP, observability, and the
-              contracts between them.
-            </span>
-          </li>
-          <li>
-            <strong>Production judgment</strong>
-            <span>
-              Reliability, incident response, rollout boundaries, and long-term
-              operability.
-            </span>
-          </li>
-          <li>
-            <strong>Staff-level ownership</strong>
-            <span>
-              Cross-repository architecture, developer enablement, and a broad
-              platform surface with explicit handoffs.
-            </span>
-          </li>
-        </ul>
-      </section>
 
-      <section className="hiring-section hiring-section--details">
-        <div>
-          <p className="section-label">Practical fit</p>
-          <h2>Useful context before a first conversation.</h2>
+        <div className="hiring-reference-block">
+          <h2>Practical fit</h2>
+          <ul className="hiring-facts">
+            <li>
+              <strong>Location and arrangement</strong>
+              <span>
+                I am based in the East Bay. I prefer a remote-compatible role
+                with a real Bay Area office, or a comfortable Bay Area hybrid
+                arrangement. No Bay Area office is a hard stop.
+              </span>
+            </li>
+            <li>
+              <strong>Employment</strong>
+              <span>
+                Full-time is the default. Direct independent contracting through
+                my own business, consultancy work, and embedded delivery can
+                fit. Staffing-agency W-2 contracts, contract-to-hire, and
+                agency-mediated C2C are not a fit.
+              </span>
+            </li>
+            <li>
+              <strong>Compensation</strong>
+              <span>
+                My base-compensation floor is $170K, with $220K to $250K the
+                strongest range. Compensation is not load-bearing above the
+                floor.
+              </span>
+            </li>
+            <li>
+              <strong>Working environment</strong>
+              <span>
+                Manager quality, autonomy, team composition, inclusion,
+                communication style, on-call expectations, overtime, and room to
+                work without masking all matter.
+              </span>
+            </li>
+            <li>
+              <strong>Values</strong>
+              <span>
+                A technically strong role can still be the wrong fit when the
+                product direction conflicts with my values.
+              </span>
+            </li>
+          </ul>
         </div>
-        <div className="hiring-detail-grid">
-          <article>
-            <h3>Location and arrangement</h3>
-            <p>
-              I am based in the East Bay and prefer a remote-compatible role
-              with a real Bay Area office, or a comfortable Bay Area hybrid
-              arrangement. Full-time is the default. Direct independent
-              contracting through my own business can also fit.
-            </p>
-          </article>
-          <article>
-            <h3>Level and scope</h3>
-            <p>
-              Senior is a good fit. Staff or Lead fits when the charter carries
-              real authority across a platform or developer-tooling surface.
-              Actual ownership matters more than title prestige.
-            </p>
-          </article>
-          <article>
-            <h3>Interview format</h3>
-            <p>
-              I do strong work in system design, architecture deep-dives,
-              realistic take-homes, and paired debugging on real code. I do not
-              pursue async-proctored puzzle coding.
-            </p>
-          </article>
-          <article>
-            <h3>Compensation</h3>
-            <p>
-              My base-compensation floor is $170K, with $220K to $250K the
-              strongest range. Role shape, manager quality, autonomy, values,
-              and working conditions still decide the fit.
-            </p>
-          </article>
+
+        <div className="hiring-reference-block">
+          <h2>Useful context before a first conversation</h2>
+          <p>A useful first message includes:</p>
+          <ul className="hiring-checklist">
+            <li>Office location and expected cadence</li>
+            <li>Base-compensation band</li>
+            <li>The actual role charter and ownership boundaries</li>
+            <li>Manager and team shape</li>
+            <li>On-call and overtime expectations</li>
+            <li>Technical environment, product, and customer</li>
+            <li>Company stage and interview format</li>
+            <li>Why my experience is specifically relevant</li>
+          </ul>
         </div>
       </section>
 
@@ -161,31 +180,74 @@ const HiringPage = () => (
         <p className="section-label">On tenure</p>
         <h2>I want the next chapter to meet or exceed my best fit.</h2>
         <p>
-          My early career includes small companies, nonprofits, and contracts
-          that ended for structural reasons. Later moves cluster around major
-          stress, values conflicts, and one role-fit decision I would handle
-          differently. Textio is my staying-power benchmark. I am increasingly
-          selective because I want the next chapter to reach that bar.
+          My resume reads short and I want to frame it up front, since it always
+          comes up. The first several years of my career were structural. Small
+          companies, nonprofits, and contracts ended for financial reasons
+          rather than personal ones.
+        </p>
+        <p>
+          The voluntary moves since cluster around three forces: high-stress
+          events I did not recover from in time, values conflicts that emerged
+          mid-tenure, and one role-fit miscall I would replay differently. My
+          longest stint is my staying-power benchmark. I am increasingly
+          selective because I want the next chapter to meet or exceed that fit,
+          not because I am trying to talk past the pattern. I am happy to walk
+          through any specific transition once we are in conversation.
         </p>
       </section>
 
-      <aside className="hiring-contact">
-        <div>
-          <p className="section-label">Next action</p>
-          <h2>Send the role, the team shape, and the actual charter.</h2>
+      <section className="hiring-section hiring-section--interview">
+        <div className="hiring-interview-copy">
+          <p className="section-label">Interview format</p>
+          <h2>Use the work the role actually requires.</h2>
+          <p>
+            Senior platform work is systems integration, reliability, cost, and
+            organizational interface work. There is plenty of technical depth
+            available in formats that test those skills directly.
+          </p>
+
+          <h3>Good ways to evaluate me</h3>
+          <ul>
+            <li>System design</li>
+            <li>Architecture deep-dives</li>
+            <li>A take-home with a real-codebase prompt</li>
+            <li>Paired debugging on actual code</li>
+          </ul>
+
+          <h3>Hard pass</h3>
+          <p>
+            I do not do async-proctored puzzle coding. That means a webcam or
+            screen share, an automated proctor, a hard time limit, and no human
+            interviewer present. This is a hard stop regardless of where the
+            test sits in the loop.
+          </p>
+
+          <h3>Softer no</h3>
+          <p>
+            Live puzzle coding with a human interviewer present is a softer no.
+            I will sometimes do it when the rest of the loop is strong, but it
+            is not where I show my best work.
+          </p>
         </div>
-        <div className="button-row">
-          <a
-            className="button button--primary"
-            href="mailto:coilysiren@gmail.com"
-          >
-            coilysiren@gmail.com
-          </a>
-          <Link className="button button--quiet" to="/resume/">
-            Resume
-          </Link>
-        </div>
-      </aside>
+
+        <footer className="hiring-contact">
+          <div>
+            <p className="section-label">Next action</p>
+            <h2>Send the role, the team shape, and the actual charter.</h2>
+          </div>
+          <div className="button-row">
+            <a
+              className="button button--primary"
+              href="mailto:coilysiren@gmail.com"
+            >
+              coilysiren@gmail.com
+            </a>
+            <Link className="button button--quiet" to="/resume/">
+              Resume
+            </Link>
+          </div>
+        </footer>
+      </section>
     </article>
   </Layout>
 )
