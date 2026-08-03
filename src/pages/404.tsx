@@ -36,14 +36,6 @@ const NotFoundPage = () => (
             The map is intact, but this address does not resolve. Choose a known
             route and keep exploring.
           </p>
-          <div className="button-row">
-            <Link className="button button--primary" to="/">
-              Go to the homepage
-            </Link>
-            <Link className="button button--quiet" to="/writing/">
-              Browse the writing
-            </Link>
-          </div>
         </div>
         <div className="not-found-signal" aria-hidden="true">
           <div className="not-found-signal__panel">

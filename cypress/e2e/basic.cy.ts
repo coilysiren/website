@@ -211,10 +211,8 @@ describe("Basic test workflow", () => {
     cy.get(".not-found-page").should("be.visible")
     cy.contains("h1", "This path ends here.").should("be.visible")
     cy.get(".not-found-signal__code").should("have.text", "404")
-    cy.contains("a", "Go to the homepage")
-      .should("be.visible")
-      .and("have.attr", "href", "/")
     cy.get(".not-found-route-list a").should("have.length", 3)
+    cy.get('.not-found-route-list a[href="/"]').should("be.visible")
     cy.get('meta[name="robots"]').should(
       "have.attr",
       "content",
