@@ -6,6 +6,8 @@ if [ -z "${PAT:-}" ]; then
   exit 0
 fi
 
+git fetch origin main --tags
+
 if [ -n "${FORGEJO_EGRESS_PROXY:-}" ]; then
   export HTTP_PROXY="${FORGEJO_EGRESS_PROXY}"
   export HTTPS_PROXY="${FORGEJO_EGRESS_PROXY}"
@@ -14,7 +16,6 @@ if [ -n "${FORGEJO_EGRESS_PROXY:-}" ]; then
 fi
 
 git remote add github "https://x-access-token:${PAT}@github.com/coilysiren/website.git"
-git fetch origin main --tags
 if ! git push github refs/remotes/origin/main:refs/heads/main; then
   echo "::error::mirror-to-github: fast-forward push to GitHub main rejected." >&2
   echo "GitHub main has diverged from Forgejo main or the PAT lost push access." >&2

@@ -55,6 +55,7 @@ stream_checkout() {
     -cf - . \
     | docker run --rm -i \
       --env CI=true \
+      --env CYPRESS_INSTALL_BINARY=0 \
       --env FORGEJO_ACTIONS=true \
       --env GITHUB_ACTIONS=true \
       --env GITHUB_REF="${GITHUB_REF:-}" \
@@ -63,10 +64,10 @@ stream_checkout() {
       --env GITHUB_WORKSPACE=/workspace \
       --env HTTP_PROXY="${FORGEJO_EGRESS_PROXY}" \
       --env HTTPS_PROXY="${FORGEJO_EGRESS_PROXY}" \
-      --env NO_PROXY="127.0.0.1,localhost" \
+      --env NO_PROXY="127.0.0.1,localhost,forgejo.coilysiren.me" \
       --env http_proxy="${FORGEJO_EGRESS_PROXY}" \
       --env https_proxy="${FORGEJO_EGRESS_PROXY}" \
-      --env no_proxy="127.0.0.1,localhost" \
+      --env no_proxy="127.0.0.1,localhost,forgejo.coilysiren.me" \
       --workdir /workspace \
       --entrypoint bash \
       "${image}" -ceu "${command}"
@@ -80,6 +81,7 @@ case "${1:-}" in
       tar -xf -
       corepack enable
       pnpm install --frozen-lockfile
+      git fetch origin
       ward exec build
       ward exec test-quick
     '
