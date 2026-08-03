@@ -39,6 +39,24 @@ $content-width: 1180px;
   line-height: 1.6;
 }
 
+.not-found-scroll-cue {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin: 1.5rem 0 0;
+  color: vars.$light-blue;
+  font-family: vars.$font-family-mono;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  span {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+}
+
 .not-found-signal {
   position: relative;
   display: grid;

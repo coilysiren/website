@@ -36,6 +36,9 @@ const NotFoundPage = () => (
             The map is intact, but this address does not resolve. Choose a known
             route and keep exploring.
           </p>
+          <p className="not-found-scroll-cue">
+            Recovery routes below <span aria-hidden="true">↓</span>
+          </p>
         </div>
         <div className="not-found-signal" aria-hidden="true">
           <div className="not-found-signal__panel">

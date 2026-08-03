@@ -210,6 +210,9 @@ describe("Basic test workflow", () => {
     cy.visit(missingRoute, { failOnStatusCode: false })
     cy.get(".not-found-page").should("be.visible")
     cy.contains("h1", "This path ends here.").should("be.visible")
+    cy.contains(".not-found-scroll-cue", "Recovery routes below").should(
+      "be.visible"
+    )
     cy.get(".not-found-signal__code").should("have.text", "404")
     cy.get(".not-found-route-list a").should("have.length", 3)
     cy.get('.not-found-route-list a[href="/"]').should("be.visible")
