@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import Closer from "../components/closer"
 import DefaultHead from "../components/default-head"
 import Layout from "../components/layout"
@@ -88,10 +87,6 @@ const AboutPage = () => (
             fabrication, and side projects. This is a visual tour of the things
             that make up my life.
           </p>
-          <nav className="my-life-intro__links" aria-label="About links">
-            <Link to="/resume/">Resume</Link>
-            <Link to="/pulse/">Pulse</Link>
-          </nav>
         </div>
       </header>
 

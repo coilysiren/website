@@ -78,6 +78,7 @@ describe("Basic test workflow", () => {
     cy.contains("Staff-level").should("not.exist")
     cy.contains("systems other engineers rely on").should("not.exist")
     cy.contains("I live in the East Bay").should("be.visible")
+    cy.get(".my-life-intro__links").should("not.exist")
     cy.get(".my-life-slide--intro img")
       .should("have.length", 1)
       .and("have.attr", "src", "/my-life/16-car-headphones-sunglasses.jpg")
