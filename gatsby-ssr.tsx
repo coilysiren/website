@@ -16,13 +16,16 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   setHtmlAttributes,
   setHeadComponents,
 }) => {
+  const robots =
+    pathname === "/hiring/"
+      ? "noindex, nofollow"
+      : pathname === "/404/" || pathname === "/404.html"
+        ? "noindex, follow"
+        : "follow, index"
+
   setHtmlAttributes({ lang: "en" })
   setHeadComponents([
-    <meta
-      key="robots"
-      name="robots"
-      content={pathname === "/hiring/" ? "noindex, nofollow" : "follow, index"}
-    />,
+    <meta key="robots" name="robots" content={robots} />,
     <link
       key="rss"
       rel="alternate"

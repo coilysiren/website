@@ -36,7 +36,9 @@ Under [src/pages/](../src/pages/):
 - **`writing.tsx`** - date-ordered long-form archive linked from the
   project-first home rather than the primary navigation.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
-- **`404.tsx`** - not-found.
+- **`404.tsx`** - a fully designed not-found recovery page that preserves the
+  real 404 response while carrying the homepage's visual system into clear
+  routes back to the portfolio, writing archive, and About page.
 - **`posts/`** - long-form posts (cloud, Terraform, Golang notes, code janitor, permissions, stochastic design, etc.).
 ## Components
 

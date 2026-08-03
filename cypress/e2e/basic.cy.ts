@@ -198,4 +198,32 @@ describe("Basic test workflow", () => {
     cy.get('a[href="/apps/"]').should("not.exist")
     cy.get('a[href="/pulse/"]').should("not.exist")
   })
+
+  it("gives missing routes a designed recovery page", () => {
+    const missingRoute = "/definitely-not-here/"
+
+    cy.request({ url: missingRoute, failOnStatusCode: false })
+      .its("status")
+      .should("eq", 404)
+
+    cy.viewport(390, 844)
+    cy.visit(missingRoute, { failOnStatusCode: false })
+    cy.get(".not-found-page").should("be.visible")
+    cy.contains("h1", "This path ends here.").should("be.visible")
+    cy.get(".not-found-signal__code").should("have.text", "404")
+    cy.contains("a", "Go to the homepage")
+      .should("be.visible")
+      .and("have.attr", "href", "/")
+    cy.get(".not-found-route-list a").should("have.length", 3)
+    cy.get('meta[name="robots"]').should(
+      "have.attr",
+      "content",
+      "noindex, follow"
+    )
+    cy.document().then((document) => {
+      expect(document.documentElement.scrollWidth).to.be.at.most(
+        document.documentElement.clientWidth
+      )
+    })
+  })
 })
