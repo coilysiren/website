@@ -61,12 +61,6 @@ const HiringPage = () => (
               </span>
             </li>
             <li>
-              <strong>Cost to serve</strong>
-              <span>
-                Resource accounting and cost work across cloud environments.
-              </span>
-            </li>
-            <li>
               <strong>Platform-team interfaces</strong>
               <span>
                 Cross-organization work that makes ownership and handoffs

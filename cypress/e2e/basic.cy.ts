@@ -41,6 +41,7 @@ describe("Basic test workflow", () => {
     cy.contains("h1", "Where I do my best work").should("be.visible")
     cy.contains("No Bay Area office is a hard stop").should("be.visible")
     cy.contains("My base-compensation floor is $170K").should("be.visible")
+    cy.contains("Cost to serve").should("not.exist")
     cy.contains("h2", "I want the next chapter").should("be.visible")
     cy.contains("I do not do async-proctored puzzle coding").should(
       "be.visible"
