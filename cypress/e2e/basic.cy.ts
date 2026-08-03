@@ -84,6 +84,13 @@ describe("Basic test workflow", () => {
       .find(".project-card-icon")
       .should("have.length", 3)
     cy.contains(".project-card", "Many MCPs").find("a").should("not.exist")
+    cy.contains("Notes from the work.").should("not.exist")
+    cy.contains("Working together").should("not.exist")
+    cy.get("footer")
+      .should("contain.text", "Kai Siren")
+      .and("contain.text", "Platform Engineer")
+      .and("not.contain.text", "Lynn Conway")
+    cy.get("footer").find("a, img").should("not.exist")
     cy.document().then((document) => {
       expect(document.documentElement.scrollWidth).to.be.at.most(
         document.documentElement.clientWidth

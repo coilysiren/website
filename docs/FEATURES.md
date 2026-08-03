@@ -20,7 +20,8 @@ Under [src/pages/](../src/pages/):
   infrastructure, and product cards. Repository cards retain their literal
   Forgejo descriptions and topics, while the product group adds visual marks.
   The static Many MCPs card uses locally vendored Lunch Money, Reddit, and Steam
-  marks without requiring a separate catalogue page.
+  marks without requiring a separate catalogue page. The homepage ends after
+  the active portfolio rather than repeating Writing and hiring calls to action.
 - **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.
@@ -42,6 +43,9 @@ Under [src/pages/](../src/pages/):
 ## Components
 
 React/TS components under [src/components/](../src/components/): `hero`, `header`, `footer`, `nav`, `layout`, `blog-list`, `bsky`, `closer`, `content-block`, `default-head`, `error`, `links`, `page-context`, `site-metadata`.
+
+The site-wide footer is a minimal identity line containing only Kai's public
+name and role.
 
 ## Data-fetch and build scripts
 

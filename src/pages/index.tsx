@@ -3,7 +3,6 @@ import Hero from "../components/hero"
 import Layout from "../components/layout"
 import DefaultHead from "../components/default-head"
 import "../sass/index.scss"
-import { Link } from "gatsby"
 import PlatformDiagram from "../components/platform-diagram"
 import ProjectCatalogue from "../components/project-catalogue"
 import { featuredProjects } from "../data/projects"
@@ -51,27 +50,6 @@ const IndexPage = () => {
             <h2>Active portfolio</h2>
           </div>
           <ProjectCatalogue condensed />
-        </section>
-        <section className="portfolio-section portfolio-section--split">
-          <div>
-            <p className="section-label">Writing</p>
-            <h2>Notes from the work.</h2>
-            <Link className="text-link" to="/writing/">
-              Browse the writing →
-            </Link>
-          </div>
-          <div className="portfolio-cta">
-            <p className="section-label">Working together</p>
-            <h2>The compact version.</h2>
-            <div className="button-row">
-              <Link className="button button--primary" to="/resume/">
-                Read the resume
-              </Link>
-              <Link className="button button--quiet" to="/hiring/">
-                Hiring notes
-              </Link>
-            </div>
-          </div>
         </section>
       </div>
     </Layout>

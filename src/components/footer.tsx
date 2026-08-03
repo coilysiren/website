@@ -1,36 +1,13 @@
 import React from "react"
-import sparkles from "../images/sparkles-twitter.svg"
-import { usePageMeta } from "./page-context"
 import "../sass/footer.scss"
 
-const REPO_URL = "https://forgejo.coilysiren.me/coilysiren/website"
-
 function Footer() {
-  const { sourcePath } = usePageMeta()
   return (
-    <footer>
-      <div className="copyright-footer">
-        <img src={sparkles} alt="Three sparkles colored in purple" />
-        <h3>Copyright {new Date().getFullYear()} Kai Siren (Lynn Conway)</h3>
-        <img src={sparkles} alt="Three sparkles colored in purple" />
-      </div>
-      <h4>
-        With contributions from{" "}
-        <a href="https://github.com/kefimochi">Kate Efimova</a>,{" "}
-        <a href="https://github.com/slimekat">Sadie Lee</a>,{" "}
-        <a href="https://github.com/komalali">Komal Ali</a>
-      </h4>
-      {sourcePath && (
-        <h4>
-          <a href={`${REPO_URL}/blob/main/${sourcePath}`}>
-            View source on Forgejo
-          </a>
-        </h4>
-      )}
-      <h4>
-        OAuth app <code>coilysiren-personal-gmail</code>:{" "}
-        <a href="/coilysiren-personal-gmail-privacy/">privacy policy</a>
-      </h4>
+    <footer className="site-footer">
+      <p>
+        <strong>Kai Siren</strong>
+        <span>Platform Engineer</span>
+      </p>
     </footer>
   )
 }
