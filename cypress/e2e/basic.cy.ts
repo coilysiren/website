@@ -45,6 +45,10 @@ describe("Basic test workflow", () => {
     cy.viewport(390, 844)
     cy.visit("/")
 
+    cy.get(".portfolio-hero h1").should(
+      "have.text",
+      "I build agentic engineering platforms"
+    )
     cy.contains("Platform engineer · East Bay, CA").should("not.exist")
     cy.get(".portfolio-hero__tagline")
       .should("be.visible")

@@ -6,7 +6,7 @@ function Hero() {
   return (
     <header className="portfolio-hero">
       <div className="portfolio-hero__copy">
-        <h1>I build the platform for safer agentic systems.</h1>
+        <h1>I build agentic engineering platforms</h1>
         <p className="portfolio-hero__lede portfolio-hero__tagline">
           <span>
             <span aria-hidden="true">🌑</span> lights out,
