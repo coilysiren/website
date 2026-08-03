@@ -8,7 +8,7 @@ description: >-
 
 **Staff platform engineer building governed AI systems and developer infrastructure.**
 
-I'm **Kai Siren**. I have more than ten years of experience building the systems other engineers rely on. I work across platform engineering, developer experience, observability, and production operations. The current edge of that work is the governed infrastructure around agents: context composition, bounded execution, MCP delivery, model routing, evaluation, and telemetry designed for machine consumers.
+I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I have more than ten years of experience building the systems other engineers rely on. I work across platform engineering, developer experience, observability, and production operations. The current edge of that work is the governed infrastructure around agents: context composition, bounded execution, MCP delivery, model routing, evaluation, and telemetry designed for machine consumers.
 
 The throughline is leverage. I meet engineers where the work is, make the boundary visible, and remove friction between intent and ship. That has meant language-ecosystem tooling at Ruby Together, multi-cloud platforms at Textio, government infrastructure at Nava, and agentic debugging workflows at Kapwing.
 
@@ -24,10 +24,8 @@ My career has been mostly individual-contributor work, with a chapter managing a
 
 ## Selected agent-platform evidence
 
-- **Governed execution:** [Ward](https://forgejo.coilysiren.me/coilyco-flight-deck/ward) carries unattended repository work through fresh clones, least-access containers, fixed workflows, and durable evidence.
-- **Developer enablement:** [agent-compose](https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose) compiles roles, personality, skills, and tool inventories into inspectable context bundles without treating context as authority.
-- **Guarded MCP delivery:** [Ward MCP](https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp) derives bounded Streamable HTTP tools and matching HTTP endpoints from cli-guard policy.
-- **Production substrate:** [AOS](https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os), [Agent Proxy](https://forgejo.coilysiren.me/coilyco-flight-deck/agent-proxy), Kubernetes infrastructure, and observability connect local model routing and agent workflows to operable systems.
+- **Open-source workflow governance:** [Ward](https://forgejo.coilysiren.me/coilyco-flight-deck/ward) and [agent-compose](https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose) turn role, tool, and policy inputs into inspectable context, fixed execution workflows, least-access containers, and durable evidence.
+- **Open-source platform delivery:** [Ward MCP](https://forgejo.coilysiren.me/coilyco-flight-deck/ward-mcp) derives bounded MCP and HTTP tools from policy. [Agent Proxy](https://forgejo.coilysiren.me/coilyco-flight-deck/agent-proxy) routes local and hosted model traffic through one observable OpenAI-compatible surface.
 
 ## Skills
 
