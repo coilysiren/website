@@ -128,11 +128,12 @@
   }
 }
 
-.my-life-slide__portrait {
+.my-life-intro__portrait {
   position: relative;
   z-index: 1;
-  width: min(100%, 29em);
+  width: min(100%, 27em);
   aspect-ratio: 4 / 5;
+  justify-self: end;
   object-fit: cover;
   border: 0.5em solid vars.$pure-white;
   box-shadow:
@@ -140,17 +141,6 @@
     1.5em 2em 0 rgba(0, 0, 0, 0.16),
     0 2em 4em rgba(21, 16, 39, 0.45);
   transform: rotate(-2.5deg);
-}
-
-.my-life-intro__secondary {
-  width: min(100%, 23em);
-  align-self: end;
-  margin-left: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border: 0.4em solid #f5c466;
-  box-shadow: 0 1.7em 3em rgba(21, 16, 39, 0.36);
-  transform: rotate(3deg) translateY(2em);
 }
 
 .my-life-slide--technology,
@@ -474,7 +464,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .my-life-slide {
-    .my-life-slide__portrait,
+    .my-life-intro__portrait,
     .my-life-project-grid img,
     .my-life-home-images img,
     .my-life-favorites__plant,
@@ -485,7 +475,7 @@
     }
 
     &:hover {
-      .my-life-slide__portrait {
+      .my-life-intro__portrait {
         transform: rotate(-1deg) scale(1.01);
       }
 
@@ -527,13 +517,9 @@
     padding: 3em 1.4em;
   }
 
-  .my-life-slide__portrait {
+  .my-life-intro__portrait {
     width: min(76vw, 22em);
-  }
-
-  .my-life-intro__secondary {
-    width: min(65vw, 18em);
-    margin-top: -4em;
+    justify-self: center;
   }
 
   .my-life-home-images {

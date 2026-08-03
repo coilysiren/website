@@ -70,6 +70,33 @@ describe("Basic test workflow", () => {
     cy.get("h2").should("be.visible")
   })
 
+  it("pairs the About introduction with one portrait on desktop", () => {
+    cy.viewport(1280, 900)
+    cy.visit("/about/")
+
+    cy.get(".my-life-slide--intro img")
+      .should("have.length", 1)
+      .and("have.attr", "src", "/my-life/16-car-headphones-sunglasses.jpg")
+    cy.get(
+      'img[src="/my-life/11-social-look-sunglasses-purple-tails.jpg"]'
+    ).should("not.exist")
+    cy.get(".my-life-slide--intro").then(($intro) => {
+      const portraitElement = $intro.find(".my-life-intro__portrait").get(0)
+      const copyElement = $intro.find(".my-life-slide__copy").get(0)
+
+      if (!portraitElement || !copyElement) {
+        throw new Error("About introduction is missing its portrait or copy")
+      }
+
+      const portrait = portraitElement.getBoundingClientRect()
+      const copy = copyElement.getBoundingClientRect()
+
+      expect(portrait.right).to.be.lessThan(copy.left)
+      expect(portrait.top).to.be.lessThan(copy.bottom)
+      expect(copy.top).to.be.lessThan(portrait.bottom)
+    })
+  })
+
   it("keeps the homepage portfolio usable on mobile", () => {
     cy.viewport(390, 844)
     cy.visit("/")

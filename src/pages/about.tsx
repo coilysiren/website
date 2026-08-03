@@ -75,12 +75,7 @@ const AboutPage = () => (
     <section className="my-life">
       <header id="about" className="my-life-slide my-life-slide--intro">
         <img
-          className="my-life-slide__portrait"
-          src="/my-life/11-social-look-sunglasses-purple-tails.jpg"
-          alt="Kai in a black dress, colorful necklace, and purple-tipped locs"
-        />
-        <img
-          className="my-life-intro__secondary"
+          className="my-life-intro__portrait"
           src="/my-life/16-car-headphones-sunglasses.jpg"
           alt="Kai wearing sunglasses and headphones in a car"
         />

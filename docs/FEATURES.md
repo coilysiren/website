@@ -23,7 +23,8 @@ Under [src/pages/](../src/pages/):
   page. Public repository cards point at their GitHub mirrors for sturdy public
   access. The homepage ends after the active portfolio rather than repeating
   Writing and hiring calls to action.
-- **`about.tsx`** - canonical About page combining a concise bio opening with the visual autobiography and its themed collections.
+- **`about.tsx`** - canonical About page pairing its concise bio opening with a
+  single portrait, followed by the visual autobiography and themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page
   and the generated PDF.
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
