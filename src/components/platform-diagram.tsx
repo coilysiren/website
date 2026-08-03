@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import React from "react"
 import { featuredProjects } from "../data/projects"
 
@@ -13,7 +12,7 @@ const PlatformDiagram = ({ compact = false }: { compact?: boolean }) => (
         className={`platform-diagram__step platform-diagram__step--${project.tone}`}
       >
         <span className="platform-diagram__stage">{project.stage}</span>
-        <Link to={project.caseStudyUrl}>{project.name}</Link>
+        <a href={project.sourceUrl}>{project.name}</a>
         {!compact && <p>{project.summary}</p>}
       </li>
     ))}

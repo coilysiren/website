@@ -5,11 +5,6 @@ function Links() {
   return (
     <ul className="nav-links">
       <li>
-        <Link className="nav-btn" to="/work/">
-          ./work
-        </Link>
-      </li>
-      <li>
         <Link className="nav-btn" to="/about/">
           ./about
         </Link>

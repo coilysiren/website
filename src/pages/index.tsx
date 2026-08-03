@@ -41,7 +41,7 @@ const IndexPage = () => {
                   <span>{project.name}</span>
                 </div>
                 <h3>{project.title}</h3>
-                <Link to={project.caseStudyUrl}>Read the case study →</Link>
+                <a href={project.sourceUrl}>View source ↗</a>
               </article>
             ))}
           </div>
@@ -52,9 +52,6 @@ const IndexPage = () => {
             <h2>Built to compose.</h2>
           </div>
           <ProjectCatalogue condensed />
-          <Link className="text-link" to="/work/">
-            See the full work index →
-          </Link>
         </section>
         <section className="portfolio-section portfolio-section--split">
           <div>

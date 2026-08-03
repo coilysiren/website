@@ -31,7 +31,7 @@ const LOGO_SVG = fs.readFileSync(
 )
 const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`
 
-type Kind = "post" | "apps" | "page" | "case-study" | "default" | "banner"
+type Kind = "post" | "apps" | "page" | "default" | "banner"
 
 interface Entry {
   outPath: string
@@ -60,7 +60,6 @@ const KIND_LABEL: Record<Kind, string> = {
   post: "POST",
   apps: "APPS",
   page: "PAGE",
-  "case-study": "CASE STUDY",
   default: "",
   banner: "",
 }
@@ -180,31 +179,6 @@ const TSX_ENTRIES: Entry[] = [
     title: "Hiring",
     subtitle:
       "The governed platform layer for developing, shipping, and operating agentic systems.",
-  },
-  {
-    outPath: "work/index.png",
-    kind: "page",
-    title: "Work",
-    subtitle:
-      "Governed agent systems, platform infrastructure, and applied projects.",
-  },
-  {
-    outPath: "work/agent-compose.png",
-    kind: "case-study",
-    title: "agent-compose",
-    subtitle: "Portable context for agents that work differently.",
-  },
-  {
-    outPath: "work/ward.png",
-    kind: "case-study",
-    title: "Ward",
-    subtitle: "Delegate real repository work without giving up the boundary.",
-  },
-  {
-    outPath: "work/ward-mcp.png",
-    kind: "case-study",
-    title: "Ward MCP",
-    subtitle: "Turn a narrow policy into a usable MCP service.",
   },
   {
     outPath: "apps/index.png",

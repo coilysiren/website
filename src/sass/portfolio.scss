@@ -4,7 +4,6 @@ $content-width: 1180px;
 
 .portfolio-home,
 .portfolio-page,
-.case-study,
 .hiring-page {
   --paper: #{vars.$paper};
   --ink: #{vars.$ink};
@@ -780,209 +779,6 @@ $content-width: 1180px;
   }
 }
 
-.case-study {
-  width: min(calc(100% - 2rem), 1060px);
-  margin: 0 auto;
-  padding: clamp(3rem, 8vw, 7rem) 0;
-  color: vars.$pure-white;
-}
-
-.case-study__hero {
-  max-width: 900px;
-  margin-bottom: clamp(4rem, 9vw, 8rem);
-
-  h1 {
-    margin: 1rem 0 0;
-    font-size: clamp(3.5rem, 10vw, 8.5rem);
-    line-height: 0.9;
-    letter-spacing: -0.065em;
-  }
-
-  .button--quiet {
-    color: vars.$pure-white;
-  }
-}
-
-.case-study__eyebrow {
-  display: flex;
-  gap: 0.6rem;
-  color: vars.$mid-blue;
-  font-family: vars.$font-family-mono;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  a {
-    color: inherit;
-  }
-}
-
-.case-study__lede {
-  max-width: 20ch;
-  margin: 1.8rem 0 0;
-  color: vars.$pure-white;
-  font-size: clamp(1.7rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-}
-
-.case-study__summary {
-  max-width: 64ch;
-  color: #dfd9f0;
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.case-study__section {
-  width: auto;
-  margin: 0;
-  padding: clamp(2rem, 6vw, 5rem);
-  color: vars.$ink;
-  background: vars.$paper;
-  border: 0;
-  border-radius: 0;
-  overflow: visible;
-
-  + .case-study__section {
-    border-top: 1px solid rgba(vars.$mid-purple, 0.18);
-  }
-
-  h2 {
-    max-width: 19ch;
-    margin: 0 0 1rem;
-    font-size: clamp(2rem, 5vw, 4rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-  }
-
-  > p:not(.section-label) {
-    max-width: 66ch;
-    color: vars.$mid-purple;
-    font-size: 1.06rem;
-    line-height: 1.7;
-  }
-}
-
-.case-study__problem {
-  border-top: 0.7rem solid vars.$light-blue;
-}
-
-.case-study--coral .case-study__problem {
-  border-color: vars.$coral;
-}
-
-.case-study--periwinkle .case-study__problem {
-  border-color: vars.$light-purple;
-}
-
-.case-study__flow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  margin: 2.5rem 0 0;
-  padding: 0;
-  list-style: none;
-  background: rgba(vars.$mid-purple, 0.24);
-  border: 1px solid rgba(vars.$mid-purple, 0.24);
-
-  li {
-    min-width: 0;
-    padding: 1.25rem;
-    background: vars.$pure-white;
-
-    > span {
-      color: vars.$coral;
-      font-family: vars.$font-family-mono;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    h3 {
-      margin: 2rem 0 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    p {
-      margin: 0;
-      color: vars.$mid-purple;
-      line-height: 1.55;
-    }
-  }
-}
-
-.case-study__request {
-  pre {
-    margin: 2rem 0;
-    padding: 1.25rem;
-    color: vars.$light-blue;
-    background: vars.$deep-ink;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-}
-
-.case-study__judgment {
-  color: vars.$deep-ink;
-  background: vars.$coral;
-
-  .section-label,
-  > p:not(.section-label) {
-    color: vars.$deep-ink;
-  }
-}
-
-.evidence-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 2rem;
-  margin: 2rem 0 0;
-  padding: 0;
-  list-style: none;
-
-  li {
-    position: relative;
-    padding: 1rem 0 1rem 1.6rem;
-    color: vars.$mid-purple;
-    line-height: 1.55;
-    border-top: 1px solid rgba(vars.$mid-purple, 0.2);
-
-    &::before {
-      position: absolute;
-      top: 1rem;
-      left: 0;
-      content: "◆";
-      color: vars.$sage;
-    }
-  }
-}
-
-.case-study__limit {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 2rem;
-  padding: 2rem clamp(1.5rem, 5vw, 4rem);
-  color: vars.$pure-white;
-  background: vars.$mid-purple;
-
-  .section-label,
-  p {
-    margin: 0;
-    color: vars.$pure-white;
-    line-height: 1.6;
-  }
-}
-
-.case-study__system {
-  margin-top: clamp(3rem, 8vw, 7rem);
-  border-top: 0.7rem solid vars.$light-purple;
-
-  .platform-diagram--compact {
-    margin-top: 2rem;
-  }
-}
-
 @include vars.tablet {
   .platform-diagram--compact {
     .platform-diagram__step {
@@ -1024,9 +820,7 @@ $content-width: 1180px;
 
   .platform-diagram,
   .featured-project-grid,
-  .portfolio-section--split,
-  .case-study__flow,
-  .evidence-list {
+  .portfolio-section--split {
     grid-template-columns: 1fr;
   }
 
@@ -1056,15 +850,6 @@ $content-width: 1180px;
     a {
       min-height: 0;
     }
-  }
-
-  .case-study__limit {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-
-  .case-study__hero h1 {
-    font-size: clamp(3.4rem, 18vw, 5.8rem);
   }
 
   .hiring-hero,

@@ -48,7 +48,9 @@ const HiringPage = () => (
             Governed unattended repository execution in fresh clones and
             least-access containers, with fixed workflows and durable evidence.
           </p>
-          <Link to="/work/ward/">Read the case study →</Link>
+          <a href="https://forgejo.coilysiren.me/coilyco-flight-deck/ward">
+            Read the source →
+          </a>
         </aside>
       </header>
 
@@ -69,7 +71,6 @@ const HiringPage = () => (
               <h3>{project.name}</h3>
               <p>{project.summary}</p>
               <div>
-                <Link to={project.caseStudyUrl}>Case study →</Link>
                 <a href={project.sourceUrl}>Source ↗</a>
               </div>
             </article>

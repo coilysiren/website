@@ -25,10 +25,7 @@ Under [src/pages/](../src/pages/):
   communities have crossed paths with Kai.
 - **`hiring.tsx`** - unlisted, noindex recruiting surface. The first mobile
   screen carries Kai's platform thesis and next actions, followed by the three
-  proof routes, role shape, logistics, interview boundaries, and tenure context.
-- **`work/`** - project catalogue plus focused Ward, agent-compose, and Ward
-  MCP case studies. Each page names the problem, system shape, hard judgment,
-  shipped evidence, current limit, source, and related platform layers.
+  proof projects, role shape, logistics, interview boundaries, and tenure context.
 - **`writing.tsx`** - date-ordered long-form archive linked from the
   project-first home rather than the primary navigation.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
