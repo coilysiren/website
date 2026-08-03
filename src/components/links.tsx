@@ -10,6 +10,11 @@ function Links() {
         </Link>
       </li>
       <li>
+        <Link className="nav-btn" to="/hiring/">
+          ./hiring
+        </Link>
+      </li>
+      <li>
         <Link className="nav-btn" to="/resume/">
           ./resume
         </Link>

@@ -27,9 +27,10 @@ Under [src/pages/](../src/pages/):
 - **`pulse.tsx`** - live ops pulse rendered from `scripts/pulse-data.yaml`, refreshed by a workflow.
 - **`cool-people.md`** - unlisted links page celebrating people whose work and
   communities have crossed paths with Kai.
-- **`hiring.tsx`** - unlisted, noindex recruiting surface. The first mobile
-  screen carries Kai's platform thesis and next actions, followed by the three
-  proof projects, role shape, logistics, interview boundaries, and tenure context.
+- **`hiring.tsx`** - noindex recruiting surface linked from the primary
+  navigation. The first mobile screen carries Kai's platform thesis and next
+  actions, followed by the three proof projects, role shape, logistics,
+  interview boundaries, and tenure context.
 - **`writing.tsx`** - date-ordered long-form archive linked from the
   project-first home rather than the primary navigation.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.

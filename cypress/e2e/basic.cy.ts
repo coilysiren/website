@@ -14,6 +14,9 @@ describe("Basic test workflow", () => {
     cy.viewport(390, 844)
     cy.visit("/hiring/")
 
+    cy.contains(".nav-links a", "./hiring")
+      .should("be.visible")
+      .and("have.attr", "href", "/hiring/")
     cy.contains("h1", "I build the governed platform layer").should(
       "be.visible"
     )
