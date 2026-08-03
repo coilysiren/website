@@ -1,5 +1,8 @@
 import React from "react"
 import type { GatsbyBrowser } from "gatsby"
+import "@fontsource/roboto/latin-400.css"
+import "@fontsource/roboto/latin-700.css"
+import "@fontsource/roboto/latin-700-italic.css"
 import { PageMetaProvider } from "./src/components/page-context"
 import "prismjs/themes/prism-tomorrow.css"
 
