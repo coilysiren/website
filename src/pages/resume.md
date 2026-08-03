@@ -22,10 +22,10 @@ My career has been mostly individual-contributor work, with a chapter managing a
 // location: East Bay, CA
 // US Citizen
 
-## Selected agent-platform evidence
+## Open Source <!-- evidence -->
 
-- **Open-source workflow governance:** [Ward](https://github.com/coilyco-flight-deck/ward) and [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) turn role, tool, and policy inputs into inspectable context, fixed execution workflows, least-access containers, and durable evidence.
-- **Open-source platform delivery:** [Ward MCP](https://github.com/coilyco-flight-deck/ward-mcp) derives bounded MCP and HTTP tools from policy. [Agent Proxy](https://github.com/coilyco-flight-deck/agent-proxy) routes local and hosted model traffic through one observable OpenAI-compatible surface.
+- **<span hidden></span>** [Ward](https://github.com/coilyco-flight-deck/ward) and [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) turn role, tool, and policy inputs into inspectable context, fixed execution workflows, least-access containers, and durable evidence.
+- **<span hidden></span>** [Ward MCP](https://github.com/coilyco-flight-deck/ward-mcp) derives bounded MCP and HTTP tools from policy. [Agent Proxy](https://github.com/coilyco-flight-deck/agent-proxy) routes local and hosted model traffic through one observable OpenAI-compatible surface.
 
 ## Skills
 

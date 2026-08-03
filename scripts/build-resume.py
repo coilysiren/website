@@ -552,10 +552,10 @@ def build_story(styles, resume: Resume, avatar_png: Path,
         story.append(Paragraph(p, styles["body"]))
 
     if resume.evidence:
-        story.append(SectionHeading("Selected agent-platform evidence", styles["h2"]))
-        for label, value in resume.evidence:
+        story.append(SectionHeading("Open Source", styles["h2"]))
+        for _label, value in resume.evidence:
             story.append(Paragraph(
-                f'• <b><font color="#1E5F6B">{label}</font></b> &nbsp; {value}',
+                f"• {value}",
                 styles["evidence"],
             ))
 
