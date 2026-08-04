@@ -1,0 +1,137 @@
+---
+layout: layouts/base.njk
+permalink: about/index.html
+title: About | Kai Siren
+description: Kai Siren is a platform engineer building governed infrastructure for agentic systems.
+canonical: /about/
+robots: follow, index
+---
+{% macro iconListItem(icon, label) %}
+  <li><span class="my-life-slide__list-icon" aria-hidden="true">{{ icon }}</span>{{ label }}</li>
+{% endmacro %}
+{% macro favoriteSlide(group) %}
+  <article id="{{ group.id }}" class="my-life-slide my-life-slide--favorites {{ group.className }}">
+    <div class="my-life-slide__copy">
+      <h2><a href="#{{ group.id }}">{{ group.title }}</a></h2>
+      <ul class="my-life-slide__list">
+        {% for favorite in group.favorites %}
+          {{ iconListItem(favorite.icon or group.icon or "•", favorite.label) }}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="my-life-favorite-grid">
+      {% for favorite in group.favorites %}
+        <img src="{{ favorite.src }}" alt="{{ favorite.alt }}">
+      {% endfor %}
+    </div>
+  </article>
+{% endmacro %}
+<section class="my-life">
+  <header id="about" class="my-life-slide my-life-slide--intro">
+    <img
+      class="my-life-intro__portrait"
+      src="/my-life/16-car-headphones-sunglasses.jpg"
+      alt="Kai wearing sunglasses and headphones in a car"
+    >
+    <div class="my-life-slide__copy">
+      <h1><a href="#about">Hi, I'm Kai</a></h1>
+      <p>
+        I live in the East Bay and spend time on games, gardening,
+        fabrication, and side projects. This is a visual tour of the things
+        that make up my life.
+      </p>
+    </div>
+  </header>
+  {{ favoriteSlide(about.animals) }}
+  <article id="fabrication" class="my-life-slide my-life-slide--home">
+    <div class="my-life-home-images">
+      <img
+        class="my-life-home-images__primary"
+        src="/my-life/12-wall-under-construction.jpg"
+        alt="A home interior with a newly framed wall"
+      >
+      <img
+        class="my-life-home-images__plan"
+        src="/my-life/07-adu-floor-plan.png"
+        alt="An ADU floor plan"
+      >
+      <img
+        class="my-life-home-images__garden"
+        src="/my-life/15-red-garden-bed.jpg"
+        alt="A newly planted red raised garden bed"
+      >
+      <img
+        class="my-life-home-images__build"
+        src="/my-life/18-garden-bed-construction.jpg"
+        alt="Raised garden beds under construction"
+      >
+    </div>
+    <div class="my-life-slide__copy">
+      <h2><a href="#fabrication">Fabrication</a></h2>
+      <ul class="my-life-slide__list">
+        {{ iconListItem("🛠️", "Walls") }}
+        {{ iconListItem("🛠️", "Gardens") }}
+        {{ iconListItem("🛠️", "ADUs") }}
+      </ul>
+    </div>
+  </article>
+  <article id="tech" class="my-life-slide my-life-slide--technology">
+    <div class="my-life-slide__copy">
+      <h2><a href="#tech">Tech</a></h2>
+      <ul class="my-life-slide__list">
+        {{ iconListItem("💻", "Towers") }}
+        {{ iconListItem("💻", "Monitors") }}
+      </ul>
+    </div>
+    <div class="my-life-project-grid my-life-technology-grid">
+      <img
+        class="my-life-technology-grid__tower"
+        src="/my-life/17-tower-interior.jpg"
+        alt="The blue and purple lit interior of a desktop computer tower"
+      >
+      <img
+        class="my-life-technology-grid__screens"
+        src="/my-life/14-two-monitor-desktop.jpg"
+        alt="A colorful two-monitor desk setup"
+      >
+      <img
+        class="my-life-technology-grid__hardware"
+        src="/my-life/08-motherboard-and-gpu.jpg"
+        alt="A motherboard and graphics card lit by purple LEDs"
+      >
+    </div>
+  </article>
+  {{ favoriteSlide(about.books) }}
+  {{ favoriteSlide(about.games) }}
+  <article id="gaming" class="my-life-slide my-life-slide--gaming">
+    <div class="my-life-slide__copy">
+      <h2><a href="#gaming">Gaming</a></h2>
+      <ul class="my-life-slide__list">
+        {{ iconListItem("🎮", "Factories") }}
+        {{ iconListItem("🎮", "Galaxies") }}
+        {{ iconListItem("🎮", "Economies") }}
+      </ul>
+    </div>
+    <div class="my-life-project-grid my-life-gaming-grid">
+      <img
+        class="my-life-gaming-grid__factory"
+        src="/my-life/project-factory-game.gif"
+        alt="An animated factory game simulation"
+      >
+      <img
+        class="my-life-gaming-grid__galaxy"
+        src="/my-life/project-galaxy-gen.gif"
+        alt="An animated procedural galaxy generator"
+      >
+      <img
+        class="my-life-gaming-grid__eco"
+        src="/my-life/05-eco-app-dashboard.png"
+        alt="A dark green Eco application dashboard"
+      >
+    </div>
+  </article>
+  {{ favoriteSlide(about.shows) }}
+  {{ favoriteSlide(about.anime) }}
+  {{ favoriteSlide(about.movies) }}
+  {% include "components/closer.njk" %}
+</section>

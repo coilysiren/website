@@ -18,20 +18,18 @@ The site uses Node.js 24 LTS and pnpm 11. Corepack reads the exact pnpm release
 from `package.json`, while `.node-version` keeps local development and hosted
 builds on the same Node release.
 
-Create a `.env.development` file with these contents:
-
-```bash
-GATSBY_API_URL=http://localhost:4000 # or whatever port you are running the API on
-```
+Eleventy renders the site to ordinary static files in `dist/`. The production
+output contains no browser JavaScript, hydration runtime, analytics, or remote
+asset dependencies.
 
 ## Commands
 
 Dev commands are declared in [`.ward/ward.yaml`](.ward/ward.yaml). Run them as `ward exec <verb>`.
 
 - `ward exec install` - install the locked dependency graph.
-- `ward exec dev` - start Gatsby with hot reload.
+- `ward exec dev` - clean, build, and serve Eleventy with live reload.
 - `ward exec test` - run formatting, lint, type, and unit checks.
-- `ward exec build` - render Open Graph assets and create the production site.
+- `ward exec build` - create the production site in `dist/`.
 - `ward exec build-resume` - regenerate the PDF from the checked-in resume page in an isolated `uv` environment.
 - `ward exec image-build` - build the static staging image.
 - `ward exec image-smoke` - validate nginx inside the staging image.
@@ -41,6 +39,9 @@ Dev commands are declared in [`.ward/ward.yaml`](.ward/ward.yaml). Run them as `
 
 The dependency updater keeps Node types on the Node 24 runtime line and
 TypeScript on 6.x until typescript-eslint supports TypeScript 7.
+
+See [docs/static-generation.md](docs/static-generation.md) for the template,
+content, asset, metadata, and output contracts.
 
 ## Hosting
 

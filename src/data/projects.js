@@ -1,35 +1,41 @@
-export type ProjectTone = "mint" | "coral" | "periwinkle"
+/**
+ * @typedef {"mint" | "coral" | "periwinkle"} ProjectTone
+ */
 
-export interface FeaturedProject {
-  slug: "ward" | "agent-compose" | "ward-mcp"
-  stage: "Compose" | "Execute" | "Expose"
-  name: string
-  title: string
-  summary: string
-  sourceUrl: string
-  tone: ProjectTone
-}
+/**
+ * @typedef {object} FeaturedProject
+ * @property {"ward" | "agent-compose" | "ward-mcp"} slug
+ * @property {"Compose" | "Execute" | "Expose"} stage
+ * @property {string} name
+ * @property {string} title
+ * @property {string} summary
+ * @property {string} sourceUrl
+ * @property {ProjectTone} tone
+ */
 
-export interface ProjectLink {
-  name: string
-  description: string
-  tags: string[]
-  url?: string
-  privateRepo?: boolean
-  icons?: ProjectIcon[]
-}
+/**
+ * @typedef {{ kind: "emoji", glyph: string, label: string } | { kind: "image", src: string, alt: string }} ProjectIcon
+ */
 
-export type ProjectIcon =
-  | { kind: "emoji"; glyph: string; label: string }
-  | { kind: "image"; src: string; alt: string }
+/**
+ * @typedef {object} ProjectLink
+ * @property {string} name
+ * @property {string} description
+ * @property {string[]} tags
+ * @property {string} [url]
+ * @property {boolean} [privateRepo]
+ * @property {ProjectIcon[]} [icons]
+ */
 
-export interface ProjectGroup {
-  title: string
-  description: string
-  projects: ProjectLink[]
-}
+/**
+ * @typedef {object} ProjectGroup
+ * @property {string} title
+ * @property {string} description
+ * @property {ProjectLink[]} projects
+ */
 
-export const featuredProjects: FeaturedProject[] = [
+/** @type {FeaturedProject[]} */
+export const featuredProjects = [
   {
     slug: "agent-compose",
     stage: "Compose",
@@ -62,7 +68,8 @@ export const featuredProjects: FeaturedProject[] = [
   },
 ]
 
-export const projectGroups: ProjectGroup[] = [
+/** @type {ProjectGroup[]} */
+export const projectGroups = [
   {
     title: "Infrastructure",
     description:

@@ -1,0 +1,38 @@
+@use "layout";
+@use "post";
+@use "portfolio";
+@use "nav";
+@use "footer";
+@use "index";
+@use "my-life";
+@use "not-found";
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    url("/fonts/roboto-latin-400-normal.woff2") format("woff2"),
+    url("/fonts/roboto-latin-400-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    url("/fonts/roboto-latin-700-normal.woff2") format("woff2"),
+    url("/fonts/roboto-latin-700-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    url("/fonts/roboto-latin-700-italic.woff2") format("woff2"),
+    url("/fonts/roboto-latin-700-italic.woff") format("woff");
+}

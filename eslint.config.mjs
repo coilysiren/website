@@ -8,16 +8,10 @@ import globals from "globals"
 export default [
   // Global ignores
   {
-    ignores: [
-      "node_modules/",
-      ".pnpm-store/",
-      "public/",
-      ".cache/",
-      ".claude/",
-    ],
+    ignores: ["node_modules/", ".pnpm-store/", "dist/", ".claude/"],
   },
 
-  // JavaScript configuration files and legacy scripts
+  // JavaScript configuration, data, and build scripts
   {
     ...js.configs.recommended,
     files: ["**/*.{js,mjs,cjs}"],
@@ -33,9 +27,9 @@ export default [
     files: ["**/*.{ts,tsx}"],
   })),
 
-  // Application code
+  // TypeScript source and unit tests
   {
-    files: ["src/**/*.{ts,tsx}", "gatsby-*.tsx", "scripts/**/*.tsx"],
+    files: ["src/**/*.ts"],
     plugins: {
       unicorn,
     },
@@ -93,14 +87,6 @@ export default [
         ...globals.browser,
         ...globals.node,
       },
-    },
-  },
-
-  // CLI scripts use exit codes to report failures to CI.
-  {
-    files: ["scripts/**/*.{ts,tsx}"],
-    rules: {
-      "unicorn/no-process-exit": "off",
     },
   },
 

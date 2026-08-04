@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+permalink: index.html
+description: Kai Siren builds governed agent systems, developer infrastructure, and the platform layer underneath.
+canonical: /
+robots: follow, index
+---
+<div class="portfolio-home">
+  <header class="portfolio-hero">
+    <div class="portfolio-hero__copy">
+      <h1>I build agentic engineering platforms</h1>
+      <p class="portfolio-hero__lede portfolio-hero__tagline">
+        <span><span aria-hidden="true">🌑</span> lights out,</span>
+        <span><span aria-hidden="true">🟢</span> flight deck green,</span>
+        <span><span aria-hidden="true">🛡️</span> agents warded for an 8h+ run</span>
+      </p>
+    </div>
+    <aside class="portfolio-hero__portrait">
+      <div class="portrait-frame">
+        <img src="/images/headshot.jpg" alt="Kai Siren">
+      </div>
+    </aside>
+  </header>
+  <section
+    id="featured-work"
+    class="portfolio-section portfolio-section--featured portfolio-section--catalogue"
+  >
+    <div class="section-heading"><h2>Active portfolio</h2></div>
+    <div class="project-catalogue project-catalogue--condensed">
+      {% for group in projects %}
+        <section class="project-group">
+          <header><h3>{{ group.title }}</h3></header>
+          <ul>
+            {% for project in group.projects %}
+              <li class="project-card">
+                {% if project.url %}
+                  <a class="project-card-surface" href="{{ project.url }}">
+                {% else %}
+                  <div class="project-card-surface project-card-surface--private">
+                {% endif %}
+                  <span class="project-card-topline">
+                    <span class="project-card-name">{{ project.name }}{% if project.privateRepo %} <span class="project-card-lock" aria-label="Private repository">🔒</span>{% endif %}</span>
+                    {% if project.icons %}
+                      <span class="project-card-icons{% if project.icons.length > 1 %} project-card-icons--stacked{% endif %}">
+                        {% for icon in project.icons %}
+                          <span class="project-card-icon">
+                            {% if icon.kind == "image" %}
+                              <img src="{{ icon.src }}" alt="{{ icon.alt }}" width="32" height="32">
+                            {% else %}
+                              <span class="project-card-emoji" role="img" aria-label="{{ icon.label }}">{{ icon.glyph }}</span>
+                            {% endif %}
+                          </span>
+                        {% endfor %}
+                      </span>
+                    {% endif %}
+                  </span>
+                  <p>{{ project.description }}</p>
+                  {% if project.tags.length %}
+                    <span class="project-repo-tags" aria-label="{{ project.name }} repository tags">
+                      {% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}
+                    </span>
+                  {% endif %}
+                  {% if project.privateRepo %}
+                    <small>Private repository</small>
+                  {% elif project.url %}
+                    <small>Source ↗</small>
+                  {% endif %}
+                {% if project.url %}</a>{% else %}</div>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endfor %}
+    </div>
+  </section>
+</div>

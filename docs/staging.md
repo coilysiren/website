@@ -8,9 +8,10 @@ The repository ships a static container image for the
 
 This repository owns the build contract:
 
-* [Dockerfile](../Dockerfile) builds the locked Gatsby project with Node 24 and
-  pnpm, then copies `public/` into unprivileged nginx.
-* [nginx.conf](../nginx.conf) serves Gatsby routes on port 8080.
+* [Dockerfile](../Dockerfile) builds the locked Eleventy project with Node 24
+  and pnpm, then copies `dist/` into unprivileged nginx.
+* [nginx.conf](../nginx.conf) serves static routes on port 8080, preserves the
+  permanent redirect set, and returns the designed `404.html` with HTTP 404.
 * [`.dockerignore`](../.dockerignore) keeps local output, credentials, and
   repository metadata outside the build context.
 
@@ -46,7 +47,6 @@ ward exec image-smoke
 ward exec image-publish-check
 ```
 
-The image build uses `https://api.coilysiren.me` for browser API calls unless
-the deploy build supplies a different `GATSBY_API_URL` build argument. Gatsby
-metadata keeps `https://coilysiren.me` as the canonical site URL on both
-hosts.
+The build has no API or remote browser dependency. Eleventy metadata keeps
+`https://coilysiren.me` as the canonical site URL on both hosts. The image
+contains only static HTML, CSS, images, fonts, and documents.

@@ -1,11 +1,11 @@
 .cache/
+dist/
 .git/
 node_modules/
 .pnpm-store/
-public/
 static/
+src/**/*.njk
 **/*.md
-scripts/pulse-data.yaml
 src/images/
 src/pages/**/*.md
 pnpm-lock.yaml

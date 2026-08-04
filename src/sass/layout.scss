@@ -1,9 +1,7 @@
 @use "_vars.scss";
 
 html,
-body,
-#___gatsby,
-#gatsby-focus-wrapper {
+body {
   height: 100%;
   font-size: 16px;
   font-family: vars.$font-family-body;

@@ -18,10 +18,10 @@ commands:
     description: Refresh pnpm-lock.yaml after an intentional package.json change.
   dev:
     run: pnpm run dev
-    description: gatsby clean + gatsby develop. Local dev server with HMR.
+    description: Clean, build, and serve Eleventy with live reload on port 8000.
   build:
     run: pnpm run build
-    description: Render OG images, gatsby clean, gatsby build.
+    description: Clean and generate the production Eleventy site in dist/.
   image-build:
     run: docker build --tag coilysiren-website:local .
     description: Build the static staging image locally.
@@ -36,10 +36,7 @@ commands:
     description: Validate the trusted Forgejo CI and publishing shell contracts.
   serve:
     run: pnpm run serve
-    description: gatsby serve on port 8000 (host 0.0.0.0). Serves the build/ output.
-  render-og:
-    run: pnpm run render-og
-    description: Render OpenGraph images via tsx scripts/render-og-images.tsx.
+    description: Build and serve the Eleventy site on port 8000.
   build-resume:
     run: uv run --with pillow --with reportlab scripts/build-resume.py
     description: Build static/resume.pdf from the canonical resume in an isolated Python environment.
@@ -63,7 +60,7 @@ commands:
     description: Type-check application, build, and Cypress code.
   test:
     run: pnpm run test
-    description: Run the complete fast local gate.
+    description: Run formatting, lint, type, and unit checks.
   test-quick:
     run: pnpm run test:quick
     description: Format check, lint, type-check, and unit tests.
@@ -76,10 +73,6 @@ commands:
   test-e2e-ci:
     run: pnpm run test:e2e:ci
     description: Boot serve + run Cypress headless. Mirrors CI.
-  fetch-pulse-data:
-    run: pnpm run fetch-pulse-data
-    description: Refresh /pulse page data via tsx scripts/fetch-pulse-data.ts.
-
 catalog:
   kind: Component
   type: website

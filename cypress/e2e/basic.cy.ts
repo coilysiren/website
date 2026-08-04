@@ -73,6 +73,88 @@ describe("Basic test workflow", () => {
       "content",
       "noindex, nofollow"
     )
+
+    const retainedDirectRoutes = [
+      "/posts/stochastic-design-iteration/",
+      "/coilysiren-personal-gmail-privacy/",
+      "/cool-people/",
+    ]
+    retainedDirectRoutes.forEach((url) => {
+      cy.visit(url)
+      cy.get('meta[name="robots"]').should(
+        "have.attr",
+        "content",
+        "noindex, nofollow"
+      )
+    })
+  })
+
+  it("ships static pages with local assets and text-only metadata", () => {
+    const pages: Array<[string, string, string | undefined]> = [
+      ["/", "Kai Siren", "https://coilysiren.me/"],
+      ["/about/", "About | Kai Siren", "https://coilysiren.me/about/"],
+      ["/hiring/", "Hiring | Kai Siren", "https://coilysiren.me/hiring/"],
+      ["/resume/", "Resume", undefined],
+    ]
+
+    pages.forEach(([url, title, canonical]) => {
+      const outputPath =
+        url === "/" ? "dist/index.html" : `dist${url}index.html`
+      cy.readFile(outputPath).should("not.match", /<script\b/i)
+      cy.visit(url)
+      cy.title().should("eq", title)
+      cy.get('meta[name="robots"]').should(
+        "have.attr",
+        "content",
+        "follow, index"
+      )
+      cy.get('meta[property="og:image"], meta[name="twitter:image"]').should(
+        "not.exist"
+      )
+      if (canonical) {
+        cy.get('link[rel="canonical"]').should("have.attr", "href", canonical)
+      } else {
+        cy.get('link[rel="canonical"]').should("not.exist")
+      }
+      cy.document().then((document) => {
+        expect(document.documentElement.innerHTML).not.to.contain("___gatsby")
+        const browserWindow = document.defaultView
+        expect(browserWindow).not.to.equal(null)
+        const thirdPartyResources = browserWindow!.performance
+          .getEntriesByType("resource")
+          .map((entry) => new URL(entry.name))
+          .filter(
+            (resourceUrl) =>
+              resourceUrl.origin !== browserWindow!.location.origin
+          )
+        expect(thirdPartyResources).to.deep.equal([])
+      })
+    })
+  })
+
+  it("limits discovery output to the four canonical routes", () => {
+    const canonicalUrls = [
+      "https://coilysiren.me/",
+      "https://coilysiren.me/about/",
+      "https://coilysiren.me/hiring/",
+      "https://coilysiren.me/resume/",
+    ]
+
+    cy.request("/sitemap.xml")
+      .its("body")
+      .then((body: string) => {
+        const urls = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+          (match) => match[1]
+        )
+        expect(urls).to.deep.equal(canonicalUrls)
+      })
+    cy.request("/llms.txt")
+      .its("body")
+      .then((body: string) => {
+        canonicalUrls.forEach((url) => expect(body).to.contain(url))
+        expect(body).not.to.contain("/writing/")
+        expect(body).not.to.contain("/posts/")
+      })
   })
 
   it("pairs the About introduction with one portrait on desktop", () => {
@@ -201,6 +283,12 @@ describe("Basic test workflow", () => {
     cy.visit("/about/")
     cy.get('a[href="/apps/"]').should("not.exist")
     cy.get('a[href="/pulse/"]').should("not.exist")
+    cy.request({ url: "/rss.xml", failOnStatusCode: false })
+      .its("status")
+      .should("eq", 404)
+    cy.request({ url: "/og/", failOnStatusCode: false })
+      .its("status")
+      .should("eq", 404)
   })
 
   it("gives missing routes a designed recovery page", () => {
@@ -236,6 +324,15 @@ describe("Basic test workflow", () => {
       expect(document.documentElement.scrollWidth).to.be.at.most(
         document.documentElement.clientWidth
       )
+      const browserWindow = document.defaultView
+      expect(browserWindow).not.to.equal(null)
+      const thirdPartyResources = browserWindow!.performance
+        .getEntriesByType("resource")
+        .map((entry) => new URL(entry.name))
+        .filter(
+          (resourceUrl) => resourceUrl.origin !== browserWindow!.location.origin
+        )
+      expect(thirdPartyResources).to.deep.equal([])
     })
   })
 })

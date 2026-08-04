@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title or site.title }}</title>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/prism-tomorrow.css">
+    <link rel="stylesheet" href="/styles/site.css">
+    <meta name="description" content="{{ description or site.description }}">
+    <meta name="robots" content="{{ robots or 'noindex, nofollow' }}">
+    <meta property="og:title" content="{{ title or site.title }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:type" content="{% if isArticle %}article{% else %}website{% endif %}">
+    {% if canonical %}
+      <link rel="canonical" href="{{ site.url }}{{ canonical }}">
+      <meta property="og:url" content="{{ site.url }}{{ canonical }}">
+    {% endif %}
+    {% if isArticle and date %}
+      <meta property="article:published_time" content="{{ date | isoDate }}">
+      <meta property="article:author" content="Kai Siren">
+    {% endif %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ title or site.title }}">
+    <meta name="twitter:description" content="{{ description or site.description }}">
+  </head>
+  <body>
+    <div class="layoutWrapper">
+      {% include "components/nav.njk" %}
+      <main>{{ content | safe }}</main>
+      {% include "components/footer.njk" %}
+    </div>
+  </body>
+</html>

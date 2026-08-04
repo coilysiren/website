@@ -2,7 +2,7 @@
 
 [build]
   command = "pnpm build"
-  publish = "public"
+  publish = "dist"
 
 [build.environment]
   NETLIFY_USE_PNPM = "true"
@@ -21,6 +21,16 @@
 [[redirects]]
   from = "/my-life"
   to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/agent-launch-pillars"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/agent-launch-pillars/"
+  to = "/"
   status = 301
 
 [[redirects]]

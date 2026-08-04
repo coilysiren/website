@@ -1,7 +1,7 @@
 # Per-repo config for agentic-os pre-commit hooks. Schema:
 # https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os/issues/38
 
-# Gatsby content lives under src/pages/. Long-form blog posts and the
+# Markdown content lives under src/pages/. Long-form blog posts and the
 # resume routinely exceed the 80-line / 4000-char doc cap on purpose.
 # These are content, not docs.
 [documentation-layout]

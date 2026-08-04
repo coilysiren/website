@@ -9,15 +9,12 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-ARG GATSBY_API_URL=https://api.coilysiren.me
-ENV GATSBY_API_URL=${GATSBY_API_URL}
-
 RUN pnpm run build
 
 FROM docker.io/nginxinc/nginx-unprivileged:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/public /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 8080
 

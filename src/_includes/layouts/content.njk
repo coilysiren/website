@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+<section class="{{ contentClass }}">
+  <div class="post-header">
+    <h2>{{ title or site.title }}</h2>
+    {% if description %}<h4>{{ description }}</h4>{% endif %}
+    {% if date %}<h5>{{ date | displayDate }}</h5>{% endif %}
+  </div>
+  <div class="post-content">{{ content | safe }}</div>
+  {% include "components/closer.njk" %}
+</section>

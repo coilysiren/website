@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+permalink: 404.html
+title: Page not found · Kai Siren
+description: That route does not exist. Return to Kai Siren's about, hiring, or resume page.
+robots: noindex, nofollow
+---
+<div class="not-found-page">
+  <header class="not-found-hero">
+    <div class="not-found-hero__copy">
+      <p class="eyebrow">404 · route not found</p>
+      <h1>This path ends here.</h1>
+      <p class="not-found-hero__lede">
+        The map is intact, but this address does not resolve. Choose a known
+        route and keep exploring.
+      </p>
+      <p class="not-found-scroll-cue">
+        Recovery routes below <span aria-hidden="true">↓</span>
+      </p>
+    </div>
+    <div class="not-found-signal" aria-hidden="true">
+      <div class="not-found-signal__panel">
+        <span class="not-found-signal__code">404</span>
+        <span class="not-found-signal__status">route: unresolved</span>
+      </div>
+    </div>
+  </header>
+  <section class="not-found-routes" aria-labelledby="recovery-routes-heading">
+    <div class="not-found-routes__inner">
+      <div class="not-found-routes__heading">
+        <p class="section-label">Known coordinates</p>
+        <h2 id="recovery-routes-heading">Choose where to land.</h2>
+      </div>
+      <ul class="not-found-route-list">
+        <li>
+          <a href="/about/">
+            <span class="not-found-route__path">./about</span>
+            <strong>About</strong>
+            <span class="not-found-route__description">Meet Kai through her story and collected interests.</span>
+            <span class="not-found-route__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/hiring/">
+            <span class="not-found-route__path">./hiring</span>
+            <strong>Hiring</strong>
+            <span class="not-found-route__description">See role fit, practical constraints, and interview boundaries.</span>
+            <span class="not-found-route__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/resume/">
+            <span class="not-found-route__path">./resume</span>
+            <strong>Resume</strong>
+            <span class="not-found-route__description">Read the canonical experience and impact record.</span>
+            <span class="not-found-route__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

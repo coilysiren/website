@@ -112,7 +112,7 @@ STACK_LINE_RE = re.compile(r"^\*\*Stack:\*\*\s*(?P<value>.+)$")
 
 
 def _strip_page_frontmatter(md: str) -> str:
-    """Remove Gatsby frontmatter before parsing the shared resume body."""
+    """Remove page frontmatter before parsing the shared resume body."""
     return re.sub(r"\A---\s*\n[\s\S]*?\n---\s*\n", "", md, count=1)
 
 

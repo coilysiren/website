@@ -4,18 +4,29 @@ Workspace conventions load globally via `~/.claude/CLAUDE.md` -> `agentic-os-kai
 
 ---
 
-`src/pages/about.tsx` is one of the sync targets for `Resume.md`'s intro paragraphs (see the parent `AGENTS.md` for the full sync list). Direct-to-main per the workspace git workflow, no PR.
+`src/about.njk` is one of the sync targets for `src/pages/resume.md`'s intro
+paragraphs (see the parent `AGENTS.md` for the full sync list). Direct-to-main
+per the workspace git workflow, no PR.
 
 ---
 
 ## Post-push follow-up (auto-schedule)
 
-Per the workspace "Default to proactive scheduling" rule: after pushing to `main`, schedule a wake-up to verify the test workflow passed. The site itself is built and served externally (Gatsby + a static host); the GitHub Actions workflows here cover tests, automerge, the Pulse data refresh, and trufflehog - none of them are the deploy pipeline.
+Per the workspace "Default to proactive scheduling" rule: after pushing to
+`main`, schedule a wake-up to verify the test workflow passed. The site itself
+is built and served externally (Eleventy plus static hosts). Forgejo Actions
+cover tests, image publication, mirroring, and trufflehog. They do not own the
+Netlify or Kubernetes rollout.
 
 - **Cadence**: 300s after push.
-- **Verify CI**: `ward ops forgejo actions task list --repo coilysiren/website --limit 2` should show `completed/success` for the test and staging-image publish jobs. Re-schedule once at +180s if either is in progress; surface and stop on failure.
+- **Verify CI**: `aosguard ops forgejo tasks list coilysiren website --limit 2`
+  should show `completed/success` for the test and staging-image publish jobs.
+  Re-schedule once at +180s if either is in progress. Surface and stop on
+  failure.
 - **Skip** for trivia (typo fixes, content-only edits where Cypress smoke is irrelevant).
-- **Site deploy verification** is out of scope here. Netlify and the deploy repository own their respective rollout health.
+- **Site deploy verification** is out of scope here. Netlify and the deploy
+  repository own their respective rollout health. This repository proves the
+  Eleventy output and staging image contract before the push.
 
 ## Commands
 

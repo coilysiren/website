@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { projectGroups } from "./projects"
+import { projectGroups } from "./projects.js"
 
 const portfolioProjects = projectGroups.flatMap((group) => group.projects)
 
