@@ -2,8 +2,7 @@
 set -euo pipefail
 
 registry="forgejo.coilysiren.me"
-node_image="${registry}/coilyco-flight-deck/agentic-os:lang-node-release"
-scan_image="${registry}/coilyco-flight-deck/agentic-os:release"
+ci_image="${registry}/coilyco-flight-deck/agentic-os:release"
 cypress_image="cypress/included:15.19.0"
 no_proxy_hosts="127.0.0.1,localhost,forgejo.coilysiren.me,forgejo.forgejo.svc.cluster.local,.svc,.cluster.local"
 
@@ -77,8 +76,8 @@ stream_checkout() {
 case "${1:-}" in
   test)
     prepare_docker
-    pull_private_image "${node_image}"
-    stream_checkout "${node_image}" '
+    pull_private_image "${ci_image}"
+    stream_checkout "${ci_image}" '
       tar -xf -
       corepack enable
       pnpm install --frozen-lockfile
@@ -100,8 +99,8 @@ case "${1:-}" in
     ;;
   scan)
     prepare_docker
-    pull_private_image "${scan_image}"
-    stream_checkout "${scan_image}" '
+    pull_private_image "${ci_image}"
+    stream_checkout "${ci_image}" '
       tar -xf -
       printf "%s\n" \
         "(^|/)package-lock\\.json$" \
