@@ -14,7 +14,15 @@
  */
 
 /**
- * @typedef {{ kind: "emoji", glyph: string, label: string } | { kind: "image", src: string, alt: string }} ProjectIcon
+ * @typedef {{ kind: "emoji", glyph: string, label: string }} ProjectEmojiIcon
+ */
+
+/**
+ * @typedef {{ kind: "image", src: string, alt: string }} ProjectImageIcon
+ */
+
+/**
+ * @typedef {ProjectEmojiIcon | ProjectImageIcon} ProjectIcon
  */
 
 /**
