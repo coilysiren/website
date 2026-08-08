@@ -73,6 +73,10 @@ commands:
   test-e2e-ci:
     run: pnpm run test:e2e:ci
     description: Boot serve + run Cypress headless. Mirrors CI.
+
+agent:
+  workflow: merge-remote-main
+
 catalog:
   kind: Component
   type: website
