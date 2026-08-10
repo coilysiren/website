@@ -24,19 +24,19 @@ In order to get started here, you need to have already done a few things:
 
 - [Created a subscription within Azure](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide). This post assumes you are using a paid subscription, which will need to be setup by someone in your company with billing permissions.
 - [Installed the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/), [and logged into it](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
-- Been granted an Azure role [like the Contributor role](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) that allows you perform the relevant API actions within Azure. While it would be ideal to mention the fine grain access control you need to perform these actions, that is out of scope for this blog post. Someone with the `Owner` role on your subscription should be able to grant you the `Contributor` role.
+- Been granted an Azure role [like the Contributor role](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) that allows you to perform the relevant API actions within Azure. While it would be ideal to mention the fine grain access control you need to perform these actions, that is out of scope for this blog post. Someone with the `Owner` role on your subscription should be able to grant you the `Contributor` role.
 
 The above steps will likely require the assistance of your finance and IT teams. Feel free to come back to this post once you've finished coordinating with them!
 
-After setting up all of the above, then the should have all the fundamentals you need to deploy things! Lets go...
+After setting up all of the above, then you should have all the fundamentals you need to deploy things! Let's go...
 
 ## Security Preface
 
 ...okay wait.
 
-Before I mention the terraform itself, I must give an important caveat. The terraform configuration describes here is in its **_least secure configuration_**. Specifically, its in its least secure configuration with regards to network security. If you are following this configuration as-is, then you should only be doing so as a prototype. Essentially you deploying this to prove to your stakeholders, _"yes I have the skills required to deploy Azure OpenAI via Terraform"_. You must then follow-up via starting work up the network security improvements.
+Before I mention the terraform itself, I must give an important caveat. The terraform configuration described here is in its **_least secure configuration_**. Specifically, it's in its least secure configuration with regards to network security. If you are following this configuration as-is, then you should only be doing so as a prototype. Essentially you are deploying this to prove to your stakeholders, _"yes I have the skills required to deploy Azure OpenAI via Terraform"_. You must then follow up by starting work on the network security improvements.
 
-Having said that. Lets go...
+Having said that. Let's go...
 
 ## Terraform Configuration
 
@@ -51,7 +51,7 @@ terraform/modules/azure-openai/main.tf
 
 And here are the files:
 
-<!-- author note: my queendom for a HCL syntax highlighter... -->
+<!-- author note: my queendom for an HCL syntax highlighter... -->
 
 ```HCL
 # file: terraform/main.tf
@@ -106,7 +106,7 @@ module "azure_openai" {
   # A "vnet" is a virtual network group. This network group needs an address,
   # similar to a street address. The "cidr" is that address, represented as a range.
   # A "subnet" or "sub network" is simply a sub group of the broader vnet.
-  # A vnet is like a house. The vnet cdir is the address to that house. The
+  # A vnet is like a house. The vnet cidr is the address to that house. The
   # subnets are individual rooms within that house. The subnet cidr is the address
   # for each room. The cidrs are all ranges, so the subnet cidrs are ranges contained
   # within the vnet range. You can use a website like https://cidr.xyz/ to confirm this.
@@ -136,7 +136,7 @@ terraform {
   }
 }
 
-# These variables are the inputs for our module. Their context us best understood
+# These variables are the inputs for our module. Their context is best understood
 # by looking at where they are used inside this module.
 #
 # docs: https://developer.hashicorp.com/terraform/language/values/variables
@@ -396,11 +396,11 @@ resource "azurerm_cognitive_account" "private" {
 
   public_network_access_enabled = true
   # public_network_access_enabled is a misleading setting name. It is best understood in
-  # connection with the network_acls.defeault_action setting. Here's effect of various
+  # connection with the network_acls.default_action setting. Here's the effect of various
   # combinations of these two settings:
   #
   # public_network_access_enabled: true, default_action: Allow
-  #   - Accessible anyhere from the internet. THIS IS DANGEROUS.
+  #   - Accessible anywhere from the internet. THIS IS DANGEROUS.
   #
   # public_network_access_enabled: true, default_action: Deny
   #   - Accessible from the specified IP ranges in `ip_rules`.
@@ -431,7 +431,7 @@ resource "azurerm_cognitive_account" "private" {
     ##########################################
     # This is a "prototype" configuration where you just grab your IP address
     # via `$ curl http://ifconfig.me` and stick it right this file. This is bad
-    # security practice and is only fit for proving to your stackholders that
+    # security practice and is only fit for proving to your stakeholders that
     # you are skilled enough to deploy Azure OpenAI via terraform.
     #
     # What you want to do, is setup a peering connection from your main network groups
@@ -471,9 +471,9 @@ resource "azurerm_cognitive_deployment" "private" {
 }
 ```
 
-All of that! Should be deploy-able with a `terraform init && terraform apply` without requiring much additional configuration. With, of course, the significant except of putting your IP address into the `ip_rules`.
+All of that! Should be deploy-able with a `terraform init && terraform apply` without requiring much additional configuration. With, of course, the significant exception of putting your IP address into the `ip_rules`.
 
-I don't expect this example will quite work so easily if you are working with existing architecture. If you're looking for another example terraform configuration to compare against your architecture, I would recommend this Github repo from Azure:
+I don't expect this example will quite work so easily if you are working with existing architecture. If you're looking for another example terraform configuration to compare against your architecture, I would recommend this GitHub repo from Azure:
 
 https://github.com/Azure-Samples/azure-openai-terraform-deployment-sample
 
