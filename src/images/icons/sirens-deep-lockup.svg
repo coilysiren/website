@@ -8,7 +8,6 @@
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="34"/>
       <feColorMatrix values="0 0 0 0 0.72  0 0 0 0 0.64  0 0 0 0 0.86  0 0 0 0.07 0"/>
     </filter>
-    <clipPath id="water"><circle cx="250" cy="250" r="165"/></clipPath>
   </defs>
   <rect width="500" height="500" fill="#0d0a14"/>
 
@@ -16,17 +15,21 @@
     <circle cx="250" cy="250" r="208" stroke="#45cdd0" stroke-width="16"/>
     <circle cx="250" cy="250" r="191.5" stroke="#b8a4d8" stroke-width="17"/>
   </g>
+  <g transform="translate(0 38)">
+  <g filter="url(#ink)" fill="none" stroke-linecap="round" stroke-linejoin="miter" stroke-width="27">
+    <path stroke="#b8a4d8" d="M 308 190 L 206 190 L 206 250"/>
+    <path stroke="#45cdd0" d="M 206 250 L 300 250"/>
+    <path stroke="#b8a4d8" d="M 300 250 L 300 316 L 196 316"/>
+  </g>
+  </g>
+  <g transform="translate(180 121) scale(0.9333)">
   <g filter="url(#ink)">
-    <g clip-path="url(#water)">
-      <rect x="0" y="285.2" width="500" height="214.8" fill="#b8a4d8"/>
-    </g>
-    <g transform="translate(130 202) scale(1.6)">
-      <path fill="#45cdd0" d="M0 24 V16 H8 V8 H72 V30 H90
-               V-20 H112 V4 H130 V-6 H150 V20
-               L104 40 L88 64 H76 V80 H8 V72 H0 Z"/>
-      <path fill="#0d0a14" d="M0 54 H50 V68 H0 Z"/>
-      <circle cx="26" cy="30" r="8" fill="#0d0a14"/>
-    </g>
+    <path fill="#45cdd0" d="M0 24 V16 H8 V8 H72 V30 H90
+             V-20 H112 V4 H130 V-6 H150 V20
+             L104 40 L88 64 H76 V80 H8 V72 H0 Z"/>
+    <path fill="#0d0a14" d="M0 54 H50 V68 H0 Z"/>
+    <circle cx="26" cy="30" r="8" fill="#0d0a14"/>
+  </g>
   </g>
   <rect width="500" height="500" filter="url(#grain)" pointer-events="none"/>
 </svg>
