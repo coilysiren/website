@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <filter id="ink" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="2" seed="34" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="2.4"/>
+    </filter>
+  </defs>
+  <g filter="url(#ink)" fill="none" stroke-linecap="round">
+    <circle cx="250" cy="250" r="208" stroke="#45cdd0" stroke-width="16"/>
+  </g>
+  <g transform="translate(130 202) scale(1.6)">
+    <g filter="url(#ink)">
+      <path fill="#45cdd0" fill-rule="evenodd" d="M0 24 V16 H8 V8 H72 V30 H90
+               V-20 H112 V4 H130 V-6 H150 V20
+               L104 40 L88 64 H76 V80 H8 V72 H0 Z
+               M0 54 H50 V68 H0 Z
+               M18 30 A8 8 0 1 0 34 30 A8 8 0 1 0 18 30 Z"/>
+    </g>
+  </g>
+</svg>
