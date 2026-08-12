@@ -1,30 +1,27 @@
 describe("Basic test workflow", () => {
-  it("moves the active portfolio into the homepage proof band", () => {
+  it("reduces the homepage to the hero and the product band", () => {
     cy.visit("/")
 
-    cy.get(".portfolio-home > .portfolio-section")
+    // The repository catalogue is gone: the homepage argues with products, not
+    // with a list of every repository.
+    cy.get(".portfolio-home > section")
       .should("have.length", 1)
-      .and("have.class", "portfolio-section--featured")
-      .and("have.class", "portfolio-section--catalogue")
-      .and("have.attr", "id", "featured-work")
-    cy.contains("h2", "Active portfolio").should("be.visible")
-    cy.contains("One platform, three proof routes.").should("not.exist")
+      .and("have.class", "product-showcase")
+      .and("have.attr", "id", "products")
+    cy.contains("h2", "Active portfolio").should("not.exist")
+    cy.get(".project-catalogue, .project-group, .project-card").should(
+      "not.exist"
+    )
     cy.get(".platform-diagram, .featured-project-grid").should("not.exist")
-    cy.contains(".project-card-name", /^coilyco-flight-deck\/ward$/)
-      .parents("a")
-      .should(
-        "have.attr",
-        "href",
-        "https://github.com/coilyco-flight-deck/ward"
-      )
-    cy.get(".project-card a.project-card-surface").each(($link) => {
-      expect($link.attr("href")).to.match(/^https:\/\/github\.com\//)
-    })
+
     cy.contains(".nav-source a", "source").should(
       "have.attr",
       "href",
       "https://github.com/coilysiren"
     )
+    cy.get(".portfolio-home a").each(($link) => {
+      expect($link.attr("href")).to.match(/^https:\/\/github\.com\//)
+    })
     cy.get('a[href^="https://forgejo.coilysiren.me/"]').should("not.exist")
   })
 
@@ -68,6 +65,54 @@ describe("Basic test workflow", () => {
         document.documentElement.clientWidth
       )
     })
+  })
+
+  it("leads the homepage with banner-led product tiles", () => {
+    cy.visit("/")
+
+    // The banner carries the name and the claim as baked-in type, so the tile
+    // must not repeat them as markup. Assert the contract, not the wording.
+    cy.get(".product-showcase__grid > .product-tile").should("have.length", 3)
+    cy.get(".product-tile h1, .product-tile h2, .product-tile h3").should(
+      "not.exist"
+    )
+    cy.get(".product-tile__banner").should("have.length", 2)
+    cy.get(".product-tile__banner").each(($banner) => {
+      expect($banner.attr("src")).to.match(/^\/images\/banners\//)
+      expect($banner.attr("alt")).to.have.length.greaterThan(0)
+      expect($banner.attr("loading")).to.equal("lazy")
+    })
+
+    cy.get('.product-tile[data-product="agent-compose"]')
+      .find("a.product-tile__surface")
+      .should(
+        "have.attr",
+        "href",
+        "https://github.com/coilyco-flight-deck/agent-compose"
+      )
+
+    // sirens-echo is a private repository: a banner that big must not imply a
+    // destination the page cannot deliver.
+    cy.get('.product-tile[data-product="sirens-echo"]').within(() => {
+      cy.get("a").should("not.exist")
+      cy.contains("Private repository").should("be.visible")
+    })
+
+    // Ward has no mark or banner, so it sets the same three pieces of
+    // information as type and takes the full row.
+    cy.get('.product-tile[data-product="ward"]')
+      .should("have.class", "product-tile--wide")
+      .within(() => {
+        cy.get(".product-tile__banner").should("not.exist")
+        cy.get(".product-tile__stage").should("have.text", "Execute")
+        cy.get(".product-tile__wordmark").should("have.text", "Ward")
+        cy.get(".product-tile__claim").should("be.visible")
+        cy.get("a.product-tile__surface").should(
+          "have.attr",
+          "href",
+          "https://github.com/coilyco-flight-deck/ward"
+        )
+      })
   })
 
   it("keeps long-form writing out of visible navigation", () => {
@@ -195,7 +240,7 @@ describe("Basic test workflow", () => {
     })
   })
 
-  it("keeps the homepage portfolio usable on mobile", () => {
+  it("keeps the homepage usable on mobile", () => {
     cy.viewport(390, 844)
     cy.visit("/")
 
@@ -203,7 +248,7 @@ describe("Basic test workflow", () => {
       "have.text",
       "I build agentic engineering platforms"
     )
-    cy.contains("Platform engineer · East Bay, CA").should("not.exist")
+    cy.contains("Platform engineer \u00b7 East Bay, CA").should("not.exist")
     cy.get(".portfolio-hero__tagline")
       .should("be.visible")
       .and("contain.text", "lights out")
@@ -211,56 +256,23 @@ describe("Basic test workflow", () => {
       .and("contain.text", "agents warded for an 8h+ run")
     cy.get(".portfolio-hero .button-row").should("not.exist")
     cy.contains(".portfolio-hero", "Explore the work").should("not.exist")
-    cy.contains(".portfolio-section--catalogue h2", "Active portfolio").should(
-      "be.visible"
-    )
-    cy.contains("Built to compose").should("not.exist")
-    cy.get(".project-group").should("have.length", 3)
-    cy.get(".project-group").eq(0).contains("h3", "Infrastructure")
-    cy.get(".project-group").eq(1).contains("h3", "Agent platform")
-    cy.get(".project-group").eq(2).contains("h3", "Product")
-    cy.contains(
-      ".project-card-name",
-      "coilyco-flight-deck/agent-compose"
-    ).should("be.visible")
-    cy.contains(
-      ".project-card-name",
-      "coilyco-flight-deck/infrastructure"
-    ).should("be.visible")
-    cy.contains(".project-card-name", "coilyco-gaming/galaxy-gen").should(
-      "be.visible"
-    )
-    const privateRepositories = [
-      "coilyco-bridge/agentic-os-kai",
-      "coilyco-bridge/deploy",
-      "coilyco-gaming/sirens-echo",
-    ]
-    privateRepositories.forEach((repository) => {
-      cy.contains(".project-card", repository).within(() => {
-        cy.get(".project-card-name").should("contain.text", `${repository} 🔒`)
-        cy.get("a").should("not.exist")
+
+    // The tiles stack rather than shrinking the banners into a multi-up.
+    cy.get(".product-tile").should("have.length", 3)
+    cy.get(".product-tile__surface").then(($surfaces) => {
+      const boxes = [...$surfaces].map((surface) =>
+        surface.getBoundingClientRect()
+      )
+
+      boxes.forEach((box, index) => {
+        const next = boxes[index + 1]
+
+        if (next) {
+          expect(box.bottom).to.be.at.most(next.top + 1)
+        }
       })
     })
-    const productEmojis: Array<[string, string]> = [
-      ["coilyco-gaming/eco-app", "🌎"],
-      ["coilyco-gaming/galaxy-gen", "🌌"],
-      ["coilyco-gaming/sirens-echo", "🤖"],
-    ]
-    productEmojis.forEach(([repository, emoji]) => {
-      cy.contains(".project-card", repository)
-        .find(".project-card-emoji")
-        .should("have.text", emoji)
-    })
-    cy.contains(".project-card", "Many MCPs")
-      .find(".project-card-icon")
-      .should("have.length", 3)
-    cy.contains(".project-card", "Many MCPs")
-      .find("img")
-      .should("have.length", 3)
-    cy.contains(".project-card", "Many MCPs")
-      .find(".project-card-emoji")
-      .should("not.exist")
-    cy.contains(".project-card", "Many MCPs").find("a").should("not.exist")
+
     cy.contains("Notes from the work.").should("not.exist")
     cy.contains("Working together").should("not.exist")
     cy.get("footer")

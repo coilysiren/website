@@ -21,56 +21,51 @@ robots: follow, index
       </div>
     </aside>
   </header>
-  <section
-    id="featured-work"
-    class="portfolio-section portfolio-section--featured portfolio-section--catalogue"
-  >
-    <div class="section-heading"><h2>Active portfolio</h2></div>
-    <div class="project-catalogue project-catalogue--condensed">
-      {% for group in projects %}
-        <section class="project-group">
-          <header><h3>{{ group.title }}</h3></header>
-          <ul>
-            {% for project in group.projects %}
-              <li class="project-card">
-                {% if project.url %}
-                  <a class="project-card-surface" href="{{ project.url }}">
-                {% else %}
-                  <div class="project-card-surface project-card-surface--private">
-                {% endif %}
-                  <span class="project-card-topline">
-                    <span class="project-card-name">{{ project.name }}{% if project.privateRepo %} <span class="project-card-lock" aria-label="Private repository">🔒</span>{% endif %}</span>
-                    {% if project.icons %}
-                      <span class="project-card-icons{% if project.icons.length > 1 %} project-card-icons--stacked{% endif %}">
-                        {% for icon in project.icons %}
-                          <span class="project-card-icon">
-                            {% if icon.kind == "image" %}
-                              <img src="{{ icon.src }}" alt="{{ icon.alt }}" width="32" height="32">
-                            {% else %}
-                              <span class="project-card-emoji" role="img" aria-label="{{ icon.label }}">{{ icon.glyph }}</span>
-                            {% endif %}
-                          </span>
-                        {% endfor %}
-                      </span>
-                    {% endif %}
-                  </span>
-                  <p>{{ project.description }}</p>
-                  {% if project.tags.length %}
-                    <span class="project-repo-tags" aria-label="{{ project.name }} repository tags">
-                      {% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}
-                    </span>
-                  {% endif %}
-                  {% if project.privateRepo %}
-                    <small>Private repository</small>
-                  {% elif project.url %}
-                    <small>Source ↗</small>
-                  {% endif %}
-                {% if project.url %}</a>{% else %}</div>{% endif %}
-              </li>
-            {% endfor %}
-          </ul>
-        </section>
-      {% endfor %}
+  <section id="products" class="product-showcase">
+    <div class="product-showcase__inner">
+      <div class="section-heading">
+        <h2>Shipped products</h2>
+      </div>
+      <ul class="product-showcase__grid">
+        {% for product in showcase %}
+          <li
+            class="product-tile{% if not product.banner %} product-tile--wide{% endif %}"
+            data-product="{{ product.slug }}"
+          >
+            {% if product.url %}
+              <a class="product-tile__surface" href="{{ product.url }}">
+            {% else %}
+              <div class="product-tile__surface product-tile__surface--private">
+            {% endif %}
+              {% if product.banner %}
+                <img
+                  class="product-tile__banner"
+                  src="{{ product.banner }}"
+                  srcset="{{ product.banner }} 1280w, {{ product.banner2x }} 2560w"
+                  sizes="(min-width: 900px) 45vw, 92vw"
+                  width="1280"
+                  height="640"
+                  alt="{{ product.alt }}"
+                  loading="lazy"
+                  decoding="async"
+                >
+              {% else %}
+                <span class="product-tile__plate">
+                  <span class="product-tile__stage">{{ product.stage }}</span>
+                  <span class="product-tile__wordmark">{{ product.wordmark }}</span>
+                  <span class="product-tile__claim">{{ product.claim }}</span>
+                </span>
+              {% endif %}
+              <p class="product-tile__proof">{{ product.proof }}</p>
+              {% if product.privateRepo %}
+                <small class="product-tile__meta">Private repository</small>
+              {% else %}
+                <small class="product-tile__meta">Source ↗</small>
+              {% endif %}
+            {% if product.url %}</a>{% else %}</div>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
     </div>
   </section>
 </div>

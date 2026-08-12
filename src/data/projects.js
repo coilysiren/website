@@ -76,6 +76,58 @@ export const featuredProjects = [
   },
 ]
 
+/**
+ * A product that ships with its own identity: a 2:1 banner carrying the mark,
+ * the name and the one-line claim. The banner is the tile's heading, so the
+ * markup never repeats that text beside it.
+ *
+ * A tile without a banner sets the same information as type instead: `stage`
+ * and `wordmark` stand in for the mark, `claim` for the baked-in subtitle.
+ *
+ * @typedef {object} ShowcaseProduct
+ * @property {string} slug
+ * @property {string} [banner] - 1x source, 1280x640.
+ * @property {string} [banner2x] - 2x source, 2560x1280.
+ * @property {string} [alt] - Carries the words baked into the banner.
+ * @property {string} [stage] - Eyebrow on a tile with no banner.
+ * @property {string} [wordmark] - Product name on a tile with no banner.
+ * @property {string} [claim] - One-line claim on a tile with no banner.
+ * @property {string} proof - What it does, below the banner.
+ * @property {string} [url]
+ * @property {boolean} [privateRepo]
+ */
+
+/** @type {ShowcaseProduct[]} */
+export const showcaseProducts = [
+  {
+    slug: "agent-compose",
+    banner: "/images/banners/agent-compose.jpg",
+    banner2x: "/images/banners/agent-compose-2x.jpg",
+    alt: "agent-compose // $ acompose - an agent role and personality framework",
+    proof:
+      "Selects roles, personalities, skills, and tool inventories, then emits an inspectable bundle. No executable authority rides along.",
+    url: "https://github.com/coilyco-flight-deck/agent-compose",
+  },
+  {
+    slug: "sirens-echo",
+    banner: "/images/banners/sirens-echo.jpg",
+    banner2x: "/images/banners/sirens-echo-2x.jpg",
+    alt: "sirens-echo // sirens-deep - a discord community agent harness",
+    proof:
+      "Go ops tooling for the Sirens community Discord: message dumps, normalization, and the analysis pipelines over them.",
+    privateRepo: true,
+  },
+  {
+    slug: "ward",
+    stage: "Execute",
+    wordmark: "Ward",
+    claim: "Delegate real repository work without giving up the boundary.",
+    proof:
+      "Fresh clones, least-access containers, fixed workflows, recoverable outcomes, and a durable audit trail for unattended coding agents.",
+    url: "https://github.com/coilyco-flight-deck/ward",
+  },
+]
+
 /** @type {ProjectGroup[]} */
 export const projectGroups = [
   {
