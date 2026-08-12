@@ -91,12 +91,18 @@ describe("Basic test workflow", () => {
         "https://github.com/coilyco-flight-deck/agent-compose"
       )
 
-    // sirens-echo is a private repository: a banner that big must not imply a
-    // destination the page cannot deliver.
-    cy.get('.product-tile[data-product="sirens-echo"]').within(() => {
-      cy.get("a").should("not.exist")
-      cy.contains("Private repository").should("be.visible")
-    })
+    // Every tile now leads somewhere. A banner this size must not imply a
+    // destination the page cannot deliver, so none of them may go nowhere.
+    cy.get('.product-tile[data-product="sirens-echo"]')
+      .find("a.product-tile__surface")
+      .should(
+        "have.attr",
+        "href",
+        "https://github.com/coilyco-gaming/sirens-echo"
+      )
+    cy.get(".product-tile").should("have.length", 3)
+    cy.get(".product-tile a.product-tile__surface").should("have.length", 3)
+    cy.contains(".product-tile", "Private repository").should("not.exist")
 
     // Ward has no mark or banner, so it sets the same three pieces of
     // information as type and takes the full row.

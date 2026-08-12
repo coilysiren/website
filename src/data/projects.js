@@ -115,7 +115,7 @@ export const showcaseProducts = [
     alt: "sirens-echo // sirens-deep - a discord community agent harness",
     proof:
       "Go ops tooling for the Sirens community Discord: message dumps, normalization, and the analysis pipelines over them.",
-    privateRepo: true,
+    url: "https://github.com/coilyco-gaming/sirens-echo",
   },
   {
     slug: "ward",
@@ -224,7 +224,7 @@ export const projectGroups = [
         name: "coilyco-gaming/sirens-echo",
         description: "Sirens Echo Community harness for the Sirens Discord.",
         tags: ["community", "discord", "harness"],
-        privateRepo: true,
+        url: "https://github.com/coilyco-gaming/sirens-echo",
         icons: [{ kind: "emoji", glyph: "🤖", label: "Robot" }],
       },
       {

@@ -33,7 +33,6 @@ describe("project portfolio", () => {
     expect(unlinkedProjects).toEqual([
       "coilyco-bridge/agentic-os-kai",
       "coilyco-bridge/deploy",
-      "coilyco-gaming/sirens-echo",
       "Many MCPs",
     ])
   })
