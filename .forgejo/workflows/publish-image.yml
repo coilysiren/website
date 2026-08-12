@@ -20,6 +20,7 @@ jobs:
         run: bash scripts/publish-image.sh
       - name: Alert Telegram on main failure
         if: ${{ failure() && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.TELEGRAM_RED_CHAT_ID }}
@@ -29,39 +30,4 @@ jobs:
           REF: ${{ github.ref }}
           SHA: ${{ github.sha }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          API_BASE: https://api.telegram.org
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import os
-          import urllib.error
-          import urllib.parse
-          import urllib.request
-
-          bot_token = os.environ["BOT_TOKEN"]
-          payload = urllib.parse.urlencode(
-              {
-                  "chat_id": os.environ["CHAT_ID"],
-                  "text": "\n".join(
-                      [
-                          "CI failed on main",
-                          f"repo: {os.environ['REPO']}",
-                          f"workflow: {os.environ['WORKFLOW']}",
-                          f"job: {os.environ['JOB']}",
-                          f"ref: {os.environ['REF']}",
-                          f"sha: {os.environ['SHA']}",
-                          f"run: {os.environ['RUN_URL']}",
-                      ]
-                  ),
-                  "disable_web_page_preview": "true",
-              }
-          ).encode("utf-8")
-          url = f"{os.environ['API_BASE'].rstrip('/')}/bot{bot_token}/sendMessage"
-          req = urllib.request.Request(url, data=payload, method="POST")
-          try:
-              with urllib.request.urlopen(req, timeout=15) as resp:
-                  resp.read()
-          except urllib.error.URLError as exc:
-              print(f"telegram alert failed: {exc}")
-              raise SystemExit(1)
-          PY
+        run: python3 scripts/ci/alert-telegram.py

@@ -1,10 +1,17 @@
 name: Test and mirror to GitHub
 
 on:
+  pull_request:
   push:
     branches: [main]
     tags: ["v*"]
 
+# Every job here shells into run-in-container.sh, which opens with
+# `docker system prune --all --force --volumes` on the shared deploy runner.
+# Pull requests therefore stay in the same serialized group as main rather than
+# getting their own: two concurrent runs would delete each other's images
+# mid-build. Queueing a PR behind main costs minutes; overlapping them is a
+# flake generator.
 concurrency:
   group: website-deploy-runner
   cancel-in-progress: false
@@ -23,6 +30,19 @@ jobs:
           persist-credentials: false
       - name: Build and run the quick test gate
         run: bash scripts/ci/run-in-container.sh test
+      - name: Alert Telegram on main failure
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_RED_CHAT_ID }}
+          REPO: ${{ github.repository }}
+          WORKFLOW: ${{ github.workflow }}
+          JOB: ${{ github.job }}
+          REF: ${{ github.ref }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/ci/alert-telegram.py
 
   test-e2e:
     needs: test
@@ -35,9 +55,24 @@ jobs:
           persist-credentials: false
       - name: Run Cypress smoke tests
         run: bash scripts/ci/run-in-container.sh e2e
+      - name: Alert Telegram on main failure
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_RED_CHAT_ID }}
+          REPO: ${{ github.repository }}
+          WORKFLOW: ${{ github.workflow }}
+          JOB: ${{ github.job }}
+          REF: ${{ github.ref }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/ci/alert-telegram.py
 
   mirror:
     needs: [test, test-e2e]
+    # Pull requests prove the build; only landed history is mirrored.
+    if: ${{ github.event_name == 'push' }}
     runs-on: deploy
     timeout-minutes: 15
     steps:
@@ -49,3 +84,16 @@ jobs:
         env:
           PAT: ${{ secrets.GITHUB_MIRROR_PAT }}
         run: bash scripts/ci/mirror-to-github.sh
+      - name: Alert Telegram on main failure
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_RED_CHAT_ID }}
+          REPO: ${{ github.repository }}
+          WORKFLOW: ${{ github.workflow }}
+          JOB: ${{ github.job }}
+          REF: ${{ github.ref }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/ci/alert-telegram.py
