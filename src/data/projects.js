@@ -86,8 +86,8 @@ export const featuredProjects = [
  *
  * @typedef {object} ShowcaseProduct
  * @property {string} slug
- * @property {string} [banner] - 1x source, 1280x640.
- * @property {string} [banner2x] - 2x source, 2560x1280.
+ * @property {string} [banner] - 1x source, 1280x492.
+ * @property {string} [banner2x] - 2x source, 2560x985.
  * @property {string} [alt] - Carries the words baked into the banner.
  * @property {string} [stage] - Eyebrow on a tile with no banner.
  * @property {string} [wordmark] - Product name on a tile with no banner.
