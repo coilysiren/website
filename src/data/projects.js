@@ -103,7 +103,7 @@ export const showcaseProducts = [
     slug: "agent-compose",
     banner: "/images/banners/agent-compose.jpg",
     banner2x: "/images/banners/agent-compose-2x.jpg",
-    alt: "agent-compose // $ acompose - an agent role and personality framework",
+    alt: "agent-compose // $ acompose - Eval driven agent roles and personas",
     proof:
       "Selects roles, personalities, skills, and tool inventories, then emits an inspectable bundle. No executable authority rides along.",
     url: "https://github.com/coilyco-flight-deck/agent-compose",
