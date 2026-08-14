@@ -74,9 +74,6 @@ commands:
     run: pnpm run test:e2e:ci
     description: Boot serve + run Cypress headless. Mirrors CI.
 
-agent:
-  workflow: merge-remote-main
-
 catalog:
   description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."
   dependsOn:
