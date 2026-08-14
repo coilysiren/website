@@ -78,11 +78,6 @@ agent:
   workflow: merge-remote-main
 
 catalog:
-  kind: Component
-  type: website
-  system: content
-  owner: kai
-  lifecycle: production
   description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."
   dependsOn:
     - forgejo.coilysiren.me/coilyco-flight-deck/infrastructure
