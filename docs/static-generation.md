@@ -7,21 +7,7 @@ dependency.
 
 ## Source layout
 
-* [`eleventy.config.js`](../eleventy.config.js) - Eleventy directories,
-  collections, date filters, passthrough assets, syntax highlighting, and Sass
-  compilation.
-* [`src/_includes/`](../src/_includes/) - shared HTML head, navigation,
-  footer, and Markdown content layout.
-* [`src/_data/`](../src/_data/) - portfolio and About-page build data.
-* [`src/pages/`](../src/pages/) - canonical Markdown for the resume, retained
-  pages, and retired articles.
-* [`src/sass/`](../src/sass/) - the existing responsive visual system,
-  compiled once to `dist/styles/site.css`.
-
-The public discovery boundary is `/`, `/about/`, `/hiring/`, and
-`/resume/`. Only those routes receive `follow, index`. Retired writing,
-posts, privacy, and unlisted pages remain directly reachable with
-`noindex, nofollow`.
+Where each kind of source lives: [source layout](source-layout.md).
 
 ## Assets
 
@@ -49,15 +35,5 @@ The permanent redirect set includes:
 
 ## Verification
 
-Run the repository-owned command surface:
+What to run before trusting a build: [verification](verification.md).
 
-```text
-ward exec build
-ward exec test
-ward exec test-e2e-ci
-ward exec pre-commit-all
-```
-
-The production Cypress suite verifies canonical content, metadata, direct
-legacy pages, retired-route 404s, the designed 404 page, local-only assets, and
-the absence of browser scripts or social-image metadata.
