@@ -1,0 +1,7 @@
+# Config-only pyproject: this is a JavaScript site, and the file exists so the
+# agentic-os catalog hooks have somewhere to read per-repo settings from.
+
+[tool.agentic-os.documentation-layout]
+# Declared rather than defaulted: an undeclared repo and a deliberately
+# small one were the same file, and only one had the decision made.
+band = "small"
