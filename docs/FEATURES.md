@@ -30,6 +30,7 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 - [README.md](../README.md) - human-facing intro and local-dev quickstart.
 - [staging.md](staging.md) - staging image boundary and local verification.
 - [AGENTS.md](../AGENTS.md) - agent-facing operating rules.
-- [.ward/ward.yaml](../.ward/ward.yaml) - allowlisted commands.
+- [justfile](../justfile) - dev verbs.
+- [.ward/ward.yaml](../.ward/ward.yaml) - catalog metadata only.
 
 Cross-reference convention from [coilyco-bridge/agentic-os-kai#313](https://github.com/coilyco-bridge/agentic-os-kai/issues/313).

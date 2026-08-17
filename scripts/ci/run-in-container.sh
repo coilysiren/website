@@ -82,8 +82,8 @@ case "${1:-}" in
       corepack enable
       pnpm install --frozen-lockfile
       git fetch origin
-      ward exec build
-      ward exec test-quick
+      just build
+      just test-quick
     '
     ;;
   e2e)

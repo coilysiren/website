@@ -13,9 +13,9 @@ The split between this repo and deploy: [staging ownership](staging-ownership.md
 Ward exposes the container checks through the repository command boundary:
 
 ```text
-ward exec image-build
-ward exec image-smoke
-ward exec image-publish-check
+just image-build
+just image-smoke
+just image-publish-check
 ```
 
 The build has no API or remote browser dependency. Eleventy metadata keeps

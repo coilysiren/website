@@ -24,18 +24,18 @@ asset dependencies.
 
 ## Commands
 
-Dev commands are declared in [`.ward/ward.yaml`](.ward/ward.yaml). Run them as `ward exec <verb>`.
+Dev commands are declared in the [`justfile`](justfile). Run them as `just <verb>`, and run `just` alone to list every one.
 
-- `ward exec install` - install the locked dependency graph.
-- `ward exec dev` - clean, build, and serve Eleventy with live reload.
-- `ward exec test` - run formatting, lint, type, and unit checks.
-- `ward exec build` - create the production site in `dist/`.
-- `ward exec build-resume` - regenerate the PDF from the checked-in resume page in an isolated `uv` environment.
-- `ward exec image-build` - build the static staging image.
-- `ward exec image-smoke` - validate nginx inside the staging image.
-- `ward exec image-publish-check` - validate the trusted publisher script.
-- `ward exec test-e2e-ci` - serve the production build and run the Cypress smoke test.
-- `ward exec deps-outdated` - report dependency releases available upstream.
+- `just install` - install the locked dependency graph.
+- `just dev` - clean, build, and serve Eleventy with live reload.
+- `just test` - run formatting, lint, type, and unit checks.
+- `just build` - create the production site in `dist/`.
+- `just build-resume` - regenerate the PDF from the checked-in resume page in an isolated `uv` environment.
+- `just image-build` - build the static staging image.
+- `just image-smoke` - validate nginx inside the staging image.
+- `just image-publish-check` - validate the trusted publisher script.
+- `just test-e2e-ci` - serve the production build and run the Cypress smoke test.
+- `just deps-outdated` - report dependency releases available upstream.
 
 The dependency updater keeps Node types on the Node 24 runtime line and
 TypeScript on 6.x until typescript-eslint supports TypeScript 7.
@@ -55,6 +55,7 @@ source repository publishes an immutable private image to Forgejo OCI.
 
 - [AGENTS.md](AGENTS.md) - agent-facing operating rules.
 - [docs/FEATURES.md](docs/FEATURES.md) - inventory of what ships today.
-- [.ward/ward.yaml](.ward/ward.yaml) - allowlisted commands. Agents route through ward, not bare `make` / `uv` / `python` / `npm` / `cargo` / `dotnet`.
+- [justfile](justfile) - dev verbs.
+- [.ward/ward.yaml](.ward/ward.yaml) - catalog metadata only. Agents route through ward, not bare `make` / `uv` / `python` / `npm` / `cargo` / `dotnet`.
 
 Cross-reference convention from [coilyco-bridge/agentic-os-kai#313](https://github.com/coilyco-bridge/agentic-os-kai/issues/313).

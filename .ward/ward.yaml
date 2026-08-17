@@ -1,78 +1,9 @@
-# Per-repo coily command allowlist for website (coilysiren.me). See docs/FEATURES.md.
-
-commands:
-  install:
-    run: pnpm install --frozen-lockfile
-    description: Install dependencies from pnpm-lock.yaml (frozen).
-  deps-outdated:
-    run: pnpm outdated
-    description: Report dependencies with newer releases available.
-  deps-peers:
-    run: pnpm peers check
-    description: Validate peer dependency compatibility across the installed graph.
-  deps-update:
-    run: pnpm update --latest
-    description: Update dependencies to their latest releases and refresh pnpm-lock.yaml.
-  deps-sync:
-    run: pnpm install --no-frozen-lockfile
-    description: Refresh pnpm-lock.yaml after an intentional package.json change.
-  dev:
-    run: pnpm run dev
-    description: Clean, build, and serve Eleventy with live reload on port 8000.
-  build:
-    run: pnpm run build
-    description: Clean and generate the production Eleventy site in dist/.
-  image-build:
-    run: docker build --tag coilysiren-website:local .
-    description: Build the static staging image locally.
-  image-smoke:
-    run: docker run --rm coilysiren-website:local nginx -t
-    description: Validate the staging image nginx configuration.
-  image-publish-check:
-    run: bash -n scripts/publish-image.sh
-    description: Validate the trusted Forgejo OCI publisher shell contract.
-  ci-script-check:
-    run: bash -n scripts/ci/run-in-container.sh scripts/ci/mirror-to-github.sh scripts/publish-image.sh
-    description: Validate the trusted Forgejo CI and publishing shell contracts.
-  serve:
-    run: pnpm run serve
-    description: Build and serve the Eleventy site on port 8000.
-  build-resume:
-    run: uv run --with pillow --with reportlab scripts/build-resume.py
-    description: Build static/resume.pdf from the canonical resume in an isolated Python environment.
-  playwright-my-life:
-    run: npx --yes playwright@1.57.0 screenshot --browser chromium --channel=chrome --viewport-size=1920,1080 --full-page http://127.0.0.1:8000/my-life/ /private/tmp/my-life-wide.png
-    description: Capture the My Life presentation at a widescreen viewport.
-  format:
-    run: pnpm run format
-    description: Format supported repository files with Prettier.
-  format-check:
-    run: pnpm run format:check
-    description: Check supported repository files with Prettier.
-  lint:
-    run: pnpm run lint
-    description: Lint JavaScript and TypeScript with zero warnings.
-  pre-commit-all:
-    run: pre-commit run --all-files
-    description: Run every repository pre-commit hook.
-  typecheck:
-    run: pnpm run typecheck
-    description: Type-check application, build, and Cypress code.
-  test:
-    run: pnpm run test
-    description: Run formatting, lint, type, and unit checks.
-  test-quick:
-    run: pnpm run test:quick
-    description: Format check, lint, type-check, and unit tests.
-  test-unit:
-    run: pnpm run test:unit
-    description: vitest run.
-  test-e2e-local:
-    run: pnpm run test:e2e:local
-    description: Boot serve + open Cypress interactively.
-  test-e2e-ci:
-    run: pnpm run test:e2e:ci
-    description: Boot serve + run Cypress headless. Mirrors CI.
+# Catalog metadata for the cross-repo knowledge graph.
+#
+# Dev verbs used to live here as a `commands:` block. They are recipes in the
+# justfile now. This file survives only because check_catalog_block pins this
+# exact path and catalog-trifecta wants README, AGENTS, and FEATURES to link
+# it, both upstream in agentic-os.
 
 catalog:
   description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."

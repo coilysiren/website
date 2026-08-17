@@ -10,7 +10,7 @@ the trusted publisher lane.
 
 - `test` streams the checkout into the moving `:lang-node-release` specialist
   from the dev-base image family, enables Corepack, installs the pnpm 11
-  lockfile, and then uses `ward exec build` and `ward exec test-quick`.
+  lockfile, and then uses `just build` and `just test-quick`.
   Eleventy emits the production `dist/` tree before the fast checks run.
 - `test-e2e` runs the TypeScript Cypress smoke path in the pinned
   `cypress/included` image through the same streamed-checkout boundary
