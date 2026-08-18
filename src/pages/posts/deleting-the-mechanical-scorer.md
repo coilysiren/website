@@ -8,9 +8,10 @@ description: >-
 
 ---
 
-Two of my systems evaluate agent behavior. One is a context compiler that composes role and personality
-definitions for agent harnesses, graded against a roster. The other is a Discord agent that answers
-strangers in a community nobody is paid to moderate, graded against the clauses in its own prompt.
+Two of my systems evaluate agent behavior. One, `agent-compose`, is a context compiler that composes role
+and personality definitions for agent harnesses, graded against a roster. The other, `sirens-echo`, runs a
+Discord agent that answers strangers in a community nobody is paid to moderate, graded against the clauses
+in its own prompt.
 
 They have nothing in common. Different subjects, different runners, different failure modes. They ended
 up sharing a grading layer anyway, and the reason is that I deleted the same component from both.
@@ -145,3 +146,19 @@ agent for doing nothing.
 Prefer the number that can come back negative, in your evals and in your coverage reports both.
 
 And when you extract a shared layer, extract the rule you wrote twice.
+
+## The code
+
+All three are readable without an account, and each page links the other two.
+
+* [aos-eval](https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os/src/branch/main/docs/aos-eval.md) -
+  the shared grading layer: schema, the pairing rule, annotation, the failure taxonomy, the refusing
+  export, and the agent-and-model probe layer that sits under anything graded.
+* [agent-compose evaluation](https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose/src/branch/main/docs/evaluation.md) -
+  the roster-derived board, and the nine cases where the discriminator tier and I disagreed.
+* [sirens-echo evaluation](https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo/src/branch/main/docs/sirens-echo-eval.md) -
+  the live-harness board, the clause citations, and the 56-slot coverage gap as its own tool reports it.
+
+Counts in this post are from `main` on the day of writing: 28 declared boundaries, 56 derived slots, 0
+authored against them, 10 cases authored against prompt clauses instead. Re-derive them with
+`aos-eval boundaries check` rather than trusting the number here.
