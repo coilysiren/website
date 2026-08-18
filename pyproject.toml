@@ -5,3 +5,14 @@
 # Declared rather than defaulted: an undeclared repo and a deliberately
 # small one were the same file, and only one had the decision made.
 band = "small"
+# Published site content is the product, not repository documentation, so the
+# docs layout and size caps do not model it. A post is as long as its argument
+# needs and lives where Eleventy's permalink computation expects it. Same hatch
+# agentic-os takes for internal/person/data. .github templates follow GitHub's
+# required layout, and drafts/ is unpublished prose. The caps still bind
+# README.md, AGENTS.md, and docs/*.md, which is where they were aimed.
+excludes = [
+    ".github/ISSUE_TEMPLATE/**",
+    "drafts/**",
+    "src/pages/**",
+]
