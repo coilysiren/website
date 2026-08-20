@@ -1,6 +1,6 @@
 ---
 name: repo-website
-description: coilysiren.me - personal site and technical writing on platform engineering, systems, and side projects. Triggers - website, blog, personal-site, platform-engineering, technical-writing
+description: Personal website and technical blog about platform engineering, systems, and side projects. Triggers - website, blog, devops, observability, personal-website
 ---
 
 # repo-website
