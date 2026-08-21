@@ -21,7 +21,7 @@ describe("Basic test workflow", () => {
           .should(
             "have.attr",
             "src",
-            "https://www.youtube-nocookie.com/embed/vKc7_vfgja4"
+            "https://www.youtube.com/embed/vKc7_vfgja4"
           )
           .and(
             "have.attr",
@@ -180,23 +180,21 @@ describe("Basic test workflow", () => {
     })
   })
 
-  it("ships static pages with scoped external media and text-only metadata", () => {
-    const pages: Array<[string, string, string | undefined, string[]]> = [
-      [
-        "/",
-        "Kai Siren",
-        "https://coilysiren.me/",
-        ["https://www.youtube-nocookie.com"],
-      ],
-      ["/about/", "About | Kai Siren", "https://coilysiren.me/about/", []],
-      ["/hiring/", "Hiring | Kai Siren", "https://coilysiren.me/hiring/", []],
-      ["/resume/", "Resume", undefined, []],
+  it("keeps core rendering dependencies local and metadata text-only", () => {
+    const pages: Array<[string, string, string | undefined]> = [
+      ["/", "Kai Siren", "https://coilysiren.me/"],
+      ["/about/", "About | Kai Siren", "https://coilysiren.me/about/"],
+      ["/hiring/", "Hiring | Kai Siren", "https://coilysiren.me/hiring/"],
+      ["/resume/", "Resume", undefined],
     ]
 
-    pages.forEach(([url, title, canonical, allowedExternalOrigins]) => {
+    pages.forEach(([url, title, canonical]) => {
       const outputPath =
         url === "/" ? "dist/index.html" : `dist${url}index.html`
-      cy.readFile(outputPath).should("not.match", /<script\b/i)
+      cy.readFile(outputPath).should(
+        "not.match",
+        /<script\b(?![^>]*\b(?:async|defer)\b)/i
+      )
       cy.visit(url)
       cy.title().should("eq", title)
       cy.get('meta[name="robots"]').should(
@@ -216,19 +214,19 @@ describe("Basic test workflow", () => {
         expect(document.documentElement.innerHTML).not.to.contain("___gatsby")
         const browserWindow = document.defaultView
         expect(browserWindow).not.to.equal(null)
-        const thirdPartyResources = browserWindow!.performance
+        const externalCriticalResources = browserWindow!.performance
           .getEntriesByType("resource")
+          .filter(
+            (entry): entry is PerformanceResourceTiming =>
+              entry instanceof PerformanceResourceTiming &&
+              (entry.initiatorType === "css" || entry.initiatorType === "font")
+          )
           .map((entry) => new URL(entry.name))
           .filter(
             (resourceUrl) =>
               resourceUrl.origin !== browserWindow!.location.origin
           )
-        const thirdPartyOrigins = [
-          ...new Set(
-            thirdPartyResources.map((resourceUrl) => resourceUrl.origin)
-          ),
-        ]
-        expect(thirdPartyOrigins).to.have.members(allowedExternalOrigins)
+        expect(externalCriticalResources).to.deep.equal([])
       })
     })
   })

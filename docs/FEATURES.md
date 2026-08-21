@@ -6,11 +6,12 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 
 ## What ships
 
-- **Stack** - Eleventy, Nunjucks, Markdown, and Sass, output as plain HTML with
-  no browser JavaScript. See [the stack](stack.md).
-- **Homepage talk** - a responsive, lazy, privacy-enhanced YouTube player for
-  the Temporal Vibe Check sits between the hero and shipped products. It is the
-  homepage's sole third-party request.
+- **Stack** - Eleventy, Nunjucks, Markdown, and Sass, output as locally served
+  core HTML, CSS, and fonts without a framework runtime or hydration. See [the
+  stack](stack.md).
+- **Homepage talk** - a responsive, lazy YouTube player for the Temporal Vibe
+  Check sits between the hero and shipped products. It loads after the core
+  page, so its resources do not sit on the critical rendering path.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Templates and data** - layouts, includes, and data files in
   [templates and data](templates.md).
@@ -22,8 +23,8 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 ## Tests, deploy, baseline
 
 - **Cypress** production-output tests under [cypress/e2e/](../cypress/e2e/)
-  cover the canonical pages, retired-route and designed 404s, local-only asset
-  requests, and the absence of browser scripts and social-image metadata.
+  cover the canonical pages, retired-route and designed 404s, local core CSS
+  and font resources, and text-only social metadata.
 - **Deploy** - how a merge reaches production: [deploy](deploy.md).
 - **Managed pre-commit block** from agentic-os plus a local offline
   `trufflehog` hook.

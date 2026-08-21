@@ -18,9 +18,10 @@ The site uses Node.js 24 LTS and pnpm 11. Corepack reads the exact pnpm release
 from `package.json`, while `.node-version` keeps local development and hosted
 builds on the same Node release.
 
-Eleventy renders the site to ordinary static files in `dist/`. The production
-output contains no browser JavaScript, hydration runtime, or analytics. Its
-only remote request is the homepage's lazy privacy-enhanced YouTube player.
+Eleventy renders the site to ordinary static files in `dist/`. Core pages
+render from server-produced HTML and locally served CSS and fonts, without a
+framework runtime, hydration, or analytics. Optional embeds may load their own
+resources after the core page is usable.
 
 ## Commands
 

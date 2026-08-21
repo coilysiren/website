@@ -1,9 +1,10 @@
 # Static generation
 
 The site uses Eleventy 3 to turn Nunjucks templates and Markdown content into
-ordinary files under `dist/`. Production pages ship no browser JavaScript,
-hydration markers, analytics, client router, or service worker. The homepage's
-lazy privacy-enhanced YouTube iframe is the sole third-party request.
+ordinary files under `dist/`. Core rendering uses static HTML plus locally
+served CSS and fonts, without a framework runtime, hydration markers,
+analytics, client router, or service worker. Optional embeds may load their
+own resources after the core page is usable.
 
 ## Source layout
 
@@ -14,8 +15,8 @@ Where each kind of source lives: [source layout](source-layout.md).
 Eleventy copies `static/` to the output root and `src/images/` to
 `dist/images/`. The build copies only the six Roboto files used by the site
 from `@fontsource/roboto`. Prism highlighting and Sass both run at build time.
-All browser requests stay on the site origin except for the homepage's lazy
-privacy-enhanced YouTube iframe.
+The critical CSS and font requests stay on the site origin. The homepage's lazy
+YouTube iframe may load its own player resources after the core page renders.
 
 Text Open Graph, Twitter, canonical, and article metadata live in the shared
 base layout. Social preview images, RSS, and their generators are intentionally

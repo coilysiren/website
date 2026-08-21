@@ -6,11 +6,11 @@ Page templates live at the root of [src/](../src/). Markdown content remains
 under [src/pages/](../src/pages/) so the resume keeps its canonical source.
 
 - **`index.njk`** - project-first home. It leads with Kai's platform thesis,
-  then presents the Temporal Vibe Check in a responsive privacy-enhanced
-  YouTube player before the shipped product cards. The player is the homepage's
-  sole third-party request. Public repository cards point at their GitHub
-  mirrors for sturdy public access. The homepage ends after the products rather
-  than repeating Writing and hiring calls to action.
+  then presents the Temporal Vibe Check in a responsive YouTube player before
+  the shipped product cards. The player is lazy, so its resources load outside
+  the core rendering path. Public repository cards point at their GitHub mirrors
+  for sturdy public access. The homepage ends after the products rather than
+  repeating Writing and hiring calls to action.
 - **`about.njk`** - canonical About page pairing its concise bio opening with a
   single portrait, followed by the visual autobiography and themed collections.
 - **`resume.md`** - canonical semantic resume source for both the public page

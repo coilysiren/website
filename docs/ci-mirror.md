@@ -16,8 +16,8 @@ the trusted publisher lane.
   `cypress/included` image through the same streamed-checkout boundary
   because the dev-base image does not carry a browser stack. The production
   suite builds and serves Eleventy output, then verifies canonical content,
-  local-only assets, retired routes, the designed 404, and the absence of
-  browser scripts and social-image metadata.
+  local core CSS and font resources, retired routes, the designed 404, and
+  text-only social-image metadata.
 - `mirror` starts only after both test jobs pass. It fast-forwards Forgejo
   `main` and appends tags to the read-only `coilysiren/website` GitHub mirror.
   It never force-pushes and fails red when the histories diverge.
