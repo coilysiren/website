@@ -77,7 +77,7 @@ export const featuredProjects = [
 ]
 
 /**
- * A product that ships with its own identity: a 2:1 banner carrying the mark,
+ * A product that ships with its own identity: a wide banner carrying the mark,
  * the name and the one-line claim. The banner is the tile's heading, so the
  * markup never repeats that text beside it.
  *
@@ -88,6 +88,8 @@ export const featuredProjects = [
  * @property {string} slug
  * @property {string} [banner] - 1x source, 1280x492.
  * @property {string} [banner2x] - 2x source, 2560x985.
+ * @property {string} [mobileBanner] - Small-screen source, 1280x853.
+ * @property {string} [mobileBanner2x] - Small-screen 2x source, 2560x1707.
  * @property {string} [alt] - Carries the words baked into the banner.
  * @property {string} [stage] - Eyebrow on a tile with no banner.
  * @property {string} [wordmark] - Product name on a tile with no banner.
@@ -116,6 +118,17 @@ export const showcaseProducts = [
     proof:
       "Go ops tooling for the Sirens community Discord: message dumps, normalization, and the analysis pipelines over them.",
     url: "https://github.com/coilyco-gaming/sirens-echo",
+  },
+  {
+    slug: "umbra",
+    banner: "/images/banners/umbra.jpg",
+    banner2x: "/images/banners/umbra-2x.jpg",
+    mobileBanner: "/images/banners/umbra-mobile.jpg",
+    mobileBanner2x: "/images/banners/umbra-mobile-2x.jpg",
+    alt: "umbra - a config driven occlusion framework",
+    proof:
+      "A config driven occlusion framework that puts explicit boundaries around CLIs and APIs.",
+    url: "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra",
   },
   {
     slug: "ward",

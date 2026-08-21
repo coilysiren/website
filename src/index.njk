@@ -55,6 +55,14 @@ robots: follow, index
               <div class="product-tile__surface product-tile__surface--private">
             {% endif %}
               {% if product.banner %}
+                {% if product.mobileBanner %}
+                  <picture class="product-tile__picture product-tile__picture--responsive">
+                    <source
+                      media="(max-width: 600px)"
+                      srcset="{{ product.mobileBanner }} 1280w, {{ product.mobileBanner2x }} 2560w"
+                      sizes="92vw"
+                    >
+                {% endif %}
                 <img
                   class="product-tile__banner"
                   src="{{ product.banner }}"
@@ -66,6 +74,9 @@ robots: follow, index
                   loading="lazy"
                   decoding="async"
                 >
+                {% if product.mobileBanner %}
+                  </picture>
+                {% endif %}
               {% else %}
                 <span class="product-tile__plate">
                   <span class="product-tile__stage">{{ product.stage }}</span>

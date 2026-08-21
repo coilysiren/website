@@ -129,6 +129,21 @@ a.product-tile__surface {
   border-radius: 0.55rem;
 }
 
+.product-tile__picture {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .product-tile__picture--responsive {
+    aspect-ratio: 3 / 2;
+
+    .product-tile__banner {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
 // Ward has no mark or banner, so it takes the full row rather than sitting as
 // a short third column against two 2:1 images. The plate sets the same three
 // pieces of information the banners bake in.
