@@ -14,9 +14,11 @@ Commit whenever a unit of work feels sufficiently complete, such as after fixing
 
 ## Project banners
 
-- [agent-compose](src/images/banners/agent-compose.jpg)
-- [sirens-echo](src/images/banners/sirens-echo.jpg)
-- [umbra](src/images/banners/umbra.jpg)
+[![agent-compose banner](src/images/banners/agent-compose.jpg)](src/images/banners/agent-compose.jpg)
+
+[![sirens-echo banner](src/images/banners/sirens-echo.jpg)](src/images/banners/sirens-echo.jpg)
+
+[![umbra banner](src/images/banners/umbra.jpg)](src/images/banners/umbra.jpg)
 
 ## Local development
 
