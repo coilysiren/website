@@ -76,30 +76,6 @@ export const featuredProjects = [
   },
 ]
 
-/**
- * A product that ships with its own identity: a wide banner carrying the mark,
- * the name and the one-line claim. The banner is the tile's heading, so the
- * markup never repeats that text beside it.
- *
- * A tile without a banner sets the same information as type instead: `stage`
- * and `wordmark` stand in for the mark, `claim` for the baked-in subtitle.
- *
- * @typedef {object} ShowcaseProduct
- * @property {string} slug
- * @property {string} [banner] - 1x source, 1280x492.
- * @property {string} [banner2x] - 2x source, 2560x985.
- * @property {string} [mobileBanner] - Small-screen source, 1280x853.
- * @property {string} [mobileBanner2x] - Small-screen 2x source, 2560x1707.
- * @property {string} [alt] - Carries the words baked into the banner.
- * @property {string} [stage] - Eyebrow on a tile with no banner.
- * @property {string} [wordmark] - Product name on a tile with no banner.
- * @property {string} [claim] - One-line claim on a tile with no banner.
- * @property {string} proof - What it does, below the banner.
- * @property {string} [url]
- * @property {boolean} [privateRepo]
- */
-
-/** @type {ShowcaseProduct[]} */
 export const showcaseProducts = [
   {
     slug: "agent-compose",

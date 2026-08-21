@@ -6,12 +6,6 @@ on:
     branches: [main]
     tags: ["v*"]
 
-# Every job here shells into run-in-container.sh, which opens with
-# `docker system prune --all --force --volumes` on the shared deploy runner.
-# Pull requests therefore stay in the same serialized group as main rather than
-# getting their own: two concurrent runs would delete each other's images
-# mid-build. Queueing a PR behind main costs minutes; overlapping them is a
-# flake generator.
 concurrency:
   group: website-deploy-runner
   cancel-in-progress: false
@@ -71,7 +65,6 @@ jobs:
 
   mirror:
     needs: [test, test-e2e]
-    # Pull requests prove the build; only landed history is mirrored.
     if: ${{ github.event_name == 'push' }}
     runs-on: deploy
     timeout-minutes: 15
