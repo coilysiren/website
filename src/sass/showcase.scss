@@ -144,9 +144,8 @@ a.product-tile__surface {
   }
 }
 
-// Ward has no mark or banner, so it takes the full row rather than sitting as
-// a short third column against two 2:1 images. The plate sets the same three
-// pieces of information the banners bake in.
+// A bannerless tile takes the full row and sets the same three pieces of
+// information that a banner carries.
 .product-tile--wide {
   grid-column: 1 / -1;
 }

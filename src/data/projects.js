@@ -106,15 +106,6 @@ export const showcaseProducts = [
       "A config driven occlusion framework that puts explicit boundaries around CLIs and APIs.",
     url: "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra",
   },
-  {
-    slug: "ward",
-    stage: "Execute",
-    wordmark: "Ward",
-    claim: "Delegate real repository work without giving up the boundary.",
-    proof:
-      "Fresh clones, least-access containers, fixed workflows, recoverable outcomes, and a durable audit trail for unattended coding agents.",
-    url: "https://github.com/coilyco-flight-deck/ward",
-  },
 ]
 
 /** @type {ProjectGroup[]} */
