@@ -2,8 +2,8 @@
 
 The site uses Eleventy 3 to turn Nunjucks templates and Markdown content into
 ordinary files under `dist/`. Production pages ship no browser JavaScript,
-hydration markers, analytics, client router, service worker, or remote asset
-dependency.
+hydration markers, analytics, client router, or service worker. The homepage's
+lazy privacy-enhanced YouTube iframe is the sole third-party request.
 
 ## Source layout
 
@@ -14,7 +14,8 @@ Where each kind of source lives: [source layout](source-layout.md).
 Eleventy copies `static/` to the output root and `src/images/` to
 `dist/images/`. The build copies only the six Roboto files used by the site
 from `@fontsource/roboto`. Prism highlighting and Sass both run at build time.
-All browser requests stay on the site origin.
+All browser requests stay on the site origin except for the homepage's lazy
+privacy-enhanced YouTube iframe.
 
 Text Open Graph, Twitter, canonical, and article metadata live in the shared
 base layout. Social preview images, RSS, and their generators are intentionally
@@ -36,4 +37,3 @@ The permanent redirect set includes:
 ## Verification
 
 What to run before trusting a build: [verification](verification.md).
-

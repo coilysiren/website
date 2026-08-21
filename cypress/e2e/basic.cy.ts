@@ -1,13 +1,44 @@
 describe("Basic test workflow", () => {
-  it("reduces the homepage to the hero and the product band", () => {
+  it("places the talk between the hero and the product band", () => {
     cy.visit("/")
 
-    // The repository catalogue is gone: the homepage argues with products, not
-    // with a list of every repository.
-    cy.get(".portfolio-home > section")
-      .should("have.length", 1)
-      .and("have.class", "product-showcase")
-      .and("have.attr", "id", "products")
+    cy.get(".portfolio-home > section").then(($sections) => {
+      expect([...$sections].map((section) => section.id)).to.deep.equal([
+        "talk",
+        "products",
+      ])
+    })
+    cy.get("#talk")
+      .should("have.class", "talk-showcase")
+      .within(() => {
+        cy.get(".section-label").should("have.text", "Talk")
+        cy.contains(
+          "h2",
+          "Vibe Check: Three Real Agent Setups and How They Collaborate"
+        ).should("have.attr", "id", "talk-title")
+        cy.get(".talk-showcase__player").should("be.visible")
+        cy.get("iframe")
+          .should(
+            "have.attr",
+            "src",
+            "https://www.youtube-nocookie.com/embed/vKc7_vfgja4"
+          )
+          .and(
+            "have.attr",
+            "title",
+            "Vibe Check: Three Real Agent Setups and How They Collaborate"
+          )
+          .and("have.attr", "loading", "lazy")
+          .and(
+            "have.attr",
+            "allow",
+            "accelerometer; clipboard-write; encrypted-media; picture-in-picture"
+          )
+          .and("have.prop", "allowFullscreen", true)
+      })
+    cy.get("#products")
+      .should("have.class", "product-showcase")
+      .and("be.visible")
     cy.contains("h2", "Active portfolio").should("not.exist")
     cy.get(".project-catalogue, .project-group, .project-card").should(
       "not.exist"
@@ -44,7 +75,9 @@ describe("Basic test workflow", () => {
       ".hiring-facts span",
       /Hard stop:\s+a company with US offices,\s+none of them in the Bay Area\./
     ).should("be.visible")
-    cy.contains("My base-compensation floor is $170K").should("be.visible")
+    cy.contains(
+      "My base-compensation floor depends on the sector: $170K for nonprofit and government work, $200K for everyone else."
+    ).should("be.visible")
     cy.contains("Cost to serve").should("not.exist")
     cy.contains("h2", "I want the next chapter").should("be.visible")
     cy.contains("I do not do async-proctored puzzle coding").should(
@@ -147,15 +180,20 @@ describe("Basic test workflow", () => {
     })
   })
 
-  it("ships static pages with local assets and text-only metadata", () => {
-    const pages: Array<[string, string, string | undefined]> = [
-      ["/", "Kai Siren", "https://coilysiren.me/"],
-      ["/about/", "About | Kai Siren", "https://coilysiren.me/about/"],
-      ["/hiring/", "Hiring | Kai Siren", "https://coilysiren.me/hiring/"],
-      ["/resume/", "Resume", undefined],
+  it("ships static pages with scoped external media and text-only metadata", () => {
+    const pages: Array<[string, string, string | undefined, string[]]> = [
+      [
+        "/",
+        "Kai Siren",
+        "https://coilysiren.me/",
+        ["https://www.youtube-nocookie.com"],
+      ],
+      ["/about/", "About | Kai Siren", "https://coilysiren.me/about/", []],
+      ["/hiring/", "Hiring | Kai Siren", "https://coilysiren.me/hiring/", []],
+      ["/resume/", "Resume", undefined, []],
     ]
 
-    pages.forEach(([url, title, canonical]) => {
+    pages.forEach(([url, title, canonical, allowedExternalOrigins]) => {
       const outputPath =
         url === "/" ? "dist/index.html" : `dist${url}index.html`
       cy.readFile(outputPath).should("not.match", /<script\b/i)
@@ -185,7 +223,12 @@ describe("Basic test workflow", () => {
             (resourceUrl) =>
               resourceUrl.origin !== browserWindow!.location.origin
           )
-        expect(thirdPartyResources).to.deep.equal([])
+        const thirdPartyOrigins = [
+          ...new Set(
+            thirdPartyResources.map((resourceUrl) => resourceUrl.origin)
+          ),
+        ]
+        expect(thirdPartyOrigins).to.have.members(allowedExternalOrigins)
       })
     })
   })
@@ -262,6 +305,16 @@ describe("Basic test workflow", () => {
       .and("contain.text", "agents warded for an 8h+ run")
     cy.get(".portfolio-hero .button-row").should("not.exist")
     cy.contains(".portfolio-hero", "Explore the work").should("not.exist")
+
+    cy.get(".talk-showcase__player").then(($player) => {
+      const playerElement = $player.get(0)
+      const player = playerElement.getBoundingClientRect()
+
+      expect(player.width / player.height).to.be.closeTo(16 / 9, 0.02)
+      expect(player.right).to.be.at.most(
+        playerElement.ownerDocument.documentElement.clientWidth
+      )
+    })
 
     // The tiles stack rather than shrinking the banners into a multi-up.
     cy.get(".product-tile").should("have.length", 3)

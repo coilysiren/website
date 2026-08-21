@@ -19,8 +19,8 @@ from `package.json`, while `.node-version` keeps local development and hosted
 builds on the same Node release.
 
 Eleventy renders the site to ordinary static files in `dist/`. The production
-output contains no browser JavaScript, hydration runtime, analytics, or remote
-asset dependencies.
+output contains no browser JavaScript, hydration runtime, or analytics. Its
+only remote request is the homepage's lazy privacy-enhanced YouTube player.
 
 ## Commands
 

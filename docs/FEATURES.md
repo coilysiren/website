@@ -8,6 +8,9 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 
 - **Stack** - Eleventy, Nunjucks, Markdown, and Sass, output as plain HTML with
   no browser JavaScript. See [the stack](stack.md).
+- **Homepage talk** - a responsive, lazy, privacy-enhanced YouTube player for
+  the Temporal Vibe Check sits between the hero and shipped products. It is the
+  homepage's sole third-party request.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Templates and data** - layouts, includes, and data files in
   [templates and data](templates.md).
