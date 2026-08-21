@@ -96,7 +96,6 @@ $content-width: 1180px;
   border-radius: 0.9rem;
   background: rgba(vars.$dark-purple, 0.34);
   color: inherit;
-  text-decoration: none;
   transition:
     border-color 160ms ease,
     background-color 160ms ease,
@@ -107,9 +106,9 @@ $content-width: 1180px;
   }
 }
 
-a.product-tile__surface {
+.product-tile__surface {
   &:hover,
-  &:focus-visible {
+  &:focus-within {
     border-color: rgba(vars.$light-blue, 0.75);
     background: rgba(vars.$dark-purple, 0.62);
     transform: translateY(-3px);
@@ -118,6 +117,12 @@ a.product-tile__surface {
       transform: none;
     }
   }
+}
+
+.product-tile__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 // The banner already carries the mark, the name and the one-line claim, so the
@@ -226,6 +231,8 @@ a.product-tile__surface {
 }
 
 .product-tile__meta {
+  display: block;
+  width: fit-content;
   margin-top: auto;
   padding-inline: 0.35rem;
   color: vars.$mid-blue;
@@ -233,4 +240,5 @@ a.product-tile__surface {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.06em;
+  text-decoration: none;
 }

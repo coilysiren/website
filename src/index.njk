@@ -49,11 +49,10 @@ robots: follow, index
             class="product-tile{% if not product.banner %} product-tile--wide{% endif %}"
             data-product="{{ product.slug }}"
           >
-            {% if product.url %}
-              <a class="product-tile__surface" href="{{ product.url }}">
-            {% else %}
-              <div class="product-tile__surface product-tile__surface--private">
-            {% endif %}
+            <div class="product-tile__surface{% if product.privateRepo %} product-tile__surface--private{% endif %}">
+              {% if product.url %}
+                <a class="product-tile__link" href="{{ product.url }}">
+              {% endif %}
               {% if product.banner %}
                 {% if product.mobileBanner %}
                   <picture class="product-tile__picture product-tile__picture--responsive">
@@ -84,13 +83,16 @@ robots: follow, index
                   <span class="product-tile__claim">{{ product.claim }}</span>
                 </span>
               {% endif %}
-              <p class="product-tile__proof">{{ product.proof }}</p>
-              {% if product.privateRepo %}
-                <small class="product-tile__meta">Private repository</small>
-              {% else %}
-                <small class="product-tile__meta">Source ↗</small>
+              {% if product.url %}
+                </a>
               {% endif %}
-            {% if product.url %}</a>{% else %}</div>{% endif %}
+              <p class="product-tile__proof">{{ product.proof }}</p>
+              {% if product.url %}
+                <a class="product-tile__meta" href="{{ product.url }}">Source ↗</a>
+              {% else %}
+                <small class="product-tile__meta">Private repository</small>
+              {% endif %}
+            </div>
           </li>
         {% endfor %}
       </ul>
