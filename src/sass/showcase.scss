@@ -25,6 +25,12 @@ $content-width: 1180px;
   }
 }
 
+@include vars.tablet {
+  .talk-showcase {
+    scroll-margin-block-start: 5rem;
+  }
+}
+
 .talk-showcase__inner {
   position: relative;
 }
