@@ -12,6 +12,12 @@ Commit whenever a unit of work feels sufficiently complete, such as after fixing
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b6cfcd3d-e5e6-4893-86da-2a218fa8587f/deploy-status)](https://app.netlify.com/sites/coilysiren-dot-me/deploys)
 
+## Project banners
+
+- [agent-compose](src/images/banners/agent-compose.jpg)
+- [sirens-echo](src/images/banners/sirens-echo.jpg)
+- [umbra](src/images/banners/umbra.jpg)
+
 ## Local development
 
 The site uses Node.js 24 LTS and pnpm 11. Corepack reads the exact pnpm release
