@@ -104,7 +104,7 @@ export const showcaseProducts = [
     alt: "mcp-beaver // .mcp.kdl - A MCP server generator with a natural flow",
     proof:
       "Renders a guardfile into a guarded MCP server and HTTP tool API. One generic runtime, many guardfiles, and an undeclared operation has no handler at all.",
-    url: "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
+    url: "https://github.com/coilyco-flight-deck/mcp-beaver",
   },
   {
     slug: "umbra",
@@ -115,7 +115,7 @@ export const showcaseProducts = [
     alt: "umbra - a config driven occlusion framework",
     proof:
       "A config driven occlusion framework that puts explicit boundaries around CLIs and APIs.",
-    url: "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra",
+    url: "https://github.com/coilyco-flight-deck/umbra",
   },
 ]
 
