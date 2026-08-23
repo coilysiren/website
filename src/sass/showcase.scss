@@ -61,7 +61,7 @@ $content-width: 1180px;
 .product-showcase {
   width: min(calc(100% - 2rem), $content-width);
   margin: 0 auto;
-  padding: 0 0 clamp(3rem, 7vw, 6rem);
+  padding: clamp(3rem, 7vw, 6rem) 0;
   background: transparent;
   border: 0;
   border-radius: 0;
