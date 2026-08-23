@@ -1,19 +1,4 @@
 /**
- * @typedef {"mint" | "coral" | "periwinkle"} ProjectTone
- */
-
-/**
- * @typedef {object} FeaturedProject
- * @property {"ward" | "agent-compose" | "mcp-beaver"} slug
- * @property {"Compose" | "Execute" | "Expose"} stage
- * @property {string} name
- * @property {string} title
- * @property {string} summary
- * @property {string} sourceUrl
- * @property {ProjectTone} tone
- */
-
-/**
  * @typedef {{ kind: "emoji", glyph: string, label: string }} ProjectEmojiIcon
  */
 
@@ -41,40 +26,6 @@
  * @property {string} description
  * @property {ProjectLink[]} projects
  */
-
-/** @type {FeaturedProject[]} */
-export const featuredProjects = [
-  {
-    slug: "agent-compose",
-    stage: "Compose",
-    name: "agent-compose",
-    title: "Portable context for agents that work differently.",
-    summary:
-      "A context compiler that selects roles, personality, skills, and tool inventories, then emits an inspectable bundle without smuggling in executable authority.",
-    sourceUrl: "https://github.com/coilyco-flight-deck/agent-compose",
-    tone: "periwinkle",
-  },
-  {
-    slug: "ward",
-    stage: "Execute",
-    name: "Ward",
-    title: "Delegate real repository work without giving up the boundary.",
-    summary:
-      "A governed execution layer for unattended coding agents, built around fresh clones, least-access containers, fixed workflows, recoverable outcomes, and a durable audit trail.",
-    sourceUrl: "https://github.com/coilyco-flight-deck/ward",
-    tone: "mint",
-  },
-  {
-    slug: "mcp-beaver",
-    stage: "Expose",
-    name: "mcp-beaver",
-    title: "Turn a narrow policy into a usable MCP service.",
-    summary:
-      "A runtime that derives Streamable HTTP MCP tools and matching HTTP endpoints from an umbra guardfile, so tool discovery never becomes permission by implication.",
-    sourceUrl: "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
-    tone: "coral",
-  },
-]
 
 export const showcaseProducts = [
   {
@@ -180,7 +131,7 @@ export const projectGroups = [
         description:
           "MCP runtime that turns umbra guardfiles into guarded streamable HTTP services and container images.",
         tags: ["automation", "mcp", "model-context-protocol", "security"],
-        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
+        url: "https://github.com/coilyco-flight-deck/mcp-beaver",
       },
       {
         name: "coilyco-flight-deck/agent-proxy",
