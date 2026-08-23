@@ -105,53 +105,39 @@ describe("Basic test workflow", () => {
 
     // The banner carries the name and the claim as baked-in type, so the tile
     // must not repeat them as markup. Assert the contract, not the wording.
-    cy.get(".product-showcase__grid > .product-tile").should("have.length", 3)
+    cy.get(".product-showcase__grid > .product-tile").should("have.length", 4)
     cy.get(".product-tile h1, .product-tile h2, .product-tile h3").should(
       "not.exist"
     )
-    cy.get(".product-tile__banner").should("have.length", 2)
+    cy.get(".product-tile__banner").should("have.length", 4)
     cy.get(".product-tile__banner").each(($banner) => {
       expect($banner.attr("src")).to.match(/^\/images\/banners\//)
       expect($banner.attr("alt")).to.have.length.greaterThan(0)
       expect($banner.attr("loading")).to.equal("lazy")
     })
 
-    cy.get('.product-tile[data-product="agent-compose"]')
-      .find("a.product-tile__surface")
-      .should(
-        "have.attr",
-        "href",
-        "https://github.com/coilyco-flight-deck/agent-compose"
-      )
-
-    // Every tile now leads somewhere. A banner this size must not imply a
-    // destination the page cannot deliver, so none of them may go nowhere.
-    cy.get('.product-tile[data-product="sirens-echo"]')
-      .find("a.product-tile__surface")
-      .should(
-        "have.attr",
-        "href",
-        "https://github.com/coilyco-gaming/sirens-echo"
-      )
-    cy.get(".product-tile").should("have.length", 3)
-    cy.get(".product-tile a.product-tile__surface").should("have.length", 3)
+    // Every tile leads somewhere, and every destination is GitHub. A banner
+    // this size must not imply a destination the page cannot deliver.
+    cy.get(".product-tile a.product-tile__link").should("have.length", 4)
     cy.contains(".product-tile", "Private repository").should("not.exist")
 
-    // Ward has no mark or banner, so it sets the same three pieces of
-    // information as type and takes the full row.
-    cy.get('.product-tile[data-product="ward"]')
-      .should("have.class", "product-tile--wide")
-      .within(() => {
-        cy.get(".product-tile__banner").should("not.exist")
-        cy.get(".product-tile__stage").should("have.text", "Execute")
-        cy.get(".product-tile__wordmark").should("have.text", "Ward")
-        cy.get(".product-tile__claim").should("be.visible")
-        cy.get("a.product-tile__surface").should(
-          "have.attr",
-          "href",
-          "https://github.com/coilyco-flight-deck/ward"
-        )
+    const tileSources: Array<[string, string]> = [
+      ["agent-compose", "https://github.com/coilyco-flight-deck/agent-compose"],
+      ["sirens-echo", "https://github.com/coilyco-gaming/sirens-echo"],
+      ["mcp-beaver", "https://github.com/coilyco-flight-deck/mcp-beaver"],
+      ["umbra", "https://github.com/coilyco-flight-deck/umbra"],
+    ]
+    tileSources.forEach(([slug, href]) => {
+      cy.get(`.product-tile[data-product="${slug}"]`).within(() => {
+        cy.get("a.product-tile__link").should("have.attr", "href", href)
+        cy.get("a.product-tile__meta").should("have.attr", "href", href)
       })
+    })
+
+    // Every tile carries its own banner, so the typeset fallback plate never
+    // renders and nothing claims the full row.
+    cy.get(".product-tile__plate").should("not.exist")
+    cy.get(".product-tile--wide").should("not.exist")
   })
 
   it("keeps long-form writing out of visible navigation", () => {
@@ -315,7 +301,7 @@ describe("Basic test workflow", () => {
     })
 
     // The tiles stack rather than shrinking the banners into a multi-up.
-    cy.get(".product-tile").should("have.length", 3)
+    cy.get(".product-tile").should("have.length", 4)
     cy.get(".product-tile__surface").then(($surfaces) => {
       const boxes = [...$surfaces].map((surface) =>
         surface.getBoundingClientRect()
