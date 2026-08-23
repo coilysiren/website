@@ -4,7 +4,7 @@
 
 /**
  * @typedef {object} FeaturedProject
- * @property {"ward" | "agent-compose" | "ward-mcp"} slug
+ * @property {"ward" | "agent-compose" | "mcp-beaver"} slug
  * @property {"Compose" | "Execute" | "Expose"} stage
  * @property {string} name
  * @property {string} title
@@ -65,13 +65,13 @@ export const featuredProjects = [
     tone: "mint",
   },
   {
-    slug: "ward-mcp",
+    slug: "mcp-beaver",
     stage: "Expose",
-    name: "Ward MCP",
+    name: "mcp-beaver",
     title: "Turn a narrow policy into a usable MCP service.",
     summary:
-      "A runtime that derives Streamable HTTP MCP tools and matching HTTP endpoints from cli-guard policy, so tool discovery never becomes permission by implication.",
-    sourceUrl: "https://github.com/coilyco-flight-deck/ward-mcp",
+      "A runtime that derives Streamable HTTP MCP tools and matching HTTP endpoints from an umbra guardfile, so tool discovery never becomes permission by implication.",
+    sourceUrl: "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
     tone: "coral",
   },
 ]
@@ -94,6 +94,17 @@ export const showcaseProducts = [
     proof:
       "Go ops tooling for the Sirens community Discord: message dumps, normalization, and the analysis pipelines over them.",
     url: "https://github.com/coilyco-gaming/sirens-echo",
+  },
+  {
+    slug: "mcp-beaver",
+    banner: "/images/banners/mcp-beaver.jpg",
+    banner2x: "/images/banners/mcp-beaver-2x.jpg",
+    mobileBanner: "/images/banners/mcp-beaver-mobile.jpg",
+    mobileBanner2x: "/images/banners/mcp-beaver-mobile-2x.jpg",
+    alt: "mcp-beaver // .mcp.kdl - A MCP server generator with a natural flow",
+    proof:
+      "Renders a guardfile into a guarded MCP server and HTTP tool API. One generic runtime, many guardfiles, and an undeclared operation has no handler at all.",
+    url: "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
   },
   {
     slug: "umbra",
@@ -165,11 +176,11 @@ export const projectGroups = [
         url: "https://github.com/coilyco-flight-deck/ward",
       },
       {
-        name: "coilyco-flight-deck/ward-mcp",
+        name: "coilyco-flight-deck/mcp-beaver",
         description:
-          "MCP runtime that turns cli-guard policy files into guarded streamable HTTP services and container images.",
+          "MCP runtime that turns umbra guardfiles into guarded streamable HTTP services and container images.",
         tags: ["automation", "mcp", "model-context-protocol", "security"],
-        url: "https://github.com/coilyco-flight-deck/ward-mcp",
+        url: "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
       },
       {
         name: "coilyco-flight-deck/agent-proxy",
