@@ -24,7 +24,7 @@ export const showcaseProducts = [
     banner2x: "/images/banners/agent-compose-2x.jpg",
     alt: "agent-compose // $ acompose - Eval driven agent roles and personas",
     proof:
-      "Selects roles, personalities, skills, and tool inventories, then emits an inspectable bundle. No executable authority rides along.",
+      "A role is context, never permission. The bundle is plain files you can read and diff before a run, carrying no credential, no mount, and no command.",
     url: "https://github.com/coilyco-flight-deck/agent-compose",
   },
   {
@@ -33,7 +33,7 @@ export const showcaseProducts = [
     banner2x: "/images/banners/sirens-echo-2x.jpg",
     alt: "sirens-echo // sirens-deep - a discord community agent harness",
     proof:
-      "Go ops tooling for the Sirens community Discord: message dumps, normalization, and the analysis pipelines over them.",
+      "It answers only when a person mentions it in a channel it was granted, and a validator strips the greeting, the emoji, and the sign-off before anything posts.",
     url: "https://github.com/coilyco-gaming/sirens-echo",
   },
   {
@@ -44,7 +44,7 @@ export const showcaseProducts = [
     mobileBanner2x: "/images/banners/mcp-beaver-mobile-2x.jpg",
     alt: "mcp-beaver // .mcp.kdl - A MCP server generator with a natural flow",
     proof:
-      "Renders a guardfile into a guarded MCP server and HTTP tool API. One generic runtime, many guardfiles, and an undeclared operation has no handler at all.",
+      "An operation you did not declare has no tool and no endpoint, so the blast radius of a write-capable MCP is one small file you can read end to end.",
     url: "https://github.com/coilyco-flight-deck/mcp-beaver",
   },
   {
@@ -55,7 +55,7 @@ export const showcaseProducts = [
     mobileBanner2x: "/images/banners/umbra-mobile-2x.jpg",
     alt: "umbra - a config driven occlusion framework",
     proof:
-      "A config driven occlusion framework that puts explicit boundaries around CLIs and APIs.",
+      "Declare what a tool may run. Arguments are validated before the process starts, each verb needs its own scope token, and every call lands in an append-only audit log.",
     url: "https://github.com/coilyco-flight-deck/umbra",
   },
 ]
