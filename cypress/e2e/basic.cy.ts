@@ -1,261 +1,47 @@
-describe("Basic test workflow", () => {
-  it("places the talk between the hero and the product band", () => {
-    cy.visit("/")
+// Only the invariants a browser is actually required to observe. Anything
+// checkable by reading dist/ lives in src/build-output.test.ts instead, and
+// copy is deliberately not pinned here - editing words should not edit tests.
+const ROUTES = ["/", "/about/", "/hiring/", "/resume/"]
 
-    cy.get(".portfolio-home > section").then(($sections) => {
-      expect([...$sections].map((section) => section.id)).to.deep.equal([
-        "talk",
-        "products",
-      ])
-    })
-    cy.get("#talk")
-      .should("have.class", "talk-showcase")
-      .within(() => {
-        cy.get(".section-label").should("have.text", "Talk")
-        cy.contains(
-          "h2",
-          "Vibe Check: Three Real Agent Setups and How They Collaborate"
-        ).should("have.attr", "id", "talk-title")
-        cy.get(".talk-showcase__player").should("be.visible")
-        cy.get("iframe")
-          .should(
-            "have.attr",
-            "src",
-            "https://www.youtube.com/embed/vKc7_vfgja4"
-          )
-          .and(
-            "have.attr",
-            "title",
-            "Vibe Check: Three Real Agent Setups and How They Collaborate"
-          )
-          .and("have.attr", "loading", "lazy")
-          .and(
-            "have.attr",
-            "allow",
-            "accelerometer; clipboard-write; encrypted-media; picture-in-picture"
-          )
-          .and("have.prop", "allowFullscreen", true)
-      })
-    cy.get("#products")
-      .should("have.class", "product-showcase")
-      .and("be.visible")
-    cy.contains("h2", "Active portfolio").should("not.exist")
-    cy.get(".project-catalogue, .project-group, .project-card").should(
-      "not.exist"
-    )
-    cy.get(".platform-diagram, .featured-project-grid").should("not.exist")
-
-    cy.contains(".nav-source a", "source").should(
-      "have.attr",
-      "href",
-      "https://github.com/coilysiren"
-    )
-    cy.get(".portfolio-home a").each(($link) => {
-      expect($link.attr("href")).to.match(/^https:\/\/github\.com\//)
-    })
-    cy.get('a[href^="https://forgejo.coilysiren.me/"]').should("not.exist")
-  })
-
-  it("keeps the hiring page a project-free information reference", () => {
+describe("Layout invariants", () => {
+  it("never overflows sideways on a phone", () => {
     cy.viewport(390, 844)
-    cy.visit("/hiring/")
-
-    cy.contains(".nav-links a", "./hiring")
-      .should("be.visible")
-      .and("have.attr", "href", "/hiring/")
-    cy.get(".hiring-page")
-      .should("be.visible")
-      .and("have.css", "border-top-color", "rgb(220, 143, 114)")
-    cy.contains("h1", "Where I do my best work").should("be.visible")
-    cy.contains(
-      ".hiring-facts span",
-      /I am based in the East Bay and I am not relocating\./
-    ).should("be.visible")
-    cy.contains(
-      ".hiring-facts span",
-      /Hard stop:\s+a company with US offices,\s+none of them in the Bay Area\./
-    ).should("be.visible")
-    cy.contains(
-      "My base-compensation floor depends on the sector: $170K for nonprofit and government work, $200K for everyone else."
-    ).should("be.visible")
-    cy.contains("Cost to serve").should("not.exist")
-    cy.contains("h2", "I want the next chapter").should("be.visible")
-    cy.contains("I do not do async-proctored puzzle coding").should(
-      "be.visible"
-    )
-    cy.contains("a", "Resume").should("be.visible")
-    cy.get(
-      ".hiring-hero, .hiring-proof-grid, .platform-diagram, .hiring-page table"
-    ).should("not.exist")
-    cy.get(".hiring-page").should("not.contain.text", "Ward")
-    cy.get('meta[name="robots"]').should(
-      "have.attr",
-      "content",
-      "follow, index"
-    )
-    cy.document().then((document) => {
-      expect(document.documentElement.scrollWidth).to.be.at.most(
-        document.documentElement.clientWidth
-      )
-    })
-  })
-
-  it("leads the homepage with banner-led product tiles", () => {
-    cy.visit("/")
-
-    // The banner carries the name and the claim as baked-in type, so the tile
-    // must not repeat them as markup. Assert the contract, not the wording.
-    cy.get(".product-showcase__grid > .product-tile").should("have.length", 4)
-    cy.get(".product-tile h1, .product-tile h2, .product-tile h3").should(
-      "not.exist"
-    )
-    cy.get(".product-tile__banner").should("have.length", 4)
-    cy.get(".product-tile__banner").each(($banner) => {
-      expect($banner.attr("src")).to.match(/^\/images\/banners\//)
-      expect($banner.attr("alt")).to.have.length.greaterThan(0)
-      expect($banner.attr("loading")).to.equal("lazy")
-    })
-
-    // Every tile leads somewhere, and every destination is GitHub. A banner
-    // this size must not imply a destination the page cannot deliver.
-    cy.get(".product-tile a.product-tile__link").should("have.length", 4)
-    cy.contains(".product-tile", "Private repository").should("not.exist")
-
-    const tileSources: Array<[string, string]> = [
-      ["agent-compose", "https://github.com/coilyco-flight-deck/agent-compose"],
-      ["sirens-echo", "https://github.com/coilyco-gaming/sirens-echo"],
-      ["mcp-beaver", "https://github.com/coilyco-flight-deck/mcp-beaver"],
-      ["umbra", "https://github.com/coilyco-flight-deck/umbra"],
-    ]
-    tileSources.forEach(([slug, href]) => {
-      cy.get(`.product-tile[data-product="${slug}"]`).within(() => {
-        cy.get("a.product-tile__link").should("have.attr", "href", href)
-        cy.get("a.product-tile__meta").should("have.attr", "href", href)
-      })
-    })
-
-    // Every tile carries its own banner, so the typeset fallback plate never
-    // renders and nothing claims the full row.
-    cy.get(".product-tile__plate").should("not.exist")
-    cy.get(".product-tile--wide").should("not.exist")
-  })
-
-  it("keeps long-form writing out of visible navigation", () => {
-    cy.visit("/")
-    cy.get('a[href="/writing/"]').should("not.exist")
-
-    cy.visit("/writing/")
-    cy.get('meta[name="robots"]').should(
-      "have.attr",
-      "content",
-      "noindex, nofollow"
-    )
-
-    const retainedDirectRoutes = [
-      "/posts/stochastic-design-iteration/",
-      "/coilysiren-personal-gmail-privacy/",
-      "/cool-people/",
-    ]
-    retainedDirectRoutes.forEach((url) => {
-      cy.visit(url)
-      cy.get('meta[name="robots"]').should(
-        "have.attr",
-        "content",
-        "noindex, nofollow"
-      )
-    })
-  })
-
-  it("keeps core rendering dependencies local and metadata text-only", () => {
-    const pages: Array<[string, string, string | undefined]> = [
-      ["/", "Kai Siren", "https://coilysiren.me/"],
-      ["/about/", "About | Kai Siren", "https://coilysiren.me/about/"],
-      ["/hiring/", "Hiring | Kai Siren", "https://coilysiren.me/hiring/"],
-      ["/resume/", "Resume", undefined],
-    ]
-
-    pages.forEach(([url, title, canonical]) => {
-      const outputPath =
-        url === "/" ? "dist/index.html" : `dist${url}index.html`
-      cy.readFile(outputPath).should(
-        "not.match",
-        /<script\b(?![^>]*\b(?:async|defer)\b)/i
-      )
-      cy.visit(url)
-      cy.title().should("eq", title)
-      cy.get('meta[name="robots"]').should(
-        "have.attr",
-        "content",
-        "follow, index"
-      )
-      cy.get('meta[property="og:image"], meta[name="twitter:image"]').should(
-        "not.exist"
-      )
-      if (canonical) {
-        cy.get('link[rel="canonical"]').should("have.attr", "href", canonical)
-      } else {
-        cy.get('link[rel="canonical"]').should("not.exist")
-      }
+    ;[...ROUTES, "/definitely-not-here/"].forEach((url) => {
+      cy.visit(url, { failOnStatusCode: false })
       cy.document().then((document) => {
-        expect(document.documentElement.innerHTML).not.to.contain("___gatsby")
-        const browserWindow = document.defaultView
-        expect(browserWindow).not.to.equal(null)
-        const externalCriticalResources = browserWindow!.performance
-          .getEntriesByType("resource")
-          .filter(
-            (entry): entry is PerformanceResourceTiming =>
-              entry instanceof PerformanceResourceTiming &&
-              (entry.initiatorType === "css" || entry.initiatorType === "font")
+        const page = document.documentElement
+
+        expect(page.scrollWidth, `${url} scrolls sideways`).to.be.at.most(
+          page.clientWidth
+        )
+
+        // A clipping ancestor hides overflow from the root number above.
+        // See docs/verification.md.
+        const clipped = [...document.querySelectorAll<HTMLElement>("*")]
+          .filter((element) => {
+            const overflowX =
+              document.defaultView!.getComputedStyle(element).overflowX
+
+            return (
+              overflowX === "hidden" &&
+              element.scrollWidth - element.clientWidth > 1
+            )
+          })
+          .map(
+            (element) =>
+              `${element.tagName.toLowerCase()}.${element.className} ` +
+              `(${element.scrollWidth} > ${element.clientWidth})`
           )
-          .map((entry) => new URL(entry.name))
-          .filter(
-            (resourceUrl) =>
-              resourceUrl.origin !== browserWindow!.location.origin
-          )
-        expect(externalCriticalResources).to.deep.equal([])
+
+        expect(clipped, `${url} hides content behind a clip`).to.deep.equal([])
       })
     })
   })
 
-  it("limits discovery output to the four canonical routes", () => {
-    const canonicalUrls = [
-      "https://coilysiren.me/",
-      "https://coilysiren.me/about/",
-      "https://coilysiren.me/hiring/",
-      "https://coilysiren.me/resume/",
-    ]
-
-    cy.request("/sitemap.xml")
-      .its("body")
-      .then((body: string) => {
-        const urls = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
-          (match) => match[1]
-        )
-        expect(urls).to.deep.equal(canonicalUrls)
-      })
-    cy.request("/llms.txt")
-      .its("body")
-      .then((body: string) => {
-        canonicalUrls.forEach((url) => expect(body).to.contain(url))
-        expect(body).not.to.contain("/writing/")
-        expect(body).not.to.contain("/posts/")
-      })
-  })
-
-  it("pairs the About introduction with one portrait on desktop", () => {
+  it("pairs the About introduction with its portrait on desktop", () => {
     cy.viewport(1280, 900)
     cy.visit("/about/")
 
-    cy.contains("Staff-level").should("not.exist")
-    cy.contains("systems other engineers rely on").should("not.exist")
-    cy.contains("I live in the East Bay").should("be.visible")
-    cy.get(".my-life-intro__links").should("not.exist")
-    cy.get(".my-life-slide--intro img")
-      .should("have.length", 1)
-      .and("have.attr", "src", "/my-life/16-car-headphones-sunglasses.jpg")
-    cy.get(
-      'img[src="/my-life/11-social-look-sunglasses-purple-tails.jpg"]'
-    ).should("not.exist")
     cy.get(".my-life-slide--intro").then(($intro) => {
       const portraitElement = $intro.find(".my-life-intro__portrait").get(0)
       const copyElement = $intro.find(".my-life-slide__copy").get(0)
@@ -267,134 +53,34 @@ describe("Basic test workflow", () => {
       const portrait = portraitElement.getBoundingClientRect()
       const copy = copyElement.getBoundingClientRect()
 
-      expect(portrait.right).to.be.lessThan(copy.left)
+      expect(portrait.right, "portrait sits beside the copy").to.be.lessThan(
+        copy.left
+      )
       expect(portrait.top).to.be.lessThan(copy.bottom)
       expect(copy.top).to.be.lessThan(portrait.bottom)
     })
   })
 
-  it("keeps the homepage usable on mobile", () => {
-    cy.viewport(390, 844)
-    cy.visit("/")
+  it("reaches no third party but the talk embed", () => {
+    // Deny by origin, never by initiatorType.
+    // See docs/verification.md.
+    const ALLOWED = ["https://www.youtube.com"]
 
-    cy.get(".portfolio-hero h1").should(
-      "have.text",
-      "I build agentic engineering platforms"
-    )
-    cy.contains("Platform engineer \u00b7 East Bay, CA").should("not.exist")
-    cy.get(".portfolio-hero__tagline")
-      .should("be.visible")
-      .and("contain.text", "lights out")
-      .and("contain.text", "flight deck green")
-      .and("contain.text", "agents warded for an 8h+ run")
-    cy.get(".portfolio-hero .button-row").should("not.exist")
-    cy.contains(".portfolio-hero", "Explore the work").should("not.exist")
+    ROUTES.forEach((url) => {
+      cy.visit(url)
+      cy.window().then((browserWindow) => {
+        const thirdParty = browserWindow.performance
+          .getEntriesByType("resource")
+          .map((entry) => new URL(entry.name))
+          .filter(
+            (resource) =>
+              resource.origin !== browserWindow.origin &&
+              !ALLOWED.includes(resource.origin)
+          )
+          .map((resource) => resource.origin + resource.pathname)
 
-    cy.get(".talk-showcase__player").then(($player) => {
-      const playerElement = $player.get(0)
-      const player = playerElement.getBoundingClientRect()
-
-      expect(player.width / player.height).to.be.closeTo(16 / 9, 0.02)
-      expect(player.right).to.be.at.most(
-        playerElement.ownerDocument.documentElement.clientWidth
-      )
-    })
-
-    // The tiles stack rather than shrinking the banners into a multi-up.
-    cy.get(".product-tile").should("have.length", 4)
-    cy.get(".product-tile__surface").then(($surfaces) => {
-      const boxes = [...$surfaces].map((surface) =>
-        surface.getBoundingClientRect()
-      )
-
-      boxes.forEach((box, index) => {
-        const next = boxes[index + 1]
-
-        if (next) {
-          expect(box.bottom).to.be.at.most(next.top + 1)
-        }
+        expect(thirdParty, `${url} reaches a third party`).to.deep.equal([])
       })
-    })
-
-    cy.contains("Notes from the work.").should("not.exist")
-    cy.contains("Working together").should("not.exist")
-    cy.get("footer")
-      .should("contain.text", "Kai Siren")
-      .and("contain.text", "Platform Engineer")
-      .and("not.contain.text", "Lynn Conway")
-    cy.get("footer").find("a, img").should("not.exist")
-    cy.document().then((document) => {
-      expect(document.documentElement.scrollWidth).to.be.at.most(
-        document.documentElement.clientWidth
-      )
-    })
-  })
-
-  it("does not expose retired app routes", () => {
-    const retiredRoutes = [
-      "/apps/",
-      "/apps/bsky-popularity-contest/",
-      "/apps/bsky-follow-suggestions/",
-      "/pulse/",
-    ]
-    retiredRoutes.forEach((url) => {
-      cy.request({ url, failOnStatusCode: false })
-        .its("status")
-        .should("eq", 404)
-    })
-    cy.visit("/about/")
-    cy.get('a[href="/apps/"]').should("not.exist")
-    cy.get('a[href="/pulse/"]').should("not.exist")
-    cy.request({ url: "/rss.xml", failOnStatusCode: false })
-      .its("status")
-      .should("eq", 404)
-    cy.request({ url: "/og/", failOnStatusCode: false })
-      .its("status")
-      .should("eq", 404)
-  })
-
-  it("gives missing routes a designed recovery page", () => {
-    const missingRoute = "/definitely-not-here/"
-
-    cy.request({ url: missingRoute, failOnStatusCode: false })
-      .its("status")
-      .should("eq", 404)
-
-    cy.viewport(390, 844)
-    cy.visit(missingRoute, { failOnStatusCode: false })
-    cy.get(".not-found-page").should("be.visible")
-    cy.contains("h1", "This path ends here.").should("be.visible")
-    cy.contains(".not-found-scroll-cue", "Recovery routes below").should(
-      "be.visible"
-    )
-    cy.get(".not-found-signal__code").should("have.text", "404")
-    cy.get(".not-found-route-list a").should("have.length", 3)
-    cy.get(".not-found-route-list strong").then(($titles) => {
-      expect([...$titles].map((title) => title.textContent)).to.deep.equal([
-        "About",
-        "Hiring",
-        "Resume",
-      ])
-    })
-    cy.get('.not-found-page a[href="/writing/"]').should("not.exist")
-    cy.get('meta[name="robots"]').should(
-      "have.attr",
-      "content",
-      "noindex, nofollow"
-    )
-    cy.document().then((document) => {
-      expect(document.documentElement.scrollWidth).to.be.at.most(
-        document.documentElement.clientWidth
-      )
-      const browserWindow = document.defaultView
-      expect(browserWindow).not.to.equal(null)
-      const thirdPartyResources = browserWindow!.performance
-        .getEntriesByType("resource")
-        .map((entry) => new URL(entry.name))
-        .filter(
-          (resourceUrl) => resourceUrl.origin !== browserWindow!.location.origin
-        )
-      expect(thirdPartyResources).to.deep.equal([])
     })
   })
 })

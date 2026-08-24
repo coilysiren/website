@@ -22,9 +22,9 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 
 ## Tests, deploy, baseline
 
-- **Cypress** production-output tests under [cypress/e2e/](../cypress/e2e/)
-  cover the canonical pages, retired-route and designed 404s, local core CSS
-  and font resources, and text-only social metadata.
+- **Tests** - build-output contracts run browser-free under vitest, and
+  Cypress covers only the invariants that need real layout. What is asserted,
+  and what is deliberately not, in [verification](verification.md).
 - **Deploy** - how a merge reaches production: [deploy](deploy.md).
 - **Managed pre-commit block** from agentic-os plus a local offline
   `trufflehog` hook.

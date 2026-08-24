@@ -1,32 +1,22 @@
 /**
- * @typedef {{ kind: "emoji", glyph: string, label: string }} ProjectEmojiIcon
+ * @typedef {object} ShowcaseProduct
+ * @property {string} slug
+ * @property {string} banner
+ * @property {string} banner2x
+ * @property {string} [mobileBanner]
+ * @property {string} [mobileBanner2x]
+ * @property {string} alt
+ * @property {string} proof
+ * @property {string} url
  */
 
 /**
- * @typedef {{ kind: "image", src: string, alt: string }} ProjectImageIcon
+ * The homepage product band. The banner carries the name and the claim as
+ * baked-in type, so `alt` has to say what the image says and `proof` has to
+ * add something the banner does not.
+ *
+ * @type {ShowcaseProduct[]}
  */
-
-/**
- * @typedef {ProjectEmojiIcon | ProjectImageIcon} ProjectIcon
- */
-
-/**
- * @typedef {object} ProjectLink
- * @property {string} name
- * @property {string} description
- * @property {string[]} tags
- * @property {string} [url]
- * @property {boolean} [privateRepo]
- * @property {ProjectIcon[]} [icons]
- */
-
-/**
- * @typedef {object} ProjectGroup
- * @property {string} title
- * @property {string} description
- * @property {ProjectLink[]} projects
- */
-
 export const showcaseProducts = [
   {
     slug: "agent-compose",
@@ -67,131 +57,5 @@ export const showcaseProducts = [
     proof:
       "A config driven occlusion framework that puts explicit boundaries around CLIs and APIs.",
     url: "https://github.com/coilyco-flight-deck/umbra",
-  },
-]
-
-/** @type {ProjectGroup[]} */
-export const projectGroups = [
-  {
-    title: "Infrastructure",
-    description:
-      "The operating and deployment layers beneath the agent platform.",
-    projects: [
-      {
-        name: "coilyco-flight-deck/agentic-os",
-        description:
-          "Cross-platform agentic operating layer with dotfiles, skills, guarded tooling, and repository validators.",
-        tags: ["ai-agents", "automation", "dotfiles", "security"],
-        url: "https://github.com/coilyco-flight-deck/agentic-os",
-      },
-      {
-        name: "coilyco-flight-deck/infrastructure",
-        description:
-          "Infrastructure-as-code for Kai's hosts and Kubernetes homelab, including Ansible convergence and observability.",
-        tags: ["ansible", "homelab", "infrastructure-as-code", "kubernetes"],
-        url: "https://github.com/coilyco-flight-deck/infrastructure",
-      },
-      {
-        name: "coilyco-bridge/agentic-os-kai",
-        description:
-          "Kai's agent operating context, skill catalog, fleet inventory, and cross-repository automation.",
-        tags: ["ai-agents", "automation", "devops", "mcp"],
-        privateRepo: true,
-      },
-      {
-        name: "coilyco-bridge/deploy",
-        description:
-          "Kubernetes deployment monorepo for always-on services across Kai's homelab.",
-        tags: ["devops", "helm", "homelab", "kubernetes"],
-        privateRepo: true,
-      },
-    ],
-  },
-  {
-    title: "Agent platform",
-    description:
-      "Context, governed execution, tool delivery, and the observable model path.",
-    projects: [
-      {
-        name: "coilyco-flight-deck/agent-compose",
-        description:
-          "Context compiler that composes roles, personalities, skills, and tool inventories for AI-agent harnesses.",
-        tags: ["ai-agents", "automation", "llm", "mcp"],
-        url: "https://github.com/coilyco-flight-deck/agent-compose",
-      },
-      {
-        name: "coilyco-flight-deck/ward",
-        description:
-          "Governed execution layer for unattended coding agents in isolated repository workflows.",
-        tags: ["ai-agents", "automation", "devops", "security"],
-        url: "https://github.com/coilyco-flight-deck/ward",
-      },
-      {
-        name: "coilyco-flight-deck/mcp-beaver",
-        description:
-          "MCP runtime that turns umbra guardfiles into guarded streamable HTTP services and container images.",
-        tags: ["automation", "mcp", "model-context-protocol", "security"],
-        url: "https://github.com/coilyco-flight-deck/mcp-beaver",
-      },
-      {
-        name: "coilyco-flight-deck/agent-proxy",
-        description:
-          "Observability and trajectory data plane for AI agents with OpenAI-compatible proxying and LiteLLM.",
-        tags: ["ai-agents", "llm", "observability", "opentelemetry"],
-        url: "https://github.com/coilyco-flight-deck/agent-proxy",
-      },
-    ],
-  },
-  {
-    title: "Product",
-    description:
-      "Things built with the platform for communities, games, and daily life.",
-    projects: [
-      {
-        name: "coilyco-gaming/eco-app",
-        description: "Eco MCP service - server, jobs, replay, telemetry.",
-        tags: [],
-        url: "https://github.com/coilyco-gaming/eco-app",
-        icons: [{ kind: "emoji", glyph: "🌎", label: "Earth" }],
-      },
-      {
-        name: "coilyco-gaming/galaxy-gen",
-        description:
-          "Procedural galaxy simulation - Rust compiled to WASM, rendered in the browser. Live at https://galaxy-gen.coilysiren.me",
-        tags: ["procedural-galaxy-simulation", "rust-wasm"],
-        url: "https://github.com/coilyco-gaming/galaxy-gen",
-        icons: [{ kind: "emoji", glyph: "🌌", label: "Milky Way" }],
-      },
-      {
-        name: "coilyco-gaming/sirens-echo",
-        description: "Sirens Echo Community harness for the Sirens Discord.",
-        tags: ["community", "discord", "harness"],
-        url: "https://github.com/coilyco-gaming/sirens-echo",
-        icons: [{ kind: "emoji", glyph: "🤖", label: "Robot" }],
-      },
-      {
-        name: "Many MCPs",
-        description:
-          "Narrow agent interfaces for personal finance, private feeds, games, browsers, project work, and the systems around them.",
-        tags: ["lunch-money", "reddit", "steam", "+6 more"],
-        icons: [
-          {
-            kind: "image",
-            src: "/apps-icons/lunch-money.ico",
-            alt: "Lunch Money",
-          },
-          {
-            kind: "image",
-            src: "/apps-icons/reddit.svg",
-            alt: "Reddit",
-          },
-          {
-            kind: "image",
-            src: "/apps-icons/steam.svg",
-            alt: "Steam",
-          },
-        ],
-      },
-    ],
   },
 ]

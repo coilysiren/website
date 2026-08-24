@@ -41,7 +41,7 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit && tsc --noEmit --project cypress/tsconfig.json",
     "test": "pnpm run test:quick",
-    "test:quick": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test:unit",
+    "test:quick": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run build && pnpm run test:unit",
     "test:unit": "vitest run",
     "test:e2e:local": "start-server-and-test \"pnpm run serve\" http://127.0.0.1:8000 \"pnpm exec cypress open --e2e\"",
     "test:e2e:ci": "start-server-and-test \"pnpm run serve\" http://127.0.0.1:8000 \"pnpm exec cypress run\""

@@ -95,11 +95,11 @@ typecheck *ARGS:
 test *ARGS:
     @pnpm run test "$@"
 
-# Format check, lint, type-check, and unit tests.
+# Format check, lint, type-check, build, and unit tests.
 test-quick *ARGS:
     @pnpm run test:quick "$@"
 
-# vitest run.
+# vitest run. Asserts dist/, so build first.
 test-unit *ARGS:
     @pnpm run test:unit "$@"
 
