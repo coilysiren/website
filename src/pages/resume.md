@@ -26,8 +26,9 @@ My career has been mostly individual-contributor work, with a chapter managing a
 
 ## Open Source <!-- evidence -->
 
-- **<span hidden></span>** [Ward](https://github.com/coilyco-flight-deck/ward) and [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) turn role, tool, and policy inputs into inspectable context, fixed execution workflows, least-access containers, and durable evidence.
-- **<span hidden></span>** [mcp-beaver](https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver) derives bounded MCP and HTTP tools from policy. [Agent Proxy](https://github.com/coilyco-flight-deck/agent-proxy) routes local and hosted model traffic through one observable OpenAI-compatible surface.
+- **<span hidden></span>** [umbra](https://github.com/coilyco-flight-deck/umbra) occludes CLIs and outbound requests behind declared policy: argv validation before exec, a per-invocation egress gate, a rotating audit log, and a public refusal taxonomy. [mcp-beaver](https://github.com/coilyco-flight-deck/mcp-beaver) generates the guarded MCP server from that same policy artifact.
+- **<span hidden></span>** [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) compiles role, personality, and boundary inputs into agent context, with evals gating every role it ships.
+- **<span hidden></span>** [sirens-echo](https://github.com/coilyco-gaming/sirens-echo) runs a Discord community agent harness in production under admission control, a git-tracked access policy, per-user and global spend limits, a deterministic response validator, and an identity eval.
 
 ## Skills
 
@@ -41,11 +42,11 @@ My career has been mostly individual-contributor work, with a chapter managing a
 ## Experiences
 
 [Kapwing](https://www.kapwing.com/) // **Senior Software Engineer** // San Francisco // 2025 - Present
-**Stack:** Python, Node.js, Kubernetes, Terraform, GCP, New Relic, OpenAI Codex
+**Stack:** Python, Node.js, Kubernetes, Terraform, GCP, New Relic, MCP, OpenAI Codex, Claude Code
 
 - Improve Dockerized Python startup performance by roughly 2x
-- Build video-processing systems with FFmpeg and Puppeteer
-- Design agentic debugging workflows that use production observability
+- Build an agent-facing MCP surface for a production media pipeline
+- Design agentic debugging workflows with production observability
 
 [Nava](https://www.navapbc.com/) // **Principal Infrastructure Engineer** // Remote // 2023 - 2025
 **Stack:** Python, Java, Terraform, AWS, NIST 800-53, New Relic
