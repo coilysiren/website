@@ -1,0 +1,28 @@
+// Every route the build emits, in one place so the accessibility and weight
+// specs cannot disagree about what the site is. A unit assertion in
+// src/build-output.test.ts compares this to dist/ and fails on drift, because
+// the first accessibility pass listed eight of eighteen routes and missed a
+// real defect on a promoted post.
+//
+// It is a module rather than derived at run time because `allowCypressEnv` is
+// deliberately false here, and a spec cannot generate its tests from a promise.
+export const ROUTES = [
+  "/",
+  "/404.html",
+  "/about/",
+  "/coilysiren-personal-gmail-privacy/",
+  "/cool-people/",
+  "/hiring/",
+  "/posts/3-cloud-standoff/",
+  "/posts/azure-openai-terraform/",
+  "/posts/code-janitor/",
+  "/posts/deleting-the-mechanical-scorer/",
+  "/posts/golang-pr-notes-1/",
+  "/posts/golang-pr-notes-2/",
+  "/posts/golang-pr-notes-3/",
+  "/posts/heroku-django-sass/",
+  "/posts/on-permissions-models-for-cloud-platform-providers/",
+  "/posts/stochastic-design-iteration/",
+  "/resume/",
+  "/writing/",
+]

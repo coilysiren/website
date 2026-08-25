@@ -30,6 +30,11 @@ Anything a browser is not required to observe does not get a browser.
   runs `axe-core` over every route the build emits, with coverage derived from
   `dist/` rather than listed. Details and the load-bearing numbers:
   [accessibility](accessibility.md).
+- **Page weight** - [`cypress/e2e/weight.cy.ts`](../cypress/e2e/weight.cy.ts)
+  measures real transfer per route against a ceiling. 150K by default, with
+  named exceptions that only ever go down. The site's shape is static HTML plus
+  local CSS and fonts, and nothing asserted that until it found `/about/` at
+  34MB, now `coilysiren/website#129`.
 - **Layout invariants** - [`cypress/e2e/basic.cy.ts`](../cypress/e2e/basic.cy.ts)
   covers only what needs real layout: no sideways overflow at 390px, the About
   portrait sitting beside its copy at 1280px, and no third-party origin beyond

@@ -22,7 +22,7 @@ personSchema: true
     </div>
     <div class="my-life-favorite-grid">
       {% for favorite in group.favorites %}
-        <img src="{{ favorite.src }}" alt="{{ favorite.alt }}">
+        <img loading="lazy" decoding="async" src="{{ favorite.src }}" alt="{{ favorite.alt }}">
       {% endfor %}
     </div>
   </article>
@@ -46,22 +46,22 @@ personSchema: true
   {{ favoriteSlide(about.animals) }}
   <article id="fabrication" class="my-life-slide my-life-slide--home">
     <div class="my-life-home-images">
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-home-images__primary"
         src="/my-life/12-wall-under-construction.jpg"
         alt="A home interior with a newly framed wall"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-home-images__plan"
         src="/my-life/07-adu-floor-plan.png"
         alt="An ADU floor plan"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-home-images__garden"
         src="/my-life/15-red-garden-bed.jpg"
         alt="A newly planted red raised garden bed"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-home-images__build"
         src="/my-life/18-garden-bed-construction.jpg"
         alt="Raised garden beds under construction"
@@ -85,17 +85,17 @@ personSchema: true
       </ul>
     </div>
     <div class="my-life-project-grid my-life-technology-grid">
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-technology-grid__tower"
         src="/my-life/17-tower-interior.jpg"
         alt="The blue and purple lit interior of a desktop computer tower"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-technology-grid__screens"
         src="/my-life/14-two-monitor-desktop.jpg"
         alt="A colorful two-monitor desk setup"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-technology-grid__hardware"
         src="/my-life/08-motherboard-and-gpu.jpg"
         alt="A motherboard and graphics card lit by purple LEDs"
@@ -114,17 +114,17 @@ personSchema: true
       </ul>
     </div>
     <div class="my-life-project-grid my-life-gaming-grid">
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-gaming-grid__factory"
         src="/my-life/project-factory-game.gif"
         alt="An animated factory game simulation"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-gaming-grid__galaxy"
         src="/my-life/project-galaxy-gen.gif"
         alt="An animated procedural galaxy generator"
       >
-      <img
+      <img loading="lazy" decoding="async"
         class="my-life-gaming-grid__eco"
         src="/my-life/05-eco-app-dashboard.png"
         alt="A dark green Eco application dashboard"

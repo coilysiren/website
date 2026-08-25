@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
+import { ROUTES } from "../cypress/routes"
 
 // These assert what Eleventy emitted, not how it renders, so they read dist/
 // rather than driving a browser. `pnpm run test:quick` builds first.
@@ -205,20 +206,13 @@ describe("build output", () => {
   })
 
   it("accessibility-tests every route the build emits", () => {
-    // The first axe pass covered eight of eighteen routes and missed a real
-    // defect on a promoted post. Coverage is derived now, not listed.
     const emitted = readdirSync("dist", { recursive: true })
       .map(String)
       .filter((entry) => entry.endsWith(".html"))
       .map((entry) => `/${entry.replace(/index\.html$/, "")}`)
       .sort()
 
-    const spec = readFileSync("cypress/e2e/accessibility.cy.ts", "utf8")
-    const covered = [...spec.matchAll(/^\s*"(\/[^"]*)",$/gm)]
-      .map((match) => match[1] ?? "")
-      .sort()
-
-    expect(covered, "cypress/e2e/accessibility.cy.ts ROUTES").toEqual(emitted)
+    expect([...ROUTES].sort(), "cypress/routes.ts").toEqual(emitted)
   })
 
   it("describes the person once, where the person is described", () => {

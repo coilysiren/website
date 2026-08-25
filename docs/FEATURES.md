@@ -41,7 +41,8 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   Cypress covers the invariants that need a real browser: layout, and an
   `axe-core` pass over every emitted route. What is asserted, and what is
   deliberately not, in [verification](verification.md). Accessibility has its
-  own page: [accessibility](accessibility.md).
+  own page: [accessibility](accessibility.md). A transfer budget per route
+  guards the site's no-framework, locally-served shape.
 - **Deploy** - how a merge reaches production: [deploy](deploy.md).
 - **Managed pre-commit block** from agentic-os plus a local offline
   `trufflehog` hook.

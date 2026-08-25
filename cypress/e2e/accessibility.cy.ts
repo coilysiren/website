@@ -1,27 +1,5 @@
 import type { AxeResults, Result } from "axe-core"
-
-// The indexed set, plus a dark post and the 404, because a page reachable only
-// by direct link still has to be usable by whoever follows that link.
-const ROUTES = [
-  "/",
-  "/404.html",
-  "/about/",
-  "/coilysiren-personal-gmail-privacy/",
-  "/cool-people/",
-  "/hiring/",
-  "/posts/3-cloud-standoff/",
-  "/posts/azure-openai-terraform/",
-  "/posts/code-janitor/",
-  "/posts/deleting-the-mechanical-scorer/",
-  "/posts/golang-pr-notes-1/",
-  "/posts/golang-pr-notes-2/",
-  "/posts/golang-pr-notes-3/",
-  "/posts/heroku-django-sass/",
-  "/posts/on-permissions-models-for-cloud-platform-providers/",
-  "/posts/stochastic-design-iteration/",
-  "/resume/",
-  "/writing/",
-]
+import { ROUTES } from "../routes"
 
 const TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"]
 

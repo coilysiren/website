@@ -13,11 +13,15 @@ a budget is a ratchet nobody tightens.
 CommonJS, and the Cypress spec bundler turns it into `exports is not defined`.
 The spec reads `node_modules/axe-core/axe.min.js` and evaluates it in the page.
 
-**Coverage is derived, not listed.** A unit assertion in
-[`src/build-output.test.ts`](../src/build-output.test.ts) compares the spec's
-route list against `dist/`. The first pass covered eight of eighteen routes and
-missed a real defect on a promoted post, so the list is now guarded rather than
-trusted.
+**One route list, guarded.** [`cypress/routes.ts`](../cypress/routes.ts) holds
+it, and both browser specs import it. A unit assertion in
+[`src/build-output.test.ts`](../src/build-output.test.ts) compares it against
+`dist/` and fails on drift, because the first pass covered eight of eighteen
+routes and missed a real defect on a promoted post.
+
+It is a module rather than derived at run time because `allowCypressEnv` is
+deliberately `false` here, so `Cypress.env()` cannot carry it, and a spec
+cannot generate its tests from a promise.
 
 ## Load-bearing, do not revert
 
