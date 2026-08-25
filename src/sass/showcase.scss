@@ -9,8 +9,9 @@ $content-width: 1180px;
   margin: 0;
   padding: clamp(3rem, 7vw, 6rem) max(1rem, calc((100% - $content-width) / 2));
   box-sizing: border-box;
-  background: vars.$paper;
+  background: vars.$deep-ink;
   border: 0;
+  border-top: 1px solid rgba(vars.$light-purple, 0.22);
   border-radius: 0;
 
   &::before {
@@ -19,9 +20,21 @@ $content-width: 1180px;
     pointer-events: none;
     content: "";
     background:
-      linear-gradient(rgba(vars.$mid-purple, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(vars.$mid-purple, 0.045) 1px, transparent 1px);
+      linear-gradient(rgba(vars.$light-purple, 0.05) 1px, transparent 1px),
+      linear-gradient(
+        90deg,
+        rgba(vars.$light-purple, 0.05) 1px,
+        transparent 1px
+      );
     background-size: 32px 32px;
+  }
+
+  .section-label {
+    color: vars.$light-blue;
+  }
+
+  .section-heading h2 {
+    color: vars.$pure-white;
   }
 }
 
