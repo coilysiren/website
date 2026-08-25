@@ -468,8 +468,9 @@ p.large {
   }
 }
 
-// Styling of single ``
-p > code {
+// Styling of single ``. Scoped to post content: as a bare `p > code` it
+// styled inline code on every page, including ones with their own palette.
+.post-content p > code {
   background: vars.$dark-purple;
   color: vars.$pure-white;
   border-radius: 0.3em;
@@ -485,8 +486,8 @@ p > code {
   word-break: break-word;
 }
 
-// Styling of triple ```
-pre:not(.warning-message) {
+// Styling of triple ```. Scoped for the same reason as inline code above.
+.post-content pre:not(.warning-message) {
   background-color: vars.$dark-purple;
   background-image: url("../images/rows-triangles.svg");
   background-repeat: repeat-x;

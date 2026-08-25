@@ -25,7 +25,11 @@ main {
   flex: 1;
 }
 
-section {
+// The post card. This was a bare `section` selector, which meant every page
+// built with semantic sectioning inherited a bordered card and then spent CSS
+// undoing it. `content.njk` is the only template that wants it, and its
+// section always carries `post-body`.
+.post-body {
   height: auto;
   margin-top: 1em;
   margin-left: auto;
@@ -37,6 +41,9 @@ section {
   box-sizing: border-box;
   border: 0.2em solid vars.$dark-purple;
   border-top: 1.3em solid vars.$dark-purple;
+  overflow: hidden;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 
   @include vars.phone {
     width: 100%;
@@ -47,12 +54,6 @@ section {
   @include vars.desktop {
     width: min(75%, 1080px);
   }
-}
-
-section {
-  overflow: hidden;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
 }
 
 div.post-closer {

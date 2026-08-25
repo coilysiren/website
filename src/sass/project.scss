@@ -43,40 +43,22 @@
   overflow-x: clip;
 }
 
-// layout.scss styles the bare `section` element as a standalone card, and
-// body carries a repeating shape texture. Both predate the token system and
-// leak into anything built with semantic sectioning. :where() holds these at
-// element specificity so component classes still outrank them; setting the
-// section reset at .project section instead silently strips the backgrounds
-// it exists to protect.
+// body carries a repeating shape texture, which these pages replace with a
+// flat ground. The section, pre and code quarantines that used to live here
+// are gone: those rules are scoped to the post layer now, so there is nothing
+// left to fight.
 body:has(.project) {
   background: var(--penumbra, vars.$deep-ink) !important;
   background-image: none !important;
 }
 
-:where(.project) section {
-  width: auto;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  overflow: visible;
-  background: none;
-}
-
-// `pre:not(.warning-message)` in post.scss is specificity 0,1,1, so this has
-// to match it rather than sit under :where() like the others.
 .project pre {
   display: block;
   margin: 0;
   padding: 0;
-  background: none;
-  background-image: none;
 }
 
 .project code {
-  padding: 0;
-  background: none;
   font-family: vars.$font-family-mono;
 }
 
