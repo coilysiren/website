@@ -8,6 +8,10 @@
  * @property {string} alt
  * @property {string} proof
  * @property {string} url
+ * @property {string} [page] Own page on this site. When present the tile
+ *   links here instead of off to the repository, because the tile is the
+ *   strongest content on the homepage and sending it off-domain spends that
+ *   attention at the moment of highest interest.
  */
 
 /**
@@ -56,6 +60,7 @@ export const showcaseProducts = [
     alt: "umbra - a config driven occlusion framework",
     proof:
       "Declare what a tool may run. Arguments are validated before the process starts, each verb needs its own scope token, and every call lands in an append-only audit log.",
+    page: "/projects/umbra/",
     url: "https://github.com/coilyco-flight-deck/umbra",
   },
 ]

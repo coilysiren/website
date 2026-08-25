@@ -51,8 +51,9 @@ personSchema: true
             data-product="{{ product.slug }}"
           >
             <div class="product-tile__surface{% if product.privateRepo %} product-tile__surface--private{% endif %}">
-              {% if product.url %}
-                <a class="product-tile__link" href="{{ product.url }}">
+              {% set destination = product.page or product.url %}
+              {% if destination %}
+                <a class="product-tile__link" href="{{ destination }}">
               {% endif %}
               {% if product.banner %}
                 {% if product.mobileBanner %}
@@ -84,11 +85,13 @@ personSchema: true
                   <span class="product-tile__claim">{{ product.claim }}</span>
                 </span>
               {% endif %}
-              {% if product.url %}
+              {% if destination %}
                 </a>
               {% endif %}
               <p class="product-tile__proof">{{ product.proof }}</p>
-              {% if product.url %}
+              {% if product.page %}
+                <a class="product-tile__meta" href="{{ product.page }}">Read the case →</a>
+              {% elif product.url %}
                 <a class="product-tile__meta" href="{{ product.url }}">Source ↗</a>
               {% else %}
                 <small class="product-tile__meta">Private repository</small>

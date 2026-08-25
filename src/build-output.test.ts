@@ -117,15 +117,22 @@ describe("build output", () => {
     })
   })
 
-  it("ships one social card that matches the size it declares", () => {
-    const CARD = "/images/og-default.jpg"
+  it("ships a social card that matches the size it declares", () => {
+    // The default card covers most routes. A page may declare its own, and
+    // several do, so what is asserted is that whatever card a route names is
+    // committed at the 1200x630 the tags promise.
+    const DEFAULT_CARD = "/images/og-default.jpg"
+    const CARDS: Record<string, string> = {
+      "/projects/umbra/": "/images/banners/umbra-card.jpg",
+    }
     CANONICAL_ROUTES.forEach((route) => {
       const html = page(route)
+      const card = CARDS[route] ?? DEFAULT_CARD
       expect(html).toContain(
-        `<meta property="og:image" content="${HOST}${CARD}">`
+        `<meta property="og:image" content="${HOST}${card}">`
       )
       expect(html).toContain(
-        `<meta name="twitter:image" content="${HOST}${CARD}">`
+        `<meta name="twitter:image" content="${HOST}${card}">`
       )
       // A large card with a summary card tag renders as the small one.
       expect(html).toContain(
@@ -133,14 +140,19 @@ describe("build output", () => {
       )
       expect(html).toMatch(/<meta property="og:image:alt" content="[^"]+">/)
     })
-    // The declared dimensions are a promise about the committed file.
+    // The declared dimensions are a promise about the committed file, and the
+    // layout declares one pair for every route. So every card in play has to
+    // be that size, not just the default one.
     const declared = page("/").match(
       /og:image:width" content="(\d+)">\s*<meta property="og:image:height" content="(\d+)"/
     )
     expect(declared).not.toBeNull()
-    expect(jpegSize(CARD.slice(1))).toEqual({
+    const promised = {
       width: Number(declared![1]),
       height: Number(declared![2]),
+    }
+    new Set([DEFAULT_CARD, ...Object.values(CARDS)]).forEach((card) => {
+      expect(jpegSize(card.slice(1)), card).toEqual(promised)
     })
   })
 
