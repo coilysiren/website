@@ -15,7 +15,7 @@ const DARK_POSTS = [
   "/posts/code-janitor/",
   "/posts/golang-pr-notes-1/",
 ] as const
-const INDEXED = [...CANONICAL_ROUTES, ...PROMOTED_POSTS].sort()
+const INDEXED = [...CANONICAL_ROUTES, "/writing/", ...PROMOTED_POSTS].sort()
 // The apex 301s here, so a canonical URL naming the apex would resolve
 // through a redirect. One host, everywhere.
 const HOST = "https://www.coilysiren.me"
@@ -57,7 +57,6 @@ describe("build output", () => {
     // `promoted` flag drove `robots`, which the sitemap derives from.
     const llms = read("llms.txt")
     INDEXED_URLS.forEach((url) => expect(llms).toContain(url))
-    expect(llms).not.toContain("/writing/")
     DARK_POSTS.forEach((route) => expect(llms).not.toContain(route))
   })
 
@@ -66,7 +65,7 @@ describe("build output", () => {
       expect(page(route)).toContain('content="follow, index"')
     })
     // Reachable by direct link, never by crawler.
-    ;["/writing/", "/cool-people/", ...DARK_POSTS].forEach((route) => {
+    ;["/cool-people/", ...DARK_POSTS].forEach((route) => {
       expect(page(route)).toContain('content="noindex, nofollow"')
     })
     // Exact emitted paths - a directory-shaped guess here would pass on a

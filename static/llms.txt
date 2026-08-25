@@ -13,7 +13,7 @@ Use the pages below as the canonical public profile. Other routes are retained o
 
 ## Writing
 
-Three posts are promoted. The rest of the archive is retained at its URLs but is not current.
+The [writing index](https://www.coilysiren.me/writing/) lists the promoted posts. Three are promoted. The rest of the archive is retained at its URLs but is not current.
 
 - [Stochastic Design Iteration](https://www.coilysiren.me/posts/stochastic-design-iteration/): A pattern for co-authoring a markdown design doc with an LLM.
 - [On Permissions Models for Cloud Platform Providers](https://www.coilysiren.me/posts/on-permissions-models-for-cloud-platform-providers/): How Kai would build permissions for a cloud platform provider.

@@ -21,9 +21,8 @@ under [src/pages/](../src/pages/) so the resume keeps its canonical source.
   navigation. It is a project-free information reference covering Kai's
   strongest role shapes, practical constraints, recruiter context, interview
   boundaries, and tenure context.
-- **`writing.njk`** - date-ordered listing of the promoted posts. The page
-  itself is still `noindex, nofollow` and unlinked from the homepage, which
-  issue #98 owns.
+- **`writing.njk`** - date-ordered listing of the promoted posts, and
+  indexable. It is still unlinked from the homepage, which issue #98 owns.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.njk`** - a fully designed not-found recovery page that preserves the
   real 404 response while carrying the homepage's visual system into clear
