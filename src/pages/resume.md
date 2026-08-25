@@ -28,7 +28,7 @@ My career has been mostly individual-contributor work, with a chapter managing a
 
 - **<span hidden></span>** [umbra](https://github.com/coilyco-flight-deck/umbra) occludes CLIs and outbound requests behind declared policy: argv validation before exec, a per-invocation egress gate, a rotating audit log, and a public refusal taxonomy. [mcp-beaver](https://github.com/coilyco-flight-deck/mcp-beaver) generates the guarded MCP server from that same policy artifact.
 - **<span hidden></span>** [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) compiles role, personality, and boundary inputs into agent context, with evals gating every role it ships.
-- **<span hidden></span>** [sirens-echo](https://github.com/coilyco-gaming/sirens-echo) runs a Discord community agent harness in production under admission control, a git-tracked access policy, per-user and global spend limits, a deterministic response validator, and an identity eval.
+- **<span hidden></span>** [sirens-echo](https://github.com/coilyco-gaming/sirens-echo) runs a Discord community agent harness in production under admission control, a git-tracked access policy, per-user, per-context, and global rate limits, a deterministic response validator, and an identity eval.
 
 ## Skills
 
