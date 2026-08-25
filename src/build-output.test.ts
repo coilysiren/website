@@ -10,6 +10,25 @@ const HOST = "https://www.coilysiren.me"
 const CANONICAL_URLS = CANONICAL_ROUTES.map((route) => `${HOST}${route}`)
 
 const read = (path: string) => readFileSync(`dist/${path}`, "utf8")
+// JPEG carries its size in the SOF segment, not in the file header, so the
+// only way to know what was actually committed is to walk to it.
+const jpegSize = (path: string) => {
+  const bytes = readFileSync(`dist/${path}`)
+  let at = 2
+  while (at + 1 < bytes.length) {
+    if (bytes.readUInt8(at) !== 0xff) throw new Error(`${path} is not a JPEG`)
+    const marker = bytes.readUInt8(at + 1)
+    const isFrameHeader =
+      marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)
+    if (isFrameHeader)
+      return {
+        height: bytes.readUInt16BE(at + 5),
+        width: bytes.readUInt16BE(at + 7),
+      }
+    at += 2 + bytes.readUInt16BE(at + 2)
+  }
+  throw new Error(`${path} has no frame header`)
+}
 const page = (route: string) =>
   read(route === "/" ? "index.html" : `${route.slice(1)}index.html`)
 const schema = (route: string) =>
@@ -79,6 +98,33 @@ describe("build output", () => {
       expect(read(path), `${path} names the redirecting apex`).not.toMatch(
         /\/\/coilysiren\.me/
       )
+    })
+  })
+
+  it("ships one social card that matches the size it declares", () => {
+    const CARD = "/images/og-default.jpg"
+    CANONICAL_ROUTES.forEach((route) => {
+      const html = page(route)
+      expect(html).toContain(
+        `<meta property="og:image" content="${HOST}${CARD}">`
+      )
+      expect(html).toContain(
+        `<meta name="twitter:image" content="${HOST}${CARD}">`
+      )
+      // A large card with a summary card tag renders as the small one.
+      expect(html).toContain(
+        'name="twitter:card" content="summary_large_image"'
+      )
+      expect(html).toMatch(/<meta property="og:image:alt" content="[^"]+">/)
+    })
+    // The declared dimensions are a promise about the committed file.
+    const declared = page("/").match(
+      /og:image:width" content="(\d+)">\s*<meta property="og:image:height" content="(\d+)"/
+    )
+    expect(declared).not.toBeNull()
+    expect(jpegSize(CARD.slice(1))).toEqual({
+      width: Number(declared![1]),
+      height: Number(declared![2]),
     })
   })
 

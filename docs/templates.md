@@ -14,6 +14,6 @@ The site-wide footer is a minimal identity line containing only Kai's public
 name and role.
 
 [`src/_data/site.js`](../src/_data/site.js) carries the canonical host, the
-identity fields, and the `sameAs` profile list the `Person` JSON-LD emits. X is
-deliberately not in that list, because Kai reads news there rather than
-publishing a profile.
+identity fields, the default social card, and the `sameAs` profile list the
+`Person` JSON-LD emits. X is deliberately not in that list, because Kai reads
+news there rather than publishing a profile.

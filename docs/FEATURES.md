@@ -15,8 +15,11 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Discovery metadata** - one canonical host across tags, sitemap, `robots.txt`
   and `llms.txt`, a `sitemap.xml` generated from the indexable routes, and
-  `Person` structured data on the homepage and About page. Social preview
-  images stay out on purpose. See [static generation](static-generation.md).
+  `Person` structured data on the homepage and About page. See [static
+  generation](static-generation.md).
+- **Social card** - a committed 1200x630 default `og:image` with a per-page
+  override, so link previews render as a card rather than bare text. No
+  generator and no build step. See [social card](social-card.md).
 - **Templates and data** - layouts, includes, and data files in
   [templates and data](templates.md).
 - **Build scripts** - `build-resume.py` renders the printable resume and
