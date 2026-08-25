@@ -13,6 +13,11 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   Check sits between the hero and shipped products. It loads after the core
   page, so its resources do not sit on the critical rendering path.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
+- **Project pages** - one page per headline project at `/projects/<name>/`,
+  carrying its own visual system rather than the site's page chrome because
+  these are headed for standalone domains. `umbra` is live; the other three
+  wait on mark assets. Each emits `SoftwareSourceCode` structured data whose
+  author points at the homepage `Person`. See [project pages](project-pages.md).
 - **Discovery metadata** - one canonical host across tags, sitemap, `robots.txt`
   and `llms.txt`, a `sitemap.xml` generated from the indexable routes, and
   `Person` structured data on the homepage and About page. See [static

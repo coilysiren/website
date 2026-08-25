@@ -31,3 +31,8 @@ under [src/pages/](../src/pages/) so the resume keeps its canonical source.
   public set only by carrying `promoted: true` in its front matter, which
   drives listing, `robots`, the sitemap, and the syndication allowlist from one
   key. Unpromoted posts stay at their URLs and stay `noindex, nofollow`.
+- **`projects/`** - one page per headline project, indexable and each declaring
+  its own `canonical`. They deliberately do not inherit the site's page chrome:
+  the layer is headed for standalone project domains, so matching
+  coilysiren.me is not a requirement. `projects/umbra.njk` is the first and
+  sets the format the other three copy.

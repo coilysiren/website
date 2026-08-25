@@ -45,6 +45,24 @@
         }
       </script>
     {% endif %}
+    {% if softwareSchema %}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          "name": {{ softwareSchema.name | dump | safe }},
+          "description": {{ softwareSchema.claim | dump | safe }},
+          "url": {{ (site.url + canonical) | dump | safe }},
+          "codeRepository": {{ softwareSchema.repo | dump | safe }},
+          "license": {{ softwareSchema.license | dump | safe }},
+          "author": {
+            "@type": "Person",
+            "name": {{ site.author | dump | safe }},
+            "url": {{ site.url | dump | safe }}
+          }
+        }
+      </script>
+    {% endif %}
     {% if personSchema %}
       <script type="application/ld+json">
         {

@@ -76,6 +76,15 @@ export default [
     },
   },
 
+  // Scripts served to the browser. Everything else under this config is Node,
+  // so these need the browser globals declared rather than assumed.
+  {
+    files: ["static/**/*.js"],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+
   // Cypress tests
   {
     ...cypress.configs.recommended,

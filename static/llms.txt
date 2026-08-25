@@ -11,6 +11,10 @@ Use the pages below as the canonical public profile. Other routes are retained o
 - [Hiring](https://www.coilysiren.me/hiring/): Role fit, practical constraints, and interview boundaries.
 - [Resume](https://www.coilysiren.me/resume/): Canonical experience and impact record.
 
+## Projects
+
+- [umbra](https://www.coilysiren.me/projects/umbra/): A config driven occlusion framework. Declares what an agent may execute, validates argv before execve, and records every call.
+
 ## Writing
 
 The [writing index](https://www.coilysiren.me/writing/) lists the promoted posts. Three are promoted. The rest of the archive is retained at its URLs but is not current.

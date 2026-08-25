@@ -4,7 +4,13 @@ import { ROUTES } from "../cypress/routes"
 
 // These assert what Eleventy emitted, not how it renders, so they read dist/
 // rather than driving a browser. `pnpm run test:quick` builds first.
-const CANONICAL_ROUTES = ["/", "/about/", "/hiring/", "/resume/"] as const
+const CANONICAL_ROUTES = [
+  "/",
+  "/about/",
+  "/hiring/",
+  "/projects/umbra/",
+  "/resume/",
+] as const
 // The curated public set. Posts join it only via `promoted` in front matter,
 // which is the one key driving listing, robots, sitemap and syndication.
 const PROMOTED_POSTS = [

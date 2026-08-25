@@ -23,6 +23,7 @@ export const ROUTES = [
   "/posts/heroku-django-sass/",
   "/posts/on-permissions-models-for-cloud-platform-providers/",
   "/posts/stochastic-design-iteration/",
+  "/projects/umbra/",
   "/resume/",
   "/writing/",
 ]
