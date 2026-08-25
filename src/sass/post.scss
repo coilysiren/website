@@ -63,12 +63,12 @@
     font-size: 1.7em;
   }
 
-  h4 {
+  .post-header__lede {
     color: vars.$mid-purple;
     margin-bottom: 2em;
   }
 
-  h5 {
+  .post-header__date {
     text-align: left;
     margin: 0;
     color: vars.$mid-purple;
@@ -100,7 +100,7 @@
       text-transform: uppercase;
     }
 
-    h4 {
+    .post-header__lede {
       max-width: 60ch;
       margin: 0;
       font-size: 1rem;

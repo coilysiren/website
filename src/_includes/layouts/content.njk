@@ -8,8 +8,8 @@ layout: layouts/base.njk
     {% else %}
       <h1>{{ title or site.title }}</h1>
     {% endif %}
-    {% if description %}<h4>{{ description }}</h4>{% endif %}
-    {% if date %}<h5><time datetime="{{ date | isoDay }}">{{ date | displayDate }}</time></h5>{% endif %}
+    {% if description %}<p class="post-header__lede">{{ description }}</p>{% endif %}
+    {% if date %}<p class="post-header__date"><time datetime="{{ date | isoDay }}">{{ date | displayDate }}</time></p>{% endif %}
   </div>
   <div class="post-content">{{ content | safe }}</div>
   {% include "components/closer.njk" %}

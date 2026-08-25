@@ -26,6 +26,11 @@ Anything a browser is not required to observe does not get a browser.
   post's `<time>` matching its `BlogPosting` `datePublished`, and the Atom feed
   carrying exactly the promoted posts newest first with absolute links. No
   browser, runs in milliseconds.
+- **Accessibility** - [`cypress/e2e/accessibility.cy.ts`](../cypress/e2e/accessibility.cy.ts)
+  runs `axe-core` over every indexed route plus a dark post and the 404, at
+  WCAG 2.0/2.1 A and AA plus best-practice. Zero violations, not a budget,
+  because a budget is a ratchet nobody tightens. Inject from the browser
+  bundle: the package export is CommonJS and the spec bundler breaks it.
 - **Layout invariants** - [`cypress/e2e/basic.cy.ts`](../cypress/e2e/basic.cy.ts)
   covers only what needs real layout: no sideways overflow at 390px, the About
   portrait sitting beside its copy at 1280px, and no third-party origin beyond
@@ -38,6 +43,7 @@ That is archaeology against a thing that already left.
 
 Spacing and rhythm are not asserted either. Those assertions rot faster than
 anything else in a stylesheet, and looking at the page catches them better.
+Contrast is the exception: it looks like taste and is arithmetic.
 
 ## Two traps this suite fell into once
 
@@ -63,3 +69,9 @@ and allows the single intended embed instead.
 - [FEATURES.md](FEATURES.md) - inventory of what ships.
 - [staging.md](staging.md) - staging image boundary and local verification.
 - [ci-workflows.md](ci-workflows.md) - every workflow and its trigger.
+
+## One number worth keeping
+
+The writing-list date is `$mid-purple` at 7.14:1 on `$paper`, not
+`$light-purple` at 2.86:1, which fails AA at 12px bold. Size, family and case
+carry the de-emphasis instead of lightness. Do not lighten it back.

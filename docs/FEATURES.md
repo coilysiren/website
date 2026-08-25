@@ -38,7 +38,8 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 ## Tests, deploy, baseline
 
 - **Tests** - build-output contracts run browser-free under vitest, and
-  Cypress covers only the invariants that need real layout. What is asserted,
+  Cypress covers the invariants that need a real browser: layout, and an
+  `axe-core` accessibility pass over every indexed route. What is asserted,
   and what is deliberately not, in [verification](verification.md).
 - **Deploy** - how a merge reaches production: [deploy](deploy.md).
 - **Managed pre-commit block** from agentic-os plus a local offline

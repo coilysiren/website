@@ -23,8 +23,8 @@ robots: follow, index
           <a class="homepage-post" href="{{ post.url }}">
             <div>
               <h2>{{ post.data.title }}</h2>
-              {% if post.data.description %}<h4>{{ post.data.description }}</h4>{% endif %}
-              <p><time datetime="{{ post.date | isoDay }}">{{ post.date | monthYear }}</time></p>
+              {% if post.data.description %}<p class="homepage-post__lede">{{ post.data.description }}</p>{% endif %}
+              <p class="homepage-post__date"><time datetime="{{ post.date | isoDay }}">{{ post.date | monthYear }}</time></p>
             </div>
           </a>
         </div>

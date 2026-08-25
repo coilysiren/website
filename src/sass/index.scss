@@ -23,7 +23,7 @@
     letter-spacing: -0.02em;
   }
 
-  h4 {
+  .homepage-post__lede {
     margin: 0 0 0.55rem;
     color: vars.$mid-purple;
     font-size: 1rem;
@@ -31,9 +31,11 @@
     line-height: 1.5;
   }
 
-  p {
+  // Was $light-purple, which is 2.86:1 on $paper and fails AA at this size.
+  // $mid-purple is 7.14:1. Size, family and case carry the hierarchy instead.
+  .homepage-post__date {
     margin: 0;
-    color: vars.$light-purple;
+    color: vars.$mid-purple;
     font-family: vars.$font-family-mono;
     font-size: 0.75rem;
     font-weight: 700;
