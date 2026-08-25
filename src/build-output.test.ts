@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs"
+import { readdirSync, readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 
 // These assert what Eleventy emitted, not how it renders, so they read dist/
@@ -202,6 +202,23 @@ describe("build output", () => {
         `<link rel="alternate" type="application/atom+xml" title="Kai Siren" href="${HOST}/feed.xml">`
       )
     )
+  })
+
+  it("accessibility-tests every route the build emits", () => {
+    // The first axe pass covered eight of eighteen routes and missed a real
+    // defect on a promoted post. Coverage is derived now, not listed.
+    const emitted = readdirSync("dist", { recursive: true })
+      .map(String)
+      .filter((entry) => entry.endsWith(".html"))
+      .map((entry) => `/${entry.replace(/index\.html$/, "")}`)
+      .sort()
+
+    const spec = readFileSync("cypress/e2e/accessibility.cy.ts", "utf8")
+    const covered = [...spec.matchAll(/^\s*"(\/[^"]*)",$/gm)]
+      .map((match) => match[1] ?? "")
+      .sort()
+
+    expect(covered, "cypress/e2e/accessibility.cy.ts ROUTES").toEqual(emitted)
   })
 
   it("describes the person once, where the person is described", () => {

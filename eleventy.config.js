@@ -44,6 +44,14 @@ export default function configureEleventy(eleventyConfig) {
     })
   }
 
+  // A code block that scrolls needs to be focusable or a keyboard user cannot
+  // scroll it. Applied to every <pre>, since which ones overflow is content.
+  eleventyConfig.addTransform("focusableCodeBlocks", function (content) {
+    return this.page.outputPath?.endsWith(".html")
+      ? content.replace(/<pre(?![^>]*\btabindex=)/g, '<pre tabindex="0"')
+      : content
+  })
+
   eleventyConfig.addWatchTarget("src/sass/")
   eleventyConfig.on("eleventy.before", compileStyles)
 

@@ -39,8 +39,9 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 
 - **Tests** - build-output contracts run browser-free under vitest, and
   Cypress covers the invariants that need a real browser: layout, and an
-  `axe-core` accessibility pass over every indexed route. What is asserted,
-  and what is deliberately not, in [verification](verification.md).
+  `axe-core` pass over every emitted route. What is asserted, and what is
+  deliberately not, in [verification](verification.md). Accessibility has its
+  own page: [accessibility](accessibility.md).
 - **Deploy** - how a merge reaches production: [deploy](deploy.md).
 - **Managed pre-commit block** from agentic-os plus a local offline
   `trufflehog` hook.
