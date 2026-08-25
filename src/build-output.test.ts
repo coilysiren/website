@@ -166,6 +166,44 @@ describe("build output", () => {
     })
   })
 
+  it("feeds exactly the promoted posts, newest first", () => {
+    const feed = read("feed.xml")
+    const entries = [...feed.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(
+      (match) => match[1] ?? ""
+    )
+    expect(entries).toHaveLength(PROMOTED_POSTS.length)
+
+    const links = entries.map(
+      (entry) => entry.match(/<link href="([^"]+)"/)?.[1] ?? ""
+    )
+    // Absolute, on the host that answers, or a reader resolves them wrong.
+    links.forEach((link) =>
+      expect(link.startsWith(`${HOST}/posts/`)).toBe(true)
+    )
+    expect([...links].sort()).toEqual(
+      PROMOTED_POSTS.map((route) => `${HOST}${route}`).sort()
+    )
+    DARK_POSTS.forEach((route) => expect(feed).not.toContain(route))
+
+    const dates = entries.map(
+      (entry) => entry.match(/<updated>([^<]+)<\/updated>/)?.[1] ?? ""
+    )
+    dates.forEach((date) => expect(Number.isNaN(Date.parse(date))).toBe(false))
+    expect(dates).toEqual([...dates].sort().reverse())
+
+    entries.forEach((entry) => {
+      expect(entry).toMatch(/<title>.+<\/title>/)
+      expect(entry).toMatch(/<summary>.+<\/summary>/)
+    })
+
+    // A feed nothing advertises is a feed nobody finds.
+    INDEXED.forEach((route) =>
+      expect(page(route)).toContain(
+        `<link rel="alternate" type="application/atom+xml" title="Kai Siren" href="${HOST}/feed.xml">`
+      )
+    )
+  })
+
   it("describes the person once, where the person is described", () => {
     ;["/", "/about/"].forEach((route) => {
       const parsed = JSON.parse(schema(route)!)

@@ -18,9 +18,13 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   `Person` structured data on the homepage and About page. See [static
   generation](static-generation.md).
 - **Post promotion** - `promoted: true` on a post drives its `/writing/`
-  listing, its `robots`, its sitemap entry, and the syndication allowlist from
-  one key. Posts are dark by default. Promoted posts carry `BlogPosting`
-  structured data and a machine-readable date. See [site pages](pages.md).
+  listing, its `robots`, its sitemap entry, the Atom feed, and the syndication
+  allowlist from one key. Posts are dark by default. Promoted posts carry
+  `BlogPosting` structured data and a machine-readable date. See [site
+  pages](pages.md).
+- **Atom feed** - `/feed.xml` carries the promoted posts and is advertised
+  site-wide for autodiscovery. No feed plugin and no new dependency. See
+  [static generation](static-generation.md).
 - **Social card** - a committed 1200x630 default `og:image` with a per-page
   override, so link previews render as a card rather than bare text. No
   generator and no build step. See [social card](social-card.md).

@@ -1,0 +1,32 @@
+---
+permalink: feed.xml
+eleventyExcludeFromCollections: true
+---
+{%- set promoted = [] -%}
+{%- for post in collections.posts -%}
+  {%- if post.data.promoted -%}
+    {%- set promoted = (promoted.push(post), promoted) -%}
+  {%- endif -%}
+{%- endfor -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/"/>
+  <updated>{{ promoted[0].date | isoDate }}</updated>
+  <id>{{ site.url }}/</id>
+  <author>
+    <name>{{ site.author }}</name>
+    <uri>{{ site.url }}</uri>
+  </author>
+{%- for post in promoted %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ site.url }}{{ post.data.canonical }}"/>
+    <updated>{{ post.date | isoDate }}</updated>
+    <id>{{ site.url }}{{ post.data.canonical }}</id>
+    <summary>{{ post.data.description }}</summary>
+  </entry>
+{%- endfor %}
+</feed>
