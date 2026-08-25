@@ -9,35 +9,33 @@
 // may not.
 
 .project {
-  // The page runs dark, then light. The dark zone is where the policy itself
-  // lives: the hero and the guardfile it opens on. Everything after is
-  // reading, so it takes the reading surface. That transition is 17.6:1,
-  // where the page previously spanned three near-black violets a total of
-  // 1.39:1 apart and read as one flat ground.
+  // The page is dark. That is the site's character and umbra's own subject,
+  // so the ground stays near-black violet and the light purple is the beat
+  // rather than the base.
   --umbra: #16121f;
+  --penumbra: #{vars.$deep-ink};
   --sink: #0d0a14;
 
-  // Inside the light zone the bands alternate paper and a lilac tint of it.
-  // Both carry ink text, so the alternation costs no legibility.
-  --paper: #{vars.$paper};
-  --lilac: #f0edf6;
+  // The alternating light band. Genuinely light, because the previous three
+  // grounds spanned 1.39:1 in total and read as one flat surface. Against
+  // --umbra this is 12.4:1, so the page oscillates instead of drifting.
+  --lilac: #ece8f5;
 
-  --ink: #{vars.$ink};
-  --bright: #{vars.$ink};
-  --quiet: #{vars.$mid-purple};
+  --ink: #e6e2f2;
+  --bright: #{vars.$pure-white};
+  --quiet: #9aabc4;
 
   // Accents carry register rather than position: mint grants, amber refuses,
-  // coral is cost, sage is the wider system, periwinkle is reference. Each
-  // needs both a dark-zone and a light-zone value, because the site palette
-  // was picked for the dark ground and none of it is readable on paper.
-  --mint: #1c6b5b;
-  --amber: #7d5410;
-  --coral: #a8482a;
-  --sage: #3d6b52;
-  --peri: #{vars.$mid-purple};
+  // coral is cost, sage is the wider system, periwinkle is reference. The
+  // light bands re-declare them, because none of these is readable on lilac.
+  --mint: #{vars.$light-blue};
+  --amber: #{vars.$focus};
+  --coral: #{vars.$coral};
+  --sage: #93b7a4;
+  --peri: #a9aad0;
 
-  --edge: rgba(vars.$mid-purple, 0.24);
-  --edge-soft: rgba(vars.$mid-purple, 0.14);
+  --edge: rgba(vars.$light-purple, 0.24);
+  --edge-soft: rgba(vars.$light-purple, 0.14);
 
   color: var(--ink);
   font-size: 1rem;
@@ -47,27 +45,8 @@
   overflow-x: clip;
 }
 
-// The dark zone. Its own token values, so every component inside it keeps
-// working without a second set of rules.
-.project__hero,
-.project__field {
-  --ink: #e6e2f2;
-  --bright: #{vars.$pure-white};
-  --quiet: #9aabc4;
-  --mint: #{vars.$light-blue};
-  --amber: #{vars.$focus};
-  --edge: rgba(vars.$light-purple, 0.24);
-  --edge-soft: rgba(vars.$light-purple, 0.14);
-
-  color: var(--ink);
-}
-
-// body carries a repeating shape texture, which these pages replace with a
-// flat ground. The section, pre and code quarantines that used to live here
-// are gone: those rules are scoped to the post layer now, so there is nothing
-// left to fight.
 body:has(.project) {
-  background: var(--paper, #{vars.$paper}) !important;
+  background: var(--umbra, #16121f) !important;
   background-image: none !important;
 }
 
@@ -492,7 +471,7 @@ body:has(.project) {
 // above these may paint and body carries the default ground instead.
 .project__body > section {
   --sect: var(--mint);
-  --band: var(--paper);
+  --band: var(--penumbra);
 
   position: relative;
   padding: clamp(2.75rem, 5vw, 4rem) 0;
@@ -500,8 +479,18 @@ body:has(.project) {
   &::before {
     position: absolute;
     z-index: -1;
-    inset: 0 -100vw;
+    // Bleeds right, but starts at the content column so it never runs under
+    // the contents rail. The rail is chrome and stays on the page ground; a
+    // light band passing beneath it would leave light text on light.
+    // Reaches half the rail gutter to the left so the type is not flush
+    // against the colour change, and bleeds off the viewport to the right.
+    inset: 0 -100vw 0 calc(clamp(1.5rem, 4vw, 4rem) / -2);
     content: "";
+
+    // Below the rail's breakpoint there is no rail, so it bleeds both ways.
+    @media (max-width: 62rem) {
+      inset: 0 -100vw;
+    }
     // The band carries its accent as a wash off the top edge, so the variety
     // is hue rather than only value. Falls back to the flat ground where
     // color-mix is unsupported.
@@ -519,36 +508,59 @@ body:has(.project) {
   }
 }
 
-// Alternating paper and lilac through the reading zone. The accent is the
-// section's register, the band is just the beat.
+// Dark, light, dark, light, dark. The accent is the section's register; the
+// band alternation is what makes the page move.
 #problem {
   --sect: var(--coral);
-  --band: var(--paper);
+  --band: var(--penumbra);
 }
 
 #how-it-works {
-  --sect: var(--mint);
   --band: var(--lilac);
+  --sect: var(--mint);
 }
 
 #guardfile {
   --sect: var(--mint);
-  --band: var(--paper);
+  --band: var(--umbra);
 }
 
 #not-a-sandbox {
-  --sect: var(--amber);
   --band: var(--lilac);
+  --sect: var(--amber);
 }
 
 #stack {
   --sect: var(--sage);
-  --band: var(--paper);
+  --band: var(--penumbra);
 }
 
 #reference {
   --sect: var(--peri);
-  --band: var(--lilac);
+  --band: var(--umbra);
+}
+
+// A light band inverts every token inside it, accents included. The site
+// palette was picked for the dark ground and none of it survives on lilac:
+// coral falls to 2.4:1 and mint to worse, so inline code in a light band was
+// mint on lilac and simply disappeared. One rule per ground, not per
+// component.
+#how-it-works,
+#not-a-sandbox {
+  --ink: #{vars.$ink};
+  --bright: #{vars.$ink};
+  --quiet: #{vars.$mid-purple};
+
+  --mint: #1c6b5b;
+  --amber: #7d5410;
+  --coral: #a8482a;
+  --sage: #3d6b52;
+  --peri: #{vars.$mid-purple};
+
+  --edge: rgba(vars.$mid-purple, 0.28);
+  --edge-soft: rgba(vars.$mid-purple, 0.16);
+
+  color: var(--ink);
 }
 
 .project__head {
@@ -657,7 +669,7 @@ body:has(.project) {
 
   th {
     padding: 0.6rem 1rem;
-    background: rgba(vars.$mid-purple, 0.09);
+    background: rgba(vars.$mid-purple, 0.11);
     color: var(--quiet);
     font-family: vars.$font-family-mono;
     font-size: 0.72rem;
