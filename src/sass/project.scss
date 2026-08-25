@@ -9,31 +9,35 @@
 // may not.
 
 .project {
-  // Three grounds named for the zones of a real shadow, because that is what
-  // umbra is named after. A band's value says which zone you are in: total
-  // shadow carries the policy, partial carries the explanation, light is
-  // outside it. $deep-ink is the site's own token; the other two are this
-  // page type's.
+  // The page runs dark, then light. The dark zone is where the policy itself
+  // lives: the hero and the guardfile it opens on. Everything after is
+  // reading, so it takes the reading surface. That transition is 17.6:1,
+  // where the page previously spanned three near-black violets a total of
+  // 1.39:1 apart and read as one flat ground.
   --umbra: #16121f;
-  --penumbra: #{vars.$deep-ink};
-  --light: #322a52;
-
   --sink: #0d0a14;
-  --ink: #e6e2f2;
-  --bright: #{vars.$pure-white};
-  --quiet: #9aabc4;
 
-  // Accents are the site palette. Each section takes one by register rather
-  // than by position, so the hue carries meaning: mint grants, amber refuses,
-  // coral is cost, sage is the wider system, periwinkle is reference.
-  --mint: #{vars.$light-blue};
-  --amber: #{vars.$focus};
-  --coral: #{vars.$coral};
-  --sage: #93b7a4;
-  --peri: #a9aad0;
+  // Inside the light zone the bands alternate paper and a lilac tint of it.
+  // Both carry ink text, so the alternation costs no legibility.
+  --paper: #{vars.$paper};
+  --lilac: #f0edf6;
 
-  --edge: rgba(vars.$light-purple, 0.24);
-  --edge-soft: rgba(vars.$light-purple, 0.14);
+  --ink: #{vars.$ink};
+  --bright: #{vars.$ink};
+  --quiet: #{vars.$mid-purple};
+
+  // Accents carry register rather than position: mint grants, amber refuses,
+  // coral is cost, sage is the wider system, periwinkle is reference. Each
+  // needs both a dark-zone and a light-zone value, because the site palette
+  // was picked for the dark ground and none of it is readable on paper.
+  --mint: #1c6b5b;
+  --amber: #7d5410;
+  --coral: #a8482a;
+  --sage: #3d6b52;
+  --peri: #{vars.$mid-purple};
+
+  --edge: rgba(vars.$mid-purple, 0.24);
+  --edge-soft: rgba(vars.$mid-purple, 0.14);
 
   color: var(--ink);
   font-size: 1rem;
@@ -43,12 +47,27 @@
   overflow-x: clip;
 }
 
+// The dark zone. Its own token values, so every component inside it keeps
+// working without a second set of rules.
+.project__hero,
+.project__field {
+  --ink: #e6e2f2;
+  --bright: #{vars.$pure-white};
+  --quiet: #9aabc4;
+  --mint: #{vars.$light-blue};
+  --amber: #{vars.$focus};
+  --edge: rgba(vars.$light-purple, 0.24);
+  --edge-soft: rgba(vars.$light-purple, 0.14);
+
+  color: var(--ink);
+}
+
 // body carries a repeating shape texture, which these pages replace with a
 // flat ground. The section, pre and code quarantines that used to live here
 // are gone: those rules are scoped to the post layer now, so there is nothing
 // left to fight.
 body:has(.project) {
-  background: var(--penumbra, vars.$deep-ink) !important;
+  background: var(--paper, #{vars.$paper}) !important;
   background-image: none !important;
 }
 
@@ -272,6 +291,12 @@ body:has(.project) {
 // ---- code. A surface earned by function. ----
 
 .project__code {
+  // A dark surface inside a light section, so it takes the dark-zone accent
+  // values back. Without this the syntax colours inherit the ink-side mint
+  // and amber, which are chosen for paper and are unreadable on the sink.
+  --mint: #{vars.$light-blue};
+  --amber: #{vars.$focus};
+
   border-left: 2px solid var(--mint);
   border-radius: 0.2rem;
   background: var(--sink);
@@ -467,7 +492,7 @@ body:has(.project) {
 // above these may paint and body carries the default ground instead.
 .project__body > section {
   --sect: var(--mint);
-  --band: var(--penumbra);
+  --band: var(--paper);
 
   position: relative;
   padding: clamp(2.75rem, 5vw, 4rem) 0;
@@ -494,34 +519,36 @@ body:has(.project) {
   }
 }
 
+// Alternating paper and lilac through the reading zone. The accent is the
+// section's register, the band is just the beat.
 #problem {
   --sect: var(--coral);
-  --band: var(--penumbra);
+  --band: var(--paper);
 }
 
 #how-it-works {
   --sect: var(--mint);
-  --band: var(--light);
+  --band: var(--lilac);
 }
 
 #guardfile {
   --sect: var(--mint);
-  --band: var(--umbra);
+  --band: var(--paper);
 }
 
 #not-a-sandbox {
   --sect: var(--amber);
-  --band: var(--light);
+  --band: var(--lilac);
 }
 
 #stack {
   --sect: var(--sage);
-  --band: var(--penumbra);
+  --band: var(--paper);
 }
 
 #reference {
   --sect: var(--peri);
-  --band: var(--light);
+  --band: var(--lilac);
 }
 
 .project__head {
@@ -630,7 +657,7 @@ body:has(.project) {
 
   th {
     padding: 0.6rem 1rem;
-    background: rgba(vars.$light-purple, 0.1);
+    background: rgba(vars.$mid-purple, 0.09);
     color: var(--quiet);
     font-family: vars.$font-family-mono;
     font-size: 0.72rem;
@@ -669,7 +696,7 @@ body:has(.project) {
   padding: 1.1rem 1.3rem;
   border-left: 2px solid var(--amber);
   border-radius: 0.2rem;
-  background: rgba(vars.$light-purple, 0.1);
+  background: rgba(vars.$focus, 0.14);
 
   p {
     max-width: 66ch;

@@ -71,11 +71,16 @@ $content-width: 1180px;
 // The band paints no background of its own, so it keeps the deep-ink field the
 // hero sits on. The banners are near-black with their own halo behind the type:
 // on paper they read as slabs dropped in, on this field they sit native.
+// The homepage alternates dark, light, dark. This is the light band: the work
+// itself is the thing worth reading on this page, so it gets the reading
+// surface rather than another slab of the hero's violet.
 .product-showcase {
-  width: min(calc(100% - 2rem), $content-width);
-  margin: 0 auto;
-  padding: clamp(3rem, 7vw, 6rem) 0;
-  background: transparent;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(3rem, 7vw, 6rem) max(1rem, calc((100% - $content-width) / 2));
+  box-sizing: border-box;
+  background: vars.$paper;
   border: 0;
   border-radius: 0;
   overflow: visible;
@@ -84,7 +89,7 @@ $content-width: 1180px;
     margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
 
     h2 {
-      color: vars.$pure-white;
+      color: vars.$ink;
     }
   }
 }
@@ -105,10 +110,11 @@ $content-width: 1180px;
   height: 100%;
   padding: 0.75rem 0.75rem 1.1rem;
   box-sizing: border-box;
-  border: 1px solid rgba(vars.$light-purple, 0.32);
+  border: 1px solid rgba(vars.$mid-purple, 0.18);
   border-radius: 0.9rem;
-  background: rgba(vars.$dark-purple, 0.34);
+  background: vars.$pure-white;
   color: inherit;
+  box-shadow: 0 0.35rem 1rem rgba(vars.$deep-ink, 0.06);
   transition:
     border-color 160ms ease,
     background-color 160ms ease,
@@ -122,8 +128,8 @@ $content-width: 1180px;
 .product-tile__surface {
   &:hover,
   &:focus-within {
-    border-color: rgba(vars.$light-blue, 0.75);
-    background: rgba(vars.$dark-purple, 0.62);
+    border-color: rgba(vars.$mid-purple, 0.45);
+    box-shadow: 0 0.7rem 1.6rem rgba(vars.$deep-ink, 0.12);
     transform: translateY(-3px);
 
     @include vars.reduce-motion {
@@ -238,7 +244,7 @@ $content-width: 1180px;
 .product-tile__proof {
   margin: 0;
   padding-inline: 0.35rem;
-  color: #dfd9f0;
+  color: vars.$mid-purple;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -248,7 +254,7 @@ $content-width: 1180px;
   width: fit-content;
   margin-top: auto;
   padding-inline: 0.35rem;
-  color: vars.$mid-blue;
+  color: vars.$mid-purple;
   font-family: vars.$font-family-mono;
   font-size: 0.78rem;
   font-weight: 700;
