@@ -110,11 +110,11 @@ $content-width: 1180px;
   height: 100%;
   padding: 0.75rem 0.75rem 1.1rem;
   box-sizing: border-box;
-  border: 1px solid rgba(vars.$mid-purple, 0.18);
+  border: 1px solid rgba(vars.$deep-ink, 0.5);
   border-radius: 0.9rem;
-  background: vars.$pure-white;
+  background: vars.$deep-ink;
   color: inherit;
-  box-shadow: 0 0.35rem 1rem rgba(vars.$deep-ink, 0.06);
+  box-shadow: 0 0.5rem 1.4rem rgba(vars.$deep-ink, 0.22);
   transition:
     border-color 160ms ease,
     background-color 160ms ease,
@@ -128,8 +128,8 @@ $content-width: 1180px;
 .product-tile__surface {
   &:hover,
   &:focus-within {
-    border-color: rgba(vars.$mid-purple, 0.45);
-    box-shadow: 0 0.7rem 1.6rem rgba(vars.$deep-ink, 0.12);
+    border-color: rgba(vars.$light-blue, 0.6);
+    box-shadow: 0 0.9rem 2rem rgba(vars.$deep-ink, 0.3);
     transform: translateY(-3px);
 
     @include vars.reduce-motion {
@@ -244,7 +244,7 @@ $content-width: 1180px;
 .product-tile__proof {
   margin: 0;
   padding-inline: 0.35rem;
-  color: vars.$mid-purple;
+  color: #dfd9f0;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -254,7 +254,7 @@ $content-width: 1180px;
   width: fit-content;
   margin-top: auto;
   padding-inline: 0.35rem;
-  color: vars.$mid-purple;
+  color: vars.$mid-blue;
   font-family: vars.$font-family-mono;
   font-size: 0.78rem;
   font-weight: 700;
