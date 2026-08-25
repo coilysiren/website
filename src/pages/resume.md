@@ -1,5 +1,5 @@
 ---
-title: "Resume"
+title: "Resume | Kai Siren"
 description: >-
   Staff platform engineer building governed AI systems, developer infrastructure, and production platforms.
 ---

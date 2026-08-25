@@ -6,7 +6,7 @@ Use the pages below as the canonical public profile. Other routes are retained o
 
 ## Public pages
 
-- [Home](https://coilysiren.me/): Current platform thesis and active portfolio.
-- [About](https://coilysiren.me/about/): Biography, visual autobiography, and collected interests.
-- [Hiring](https://coilysiren.me/hiring/): Role fit, practical constraints, and interview boundaries.
-- [Resume](https://coilysiren.me/resume/): Canonical experience and impact record.
+- [Home](https://www.coilysiren.me/): Current platform thesis and active portfolio.
+- [About](https://www.coilysiren.me/about/): Biography, visual autobiography, and collected interests.
+- [Hiring](https://www.coilysiren.me/hiring/): Role fit, practical constraints, and interview boundaries.
+- [Resume](https://www.coilysiren.me/resume/): Canonical experience and impact record.

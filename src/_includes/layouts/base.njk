@@ -23,6 +23,18 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ title or site.title }}">
     <meta name="twitter:description" content="{{ description or site.description }}">
+    {% if personSchema %}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": {{ site.author | dump | safe }},
+          "url": {{ site.url | dump | safe }},
+          "jobTitle": {{ site.jobTitle | dump | safe }},
+          "sameAs": {{ site.sameAs | dump | safe }}
+        }
+      </script>
+    {% endif %}
   </head>
   <body>
     <div class="layoutWrapper">

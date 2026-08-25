@@ -2,7 +2,7 @@
 
 How a merged commit reaches production.
 
-- **Netlify** picks up `main`. Build status badge in the README. Site at <https://coilysiren.me>.
+- **Netlify** picks up `main`. Build status badge in the README. Site at <https://www.coilysiren.me>, with the bare apex 301ing to it.
 - **Staging image contract** builds the locked Eleventy site, serves `dist/`
   from unprivileged nginx on port 8080, and publishes the exact source commit
   to Forgejo OCI. Nginx owns the permanent redirects and designed 404 response

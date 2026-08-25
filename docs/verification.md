@@ -18,8 +18,10 @@ Anything a browser is not required to observe does not get a browser.
 
 - **Build output** - [`src/build-output.test.ts`](../src/build-output.test.ts)
   reads `dist/` directly under vitest. It covers the sitemap and `llms.txt`
-  route set, `robots` metadata per route, retired routes emitting nothing, and
-  the absence of render-blocking script. No browser, runs in milliseconds.
+  route set, `robots` metadata per route, retired routes emitting nothing, the
+  absence of render-blocking script, one canonical host across every emitted
+  URL, and the `Person` JSON-LD parsing on exactly the two pages that carry it.
+  No browser, runs in milliseconds.
 - **Layout invariants** - [`cypress/e2e/basic.cy.ts`](../cypress/e2e/basic.cy.ts)
   covers only what needs real layout: no sideways overflow at 390px, the About
   portrait sitting beside its copy at 1280px, and no third-party origin beyond

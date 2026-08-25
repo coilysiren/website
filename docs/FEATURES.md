@@ -1,7 +1,7 @@
 # Features
 
 Baseline inventory of what `coilysiren/website`
-([coilysiren.me](https://coilysiren.me)) ships today. Update a section when a
+([www.coilysiren.me](https://www.coilysiren.me)) ships today. Update a section when a
 feature is added, removed, or reshaped, so the diff shows scope drift.
 
 ## What ships
@@ -13,6 +13,10 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   Check sits between the hero and shipped products. It loads after the core
   page, so its resources do not sit on the critical rendering path.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
+- **Discovery metadata** - one canonical host across tags, sitemap, `robots.txt`
+  and `llms.txt`, a `sitemap.xml` generated from the indexable routes, and
+  `Person` structured data on the homepage and About page. Social preview
+  images stay out on purpose. See [static generation](static-generation.md).
 - **Templates and data** - layouts, includes, and data files in
   [templates and data](templates.md).
 - **Build scripts** - `build-resume.py` renders the printable resume and

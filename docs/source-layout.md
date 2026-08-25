@@ -12,6 +12,8 @@ Where each kind of source file lives in the tree.
   pages, and retired articles.
 * [`src/sass/`](../src/sass/) - the existing responsive visual system,
   compiled once to `dist/styles/site.css`.
+* [`src/sitemap.njk`](../src/sitemap.njk) - generates `sitemap.xml` from the
+  indexable routes, so the crawl surface follows the pages rather than a list.
 
 The public discovery boundary is `/`, `/about/`, `/hiring/`, and
 `/resume/`. Only those routes receive `follow, index`. Retired writing,
