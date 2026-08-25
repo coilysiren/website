@@ -10,3 +10,11 @@ Use the pages below as the canonical public profile. Other routes are retained o
 - [About](https://www.coilysiren.me/about/): Biography, visual autobiography, and collected interests.
 - [Hiring](https://www.coilysiren.me/hiring/): Role fit, practical constraints, and interview boundaries.
 - [Resume](https://www.coilysiren.me/resume/): Canonical experience and impact record.
+
+## Writing
+
+Three posts are promoted. The rest of the archive is retained at its URLs but is not current.
+
+- [Stochastic Design Iteration](https://www.coilysiren.me/posts/stochastic-design-iteration/): A pattern for co-authoring a markdown design doc with an LLM.
+- [On Permissions Models for Cloud Platform Providers](https://www.coilysiren.me/posts/on-permissions-models-for-cloud-platform-providers/): How Kai would build permissions for a cloud platform provider.
+- [Deploying Azure OpenAI via Terraform](https://www.coilysiren.me/posts/azure-openai-terraform/): An end to end description of getting Azure OpenAI deployed via Terraform.

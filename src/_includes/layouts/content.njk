@@ -3,9 +3,13 @@ layout: layouts/base.njk
 ---
 <section class="{{ contentClass }}">
   <div class="post-header">
-    <h2>{{ title or site.title }}</h2>
+    {% if titleHeading == "h2" %}
+      <h2>{{ title or site.title }}</h2>
+    {% else %}
+      <h1>{{ title or site.title }}</h1>
+    {% endif %}
     {% if description %}<h4>{{ description }}</h4>{% endif %}
-    {% if date %}<h5>{{ date | displayDate }}</h5>{% endif %}
+    {% if date %}<h5><time datetime="{{ date | isoDay }}">{{ date | displayDate }}</time></h5>{% endif %}
   </div>
   <div class="post-content">{{ content | safe }}</div>
   {% include "components/closer.njk" %}

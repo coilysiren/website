@@ -4,6 +4,7 @@ title: Deploying Azure OpenAI via Terraform
 date: 2023-10-11
 description: An end to end description of how to get Azure OpenAI deployed via Terraform
 
+promoted: true
 ---
 
 This post is aimed at reasonably experienced engineers who are deploying Azure OpenAI for their day job. It assumes you're familiar with:

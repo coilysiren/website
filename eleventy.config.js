@@ -75,6 +75,9 @@ export default function configureEleventy(eleventyConfig) {
       : ""
   })
   eleventyConfig.addFilter("isoDate", (value) => asDate(value)?.toISOString())
+  eleventyConfig.addFilter("isoDay", (value) =>
+    asDate(value)?.toISOString().slice(0, 10)
+  )
 
   return {
     dir: {

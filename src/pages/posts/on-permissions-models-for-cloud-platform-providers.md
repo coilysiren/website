@@ -6,6 +6,7 @@ date: 2020-01-12
 description: >-
   If I were doing permissions for a cloud platform provider, I'd do them like this!
 
+promoted: true
 ---
 
 I was recently reflecting out loud on the fact that [AWS IAM](https://aws.amazon.com/iam/) has the best permissions model on the market, and wondering why I think most other platforms have such a dramatically inferior setup. I had never put much thought into this prior, so my first conclusion was _"wow everyone but Amazon is bad at this!"_.

@@ -21,11 +21,14 @@ under [src/pages/](../src/pages/) so the resume keeps its canonical source.
   navigation. It is a project-free information reference covering Kai's
   strongest role shapes, practical constraints, recruiter context, interview
   boundaries, and tenure context.
-- **`writing.njk`** - retired date-ordered long-form archive, reachable only by
-  direct URL and marked `noindex, nofollow`.
+- **`writing.njk`** - date-ordered listing of the promoted posts. The page
+  itself is still `noindex, nofollow` and unlinked from the homepage, which
+  issue #98 owns.
 - **`coilysiren-personal-gmail-privacy.md`** - privacy and contact notice for the `coilysiren-personal-gmail` OAuth client.
 - **`404.njk`** - a fully designed not-found recovery page that preserves the
   real 404 response while carrying the homepage's visual system into clear
   routes to the About, Hiring, and Resume pages.
-- **`posts/`** - retired long-form posts retained at their existing direct URLs
-  and marked `noindex, nofollow`.
+- **`posts/`** - long-form posts. A post is dark by default and joins the
+  public set only by carrying `promoted: true` in its front matter, which
+  drives listing, `robots`, the sitemap, and the syndication allowlist from one
+  key. Unpromoted posts stay at their URLs and stay `noindex, nofollow`.

@@ -15,7 +15,11 @@ Where each kind of source file lives in the tree.
 * [`src/sitemap.njk`](../src/sitemap.njk) - generates `sitemap.xml` from the
   indexable routes, so the crawl surface follows the pages rather than a list.
 
-The public discovery boundary is `/`, `/about/`, `/hiring/`, and
-`/resume/`. Only those routes receive `follow, index`. Retired writing,
-posts, privacy, and unlisted pages remain directly reachable with
-`noindex, nofollow`.
+The public discovery boundary is `/`, `/about/`, `/hiring/`, `/resume/`, and
+any post carrying `promoted: true`. Only those receive `follow, index`.
+Unpromoted posts, `/writing/`, privacy, and unlisted pages remain directly
+reachable with `noindex, nofollow`.
+
+`robots` is computed in `src/pages/pages.11tydata.js` and beats front matter, so
+a post cannot opt in by setting `robots` itself. That is why the flag is a
+separate key.

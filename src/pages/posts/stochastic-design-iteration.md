@@ -6,6 +6,7 @@ date: 2026-04-19
 description: >-
   A pattern for co-authoring a markdown design doc with an LLM: the human is the static guiding force, the LLM is the stochastic writer, and the artifact gets sharpened across many small passes into something more pure and specific than the human would have written alone.
 
+promoted: true
 ---
 
 There's a collaboration pattern I've been leaning on. A single human author with strong underlying intent pairs with an LLM to co-author a markdown design doc. Across many small passes, the doc gets sharpened. It drifts toward a form that's more pure and more specific, a more refined representation of what the author meant in the first place. I call it **stochastic design iteration**.

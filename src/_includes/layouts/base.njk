@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title or site.title }}</title>
+    <title>{{ documentTitle or title or site.title }}</title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/styles/prism-tomorrow.css">
     <link rel="stylesheet" href="/styles/site.css">
@@ -28,6 +28,22 @@
     <meta name="twitter:title" content="{{ title or site.title }}">
     <meta name="twitter:description" content="{{ description or site.description }}">
     <meta name="twitter:image" content="{{ site.url }}{{ ogImage or site.ogImage }}">
+    {% if isArticle and date %}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": {{ title | dump | safe }},
+          "datePublished": {{ date | isoDay | dump | safe }},
+          "url": {{ (site.url + canonical) | dump | safe }},
+          "author": {
+            "@type": "Person",
+            "name": {{ site.author | dump | safe }},
+            "url": {{ site.url | dump | safe }}
+          }
+        }
+      </script>
+    {% endif %}
     {% if personSchema %}
       <script type="application/ld+json">
         {

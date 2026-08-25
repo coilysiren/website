@@ -18,15 +18,17 @@ robots: noindex, nofollow
   <section class="writing-list" aria-label="Articles">
     <div>
       {% for post in collections.posts %}
+        {% if post.data.promoted %}
         <div>
           <a class="homepage-post" href="{{ post.url }}">
             <div>
               <h2>{{ post.data.title }}</h2>
               {% if post.data.description %}<h4>{{ post.data.description }}</h4>{% endif %}
-              <p>{{ post.date | monthYear }}</p>
+              <p><time datetime="{{ post.date | isoDay }}">{{ post.date | monthYear }}</time></p>
             </div>
           </a>
         </div>
+        {% endif %}
       {% endfor %}
     </div>
   </section>

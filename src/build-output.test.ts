@@ -4,10 +4,22 @@ import { describe, expect, it } from "vitest"
 // These assert what Eleventy emitted, not how it renders, so they read dist/
 // rather than driving a browser. `pnpm run test:quick` builds first.
 const CANONICAL_ROUTES = ["/", "/about/", "/hiring/", "/resume/"] as const
+// The curated public set. Posts join it only via `promoted` in front matter,
+// which is the one key driving listing, robots, sitemap and syndication.
+const PROMOTED_POSTS = [
+  "/posts/azure-openai-terraform/",
+  "/posts/on-permissions-models-for-cloud-platform-providers/",
+  "/posts/stochastic-design-iteration/",
+] as const
+const DARK_POSTS = [
+  "/posts/code-janitor/",
+  "/posts/golang-pr-notes-1/",
+] as const
+const INDEXED = [...CANONICAL_ROUTES, ...PROMOTED_POSTS].sort()
 // The apex 301s here, so a canonical URL naming the apex would resolve
 // through a redirect. One host, everywhere.
 const HOST = "https://www.coilysiren.me"
-const CANONICAL_URLS = CANONICAL_ROUTES.map((route) => `${HOST}${route}`)
+const INDEXED_URLS = INDEXED.map((route) => `${HOST}${route}`)
 
 const read = (path: string) => readFileSync(`dist/${path}`, "utf8")
 // JPEG carries its size in the SOF segment, not in the file header, so the
@@ -37,26 +49,24 @@ const schema = (route: string) =>
   )?.[1]
 
 describe("build output", () => {
-  it("limits discovery to the canonical routes", () => {
+  it("declares exactly the curated set, and derives it", () => {
     const sitemap = [...read("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)]
-    expect(sitemap.map((match) => match[1])).toEqual(CANONICAL_URLS)
+    expect(sitemap.map((match) => match[1])).toEqual(INDEXED_URLS)
 
+    // Nothing lists the posts by hand. A post appears here because its own
+    // `promoted` flag drove `robots`, which the sitemap derives from.
     const llms = read("llms.txt")
-    CANONICAL_URLS.forEach((url) => expect(llms).toContain(url))
+    INDEXED_URLS.forEach((url) => expect(llms).toContain(url))
     expect(llms).not.toContain("/writing/")
-    expect(llms).not.toContain("/posts/")
+    DARK_POSTS.forEach((route) => expect(llms).not.toContain(route))
   })
 
   it("keeps long-form and retired routes out of the index", () => {
-    CANONICAL_ROUTES.forEach((route) => {
+    INDEXED.forEach((route) => {
       expect(page(route)).toContain('content="follow, index"')
     })
     // Reachable by direct link, never by crawler.
-    ;[
-      "/writing/",
-      "/cool-people/",
-      "/posts/stochastic-design-iteration/",
-    ].forEach((route) => {
+    ;["/writing/", "/cool-people/", ...DARK_POSTS].forEach((route) => {
       expect(page(route)).toContain('content="noindex, nofollow"')
     })
     // Exact emitted paths - a directory-shaped guess here would pass on a
@@ -125,6 +135,35 @@ describe("build output", () => {
     expect(jpegSize(CARD.slice(1))).toEqual({
       width: Number(declared![1]),
       height: Number(declared![2]),
+    })
+  })
+
+  it("gives every indexed page one heading and the site name", () => {
+    INDEXED.forEach((route) => {
+      const html = page(route)
+      const headings = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)]
+      expect(headings, `${route} h1 count`).toHaveLength(1)
+      const heading = headings[0]?.[1] ?? ""
+      expect(heading.replace(/<[^>]*>/g, "").trim(), route).not.toBe("")
+      const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? ""
+      expect(
+        title === "Kai Siren" || title.endsWith(" | Kai Siren"),
+        `${route} title is "${title}"`
+      ).toBe(true)
+    })
+  })
+
+  it("dates every post in a form a machine can read", () => {
+    ;[...PROMOTED_POSTS, ...DARK_POSTS].forEach((route) => {
+      const html = page(route)
+      const stamp = html.match(/<time datetime="([^"]+)"/)?.[1]
+      expect(stamp, `${route} <time>`).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      const article = JSON.parse(schema(route)!)
+      expect(article["@type"]).toBe("BlogPosting")
+      expect(article.datePublished).toBe(stamp)
+      expect(Number.isNaN(Date.parse(article.datePublished))).toBe(false)
+      // Same `url` the homepage Person declares, so the two resolve as one.
+      expect(article.author.url).toBe(HOST)
     })
   })
 
