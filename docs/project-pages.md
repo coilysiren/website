@@ -64,6 +64,18 @@ because the generators do not yet emit what the page needs.
 - **`images/banners/umbra-texture.jpg`** is the banner with its lockup removed,
   reconstructed by reflecting the clean bands above and below it into the gap.
   `umbra_banner.py` should emit a lockup-free texture instead.
+
+  The measurements, so nobody has to find them twice. In the published
+  1280x492 banner the lockup occupies **x 41-1045, y 145-327**. That leaves two
+  full-width bands clear of it, **y 0-144** and **y 328-492**. The gap between
+  them is filled by reflecting each band inward and cross-dissolving the two
+  across it, which keeps the output at the banner's native size. Native size
+  matters: the plate is 2.69:1 and the texture 2.6:1, so `cover` renders it at
+  0.95x. An earlier crop of just the lower band was 7.8:1 and `cover` had to
+  blow it up 2.76x to fill the same plate.
+
+  The mark crops for the other three projects came from the same lockup, whose
+  coin sits at **centre (122, 246), radius ~96** in every published banner.
 - **`images/marks/umbra.png`** is corrected in CSS with `hue-rotate(-20deg)`,
   because the published mark is cyan at hue 182 and this page's mint is 161,
   which reads as a near miss rather than a relation. The filter deletes itself
