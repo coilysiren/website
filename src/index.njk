@@ -72,13 +72,20 @@ personSchema: true
                 </a>
               {% endif %}
               <p class="product-tile__proof">{{ product.proof }}</p>
-              {% if product.page %}
-                <a class="product-tile__meta" href="{{ product.page }}">Read the case →</a>
-              {% elif product.url %}
-                <a class="product-tile__meta" href="{{ product.url }}">Source ↗</a>
-              {% else %}
-                <small class="product-tile__meta">Private repository</small>
-              {% endif %}
+              <p class="product-tile__links">
+                {% if product.page %}
+                  <a href="{{ product.page }}">Read the case →</a>
+                {% elif product.url %}
+                  <a href="{{ product.url }}">Source ↗</a>
+                {% else %}
+                  <small>Private repository</small>
+                {% endif %}
+                {#- Only a project whose docs are actually mounted, so the link
+                    cannot promise a section that does not exist. -#}
+                {% if docsMounts[product.slug] %}
+                  <a class="product-tile__docs" href="{{ docsMounts[product.slug].root }}">Docs</a>
+                {% endif %}
+              </p>
             </div>
           </li>
         {% endfor %}
