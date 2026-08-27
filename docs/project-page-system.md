@@ -51,8 +51,11 @@ The field under each hero is the page's one ornament and it is also its
 argument, so each page builds its own from the same component. umbra shows 62
 git verbs with one granted and one refused, mcp-beaver shows 36 Forgejo
 operations with five minted and one withheld, and agent-compose shows a roster
-with one seat lit plus a second row of what no bundle ever carries. The counts
-in each legend are real, so recount them when a list changes.
+with one seat lit above the thirteen evaluation cases that one selection
+implies. The counts in each legend are real, so recount them when a list
+changes. agent-compose's trace to `internal/person/data/role-platform/role.kdl`
+and `challenges.yaml`: four boundaries in and out, `within` plus two
+adjacencies, two melded traits, thirteen a seat and ninety-one in total.
 
 umbra's occluded verbs were originally 0.2 alpha, which read exactly as
 intended and failed axe at 1.3:1 across 62 elements. They are information

@@ -1,15 +1,13 @@
 import { ROUTES } from "../routes"
 
-// Ceilings, in KiB of actual transfer. They only ever go down. The site's
-// stated shape is static HTML with locally served CSS and fonts, and nothing
-// asserted that until now.
+// Ceilings, in KiB of actual transfer. They only ever go down, and they are
+// what asserts the site's stated shape: static HTML with local CSS and fonts.
 const DEFAULT_BUDGET = 150
 const BUDGETS: Record<string, number> = {
   // Product banners. Heavier than a text page on purpose.
   "/": 900,
-  // A defect, not a budget. 34MB of unresized phone photos and one 8MB GIF,
-  // none of it deferred. Tracked in coilysiren/website#129. Ratchet this down
-  // as that lands, and delete the entry when it reaches DEFAULT_BUDGET.
+  // A defect, not a budget: 34MB of undeferred phone photos and an 8MB GIF.
+  // Ratchet down as coilysiren/website#129 lands, delete at DEFAULT_BUDGET.
   "/about/": 36000,
 }
 

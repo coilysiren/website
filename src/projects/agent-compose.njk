@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 permalink: projects/agent-compose/index.html
 title: agent-compose, eval driven agent roles and personas | Kai Siren
-description: A role is context, never permission. agent-compose compiles one immutable bundle of plain files you can read and diff before a run, and derives its own test board from the roster.
+description: agent-compose compiles the context an agent harness loads into one immutable bundle of plain files, and derives its test board from the roster, so you cannot change a role without changing what gets tested.
 canonical: /projects/agent-compose/
 robots: follow, index
 ogImage: /images/banners/agent-compose-card.jpg
@@ -27,10 +27,10 @@ softwareSchema:
           decoding="async"
         >
         <div>
-          <p class="label">Context // never permission</p>
+          <p class="label">Roles // and the board they imply</p>
           <h1 class="project__wordmark">agent-compose</h1>
           <p class="project__claim">eval driven agent roles and personas</p>
-          <h2 class="project__hook">You gave an agent a persona. Nothing about that should widen what it can do.</h2>
+          <h2 class="project__hook">You wrote seven personas. Which one has ever been tested?</h2>
         </div>
 
         <div>
@@ -71,14 +71,20 @@ softwareSchema:
         <span><span class="o">14 others</span> never enter this bundle</span>
       </p>
 
-      <p class="label">What no bundle carries, on any role</p>
+      <p class="label">The thirteen cases that one selection implies</p>
       <ul class="project__verbs" aria-hidden="true">
-        <li data-state="refused">credential</li><li data-state="refused">mount</li>
-        <li data-state="refused">command</li><li data-state="refused">network reach</li>
-        <li data-state="refused">model key</li><li data-state="refused">lifecycle</li>
+        <li>platform-bfs-in</li><li>platform-bfs-out</li>
+        <li>platform-mlb-in</li><li>platform-mlb-out</li>
+        <li>platform-sec-in</li><li>platform-sec-out</li>
+        <li>platform-sev-in</li><li>platform-sev-out</li>
+        <li>platform-fit-within</li><li>platform-fit-sysadmin</li><li>platform-fit-eval</li>
+        <li>platform-per-tenacious</li><li>platform-per-grounded</li>
       </ul>
       <p class="project__legend">
-        <span><span class="r">absent by construction</span>, not by configuration</span>
+        <span><span class="g">8 boundary halves</span> from four boundaries, in and out</span>
+        <span><span class="g">3 role-fit targets</span> from itself and its two likeliest absorptions</span>
+        <span><span class="g">2 personality cases</span> from the meld it carries</span>
+        <span><span class="o">13 per seat, 91 across the roster</span>, and the roster picks them</span>
       </p>
     </div>
   </section>
@@ -90,8 +96,8 @@ softwareSchema:
       <ol>
         <li><a href="#problem">The problem</a></li>
         <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#request">Reading a request</a></li>
         <li><a href="#eval-driven">Why eval driven</a></li>
+        <li><a href="#request">Reading a request</a></li>
         <li><a href="#not-permission">What it is not</a></li>
         <li><a href="#stack">The stack</a></li>
         <li><a href="#reference">Reference</a></li>
@@ -163,6 +169,35 @@ softwareSchema:
         </p>
       </section>
 
+      <section id="eval-driven" data-band="penumbra" data-accent="sage">
+        <div class="project__head">
+          <p class="label">Why the tagline leads with eval</p>
+          <h2>The test board is derived from the roster, not written beside it.<a class="project__anchor" href="#eval-driven" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          Boundaries and their owners produce the pairs. Adjacency produces the role-fit
+          targets. Each role's meld produces the personality cases. Add a boundary, flip an
+          adjacency edge, or swap a personality, and the challenge list moves on its own.
+          You cannot write a case that does not correspond to the roster, and you cannot
+          change the roster without changing what gets tested.
+        </p>
+        <p>
+          The hard cases are generated on purpose. Role adjacency names each role's two
+          likeliest absorptions, and those reasons become the descriptors a generator uses
+          to build exactly the confusion a seat is most at risk of.
+        </p>
+
+        <div class="project__note">
+          <p class="project__note-label">Note</p>
+          <p>
+            Three parties, and none of them holds two seats. A generator authors the cases,
+            a subject answers them, and a human grades them. The grading half ships
+            separately, so it holds no runner and no model client, and grading never spends
+            a token or touches a deployed system.
+          </p>
+        </div>
+      </section>
+
       <section id="request" data-band="umbra" data-accent="mint">
         <div class="project__head">
           <p class="label">What it looks like in use</p>
@@ -202,44 +237,21 @@ softwareSchema:
         </dl>
       </section>
 
-      <section id="eval-driven" data-band="penumbra" data-accent="sage">
-        <div class="project__head">
-          <p class="label">Why the tagline leads with eval</p>
-          <h2>The test board is derived from the roster, not written beside it.<a class="project__anchor" href="#eval-driven" aria-label="Link to this section">#</a></h2>
-        </div>
-        <p>
-          Boundaries and their owners produce the pairs. Adjacency produces the role-fit
-          targets. Each role's meld produces the personality cases. Add a boundary, flip an
-          adjacency edge, or swap a personality, and the challenge list moves on its own.
-          You cannot write a case that does not correspond to the roster, and you cannot
-          change the roster without changing what gets tested.
-        </p>
-        <p>
-          The hard cases are generated on purpose. Role adjacency names each role's two
-          likeliest absorptions, and those reasons become the descriptors a generator uses
-          to build exactly the confusion a seat is most at risk of.
-        </p>
-
-        <div class="project__note">
-          <p class="project__note-label">Note</p>
-          <p>
-            Three parties, and none of them holds two seats. A generator authors the cases,
-            a subject answers them, and a human grades them. The grading half ships
-            separately, so it holds no runner and no model client, and grading never spends
-            a token or touches a deployed system.
-          </p>
-        </div>
-      </section>
-
       <section id="not-permission" data-band="lilac" data-accent="amber">
         <div class="project__head">
           <p class="label">What it does not do</p>
           <h2>agent-compose is not a permission system.<a class="project__anchor" href="#not-permission" aria-label="Link to this section">#</a></h2>
         </div>
         <p>
-          It has no opinion about what an agent may execute, and it cannot stop anything. A
-          composed seat that says it defers an action will still run that action if the
-          runtime hands it the tool, because prose is not a control. Treating a role
+          <b>A role is context, never permission.</b> It has no opinion about what an agent
+          may execute, and it cannot stop anything. A composed seat that says it defers an
+          action will still run that action if the runtime hands it the tool, because prose
+          is not a control.
+        </p>
+        <p>
+          The bundle carries no credential, no mount, no command, no network reach, and no
+          lifecycle, on any role. Those are absent by construction rather than by
+          configuration, so there is no setting that turns one back on. Treating a role
           briefing as the boundary is the one misreading this page exists to prevent.
         </p>
 

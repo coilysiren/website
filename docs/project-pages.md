@@ -40,7 +40,9 @@ wanted a section named something other than `#guardfile`.
 
 1. Copy `src/projects/umbra.njk`. Keep the section order: hero, field, problem,
    how it works, the spec, what it is not, the stack, reference. A page may add
-   one more section between the spec and what-it-is-not, as both newer pages do.
+   one more section, as both newer pages do. Put it wherever the hero's promise
+   needs paying off, which is before the spec on agent-compose and after it on
+   mcp-beaver.
 2. Declare `canonical` and `robots` in front matter. The sitemap and
    `llms.txt` checks derive from those, so a page with neither is invisible.
 3. Give every section a `data-band` and a `data-accent`, and alternate the

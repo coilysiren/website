@@ -56,8 +56,7 @@ magick "$work/bot-fill.png" "$work/top-fill.png" "$work/mask.png" \
   -composite "$work/gap.png"
 
 # Native size on purpose: the plate is 2.69:1 and this is 2.6:1, so `cover`
-# renders it at 0.95x. A crop of one band alone is 7.8:1 and gets blown up
-# 2.76x to fill the same plate.
+# renders it at 0.95x rather than upscaling. Numbers in docs/project-page-assets.md.
 magick "$work/top.png" "$work/gap.png" "$work/bot.png" -append \
   -quality 82 -sampling-factor 4:2:0 -strip "src/images/banners/$slug-texture.jpg"
 echo "texture src/images/banners/$slug-texture.jpg"
