@@ -29,6 +29,7 @@ export const showcaseProducts = [
     alt: "agent-compose // $ acompose - Eval driven agent roles and personas",
     proof:
       "A role is context, never permission. The bundle is plain files you can read and diff before a run, carrying no credential, no mount, and no command.",
+    page: "/projects/agent-compose/",
     url: "https://github.com/coilyco-flight-deck/agent-compose",
   },
   {
@@ -49,6 +50,7 @@ export const showcaseProducts = [
     alt: "mcp-beaver // .mcp.kdl - A MCP server generator with a natural flow",
     proof:
       "An operation you did not declare has no tool and no endpoint, so the blast radius of a write-capable MCP is one small file you can read end to end.",
+    page: "/projects/mcp-beaver/",
     url: "https://github.com/coilyco-flight-deck/mcp-beaver",
   },
   {

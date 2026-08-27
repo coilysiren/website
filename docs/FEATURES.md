@@ -15,9 +15,11 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Project pages** - one page per headline project at `/projects/<name>/`,
   carrying its own visual system rather than the site's page chrome because
-  these are headed for standalone domains. `umbra` is live; the other three
-  wait on mark assets. Each emits `SoftwareSourceCode` structured data whose
-  author points at the homepage `Person`. See [project pages](project-pages.md).
+  these are headed for standalone domains. `umbra`, `agent-compose`, and
+  `mcp-beaver` are live, and `sirens-echo` does not have one yet. Each
+  emits `SoftwareSourceCode` structured data whose author points at the
+  homepage `Person`, and they share one four-step stack chain from
+  `src/data/stack.js`. See [project pages](project-pages.md).
 - **Discovery metadata** - one canonical host across tags, sitemap, `robots.txt`
   and `llms.txt`, a `sitemap.xml` generated from the indexable routes, and
   `Person` structured data on the homepage and About page. See [static

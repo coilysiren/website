@@ -34,5 +34,5 @@ under [src/pages/](../src/pages/) so the resume keeps its canonical source.
 - **`projects/`** - one page per headline project, indexable and each declaring
   its own `canonical`. They deliberately do not inherit the site's page chrome:
   the layer is headed for standalone project domains, so matching
-  coilysiren.me is not a requirement. `projects/umbra.njk` is the first and
-  sets the format the other three copy.
+  coilysiren.me is not a requirement. `projects/umbra.njk` set the format, and
+  `agent-compose` and `mcp-beaver` follow it.

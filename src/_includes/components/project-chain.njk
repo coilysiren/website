@@ -1,0 +1,21 @@
+{#- The four-step chain, shared by every project page. `here` is the slug of
+    the page including it: that step loses its link and takes the accent, so a
+    reader can see where they are standing without a second copy of the list.
+    Data lives in src/data/stack.js. -#}
+<ol>
+  {%- for step in stack %}
+  <li{% if step.name == here %} aria-current="step"{% endif %}>
+    <span class="project__chain-name">
+      {%- if step.page and step.name != here -%}
+        <a href="{{ step.page }}">{{ step.name }}</a>
+      {%- else -%}
+        {{ step.name }}
+      {%- endif %}
+      <span class="project__state{% if step.live %} project__state--live{% endif %}">{{ step.state }}</span>
+    </span>
+    <span class="project__chain-role">
+      {{ step.role }}{% if step.name == here %} You are here.{% endif %}
+    </span>
+  </li>
+  {%- endfor %}
+</ol>

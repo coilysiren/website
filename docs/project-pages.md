@@ -1,10 +1,15 @@
 # Project pages
 
-One page per headline project at `/projects/<name>/`. `umbra` is live. The
-other three wait on mark assets, tracked at `coilysiren/inbox#431`.
+One page per headline project at `/projects/<name>/`. `umbra`,
+`agent-compose`, and `mcp-beaver` are live. `sirens-echo` does not have one yet.
 
-The decisions behind the layer live on `coilysiren/inbox#417`. This page covers
-only what a future editor needs in order to not break it.
+The decisions behind the layer live on `coilysiren/inbox#417`. These three
+pages cover only what a future editor needs in order to not break it.
+
+- [project page system](project-page-system.md) - the fragile parts, the mark,
+  the wordmark, and the shared stack chain.
+- [project page assets](project-page-assets.md) - every derived image, and the
+  measurements behind it.
 
 ## Why they do not inherit the site chrome
 
@@ -27,78 +32,26 @@ Accents come from the site palette and are assigned by register rather than by
 position, so the hue carries meaning. Mint grants, amber refuses, coral is
 cost, sage is the wider system, periwinkle is reference.
 
-## Three things that break if you touch them
-
-**The section reset must stay at `:where()` specificity.** `layout.scss` styles
-the bare `section` element as a standalone card, from before the token system.
-`project.scss` quarantines that. Writing the reset as `.project section`
-instead raises it above the component classes and silently strips the
-backgrounds it exists to protect.
-
-**Nothing above a band may paint.** Each section paints its band with a
-`z-index: -1` pseudo-element, and a negative-z pseudo paints beneath the block
-background of every ancestor. That is why `body` carries the ground and
-`.project` itself does not. Give `.project` a background and all six bands
-disappear.
-
-**`pre` needs a `0,1,1` reset.** `post.scss` carries
-`pre:not(.warning-message)`, which outranks a `:where()` rule.
-
-## The mark
-
-The mark bleeds off the plate's top-right corner at **15% of its own width**.
-That depth is set by the worst case across all four project marks rather than
-umbra's: past it, agent-compose loses the base of its spool and mcp-beaver
-loses the bar that crosses its ring. A redraw that moves an emblem closer to
-its ring lowers this ceiling for every page.
-
-The hero grid is bottom-aligned, so the code block's top edge is content-driven
-and rises as the caption wraps. No mark size clears it at every width, which is
-why the mark is pinned above with a drop shadow rather than sized to fit.
-
-## Derived assets, and what replaces them
-
-Both assets on the umbra page are stopgaps derived from published artwork,
-because the generators do not yet emit what the page needs.
-
-- **`images/banners/umbra-texture.jpg`** is the banner with its lockup removed,
-  reconstructed by reflecting the clean bands above and below it into the gap.
-  `umbra_banner.py` should emit a lockup-free texture instead.
-
-  The measurements, so nobody has to find them twice. In the published
-  1280x492 banner the lockup occupies **x 41-1045, y 145-327**. That leaves two
-  full-width bands clear of it, **y 0-144** and **y 328-492**. The gap between
-  them is filled by reflecting each band inward and cross-dissolving the two
-  across it, which keeps the output at the banner's native size. Native size
-  matters: the plate is 2.69:1 and the texture 2.6:1, so `cover` renders it at
-  0.95x. An earlier crop of just the lower band was 7.8:1 and `cover` had to
-  blow it up 2.76x to fill the same plate.
-
-  The mark crops for the other three projects came from the same lockup, whose
-  coin sits at **centre (122, 246), radius ~96** in every published banner.
-- **`images/marks/umbra.png`** is corrected in CSS with `hue-rotate(-20deg)`,
-  because the published mark is cyan at hue 182 and this page's mint is 161,
-  which reads as a near miss rather than a relation. The filter deletes itself
-  once `umbra_mark.py` emits on-palette.
-
-Both are tracked on `coilysiren/inbox#431`.
-
-## Accessibility note worth keeping
-
-The occluded verbs in the deny-by-default field were originally 0.2 alpha,
-which read exactly as intended and failed axe at 1.3:1 across 62 elements.
-They are information rather than decoration, so they are readable now at
-5.3:1. The occlusion still reads, because it is carried by the gap to the lit
-states rather than by illegibility: granted sits at 15.6:1 and refused at
-10.7:1 against the same ground.
+Each section declares both as attributes, `data-band` and `data-accent`. They
+used to be keyed off the section id, which worked exactly until a second page
+wanted a section named something other than `#guardfile`.
 
 ## Adding the next one
 
-1. Copy `src/projects/umbra.njk`. Keep the seven sections and their order.
+1. Copy `src/projects/umbra.njk`. Keep the section order: hero, field, problem,
+   how it works, the spec, what it is not, the stack, reference. A page may add
+   one more section between the spec and what-it-is-not, as both newer pages do.
 2. Declare `canonical` and `robots` in front matter. The sitemap and
    `llms.txt` checks derive from those, so a page with neither is invisible.
-3. Add the route to `cypress/routes.ts` and to `CANONICAL_ROUTES` in
+3. Give every section a `data-band` and a `data-accent`, and alternate the
+   bands. A section with neither falls back to penumbra and mint.
+4. Commit the banner as `src/images/banners/<slug>.jpg`, then run
+   `just derive-project-assets <slug> <path>/assets/mark/<slug>-256.png`.
+5. Add `--plate-texture` and, for a long name, `--wordmark` to `project.scss`.
+6. Declare `ogImage` as the derived card, and add the route to `CARDS` in
+   `src/build-output.test.ts`. Every card in that map is size-asserted.
+7. Add the route to `cypress/routes.ts` and to `CANONICAL_ROUTES` in
    `src/build-output.test.ts`. A unit assertion fails on drift between them.
-4. Add the page to `static/llms.txt` by hand. That file is not generated.
-5. Do not set `ogImage`. The site ships one social card by contract, and
-   `build-output.test.ts` asserts it across every canonical route.
+8. Add `page:` to that product's entry in `src/data/projects.js`, so the
+   homepage tile stops sending the reader off-domain.
+9. Add the page to `static/llms.txt` by hand. That file is not generated.

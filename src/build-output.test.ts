@@ -8,6 +8,8 @@ const CANONICAL_ROUTES = [
   "/",
   "/about/",
   "/hiring/",
+  "/projects/agent-compose/",
+  "/projects/mcp-beaver/",
   "/projects/umbra/",
   "/resume/",
 ] as const
@@ -118,11 +120,12 @@ describe("build output", () => {
   })
 
   it("ships a social card that matches the size it declares", () => {
-    // The default card covers most routes. A page may declare its own, and
-    // several do, so what is asserted is that whatever card a route names is
-    // committed at the 1200x630 the tags promise.
+    // A page may declare its own card, and several do, so what is asserted is
+    // that whatever card a route names is committed at the size tags promise.
     const DEFAULT_CARD = "/images/og-default.jpg"
     const CARDS: Record<string, string> = {
+      "/projects/agent-compose/": "/images/banners/agent-compose-card.jpg",
+      "/projects/mcp-beaver/": "/images/banners/mcp-beaver-card.jpg",
       "/projects/umbra/": "/images/banners/umbra-card.jpg",
     }
     CANONICAL_ROUTES.forEach((route) => {
@@ -140,9 +143,8 @@ describe("build output", () => {
       )
       expect(html).toMatch(/<meta property="og:image:alt" content="[^"]+">/)
     })
-    // The declared dimensions are a promise about the committed file, and the
-    // layout declares one pair for every route. So every card in play has to
-    // be that size, not just the default one.
+    // The layout declares one pair of dimensions for every route, so every
+    // card in play has to be that size, not just the default one.
     const declared = page("/").match(
       /og:image:width" content="(\d+)">\s*<meta property="og:image:height" content="(\d+)"/
     )

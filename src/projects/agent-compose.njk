@@ -1,0 +1,313 @@
+---
+layout: layouts/base.njk
+permalink: projects/agent-compose/index.html
+title: agent-compose, eval driven agent roles and personas | Kai Siren
+description: A role is context, never permission. agent-compose compiles one immutable bundle of plain files you can read and diff before a run, and derives its own test board from the roster.
+canonical: /projects/agent-compose/
+robots: follow, index
+ogImage: /images/banners/agent-compose-card.jpg
+ogImageAlt: agent-compose, eval driven agent roles and personas
+softwareSchema:
+  name: agent-compose
+  claim: eval driven agent roles and personas
+  repo: https://github.com/coilyco-flight-deck/agent-compose
+  license: https://spdx.org/licenses/MIT.html
+---
+<article class="project project--agent-compose">
+
+  <header class="project__hero">
+    <div class="project__col">
+      <div class="project__plate project__hero-grid">
+        <img
+          class="project__mark"
+          src="/images/marks/agent-compose.png"
+          alt=""
+          width="220"
+          height="220"
+          decoding="async"
+        >
+        <div>
+          <p class="label">Context // never permission</p>
+          <h1 class="project__wordmark">agent-compose</h1>
+          <p class="project__claim">eval driven agent roles and personas</p>
+          <h2 class="project__hook">You gave an agent a persona. Nothing about that should widen what it can do.</h2>
+        </div>
+
+        <div>
+          <div class="project__code">
+<pre><code><span class="k">compose</span> {
+  <span class="k">role</span> <span class="s">"platform"</span>
+  <span class="k">delivery</span> <span class="s">"native-skills"</span>
+  <span class="k">source</span> <span class="s">"aos-public"</span>
+}</code></pre>
+          </div>
+          <p class="project__caption">
+            That is the whole request. What comes back is a directory of plain files, and
+            you can diff it against the last one before anything runs.
+          </p>
+          <ul class="project__meta">
+            <li><b>v2.61.0</b></li>
+            <li>MIT</li>
+            <li>brew // scoop</li>
+            <li>linux // macos // windows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="project__field" id="what-composes">
+    <div class="project__col">
+      <p class="label">One seat, selected out of the roster</p>
+      <ul class="project__verbs" aria-hidden="true">
+        <li data-state="granted">platform</li><li>sysadmin</li><li>eval</li><li>frontend</li>
+        <li>gamedev</li><li>tpm</li><li>devrel</li>
+        <li data-state="granted">tenacious</li><li data-state="granted">grounded</li>
+        <li>protective</li><li>empirical</li><li>playful</li><li>imaginative</li>
+        <li>immersed</li><li>decisive</li><li>outward</li><li>warm</li>
+      </ul>
+      <p class="project__legend">
+        <span><span class="g">one seat and the two traits it melds</span> composed</span>
+        <span><span class="o">14 others</span> never enter this bundle</span>
+      </p>
+
+      <p class="label">What no bundle carries, on any role</p>
+      <ul class="project__verbs" aria-hidden="true">
+        <li data-state="refused">credential</li><li data-state="refused">mount</li>
+        <li data-state="refused">command</li><li data-state="refused">network reach</li>
+        <li data-state="refused">model key</li><li data-state="refused">lifecycle</li>
+      </ul>
+      <p class="project__legend">
+        <span><span class="r">absent by construction</span>, not by configuration</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="project__col project__doc">
+
+    <nav class="project__toc" aria-label="On this page">
+      <p class="label">On this page</p>
+      <ol>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#request">Reading a request</a></li>
+        <li><a href="#eval-driven">Why eval driven</a></li>
+        <li><a href="#not-permission">What it is not</a></li>
+        <li><a href="#stack">The stack</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ol>
+    </nav>
+
+    <div class="project__body">
+
+      <section id="problem" data-band="penumbra" data-accent="coral">
+        <div class="project__head">
+          <p class="label">The problem, and what it costs to leave alone</p>
+          <h2>Who an agent is and what an agent may do end up in the same blob.<a class="project__anchor" href="#problem" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          The usual shape is one long system prompt carrying the voice, the job, the house
+          rules, the tool list, and a few sentences that are really an authority claim. It
+          is edited by whoever is closest to the problem that week. Nothing about it is
+          versioned in a way a reviewer can read, and a change to the persona is
+          indistinguishable from a change to what the agent is allowed to reach.
+        </p>
+        <p>
+          The expensive failure is not a dramatic one. It is that the persona is the least
+          tested artifact in the stack, so nobody can say whether a seat still refuses the
+          thing it was written to refuse. Two roles drift into each other, one quietly
+          absorbs the other's work, and the only evidence is a transcript somebody has to
+          read by hand.
+        </p>
+      </section>
+
+      <section id="how-it-works" data-band="lilac" data-accent="mint">
+        <div class="project__head">
+          <p class="label">What it does about it</p>
+          <h2>agent-compose compiles the context a harness loads, and nothing else.<a class="project__anchor" href="#how-it-works" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          It selects a role, the personality meld that role carries, the skills that role can
+          see, and the tool inventory it gets, then materializes one immutable bundle of
+          plain files. Claude Code, Codex, Goose, and OpenCode all take the same bundle.
+          Execution permissions, runtime facts, and lifecycle stay with whatever launches
+          the agent, and a role slug shared with a launch consumer transfers no authority
+          back into agent-compose.
+        </p>
+
+        <h3>What you can do to a bundle before you trust it</h3>
+        <dl class="project__deflist">
+          <div>
+            <dt>describe</dt>
+            <dd>Renders the stored decision tree. <code>--why</code> follows one item from consideration to outcome.</dd>
+          </div>
+          <div>
+            <dt>diff</dt>
+            <dd>Reports the semantic change between two bundles, rather than the textual one.</dd>
+          </div>
+          <div>
+            <dt>verify</dt>
+            <dd>Checks that entry points, delivery, traces, and selected identities are complete.</dd>
+          </div>
+          <div>
+            <dt>read it</dt>
+            <dd>It is a directory of files. No format stands between you and the answer.</dd>
+          </div>
+        </dl>
+
+        <p>
+          Selection is exclusive rather than additive. An external person package brings its
+          own roles, seats, personalities, and evaluation context, and it replaces the
+          default roster wholesale instead of merging with it, so there is no state in which
+          a seat inherits half of somebody else's charter.
+        </p>
+      </section>
+
+      <section id="request" data-band="umbra" data-accent="mint">
+        <div class="project__head">
+          <p class="label">What it looks like in use</p>
+          <h2>The reviewable surface is the request and the bundle it produced.<a class="project__anchor" href="#request" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          Four lines name a seat, the shape the harness wants it in, and where the
+          role-scoped skills are allowed to come from. Everything downstream of that is
+          derived and recorded, which is why <code>describe</code> has something to render.
+        </p>
+
+        <div class="project__code project__code--annotated">
+<pre><code><span class="k">compose</span> {                    <span class="c">1</span>
+  <span class="k">role</span> <span class="s">"platform"</span>           <span class="c">2</span>
+  <span class="k">delivery</span> <span class="s">"native-skills"</span>  <span class="c">3</span>
+  <span class="k">source</span> <span class="s">"aos-public"</span>       <span class="c">4</span>
+}</code></pre>
+        </div>
+
+        <dl class="project__deflist project__deflist--numbered">
+          <div>
+            <dt><span class="project__n">1</span> compose</dt>
+            <dd>One request produces one bundle. Re-running it with the same inputs produces the same bundle.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">2</span> role</dt>
+            <dd>The seat, chosen from the roster. It carries a charter, a boundary set, and a personality meld, and it carries no permission.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">3</span> delivery</dt>
+            <dd>The shape the target harness wants. The selected context does not change with it.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">4</span> source</dt>
+            <dd>A skill-provider repository the role is allowed to see. What it does not name, the seat never reads.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="eval-driven" data-band="penumbra" data-accent="sage">
+        <div class="project__head">
+          <p class="label">Why the tagline leads with eval</p>
+          <h2>The test board is derived from the roster, not written beside it.<a class="project__anchor" href="#eval-driven" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          Boundaries and their owners produce the pairs. Adjacency produces the role-fit
+          targets. Each role's meld produces the personality cases. Add a boundary, flip an
+          adjacency edge, or swap a personality, and the challenge list moves on its own.
+          You cannot write a case that does not correspond to the roster, and you cannot
+          change the roster without changing what gets tested.
+        </p>
+        <p>
+          The hard cases are generated on purpose. Role adjacency names each role's two
+          likeliest absorptions, and those reasons become the descriptors a generator uses
+          to build exactly the confusion a seat is most at risk of.
+        </p>
+
+        <div class="project__note">
+          <p class="project__note-label">Note</p>
+          <p>
+            Three parties, and none of them holds two seats. A generator authors the cases,
+            a subject answers them, and a human grades them. The grading half ships
+            separately, so it holds no runner and no model client, and grading never spends
+            a token or touches a deployed system.
+          </p>
+        </div>
+      </section>
+
+      <section id="not-permission" data-band="lilac" data-accent="amber">
+        <div class="project__head">
+          <p class="label">What it does not do</p>
+          <h2>agent-compose is not a permission system.<a class="project__anchor" href="#not-permission" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          It has no opinion about what an agent may execute, and it cannot stop anything. A
+          composed seat that says it defers an action will still run that action if the
+          runtime hands it the tool, because prose is not a control. Treating a role
+          briefing as the boundary is the one misreading this page exists to prevent.
+        </p>
+
+        <div class="project__table-wrap">
+          <table class="project__table">
+            <caption>Four layers a launch needs, and who owns each</caption>
+            <thead>
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">Who owns it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Context</th>
+                <td>agent-compose. What the seat knows, believes it is for, and can read.</td>
+              </tr>
+              <tr>
+                <th scope="row">Authority</th>
+                <td>A guardfile, enforced before <code>execve</code>. See <a href="/projects/umbra/">umbra</a>.</td>
+              </tr>
+              <tr>
+                <th scope="row">Isolation</th>
+                <td>A container's job, and nothing here substitutes for it.</td>
+              </tr>
+              <tr>
+                <th scope="row">Lifecycle</th>
+                <td>Whatever launches the agent. Credentials, mounts, and network reach live there.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The bundle is the evidence for exactly one of those four rows. That is a smaller
+          claim than a persona file usually makes, and it is one you can check.
+        </p>
+      </section>
+
+      <section id="stack" class="project__chain" data-band="penumbra" data-accent="sage">
+        <div class="project__head">
+          <p class="label">One boundary, four proofs</p>
+          <h2>Constrain what an agent can do, and prove what it did.<a class="project__anchor" href="#stack" aria-label="Link to this section">#</a></h2>
+        </div>
+        {% set here = "agent-compose" %}
+        {% include "components/project-chain.njk" %}
+      </section>
+
+      <section id="reference" data-band="umbra" data-accent="peri">
+        <div class="project__head">
+          <p class="label">Repository and docs</p>
+          <h2>Reference<a class="project__anchor" href="#reference" aria-label="Link to this section">#</a></h2>
+        </div>
+        <ul class="project__links">
+          <li><a href="https://github.com/coilyco-flight-deck/agent-compose">Repository ↗</a></li>
+          <li><a href="https://github.com/coilyco-flight-deck/agent-compose/blob/main/docs/FEATURES.md">docs/FEATURES.md ↗</a></li>
+          <li><a href="https://github.com/coilyco-flight-deck/agent-compose/blob/main/docs/architecture.md">docs/architecture.md ↗</a></li>
+          <li><a href="https://github.com/coilyco-flight-deck/agent-compose/blob/main/docs/evaluation.md">docs/evaluation.md ↗</a></li>
+        </ul>
+        <p class="project__byline">
+          <span>Built by <a href="/">Kai Siren</a></span>
+          <span>MIT licensed</span>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+</article>
+
+<script src="/project-toc.js" defer></script>

@@ -67,6 +67,10 @@ serve *ARGS:
 build-resume *ARGS:
     @uv run --with pillow --with reportlab scripts/build-resume.py "$@"
 
+# Derive a project page's plate texture, social card, and mark from its banner.
+derive-project-assets *ARGS:
+    @bash scripts/derive-project-assets.sh "$@"
+
 # Capture the My Life presentation at a widescreen viewport.
 playwright-my-life *ARGS:
     @npx --yes playwright@1.57.0 screenshot --browser chromium --channel=chrome --viewport-size=1920,1080 --full-page http://127.0.0.1:8000/my-life/ /private/tmp/my-life-wide.png "$@"

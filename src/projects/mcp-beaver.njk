@@ -1,0 +1,324 @@
+---
+layout: layouts/base.njk
+permalink: projects/mcp-beaver/index.html
+title: mcp-beaver, a MCP server generator with a natural flow | Kai Siren
+description: You handed an agent a write-capable API. Now name every operation it may call. mcp-beaver renders a guardfile into a guarded MCP server, where an operation you did not declare has no tool and no endpoint.
+canonical: /projects/mcp-beaver/
+robots: follow, index
+ogImage: /images/banners/mcp-beaver-card.jpg
+ogImageAlt: mcp-beaver, a MCP server generator with a natural flow
+softwareSchema:
+  name: mcp-beaver
+  claim: a MCP server generator with a natural flow
+  repo: https://github.com/coilyco-flight-deck/mcp-beaver
+  license: https://spdx.org/licenses/MIT.html
+---
+<article class="project project--mcp-beaver">
+
+  <header class="project__hero">
+    <div class="project__col">
+      <div class="project__plate project__hero-grid">
+        <img
+          class="project__mark"
+          src="/images/marks/mcp-beaver.png"
+          alt=""
+          width="220"
+          height="220"
+          decoding="async"
+        >
+        <div>
+          <p class="label">Surface // exactly the grants</p>
+          <h1 class="project__wordmark">mcp-beaver</h1>
+          <p class="project__claim">a MCP server generator with a natural flow</p>
+          <h2 class="project__hook">You handed an agent a write-capable API. Now name every operation it may call.</h2>
+        </div>
+
+        <div>
+          <div class="project__code">
+<pre><code><span class="k">wrap</span> ward mcp forgejo {
+  <span class="k">restrict</span> owner matches <span class="s">"coilyco-*"</span>
+  <span class="k">can get</span> issue {
+    <span class="k">path</span> <span class="s">"/repos/{owner}/{repo}/issues/{index}"</span>
+  }
+}
+<span class="k">withhold</span> <span class="s">"delete_issue"</span> { <span class="k">reason</span> <span class="s">"No undo."</span> }</code></pre>
+          </div>
+          <p class="project__caption">
+            One grant, one MCP tool, one HTTP endpoint. No handler, no input schema, and no
+            per-server image, because all three are derived from the line above.
+          </p>
+          <ul class="project__meta">
+            <li><b>Preview</b></li>
+            <li>MIT</li>
+            <li>image // helm chart</li>
+            <li>MCP 2026-07-28</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="project__field" id="deny-by-absence">
+    <div class="project__col">
+      <p class="label">Deny by absence</p>
+      <ul class="project__verbs" aria-hidden="true">
+        <li>list_organization</li><li>get_organization</li><li>list_organization-repository</li>
+        <li>list_user-organization</li><li>list_current-user-organization</li>
+        <li>list_user-repository</li><li>list_repository</li><li>search_repository</li>
+        <li>get_repository</li><li>list_repository-branch</li><li>get_repository-branch</li>
+        <li>list_repository-tag</li><li>list_repository-release</li><li>get_repository-release</li>
+        <li>list_repository-label</li><li>list_repository-milestone</li>
+        <li>list_repository-commit</li><li>list_pull-request</li><li>get_pull-request</li>
+        <li data-state="granted">get_issue</li><li data-state="granted">list_issue</li>
+        <li data-state="granted">create_issue</li><li data-state="granted">comment_issue</li>
+        <li data-state="granted">close_issue</li>
+        <li>search_issue</li><li>edit_issue</li><li>list_issue-comment</li>
+        <li>list_issue-label</li><li>add_issue-label</li><li>set_issue-label</li>
+        <li>remove_issue-label</li><li>list_issue-pin</li><li>pin_issue</li>
+        <li>edit_issue-pin</li><li>remove_issue-pin</li>
+        <li data-state="refused">delete_issue</li>
+      </ul>
+      <p class="project__legend">
+        <span><span class="g">5 grants</span> mint 5 tools and 5 endpoints</span>
+        <span><span class="r">delete_issue</span> withheld, and says so</span>
+        <span><span class="o">30 others</span> never named, so never served</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="project__col project__doc">
+
+    <nav class="project__toc" aria-label="On this page">
+      <p class="label">On this page</p>
+      <ol>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#spec">Reading a spec</a></li>
+        <li><a href="#coverage">Results lead with coverage</a></li>
+        <li><a href="#not-a-gateway">What it is not</a></li>
+        <li><a href="#stack">The stack</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ol>
+    </nav>
+
+    <div class="project__body">
+
+      <section id="problem" data-band="penumbra" data-accent="coral">
+        <div class="project__head">
+          <p class="label">The problem, and what it costs to leave alone</p>
+          <h2>A write-capable MCP is usually the whole API with a friendlier name.<a class="project__anchor" href="#problem" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          The normal way to expose a service to an agent is to write a server that holds a
+          credential and forwards calls. Its blast radius is whatever that credential can
+          reach, which is the entire upstream, and the only thing standing between the agent
+          and a destructive verb is that nobody wrote a tool for it yet. Somebody will,
+          because adding one is a small pull request.
+        </p>
+        <p>
+          Reviewing that is reading a Go package, a handler per tool, an input schema per
+          tool, and a Dockerfile, then deciding whether you believe the combination. By the
+          fourth service it is four codebases, and the honest answer to what an agent can do
+          through them is that nobody has held all of it in their head at once.
+        </p>
+      </section>
+
+      <section id="how-it-works" data-band="lilac" data-accent="mint">
+        <div class="project__head">
+          <p class="label">What it does about it</p>
+          <h2>One runtime, many guardfiles.<a class="project__anchor" href="#how-it-works" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          mcp-beaver renders an <a href="/projects/umbra/">umbra</a> guardfile into a guarded
+          MCP server and a matching HTTP tool API, baked into one generic image. Each
+          <code>can</code> grant is one MCP tool named <code>verb_resource</code>, and its
+          input schema is derived from the grant's own path, query, and body. There is no
+          per-server Go, no per-server Dockerfile, no per-server handler, and no per-tool
+          schema to keep in sync with anything.
+        </p>
+        <p>
+          An unwritten <code>delete issue</code> grant means no <code>delete_issue</code>
+          tool and no <code>/api/delete_issue</code> endpoint is ever served. Deployment is a
+          values file and a <code>helm upgrade</code>, and the chart stays spec-opaque: in
+          spec mode it never parses the guardfile at all.
+        </p>
+
+        <h3>Four ways to serve</h3>
+        <dl class="project__deflist">
+          <div>
+            <dt>serve</dt>
+            <dd>Reads a <code>.mcp.kdl</code> and guards an HTTP upstream. The general case.</dd>
+          </div>
+          <div>
+            <dt>serve-upstream</dt>
+            <dd>Wraps a private MCP behind an exact tool allowlist.</dd>
+          </div>
+          <div>
+            <dt>serve-ssm</dt>
+            <dd>An exact-parameter AWS reader. The policy names one parameter, and the general getter rejects every other name before AWS sees a request. IAM bounds the principal independently, so there are two bounds rather than one.</dd>
+          </div>
+          <div>
+            <dt>serve-s3</dt>
+            <dd>The asset publisher, and the first write-capable mode. Its policy fixes one bucket, the media types it will serve, the public base URL, and an optional key prefix.</dd>
+          </div>
+        </dl>
+
+        <p>
+          <code>lint</code> and <code>lint-upstream</code> are the same paths minus the
+          listener, so a guardfile is validated in CI before it is ever mounted.
+        </p>
+      </section>
+
+      <section id="spec" data-band="umbra" data-accent="mint">
+        <div class="project__head">
+          <p class="label">What it looks like in use</p>
+          <h2>The reviewable surface is one small file, read end to end.<a class="project__anchor" href="#spec" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          This is the whole contract for a server that can read, file, comment on, and close
+          issues, and can do nothing else to the host it points at.
+        </p>
+
+        <div class="project__code project__code--annotated">
+<pre><code><span class="k">wrap</span> ward mcp forgejo {
+  <span class="k">base-url</span> <span class="s">"forgejo.coilysiren.me/api/v1"</span>              <span class="c">1</span>
+  <span class="k">auth</span> header-token { <span class="k">value</span> env <span class="s">"FORGEJO_TOKEN"</span> }     <span class="c">2</span>
+  <span class="k">restrict</span> owner matches <span class="s">"coilyco-*"</span>                  <span class="c">3</span>
+  <span class="k">can get</span> issue { <span class="k">path</span> <span class="s">"/repos/{owner}/{repo}/issues/{index}"</span> }  <span class="c">4</span>
+}
+<span class="k">withhold</span> <span class="s">"delete_issue"</span> { <span class="k">reason</span> <span class="s">"The upstream has no undo."</span> }  <span class="c">5</span></code></pre>
+        </div>
+
+        <dl class="project__deflist project__deflist--numbered">
+          <div>
+            <dt><span class="project__n">1</span> base-url</dt>
+            <dd>The one host this server may reach.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">2</span> auth</dt>
+            <dd>Resolved from the environment at run time, never baked into the image. This is the credential mcp-beaver presents upstream, not a caller's credential to mcp-beaver.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">3</span> restrict</dt>
+            <dd>Every <code>{owner}</code> path leaf must match, so a granted verb still cannot travel outside the accounts you named.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">4</span> can get</dt>
+            <dd>One grant, one tool, one endpoint, and an input schema derived from the path.</dd>
+          </div>
+          <div>
+            <dt><span class="project__n">5</span> withhold</dt>
+            <dd>A verb left out on purpose, said out loud. The stub appears in discovery, states why, refuses every call, and reaches no upstream.</dd>
+          </div>
+        </dl>
+
+        <p>
+          That last node exists because silence means four things at once: withheld by
+          policy, unimplemented, not offered upstream, or simply not found by the agent's
+          search. An agent guesses between them, and it guesses wrong in both directions.
+        </p>
+      </section>
+
+      <section id="coverage" data-band="penumbra" data-accent="sage">
+        <div class="project__head">
+          <p class="label">A design call worth stating</p>
+          <h2>Every result leads with what it does not contain.<a class="project__anchor" href="#coverage" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          Grant-backed results are <code>{"coverage": {...}, "result": ...}</code>, in that
+          order, in both the text and the structured content. Coverage names every array in
+          the payload and its length, because a count in meaning is what changes an answer.
+        </p>
+
+        <div class="project__note">
+          <p class="project__note-label">Note</p>
+          <p>
+            Coverage leads because a consuming harness bounds a tool result by keeping the
+            front and discarding the tail. A caveat serialized last is the first thing
+            destroyed, and the model then reads rows carrying no caveat and answers as
+            though the view were complete.
+          </p>
+        </div>
+      </section>
+
+      <section id="not-a-gateway" data-band="lilac" data-accent="amber">
+        <div class="project__head">
+          <p class="label">What it does not do</p>
+          <h2>mcp-beaver performs no inbound authentication.<a class="project__anchor" href="#not-a-gateway" aria-label="Link to this section">#</a></h2>
+        </div>
+        <p>
+          It is not an API gateway and it is not an identity layer. Caller identity, TLS,
+          ingress, and network reachability belong to the deployment that runs it. Guardfile
+          <code>auth</code> configures mcp-beaver's credential to the upstream service, and
+          never a caller's credential to mcp-beaver.
+        </p>
+
+        <div class="project__note">
+          <p class="project__note-label">Note</p>
+          <p>
+            The deny-by-absence claim is about the running server, not the image. The image
+            is deliberately generic and carries no guardfile, so a consumer mounts the spec
+            at deploy time.
+          </p>
+        </div>
+
+        <div class="project__table-wrap">
+          <table class="project__table">
+            <caption>What absence means, per serve mode</caption>
+            <thead>
+              <tr>
+                <th scope="col">Mode</th>
+                <th scope="col">An operation you did not declare</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Spec mode</th>
+                <td>Has no handler at all. Absent, in the strongest sense the word has.</td>
+              </tr>
+              <tr>
+                <th scope="row">Upstream-proxy mode</th>
+                <td>Still exists behind an endpoint the container holds credentials for. The runtime re-checks allowlist membership on every call, which is unreachable rather than absent.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The distinction is worth carrying, because the two modes earn different sentences
+          and only one of them earns the stronger one.
+        </p>
+      </section>
+
+      <section id="stack" class="project__chain" data-band="penumbra" data-accent="sage">
+        <div class="project__head">
+          <p class="label">One boundary, four proofs</p>
+          <h2>Constrain what an agent can do, and prove what it did.<a class="project__anchor" href="#stack" aria-label="Link to this section">#</a></h2>
+        </div>
+        {% set here = "mcp-beaver" %}
+        {% include "components/project-chain.njk" %}
+      </section>
+
+      <section id="reference" data-band="umbra" data-accent="peri">
+        <div class="project__head">
+          <p class="label">Repository and docs</p>
+          <h2>Reference<a class="project__anchor" href="#reference" aria-label="Link to this section">#</a></h2>
+        </div>
+        <ul class="project__links">
+          <li><a href="https://github.com/coilyco-flight-deck/mcp-beaver">Repository ↗</a></li>
+          <li><a href="https://github.com/coilyco-flight-deck/mcp-beaver/blob/main/docs/FEATURES.md">docs/FEATURES.md ↗</a></li>
+          <li><a href="https://github.com/coilyco-flight-deck/mcp-beaver/blob/main/docs/DESIGN.md">docs/DESIGN.md ↗</a></li>
+          <li><a href="https://github.com/coilyco-flight-deck/mcp-beaver/blob/main/examples/forgejo-issues.mcp.kdl">examples/forgejo-issues.mcp.kdl ↗</a></li>
+        </ul>
+        <p class="project__byline">
+          <span>Built by <a href="/">Kai Siren</a></span>
+          <span>MIT licensed</span>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+</article>
+
+<script src="/project-toc.js" defer></script>

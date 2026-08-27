@@ -13,7 +13,7 @@ softwareSchema:
   repo: https://github.com/coilyco-flight-deck/umbra
   license: https://spdx.org/licenses/MIT.html
 ---
-<article class="project">
+<article class="project project--umbra">
 
   <header class="project__hero">
     <div class="project__col">
@@ -45,7 +45,7 @@ softwareSchema:
             That is the entire policy for git. Four lines, and everything nobody named is unreachable.
           </p>
           <ul class="project__meta">
-            <li><b>v0.126.0</b></li>
+            <li><b>v0.170.0</b></li>
             <li>MIT</li>
             <li>brew // scoop</li>
             <li>linux // macos // windows</li>
@@ -97,7 +97,7 @@ softwareSchema:
 
     <div class="project__body">
 
-      <section id="problem">
+      <section id="problem" data-band="penumbra" data-accent="coral">
         <div class="project__head">
           <p class="label">The problem, and what it costs to leave alone</p>
           <h2>Most teams cannot answer that question.<a class="project__anchor" href="#problem" aria-label="Link to this section">#</a></h2>
@@ -117,7 +117,7 @@ softwareSchema:
         </p>
       </section>
 
-      <section id="how-it-works">
+      <section id="how-it-works" data-band="lilac" data-accent="mint">
         <div class="project__head">
           <p class="label">What it does about it</p>
           <h2>umbra sits between semi-trusted automation and the host system.<a class="project__anchor" href="#how-it-works" aria-label="Link to this section">#</a></h2>
@@ -159,7 +159,7 @@ softwareSchema:
         </p>
       </section>
 
-      <section id="guardfile">
+      <section id="guardfile" data-band="umbra" data-accent="mint">
         <div class="project__head">
           <p class="label">What it looks like in use</p>
           <h2>The reviewable surface is four lines, not a codebase.<a class="project__anchor" href="#guardfile" aria-label="Link to this section">#</a></h2>
@@ -198,7 +198,7 @@ softwareSchema:
         </dl>
       </section>
 
-      <section id="not-a-sandbox">
+      <section id="not-a-sandbox" data-band="lilac" data-accent="amber">
         <div class="project__head">
           <p class="label">What it does not do</p>
           <h2>umbra is not a sandbox.<a class="project__anchor" href="#not-a-sandbox" aria-label="Link to this section">#</a></h2>
@@ -254,32 +254,16 @@ softwareSchema:
           in the cluster is promoted. See coilysiren/website#128 for why an
           unpromoted post is not a linkable target. -#}
 
-      <section id="stack" class="project__chain">
+      <section id="stack" class="project__chain" data-band="penumbra" data-accent="sage">
         <div class="project__head">
           <p class="label">One boundary, four proofs</p>
           <h2>Constrain what an agent can do, and prove what it did.<a class="project__anchor" href="#stack" aria-label="Link to this section">#</a></h2>
         </div>
-        <ol>
-          <li aria-current="step">
-            <span class="project__chain-name">umbra <span class="project__state">v0.126.0</span></span>
-            <span class="project__chain-role">Writes the policy. You are here.</span>
-          </li>
-          <li>
-            <span class="project__chain-name">mcp-beaver <span class="project__state">Preview</span></span>
-            <span class="project__chain-role">Renders that same guardfile into a guarded MCP server.</span>
-          </li>
-          <li>
-            <span class="project__chain-name">agent-compose <span class="project__state">v1.32.0</span></span>
-            <span class="project__chain-role">Composes the context around it, carrying no authority.</span>
-          </li>
-          <li>
-            <span class="project__chain-name">sirens-echo <span class="project__state project__state--live">Live</span></span>
-            <span class="project__chain-role">The whole thing deployed, answering real people.</span>
-          </li>
-        </ol>
+        {% set here = "umbra" %}
+        {% include "components/project-chain.njk" %}
       </section>
 
-      <section id="reference">
+      <section id="reference" data-band="umbra" data-accent="peri">
         <div class="project__head">
           <p class="label">Repository and docs</p>
           <h2>Reference<a class="project__anchor" href="#reference" aria-label="Link to this section">#</a></h2>
