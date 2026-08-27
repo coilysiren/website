@@ -9,12 +9,13 @@
       "target": "src/projects/docs/umbra",
       "exclude": ["index.md"],
       "excludeReason": "index.md is umbra's own front door, and its blurbs are lifted into the manifest rather than mounted a second time."
-    }
-  ],
-  "planned": [
+    },
     {
       "project": "agent-compose",
       "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
+      "branch": "main",
+      "docsDir": "docs",
+      "target": "src/projects/docs/agent-compose",
       "exclude": [
         "repository-plan.md",
         "claude-native-ui-plan.md",
@@ -27,9 +28,14 @@
     {
       "project": "mcp-beaver",
       "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
+      "branch": "main",
+      "docsDir": "docs",
+      "target": "src/projects/docs/mcp-beaver",
       "exclude": [],
       "excludeReason": "22 docs and no planning artifacts, verified against origin/main 2026-08-27. No docs/index.md either, so the blurbs were written rather than lifted, in src/data/docs-manifest-mcp-beaver.js (coilysiren/website#137)."
-    },
+    }
+  ],
+  "planned": [
     {
       "project": "sirens-echo",
       "repo": "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
