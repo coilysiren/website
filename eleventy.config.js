@@ -3,6 +3,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 import * as sass from "sass"
+import { umbraDocsFlat } from "./src/data/umbra-docs.js"
 
 const repositoryRoot = path.dirname(fileURLToPath(import.meta.url))
 const outputDirectory = path.join(repositoryRoot, "dist")
@@ -50,6 +51,27 @@ export default function configureEleventy(eleventyConfig) {
     return this.page.outputPath?.endsWith(".html")
       ? content.replace(/<pre(?![^>]*\btabindex=)/g, '<pre tabindex="0"')
       : content
+  })
+
+  // Vendored docs still carry repo-relative `.md` links, which resolve to
+  // nothing here. Rules and reasoning in docs/project-docs-mount.md.
+  const UMBRA_SOURCE =
+    "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra/src/branch/main/"
+  // Resolves against docs/ the way the source file meant it.
+  const inRepo = (target) =>
+    new URL(target, "file:///docs/").pathname.replace(/^\//, "")
+  const mounted = new Set(umbraDocsFlat.map((page) => page.slug))
+  eleventyConfig.addTransform("mountedDocLinks", function (content) {
+    if (!this.page.url?.startsWith("/projects/umbra/docs/")) return content
+    return content.replace(
+      /href="(?!https?:)([^"#?]+)\.md(#[^"]*)?"/g,
+      (whole, target, anchor = "") => {
+        const slug = target.split("/").pop().toLowerCase()
+        return mounted.has(slug)
+          ? `href="/projects/umbra/docs/${slug}/${anchor}"`
+          : `href="${UMBRA_SOURCE}${inRepo(target)}.md" rel="noreferrer"`
+      }
+    )
   })
 
   eleventyConfig.addWatchTarget("src/sass/")

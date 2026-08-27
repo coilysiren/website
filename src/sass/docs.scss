@@ -1,0 +1,538 @@
+@use "_vars.scss";
+
+// The docs frame. Shares the project pages' token system rather than defining
+// a second one, because a reader crossing from /projects/umbra/ into its docs
+// should not feel the ground change under them.
+//
+// One stable ground instead of the case study's alternating bands. Bands make
+// a page of argument move; a page somebody is reading to get work done should
+// hold still. --penumbra is the right one on the existing doctrine, where
+// umbra carries the policy and penumbra carries the explanation. Docs are
+// explanation.
+//
+// Reasoning and the reference set: coilysiren/inbox#438.
+
+.docs {
+  --umbra: #16121f;
+  --penumbra: #{vars.$deep-ink};
+  --sink: #0d0a14;
+
+  --ink: #e6e2f2;
+  --bright: #{vars.$pure-white};
+  --quiet: #9aabc4;
+
+  --mint: #{vars.$light-blue};
+  --amber: #{vars.$focus};
+  --peri: #a9aad0;
+
+  --edge: rgba(vars.$light-purple, 0.24);
+  --edge-soft: rgba(vars.$light-purple, 0.14);
+
+  --rail: 13.5rem;
+  --nav: 15rem;
+
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+body:has(.docs) {
+  background: var(--penumbra, #211c33) !important;
+  background-image: none !important;
+}
+
+.docs__skip {
+  position: absolute;
+  left: -9999px;
+
+  &:focus {
+    position: static;
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background: var(--sink);
+    color: var(--mint);
+  }
+}
+
+.docs__col,
+.docs__crumbs,
+.docs__frame {
+  width: min(100% - clamp(1.5rem, 5vw, 5rem), 1240px);
+  margin-inline: auto;
+}
+
+// ---- breadcrumbs ----
+// Bun's lesson: a reader who lands deep has to know which project they are in,
+// and needs one click back up to the argument.
+
+.docs__crumbs {
+  padding: 1.5rem 0 0;
+
+  ol {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--quiet);
+    font-family: vars.$font-family-mono;
+    font-size: 0.76rem;
+  }
+
+  li + li::before {
+    margin-right: 0.5rem;
+    color: var(--edge);
+    content: "/";
+  }
+
+  a {
+    color: var(--quiet);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--mint);
+    }
+  }
+
+  li:first-child a {
+    color: var(--mint);
+    font-weight: 700;
+  }
+
+  [aria-current="page"] {
+    color: var(--ink);
+  }
+}
+
+// ---- the three panes ----
+
+.docs__frame {
+  display: grid;
+  grid-template-columns: var(--nav) minmax(0, 1fr) var(--rail);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+
+  @media (max-width: 78rem) {
+    grid-template-columns: var(--nav) minmax(0, 1fr);
+  }
+
+  @media (max-width: 60rem) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.docs__nav {
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
+  max-height: calc(100vh - 7rem);
+  padding: 2rem 0 2rem;
+  overflow-y: auto;
+  border-right: 1px solid var(--edge-soft);
+
+  @media (max-width: 60rem) {
+    position: static;
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--edge-soft);
+  }
+
+  ul {
+    margin: 0.5rem 0 1.6rem;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--edge-soft);
+  }
+
+  a {
+    display: block;
+    margin-left: -1px;
+    padding: 0.34rem 0.9rem;
+    border-left: 2px solid transparent;
+    color: var(--quiet);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    &[aria-current="page"] {
+      border-left-color: var(--mint);
+      color: var(--mint);
+      font-weight: 700;
+    }
+  }
+}
+
+// The project's own mark and name, so the docs read as umbra's rather than as
+// a generic section of somebody's website. This is the identity half of
+// "without either one losing its identity".
+.docs__brand {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  padding-right: 1rem;
+  color: var(--bright);
+  text-decoration: none;
+
+  img {
+    width: 2.35rem;
+    height: auto;
+    // Same correction the project pages carry: the published marks are cyan at
+    // hue 182 and this system's mint is 161.
+    filter: hue-rotate(-20deg) saturate(0.9);
+  }
+
+  b {
+    display: block;
+    font-size: 1.15rem;
+    letter-spacing: -0.03em;
+  }
+}
+
+.docs__brand-sub {
+  display: block;
+  color: var(--quiet);
+  font-family: vars.$font-family-mono;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.docs__shelf {
+  margin: 0;
+  color: var(--quiet);
+  font-family: vars.$font-family-mono;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+// ---- content ----
+
+.docs__main {
+  min-width: 0;
+  padding: 2rem 0 0;
+}
+
+.docs__body {
+  max-width: 68ch;
+
+  h1 {
+    margin: 0 0 1.6rem;
+    color: var(--bright);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  h2 {
+    margin: 2.8rem 0 0;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--edge-soft);
+    color: var(--bright);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.018em;
+    scroll-margin-top: 6rem;
+  }
+
+  h3 {
+    margin: 2rem 0 0;
+    color: var(--bright);
+    font-size: 1.02rem;
+    font-weight: 700;
+    scroll-margin-top: 6rem;
+  }
+
+  p,
+  ul,
+  ol {
+    margin: 1.05rem 0 0;
+  }
+
+  li + li {
+    margin-top: 0.35rem;
+  }
+
+  a {
+    color: var(--mint);
+    text-decoration-color: var(--edge);
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      text-decoration-color: var(--mint);
+    }
+  }
+
+  strong {
+    color: var(--bright);
+  }
+
+  code {
+    padding: 0.1em 0.34em;
+    border-radius: 0.2rem;
+    background: rgba(vars.$light-purple, 0.14);
+    color: var(--mint);
+    font-family: vars.$font-family-mono;
+    font-size: 0.88em;
+  }
+
+  // A code block is a surface earned by function, same rule the project pages
+  // run on. 0,1,1 because post.scss carries pre:not(.warning-message).
+  pre:not(.warning-message) {
+    margin: 1.5rem 0 0;
+    padding: clamp(0.9rem, 2.5vw, 1.3rem);
+    border-left: 2px solid var(--mint);
+    border-radius: 0.2rem;
+    background: var(--sink);
+    color: #c3bcd8;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    overflow-x: auto;
+
+    code {
+      padding: 0;
+      background: none;
+      color: inherit;
+      font-size: inherit;
+    }
+  }
+
+  blockquote {
+    margin: 1.5rem 0 0;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--amber);
+    color: var(--quiet);
+  }
+
+  // Wide content scrolls inside its own box rather than widening the page.
+  table {
+    display: block;
+    width: 100%;
+    margin: 1.6rem 0 0;
+    border-collapse: collapse;
+    overflow-x: auto;
+    font-size: 0.92rem;
+  }
+
+  th {
+    padding: 0.55rem 0.9rem;
+    background: rgba(vars.$mid-purple, 0.22);
+    color: var(--quiet);
+    font-family: vars.$font-family-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--edge-soft);
+    vertical-align: top;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// ---- on this page ----
+
+.docs__rail {
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
+  max-height: calc(100vh - 7rem);
+  padding: 2rem 0;
+  overflow-y: auto;
+
+  @media (max-width: 78rem) {
+    display: none;
+  }
+
+  ol {
+    margin: 0.8rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--edge-soft);
+  }
+
+  a {
+    display: block;
+    margin-left: -1px;
+    padding: 0.3rem 0.8rem;
+    border-left: 2px solid transparent;
+    color: var(--quiet);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    &[aria-current="true"] {
+      border-left-color: var(--mint);
+      color: var(--mint);
+    }
+  }
+}
+
+.docs__rail-sub a {
+  padding-left: 1.6rem;
+}
+
+// ---- prev and next ----
+// The Cargo Book's one genuinely portable interaction: it turns a reference
+// pile into something a person can read straight through.
+
+.docs__pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--edge);
+
+  @media (max-width: 34rem) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.docs__pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--edge-soft);
+  border-radius: 0.25rem;
+  color: var(--bright);
+  text-decoration: none;
+
+  &:hover {
+    border-color: var(--mint);
+  }
+}
+
+.docs__pager-link--next {
+  grid-column: 2;
+  text-align: right;
+
+  @media (max-width: 34rem) {
+    grid-column: 1;
+    text-align: left;
+  }
+}
+
+.docs__pager-dir {
+  color: var(--quiet);
+  font-family: vars.$font-family-mono;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.docs__pager-name {
+  font-weight: 700;
+  letter-spacing: -0.012em;
+}
+
+// ---- the front door ----
+
+.docs__front {
+  padding: 2.5rem 0 0;
+
+  h1 {
+    margin: 0.7rem 0 0;
+    color: var(--bright);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+}
+
+.docs__lede {
+  max-width: 62ch;
+  margin: 1.1rem 0 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+
+  a {
+    color: var(--mint);
+    text-decoration-color: var(--edge);
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      text-decoration-color: var(--mint);
+    }
+  }
+}
+
+// Shelves stack rather than sitting in equal columns. Reference carries ten
+// pages against Contributing's two, and any equal-column grid turns that
+// imbalance into a ragged edge. Each shelf flows its own items instead, so a
+// long one gets wider and a short one stays one row.
+.docs__shelves {
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+}
+
+.docs__shelf-block {
+  padding-top: 1.6rem;
+
+  & + & {
+    margin-top: 2rem;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: 0 clamp(1.5rem, 3vw, 2.5rem);
+    margin: 0.4rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    border-bottom: 1px solid var(--edge-soft);
+  }
+
+  a {
+    display: block;
+    padding: 0.75rem 0;
+    color: var(--bright);
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--mint);
+    }
+  }
+
+  span {
+    display: block;
+    color: var(--quiet);
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+.docs a:focus-visible,
+.docs button:focus-visible {
+  outline: 3px solid vars.$focus;
+  outline-offset: 3px;
+}

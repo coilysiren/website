@@ -1,0 +1,86 @@
+---
+layout: layouts/base.njk
+---
+{#- The docs frame. Three panes: the manifest on the left, one measure of
+    content, and the on-this-page rail on the right, which is the Astro shape
+    and extends the rail /projects/umbra/ already uses rather than adding a
+    second pattern.
+
+    The docs sit BESIDE the case study rather than replacing it, decided on
+    coilysiren/inbox#438: the case study argues for a reader deciding whether
+    to care, and these are for one who already decided. The breadcrumb is what
+    carries that relationship, so it always names the project and links back. -#}
+<div class="docs docs--umbra">
+
+  <a class="docs__skip" href="#docs-content">Skip to content</a>
+
+  <nav class="docs__crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ projectPage }}">{{ project }}</a></li>
+      <li><a href="/projects/{{ project }}/docs/">Docs</a></li>
+      {%- if entry %}
+      <li><span>{{ entry.shelf }}</span></li>
+      <li aria-current="page">{{ entry.title }}</li>
+      {%- endif %}
+    </ol>
+  </nav>
+
+  <div class="docs__frame">
+
+    <nav class="docs__nav" aria-label="Documentation">
+      <a class="docs__brand" href="/projects/{{ project }}/docs/">
+        <img src="/images/marks/{{ project }}.png" alt="" width="220" height="220" decoding="async">
+        <span>
+          <b>{{ project }}</b>
+          <span class="docs__brand-sub">docs</span>
+        </span>
+      </a>
+      {%- for shelf in umbraDocs.shelves %}
+      <p class="docs__shelf">{{ shelf.title }}</p>
+      <ul>
+        {%- for page in shelf.pages %}
+        <li>
+          <a href="/projects/{{ project }}/docs/{{ page.slug }}/"
+             {% if page.slug == docSlug %}aria-current="page"{% endif %}>{{ page.title }}</a>
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- endfor %}
+    </nav>
+
+    <main class="docs__main" id="docs-content">
+      <article class="docs__body">
+        {{ content | safe }}
+      </article>
+
+      {%- if position %}
+      <nav class="docs__pager" aria-label="Reading order">
+        {%- if position.prev %}
+        <a class="docs__pager-link" rel="prev" href="/projects/{{ project }}/docs/{{ position.prev.slug }}/">
+          <span class="docs__pager-dir">Previous</span>
+          <span class="docs__pager-name">{{ position.prev.title }}</span>
+        </a>
+        {%- else %}<span></span>{% endif %}
+        {%- if position.next %}
+        <a class="docs__pager-link docs__pager-link--next" rel="next" href="/projects/{{ project }}/docs/{{ position.next.slug }}/">
+          <span class="docs__pager-dir">Next</span>
+          <span class="docs__pager-name">{{ position.next.title }}</span>
+        </a>
+        {%- endif %}
+      </nav>
+      {%- endif %}
+    </main>
+
+    {#- Built by docs-rail.js from the headings the vendored markdown already
+        has. Deriving it here would mean parsing content in the template, and
+        the rail is presentation, so it degrades to nothing without script. -#}
+    <aside class="docs__rail" aria-label="On this page" hidden>
+      <p class="docs__shelf">On this page</p>
+      <ol></ol>
+    </aside>
+
+  </div>
+</div>
+
+<script src="/docs-rail.js" defer></script>
+<script src="/project-toc.js" defer></script>

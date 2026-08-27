@@ -6,6 +6,9 @@
 //
 // It is a module rather than derived at run time because `allowCypressEnv` is
 // deliberately false here, and a spec cannot generate its tests from a promise.
+// The /projects/umbra/docs/ mount is a hand-vendored draft of the docs section
+// in coilysiren/inbox#438. Its pages are noindex and out of CANONICAL_ROUTES,
+// but they are emitted, so accessibility and weight still cover them.
 export const ROUTES = [
   "/",
   "/404.html",
@@ -26,6 +29,28 @@ export const ROUTES = [
   "/projects/agent-compose/",
   "/projects/mcp-beaver/",
   "/projects/umbra/",
+  "/projects/umbra/docs/",
+  "/projects/umbra/docs/architecture/",
+  "/projects/umbra/docs/broker/",
+  "/projects/umbra/docs/contributing/",
+  "/projects/umbra/docs/execverb/",
+  "/projects/umbra/docs/features/",
+  "/projects/umbra/docs/getting-started/",
+  "/projects/umbra/docs/opcore-body/",
+  "/projects/umbra/docs/opcore-inline/",
+  "/projects/umbra/docs/passthrough/",
+  "/projects/umbra/docs/release-pipeline/",
+  "/projects/umbra/docs/specgen-materialization/",
+  "/projects/umbra/docs/specgen/",
+  "/projects/umbra/docs/specverb-actions/",
+  "/projects/umbra/docs/specverb-describe/",
+  "/projects/umbra/docs/specverb-fetch/",
+  "/projects/umbra/docs/specverb-policy/",
+  "/projects/umbra/docs/specverb-request/",
+  "/projects/umbra/docs/specverb-resolution/",
+  "/projects/umbra/docs/specverb/",
+  "/projects/umbra/docs/value-providers/",
+  "/projects/umbra/docs/ward-helpers/",
   "/resume/",
   "/writing/",
 ]

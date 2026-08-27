@@ -20,6 +20,10 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   emits `SoftwareSourceCode` structured data whose author points at the
   homepage `Person`, and they share one four-step stack chain from
   `src/data/stack.js`. See [project pages](project-pages.md).
+- **Project docs mount** - a project's own `docs/` mounted verbatim under its
+  page, with the section tree, reading order, and prev and next all derived
+  from one manifest. umbra is drafted at `/projects/umbra/docs/` and is
+  `noindex` until the sync lands. See [project docs mount](project-docs-mount.md).
 - **Discovery metadata** - one canonical host across tags, sitemap, `robots.txt`
   and `llms.txt`, a `sitemap.xml` generated from the indexable routes, and
   `Person` structured data on the homepage and About page. See [static

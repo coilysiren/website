@@ -1,8 +1,11 @@
-// Marks the section currently in view in a project page's contents rail.
+// Marks the section currently in view in a contents rail, on a project page
+// or in the docs frame. Both carry anchors to ids in the same document.
 // Presentation only: every link in the rail works with this script absent,
 // which is why it is deferred rather than inlined.
 ;(function () {
-  var links = [].slice.call(document.querySelectorAll(".project__toc a"))
+  var links = [].slice.call(
+    document.querySelectorAll(".project__toc a, .docs__rail a")
+  )
   if (!links.length || !("IntersectionObserver" in window)) return
 
   var byId = {}
