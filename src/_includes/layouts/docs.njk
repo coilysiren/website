@@ -53,7 +53,10 @@ layout: layouts/base.njk
       </p>
     </nav>
 
-    <main class="docs__main" id="docs-content">
+    {#- base.njk already opens the page's one <main>, so this is a div: a
+        second landmark fails axe on every docs page. tabindex makes the skip
+        link move focus rather than only the viewport. -#}
+    <div class="docs__main" id="docs-content" tabindex="-1">
       <article class="docs__body">
         {{ content | safe }}
       </article>
@@ -74,7 +77,7 @@ layout: layouts/base.njk
         {%- endif %}
       </nav>
       {%- endif %}
-    </main>
+    </div>
 
     {#- Built by docs-rail.js from the headings the vendored markdown already
         has. Deriving it here would mean parsing content in the template, and
