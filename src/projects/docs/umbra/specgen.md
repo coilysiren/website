@@ -1,6 +1,6 @@
 # the no-code driver (specgen / cmd/specgen)
 
-`ward-kdl` is a **no-code** CLI: the consumer authors policy plus committed locks, never Go or build glue. `specgen` is its driver.
+`ward` is a **no-code** CLI: the consumer authors policy plus committed locks, never Go or build glue. `specgen` is its driver.
 
 Homebrew and Scoop track the coilyco tap and bucket, and each tag publishes raw binaries for six platforms. See the [README](../README.md).
 

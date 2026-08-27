@@ -3,7 +3,7 @@
 The default-allow shape of [execverb](execverb.md): a tool wrapped whole rather than verb-by-verb. Where `exec` + `can run` is an allowlist, `passthrough` opens a `can run "*"` funnel and the wrap-level guards subtract from it. It suits interactive tools where naming every shape is impractical, but a few things must still be refused.
 
 ```kdl
-wrap ward-kdl ssh {
+wrap ward ssh {
     passthrough ssh                                       // exec ssh + an implicit `can run *`
     never pass rm                                         // deny an rm positional over the funnel
     only pass when shell hostname is "*macbook*" "*-laptop" // host gate, fail-closed

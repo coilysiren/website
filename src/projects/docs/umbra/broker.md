@@ -4,7 +4,7 @@
 
 ## Shape
 
-Self-contained by design, carrying **no git, docker, or ward-kdl knowledge**, so ward imports it without a dependency cycle.
+Self-contained by design, carrying **no git, docker, or ward knowledge**, so ward imports it without a dependency cycle.
 
 The **protocol** carries `ProtocolVersion`, the five write-tier `Op`s (file / edit / comment / label issue, dispatch), and the `Request` / `Response` / `Target` / `Result` types as newline-delimited JSON: one request in, one response out, then close. The **server** serves one request per connection on an already-permissioned socket, holding no token: it authorizes, then delegates to the consumer's injected **executor**, which holds the credential. The **client** is the unprivileged dial-once-per-call side. A nil executor or authorizer is a construction error, and an unknown version or op is refused rather than guessed.
 
