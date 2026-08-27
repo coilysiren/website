@@ -16,20 +16,25 @@
       "project": "agent-compose",
       "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
       "exclude": [
-        "index.md",
         "repository-plan.md",
         "claude-native-ui-plan.md",
-        "eval-ref-boundaries.md",
-        "eval-ref-personalities.md",
-        "eval-ref-roles.md"
+        "eval-ref-papers.md",
+        "eval-ref-platforms.md",
+        "eval-references.md"
       ],
-      "excludeReason": "Planning artifacts named on coilysiren/inbox#438. Slugs are unverified until the mount lands."
+      "excludeReason": "Planning artifacts and the eval reference set named on coilysiren/inbox#438. Slugs verified against origin/main 2026-08-27. The repo has no docs/index.md, so the manifest blurbs have to be written rather than lifted."
+    },
+    {
+      "project": "mcp-beaver",
+      "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
+      "exclude": [],
+      "excludeReason": "22 docs and no planning artifacts, verified against origin/main 2026-08-27. No docs/index.md either, so the blurbs have to be written."
     },
     {
       "project": "sirens-echo",
       "repo": "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
       "exclude": ["index.md", "worklog.md", "issues.md"],
-      "excludeReason": "Working notes named on coilysiren/inbox#438, not reference material."
+      "excludeReason": "Working notes named on coilysiren/inbox#438, not reference material. Slugs unverified."
     }
   ]
 }
