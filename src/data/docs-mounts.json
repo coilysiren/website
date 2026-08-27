@@ -39,8 +39,8 @@
     {
       "project": "sirens-echo",
       "repo": "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
-      "exclude": ["index.md", "worklog.md", "issues.md"],
-      "excludeReason": "Working notes named on coilysiren/inbox#438, not reference material. Slugs unverified."
+      "exclude": ["sirens-echo-worklog.md", "sirens-echo-issues.md"],
+      "excludeReason": "Working notes named on coilysiren/inbox#438. Slugs verified against origin/main 2026-08-27: the repo has no index.md, and both files carry the sirens-echo- prefix the earlier guess omitted. Blocked on that prefix: 39 of its 41 docs start with sirens-echo-, so mounting as-is yields routes like /projects/sirens-echo/docs/sirens-echo-tools/. Needs a prefix rule in the sync or a rename upstream before it leaves planned."
     }
   ]
 }
