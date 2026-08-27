@@ -61,20 +61,17 @@ nothing in `coilyco-flight-deck/umbra` itself.
 
 ## The snapshot stamp
 
-`umbraDocsSource` records which umbra commit the vendored copy is of, and every
-docs page prints it, naming the repository as the source of truth. A hand-copied
-tree drifts silently and this makes it drift visibly instead.
-
-A stopgap rather than a feature. The sync updates the stamp in the same step
-that replaces the files.
+Every docs page prints which source commit the copy is of, naming the
+repository as the source of truth. The sync writes that stamp in the same step
+that writes the files, so the two cannot disagree: [project docs
+sync](project-docs-sync.md).
 
 ## What is still a draft
 
-The copy under `src/projects/umbra-docs/` is hand-vendored, so it is a
-point-in-time snapshot that will drift. The sync is platform work on
-`coilysiren/inbox#438`. Until it lands the mount is `noindex, nofollow` and
-stays out of `CANONICAL_ROUTES`, though it is in `cypress/routes.ts` so
-accessibility and page weight still cover every page.
+The mount is `noindex, nofollow` and out of `CANONICAL_ROUTES`, though it is
+in `cypress/routes.ts` so accessibility and page weight already cover every
+page. Drift is no longer what holds it there: `coilysiren/website#133` wants a
+Search Console baseline recorded first, and that one is Kai's.
 
 The front door's headline is written rather than extracted, which makes it
 Developer Advocate work rather than layout.

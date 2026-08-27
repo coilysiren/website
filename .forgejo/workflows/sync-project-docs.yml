@@ -1,0 +1,49 @@
+# Daily refresh of the vendored project docs mount (coilysiren/website#135).
+#
+# The mount used to be a hand `cp`, so it drifted from the repositories it
+# claims to reproduce. scripts/sync-project-docs.py re-vendors it from source
+# and writes the stamp every docs page prints.
+#
+# Runs on the runner rather than through scripts/ci/run-in-container.sh: that
+# adapter streams the checkout into a container, so files written inside it
+# never come back. Git and python3 are all this needs.
+#
+# A run that fails alerts Telegram. A run that stops happening ages the stamp,
+# which src/docs-mount.test.ts fails on, so neither needs the Actions tab.
+
+name: Sync project docs
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Re-vendor the docs mount
+    runs-on: deploy
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+          token: ${{ secrets.FORGEJO_PUSH_TOKEN || github.token }}
+      - name: Sync, commit, and push
+        run: bash scripts/ci/sync-project-docs.sh
+      - name: Alert Telegram on failure
+        if: ${{ failure() }}
+        continue-on-error: true
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_RED_CHAT_ID }}
+          REPO: ${{ github.repository }}
+          WORKFLOW: ${{ github.workflow }}
+          JOB: ${{ github.job }}
+          REF: ${{ github.ref }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/ci/alert-telegram.py

@@ -107,6 +107,10 @@ test-quick *ARGS:
 test-unit *ARGS:
     @pnpm run test:unit "$@"
 
+# Re-vendor the project docs mount from its source repositories.
+sync-project-docs *ARGS:
+    @python3 scripts/sync-project-docs.py "$@"
+
 # Boot serve + open Cypress interactively.
 test-e2e-local *ARGS:
     @pnpm run test:e2e:local "$@"

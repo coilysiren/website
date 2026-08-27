@@ -1,0 +1,10 @@
+{
+  "$comment": "Written by scripts/sync-project-docs.py. Every docs page prints it.",
+  "umbra": {
+    "commit": "2285380",
+    "date": "2026-08-26",
+    "docs": "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra/src/branch/main/docs",
+    "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra",
+    "syncedAt": "2026-08-27"
+  }
+}

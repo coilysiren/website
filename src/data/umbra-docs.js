@@ -165,12 +165,3 @@ export const umbraDocs = [
 export const umbraDocsFlat = umbraDocs.flatMap((shelf) =>
   shelf.pages.map((page) => ({ ...page, shelf: shelf.title }))
 )
-
-/** Which umbra commit the vendored copy is of, printed on every docs page.
- * Why it exists, and what replaces it: docs/project-docs-mount.md. */
-export const umbraDocsSource = {
-  repo: "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra",
-  docs: "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra/src/branch/main/docs",
-  commit: "2285380",
-  date: "2026-08-26",
-}

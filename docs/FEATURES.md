@@ -22,8 +22,10 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   `src/data/stack.js`. See [project pages](project-pages.md).
 - **Project docs mount** - a project's own `docs/` mounted verbatim under its
   page, with the section tree, reading order, and prev and next all derived
-  from one manifest. umbra is drafted at `/projects/umbra/docs/` and is
-  `noindex` until the sync lands. See [project docs mount](project-docs-mount.md).
+  from one manifest, re-vendored daily from the source repository by
+  `sync-project-docs`. umbra is at `/projects/umbra/docs/`, `noindex` until its
+  Search Console baseline. See [the mount](project-docs-mount.md) and [its
+  sync](project-docs-sync.md).
 - **Discovery metadata** - one canonical host across tags, sitemap, `robots.txt`
   and `llms.txt`, a `sitemap.xml` generated from the indexable routes, and
   `Person` structured data on the homepage and About page. See [static
