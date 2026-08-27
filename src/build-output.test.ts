@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { ROUTES } from "../cypress/routes"
+import { umbraDocsFlat } from "./data/umbra-docs.js"
 
 // These assert what Eleventy emitted, not how it renders, so they read dist/
 // rather than driving a browser. `pnpm run test:quick` builds first.
@@ -24,7 +25,18 @@ const DARK_POSTS = [
   "/posts/code-janitor/",
   "/posts/golang-pr-notes-1/",
 ] as const
-const INDEXED = [...CANONICAL_ROUTES, "/writing/", ...PROMOTED_POSTS].sort()
+// The docs mount, indexed since coilysiren/website#135. Derived from the
+// manifest so a synced page cannot be missing from this set.
+const DOCS_ROUTES = [
+  "/projects/umbra/docs/",
+  ...umbraDocsFlat.map((page) => `/projects/umbra/docs/${page.slug}/`),
+] as const
+const INDEXED = [
+  ...CANONICAL_ROUTES,
+  "/writing/",
+  ...PROMOTED_POSTS,
+  ...DOCS_ROUTES,
+].sort()
 // The apex 301s here, so a canonical URL naming the apex would resolve
 // through a redirect. One host, everywhere.
 const HOST = "https://www.coilysiren.me"

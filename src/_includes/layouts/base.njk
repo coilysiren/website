@@ -63,6 +63,54 @@
         }
       </script>
     {% endif %}
+    {% if docsSchema %}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": {{ docsSchema.headline | dump | safe }},
+          "description": {{ description | dump | safe }},
+          "url": {{ (site.url + canonical) | dump | safe }},
+          "articleSection": {{ docsSchema.shelf | dump | safe }},
+          "isPartOf": {
+            "@type": "SoftwareSourceCode",
+            "name": {{ project | dump | safe }},
+            "url": {{ (site.url + projectPage) | dump | safe }}
+          },
+          "author": {
+            "@type": "Person",
+            "name": {{ site.author | dump | safe }},
+            "url": {{ site.url | dump | safe }}
+          }
+        }
+      </script>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": {{ project | dump | safe }},
+              "item": {{ (site.url + projectPage) | dump | safe }}
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Docs",
+              "item": {{ (site.url + projectPage + "docs/") | dump | safe }}
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": {{ docsSchema.headline | dump | safe }},
+              "item": {{ (site.url + canonical) | dump | safe }}
+            }
+          ]
+        }
+      </script>
+    {% endif %}
     {% if personSchema %}
       <script type="application/ld+json">
         {

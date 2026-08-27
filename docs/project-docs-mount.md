@@ -68,10 +68,12 @@ sync](project-docs-sync.md).
 
 ## What is still a draft
 
-The mount is `noindex, nofollow` and out of `CANONICAL_ROUTES`, though it is
-in `cypress/routes.ts` so accessibility and page weight already cover every
-page. Drift is no longer what holds it there: `coilysiren/website#133` wants a
-Search Console baseline recorded first, and that one is Kai's.
+The mount is indexed. The same bytes sit on two git hosts with more authority
+than this domain, so what this copy competes on is the frame they have none of:
+a canonical, a description lifted from the manifest blurb, `TechArticle` and
+`BreadcrumbList`, the reading order, and links in from the project page. Kai
+published ahead of `coilysiren/website#133`'s Search Console baseline, which
+that issue still wants recorded.
 
 The front door's headline is written rather than extracted, which makes it
 Developer Advocate work rather than layout.

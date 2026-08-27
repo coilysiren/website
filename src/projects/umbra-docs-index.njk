@@ -3,14 +3,14 @@ layout: layouts/base.njk
 permalink: projects/umbra/docs/index.html
 title: umbra docs | Kai Siren
 description: The documentation for umbra, a config driven occlusion framework. Install it and watch a refusal, then the guides, the reference, and the concepts underneath.
-robots: noindex, nofollow
+robots: follow, index
+canonical: /projects/umbra/docs/
 project: umbra
 projectPage: /projects/umbra/
 ---
 {#- The front door. umbra's own docs/index.md is the model the other three
     repos have nothing of, so this renders the same manifest the sidebar and
-    the pager walk rather than restating it. Out of the index until the sync in
-    coilysiren/inbox#438 replaces the hand-vendored copy. -#}
+    the pager walk rather than restating it. -#}
 <div class="docs docs--umbra">
 
   <nav class="docs__crumbs" aria-label="Breadcrumb">
