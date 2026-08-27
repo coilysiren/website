@@ -46,6 +46,11 @@ layout: layouts/base.njk
         {%- endfor %}
       </ul>
       {%- endfor %}
+      <p class="docs__snapshot">
+        Snapshot of <a href="{{ umbraDocs.source.docs }}" rel="noreferrer">umbra
+        {{ umbraDocs.source.commit }}</a>, {{ umbraDocs.source.date }}. Copied by
+        hand, so the repository is the source of truth if the two disagree.
+      </p>
     </nav>
 
     <main class="docs__main" id="docs-content">

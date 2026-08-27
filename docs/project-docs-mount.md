@@ -59,6 +59,15 @@ nothing in `coilyco-flight-deck/umbra` itself.
 * `docs/CONTRIBUTING.md` links `CODE_OF_CONDUCT.md` and `SECURITY.md`, which
   exist at the repo root rather than under `docs/`
 
+## The snapshot stamp
+
+`umbraDocsSource` records which umbra commit the vendored copy is of, and every
+docs page prints it, naming the repository as the source of truth. A hand-copied
+tree drifts silently and this makes it drift visibly instead.
+
+A stopgap rather than a feature. The sync updates the stamp in the same step
+that replaces the files.
+
 ## What is still a draft
 
 The copy under `src/projects/umbra-docs/` is hand-vendored, so it is a

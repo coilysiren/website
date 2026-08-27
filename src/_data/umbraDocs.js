@@ -1,3 +1,11 @@
-import { umbraDocs, umbraDocsFlat } from "../data/umbra-docs.js"
+import {
+  umbraDocs,
+  umbraDocsFlat,
+  umbraDocsSource,
+} from "../data/umbra-docs.js"
 
-export default { shelves: umbraDocs, flat: umbraDocsFlat }
+export default {
+  shelves: umbraDocs,
+  flat: umbraDocsFlat,
+  source: umbraDocsSource,
+}

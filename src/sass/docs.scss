@@ -215,6 +215,34 @@ body:has(.docs) {
   text-transform: uppercase;
 }
 
+// Which point in time this copy is of. A hand-vendored snapshot drifts
+// silently, and this is the line that makes it drift visibly instead. It gets
+// shorter, not deleted, once the sync lands and can stamp a real timestamp.
+.docs__snapshot {
+  margin: 1.6rem 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--edge-soft);
+  color: var(--quiet);
+  font-size: 0.72rem;
+  line-height: 1.55;
+
+  a {
+    color: var(--quiet);
+    text-decoration-color: var(--edge);
+    text-underline-offset: 0.15em;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--mint);
+    }
+  }
+}
+
+.docs__front .docs__snapshot {
+  max-width: 46ch;
+  margin: 2rem 0 0;
+}
+
 // ---- content ----
 
 .docs__main {
