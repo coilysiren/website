@@ -22,13 +22,13 @@
         "eval-ref-platforms.md",
         "eval-references.md"
       ],
-      "excludeReason": "Planning artifacts and the eval reference set named on coilysiren/inbox#438. Slugs verified against origin/main 2026-08-27. The repo has no docs/index.md, so the manifest blurbs have to be written rather than lifted."
+      "excludeReason": "Planning artifacts and the eval reference set named on coilysiren/inbox#438. Slugs verified against origin/main 2026-08-27. The repo has no docs/index.md, so the manifest blurbs were written rather than lifted, in src/data/docs-manifest-agent-compose.js (coilysiren/website#137)."
     },
     {
       "project": "mcp-beaver",
       "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/mcp-beaver",
       "exclude": [],
-      "excludeReason": "22 docs and no planning artifacts, verified against origin/main 2026-08-27. No docs/index.md either, so the blurbs have to be written."
+      "excludeReason": "22 docs and no planning artifacts, verified against origin/main 2026-08-27. No docs/index.md either, so the blurbs were written rather than lifted, in src/data/docs-manifest-mcp-beaver.js (coilysiren/website#137)."
     },
     {
       "project": "sirens-echo",
