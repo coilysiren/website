@@ -12,7 +12,7 @@
 export const front = {
   headline: "Compose the context, then diff it.",
   description:
-    "The documentation for agent-compose, eval driven agent roles and personas. Start with what ships and the vocabulary, then launching a role, the bundle reference, and the boundary model underneath.",
+    "The documentation for agent-compose, an eval driven composer for agent roles and personas. Start with what ships and the vocabulary, then launching a role, the bundle reference, and the boundary model underneath.",
   lede: [
     "Agent-compose sits between the people who author reusable knowledge and the harnesses that consume it. A KDL request names a role, a delivery mode, and its sources, and what comes back is one immutable tree of plain files.",
     "That tree carries no credential, no mount, and no command. A role changes what an agent knows and never what it may do, which is why the whole thing is readable before a session starts.",

@@ -26,7 +26,7 @@ export const showcaseProducts = [
     slug: "agent-compose",
     banner: "/images/banners/agent-compose.jpg",
     banner2x: "/images/banners/agent-compose-2x.jpg",
-    alt: "agent-compose // $ acompose - Eval driven agent roles and personas",
+    alt: "agent-compose // $ acompose - Eval driven composer for roles and personas",
     proof:
       "A role is context, never permission. The bundle is plain files you can read and diff before a run, carrying no credential, no mount, and no command.",
     page: "/projects/agent-compose/",
