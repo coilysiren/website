@@ -292,6 +292,42 @@ body:has(.project) {
   }
 }
 
+// The way into the docs. It sat only in #reference, which is the last section
+// of a long page and its smallest type, and the first reader looking for it
+// did not find it. A reader who already decided wants the docs from the hero,
+// which is what "the docs mount beside the case study" has to mean in the
+// layout rather than only in the routes.
+.project__onward {
+  display: flex;
+  gap: 0.2rem 0.9rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 1.4rem 0 0;
+
+  a {
+    border-bottom: 1px solid var(--mint);
+    color: var(--mint);
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+
+    &::after {
+      content: " \2192";
+    }
+
+    &:hover {
+      border-bottom-color: transparent;
+    }
+  }
+
+  span {
+    color: var(--quiet);
+    font-family: vars.$font-family-mono;
+    font-size: 0.76rem;
+  }
+}
+
 // ---- code. A surface earned by function. ----
 
 .project__code {
