@@ -3,7 +3,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 import * as sass from "sass"
-import { umbraDocsFlat } from "./src/data/umbra-docs.js"
+import { docsMountList, docsMounts } from "./src/data/docs-mount-loader.js"
 
 const repositoryRoot = path.dirname(fileURLToPath(import.meta.url))
 const outputDirectory = path.join(repositoryRoot, "dist")
@@ -55,24 +55,45 @@ export default function configureEleventy(eleventyConfig) {
 
   // Vendored docs still carry repo-relative `.md` links, which resolve to
   // nothing here. Rules and reasoning in docs/project-docs-mount.md.
-  const UMBRA_SOURCE =
-    "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra/src/branch/main/"
-  // Resolves against docs/ the way the source file meant it.
-  const inRepo = (target) =>
-    new URL(target, "file:///docs/").pathname.replace(/^\//, "")
-  const mounted = new Set(umbraDocsFlat.map((page) => page.slug))
+  const DOCS_URL = /^\/projects\/([^/]+)\/docs\//
+  // Resolves against the source repo's docs dir the way the file meant it.
+  const inRepo = (mount, target) =>
+    new URL(target, `file:///${mount.docsDir}/`).pathname.replace(/^\//, "")
   eleventyConfig.addTransform("mountedDocLinks", function (content) {
-    if (!this.page.url?.startsWith("/projects/umbra/docs/")) return content
+    const project = this.page.url?.match(DOCS_URL)?.[1]
+    const mount = project && docsMounts[project]
+    if (!mount) return content
+    const source = `${mount.repo}/src/branch/${mount.branch}/`
     return content.replace(
       /href="(?!https?:)([^"#?]+)\.md(#[^"]*)?"/g,
       (whole, target, anchor = "") => {
         const slug = target.split("/").pop().toLowerCase()
-        return mounted.has(slug)
-          ? `href="/projects/umbra/docs/${slug}/${anchor}"`
-          : `href="${UMBRA_SOURCE}${inRepo(target)}.md" rel="noreferrer"`
+        return mount.slugs.has(slug)
+          ? `href="${mount.root}${slug}/${anchor}"`
+          : `href="${source}${inRepo(mount, target)}.md" rel="noreferrer"`
       }
     )
   })
+
+  // One front door per mount. Virtual rather than paginated, for the reason
+  // in docs/project-docs-render.md.
+  for (const mount of docsMountList) {
+    eleventyConfig.addTemplate(
+      `projects/${mount.project}-docs-index.njk`,
+      '{% include "components/docs-front.njk" %}',
+      {
+        layout: "layouts/base.njk",
+        permalink: `projects/${mount.project}/docs/index.html`,
+        canonical: mount.root,
+        title: `${mount.project} docs | Kai Siren`,
+        description: mount.front.description,
+        robots: "follow, index",
+        project: mount.project,
+        projectPage: mount.page,
+        mount,
+      }
+    )
+  }
 
   eleventyConfig.addWatchTarget("src/sass/")
   eleventyConfig.on("eleventy.before", compileStyles)

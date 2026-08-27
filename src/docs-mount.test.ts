@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs"
 import { describe, expect, it } from "vitest"
-import umbraDocs from "./_data/umbraDocs.js"
-import { umbraDocsFlat } from "./data/umbra-docs.js"
+import { docsMounts } from "./data/docs-mount-loader.js"
 
 // The two ways the sync goes quiet: it stops running, or it brings back a
 // page the manifest does not know. See docs/project-docs-sync.md.
@@ -43,24 +42,45 @@ describe("project docs mount", () => {
     }
   })
 
-  it("keeps the manifest and the vendored files in agreement", () => {
-    const umbra = config.mounts.find((mount) => mount.project === "umbra")
-    expect(umbra).toBeTruthy()
-    const onDisk = readdirSync(umbra!.target)
-      .filter((name) => name.endsWith(".md"))
-      .map((name) => name.replace(/\.md$/, ""))
-      .sort()
-    const inManifest = umbraDocsFlat.map((page) => page.slug).sort()
-    // A page added upstream has no shelf, title, or reading position until
-    // the manifest names it, which is the one-line diff this asks for.
-    expect(
-      onDisk,
-      "src/data/umbra-docs.js does not match what the sync vendored"
-    ).toEqual(inManifest)
+  it("keeps every manifest and its vendored files in agreement", () => {
+    for (const mount of config.mounts) {
+      const onDisk = readdirSync(mount.target)
+        .filter((name) => name.endsWith(".md"))
+        .map((name) => name.replace(/\.md$/, ""))
+        .sort()
+      const inManifest = docsMounts[mount.project]!.flat.map(
+        (page) => page.slug
+      ).sort()
+      // A page added upstream has no shelf, title, or reading position until
+      // the manifest names it, which is the one-line diff this asks for.
+      expect(
+        onDisk,
+        `src/data/docs-manifest-${mount.project}.js does not match what the sync vendored`
+      ).toEqual(inManifest)
+    }
   })
 
-  it("hands the page the stamp the sync wrote", () => {
-    expect(umbraDocs.source.repo).toContain("forgejo.coilysiren.me")
-    expect(umbraDocs.source.commit).toBe(stamp.umbra?.commit)
+  it("hands every page the stamp the sync wrote", () => {
+    for (const mount of config.mounts) {
+      const loaded = docsMounts[mount.project]
+      expect(loaded!.source.repo).toContain("forgejo.coilysiren.me")
+      expect(loaded!.source.commit).toBe(stamp[mount.project]?.commit)
+    }
+  })
+
+  // coilysiren/website#136: a manifest that is missing, misnamed, or short a
+  // `front` block fails here rather than at build time.
+  it("resolves every declared mount from config alone", () => {
+    for (const mount of config.mounts) {
+      const loaded = docsMounts[mount.project]
+      expect(loaded, `no manifest resolved for ${mount.project}`).toBeTruthy()
+      if (!loaded) continue
+      expect(loaded.shelves.length).toBeGreaterThan(0)
+      expect(
+        loaded.front?.headline,
+        `${mount.project} front.headline`
+      ).toBeTruthy()
+      expect(loaded.root).toBe(`/projects/${mount.project}/docs/`)
+    }
   })
 })

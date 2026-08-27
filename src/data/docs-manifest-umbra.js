@@ -1,6 +1,6 @@
 /**
  * @typedef {object} DocsPage
- * @property {string} slug Matches the vendored file in src/projects/umbra-docs/.
+ * @property {string} slug Matches the vendored file under this project's dir.
  * @property {string} title
  * @property {string} blurb Kai's own one-liner, lifted verbatim from umbra's
  *   docs/index.md so the shelf never invents a second description.
@@ -15,6 +15,9 @@
 /**
  * umbra's docs, ordered.
  *
+ * One of these per mounted project, named docs-manifest-<project>.js so the
+ * loader finds it from `docs-mounts.json` without a registry to update.
+ *
  * This is the manifest, and it is the whole reason the section has structure.
  * The `documentation-layout` hook permits `docs/*.md` with no subdirectories,
  * so a repo cannot express sections as folders and alphabetical order is the
@@ -28,7 +31,27 @@
  *
  * @type {DocsShelf[]}
  */
-export const umbraDocs = [
+/**
+ * The front door's own copy. Written rather than derived, which is why it sits
+ * in the manifest with the shelves instead of in a template: the front door is
+ * one paginated template shared by every mount.
+ *
+ * `lede` is prose. `description` is the meta tag, and it stays a plain string
+ * because search results are not the place for a two-paragraph argument.
+ */
+export const front = {
+  headline: "Name every command, then prove it.",
+  description:
+    "The documentation for umbra, a config driven occlusion framework. Install it and watch a refusal, then the guides, the reference, and the concepts underneath.",
+  lede: [
+    "umbra sits between semi-trusted automation and the host system. What you did not declare does not get through. Policy lives in a KDL guardfile rather than in code, enforced across two surfaces: subprocess execution and outbound HTTP.",
+  ],
+  // Linked from the front door back to the case study, because the docs mount
+  // beside that argument rather than replacing it.
+  caseStudy: "the case for umbra",
+}
+
+export const shelves = [
   {
     title: "Getting started",
     pages: [
@@ -160,8 +183,3 @@ export const umbraDocs = [
     ],
   },
 ]
-
-/** Flat reading order, which is what prev and next walk. */
-export const umbraDocsFlat = umbraDocs.flatMap((shelf) =>
-  shelf.pages.map((page) => ({ ...page, shelf: shelf.title }))
-)

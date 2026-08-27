@@ -9,26 +9,19 @@ argues for a reader deciding whether to care, and the docs are for one who
 already decided. The breadcrumb carries that relationship, so it always names
 the project and links back up.
 
-## The manifest is the structure
-
-`documentation-layout` permits `docs/*.md` with no subdirectories, so a repo
-cannot express sections as folders and alphabetical order is the only order a
-reader gets. mdBook answers the same constraint with `SUMMARY.md`, and
-[`src/data/umbra-docs.js`](../src/data/umbra-docs.js) is that file.
-
-The section tree, the reading order, the sidebar, the front door, and prev and
-next all derive from it. Adding a page is a one-line reviewable diff rather
-than an accident of alphabetisation. Shelves are reader-task rather than
-architecture: getting started, guides, reference, concepts, contributing.
-
-Blurbs are lifted verbatim from the project's own `docs/index.md`, so the shelf
-never invents a second description of a page.
-
 ## Verbatim, and what that costs
 
 Vendored files get no front matter. Title, shelf, and reading position come
 from the manifest, keyed on the filename, in
-`src/projects/umbra-docs/umbra-docs.11tydata.js`.
+`src/projects/docs/docs.11tydata.js`. Eleventy cascades a directory's data into
+its subdirectories, so every mount lives under `src/projects/docs/<project>/`
+and reads its project from the path rather than from a per-project copy of that
+file.
+
+Front doors are virtual templates registered in `eleventy.config.js`.
+Pagination was the obvious shape and the wrong one: only its first page reached
+`collections.all`, so a second mount's front door built correctly and then fell
+out of the sitemap.
 
 Two things follow from verbatim, and both are load-bearing.
 

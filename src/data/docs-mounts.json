@@ -1,12 +1,12 @@
 {
-  "$comment": "Which repos mount their docs/ here, and what never mounts. Hand-edited; scripts/sync-project-docs.py reads it. Contract: docs/project-docs-mount.md.",
+  "$comment": "Which repos mount their docs/ here, and what never mounts. Hand-edited; scripts/sync-project-docs.py and the render layer both read it. Contract: docs/project-docs-mount.md.",
   "mounts": [
     {
       "project": "umbra",
       "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/umbra",
       "branch": "main",
       "docsDir": "docs",
-      "target": "src/projects/umbra-docs",
+      "target": "src/projects/docs/umbra",
       "exclude": ["index.md"],
       "excludeReason": "index.md is umbra's own front door, and its blurbs are lifted into the manifest rather than mounted a second time."
     }

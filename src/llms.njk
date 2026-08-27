@@ -21,15 +21,16 @@ Use the pages below as the canonical public profile. Other routes are retained o
 - [mcp-beaver](https://www.coilysiren.me/projects/mcp-beaver/): A MCP server generator. Renders a umbra guardfile into a guarded MCP server, where an operation nobody declared has no tool and no endpoint.
 - [agent-compose](https://www.coilysiren.me/projects/agent-compose/): Eval driven agent roles and personas. Compiles one immutable bundle of plain files that carries context and no authority, and derives its test board from the roster.
 
-## umbra docs
+{% for mount in docsMounts | dictsort %}{% set mount = mount[1] %}
+## {{ mount.project }} docs
 
-umbra's own documentation, mounted verbatim from its repository and ordered by a manifest rather than alphabetically. The [front door]({{ site.url }}/projects/umbra/docs/) lists every shelf.
-{% for shelf in umbraDocs.shelves %}
+{{ mount.project }}'s own documentation, mounted verbatim from its repository and ordered by a manifest rather than alphabetically. The [front door]({{ site.url }}{{ mount.root }}) lists every shelf.
+{% for shelf in mount.shelves %}
 ### {{ shelf.title }}
 {% for page in shelf.pages %}
-- [{{ page.title }}]({{ site.url }}/projects/umbra/docs/{{ page.slug }}/): {{ page.blurb }}
+- [{{ page.title }}]({{ site.url }}{{ mount.root }}{{ page.slug }}/): {{ page.blurb }}
 {%- endfor %}
-{% endfor %}
+{% endfor %}{% endfor %}
 ## Writing
 
 The [writing index](https://www.coilysiren.me/writing/) lists the promoted posts. Three are promoted. The rest of the archive is retained at its URLs but is not current.

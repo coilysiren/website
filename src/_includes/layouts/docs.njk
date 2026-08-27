@@ -10,7 +10,7 @@ layout: layouts/base.njk
     coilysiren/inbox#438: the case study argues for a reader deciding whether
     to care, and these are for one who already decided. The breadcrumb is what
     carries that relationship, so it always names the project and links back. -#}
-<div class="docs docs--umbra">
+<div class="docs docs--{{ project }}">
 
   <a class="docs__skip" href="#docs-content">Skip to content</a>
 
@@ -35,7 +35,7 @@ layout: layouts/base.njk
           <span class="docs__brand-sub">docs</span>
         </span>
       </a>
-      {%- for shelf in umbraDocs.shelves %}
+      {%- for shelf in mount.shelves %}
       <p class="docs__shelf">{{ shelf.title }}</p>
       <ul>
         {%- for page in shelf.pages %}
@@ -47,9 +47,9 @@ layout: layouts/base.njk
       </ul>
       {%- endfor %}
       <p class="docs__snapshot">
-        Snapshot of <a href="{{ umbraDocs.source.docs }}" rel="noreferrer">umbra
-        {{ umbraDocs.source.commit }}</a>, {{ umbraDocs.source.date }}. Copied by
-        hand, so the repository is the source of truth if the two disagree.
+        Synced from <a href="{{ mount.source.docs }}" rel="noreferrer">{{ project }}
+        {{ mount.source.commit }}</a>, {{ mount.source.date }}. A copy, so the
+        repository is the source of truth if the two disagree.
       </p>
     </nav>
 

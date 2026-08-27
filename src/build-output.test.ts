@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { ROUTES } from "../cypress/routes"
-import { umbraDocsFlat } from "./data/umbra-docs.js"
+import { DOCS_ROUTES } from "./data/docs-mount-routes.js"
 
 // These assert what Eleventy emitted, not how it renders, so they read dist/
 // rather than driving a browser. `pnpm run test:quick` builds first.
@@ -27,10 +27,6 @@ const DARK_POSTS = [
 ] as const
 // The docs mount, indexed since coilysiren/website#135. Derived from the
 // manifest so a synced page cannot be missing from this set.
-const DOCS_ROUTES = [
-  "/projects/umbra/docs/",
-  ...umbraDocsFlat.map((page) => `/projects/umbra/docs/${page.slug}/`),
-] as const
 const INDEXED = [
   ...CANONICAL_ROUTES,
   "/writing/",

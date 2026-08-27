@@ -15,11 +15,11 @@ excludes = [
     ".github/ISSUE_TEMPLATE/**",
     "drafts/**",
     "src/pages/**",
-    "src/projects/umbra-docs/**",
+    "src/projects/docs/**",
 ]
 
 [tool.agentic-os.dead-cross-links]
-# umbra's docs are vendored verbatim, so their links are correct relative to
+# Mounted docs are vendored verbatim, so their links are correct relative to
 # the repo that owns them and resolve to nothing relative to this one. The
 # Eleventy `mountedDocLinks` transform rewrites them at render, pointing an
 # unmounted target back at the file in its own repo. Enforcing another repo's
@@ -28,4 +28,4 @@ excludes = [
 # src/pages/** carries site URLs like /resume.pdf, which are correct for the
 # server and resolve outside the repo on disk. Same hatch documentation-layout
 # already takes for that directory.
-excludes = ["src/pages/**", "src/projects/umbra-docs/**"]
+excludes = ["src/pages/**", "src/projects/docs/**"]

@@ -1,0 +1,56 @@
+{#- One front door for every mount. The project's own docs/index.md is the
+    model, so this renders the same manifest the sidebar and the pager walk
+    rather than restating it. The written copy comes from the manifest's
+    `front` block, which is the only part a template cannot derive. -#}
+<div class="docs docs--{{ mount.project }}">
+
+  <nav class="docs__crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ mount.page }}">{{ mount.project }}</a></li>
+      <li aria-current="page">Docs</li>
+    </ol>
+  </nav>
+
+  <div class="docs__col docs__front">
+    <div class="docs__brand">
+      <img src="/images/marks/{{ mount.project }}.png" alt="" width="220" height="220" decoding="async">
+      <span>
+        <b>{{ mount.project }}</b>
+        <span class="docs__brand-sub">docs</span>
+      </span>
+    </div>
+    <h1>{{ mount.front.headline }}</h1>
+    {%- for paragraph in mount.front.lede %}
+    <p class="docs__lede">{{ paragraph }}</p>
+    {%- endfor %}
+    <p class="docs__lede">
+      If you are still deciding whether any of that is your problem,
+      <a href="{{ mount.page }}">{{ mount.front.caseStudy }}</a> is the better place
+      to start. These pages assume you already decided.
+    </p>
+
+    <p class="docs__snapshot">
+      Synced from <a href="{{ mount.source.docs }}" rel="noreferrer">{{ mount.project }}
+      {{ mount.source.commit }}</a>, {{ mount.source.date }}. A copy, so the
+      repository is the source of truth if the two disagree.
+    </p>
+
+    <div class="docs__shelves">
+      {%- for shelf in mount.shelves %}
+      <section class="docs__shelf-block">
+        <p class="docs__shelf">{{ shelf.title }}</p>
+        <ul>
+          {%- for page in shelf.pages %}
+          <li>
+            <a href="{{ mount.root }}{{ page.slug }}/">
+              {{ page.title }}
+              <span>{{ page.blurb }}</span>
+            </a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endfor %}
+    </div>
+  </div>
+</div>
