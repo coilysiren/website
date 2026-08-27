@@ -3,10 +3,8 @@ import { describe, expect, it } from "vitest"
 import umbraDocs from "./_data/umbraDocs.js"
 import { umbraDocsFlat } from "./data/umbra-docs.js"
 
-// The mount is vendored by scripts/sync-project-docs.py rather than by hand.
-// These assert the two ways that sync can go quiet: it stops running, or it
-// brings back a page the manifest does not know. Contract in
-// docs/project-docs-mount.md.
+// The two ways the sync goes quiet: it stops running, or it brings back a
+// page the manifest does not know. See docs/project-docs-sync.md.
 const config = JSON.parse(
   readFileSync("src/data/docs-mounts.json", "utf8")
 ) as {
@@ -53,9 +51,8 @@ describe("project docs mount", () => {
       .map((name) => name.replace(/\.md$/, ""))
       .sort()
     const inManifest = umbraDocsFlat.map((page) => page.slug).sort()
-    // A new upstream page arrives with the sync and has no shelf, title, or
-    // reading position until the manifest names it. That is a one-line diff,
-    // and this is what asks for it.
+    // A page added upstream has no shelf, title, or reading position until
+    // the manifest names it, which is the one-line diff this asks for.
     expect(
       onDisk,
       "src/data/umbra-docs.js does not match what the sync vendored"
