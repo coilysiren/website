@@ -1,6 +1,9 @@
 # The coilyco.ai vanity hosts
 
-How a project page reaches `<slug>.coilyco.ai`. The page itself is described in [project-page-system.md](project-page-system.md).
+How a project page reaches its `coilyco.ai` host. The short form is canon in
+URLs, so the hosts are `umbra`, `acompose` and `beaver` while the project slugs
+behind them stay `umbra`, `agent-compose` and `mcp-beaver`. Only the `from`
+hostname differs; the rewrite target is still `/vanity/<slug>/`. The page itself is described in [project-page-system.md](project-page-system.md).
 
 Each project page renders twice. `site.projectVariants` drives a two-item
 pagination, so the canonical output stays at `/projects/<slug>/` and a twin
@@ -29,3 +32,12 @@ domains to the primary by default, and `force = true` is documented as
 overriding file shadowing rather than that redirect. If the alias gets 301'd
 before the rewrite runs, the vanity name never survives and none of this
 matters. Proving it is one throwaway rule and a look at the address bar.
+
+## Renamed hosts
+
+`agent-compose.coilyco.ai` and `mcp-beaver.coilyco.ai` were the launch names and
+were renamed the same day. They still resolve and still hold a certificate,
+because the guarded Netlify wrap can add an alias but not remove one, so each
+forwards to its short form with a single 301 rather than sitting on the site
+root. An empty splat resolves to the bare host, which is why one rule covers the
+root and every path beneath it.

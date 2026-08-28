@@ -87,73 +87,89 @@
   force = true
 
 [[redirects]]
-  from = "https://agent-compose.coilyco.ai/images/*"
+  from = "https://acompose.coilyco.ai/images/*"
   to = "/images/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://agent-compose.coilyco.ai/styles/*"
+  from = "https://acompose.coilyco.ai/styles/*"
   to = "/styles/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://agent-compose.coilyco.ai/fonts/*"
+  from = "https://acompose.coilyco.ai/fonts/*"
   to = "/fonts/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://agent-compose.coilyco.ai/project-toc.js"
+  from = "https://acompose.coilyco.ai/project-toc.js"
   to = "/project-toc.js"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://agent-compose.coilyco.ai/"
+  from = "https://acompose.coilyco.ai/"
   to = "/vanity/agent-compose/index.html"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://agent-compose.coilyco.ai/*"
+  from = "https://acompose.coilyco.ai/*"
   to = "https://www.coilysiren.me/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://mcp-beaver.coilyco.ai/images/*"
+  from = "https://beaver.coilyco.ai/images/*"
   to = "/images/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://mcp-beaver.coilyco.ai/styles/*"
+  from = "https://beaver.coilyco.ai/styles/*"
   to = "/styles/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://mcp-beaver.coilyco.ai/fonts/*"
+  from = "https://beaver.coilyco.ai/fonts/*"
   to = "/fonts/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://mcp-beaver.coilyco.ai/project-toc.js"
+  from = "https://beaver.coilyco.ai/project-toc.js"
   to = "/project-toc.js"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://mcp-beaver.coilyco.ai/"
+  from = "https://beaver.coilyco.ai/"
   to = "/vanity/mcp-beaver/index.html"
   status = 200
   force = true
 
 [[redirects]]
-  from = "https://mcp-beaver.coilyco.ai/*"
+  from = "https://beaver.coilyco.ai/*"
   to = "https://www.coilysiren.me/:splat"
+  status = 301
+  force = true
+
+# Renamed 2026-08-28: the short form is canon. These two aliases still resolve
+# and hold a certificate, and there is no guarded path to remove an alias yet,
+# so they forward instead of serving the site root. An empty splat resolves to
+# the bare host, so one rule covers the root and every path under it.
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/*"
+  to = "https://acompose.coilyco.ai/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/*"
+  to = "https://beaver.coilyco.ai/:splat"
   status = 301
   force = true
