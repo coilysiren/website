@@ -57,3 +57,15 @@ picks up its own the moment the file lands. housecast is that case today.
 The banners are not candidates. Every one is wide, 1280x492 or larger, and they
 carry the name as baked-in type, so a centre crop yields a fragment of a
 wordmark. The mark is already square and about 4 KB.
+
+## The card on a project's docs
+
+A docs index and every docs sub-page carry their project's social card rather
+than the site default, so a link to one previews as that project. `projectCard`
+in `src/data/project-cards.js` resolves it, and both the sub-page data cascade
+and the docs-index template read the same function.
+
+Image and alt are returned together or not at all. The card carries the name and
+the claim as baked-in type, so the site's default alt would describe a different
+picture, and a wrong alt is worse than a generic image. A project with a card but
+no showcase entry to take the alt from therefore keeps the default pair.

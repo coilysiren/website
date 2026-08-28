@@ -1,6 +1,7 @@
 // One data file for every mounted project, because Eleventy cascades a
 // directory's data down. Why that shape: docs/project-docs-render.md.
 import { docsMounts } from "../../data/docs-mount-loader.js"
+import { projectCard } from "../../data/project-cards.js"
 
 const projectOf = (data) => data.page.filePathStem.split("/").at(-2)
 const entryOf = (data) =>
@@ -17,6 +18,10 @@ export default {
     project: projectOf,
     mount: (data) => docsMounts[projectOf(data)],
     projectPage: (data) => `/projects/${projectOf(data)}/`,
+    // A docs page shares its project's social card, so a link to one previews
+    // as that project rather than as the site.
+    ogImage: (data) => projectCard(projectOf(data))?.image,
+    ogImageAlt: (data) => projectCard(projectOf(data))?.alt,
     docSlug: (data) => data.page.fileSlug,
     entry: entryOf,
     title: (data) =>

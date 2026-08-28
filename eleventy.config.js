@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url"
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 import * as sass from "sass"
 import { docsMountList, docsMounts } from "./src/data/docs-mount-loader.js"
+import { projectCard } from "./src/data/project-cards.js"
 
 const repositoryRoot = path.dirname(fileURLToPath(import.meta.url))
 const outputDirectory = path.join(repositoryRoot, "dist")
@@ -98,6 +99,8 @@ export default function configureEleventy(eleventyConfig) {
         robots: "follow, index",
         project: mount.project,
         projectPage: mount.page,
+        ogImage: projectCard(mount.project)?.image,
+        ogImageAlt: projectCard(mount.project)?.alt,
         mount,
       }
     )

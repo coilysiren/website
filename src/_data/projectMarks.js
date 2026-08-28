@@ -2,13 +2,10 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-/**
- * Slugs that have a mark drawn, read off disk rather than listed, so a project
- * whose art has not landed yet falls back to the site favicon and picks up its
- * own the moment the file appears. Nothing in the render layer names a project.
- *
- * @type {string[]}
- */
+// Slugs with a mark drawn, read off disk so an undrawn one falls back to the
+// site favicon. Reasoning in docs/project-page-assets.md.
+
+/** @type {string[]} */
 export default fs
   .readdirSync(
     path.join(path.dirname(fileURLToPath(import.meta.url)), "../images/marks")
