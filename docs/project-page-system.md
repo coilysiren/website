@@ -111,3 +111,5 @@ Deny-lists, tables with captions, definition lists and the hand-marked code
 samples stay HTML inside the markdown. Markdown has no definition lists here and
 no way to caption a table, and the samples are marked span by span because there
 is no grammar for the languages they show.
+
+The coilyco.ai vanity hosts each page also renders for: [vanity-hosts.md](vanity-hosts.md).

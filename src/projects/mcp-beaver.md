@@ -1,6 +1,10 @@
 ---
 layout: layouts/project.njk
-permalink: projects/mcp-beaver/index.html
+pagination:
+  data: site.projectVariants
+  size: 1
+  alias: variant
+permalink: "{% if variant == 'vanity' %}vanity/mcp-beaver/index.html{% else %}projects/mcp-beaver/index.html{% endif %}"
 title: mcp-beaver, a MCP server generator with a natural flow | Kai Siren
 description: You handed an agent a write-capable API. Now name every operation it may call. mcp-beaver renders a guardfile into a guarded MCP server, where an operation you did not declare has no tool and no endpoint.
 canonical: /projects/mcp-beaver/
@@ -141,7 +145,7 @@ the payload and its length, because a count in meaning is what changes an answer
 
 <div class="project__note">
   <p class="project__note-label">Note</p>
-  
+
 Coverage leads because a consuming harness bounds a tool result by keeping the
 front and discarding the tail. A caveat serialized last is the first thing
 destroyed, and the model then reads rows carrying no caveat and answers as
@@ -158,7 +162,7 @@ never a caller's credential to mcp-beaver.
 
 <div class="project__note">
   <p class="project__note-label">Note</p>
-  
+
 The deny-by-absence claim is about the running server, not the image. The image
 is deliberately generic and carries no guardfile, so a consumer mounts the spec
 at deploy time.

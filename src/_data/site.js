@@ -1,5 +1,8 @@
 export default {
   author: "Kai Siren",
+  // Each project page renders twice: once at its canonical path, once under
+  // its coilyco.ai vanity host with project chrome. docs/project-page-system.md.
+  projectVariants: ["canonical", "vanity"],
   description:
     "⚙⚒ lights out, platform's green, agents are working the line ⚒⚙",
   email: "coilysiren@gmail.com",

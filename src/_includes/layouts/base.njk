@@ -126,9 +126,15 @@
   </head>
   <body>
     <div class="layoutWrapper">
+      {%- if variant == "vanity" %}
+      {% include "components/nav-vanity.njk" %}
+      <main>{{ content | safe }}</main>
+      {% include "components/footer-vanity.njk" %}
+      {%- else %}
       {% include "components/nav.njk" %}
       <main>{{ content | safe }}</main>
       {% include "components/footer.njk" %}
+      {%- endif %}
     </div>
   </body>
 </html>

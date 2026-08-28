@@ -1,6 +1,10 @@
 ---
 layout: layouts/project.njk
-permalink: projects/umbra/index.html
+pagination:
+  data: site.projectVariants
+  size: 1
+  alias: variant
+permalink: "{% if variant == 'vanity' %}vanity/umbra/index.html{% else %}projects/umbra/index.html{% endif %}"
 title: umbra, a config driven occlusion framework | Kai Siren
 description: You gave an agent a shell. Now name every command it can run. umbra validates argv before execve, checks a scope token per verb, and appends every call to an audit log.
 canonical: /projects/umbra/

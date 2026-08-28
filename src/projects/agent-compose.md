@@ -1,6 +1,10 @@
 ---
 layout: layouts/project.njk
-permalink: projects/agent-compose/index.html
+pagination:
+  data: site.projectVariants
+  size: 1
+  alias: variant
+permalink: "{% if variant == 'vanity' %}vanity/agent-compose/index.html{% else %}projects/agent-compose/index.html{% endif %}"
 title: agent-compose, eval driven composer for roles and personas | Kai Siren
 description: agent-compose compiles the context an agent harness loads into one immutable bundle of plain files, and derives its test board from the roster, so you cannot change a role without changing what gets tested.
 canonical: /projects/agent-compose/
@@ -101,7 +105,7 @@ to build exactly the confusion a seat is most at risk of.
 
 <div class="project__note">
   <p class="project__note-label">Note</p>
-  
+
 Three parties, and none of them holds two seats. A generator authors the cases,
 a subject answers them, and a human grades them. The grading half ships
 separately, so it holds no runner and no model client, and grading never spends

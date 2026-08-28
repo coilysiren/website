@@ -20,6 +20,12 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   emits `SoftwareSourceCode` structured data whose author points at the
   homepage `Person`, and they share one four-step stack chain from
   `src/data/stack.js`. See [project pages](project-pages.md).
+- **Vanity project hosts** - each project page also renders under
+  `<slug>.coilyco.ai` with project chrome instead of the site's, proxied by a
+  Netlify rewrite so the vanity name stays in the address bar. The twin keeps
+  the canonical of the page it mirrors, so the hosts do not split search
+  authority and the sitemap names each URL once. See
+  [vanity hosts](vanity-hosts.md).
 - **Project docs mount** - a project's own `docs/` mounted verbatim under its
   page, with the section tree, reading order, and prev and next all derived
   from one manifest, re-vendored daily from the source repository by

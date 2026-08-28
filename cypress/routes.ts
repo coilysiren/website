@@ -33,5 +33,10 @@ export const ROUTES = [
   "/projects/mcp-beaver/",
   "/projects/umbra/",
   "/resume/",
+  // The vanity twins are real routes with their own chrome, so they carry the
+  // same accessibility and weight floor as the pages they mirror.
+  "/vanity/agent-compose/",
+  "/vanity/mcp-beaver/",
+  "/vanity/umbra/",
   "/writing/",
 ]

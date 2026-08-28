@@ -44,3 +44,116 @@
 [[redirects]]
   from = "/posts/2019-12-29-golang-pr-field-notes-part-3"
   to = "/posts/golang-pr-notes-3"
+
+# coilyco.ai vanity hosts. A 200 rewrite keeps the vanity name in the address
+# bar, which is the whole point, so these are rewrites rather than redirects.
+# Ordering is load-bearing: Netlify takes the first match, so shared assets come
+# before the catch-all. Reasoning in docs/project-page-system.md.
+
+[[redirects]]
+  from = "https://umbra.coilyco.ai/images/*"
+  to = "/images/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://umbra.coilyco.ai/styles/*"
+  to = "/styles/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://umbra.coilyco.ai/fonts/*"
+  to = "/fonts/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://umbra.coilyco.ai/project-toc.js"
+  to = "/project-toc.js"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://umbra.coilyco.ai/"
+  to = "/vanity/umbra/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://umbra.coilyco.ai/*"
+  to = "https://www.coilysiren.me/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/images/*"
+  to = "/images/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/styles/*"
+  to = "/styles/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/fonts/*"
+  to = "/fonts/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/project-toc.js"
+  to = "/project-toc.js"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/"
+  to = "/vanity/agent-compose/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://agent-compose.coilyco.ai/*"
+  to = "https://www.coilysiren.me/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/images/*"
+  to = "/images/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/styles/*"
+  to = "/styles/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/fonts/*"
+  to = "/fonts/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/project-toc.js"
+  to = "/project-toc.js"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/"
+  to = "/vanity/mcp-beaver/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://mcp-beaver.coilyco.ai/*"
+  to = "https://www.coilysiren.me/:splat"
+  status = 301
+  force = true
