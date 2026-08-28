@@ -74,3 +74,40 @@ Versions there are edited by hand, because the build has no network and should
 not grow one for a footer. The list exists because the chain was copied into
 `umbra.njk` inline, and by the time a second page wanted it, umbra's own
 version was three minor releases stale and agent-compose's was a major behind.
+
+## The page is markdown, and the frame is not
+
+A project page is `src/projects/<slug>.md`. Prose, headings and lists are
+markdown. Everything that is design rather than writing lives in
+`_includes/layouts/project.njk`, which owns the article wrapper, the hero, the
+field band, the contents list and the closing script.
+
+The hero is data, so it is front matter under `project:` rather than markup: the
+eyebrow, claim, hook, caption, meta pills and the code sample. `onward` is
+optional, and only umbra sets it. The field band is per-project markup and lives
+in `components/field-<slug>.njk`, because it is a long hand-tuned list rather
+than anything a writer edits in flow.
+
+Sections come from the `section` paired shortcode, which takes the id, the band
+and accent, the label and the heading, and emits the `project__head` block and
+the anchor. The anchor targets the section id rather than a heading slug, which
+is why heading-level anchor generation is not used here: it would retarget every
+link on the page.
+
+### Two traps
+
+**Blank lines inside a shortcode are load-bearing.** The shortcodes wrap their
+content in `\n\n`, and that is what lets markdown process the body inside
+block-level HTML. Without it the whole section renders as one raw HTML blob.
+
+**Nunjucks runs before markdown, including inside fenced code blocks.**
+`markdownTemplateEngine` is `njk` so pages can call shortcodes, which means any
+literal `{{` or `{%` anywhere in a markdown file is interpreted and consumed. A
+code fence does not protect it. One published post carries `{{ organization }}`
+in its samples and needs `{% raw %}` around those fences; without it the samples
+silently render as `RSID::IAM::::/user/*`.
+
+Deny-lists, tables with captions, definition lists and the hand-marked code
+samples stay HTML inside the markdown. Markdown has no definition lists here and
+no way to caption a table, and the samples are marked span by span because there
+is no grammar for the languages they show.

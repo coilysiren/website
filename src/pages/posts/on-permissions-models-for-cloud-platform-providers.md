@@ -38,6 +38,7 @@ With the principles above, I want to detail an example case. Say our cloud platf
 
 Service IAM has 3 resources: "users", "policies", and "organizations". Policies can be granted to users and organizations. The complete layout of ids is like so:
 
+{% raw %}
 ```
 RSID::IAM::{{ organization }}::/organization/*
 RSID::IAM::{{ organization }}::/user/*
@@ -66,9 +67,11 @@ ACID::IAM::delete-policy
 ACID::IAM::attach-policy-to-user
 ACID::IAM::attach-policy-to-organization
 ```
+{% endraw %}
 
 Service kittenDB has 2 resources: "maps" and "entries", in addition to the database itself. Entries are contained with maps. The complete layout of ids is like so:
 
+{% raw %}
 ```
 RSID::KITTENDB::{{ organization }}::/database/*
 RSID::KITTENDB::{{ organization }}::/map/*
@@ -89,6 +92,7 @@ ACID::KITTENDB::read-entry-in-map
 ACID::KITTENDB::update-entry-in-map
 ACID::KITTENDB::delete-entry-in-map
 ```
+{% endraw %}
 
 ## Platform Bootstrapping
 

@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+---
+{#- The frame every project page shares, so the page itself is prose.
+
+    Hero, field band, contents list and the closing reference furniture are all
+    data or per-project markup, none of it content a writer edits in flow. What
+    is left in the page source is markdown and the section shortcodes that band
+    it. See docs/project-page-system.md. -#}
+<article class="project project--{{ project.slug }}">
+
+  <header class="project__hero">
+    <div class="project__col">
+      <div class="project__plate project__hero-grid">
+        <img
+          class="project__mark"
+          src="/images/marks/{{ project.slug }}.png"
+          alt=""
+          width="220"
+          height="220"
+          decoding="async"
+        >
+        <div>
+          <p class="label">{{ project.eyebrow }}</p>
+          <h1 class="project__wordmark">{{ project.slug }}</h1>
+          <p class="project__claim">{{ project.claim }}</p>
+          <h2 class="project__hook">{{ project.hook }}</h2>
+        </div>
+
+        <div>
+          <div class="project__code">
+{{ project.sample | safe }}
+          </div>
+          <p class="project__caption">
+            {{ project.caption }}
+          </p>
+          <ul class="project__meta">
+            {%- for item in project.meta %}
+            <li>{{ item | safe }}</li>
+            {%- endfor %}
+          </ul>
+          {%- if project.onward %}
+          <p class="project__onward">
+            <a href="/projects/{{ project.slug }}/docs/">Read the documentation</a>
+            <span>{{ project.onward }}</span>
+          </p>
+          {%- endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+{% include "components/field-" + project.slug + ".njk" %}
+
+  <div class="project__col project__doc">
+
+    <nav class="project__toc" aria-label="On this page">
+      <p class="label">On this page</p>
+      <ol>
+        {%- for item in project.contents %}
+        <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+        {%- endfor %}
+      </ol>
+    </nav>
+
+    <div class="project__body">
+
+{{ content | safe }}
+
+    </div>
+  </div>
+
+</article>
+
+<script src="/project-toc.js" defer></script>

@@ -12,7 +12,9 @@ band = "large"
 # docs layout and size caps do not model it. A post is as long as its argument
 # needs and lives where Eleventy's permalink computation expects it. Same hatch
 # agentic-os takes for internal/person/data. .github templates follow GitHub's
-# required layout, and drafts/ is unpublished prose. The caps still bind
+# required layout, and drafts/ is unpublished prose. src/projects/ is the whole
+# of that directory rather than its docs half, because the project pages became
+# markdown too and they are site content by the same argument. The caps still bind
 # README.md, AGENTS.md, and docs/*.md, which is where they were aimed.
 # `excludes` governs placement and deliberately stops short of the size caps,
 # so the intent stated above needs this second key to actually bind on size.
@@ -20,13 +22,13 @@ size_excludes = [
     ".github/ISSUE_TEMPLATE/",
     "drafts/",
     "src/pages/",
-    "src/projects/docs/",
+    "src/projects/",
 ]
 excludes = [
     ".github/ISSUE_TEMPLATE/**",
     "drafts/**",
     "src/pages/**",
-    "src/projects/docs/**",
+    "src/projects/**",
 ]
 
 [tool.agentic-os.dead-cross-links]

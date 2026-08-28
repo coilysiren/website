@@ -18,6 +18,14 @@ const compileStyles = () => {
   fs.writeFileSync(path.join(stylesDirectory, "site.css"), result.css)
 }
 
+// Attribute values here are authored, not user input. Escaped anyway, because a
+// shortcode is the wrong place to learn that an em-dash was a quote character.
+const escapeAttr = (value) =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+
 const asDate = (value) => {
   const date = value instanceof Date ? value : new Date(value)
   return Number.isNaN(date.getTime()) ? undefined : date
@@ -125,6 +133,36 @@ export default function configureEleventy(eleventyConfig) {
         }).format(date)
       : ""
   })
+  // Blank lines around the content are load-bearing, and docs/project-page-system.md
+  // carries why: they let markdown process a body inside block-level HTML.
+  const attr = (name, value) => (value ? ` ${name}="${escapeAttr(value)}"` : "")
+
+  eleventyConfig.addPairedShortcode("section", (content, options = {}) => {
+    const { id, band, accent, label, heading, extraClass } = options
+    const head =
+      label || heading
+        ? `<div class="project__head">` +
+          (label ? `<p class="label">${label}</p>` : "") +
+          (heading
+            ? `<h2>${heading}<a class="project__anchor" href="#${id}"` +
+              ` aria-label="Link to this section">#</a></h2>`
+            : "") +
+          `</div>`
+        : ""
+    return (
+      `<section id="${id}"${attr("class", extraClass)}` +
+      `${attr("data-band", band)}${attr("data-accent", accent)}>` +
+      `${head}\n\n${content}\n\n</section>`
+    )
+  })
+
+  eleventyConfig.addPairedShortcode(
+    "note",
+    (content, label = "Note") =>
+      `<div class="project__note"><p class="project__note-label">${label}</p>` +
+      `\n\n${content}\n\n</div>`
+  )
+
   eleventyConfig.addFilter("isoDate", (value) => asDate(value)?.toISOString())
   eleventyConfig.addFilter("isoDay", (value) =>
     asDate(value)?.toISOString().slice(0, 10)
@@ -138,7 +176,7 @@ export default function configureEleventy(eleventyConfig) {
       output: "dist",
     },
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: false,
+    markdownTemplateEngine: "njk",
     templateFormats: ["md", "njk"],
   }
 }
