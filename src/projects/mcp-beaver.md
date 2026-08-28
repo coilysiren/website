@@ -195,7 +195,7 @@ The distinction is worth carrying, because the two modes earn different sentence
 and only one of them earns the stronger one.
 {% endsection %}
 
-{% section { id: "stack", extraClass: "project__chain", band: "penumbra", accent: "sage", label: "One boundary, four proofs", heading: "Constrain what an agent can do, and prove what it did." } %}
+{% section { id: "stack", extraClass: "project__chain", band: "penumbra", accent: "sage", label: "One boundary, three proofs", heading: "Constrain what an agent can do, and prove what it did." } %}
 {% set here = "mcp-beaver" %}
 {% include "components/project-chain.njk" %}
 {% endsection %}

@@ -10,7 +10,7 @@
  */
 
 /**
- * The four-step chain every project page closes on. One list rather than one
+ * The chain every project page closes on. One list rather than one
  * per page: it was copied into umbra.njk by hand, and by the time the second
  * page wanted it the versions there were three minor releases stale on umbra
  * and a whole major behind on agent-compose.
@@ -38,11 +38,5 @@ export const stackChain = [
     state: "v2.61.0",
     page: "/projects/agent-compose/",
     role: "Composes the context around it, carrying no authority.",
-  },
-  {
-    name: "sirens-echo",
-    state: "Live",
-    live: true,
-    role: "The whole thing deployed, answering real people.",
   },
 ]

@@ -192,7 +192,7 @@ The bundle is the evidence for exactly one of those four rows. That is a smaller
 claim than a persona file usually makes, and it is one you can check.
 {% endsection %}
 
-{% section { id: "stack", extraClass: "project__chain", band: "penumbra", accent: "sage", label: "One boundary, four proofs", heading: "Constrain what an agent can do, and prove what it did." } %}
+{% section { id: "stack", extraClass: "project__chain", band: "penumbra", accent: "sage", label: "One boundary, three proofs", heading: "Constrain what an agent can do, and prove what it did." } %}
 {% set here = "agent-compose" %}
 {% include "components/project-chain.njk" %}
 {% endsection %}

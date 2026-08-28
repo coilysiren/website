@@ -22,7 +22,7 @@ The only transformation is the filename: `CONTRIBUTING.md` mounts as
 `src/data/docs-mounts.json` carries source, target, and exclusions per project.
 It also holds the lists for repos not mounted yet, so the must-not-mount set
 decided on `coilysiren/inbox#438` survives until those mounts land: planning
-artifacts in agent-compose, working notes in sirens-echo.
+artifacts in agent-compose.
 
 The stamp is generated into `src/data/docs-mount-source.json` and read where
 Eleventy renders it. The manifest stays hand-written structure, so a generated

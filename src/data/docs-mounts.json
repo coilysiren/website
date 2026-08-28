@@ -35,12 +35,5 @@
       "excludeReason": "22 docs and no planning artifacts, verified against origin/main 2026-08-27. No docs/index.md either, so the blurbs were written rather than lifted, in src/data/docs-manifest-mcp-beaver.js (coilysiren/website#137)."
     }
   ],
-  "planned": [
-    {
-      "project": "sirens-echo",
-      "repo": "https://forgejo.coilysiren.me/coilyco-gaming/sirens-echo",
-      "exclude": ["sirens-echo-worklog.md", "sirens-echo-issues.md"],
-      "excludeReason": "Deprioritized 2026-08-27 in favor of the housecast compositor (coilyco-flight-deck/agent-compose#329, #337), so this entry is parked rather than next. Slugs verified against origin/main the same day: the repo has no index.md, and both working-notes files carry the sirens-echo- prefix an earlier guess omitted. Blocked regardless on that prefix: 39 of its 41 docs start with sirens-echo-, so mounting as-is yields routes like /projects/sirens-echo/docs/sirens-echo-tools/."
-    }
-  ]
+  "planned": []
 }

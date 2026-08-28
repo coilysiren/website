@@ -18,7 +18,6 @@ Commit whenever a unit of work feels sufficiently complete, such as after fixing
 
 [![mcp-beaver banner](src/images/banners/mcp-beaver.jpg)](src/images/banners/mcp-beaver.jpg)
 
-[![sirens-echo banner](src/images/banners/sirens-echo.jpg)](src/images/banners/sirens-echo.jpg)
 
 [![umbra banner](src/images/banners/umbra.jpg)](src/images/banners/umbra.jpg)
 

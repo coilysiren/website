@@ -16,9 +16,9 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 - **Project pages** - one page per headline project at `/projects/<name>/`,
   carrying its own visual system rather than the site's page chrome because
   these are headed for standalone domains. `umbra`, `agent-compose`, and
-  `mcp-beaver` are live, and `sirens-echo` does not have one yet. Each
+  `mcp-beaver` are live. Each
   emits `SoftwareSourceCode` structured data whose author points at the
-  homepage `Person`, and they share one four-step stack chain from
+  homepage `Person`, and they share one shared stack chain from
   `src/data/stack.js`. See [project pages](project-pages.md).
 - **Vanity project hosts** - each project page also renders under
   `<slug>.coilyco.ai` with project chrome instead of the site's, proxied by a

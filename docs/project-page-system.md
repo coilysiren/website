@@ -65,7 +65,7 @@ illegibility: granted sits at 15.6:1 and refused at 10.7:1 on the same ground.
 
 ## The stack chain
 
-Every page closes on the same four-step chain, rendered from `src/data/stack.js`
+Every page closes on the same chain, rendered from `src/data/stack.js`
 through `_includes/components/project-chain.njk`. The including page sets
 `here` to its own slug: that step loses its link, takes the section accent, and
 gains "You are here."

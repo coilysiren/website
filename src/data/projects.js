@@ -33,15 +33,6 @@ export const showcaseProducts = [
     url: "https://github.com/coilyco-flight-deck/agent-compose",
   },
   {
-    slug: "sirens-echo",
-    banner: "/images/banners/sirens-echo.jpg",
-    banner2x: "/images/banners/sirens-echo-2x.jpg",
-    alt: "sirens-echo // sirens-deep - a discord community agent harness",
-    proof:
-      "It answers only when a person mentions it in a channel it was granted, and a validator strips the greeting, the emoji, and the sign-off before anything posts.",
-    url: "https://github.com/coilyco-gaming/sirens-echo",
-  },
-  {
     slug: "mcp-beaver",
     banner: "/images/banners/mcp-beaver.jpg",
     banner2x: "/images/banners/mcp-beaver-2x.jpg",

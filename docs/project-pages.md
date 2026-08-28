@@ -1,7 +1,7 @@
 # Project pages
 
 One page per headline project at `/projects/<name>/`. `umbra`,
-`agent-compose`, and `mcp-beaver` are live. `sirens-echo` does not have one yet.
+`agent-compose`, and `mcp-beaver` are live.
 
 The decisions behind the layer live on `coilysiren/inbox#417`. These three
 pages cover only what a future editor needs in order to not break it.

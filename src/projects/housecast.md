@@ -71,7 +71,7 @@ the register Kai writes in anyway.
 {% endsection %}
 
 {#- No stack section yet. The four-step chain in src/data/stack.js is umbra,
-    mcp-beaver, agent-compose, sirens-echo, and where housecast sits in it is a
+    mcp-beaver and agent-compose, and where housecast sits in it is a
     decision rather than a gap. Related writing is absent for the same reason it
     is absent on every project page: it has no promoted post to point at. -#}
 
