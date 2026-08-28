@@ -1,0 +1,15 @@
+# Words this repo means as written. The hook reports rather than rewrites, so an
+# entry here is a claim that the flagged spelling is correct, not a silencer.
+
+[default]
+# "ACID" is a term the permissions post defines and then uses: an action
+# identifier. typos reads the ACI inside it as a misspelt ACPI, and taking that
+# correction would rewrite the post's own coinage into "ACPIDs".
+extend-ignore-identifiers-re = ["ACIDs?"]
+
+[default.extend-words]
+# Azure Kubernetes Service, in a post comparing the three clouds.
+AKS = "AKS"
+# A standard variant, and the umbra copy under src/projects/docs/ is vendored
+# from that repo, so correcting it here would fork the copy from its source.
+unparseable = "unparseable"

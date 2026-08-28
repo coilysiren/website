@@ -1,7 +1,7 @@
 /**
  * agent-compose's docs, ordered. Shape and reasoning: docs-manifest-umbra.js.
  *
- * umbra's blurbs were lifted verbatim from its own `docs/index.md`.
+ * umbra's blurbs were lifted verbatim from its own `umbra/docs/index.md`.
  * agent-compose has no such file, so every line below was written for this
  * shelf against the page it labels, which is the one thing here that is not
  * mechanical. The five planning artifacts named in `docs-mounts.json` never

@@ -1,0 +1,5 @@
+# Self-hosted Forgejo runner labels. actionlint only knows GitHub's hosted
+# labels, so an undeclared self-hosted one reads as a typo and fails the lint.
+self-hosted-runner:
+  labels:
+    - deploy

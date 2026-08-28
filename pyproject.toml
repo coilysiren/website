@@ -4,13 +4,24 @@
 [tool.agentic-os.documentation-layout]
 # Declared rather than defaulted: an undeclared repo and a deliberately
 # small one were the same file, and only one had the decision made.
-band = "small"
+# Large, not small. `small` was stamped fleet-wide by the agentic-os#1108
+# sweep, and its per-file cap is half the pre-band flat cap, so advancing the
+# pin made previously-legal docs/ pages illegal. See inbox#439.
+band = "large"
 # Published site content is the product, not repository documentation, so the
 # docs layout and size caps do not model it. A post is as long as its argument
 # needs and lives where Eleventy's permalink computation expects it. Same hatch
 # agentic-os takes for internal/person/data. .github templates follow GitHub's
 # required layout, and drafts/ is unpublished prose. The caps still bind
 # README.md, AGENTS.md, and docs/*.md, which is where they were aimed.
+# `excludes` governs placement and deliberately stops short of the size caps,
+# so the intent stated above needs this second key to actually bind on size.
+size_excludes = [
+    ".github/ISSUE_TEMPLATE/",
+    "drafts/",
+    "src/pages/",
+    "src/projects/docs/",
+]
 excludes = [
     ".github/ISSUE_TEMPLATE/**",
     "drafts/**",
@@ -29,3 +40,8 @@ excludes = [
 # server and resolve outside the repo on disk. Same hatch documentation-layout
 # already takes for that directory.
 excludes = ["src/pages/**", "src/projects/docs/**"]
+
+# The managed markers are stamped inside the pre-commit YAML and
+# cannot form a single top-of-file comment block.
+[tool.agentic-os.code-comments]
+excludes = [".pre-commit-config.yaml"]

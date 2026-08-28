@@ -3,7 +3,7 @@
  * @property {string} slug Matches the vendored file under this project's dir.
  * @property {string} title
  * @property {string} blurb Kai's own one-liner, lifted verbatim from umbra's
- *   docs/index.md so the shelf never invents a second description.
+ *   umbra/docs/index.md so the shelf never invents a second description.
  */
 
 /**
