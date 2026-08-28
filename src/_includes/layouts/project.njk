@@ -12,6 +12,9 @@ layout: layouts/base.njk
   <header class="project__hero">
     <div class="project__col">
       <div class="project__plate project__hero-grid">
+        {#- A project whose mark has not been drawn yet renders without one,
+            because a broken image is the most visible failure a page has. -#}
+        {%- if project.hasMark != false %}
         <img
           class="project__mark"
           src="/images/marks/{{ project.slug }}.png"
@@ -20,6 +23,7 @@ layout: layouts/base.njk
           height="220"
           decoding="async"
         >
+        {%- endif %}
         <div>
           <p class="label">{{ project.eyebrow }}</p>
           <h1 class="project__wordmark">{{ project.slug }}</h1>
@@ -50,7 +54,7 @@ layout: layouts/base.njk
     </div>
   </header>
 
-{% include "components/field-" + project.slug + ".njk" %}
+{% include "components/field-" + project.slug + ".njk" ignore missing %}
 
   <div class="project__col project__doc">
 

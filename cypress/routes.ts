@@ -30,12 +30,14 @@ export const ROUTES = [
   "/posts/on-permissions-models-for-cloud-platform-providers/",
   "/posts/stochastic-design-iteration/",
   "/projects/agent-compose/",
+  "/projects/housecast/",
   "/projects/mcp-beaver/",
   "/projects/umbra/",
   "/resume/",
   // The vanity twins are real routes with their own chrome, so they carry the
   // same accessibility and weight floor as the pages they mirror.
   "/vanity/agent-compose/",
+  "/vanity/housecast/",
   "/vanity/mcp-beaver/",
   "/vanity/umbra/",
   "/writing/",
