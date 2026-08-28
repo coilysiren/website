@@ -4,7 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ documentTitle or title or site.title }}</title>
+    {#- A project page and its docs wear the project's own mark in the tab, so a
+        reader with several open can tell them apart. `project` is an object on
+        a project page and the slug string on a docs page, hence the fallback
+        chain. A project whose mark is not drawn keeps the site favicon. -#}
+    {%- set markSlug = project.slug or project %}
+    {%- if markSlug and markSlug in projectMarks %}
+    <link rel="icon" href="/images/marks/{{ markSlug }}.png" type="image/png">
+    {%- else %}
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    {%- endif %}
     <link rel="stylesheet" href="/styles/prism-tomorrow.css">
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.url }}/feed.xml">
