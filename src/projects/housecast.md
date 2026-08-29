@@ -5,7 +5,7 @@ pagination:
   size: 1
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/housecast/index.html{% else %}projects/housecast/index.html{% endif %}"
-title: housecast, a YAML driven roster framework for agent context | Kai Siren
+title: housecast, a YAML driven roster framework for agent context | Kai Ase Siren
 description: You changed what a role is allowed to do. The evaluation that checked it did not notice. housecast composes agent context from one YAML roster and derives the evaluation board from the same file.
 canonical: /projects/housecast/
 robots: follow, index
@@ -134,7 +134,7 @@ held byte-identical until that one is deleted.
   <li><a href="https://forgejo.coilysiren.me/coilyco-flight-deck/housecast">Repository ↗</a></li>
 </ul>
 <p class="project__byline">
-  <span>Built by <a href="/">Kai Siren</a></span>
+  <span>Built by <a href="/">Kai Ase Siren</a></span>
   <span>MIT licensed</span>
 </p>
 {% endsection %}

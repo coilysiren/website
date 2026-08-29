@@ -25,7 +25,7 @@ export default {
     docSlug: (data) => data.page.fileSlug,
     entry: entryOf,
     title: (data) =>
-      `${entryOf(data)?.title ?? data.page.fileSlug}, ${projectOf(data)} docs | Kai Siren`,
+      `${entryOf(data)?.title ?? data.page.fileSlug}, ${projectOf(data)} docs | Kai Ase Siren`,
     // The blurb is Kai's own line from the project's own index, so the meta
     // description is lifted rather than written a second time.
     description: (data) => entryOf(data)?.blurb,

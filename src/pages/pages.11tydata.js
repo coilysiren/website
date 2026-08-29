@@ -23,7 +23,7 @@ export default {
       data.page.fileSlug === "resume" || data.promoted
         ? "follow, index"
         : "noindex, nofollow",
-    // resume.md opens with its own `# Kai Siren`, so its header title stays an
+    // resume.md opens with its own `# Kai Ase Siren`, so its header title stays an
     // h2 rather than giving the page two h1 elements.
     titleHeading: (data) => (data.page.fileSlug === "resume" ? "h2" : "h1"),
   },

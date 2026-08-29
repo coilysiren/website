@@ -22,7 +22,7 @@ Anything a browser is not required to observe does not get a browser.
   absence of render-blocking script, one canonical host across every emitted
   URL, the `Person` JSON-LD parsing on exactly the two pages that carry it, the
   social card's declared dimensions matching the committed JPEG, one non-empty
-  `h1` and the `X | Kai Siren` title pattern on every indexed page, and each
+  `h1` and the `X | Kai Ase Siren` title pattern on every indexed page, and each
   post's `<time>` matching its `BlogPosting` `datePublished`, and the Atom feed
   carrying exactly the promoted posts newest first with absolute links. No
   browser, runs in milliseconds.

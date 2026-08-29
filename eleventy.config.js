@@ -94,7 +94,7 @@ export default function configureEleventy(eleventyConfig) {
         layout: "layouts/base.njk",
         permalink: `projects/${mount.project}/docs/index.html`,
         canonical: mount.root,
-        title: `${mount.project} docs | Kai Siren`,
+        title: `${mount.project} docs | Kai Ase Siren`,
         description: mount.front.description,
         robots: "follow, index",
         project: mount.project,

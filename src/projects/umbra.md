@@ -5,7 +5,7 @@ pagination:
   size: 1
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/umbra/index.html{% else %}projects/umbra/index.html{% endif %}"
-title: umbra, a config driven occlusion framework | Kai Siren
+title: umbra, a config driven occlusion framework | Kai Ase Siren
 description: You gave an agent a shell. Now name every command it can run. umbra validates argv before execve, checks a scope token per verb, and appends every call to an audit log.
 canonical: /projects/umbra/
 robots: follow, index
@@ -168,7 +168,7 @@ nothing. The policy is the thing you write, not the thing you install.
   <li><a href="https://github.com/coilyco-flight-deck/umbra/blob/main/docs/architecture.md">docs/architecture.md ↗</a></li>
 </ul>
 <p class="project__byline">
-  <span>Built by <a href="/">Kai Siren</a></span>
+  <span>Built by <a href="/">Kai Ase Siren</a></span>
   <span>MIT licensed</span>
 </p>
 {% endsection %}

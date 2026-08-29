@@ -176,7 +176,7 @@ describe("build output", () => {
       expect(heading.replace(/<[^>]*>/g, "").trim(), route).not.toBe("")
       const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? ""
       expect(
-        title === "Kai Siren" || title.endsWith(" | Kai Siren"),
+        title === "Kai Ase Siren" || title.endsWith(" | Kai Ase Siren"),
         `${route} title is "${title}"`
       ).toBe(true)
     })
@@ -229,7 +229,7 @@ describe("build output", () => {
     // A feed nothing advertises is a feed nobody finds.
     INDEXED.forEach((route) =>
       expect(page(route)).toContain(
-        `<link rel="alternate" type="application/atom+xml" title="Kai Siren" href="${HOST}/feed.xml">`
+        `<link rel="alternate" type="application/atom+xml" title="Kai Ase Siren" href="${HOST}/feed.xml">`
       )
     )
   })
@@ -249,7 +249,7 @@ describe("build output", () => {
       const parsed = JSON.parse(schema(route)!)
       expect(parsed["@type"]).toBe("Person")
       expect(parsed.url).toBe(HOST)
-      expect(parsed.name).toBe("Kai Siren")
+      expect(parsed.name).toBe("Kai Ase Siren")
       expect(parsed.jobTitle).toBeTruthy()
       expect(parsed.sameAs.length).toBeGreaterThan(0)
       // Entity resolution only works against URLs that resolve.

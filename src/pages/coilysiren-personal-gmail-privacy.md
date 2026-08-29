@@ -10,7 +10,7 @@ title: "coilysiren-personal-gmail — Privacy & Contact"
 
 ## Who can use it
 
-Exactly one person: me, Kai Siren (`coilysiren@gmail.com`). There are no other authorized users. If you reached this page from a Google OAuth consent screen asking you to grant access to an app called `coilysiren-personal-gmail`, you are not the intended audience and should cancel the flow.
+Exactly one person: me, Kai Ase Siren (`coilysiren@gmail.com`). There are no other authorized users. If you reached this page from a Google OAuth consent screen asking you to grant access to an app called `coilysiren-personal-gmail`, you are not the intended audience and should cancel the flow.
 
 ## What data the app touches
 

@@ -5,7 +5,7 @@ pagination:
   size: 1
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/agent-compose/index.html{% else %}projects/agent-compose/index.html{% endif %}"
-title: agent-compose, eval driven composer for roles and personas | Kai Siren
+title: agent-compose, eval driven composer for roles and personas | Kai Ase Siren
 description: agent-compose compiles the context an agent harness loads into one immutable bundle of plain files, and derives its test board from the roster, so you cannot change a role without changing what gets tested.
 canonical: /projects/agent-compose/
 robots: follow, index
@@ -205,7 +205,7 @@ claim than a persona file usually makes, and it is one you can check.
   <li><a href="https://github.com/coilyco-flight-deck/agent-compose/blob/main/docs/evaluation.md">docs/evaluation.md ↗</a></li>
 </ul>
 <p class="project__byline">
-  <span>Built by <a href="/">Kai Siren</a></span>
+  <span>Built by <a href="/">Kai Ase Siren</a></span>
   <span>MIT licensed</span>
 </p>
 {% endsection %}

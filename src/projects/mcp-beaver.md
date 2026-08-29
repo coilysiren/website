@@ -5,7 +5,7 @@ pagination:
   size: 1
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/mcp-beaver/index.html{% else %}projects/mcp-beaver/index.html{% endif %}"
-title: mcp-beaver, a MCP server generator with a natural flow | Kai Siren
+title: mcp-beaver, a MCP server generator with a natural flow | Kai Ase Siren
 description: You handed an agent a write-capable API. Now name every operation it may call. mcp-beaver renders a guardfile into a guarded MCP server, where an operation you did not declare has no tool and no endpoint.
 canonical: /projects/mcp-beaver/
 robots: follow, index
@@ -208,7 +208,7 @@ and only one of them earns the stronger one.
   <li><a href="https://github.com/coilyco-flight-deck/mcp-beaver/blob/main/examples/forgejo-issues.mcp.kdl">examples/forgejo-issues.mcp.kdl ↗</a></li>
 </ul>
 <p class="project__byline">
-  <span>Built by <a href="/">Kai Siren</a></span>
+  <span>Built by <a href="/">Kai Ase Siren</a></span>
   <span>MIT licensed</span>
 </p>
 {% endsection %}

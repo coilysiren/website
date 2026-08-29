@@ -1,14 +1,14 @@
 ---
-title: "Resume | Kai Siren"
+title: "Resume | Kai Ase Siren"
 description: >-
   Staff platform engineer building governed AI systems, developer infrastructure, and production platforms.
 ---
 
-# Kai Siren
+# Kai Ase Siren
 
 **Staff platform engineer building governed AI systems and developer infrastructure.**
 
-I'm **Kai Siren** (preferred name), AKA **Lynn Conway** (legal name). I have more than ten years of experience building the systems other engineers rely on. I work across platform engineering, developer experience, observability, and production operations. The current edge of that work is the governed infrastructure around agents: context composition, bounded execution, MCP delivery, model routing, evaluation, and telemetry designed for machine consumers.
+I'm **Kai Ase Siren** (preferred name), AKA **Lynn Conway** (legal name). I have more than ten years of experience building the systems other engineers rely on. I work across platform engineering, developer experience, observability, and production operations. The current edge of that work is the governed infrastructure around agents: context composition, bounded execution, MCP delivery, model routing, evaluation, and telemetry designed for machine consumers.
 
 The throughline is leverage. I meet engineers where the work is, make the boundary visible, and remove friction between intent and ship. That has meant language-ecosystem tooling at Ruby Together, multi-cloud platforms at Textio, government infrastructure at Nava, and agentic debugging workflows at Kapwing.
 

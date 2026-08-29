@@ -1,5 +1,5 @@
 export default {
-  author: "Kai Siren",
+  author: "Kai Ase Siren",
   // Each project page renders twice: once at its canonical path, once under
   // its coilyco.ai vanity host with project chrome. docs/project-page-system.md.
   projectVariants: ["canonical", "vanity"],
@@ -11,7 +11,7 @@ export default {
   // `ogImageAlt` in frontmatter. Regenerating it: docs/social-card.md.
   ogImage: "/images/og-default.jpg",
   ogImageAlt:
-    "Kai Siren, platform engineer. I build agentic engineering platforms.",
+    "Kai Ase Siren, platform engineer. I build agentic engineering platforms.",
   // Netlify 301s the apex to www, so canonical tags and the sitemap name the
   // redirect target rather than its source. See docs/static-generation.md.
   url: "https://www.coilysiren.me",
@@ -23,5 +23,5 @@ export default {
     "https://bsky.app/profile/coilysiren.me",
     "https://forgejo.coilysiren.me/coilysiren",
   ],
-  title: "Kai Siren",
+  title: "Kai Ase Siren",
 }

@@ -21,7 +21,7 @@ own tokens rather than inventing a second visual language.
   with a 64px gap, matching `.portfolio-hero`.
 * Background `$deep-ink` with `background-shapes.svg` at 960px, plus a purple
   bloom, `radial-gradient(60% 90% at 20% 45%)` of `$mid-purple` at 55%.
-* Eyebrow `Kai Siren // Platform Engineer` in mono, 21px, `$mid-blue`,
+* Eyebrow `Kai Ase Siren // Platform Engineer` in mono, 21px, `$mid-blue`,
   `.12em` tracking, uppercase.
 * Headline `I build agentic engineering platforms` in Roboto 700, 74px,
   `-.055em` tracking, `.98` line height, white, `15ch` measure.
