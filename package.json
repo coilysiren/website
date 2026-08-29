@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "author": "Kai Siren <coilysiren@gmail.com>",
+  "author": "Kai Ase Siren <coilysiren@gmail.com>",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
