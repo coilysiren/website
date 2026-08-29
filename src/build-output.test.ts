@@ -10,6 +10,7 @@ const CANONICAL_ROUTES = [
   "/about/",
   "/hiring/",
   "/projects/agent-compose/",
+  "/projects/housecast/",
   "/projects/mcp-beaver/",
   "/projects/umbra/",
   "/resume/",
