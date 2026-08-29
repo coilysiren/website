@@ -33,6 +33,15 @@
       "target": "src/projects/docs/mcp-beaver",
       "exclude": [],
       "excludeReason": "22 docs and no planning artifacts, verified against origin/main 2026-08-27. No docs/index.md either, so the blurbs were written rather than lifted, in src/data/docs-manifest-mcp-beaver.js (coilysiren/website#137)."
+    },
+    {
+      "project": "housecast",
+      "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/housecast",
+      "branch": "main",
+      "docsDir": "docs",
+      "target": "src/projects/docs/housecast",
+      "exclude": [],
+      "excludeReason": "Ten docs and no planning artifacts, verified against origin/main 2026-08-29. No docs/index.md, so the blurbs were written rather than lifted, in src/data/docs-manifest-housecast.js. Five of the ten open with a stub marker upstream and mount as written, because verbatim is verbatim."
     }
   ],
   "planned": []

@@ -7,6 +7,13 @@
     "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose",
     "syncedAt": "2026-08-27"
   },
+  "housecast": {
+    "commit": "b234dbc",
+    "date": "2026-08-28",
+    "docs": "https://forgejo.coilysiren.me/coilyco-flight-deck/housecast/src/branch/main/docs",
+    "repo": "https://forgejo.coilysiren.me/coilyco-flight-deck/housecast",
+    "syncedAt": "2026-08-29"
+  },
   "mcp-beaver": {
     "commit": "eebbe24",
     "date": "2026-08-27",
