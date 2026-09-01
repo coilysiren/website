@@ -33,4 +33,19 @@
     font-weight: 700;
     letter-spacing: 0.08em;
   }
+
+  // The vanity footer's one link. Without this it took the browser's default
+  // blue, which measures 1.75:1 on the deep ink.
+  span a {
+    color: vars.$pure-white;
+    text-decoration: underline;
+    text-decoration-color: vars.$mid-blue;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      color: vars.$light-blue;
+      text-decoration-color: currentColor;
+    }
+  }
 }
