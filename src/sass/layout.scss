@@ -15,6 +15,15 @@ body {
   color: vars.$ink;
 }
 
+// Every image carries width and height attributes so it reserves its box
+// (coilysiren/website#129). Those map to the `height` property, which outranks
+// `aspect-ratio` and silently wins wherever a rule sizes an image by width
+// alone. This reset hands sizing back to the stylesheet.
+img,
+video {
+  height: auto;
+}
+
 .layoutWrapper {
   min-height: 100%;
   display: flex;

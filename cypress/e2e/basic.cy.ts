@@ -61,6 +61,44 @@ describe("Layout invariants", () => {
     })
   })
 
+  it("sizes media by the stylesheet, not by the reserved box", () => {
+    // The width and height attributes that reserve an image's box also map to
+    // the `height` property, which outranks `aspect-ratio`. Without the reset
+    // in layout.scss the box collapses onto the file's own pixel height and
+    // `object-fit: cover` crops hard. Positional tests miss it, because the
+    // element is still in the right place - just the wrong shape.
+    cy.viewport(1280, 900)
+    ;[...ROUTES, "/definitely-not-here/"].forEach((url) => {
+      cy.visit(url, { failOnStatusCode: false })
+      cy.document().then((document) => {
+        const wrong = [
+          ...document.querySelectorAll<HTMLElement>("img, video"),
+        ].flatMap((element) => {
+          const style = document.defaultView!.getComputedStyle(element)
+          const [width, height] = style.aspectRatio.split("/").map(Number)
+          // The used box, not getBoundingClientRect: a border and the
+          // portrait's rotate() both inflate the rect off the ratio.
+          const drawnWidth = parseFloat(style.width)
+          const drawnHeight = parseFloat(style.height)
+
+          if (!width || !height || !drawnHeight) {
+            return []
+          }
+
+          return Math.abs(drawnWidth / drawnHeight - width / height) < 0.02
+            ? []
+            : [
+                `${element.tagName.toLowerCase()}.${element.className} ` +
+                  `renders ${Math.round(drawnWidth)}x` +
+                  `${Math.round(drawnHeight)} against ${style.aspectRatio}`,
+              ]
+        })
+
+        expect(wrong, `${url} draws media at the wrong shape`).to.deep.equal([])
+      })
+    })
+  })
+
   it("reaches no third party", () => {
     // Deny by origin, never by initiatorType.
     // See docs/verification.md. The list emptied when the talk embed went.
