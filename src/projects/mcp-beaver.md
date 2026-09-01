@@ -6,7 +6,7 @@ pagination:
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/mcp-beaver/index.html{% else %}projects/mcp-beaver/index.html{% endif %}"
 title: mcp-beaver, a MCP server generator with a natural flow | Kai Ase Siren
-description: You handed an agent a write-capable API. Now name every operation it may call. mcp-beaver renders a guardfile into a guarded MCP server, where an operation you did not declare has no tool and no endpoint.
+description: mcp-beaver renders one umbra guardfile into a running MCP server, an HTTP tool API, an optional widget, and a helm release. Each grant becomes one tool, and its input schema comes from the grant's own path, query, and body.
 canonical: /projects/mcp-beaver/
 robots: follow, index
 ogImage: /images/banners/mcp-beaver-card.jpg
@@ -18,10 +18,10 @@ softwareSchema:
   license: https://spdx.org/licenses/MIT.html
 project:
   slug: mcp-beaver
-  eyebrow: Surface // exactly the grants
+  eyebrow: One file // the whole server
   claim: a MCP server generator with a natural flow
-  hook: You handed an agent a write-capable API. Now name every operation it may call.
-  caption: One grant, one MCP tool, one HTTP endpoint. No handler, no input schema, and no per-server image, because all three are derived from the line above.
+  hook: You need an MCP server for one API. Now write a Go package, a handler and a schema per tool, and a Dockerfile.
+  caption: One grant becomes one MCP tool and one HTTP endpoint, and umbra derives the input schema from the path, query, and body written above.
   meta:
     - "<b>Preview</b>"
     - MIT
@@ -32,7 +32,7 @@ project:
     - { id: how-it-works, title: How it works }
     - { id: spec, title: Reading a spec }
     - { id: coverage, title: Results lead with coverage }
-    - { id: not-a-gateway, title: What it is not }
+    - { id: not-a-gateway, title: What the deployment owns }
     - { id: stack, title: The stack }
     - { id: reference, title: Reference }
   sample: |
@@ -45,17 +45,17 @@ project:
     <span class="k">withhold</span> <span class="s">"delete_issue"</span> { <span class="k">reason</span> <span class="s">"No undo."</span> }</code></pre>
 ---
 
-{% section { id: "problem", band: "penumbra", accent: "coral", label: "The problem, and what it costs to leave alone", heading: "A write-capable MCP is usually the whole API with a friendlier name." } %}
-The normal way to expose a service to an agent is to write a server that holds a
-credential and forwards calls. Its blast radius is whatever that credential can
-reach, which is the entire upstream, and the only thing standing between the agent
-and a destructive verb is that nobody wrote a tool for it yet. Somebody will,
-because adding one is a small pull request.
+{% section { id: "problem", band: "penumbra", accent: "coral", label: "The problem, and what it costs to leave alone", heading: "By the fourth service it is four codebases." } %}
+Exposing one service to an agent means writing a Go package, a handler per tool,
+an input schema per tool, and a Dockerfile. Then a reviewer reads all four and
+decides whether they believe the combination. Do it again for the next service,
+and the honest answer to what an agent can reach through them is that nobody has
+held all of it in their head at once.
 
-Reviewing that is reading a Go package, a handler per tool, an input schema per
-tool, and a Dockerfile, then deciding whether you believe the combination. By the
-fourth service it is four codebases, and the honest answer to what an agent can do
-through them is that nobody has held all of it in their head at once.
+Each of those servers holds a credential and forwards calls, so its blast radius
+is the whole upstream, and the thing standing between the agent and a destructive
+verb is that nobody wrote a tool for it yet. Somebody will, because adding one is
+a small pull request.
 {% endsection %}
 
 {% section { id: "how-it-works", band: "lilac", accent: "mint", label: "What it does about it", heading: "One runtime, many guardfiles." } %}
@@ -138,7 +138,7 @@ policy, unimplemented, not offered upstream, or simply not found by the agent's
 search. An agent guesses between them, and it guesses wrong in both directions.
 {% endsection %}
 
-{% section { id: "coverage", band: "penumbra", accent: "sage", label: "A design call worth stating", heading: "Every result leads with what it does not contain." } %}
+{% section { id: "coverage", band: "penumbra", accent: "sage", label: "A design call worth stating", heading: "Every result opens with what it counted." } %}
 Grant-backed results are <code>{"coverage": {...}, "result": ...}</code>, in that
 order, in both the text and the structured content. Coverage names every array in
 the payload and its length, because a count in meaning is what changes an answer.
@@ -154,11 +154,12 @@ though the view were complete.
 </div>
 {% endsection %}
 
-{% section { id: "not-a-gateway", band: "lilac", accent: "amber", label: "What it does not do", heading: "mcp-beaver performs no inbound authentication." } %}
-It is not an API gateway and it is not an identity layer. Caller identity, TLS,
-ingress, and network reachability belong to the deployment that runs it. Guardfile
-`auth` configures mcp-beaver's credential to the upstream service, and
-never a caller's credential to mcp-beaver.
+{% section { id: "not-a-gateway", band: "lilac", accent: "amber", label: "What the deployment owns", heading: "Caller identity belongs to the deployment." } %}
+Caller identity, TLS, ingress, and network reachability belong to whatever runs
+mcp-beaver, and it expects to sit behind them rather than to be an API gateway or
+an identity layer. Guardfile `auth` configures mcp-beaver's own credential to the
+upstream service, which is the opposite direction from a caller's credential to
+mcp-beaver.
 
 <div class="project__note">
   <p class="project__note-label">Note</p>
@@ -175,7 +176,7 @@ at deploy time.
     <thead>
       <tr>
         <th scope="col">Mode</th>
-        <th scope="col">An operation you did not declare</th>
+        <th scope="col">An undeclared operation</th>
       </tr>
     </thead>
     <tbody>
@@ -185,7 +186,7 @@ at deploy time.
       </tr>
       <tr>
         <th scope="row">Upstream-proxy mode</th>
-        <td>Still exists behind an endpoint the container holds credentials for. The runtime re-checks allowlist membership on every call, which is unreachable rather than absent.</td>
+        <td>Still exists behind an endpoint the container holds credentials for. The runtime re-checks allowlist membership on every call, so the bound there is enforcement rather than absence.</td>
       </tr>
     </tbody>
   </table>

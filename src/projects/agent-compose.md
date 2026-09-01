@@ -5,22 +5,22 @@ pagination:
   size: 1
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/agent-compose/index.html{% else %}projects/agent-compose/index.html{% endif %}"
-title: agent-compose, eval driven composer for roles and personas | Kai Ase Siren
-description: agent-compose compiles the context an agent harness loads into one immutable bundle of plain files, and derives its test board from the roster, so every role you change moves the cases that test it.
+title: agent-compose, a name, a job, and the context to do it | Kai Ase Siren
+description: agent-compose ships seven named seats, each with a charter and a personality meld, and compiles the context an agent harness loads into one immutable bundle of plain files you can read and diff before a run.
 canonical: /projects/agent-compose/
 robots: follow, index
 ogImage: /images/banners/agent-compose-card.jpg
-ogImageAlt: agent-compose, eval driven composer for roles and personas
+ogImageAlt: agent-compose, a name, a job, and the context to do it
 softwareSchema:
   name: agent-compose
-  claim: eval driven composer for roles and personas
+  claim: a name, a job, and the context to do it
   repo: https://github.com/coilyco-flight-deck/agent-compose
   license: https://spdx.org/licenses/MIT.html
 project:
   slug: agent-compose
-  eyebrow: Roles // and the board they imply
-  claim: eval driven composer for roles and personas
-  hook: You wrote seven personas. Which one has ever been tested?
+  eyebrow: Seven seats // and the context each one loads
+  claim: a name, a job, and the context to do it
+  hook: You gave your agents different jobs. They all load the same prompt.
   caption: That is the whole request. What comes back is a directory of plain files, and you can diff it against the last one before anything runs.
   meta:
     - "<b>v2.61.0</b>"
@@ -29,9 +29,10 @@ project:
     - linux // macos // windows
   contents:
     - { id: problem, title: The problem }
+    - { id: roster, title: The roster }
     - { id: how-it-works, title: How it works }
-    - { id: eval-driven, title: Why eval driven }
     - { id: request, title: Reading a request }
+    - { id: eval-driven, title: Where the board comes from }
     - { id: not-permission, title: What it is not }
     - { id: stack, title: The stack }
     - { id: reference, title: Reference }
@@ -55,6 +56,55 @@ tested artifact in the stack, so nobody can say whether a seat still refuses the
 thing it was written to refuse. Two roles drift into each other, one quietly
 absorbs the other's work, and the only evidence is a transcript somebody has to
 read by hand.
+{% endsection %}
+
+{% section { id: "roster", band: "umbra", accent: "mint", label: "The zero-config default", heading: "Seven seats, each with a name and a meld." } %}
+`roster:core` ships seven seats. Each one carries a charter and a meld of two
+personality traits that shape how it writes and what it reaches for first.
+
+<dl class="project__deflist">
+  <div>
+    <dt>🪢🪨 Angie (she)</dt>
+    <dd><b>Platform Engineer.</b> Builds the floor everyone else stands on. Tenacious and grounded.</dd>
+  </div>
+  <div>
+    <dt>🛡️🪨 Vera (she)</dt>
+    <dd><b>Systems Administrator.</b> Runs everything that has to stay up. Protective and grounded.</dd>
+  </div>
+  <div>
+    <dt>🧪🪨 Evie (she)</dt>
+    <dd><b>Applied Scientist.</b> Measures everything twice. Empirical and grounded.</dd>
+  </div>
+  <div>
+    <dt>🎨🌈 Delphi (she)</dt>
+    <dd><b>Frontend Engineer.</b> Draws the screens. Playful and imaginative.</dd>
+  </div>
+  <div>
+    <dt>🤿🌈 Sprite (they)</dt>
+    <dd><b>Game Developer.</b> Ships the games, and plays them. Immersed and imaginative.</dd>
+  </div>
+  <div>
+    <dt>✂️🔭 Portia (they)</dt>
+    <dd><b>Portfolio Director.</b> Picks what gets built, and what waits. Decisive and outward.</dd>
+  </div>
+  <div>
+    <dt>🕯️🔭 Gem (they)</dt>
+    <dd><b>Developer Advocate.</b> Writes the words you are reading. Warm and outward.</dd>
+  </div>
+</dl>
+
+Every seat melds one signature trait with one bond it shares with a sibling, so
+the seven signature traits stay distinct and the bonds group them. The three
+builders share grounded, the two makers share imaginative, and the two
+outward-facing seats share outward.
+
+Each personality also carries a colour, an emblem, a motif, and a body written in
+prose, which is where the creature art comes from and what a voice melds along
+with the role's own. `just palette-serve` renders the whole catalogue locally.
+
+Selection is exclusive. An external person package brings its own roles, seats,
+personalities, and evaluation context, and it replaces `roster:core` wholesale
+rather than merging with it, so no seat inherits half of somebody else's charter.
 {% endsection %}
 
 {% section { id: "how-it-works", band: "lilac", accent: "mint", label: "What it does about it", heading: "agent-compose compiles the context a harness loads, and nothing else." } %}
@@ -92,27 +142,6 @@ default roster wholesale instead of merging with it, so there is no state in whi
 a seat inherits half of somebody else's charter.
 {% endsection %}
 
-{% section { id: "eval-driven", band: "penumbra", accent: "sage", label: "Why the tagline leads with eval", heading: "The test board is derived from the roster, not written beside it." } %}
-Boundaries and their owners produce the pairs. Adjacency produces the role-fit
-targets. Each role's meld produces the personality cases. Add a boundary, flip an
-adjacency edge, or swap a personality, and the challenge list moves on its own.
-Every case corresponds to something in the roster, and every roster change
-moves what gets tested.
-
-The hard cases are generated on purpose. Role adjacency names each role's two
-likeliest absorptions, and those reasons become the descriptors a generator uses
-to build exactly the confusion a seat is most at risk of.
-
-<div class="project__note">
-  <p class="project__note-label">Note</p>
-
-Three parties, and none of them holds two seats. A generator authors the cases,
-a subject answers them, and a human grades them. The grading half ships
-separately, so it holds no runner and no model client, and grading never spends
-a token or touches a deployed system.
-
-</div>
-{% endsection %}
 
 {% section { id: "request", band: "umbra", accent: "mint", label: "What it looks like in use", heading: "The reviewable surface is the request and the bundle it produced." } %}
 Four lines name a seat, the shape the harness wants it in, and where the
@@ -145,6 +174,28 @@ derived and recorded, which is why `describe` has something to render.
     <dd>A skill-provider repository the role is allowed to see. What it does not name, the seat never reads.</dd>
   </div>
 </dl>
+{% endsection %}
+
+{% section { id: "eval-driven", band: "penumbra", accent: "sage", label: "The credibility half", heading: "The board comes from the roster itself." } %}
+Boundaries and their owners produce the pairs. Adjacency produces the role-fit
+targets. Each role's meld produces the personality cases. Add a boundary, flip an
+adjacency edge, or swap a personality, and the challenge list moves on its own.
+Every case corresponds to something in the roster, and every roster change
+moves what gets tested.
+
+The hard cases are generated on purpose. Role adjacency names each role's two
+likeliest absorptions, and those reasons become the descriptors a generator uses
+to build exactly the confusion a seat is most at risk of.
+
+<div class="project__note">
+  <p class="project__note-label">Note</p>
+
+Three parties, and none of them holds two seats. A generator authors the cases,
+a subject answers them, and a human grades them. The grading half ships
+separately, so it holds no runner and no model client, and grading never spends
+a token or touches a deployed system.
+
+</div>
 {% endsection %}
 
 {% section { id: "not-permission", band: "lilac", accent: "amber", label: "What it does not do", heading: "agent-compose is not a permission system." } %}

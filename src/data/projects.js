@@ -26,7 +26,7 @@ export const showcaseProducts = [
     slug: "agent-compose",
     banner: "/images/banners/agent-compose.jpg",
     banner2x: "/images/banners/agent-compose-2x.jpg",
-    alt: "agent-compose // $ acompose - Eval driven composer for roles and personas",
+    alt: "agent-compose // $ acompose - A name, a job, and the context to do it",
     proof:
       "The test board comes from the roster itself. Every role you change moves the cases that test it, and diff names exactly what moved between two bundles.",
     page: "/projects/agent-compose/",
