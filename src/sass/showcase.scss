@@ -33,8 +33,19 @@ $content-width: 1180px;
     color: vars.$light-blue;
   }
 
+  // Kai's call: the demo heading reads at the roster lede's size rather than
+  // the 4.5rem the section default gives it. Line height and the space beneath
+  // come down with it, since both were set for display type.
+  .section-heading {
+    margin-bottom: clamp(1rem, 2vw, 1.4rem);
+  }
+
   .section-heading h2 {
+    max-width: 58ch;
     color: vars.$pure-white;
+    font-size: clamp(1rem, 1.6vw, 1.12rem);
+    line-height: 1.6;
+    letter-spacing: normal;
   }
 }
 
