@@ -78,8 +78,8 @@ cannot claim what it does not own, because the claim is derived from the other
 side of the relationship rather than asserted on this one.
 
 The challenge board derives from that same file. Adding a boundary or changing
-an adjacency changes which challenges exist, so a role cannot change without
-changing what gets tested. A human still writes the prompt into each derived
+an adjacency changes which challenges exist, so every role change moves what
+gets tested. A human still writes the prompt into each derived
 challenge, and a human scores the run, because the thing being judged is whether
 a transcript honoured a sentence.
 {% endsection %}

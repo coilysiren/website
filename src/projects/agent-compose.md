@@ -6,7 +6,7 @@ pagination:
   alias: variant
 permalink: "{% if variant == 'vanity' %}vanity/agent-compose/index.html{% else %}projects/agent-compose/index.html{% endif %}"
 title: agent-compose, eval driven composer for roles and personas | Kai Ase Siren
-description: agent-compose compiles the context an agent harness loads into one immutable bundle of plain files, and derives its test board from the roster, so you cannot change a role without changing what gets tested.
+description: agent-compose compiles the context an agent harness loads into one immutable bundle of plain files, and derives its test board from the roster, so every role you change moves the cases that test it.
 canonical: /projects/agent-compose/
 robots: follow, index
 ogImage: /images/banners/agent-compose-card.jpg
@@ -96,8 +96,8 @@ a seat inherits half of somebody else's charter.
 Boundaries and their owners produce the pairs. Adjacency produces the role-fit
 targets. Each role's meld produces the personality cases. Add a boundary, flip an
 adjacency edge, or swap a personality, and the challenge list moves on its own.
-You cannot write a case that does not correspond to the roster, and you cannot
-change the roster without changing what gets tested.
+Every case corresponds to something in the roster, and every roster change
+moves what gets tested.
 
 The hard cases are generated on purpose. Role adjacency names each role's two
 likeliest absorptions, and those reasons become the descriptors a generator uses

@@ -14,7 +14,7 @@ export const front = {
   description:
     "The documentation for housecast, a YAML driven roster framework for agent context. Start with the roster language, then the engine that composes it, then the board that grades what it composed.",
   lede: [
-    "housecast reads roles, personalities, and boundaries authored as YAML, resolves each role's personality meld and boundary allocation, derives the identity primitives, and emits an immutable bundle. The challenge board that grades the result derives from the same file, so a role cannot change without changing what gets tested.",
+    "housecast reads roles, personalities, and boundaries authored as YAML, resolves each role's personality meld and boundary allocation, derives the identity primitives, and emits an immutable bundle. The challenge board that grades the result derives from the same file, so every role change moves what gets tested.",
     "These pages are early. Several carry a settled structure and an explicit list of what has not been written yet, and they are mounted verbatim from the repository rather than rewritten for the web.",
   ],
   caseStudy: "the case for housecast",
