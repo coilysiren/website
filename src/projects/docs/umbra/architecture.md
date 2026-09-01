@@ -4,8 +4,14 @@ umbra guards two surfaces an agent uses to cause chaos, plus a shared core. The 
 
 ## The two surfaces
 
-- **CLI passthrough** (`cli/`) - the original reason umbra exists: sit between an agent and an existing binary, audit and validate every argv before `execve`.
-- **HTTP requests** (`http/`) - the extension for load-bearing platforms with no first-class CLI (Forgejo). Guard the request, not the subprocess.
+- **CLI exec** (`cli/`) - the original reason umbra exists: sit between an agent and an existing binary, audit and validate every argv before `execve`.
+- **Outbound requests** (`http/`) - the extension for load-bearing platforms with no first-class CLI (Forgejo), and for upstream MCP servers ([mcpverb](mcpverb.md)). Guard the request, not the subprocess.
+
+### The mcp dialect does not make a third surface
+
+It reaches an upstream service, so it belongs to the request surface, and one detail is worth stating rather than leaving to be discovered: **an mcp stdio transport starts a subprocess.** That looks like `cli/` work sitting in `http/`.
+
+It is not, because the split is about what is guarded rather than about syscalls. `cli/` guards a subprocess the operator asked for, where argv **is** the request. An mcp stdio child is transport for a call whose real payload is a tool name and a JSON object, and it is never caller-supplied. The spawn still passes `pkg/policy`, the same argv gate `cli/` uses, so it gains no weaker check by living here. `pkg/mcpclient` holds the client itself, in the core rather than either surface, because it expresses no permission. `pkg/mcpapps` sits there for the same reason one step further out: it answers an MCP App's frames and holds a `Policy` interface with no rules behind it, so the guardfile stays the only place a widget's calls are declared ([mcpapps.md](mcpapps.md)).
 ## The shared core
 
 - **pkg** (`pkg/`) - everything the two surfaces share: audit, policy, scope, exit-code taxonomy, the config/cache plumbing, and the generic skill/command-tree renderers.
@@ -25,7 +31,11 @@ http/ ─┴─►  pkg/
 
 The two surfaces express **permissions**; **config validation does not**, so it lives in the core (`pkg/`), never as a third guarded surface. `pkg/config` supplies the layered-config primitives - loading, overlay, and typing - and its vocabulary structurally cannot express a grant: no `mount`, no `exec`, no `can run`. That package boundary **is** the config/permission partition. Keeping config in core is what keeps the two-surface least-privilege identity legible: `cli/` and `http/` stay the whole permission story, and a reader never has to wonder whether a config file is also a policy file. This is the config-placement doctrine's landing in umbra, generalizing the downward-only arrow above.
 
-Some legacy cross-surface imports still exist (for example `cli/passthrough` reaches into `http/egress` to wire a single guarded command end-to-end). Those predate the split and are being unwound; the directory layout makes them visible so they can be removed rather than multiplied. New code must respect the downward-only arrow.
+The downward-only arrow now holds with no exceptions. The last cross-surface import was `cli/passthrough` reaching into `http/egress`, and both left with ward's surface.
+
+## Two front doors, and what that removes
+
+Every package here is reached through **umbra** or through **beaver**. A package no front door reaches does not belong, which is what retired ward's surface: `cli/{gittree,passthrough,repocfg,shell}`, `http/egress`, and eight `pkg/` helpers went with the consumer that was their only caller.
 
 ## What stays flat
 
@@ -34,4 +44,4 @@ Some legacy cross-surface imports still exist (for example `cli/passthrough` rea
 ## See also
 
 - [FEATURES.md](FEATURES.md) - the per-package inventory, grouped by surface.
-- [features-detail.md](features-detail.md) - per-primitive details.
+- [FEATURES.md](FEATURES.md) - per-primitive details.

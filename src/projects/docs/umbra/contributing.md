@@ -23,11 +23,11 @@ This project is run on volunteer time, so please have patience.
 
 ## Code of Conduct
 
-Participation in this community is governed by the [Code of Conduct](CODE_OF_CONDUCT.md), adapted from the [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+Participation in this community is governed by the [Code of Conduct](../CODE_OF_CONDUCT.md), adapted from the [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 
 ## Security disclosures
 
-See [SECURITY.md](SECURITY.md). Do not file vulnerabilities as public issues.
+See [SECURITY.md](../SECURITY.md). Do not file vulnerabilities as public issues.
 
 ## Agent-driven contributions
 

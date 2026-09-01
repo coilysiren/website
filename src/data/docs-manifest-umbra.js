@@ -71,19 +71,14 @@ export const shelves = [
     title: "Guides",
     pages: [
       {
-        slug: "specgen",
+        slug: "umbra-cli",
         title: "The no-code driver",
         blurb: "Author policy and locks, never Go.",
       },
       {
-        slug: "specgen-materialization",
+        slug: "umbra-materialization",
         title: "Materialization",
         blurb: "How `run` and `build` cache a generated binary.",
-      },
-      {
-        slug: "passthrough",
-        title: "Passthrough",
-        blurb: "Wrap a tool whole when naming every verb is impractical.",
       },
       {
         slug: "specverb-fetch",
@@ -131,19 +126,14 @@ export const shelves = [
         blurb: "`map`, `set`, and pinned values.",
       },
       {
+        slug: "mcpapps",
+        title: "MCP Apps host",
+        blurb: "The frames a rendered widget sends back, under the guardfile.",
+      },
+      {
         slug: "value-providers",
         title: "Value providers",
         blurb: "`env`, `file`, `literal`, and minted tokens.",
-      },
-      {
-        slug: "broker",
-        title: "Broker",
-        blurb: "The root credential broker protocol.",
-      },
-      {
-        slug: "ward-helpers",
-        title: "ward helpers",
-        blurb: "Reusable packages lifted out of ward.",
       },
     ],
   },

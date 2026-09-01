@@ -33,7 +33,9 @@ Grant-body nodes are `op` (the override seam, rules in [resolution](specverb-res
 3. Mount each op as a guarded leaf under `verb.Wrap`, and each `fetch` overlay under the `fetch` group. A reserved-flag collision fails closed, and the restrict gate runs at invocation.
 
 One generic action backs every verb: positional path params, typed query and body flags, `--body-file`, fixed-body toggles, injected-resolver auth, `--dry-run`, and the render rail. See [requests](specverb-request.md).
-`specverb.Mount` grafts the built group onto a root. `codegen.Render` generates a consumer's whole `main.go`, and the no-code [specgen](specgen.md) driver wraps that in a `gen` / `lock` / `skew` / `run` surface.
+`specverb.Descriptors` is the same resolution with no tree built, for a consumer projecting operations onto MCP tools or a route table. See [descriptors](specverb-descriptors.md).
+
+`specverb.Mount` grafts the built group onto a root. `codegen.Render` generates a consumer's whole `main.go`, and the no-code [umbra](umbra-cli.md) driver wraps that in a `gen` / `lock` / `skew` / `run` surface.
 
 ## Spec durability
 

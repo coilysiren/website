@@ -17,7 +17,7 @@ Gold-standard visibility for a fanatically thin generated CLI. The surface is sp
 
 **The `describe` verb.** `Build` mounts `describe` as a real verb on the group, rendering `Surface.Markdown()`: a header and plain-language auth sentence, then a stanza per verb whose heading is the full command path and whose body frames the HTTP op, grant, and destructive flag in prose above two flat aligned enumerations, positional arguments and options, kept in separate lists. The verb takes no flags; capture is a shell redirect.
 
-**The generated agent skill.** With `--skills-out`, specgen reconstructs the merged urfave tree and writes a concise `SKILL.md` plus `references/commands.yaml`. The body routes agents to live help and describe output, and the lazy index records every reachable leaf without copying exhaustive help into eager context.
+**The generated agent skill.** With `--skills-out`, umbra reconstructs the merged urfave tree and writes a concise `SKILL.md` plus `references/commands.yaml`. The body routes agents to live help and describe output, and the lazy index records every reachable leaf without copying exhaustive help into eager context.
 
 Machine consumers read the mounted command tree directly in Go rather than through a `--query` rail on the verb.
 

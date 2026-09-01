@@ -8,7 +8,7 @@ Forgejo is the canonical and only publication surface for umbra. GitHub does not
 
 A push to `main` fires `promote.yml`: the full repo gate (vet, build, race test, godoc-current, mod tidy, golangci-lint, secret scan) runs, then it publishes the commit-scoped draft tag `draft-${sha}` and only then fast-forwards `release` to that sha. The promote push uses a real-user PAT with `write:repository` **and** `read:user`, because job-token pushes and PATs missing `read:user` get an empty actor and silently enqueue no workflow.
 
-The `release` push fires `release.yml` under a no-cancel concurrency queue, so promoted shas release in sequence. It verifies the matching draft tag, applies the automatic minor bump (major stays hand-driven), creates the tag, builds the six-platform `specgen` matrix, renders and verifies the Homebrew formula and Scoop manifest, creates the Forgejo release with every binary plus `SHA256SUMS`, then updates the shared tap and bucket.
+The `release` push fires `release.yml` under a no-cancel concurrency queue, so promoted shas release in sequence. It verifies the matching draft tag, applies the automatic minor bump (major stays hand-driven), creates the tag, builds the six-platform `umbra` matrix, renders and verifies the Homebrew formula and Scoop manifest, creates the Forgejo release with every binary plus `SHA256SUMS`, then updates the shared tap and bucket.
 
 ## golangci config notes
 

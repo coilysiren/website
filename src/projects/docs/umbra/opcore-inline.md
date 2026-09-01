@@ -14,10 +14,10 @@ wrap ward mcp forgejo {
     }}
 ```
 
-- **method** - from `MethodForVerb`, or `method "PUT"` for an unknown verb. See [unrecognised verbs](specverb-unrecognised-verbs.md).
+- **method** - from `MethodForVerb`, or `method "PUT"` for an unknown verb. See [unrecognised verbs](specverb-resolution.md).
 - **query / body** - flat names become string fields; blocks add typed, bounded, aliased, or exclusive ones. **set** becomes `FixedBody`. See [body projection and pins](opcore-body.md).
 - **fail-when** - a JMESPath predicate over a success response; truthy fails the call. Inputs are `$name` variables.
-- **raw-response** - bare node declaring the body non-JSON, written through undecoded. See [raw responses](specverb-raw-responses.md).
+- **raw-response** - bare node declaring the body non-JSON, written through undecoded. See [raw responses](specverb-fetch.md).
 - **graphql / sql** - an authored document or statement plus caller-supplied holes, the two request shapes no other node builds.
 
 Unknown nodes, missing requirements, malformed predicates, and input collisions fail closed. An unrecognised verb is the one place the grammar infers rather than refuses, so it is reported.

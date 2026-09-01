@@ -1,4 +1,4 @@
-# specgen materialization: cache, embedded files, skills
+# umbra materialization: cache, embedded files, skills
 
 `run` and `build` materialize the generated binary out-of-band, so the consumer keeps policy and locks in source control and never commits generated Go.
 
@@ -8,7 +8,7 @@ The materialized module lives under `config.CacheDir()`: generated `main.go`, th
 
 ## The cache lock, and where it is absent
 
-Materialize+build runs under an advisory lock on `<cache>/.lock` via `pkg/flock`, so two concurrent runs against one cache dir serialise rather than race. That lock is **unix-only**. Elsewhere specgen prints to stderr that it is building unserialised and continues, rather than reporting a lock it never took. Continuing is deliberate: specgen ships Windows binaries and the build is idempotent. Being quiet was not.
+Materialize+build runs under an advisory lock on `<cache>/.lock` via `pkg/flock`, so two concurrent runs against one cache dir serialise rather than race. That lock is **unix-only**. Elsewhere umbra prints to stderr that it is building unserialised and continues, rather than reporting a lock it never took. Continuing is deliberate: umbra ships Windows binaries and the build is idempotent. Being quiet was not.
 
 ## Embedded fixed files
 

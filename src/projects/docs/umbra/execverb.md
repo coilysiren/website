@@ -10,13 +10,13 @@ wrap ward git {
 }
 ```
 
+- **`passthrough <bin>`** - funnel sugar: `exec` plus an implicit open funnel, for a tool whose verbs are impractical to name one by one. Mutually exclusive with `exec`.
 - **`exec <bin>`** - the binary, fixed at parse. `argv-prefix` pins an unoverridable leading argv, the remote-exec transport. `env <NAME> { value <provider> "<addr>" }` resolves at exec time, so a secret comes from SSM rather than the guardfile.
 - **`can run <sub>`** - deny-by-default; only named subcommands mount. A quoted multi-word sentence is a nested path. `can run "*"` is an open funnel and must be the only grant.
 - **`argv <tokens...>`** - fixed fragments replacing the subcommand. **`embed`** compiles a file in and inserts its runtime path. **`sealed`** forbids trailing caller args. **`bin`** overrides the wrap binary for one leaf and does **not** inherit `argv-prefix`.
 - **Flag policy** - `deny-flag` (default-allow minus denials) or `allow-flag` (strict allowlist).
 - **`when` / `deny-when <sel> matches <glob...>`** - argv guards. The selector is a flag name (`secret-id` reads `--secret-id`), `any-arg`, or `argN`.
 - **`gate <name>`** - a registered preflight gate. The registry ships empty, so every name fails closed until a consumer registers one.
-- **`passthrough <bin>`** - funnel sugar. See [passthrough.md](passthrough.md).
 
 Unknown nodes fail closed. `execverb.Mount` mirrors `specverb.Mount`: one leaf per grant under `verb.Wrap`, `SkipFlagParsing` so caller args pass through after the check. The invocation is `bin + argv-prefix + (subcommand or argv) + caller args`.
 
@@ -30,4 +30,6 @@ A wrap may declare `action` nodes: ordered `call run <grant>` sequences over gra
 
 ## Value flags
 
-`valueFlags` in `cli/execverb/argv.go` names the long flags whose value arrives as a separate token. Without it `--region us-east-1` leaves `us-east-1` looking positional, slipping past an `argN` guard. The table is one vendor's shape and belongs in the guardfile. Dropping an entry weakens any `argN` guard on a binary taking that flag, and does it silently. umbra#282.
+`valueFlags` in `cli/execverb/argv.go` names the long flags whose value arrives as a separate token. Without it `--region us-east-1` leaves `us-east-1` looking positional, slipping past an `argN` guard. The table is one vendor's shape, so a grant declares its own with `value-flag <name>`, merged over the built-ins. umbra#282.
+
+A grant that guards `argN` or `any-arg` while allowing a long flag neither the table nor its own `value-flag` list names is **refused when the guardfile parses**, not at runtime. The arity is unknowable from the flag alone, and guessing it wrong binds the guard to the wrong token with no signal. Declare the flag either way: as a value-taker so the value is consumed, or to state that it is a boolean. agentic-os#1351.
