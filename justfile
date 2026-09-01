@@ -57,7 +57,7 @@ image-publish-check *ARGS:
 
 # Validate the trusted Forgejo CI and publishing shell contracts.
 ci-script-check *ARGS:
-    @bash -n scripts/ci/run-in-container.sh scripts/ci/mirror-to-github.sh scripts/publish-image.sh "$@"
+    @bash -n scripts/ci/run-in-container.sh scripts/ci/mirror-to-github.sh scripts/ci/sync-release-branch.sh scripts/publish-image.sh "$@"
 
 # Build and serve the Eleventy site on port 8000.
 serve *ARGS:

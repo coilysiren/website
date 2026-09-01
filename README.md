@@ -56,7 +56,8 @@ content, asset, metadata, and output contracts.
 ## Hosting
 
 Netlify remains the production host for the canonical
-<https://www.coilysiren.me> site. The [staging image](docs/staging.md) supplies the
+<https://www.coilysiren.me> site, building from the GitHub `release` branch
+that a daily workflow fast-forwards to `main` ([deploy](docs/deploy.md)). The [staging image](docs/staging.md) supplies the
 same static build to <https://website.coilysiren.me>. The
 source repository publishes an immutable private image to Forgejo OCI.
 `coilyco-bridge/deploy` owns its Kubernetes rollout, DNS, and TLS.
