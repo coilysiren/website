@@ -4,6 +4,10 @@
  * @property {string} title
  * @property {string} blurb Kai's own one-liner, lifted verbatim from umbra's
  *   umbra/docs/index.md so the shelf never invents a second description.
+ *   Three are written rather than lifted - mcpverb-cost, mcpverb-serving, and
+ *   specverb-descriptors ship in umbra's docs/ but its index.md does not list
+ *   them, so there is no upstream line to take (coilysiren/website#156,
+ *   filed upstream as umbra#358).
  */
 
 /**
@@ -116,6 +120,11 @@ export const shelves = [
         blurb: "Generated visibility for a generated surface.",
       },
       {
+        slug: "specverb-descriptors",
+        title: "Descriptors",
+        blurb: "The spec-driven source without a CLI tree.",
+      },
+      {
         slug: "opcore-inline",
         title: "Inline operations",
         blurb: "Descriptors stated directly in KDL.",
@@ -129,6 +138,11 @@ export const shelves = [
         slug: "mcpapps",
         title: "MCP Apps host",
         blurb: "The frames a rendered widget sends back, under the guardfile.",
+      },
+      {
+        slug: "mcpverb-serving",
+        title: "Serving the granted surface",
+        blurb: "The same grants projected into what a server advertises.",
       },
       {
         slug: "value-providers",
@@ -154,6 +168,16 @@ export const shelves = [
         slug: "execverb",
         title: "Exec-dialect verbs",
         blurb: "The same grammar aimed at wrapped binaries.",
+      },
+      {
+        slug: "mcpverb",
+        title: "MCP-dialect verbs",
+        blurb: "The same grammar aimed at upstream MCP servers.",
+      },
+      {
+        slug: "mcpverb-cost",
+        title: "What an MCP call costs",
+        blurb: "Measured per-call latency, and the daemon it did not warrant.",
       },
     ],
   },
