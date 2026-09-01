@@ -20,7 +20,9 @@ the trusted publisher lane.
   text-only social-image metadata.
 - `mirror` starts only after both test jobs pass. It fast-forwards Forgejo
   `main` and appends tags to the read-only `coilysiren/website` GitHub mirror.
-  It never force-pushes and fails red when the histories diverge.
+  It never force-pushes and fails red when the histories diverge. It does not
+  touch the GitHub `release` branch that production builds from: the fleet
+  mirror controller in infrastructure owns that, see [deploy.md](deploy.md).
 
 The host runner talks to its Docker sidecar, so bind mounts cannot carry the
 runner workspace into a test container. `scripts/ci/run-in-container.sh`
