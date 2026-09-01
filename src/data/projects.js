@@ -28,7 +28,7 @@ export const showcaseProducts = [
     banner2x: "/images/banners/agent-compose-2x.jpg",
     alt: "agent-compose // $ acompose - Eval driven composer for roles and personas",
     proof:
-      "The test board is derived from the roster rather than written beside it, so you cannot change a role without changing what gets tested. Diff two bundles and see exactly what moved.",
+      "The test board comes from the roster itself. Every role you change moves the cases that test it, and diff names exactly what moved between two bundles.",
     page: "/projects/agent-compose/",
     url: "https://github.com/coilyco-flight-deck/agent-compose",
   },
@@ -40,7 +40,7 @@ export const showcaseProducts = [
     mobileBanner2x: "/images/banners/mcp-beaver-mobile-2x.jpg",
     alt: "mcp-beaver // .mcp.kdl - A MCP server generator with a natural flow",
     proof:
-      "One grant becomes one MCP tool and one HTTP endpoint, schema included, so there is no per-server Go, Dockerfile, or handler to write. What you did not declare never gets served.",
+      "One grant becomes one MCP tool and one HTTP endpoint, schema and all. Write the file, get a server that serves exactly what the file says.",
     page: "/projects/mcp-beaver/",
     url: "https://github.com/coilyco-flight-deck/mcp-beaver",
   },
