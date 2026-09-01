@@ -19,8 +19,8 @@ per the workspace git workflow, no PR.
 Per the workspace "Default to proactive scheduling" rule: after pushing to
 `main`, schedule a wake-up to verify the test workflow passed. The site itself
 is built and served externally (Eleventy plus static hosts). Forgejo Actions
-cover tests, image publication, mirroring, the daily release sync, and
-trufflehog. They do not own the Netlify or Kubernetes rollout.
+cover tests, image publication, mirroring, and trufflehog. They do not own the
+Netlify or Kubernetes rollout.
 
 - **Cadence**: 300s after push.
 - **Verify CI**: `aosguard ops forgejo tasks list coilysiren website --limit 2`
