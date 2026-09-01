@@ -68,6 +68,19 @@ $content-width: 1180px;
   border: 0;
 }
 
+// The demo clip is 1280x832, so the 16:9 above would letterbox it.
+.talk-showcase__player--video {
+  aspect-ratio: 1280 / 832;
+}
+
+.demo-player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
 // The band paints no background of its own, so it keeps the deep-ink field the
 // hero sits on. The banners are near-black with their own halo behind the type:
 // on paper they read as slabs dropped in, on this field they sit native.

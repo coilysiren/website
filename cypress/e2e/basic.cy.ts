@@ -61,10 +61,10 @@ describe("Layout invariants", () => {
     })
   })
 
-  it("reaches no third party but the talk embed", () => {
+  it("reaches no third party", () => {
     // Deny by origin, never by initiatorType.
-    // See docs/verification.md.
-    const ALLOWED = ["https://www.youtube.com"]
+    // See docs/verification.md. The list emptied when the talk embed went.
+    const ALLOWED: string[] = []
 
     ROUTES.forEach((url) => {
       cy.visit(url)

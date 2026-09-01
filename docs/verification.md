@@ -37,8 +37,8 @@ Anything a browser is not required to observe does not get a browser.
   34MB, now `coilysiren/website#129`.
 - **Layout invariants** - [`cypress/e2e/basic.cy.ts`](../cypress/e2e/basic.cy.ts)
   covers only what needs real layout: no sideways overflow at 390px, the About
-  portrait sitting beside its copy at 1280px, and no third-party origin beyond
-  the talk embed.
+  portrait sitting beside its copy at 1280px, and no third-party origin at
+  all.
 
 Copy is deliberately not pinned. Asserting exact wording turns every copy edit
 into a two-file edit and protects nothing, because changed words were changed

@@ -124,20 +124,28 @@ personSchema: true
       </ul>
     </div>
   </section>
-  <section id="talk" class="talk-showcase" aria-labelledby="talk-title">
+  <section id="demo" class="talk-showcase" aria-labelledby="demo-title">
     <div class="talk-showcase__inner">
-      <p class="section-label">Talk</p>
+      <p class="section-label">Demo</p>
       <div class="section-heading">
-        <h2 id="talk-title">Vibe Check: Three Real Agent Setups and How They Collaborate</h2>
+        <h2 id="demo-title">Claude show me a sick ass beaver</h2>
       </div>
-      <div class="talk-showcase__player">
-        <iframe
-          src="https://www.youtube.com/embed/vKc7_vfgja4"
-          title="Vibe Check: Three Real Agent Setups and How They Collaborate"
-          loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+      <div class="talk-showcase__player talk-showcase__player--video">
+        {#- Muted and playsinline are both required, or iOS refuses to
+            autoplay. The clip carries no audio track at all. -#}
+        <video
+          class="demo-player"
+          src="/images/demo/beaver.mp4"
+          poster="/images/demo/beaver-poster.jpg"
+          width="1280"
+          height="832"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="An agent session splits its terminal window in half and renders a photograph of a beaver in the new pane, then closes it again."
+        ></video>
       </div>
     </div>
   </section>
