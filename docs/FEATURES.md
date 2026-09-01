@@ -9,10 +9,11 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
 - **Stack** - Eleventy, Nunjucks, Markdown, and Sass, output as locally served
   core HTML, CSS, and fonts without a framework runtime or hydration. See [the
   stack](stack.md).
-- **Homepage demo** - a self-hosted clip of an agent session splitting its
-  own terminal window sits below the shipped products. It replaced the Temporal
-  Vibe Check YouTube embed, so the site now reaches no third-party origin at
-  all.
+- **Homepage demos** - self-hosted clips of agent sessions sit below the
+  shipped products: Gem's cut of two seats untangling a shadowed PATH, which
+  plays on its own, and the terminal-splitting beaver, which waits for a tap.
+  They replaced the Temporal Vibe Check YouTube embed, so the site reaches no
+  third-party origin at all.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Project pages** - one page per headline project at `/projects/<name>/`,
   carrying its own visual system rather than the site's page chrome because

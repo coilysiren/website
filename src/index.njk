@@ -112,29 +112,58 @@ personSchema: true
       </ul>
     </div>
   </section>
-  <section id="demo" class="talk-showcase" aria-labelledby="demo-title">
+  <section id="demo" class="talk-showcase" aria-label="Demos">
     <div class="talk-showcase__inner">
       <p class="section-label">Demo</p>
-      <div class="section-heading">
-        <h2 id="demo-title">Delphi shows me a sick ass beaver</h2>
-      </div>
-      <div class="talk-showcase__player talk-showcase__player--video">
-        {#- Muted and playsinline are both required, or iOS refuses to
-            autoplay. The clip carries no audio track at all. -#}
-        <video
-          class="demo-player"
-          src="/images/demo/beaver.mp4"
-          poster="/images/demo/beaver-poster.jpg"
-          width="1280"
-          height="832"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-label="An agent session splits its terminal window in half and renders a photograph of a beaver in the new pane, then closes it again."
-        ></video>
+      <div class="talk-showcase__reel">
+        <article class="talk-showcase__clip" aria-labelledby="demo-path-shadowing">
+          <div class="section-heading">
+            <h2 id="demo-path-shadowing">Gem cuts twenty minutes of crab-on-crab combat down to twenty seconds</h2>
+          </div>
+          <div class="talk-showcase__player talk-showcase__player--video">
+            {#- Click-to-play in the markup, so the clip's bytes stay off the
+                first load. demo-reel.js turns it into a loop once it scrolls
+                into view. Muted and playsinline are both required, or iOS
+                refuses to play it unprompted. -#}
+            <video
+              class="demo-player"
+              src="/images/demo/path-shadowing.mp4"
+              poster="/images/demo/path-shadowing-poster.jpg"
+              width="1280"
+              height="832"
+              controls
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-play-in-view
+              aria-label="A title card reads twenty minutes of crab on crab combat. Sprite's game developer session checking a galaxy-gen pull request fades into Vera's systems administrator session, which finds two rustc installs shadowing each other on PATH and lands the fix, and the galaxy renders."
+            ></video>
+          </div>
+        </article>
+        <article class="talk-showcase__clip" aria-labelledby="demo-beaver">
+          <div class="section-heading">
+            <h2 id="demo-beaver">Delphi shows me a sick ass beaver</h2>
+          </div>
+          <div class="talk-showcase__player talk-showcase__player--video">
+            {#- One clip moves on its own per screen. This one waits for a tap. -#}
+            <video
+              class="demo-player"
+              src="/images/demo/beaver.mp4"
+              poster="/images/demo/beaver-poster.jpg"
+              width="1280"
+              height="832"
+              controls
+              muted
+              loop
+              playsinline
+              preload="none"
+              aria-label="An agent session splits its terminal window in half and renders a photograph of a beaver in the new pane, then closes it again."
+            ></video>
+          </div>
+        </article>
       </div>
     </div>
+    <script src="/demo-reel.js" defer></script>
   </section>
 </div>

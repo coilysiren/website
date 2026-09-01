@@ -92,6 +92,13 @@ $content-width: 1180px;
   object-fit: cover;
 }
 
+// Two clips stack in one band. The gap is the band's own vertical rhythm, so
+// the second heading reads as a sibling rather than a new section.
+.talk-showcase__reel {
+  display: grid;
+  gap: clamp(2.4rem, 5vw, 4rem);
+}
+
 // The band paints no background of its own, so it keeps the deep-ink field the
 // hero sits on. The banners are near-black with their own halo behind the type:
 // on paper they read as slabs dropped in, on this field they sit native.

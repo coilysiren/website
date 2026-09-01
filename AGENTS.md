@@ -38,12 +38,11 @@ Route every dev command through the [`justfile`](justfile) (run verbs with `just
 
 ## Checkout residency
 
-This repo is not in Agent Compose's `repository-plan.yaml`, so it has no
-resident checkout under `~/projects/<owner>/`. That is intentional. Work it
-from a task-scoped temporary clone, and remove that clone once the work lands.
-
-A temporary root can be purged at any time, so commit and push before pausing,
-switching tasks, or ending a session. The remote is the only durable artifact.
+This repo is resident under `~/projects/coilysiren/website`, selected by the
+frontend role in agentic-os-kai's `.agents/roles.kdl`, so the fleet pass keeps
+the checkout pulled. Work it in a native session shadow like any other resident
+repo, and commit and push before pausing, switching tasks, or ending a session.
+The remote is the durable artifact.
 
 ## See also
 
