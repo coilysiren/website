@@ -30,14 +30,15 @@ $content-width: 1180px;
   text-transform: uppercase;
 }
 
+// One stack, same at every width: the claim, the seats it refers to, then the
+// person. Kai's order, and it means no reflow rule at the phone breakpoint.
 .portfolio-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
-  gap: clamp(2rem, 7vw, 7rem);
-  align-items: center;
+  justify-items: start;
   width: min(calc(100% - 2rem), $content-width);
   margin: 0 auto;
-  padding: clamp(4rem, 9vw, 8rem) 0;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3.5rem, 8vw, 6.5rem);
+  row-gap: clamp(2.25rem, 5vw, 3.5rem);
   color: vars.$pure-white;
 
   .eyebrow {
@@ -45,12 +46,71 @@ $content-width: 1180px;
   }
 
   h1 {
-    max-width: 15ch;
+    max-width: 20ch;
     margin: 0;
-    font-size: clamp(2.8rem, 6.3vw, 5.8rem);
+    font-size: clamp(2.6rem, 6.6vw, 5.6rem);
     line-height: 0.98;
     letter-spacing: -0.055em;
   }
+}
+
+// Justified rather than gridded: seats are content-width and the slack goes
+// between them, so Angie sits on the left edge and Gem on the right, the same
+// edges the headline and the photo use.
+.portfolio-hero__team {
+  --seat-art: clamp(3.25rem, 6.5vw, 5.5rem);
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  // One value drives the art and the seat box, so the first and last creatures
+  // land exactly on the container edges at every width instead of sitting a few
+  // px inside them. ADMINISTRATOR is wider than the box and bleeds each side
+  // into the slack, which is why the wrap query below exists.
+  .roster-seat {
+    flex: 0 0 var(--seat-art);
+    // Without this a seat grows to its longest word, so ADMINISTRATOR widens
+    // Vera's box to 95px and DEVELOPER widens Gem's to 66px. That makes the
+    // spacing uneven and leaves the end art short of the edge.
+    min-width: 0;
+  }
+}
+
+.roster-seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.roster-seat__creature {
+  width: var(--seat-art, 5.5rem);
+  height: var(--seat-art, 5.5rem);
+  object-fit: contain;
+}
+
+.roster-seat__name {
+  margin: 0;
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.roster-seat__title {
+  max-width: 12ch;
+  margin: 0;
+  color: vars.$mid-blue;
+  font-family: vars.$font-family-mono;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .portfolio-hero__lede {
@@ -75,12 +135,26 @@ $content-width: 1180px;
   }
 }
 
+// Same seven columns as the team row. Every word in the hero now starts on the
+// one left edge the headline sets, and the photo takes the right of the row,
+// which had been empty since the stack replaced the two-column hero.
 .portfolio-hero__portrait {
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1rem 0.75rem;
+  align-items: end;
+  width: 100%;
 
+  // Shares the frame's cell so it tracks the photo at any width, and paints
+  // under it because it comes first in the box order.
   &::before {
-    position: absolute;
-    inset: 10% -15% -10% 20%;
+    grid-row: 1;
+    grid-column: 6 / span 2;
+    justify-self: end;
+    align-self: stretch;
+    width: 12rem;
+    margin: 2rem 1.5rem -1.25rem 0;
     content: "";
     background: vars.$coral;
     border-radius: 55% 45% 62% 38%;
@@ -90,6 +164,10 @@ $content-width: 1180px;
 
   .portrait-frame {
     position: relative;
+    grid-row: 1;
+    grid-column: 6 / span 2;
+    justify-self: end;
+    max-width: 13rem;
     padding: 0.7rem;
     background: vars.$light-blue;
     transform: rotate(-3deg);
@@ -103,6 +181,31 @@ $content-width: 1180px;
     object-fit: cover;
     filter: saturate(0.9) contrast(1.03);
   }
+}
+
+.portfolio-hero__signature {
+  position: relative;
+  grid-row: 1;
+  grid-column: 1 / span 5;
+  align-self: center;
+  margin: 0;
+}
+
+.portfolio-hero__name {
+  margin: 0;
+  font-family: vars.$font-family-mono;
+  font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.portfolio-hero__standfirst {
+  max-width: 40ch;
+  margin: 0.7rem 0 0;
+  color: #dfd9f0;
+  font-size: clamp(1.1rem, 1.9vw, 1.45rem);
+  line-height: 1.5;
 }
 
 .button-row {
@@ -873,24 +976,74 @@ $content-width: 1180px;
   }
 }
 
+// Seven seats need 7 x 6rem plus gaps. Below roughly 700px that no longer
+// fits, which is a property of ADMINISTRATOR at the label size rather than of
+// the phone breakpoint, so the wrap gets its own query at the real number.
+@media (max-width: 700px) {
+  .portfolio-hero__team {
+    // Box equals art here too, so the wrapped rows start on the page's left
+    // edge rather than 17px inside it. It also stops the art shrinking to 52px,
+    // which is where the viewport-relative size bottoms out.
+    --seat-art: 5.4rem;
+
+    justify-content: flex-start;
+    gap: 1.4rem 0.5rem;
+    flex-wrap: wrap;
+
+    .roster-seat {
+      flex: 0 0 var(--seat-art);
+    }
+
+    // ADMINISTRATOR is 95px at 0.68rem and 84px at 0.6rem, and no track this
+    // side of the wrap is wide enough for the first number.
+    .roster-seat__title {
+      font-size: 0.6rem;
+    }
+  }
+}
+
 @include vars.phone {
   .portfolio-hero {
-    grid-template-columns: 1fr;
-    padding-top: 3rem;
+    padding-top: 2.25rem;
 
     h1 {
-      font-size: clamp(2.65rem, 13vw, 4rem);
+      font-size: clamp(2.4rem, 11.5vw, 4rem);
     }
   }
 
+  // Seven across is 45px a seat at 320px, below the creature's readable floor.
+  // A wrap gives 3/3/1, and the 5.4rem basis is set by SYSTEMS ADMINISTRATOR,
+  // which measures 84px at this label size and is the widest unbreakable word
+  // in the roster.
+  // One column: beside the photo the line gets a 118px column and runs to seven
+  // ragged lines. Photo first, words under it, both on the page's left edge.
   .portfolio-hero__portrait {
-    display: none;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    .portrait-frame {
+      grid-row: 1;
+      grid-column: 1;
+      justify-self: start;
+      width: 11rem;
+    }
+
+    &::before {
+      grid-row: 1;
+      grid-column: 1;
+      justify-self: start;
+      width: 10rem;
+      margin: 2rem 0 -1rem 2rem;
+    }
   }
 
-  .portfolio-hero__tagline {
-    gap: 0.15rem;
-    align-items: flex-start;
-    flex-direction: column;
+  .portfolio-hero__signature {
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .portfolio-hero__standfirst {
+    max-width: none;
   }
 
   .button-row {

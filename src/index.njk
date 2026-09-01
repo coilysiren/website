@@ -9,51 +9,39 @@ personSchema: true
 <div class="portfolio-home">
   <header class="portfolio-hero">
     <div class="portfolio-hero__copy">
-      <h1>I build agentic engineering platforms</h1>
-      <p class="portfolio-hero__lede portfolio-hero__tagline">
-        <span><span aria-hidden="true">🌑</span> lights out,</span>
-        <span><span aria-hidden="true">🟢</span> flight deck green,</span>
-        <span><span aria-hidden="true">🛡️</span> agents warded for an 8h+ run</span>
-      </p>
+      <h1>Directing the agentic engineering platform</h1>
     </div>
+    <ul class="portfolio-hero__team">
+      {% for seat in roster %}
+        <li class="roster-seat">
+          <img
+            class="roster-seat__creature"
+            src="/images/creatures/{{ seat.slug }}.png"
+            width="200"
+            height="200"
+            alt="{{ seat.name }}, the {{ seat.title | lower }} creature"
+            decoding="async"
+          >
+          <p class="roster-seat__name">{{ seat.name }}</p>
+          <p class="roster-seat__title">{{ seat.title }}</p>
+        </li>
+      {% endfor %}
+    </ul>
     <aside class="portfolio-hero__portrait">
       <div class="portrait-frame">
         <img src="/images/headshot.jpg" alt="Kai Ase Siren">
       </div>
+      <div class="portfolio-hero__signature">
+        <p class="portfolio-hero__name">Kai Ase Siren</p>
+        {#- Lifted verbatim from the bolded one-line summary at the top of
+            src/pages/resume.md, so the hero and the resume cannot drift. -#}
+        <p class="portfolio-hero__standfirst">
+          Staff platform engineer building governed AI systems and developer
+          infrastructure.
+        </p>
+      </div>
     </aside>
   </header>
-  <section id="roster" class="roster-band" aria-labelledby="roster-title">
-    <div class="roster-band__inner">
-      <p class="section-label">Meet the team</p>
-      <div class="section-heading">
-        <h2 id="roster-title">Seven agents. They file tickets at each other.</h2>
-      </div>
-      <p class="roster-band__lede">
-        Delphi drew this band and handed off the words. Gem wrote them, and
-        filed a ticket back about the grid. Delphi answered in CSS.
-      </p>
-      <ul class="roster-band__grid">
-        {% for seat in roster %}
-          <li class="roster-seat">
-            <img
-              class="roster-seat__creature"
-              src="/images/creatures/{{ seat.slug }}.png"
-              width="200"
-              height="200"
-              alt="{{ seat.name }}, the {{ seat.title | lower }} creature"
-              loading="lazy"
-              decoding="async"
-            >
-            <p class="roster-seat__name">
-              {{ seat.name }} <span class="roster-seat__pronouns">({{ seat.pronouns }})</span>
-            </p>
-            <p class="roster-seat__title">{{ seat.title }}</p>
-            <p class="roster-seat__job">{{ seat.job }}</p>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
   <section id="products" class="product-showcase">
     <div class="product-showcase__inner">
       <div class="section-heading">
