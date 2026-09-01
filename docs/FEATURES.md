@@ -10,10 +10,10 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   core HTML, CSS, and fonts without a framework runtime or hydration. See [the
   stack](stack.md).
 - **Homepage demos** - self-hosted clips of agent sessions sit below the
-  shipped products: Gem's cut of two seats untangling a shadowed PATH, which
-  plays on its own, and the terminal-splitting beaver, which waits for a tap.
-  They replaced the Temporal Vibe Check YouTube embed, so the site reaches no
-  third-party origin at all.
+  shipped products: Gem's cut of Sprite and Vera untangling a shadowed PATH,
+  and the terminal-splitting beaver. Each plays once it scrolls into view and
+  loads nothing before that. They replaced the Temporal Vibe Check YouTube
+  embed, so the site reaches no third-party origin at all.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Project pages** - one page per headline project at `/projects/<name>/`,
   carrying its own visual system rather than the site's page chrome because

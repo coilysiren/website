@@ -118,13 +118,13 @@ personSchema: true
       <div class="talk-showcase__reel">
         <article class="talk-showcase__clip" aria-labelledby="demo-path-shadowing">
           <div class="section-heading">
-            <h2 id="demo-path-shadowing">Gem cuts twenty minutes of crab-on-crab combat down to twenty seconds</h2>
+            <h2 id="demo-path-shadowing">Sprite asks Vera to deploy the crab nebula</h2>
           </div>
           <div class="talk-showcase__player talk-showcase__player--video">
-            {#- Click-to-play in the markup, so the clip's bytes stay off the
-                first load. demo-reel.js turns it into a loop once it scrolls
-                into view. Muted and playsinline are both required, or iOS
-                refuses to play it unprompted. -#}
+            {#- Both clips are click-to-play in the markup, so their bytes stay
+                off the first load. demo-reel.js turns each into a loop once it
+                scrolls into view. Muted and playsinline are both required, or
+                iOS refuses to play them unprompted. -#}
             <video
               class="demo-player"
               src="/images/demo/path-shadowing.mp4"
@@ -146,7 +146,6 @@ personSchema: true
             <h2 id="demo-beaver">Delphi shows me a sick ass beaver</h2>
           </div>
           <div class="talk-showcase__player talk-showcase__player--video">
-            {#- One clip moves on its own per screen. This one waits for a tap. -#}
             <video
               class="demo-player"
               src="/images/demo/beaver.mp4"
@@ -158,6 +157,7 @@ personSchema: true
               loop
               playsinline
               preload="none"
+              data-play-in-view
               aria-label="An agent session splits its terminal window in half and renders a photograph of a beaver in the new pane, then closes it again."
             ></video>
           </div>
