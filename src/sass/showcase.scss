@@ -280,3 +280,92 @@ $content-width: 1180px;
     color: vars.$faint-purple;
   }
 }
+
+// The roster sits on the page ground rather than its own band, because it is
+// the hero's evidence and a fourth band would read as a separate claim.
+.roster-band {
+  width: min(calc(100% - 2rem), $content-width);
+  margin: 0 auto;
+  padding: 0 0 clamp(3rem, 7vw, 5.5rem);
+  color: vars.$pure-white;
+
+  .section-label {
+    color: vars.$light-purple;
+  }
+
+  .section-heading {
+    margin-bottom: 0;
+
+    h2 {
+      max-width: 26ch;
+      color: vars.$pure-white;
+    }
+  }
+}
+
+.roster-band__lede {
+  max-width: 58ch;
+  margin: 1rem 0 0;
+  color: vars.$light-blue;
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.roster-band__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.75rem, 1fr));
+  gap: 1.5rem 0.75rem;
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roster-seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  text-align: center;
+}
+
+.roster-seat__creature {
+  width: 5.75rem;
+  height: 5.75rem;
+  object-fit: contain;
+}
+
+.roster-seat__name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.roster-seat__pronouns {
+  color: vars.$mid-blue;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.roster-seat__title {
+  max-width: 11ch;
+  margin: 0;
+  color: vars.$mid-blue;
+  font-family: vars.$font-family-mono;
+  font-size: 0.6rem;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+// 20ch holds every current job line to two lines, and the reserved height keeps
+// the row even when a shorter line is written. Measured in coilysiren/website#145.
+.roster-seat__job {
+  max-width: 20ch;
+  min-height: 2.016rem;
+  margin: 0;
+  color: vars.$light-blue;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
