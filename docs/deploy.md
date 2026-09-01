@@ -3,7 +3,7 @@
 How a merged commit reaches production.
 
 - **Netlify** builds production from the GitHub `release` branch. The fleet
-  mirror controller on ser8 fast-forwards `release` to Forgejo `main` once a
+  mirror controller in infrastructure fast-forwards `release` to `main` once a
   day at 12:00 UTC, an hour after the docs sync, and never force-pushes or
   deletes, so production lags `main` by up to a day. Each production deploy
   costs Netlify credits and each merge used to be one (#149). The controller,
