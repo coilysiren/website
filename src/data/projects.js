@@ -28,7 +28,7 @@ export const showcaseProducts = [
     banner2x: "/images/banners/agent-compose-2x.jpg",
     alt: "agent-compose // $ acompose - Eval driven composer for roles and personas",
     proof:
-      "A role is context, never permission. The bundle is plain files you can read and diff before a run, carrying no credential, no mount, and no command.",
+      "The test board is derived from the roster rather than written beside it, so you cannot change a role without changing what gets tested. Diff two bundles and see exactly what moved.",
     page: "/projects/agent-compose/",
     url: "https://github.com/coilyco-flight-deck/agent-compose",
   },
@@ -40,7 +40,7 @@ export const showcaseProducts = [
     mobileBanner2x: "/images/banners/mcp-beaver-mobile-2x.jpg",
     alt: "mcp-beaver // .mcp.kdl - A MCP server generator with a natural flow",
     proof:
-      "An operation you did not declare has no tool and no endpoint, so the blast radius of a write-capable MCP is one small file you can read end to end.",
+      "One grant becomes one MCP tool and one HTTP endpoint, schema included, so there is no per-server Go, Dockerfile, or handler to write. What you did not declare never gets served.",
     page: "/projects/mcp-beaver/",
     url: "https://github.com/coilyco-flight-deck/mcp-beaver",
   },
