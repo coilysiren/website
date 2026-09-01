@@ -14,6 +14,11 @@ feature is added, removed, or reshaped, so the diff shows scope drift.
   and the terminal-splitting beaver. Each plays once it scrolls into view and
   loads nothing before that. They replaced the Temporal Vibe Check YouTube
   embed, so the site reaches no third-party origin at all.
+- **Image weight budget** - every deferred image carries its intrinsic
+  dimensions from the file header at build time, so the reserved box makes
+  `loading="lazy"` actually defer. `/about/` went from 35MB to about 1MB, and
+  `cypress/e2e/weight.cy.ts` holds a per-route transfer ceiling that only ever
+  moves down.
 - **Pages** - route-by-route inventory in [site pages](pages.md).
 - **Project pages** - one page per headline project at `/projects/<name>/`,
   carrying its own visual system rather than the site's page chrome because

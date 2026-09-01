@@ -167,7 +167,8 @@
   grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: 0.8em;
 
-  img {
+  img,
+  video {
     width: 100%;
     height: 100%;
     min-width: 0;
@@ -466,6 +467,7 @@
   .my-life-slide {
     .my-life-intro__portrait,
     .my-life-project-grid img,
+    .my-life-project-grid video,
     .my-life-home-images img,
     .my-life-favorites__plant,
     .my-life-favorites__korra {

@@ -244,6 +244,24 @@ describe("build output", () => {
     expect([...ROUTES].sort(), "cypress/routes.ts").toEqual(emitted)
   })
 
+  // With no reserved box an image collapses to zero height and loads anyway,
+  // so `loading="lazy"` defers nothing. coilysiren/website#129, worth 34MB.
+  it("reserves a box for every deferred image", () => {
+    INDEXED.forEach((route) => {
+      const html = page(route)
+      const deferred = (html.match(/<img\b[^>]*>/g) ?? []).filter((tag) =>
+        tag.includes('loading="lazy"')
+      )
+      const unreserved = deferred.filter(
+        (tag) => !(/\bwidth="\d+"/.test(tag) && /\bheight="\d+"/.test(tag))
+      )
+      expect(
+        unreserved,
+        `${route} defers an image with no reserved box`
+      ).toEqual([])
+    })
+  })
+
   it("describes the person once, where the person is described", () => {
     ;["/", "/about/"].forEach((route) => {
       const parsed = JSON.parse(schema(route)!)

@@ -10,6 +10,20 @@ personSchema: true
 {% macro iconListItem(icon, label) %}
   <li><span class="my-life-slide__list-icon" aria-hidden="true">{{ icon }}</span>{{ label }}</li>
 {% endmacro %}
+{% macro photo(src, alt, className) %}
+  {%- set size = src | imageSize -%}
+  <img loading="lazy" decoding="async"
+    {%- if className %} class="{{ className }}"{% endif %}
+    src="{{ src }}" width="{{ size.width }}" height="{{ size.height }}"
+    alt="{{ alt }}">
+{% endmacro %}
+{% macro clip(src, alt, className) %}
+  {#- Was an animated GIF. Same silent loop, a fraction of the bytes, and
+      demo-reel.js starts it on scroll so it costs nothing until seen. -#}
+  <video class="{{ className }}" src="{{ src }}" poster="{{ src | replace('.mp4', '-poster.jpg') }}"
+    width="960" height="540" muted loop playsinline preload="none"
+    data-play-in-view aria-label="{{ alt }}"></video>
+{% endmacro %}
 {% macro favoriteSlide(group) %}
   <article id="{{ group.id }}" class="my-life-slide my-life-slide--favorites {{ group.className }}">
     <div class="my-life-slide__copy">
@@ -22,16 +36,18 @@ personSchema: true
     </div>
     <div class="my-life-favorite-grid">
       {% for favorite in group.favorites %}
-        <img loading="lazy" decoding="async" src="{{ favorite.src }}" alt="{{ favorite.alt }}">
+        {{ photo(favorite.src, favorite.alt) }}
       {% endfor %}
     </div>
   </article>
 {% endmacro %}
 <section class="my-life">
   <header id="about" class="my-life-slide my-life-slide--intro">
+    {%- set portrait = "/my-life/16-car-headphones-sunglasses.jpg" | imageSize %}
     <img
       class="my-life-intro__portrait"
       src="/my-life/16-car-headphones-sunglasses.jpg"
+      width="{{ portrait.width }}" height="{{ portrait.height }}"
       alt="Kai wearing sunglasses and headphones in a car"
     >
     <div class="my-life-slide__copy">
@@ -46,26 +62,10 @@ personSchema: true
   {{ favoriteSlide(about.animals) }}
   <article id="fabrication" class="my-life-slide my-life-slide--home">
     <div class="my-life-home-images">
-      <img loading="lazy" decoding="async"
-        class="my-life-home-images__primary"
-        src="/my-life/12-wall-under-construction.jpg"
-        alt="A home interior with a newly framed wall"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-home-images__plan"
-        src="/my-life/07-adu-floor-plan.png"
-        alt="An ADU floor plan"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-home-images__garden"
-        src="/my-life/15-red-garden-bed.jpg"
-        alt="A newly planted red raised garden bed"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-home-images__build"
-        src="/my-life/18-garden-bed-construction.jpg"
-        alt="Raised garden beds under construction"
-      >
+      {{ photo("/my-life/12-wall-under-construction.jpg", "A home interior with a newly framed wall", "my-life-home-images__primary") }}
+      {{ photo("/my-life/07-adu-floor-plan.png", "An ADU floor plan", "my-life-home-images__plan") }}
+      {{ photo("/my-life/15-red-garden-bed.jpg", "A newly planted red raised garden bed", "my-life-home-images__garden") }}
+      {{ photo("/my-life/18-garden-bed-construction.jpg", "Raised garden beds under construction", "my-life-home-images__build") }}
     </div>
     <div class="my-life-slide__copy">
       <h2><a href="#fabrication">Fabrication</a></h2>
@@ -85,21 +85,9 @@ personSchema: true
       </ul>
     </div>
     <div class="my-life-project-grid my-life-technology-grid">
-      <img loading="lazy" decoding="async"
-        class="my-life-technology-grid__tower"
-        src="/my-life/17-tower-interior.jpg"
-        alt="The blue and purple lit interior of a desktop computer tower"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-technology-grid__screens"
-        src="/my-life/14-two-monitor-desktop.jpg"
-        alt="A colorful two-monitor desk setup"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-technology-grid__hardware"
-        src="/my-life/08-motherboard-and-gpu.jpg"
-        alt="A motherboard and graphics card lit by purple LEDs"
-      >
+      {{ photo("/my-life/17-tower-interior.jpg", "The blue and purple lit interior of a desktop computer tower", "my-life-technology-grid__tower") }}
+      {{ photo("/my-life/14-two-monitor-desktop.jpg", "A colorful two-monitor desk setup", "my-life-technology-grid__screens") }}
+      {{ photo("/my-life/08-motherboard-and-gpu.jpg", "A motherboard and graphics card lit by purple LEDs", "my-life-technology-grid__hardware") }}
     </div>
   </article>
   {{ favoriteSlide(about.books) }}
@@ -114,25 +102,14 @@ personSchema: true
       </ul>
     </div>
     <div class="my-life-project-grid my-life-gaming-grid">
-      <img loading="lazy" decoding="async"
-        class="my-life-gaming-grid__factory"
-        src="/my-life/project-factory-game.gif"
-        alt="An animated factory game simulation"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-gaming-grid__galaxy"
-        src="/my-life/project-galaxy-gen.gif"
-        alt="An animated procedural galaxy generator"
-      >
-      <img loading="lazy" decoding="async"
-        class="my-life-gaming-grid__eco"
-        src="/my-life/05-eco-app-dashboard.png"
-        alt="A dark green Eco application dashboard"
-      >
+      {{ clip("/my-life/project-factory-game.mp4", "An animated factory game simulation", "my-life-gaming-grid__factory") }}
+      {{ clip("/my-life/project-galaxy-gen.mp4", "An animated procedural galaxy generator", "my-life-gaming-grid__galaxy") }}
+      {{ photo("/my-life/05-eco-app-dashboard.png", "A dark green Eco application dashboard", "my-life-gaming-grid__eco") }}
     </div>
   </article>
   {{ favoriteSlide(about.shows) }}
   {{ favoriteSlide(about.anime) }}
   {{ favoriteSlide(about.movies) }}
   {% include "components/closer.njk" %}
+  <script src="/demo-reel.js" defer></script>
 </section>

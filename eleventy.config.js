@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url"
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 import * as sass from "sass"
 import { docsMountList, docsMounts } from "./src/data/docs-mount-loader.js"
+import { imageSize } from "./src/data/image-size.js"
 import { projectCard } from "./src/data/project-cards.js"
 
 const repositoryRoot = path.dirname(fileURLToPath(import.meta.url))
@@ -165,6 +166,15 @@ export default function configureEleventy(eleventyConfig) {
       `<div class="project__note"><p class="project__note-label">${label}</p>` +
       `\n\n${content}\n\n</div>`
   )
+
+  // Intrinsic dimensions for a site-absolute image URL. Reserving the box is
+  // what makes `loading="lazy"` defer at all: coilysiren/website#129.
+  const IMAGE_ROOTS = { "/images/": "src/images/", "/": "static/" }
+  eleventyConfig.addFilter("imageSize", (url) => {
+    const prefix = Object.keys(IMAGE_ROOTS).find((key) => url.startsWith(key))
+    const file = IMAGE_ROOTS[prefix] + url.slice(prefix.length)
+    return imageSize(path.join(repositoryRoot, file))
+  })
 
   eleventyConfig.addFilter("isoDate", (value) => asDate(value)?.toISOString())
   eleventyConfig.addFilter("isoDay", (value) =>

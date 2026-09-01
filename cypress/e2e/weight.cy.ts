@@ -6,9 +6,9 @@ const DEFAULT_BUDGET = 150
 const BUDGETS: Record<string, number> = {
   // Product banners. Heavier than a text page on purpose.
   "/": 900,
-  // A defect, not a budget: 34MB of undeferred phone photos and an 8MB GIF.
-  // Ratchet down as coilysiren/website#129 lands, delete at DEFAULT_BUDGET.
-  "/about/": 36000,
+  // Photo-led, and the first favourites slide loads with the page. The rest
+  // defers now that every image reserves its box (coilysiren/website#129).
+  "/about/": 1200,
 }
 
 describe("Page weight", () => {
