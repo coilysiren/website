@@ -48,7 +48,7 @@ The generic projection remains useful on its own through `agent-compose` and
 the `acompose` host entrypoint. No composition root is required for native use.
 
 Cross-repository orchestration is tracked in
-[inbox#267](https://forgejo.coilysiren.me/coilysiren/inbox/issues/267). This
+[inbox#267](https://forgejo.coilysiren.me/coilyco-bridge/inbox/issues/267). This
 producer-side boundary is tracked in
 [agent-compose#103](https://forgejo.coilysiren.me/coilyco-flight-deck/agent-compose/issues/103).
 
@@ -58,9 +58,9 @@ Every development verb is a recipe in the repo-root [justfile](../justfile).
 `just` alone lists them.
 
 Retiring per-repo `ward exec` is
-[coilysiren/inbox#366](https://forgejo.coilysiren.me/coilysiren/inbox/issues/366),
+[coilysiren/inbox#366](https://forgejo.coilysiren.me/coilyco-bridge/inbox/issues/366),
 under the principle in
-[#365](https://forgejo.coilysiren.me/coilysiren/inbox/issues/365): ward is
+[#365](https://forgejo.coilysiren.me/coilyco-bridge/inbox/issues/365): ward is
 out-of-band flight control, so a repo should mention it in passing rather than
 route its whole build through it. The pattern is
 [agentic-os#1048](https://forgejo.coilysiren.me/coilyco-flight-deck/agentic-os/pulls/1048).

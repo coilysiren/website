@@ -16,7 +16,7 @@ does not own.
 The twin keeps the canonical of the page it mirrors, which is what stops a
 vanity host from becoming a second indexable copy and is why the subdomains do
 not contradict the single-authority decision in
-[coilysiren/website#133](https://forgejo.coilysiren.me/coilysiren/website/issues/133).
+[coilysiren/website#133](https://forgejo.coilysiren.me/coilyco-flight-deck/website/issues/133).
 `sitemap.njk` skips the twin for the same reason: it would otherwise name one
 URL twice.
 

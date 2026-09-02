@@ -9,7 +9,7 @@ How a merged commit reaches production.
   costs Netlify credits and each merge used to be one (#149). The controller,
   its read-back check, and the early-publish verb `just forgejo-github-release`
   live in infrastructure, in
-  [docs/forgejo-github-bridge.md](https://forgejo.coilysiren.me/coilyco-flight-deck/infrastructure/src/branch/main/docs/forgejo-github-bridge.md).
+  [docs/forgejo-github-bridge.md](https://forgejo.coilysiren.me/coilyco-bridge/infrastructure/src/branch/main/docs/forgejo-github-bridge.md).
   Build status badge in the README. Site at <https://www.coilysiren.me>, with
   the bare apex 301ing to it.
 - **Staging image contract** builds the locked Eleventy site, serves `dist/`

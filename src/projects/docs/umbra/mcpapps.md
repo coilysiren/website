@@ -27,7 +27,7 @@ Runnable: [`examples/mcpapps/`](../examples/mcpapps/main.go) replays a real widg
 
 ## Why a widget needs its own policy
 
-A measured widget fired **eleven unprompted `tools/call` frames** in the first few seconds of rendering, and the prototype host answered all of them without asking anything ([inbox#505 comment 82130](https://forgejo.coilysiren.me/coilysiren/inbox/issues/505)). The spec's answer is a sandboxed iframe plus per-call consent. Consent at that rate is not consent.
+A measured widget fired **eleven unprompted `tools/call` frames** in the first few seconds of rendering, and the prototype host answered all of them without asking anything ([inbox#505 comment 82130](https://forgejo.coilysiren.me/coilyco-bridge/inbox/issues/505)). The spec's answer is a sandboxed iframe plus per-call consent. Consent at that rate is not consent.
 
 So the grant is declarative and the default is nothing:
 
@@ -82,7 +82,7 @@ Each of these produces no error frame and no console warning: a widget that rend
 3. **`hostCapabilities.serverTools` is load-bearing.** Omit it and the view will not send `tools/call` at all.
 4. **`postMessage` is structured clone, not JSON**, so a key holding an empty value survives the hop. A reply carrying `error` beside a valid `result` reads as a failure, and the widget renders `Error` while receiving correct data. `Reply` has unexported members and three constructors, so both cannot be set.
 
-Field-level detail and the frame log they came from: [inbox#505 comments 82102 and 82130](https://forgejo.coilysiren.me/coilysiren/inbox/issues/505). The contract itself was read from `spec.types.d.ts` in `@modelcontextprotocol/ext-apps`, not inferred from behaviour.
+Field-level detail and the frame log they came from: [inbox#505 comments 82102 and 82130](https://forgejo.coilysiren.me/coilyco-bridge/inbox/issues/505). The contract itself was read from `spec.types.d.ts` in `@modelcontextprotocol/ext-apps`, not inferred from behaviour.
 
 ## What umbra ships, and what it does not
 

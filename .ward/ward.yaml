@@ -8,4 +8,4 @@
 catalog:
   description: "coilysiren.me. Personal site and technical writing on platform engineering, systems, and side projects."
   dependsOn:
-    - forgejo.coilysiren.me/coilyco-flight-deck/infrastructure
+    - forgejo.coilysiren.me/coilyco-bridge/infrastructure
