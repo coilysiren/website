@@ -19,7 +19,7 @@ the trusted publisher lane.
   local core CSS and font resources, retired routes, the designed 404, and
   text-only social-image metadata.
 - `mirror` starts only after both test jobs pass. It fast-forwards Forgejo
-  `main` and appends tags to the read-only `coilysiren/website` GitHub mirror.
+  `main` and appends tags to the read-only `coilyco-flight-deck/website` GitHub mirror.
   It never force-pushes and fails red when the histories diverge. It does not
   touch the GitHub `release` branch that production builds from: the fleet
   mirror controller in infrastructure owns that, see [deploy.md](deploy.md).
