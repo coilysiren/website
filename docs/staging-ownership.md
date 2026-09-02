@@ -17,7 +17,7 @@ the checked-out source commit and publishes this private single-architecture
 image:
 
 ```text
-forgejo.coilysiren.me/coilysiren/website:<full-source-sha>
+forgejo.coilysiren.me/coilyco-flight-deck/website:<full-source-sha>
 ```
 
 The trusted deploy runner supplies a package-write token. The script keeps its

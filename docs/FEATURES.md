@@ -1,6 +1,6 @@
 # Features
 
-Baseline inventory of what `coilysiren/website`
+Baseline inventory of what `coilyco-flight-deck/website`
 ([www.coilysiren.me](https://www.coilysiren.me)) ships today. Update a section when a
 feature is added, removed, or reshaped, so the diff shows scope drift.
 

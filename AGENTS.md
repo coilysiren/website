@@ -38,7 +38,7 @@ Route every dev command through the [`justfile`](justfile) (run verbs with `just
 
 ## Checkout residency
 
-This repo is resident under `~/projects/coilysiren/website`, selected by the
+This repo is resident under `~/projects/coilyco-flight-deck/website`, selected by the
 frontend role in agentic-os-kai's `.agents/roles.kdl`, so the fleet pass keeps
 the checkout pulled. Work it in a native session shadow like any other resident
 repo, and commit and push before pausing, switching tasks, or ending a session.

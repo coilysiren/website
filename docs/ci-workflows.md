@@ -10,7 +10,7 @@ Durable rationale for the Forgejo workflows under `.forgejo/workflows/`. YAML co
 
 Every push to canonical `main` runs on the trusted `deploy:host` runner. The
 job publishes the checked-out source commit as
-`forgejo.coilysiren.me/coilysiren/website:<full-source-sha>` and passes only
+`forgejo.coilysiren.me/coilyco-flight-deck/website:<full-source-sha>` and passes only
 after remote manifest inspection succeeds. The package stays private and the
 runner supplies only the package-write credential. It shares the serialized
 runner concurrency group and clears disposable Docker state around the build.

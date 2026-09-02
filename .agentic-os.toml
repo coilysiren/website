@@ -37,3 +37,8 @@ excludes = [
 excludes = [
   "src/pages/**",
 ]
+
+[repo-pointer-skills]
+# The 2026-09 org migration moved this repo out of the coilysiren user account,
+# so the generator default no longer names its owner.
+org = "coilyco-flight-deck"
