@@ -10,7 +10,7 @@ description: >-
 
 I'm **Kai Ase Siren** (preferred name), AKA **Lynn Conway** (legal name). I have more than ten years of experience building the systems other engineers rely on. I work across platform engineering, developer experience, observability, and production operations. The current edge of that work is the governed infrastructure around agents: context composition, bounded execution, MCP delivery, model routing, evaluation, and telemetry designed for machine consumers.
 
-The throughline is leverage. I meet engineers where the work is, make the boundary visible, and remove friction between intent and ship. That has meant language-ecosystem tooling at Ruby Together, multi-cloud platforms at Textio, government infrastructure at Nava, and agentic debugging workflows at Kapwing.
+The throughline is developer infrastructure. That has meant language-ecosystem tooling at Ruby Together, multi-cloud platforms at Textio, government infrastructure at Nava, and agentic debugging workflows at Kapwing. I run a two-site homelab and a public game server, which is where the platform, reliability, and observability work gets tested outside a job.
 
 My career has been mostly individual-contributor work, with a chapter managing a small DevOps team at EnergyHub. I am strongest in ambiguous systems work where architecture, reliability, and developer experience have to meet.
 
@@ -24,11 +24,10 @@ My career has been mostly individual-contributor work, with a chapter managing a
 // location: East Bay, CA
 // US Citizen
 
-## Open Source <!-- evidence -->
+## Current Open Source <!-- evidence -->
 
 - **<span hidden></span>** [umbra](https://github.com/coilyco-flight-deck/umbra) occludes CLIs and outbound requests behind declared policy: argv validation before exec, a per-invocation egress gate, a rotating audit log, and a public refusal taxonomy. [mcp-beaver](https://github.com/coilyco-flight-deck/mcp-beaver) generates the guarded MCP server from that same policy artifact.
-- **<span hidden></span>** [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) compiles role, personality, and boundary inputs into agent context, with evals gating every role it ships.
-- **<span hidden></span>** [sirens-echo](https://github.com/coilyco-gaming/sirens-echo) runs a Discord community agent harness in production under admission control, a git-tracked access policy, per-user, per-context, and global rate limits, a deterministic response validator, and an identity eval.
+- **<span hidden></span>** [housecast](https://github.com/coilyco-flight-deck/housecast) composes every agent role from one YAML roster and grades them from that same file, so the graded artifact and the shipped artifact are identical. [agent-compose](https://github.com/coilyco-flight-deck/agent-compose) renders the bundle into harness surfaces, carrying no credential, no mount, and no command.
 
 ## Skills
 
